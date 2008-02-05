@@ -1,13 +1,7 @@
 # support settings
-soft_capacity: false
-batches_window:
-  burst_depth_count: 100
-  sync_ttl_ms: 18.51
-  min_timeout_s: green
-  cache_threshold: false
-  idle_ratio_count: 44.19
-  channel_ratio: false
-context_timeout:
-  readonly: true
-  base_size_ms: 3032
-  sync_ttl_pct: 61
+max_retries_s: 51.26
+batch_window: standard
+base_ratio_pct:
+  - fallback
+  - latest
+  - stable
