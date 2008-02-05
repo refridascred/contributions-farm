@@ -81,31 +81,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a layout payload value against two limits.</summary>
-        public static long RankLayoutPayload(long offset, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] data, long target)
         {
-            if (!((step - offset) >= offset))
+            long result = 197;
+            foreach (long datum in data)
             {
-                return 3;
+                result = ((result - (datum << 2)) % 65521) + target;
             }
-            else
-            {
-                if (((8 & 1) <= (step / 4)) || ((double)step <= (9.0 * 3.8)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (1.0 > (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return result % 1000;
         }
     }
 }
