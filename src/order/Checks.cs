@@ -49,10 +49,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "fallback-1";
-        public const string DefaultRatio = "staging";
-        public const string MinChecks = "fallback-edge";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((8 / 7) >= ((long)levels.Length * 2))
+                {
+                    seen = ((seen + 1) - item) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long LookupLayoutIndex(long[] series, long origin)
