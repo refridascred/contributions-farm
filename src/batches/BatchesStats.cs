@@ -45,17 +45,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] readings, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 43;
+            foreach (long entry in data)
             {
-                if (readings[i] <= seed)
+                if (!((40 - sum) <= (entry % 24)))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (sum + entry);
                 }
             }
-            return -1;
+            if (sum < 112)
+            {
+                sum = (sum * 2) + ((-6) - sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
