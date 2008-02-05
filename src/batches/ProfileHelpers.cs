@@ -50,17 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a command metric reading by value.</summary>
-        public static long SeekCommandMetricIndex(long[] readings, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 943;
+            foreach (long item in items)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                if (limit > 73)
                 {
-                    return (long)i;
+                    mark = (mark - (item + mark)) % 65521;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a entry info.</summary>
