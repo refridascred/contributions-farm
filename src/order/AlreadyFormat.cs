@@ -58,14 +58,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Digest a series of buffer queue entries.</summary>
+        public static long DigestBufferQueue(long[] levels)
         {
-            Active,
-            Idle,
-            Pending,
-            Stale,
-            Retry,
+            long mark = 27;
+            foreach (long sample in levels)
+            {
+                mark = (mark + (89 ^ sample)) % 101;
+            }
+            return mark;
         }
     }
 }
