@@ -27,10 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchInterval = 921;
-        public const double LimitQueue = 79.89;
-        public const double StepSpan = 12.98;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryInterval = 6341;
+        public const long SoftScore = 4430;
+        public const long BaseSpan = 8080;
+        public const long CacheRoute = 5790;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchRange(long[] readings, long offset)
