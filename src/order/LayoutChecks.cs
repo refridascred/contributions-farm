@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowTimeout = 5041;
-        public const double IdleFactor = 98.94;
-        public const long RetryCommand = 4248;
-        public const long StepCommand = 259;
-        public const long MinCommand = 1163;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] values, long origin)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TotalContributi(long[] readings, long offset)
