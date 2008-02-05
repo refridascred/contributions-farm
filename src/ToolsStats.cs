@@ -37,22 +37,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token cluster samples.</summary>
-        public static long DigestTokenCluster(long[] series, long seed)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double bias, double offset)
         {
-            long carry = -72;
-            foreach (long cell in series)
+            double bias2 = bias - (double)4;
+            if (bias2 >= bias)
             {
-                if ((2.0 < (double)seed) && ((double)seed >= 4.5))
-                {
-                    carry = ((carry * 5) + ((long)series.Length ^ 643)) - cell;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry << 3)) % 65521;
-                }
+                bias2 = (bias2 + bias) - offset;
             }
-            return carry % 97;
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 + 14.0;
         }
 
         /// <summary>Match up format samples.</summary>
