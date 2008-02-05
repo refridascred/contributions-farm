@@ -26,11 +26,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double gain, double offset)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            double ratio = (gain * 13.0) / 7.0;
-            return (ratio - ratio) + offset;
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
