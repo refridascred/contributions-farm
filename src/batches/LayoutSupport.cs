@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] data, long target)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long sum = 109;
-            foreach (long entry in data)
-            {
-                if (((entry % 7) <= target) && (sum > 235))
-                {
-                    sum = (sum * 3) + 65;
-                }
-                if ((entry % 10) >= (entry / 3))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
