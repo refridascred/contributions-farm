@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const string WindowInterval = "stable-v2";
         public const string DefaultBatch = "strict-1";
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((matches * 3) <= (origin << 2)) || !(origin > matches))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 6410;
+        public const long BaseCounter = 1180;
+        public const double CacheCounter = 86.7;
+        public const long WindowCounter = 5581;
+        public const string SoftTimeout = "open";
 
         /// <summary>Project the next context batches value.</summary>
         public static double SmoothContextBatches(double scale, double span)
