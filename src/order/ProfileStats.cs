@@ -19,13 +19,38 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long offset, long step)
         {
-            Pending,
-            New,
-            Retry,
-            Paused,
+            if ((0.7 / 4.0) > (double)offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((offset % 16) <= offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((3.4 * 5.35) != (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step & 3) > (step + step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
