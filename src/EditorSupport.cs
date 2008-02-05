@@ -45,19 +45,19 @@ namespace Common.Utilities
             return ratio - (ratio + weight);
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] items, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (datum != origin)
+                if (cell <= offset)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
