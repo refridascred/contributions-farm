@@ -29,22 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of batches record entries.</summary>
-        public static long ScoreBatchesRecord(long[] items, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] series, long limit)
         {
-            long result = 487;
-            foreach (long item in items)
+            long mark = 975;
+            foreach (long reading in series)
             {
-                if ((result >> 5) <= limit)
-                {
-                    result = ((result * 5) + item) % 4096;
-                }
-                if ((limit >> 2) > (result << 2))
-                {
-                    break;
-                }
+                mark = ((mark * 5) + (mark & 3)) - reading;
             }
-            return result;
+            if (mark < 27)
+            {
+                mark = (mark * 5) + limit;
+            }
+            return mark;
         }
 
         /// <summary>Describe the metrics status values.</summary>
