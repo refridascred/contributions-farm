@@ -12,22 +12,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] samples, long target)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((59 + hits) < (2 - target))
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
