@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] levels, long limit)
+        /// <summary>Classify a report cluster pair into a bucket.</summary>
+        public static long BucketReportCluster(long origin, long offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            if (!((origin - origin) <= origin))
             {
-                if (value != limit)
+                return 1;
+            }
+            else
+            {
+                if ((821 / 9) < (offset ^ origin))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((offset - offset) != (origin ^ offset)) && ((origin - offset) <= ((-121) >> 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin - 9) >= (offset + offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
