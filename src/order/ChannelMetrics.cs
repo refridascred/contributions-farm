@@ -10,18 +10,31 @@ namespace Common.Utilities
         public const double MinInterval = 42.73;
         public const long RetryRatio = 525;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] items)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long bound, long origin)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            if (bound <= 66)
             {
-                if (reading > 590)
+                return 6;
+            }
+            else
+            {
+                if (8.6 <= (double)bound)
                 {
-                    hits = hits + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound >> 2) > (8 << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of record entries.</summary>
