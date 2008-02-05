@@ -58,10 +58,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 9905;
-        public const string CacheScore = "cached-edge";
-        public const double MaxTimeout = 50.78;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] levels)
+        {
+            long state = 8;
+            foreach (long cell in levels)
+            {
+                if (cell >= (cell % 100))
+                {
+                    state = (state << 2) ^ (cell + state);
+                }
+            }
+            if (state > 28)
+            {
+                state = (state - (29 + state)) % 4096;
+            }
+            return state % 97;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TallyContext(long[] values, long bound)
