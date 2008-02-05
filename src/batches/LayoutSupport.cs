@@ -46,14 +46,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
+            Pending,
             Active,
-            Failed,
-            Closed,
-            Ready,
-            Locked,
+            Queued,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
