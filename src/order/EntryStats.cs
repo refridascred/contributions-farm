@@ -54,15 +54,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double bias, double offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] values, long seed)
         {
-            double bias2 = bias;
-            if (bias2 > (6.5 * 6.0))
+            bool ok = true;
+            foreach (long reading in values)
             {
-                bias2 = bias2 + (offset - bias2);
+                if (reading >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias2 - offset;
+            return ok;
         }
     }
 }
