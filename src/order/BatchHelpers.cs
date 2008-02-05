@@ -13,10 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheCount = 995;
-        public const long CacheSession = 8478;
-        public const string HardBudget = "latest-1";
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine session context values into a single score.</summary>
         public static long DigestSessionContext(long[] items)
