@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] data, long offset)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count command schema pairs that satisfy a relation.</summary>
