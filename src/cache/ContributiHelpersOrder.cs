@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            Pending,
-            Synced,
-            Retry,
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark << 2) ^ (1 >> 1)) % 255;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
