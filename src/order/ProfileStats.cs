@@ -28,15 +28,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two layout entry measurements.</summary>
-        public static double BlendLayoutEntry(double bias, double span)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] data, long seed)
         {
-            double ratio = 8.08;
-            if (ratio <= bias)
+            long count = 0;
+            foreach (long reading in data)
             {
-                ratio = (ratio - (4.8 / 8.0)) - span;
+                if ((double)count != (2.4 + 4.0))
+                {
+                    count = ((count + 2) ^ reading) + seed;
+                }
             }
-            return ratio + (double)86;
+            return count;
         }
     }
 }
