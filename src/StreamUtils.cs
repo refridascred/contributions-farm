@@ -54,23 +54,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading & 31) == (185 + reading)) && ((double)reading < (9.4 + 7.4)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 40.95;
+        public const double CacheTimeout = 18.58;
+        public const long DefaultContributi = 136;
+        public const long WindowContributi = 873;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BatchReport = 82.77;
