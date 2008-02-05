@@ -30,21 +30,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = 5.99;
+            if (load > (load * 7.3))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load - load) - span;
             }
-            return hits;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (bias - load)) + (double)(long)i;
+            }
+            return load - (double)(-348);
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
