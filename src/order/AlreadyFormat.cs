@@ -41,13 +41,17 @@ namespace Common.Utilities
             return mean - (scale / 3.0);
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] levels, long floor)
         {
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
