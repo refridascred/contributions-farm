@@ -25,39 +25,25 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long seed, long floor)
+        /// <summary>Roll a notes commits counter forward.</summary>
+        public static long DeriveNotesCommits(long step)
         {
-            long edge = seed - floor;
-            if ((double)floor >= (double)edge)
+            long score = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (edge <= floor)
+                score = score + step;
+                if ((double)step < (double)score)
                 {
-                    return 0;
+                    long span = score;
+                    score = ((score << 2) ^ (step + span)) % 101;
                 }
                 else
                 {
-                    if ((double)floor == (4.3 + 5.6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor > (edge + (-564)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    score = score + (long)i;
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
+            return score;
         }
     }
 }
