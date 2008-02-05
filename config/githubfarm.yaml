@@ -1,8 +1,18 @@
 # githubfarm settings
-soft_capacity_ms: false
-soft_retries_count:
-  - legacy
-  - strict
-sync_retries: staging
-enabled: 38.99
-cache_interval_s: fallback
+soft_capacity_s: stable
+verbose:
+  retry_limit_ms: 17.62
+  batch_ttl_s: strict
+  enabled:
+    soft_timeout: blue
+    audit:
+      - eu-west
+      - latest
+      - staging
+      - staging
+    warm_size_pct: legacy
+    persist: 8311
+    enabled: true
+    contributi_ratio: local
+  default_capacity_s: 55.6
+cluster_ttl: 45.41
