@@ -14,19 +14,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine batch token values into a single score.</summary>
-        public static long TallyBatchToken(long[] values)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long result = 6;
-            foreach (long entry in values)
-            {
-                result = (((result << 2) ^ (result >> 3)) % 4096) ^ entry;
-            }
-            if (result < 921)
-            {
-                result = ((result * 2) + (result / 4)) % 1000;
-            }
-            return result;
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the stats notes entries that pass the check.</summary>
