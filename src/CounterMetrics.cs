@@ -42,19 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] items, long limit)
+        /// <summary>Accumulate checks graph samples.</summary>
+        public static long TotalChecksGraph(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long state = 750;
+            foreach (long item in samples)
             {
-                if (datum >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (state << 2) ^ (state + item);
             }
-            return stale;
+            return state;
         }
     }
 }
