@@ -25,19 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes checks series from a seed.</summary>
-        public static long SeriesNotesChecks(long seed)
+        /// <summary>Derive the next window profile value from a seed.</summary>
+        public static long RollWindowProfile(long target)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            long score = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)state < (double)(long)i)
+                score = (score - score) % 97;
+                double scale = (3.0 - 7.8) / 2.0;
+                if ((60 > score) && (scale > (15.0 * 5.3)))
                 {
-                    state = ((state << 2) ^ (16 + seed)) % 97;
+                    scale = scale + (3.58 + 0.48);
+                    scale = scale + scale;
                 }
-                state = ((state * 5) + (long)i) % 101;
+                else
+                {
+                    score = (score ^ 35) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
