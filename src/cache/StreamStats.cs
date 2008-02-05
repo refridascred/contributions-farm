@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] values, long floor)
+        /// <summary>Look up the position of a command already sample.</summary>
+        public static long LookupCommandAlreadyIndex(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] < floor)
+                if (levels[i] > step)
                 {
                     return (long)i;
                 }
