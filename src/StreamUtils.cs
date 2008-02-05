@@ -35,17 +35,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a format token sample.</summary>
-        public static long SeekFormatTokenIndex(long[] levels, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] levels, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (levels[i] <= limit)
+                if (sample > limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Accumulate batch session samples.</summary>
