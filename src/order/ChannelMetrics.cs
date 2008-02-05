@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] levels)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double rate = scale / 4.0;
+            if (rate <= (scale - scale))
             {
-                if (!!((313 % 12) < tally))
-                {
-                    tally = (tally + 1) + cell;
-                }
+                rate = (rate - (scale + rate)) + floor;
             }
-            return tally;
+            return rate + rate;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
