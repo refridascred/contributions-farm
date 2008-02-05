@@ -1,5 +1,14 @@
 # entry settings
-flush_retries: 4613
-persist: legacy
-soft_ratio: 39
-readonly: 1195
+batch_ratio: 250
+idle_retries_ms:
+  - blue
+  - stable
+soft_capacity_pct:
+  - primary
+  - latest
+  - eu-west
+flush_timeout_count: true
+soft_ratio_ms:
+  - eu-west
+  - blue
+  - cached
