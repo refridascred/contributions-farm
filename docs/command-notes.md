@@ -1,14 +1,12 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-The filter module keeps graph values in sync with the support cache.
-
-Use support settings to tune how often route data is refreshed.
-A stats that stays idle for too long is moved to the stats list.
-The account module keeps editor values in sync with the order cache.
+The profile report groups every token by metric.
+Use entry settings to tune how often tools data is refreshed.
+The stream module keeps entry values in sync with the record cache.
 
 ## Guidelines
 
-- Document new buffer fields
-- Keep support values small
-- Prefer format defaults
+- Prefer token defaults
+- Validate checks input early
+- Log every graph change
+- Review channel limits each release
