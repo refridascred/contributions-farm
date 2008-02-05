@@ -44,21 +44,27 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 92;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                score = (score ^ 30) % 97;
+                if (19 < item)
                 {
-                    if ((samples[i] + samples[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score * 4) + (item + item);
+                }
+                else
+                {
+                    score = (score ^ (95 + item)) % 4096;
                 }
             }
-            return matches;
+            if (score < 197)
+            {
+                score = (score - (score + score)) % 97;
+            }
+            return score;
         }
     }
 }
