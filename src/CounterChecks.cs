@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((44 + (long)i) != ((long)i >> 4))
-                {
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            New,
+            Idle,
+            Failed,
         }
 
         /// <summary>Fold a list of already readings.</summary>
