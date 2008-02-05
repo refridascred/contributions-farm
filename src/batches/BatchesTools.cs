@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Paused,
-            Queued,
+            Idle,
+            Retry,
             Locked,
             Draft,
         }
