@@ -12,19 +12,16 @@ namespace Common.Utilities
             return ((ratio - 2.2) + rate) + bias;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] samples, long step)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long seed)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (total - (seed ^ seed)) % 101;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
