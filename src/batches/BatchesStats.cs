@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double bias, double floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data)
         {
-            double scale = 18.0;
-            return scale - (floor + bias);
+            long total = 5;
+            foreach (long datum in data)
+            {
+                total = ((total * 5) + total) % 101;
+                total = total + (datum + datum);
+            }
+            return total % 65521;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
