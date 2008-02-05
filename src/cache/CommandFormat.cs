@@ -45,11 +45,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 3023;
-        public const double BaseFactor = 50.12;
-        public const long WindowScore = 8090;
-        public const long CacheRoute = 2474;
-        public const long BatchCount = 5633;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 22; i++)
+            {
+                score = score ^ (target >> 3);
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
