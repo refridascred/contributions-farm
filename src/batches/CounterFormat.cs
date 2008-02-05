@@ -23,17 +23,11 @@ namespace Common.Utilities
         public const string BurstFactor = "local-v2";
         public const long BaseMetrics = 3883;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] levels, long bound)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
