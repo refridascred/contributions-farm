@@ -43,12 +43,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Match up notes payload samples.</summary>
+        public static long OverlapNotesPayloadCount(long[] samples)
         {
-            Closed,
-            Dropped,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next token cluster value from a seed.</summary>
