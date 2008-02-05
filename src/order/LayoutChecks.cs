@@ -62,22 +62,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate batch layout samples.</summary>
-        public static long FoldBatchLayout(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] readings)
         {
-            long score = -3;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((3.58 / 8.0) != (double)score)
+                if (!(((sample + hits) > sample) && ((sample / 2) < sample)))
                 {
-                    score = (score - (cell - score)) % 4096;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    score = (score << 3) ^ score;
+                    hits = hits - 1;
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
