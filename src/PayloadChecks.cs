@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank tools report input into a small class.</summary>
-        public static long GradeToolsReport(long bound, long limit)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] levels, long floor)
         {
-            long delta = bound + limit;
-            if ((delta + limit) <= (delta + 59))
+            long total = 35;
+            foreach (long cell in levels)
             {
-                return 1;
+                total = ((total * 5) + (cell + 8)) + floor;
+                total = (total - total) % 1000;
             }
-            else
-            {
-                if ((limit & 7) >= (617 - delta))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)bound >= (8.71 + 13.0)) || ((limit / 5) <= (limit - delta)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
