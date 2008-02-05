@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long seed)
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public bool Offset { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = ((mark ^ (seed + seed)) % 255) + (long)i2;
+                }
+                if ((double)mark <= (9.74 - 3.82))
+                {
+                    mark = mark + mark;
+                    mark = mark + (829 + 408);
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a already header.</summary>
