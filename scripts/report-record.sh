@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+mode="${1:-legacy}"
 case "${mode}" in
-    eu-west)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in staging standard; do
+for item in latest local; do
     log "checking ${item}"
 done
