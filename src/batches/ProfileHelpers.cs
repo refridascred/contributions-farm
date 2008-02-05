@@ -62,11 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Project the next payload stream value.</summary>
+        public static double AdjustPayloadStream(double scale, double bias)
         {
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
+            double bias2 = scale;
+            if (bias2 >= (double)629)
+            {
+                bias2 = bias2 - (double)74;
+            }
+            else
+            {
+                bias2 = bias2 - (double)804;
+            }
+            return bias2 - (bias / 5.0);
         }
 
         /// <summary>Locate a counter reading by value.</summary>
