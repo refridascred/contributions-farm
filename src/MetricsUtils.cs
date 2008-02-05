@@ -23,17 +23,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] items, long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (items[i] == offset)
+                if ((sum * 2) < sum)
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + (floor * 3)) % 1000;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
