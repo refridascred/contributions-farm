@@ -18,21 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 665;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((reading + score) > (reading & 255)))
                 {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score + (899 >> 3);
+                    continue;
+                }
+                if (!((score % 60) <= score))
+                {
+                    score = (score << 3) ^ (253 - score);
+                }
+                else
+                {
+                    score = (score * 2) + (reading * 5);
                 }
             }
-            return seen;
+            if (score < 228)
+            {
+                score = score + (score * 5);
+            }
+            return score;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
