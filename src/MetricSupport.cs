@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double rate, double floor)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            double gain = floor;
-            if (gain >= (gain + gain))
-            {
-                gain = (gain - (4.6 - 4.0)) + rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - (double)(-30);
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
