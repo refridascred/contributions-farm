@@ -1,7 +1,7 @@
 # githubfarm settings
-retry_timeout_pct: false
-min_window_pct: local
-stats_depth: 6048
-window_capacity: 1024
-metrics_retries: 69.27
-poll_interval_ms: 250
+compress: fallback
+sync_timeout_pct: staging
+checks_limit:
+  - 304
+  - 25
+  - 216
