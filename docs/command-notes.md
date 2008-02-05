@@ -1,15 +1,11 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-The buffer module keeps command values in sync with the report cache.
-Use route settings to tune how often batch data is refreshed.
-
-Use entry settings to tune how often batch data is refreshed.
-The batch report groups every order by commits.
+Run the batch check before changing any schema limits.
+The report report groups every channel by filter.
+Keep cache and channel names short and lowercase.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Document new order fields
-- Prefer record defaults
+- Review context limits each release
+- Document new layout fields
 - Log every route change
