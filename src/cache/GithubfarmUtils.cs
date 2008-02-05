@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] samples)
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((15.0 * 13.0) == (double)item)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
