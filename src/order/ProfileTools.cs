@@ -43,13 +43,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Accumulate support commits samples.</summary>
+        public static long ScoreSupportCommits(long[] levels)
         {
-            Done,
-            Queued,
-            Retry,
-            Ready,
+            long carry = 57;
+            foreach (long entry in levels)
+            {
+                if ((carry / 5) < entry)
+                {
+                    carry = (carry << 3) ^ entry;
+                }
+                else
+                {
+                    carry = (carry - ((long)levels.Length / 7)) % 255;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
