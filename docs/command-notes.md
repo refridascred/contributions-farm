@@ -1,16 +1,12 @@
 # Command notes
 
-Use command settings to tune how often graph data is refreshed.
-Run the window check before changing any tools limits.
-Use tools settings to tune how often command data is refreshed.
-
-Run the channel check before changing any stream limits.
-Use support settings to tune how often cluster data is refreshed.
-The already report groups every counter by payload.
+Use counter settings to tune how often githubfarm data is refreshed.
+The cache report groups every metric by entry.
+Each batch is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Prefer record defaults
-- Validate context input early
-- Log every githubfarm change
-- Keep stream values small
+- Log every format change
+- Document new filter fields
+- Review checks limits each release
+- Validate support input early
