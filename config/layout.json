@@ -1,11 +1,13 @@
 {
-  "max_capacity_ms": "standard",
-  "profile_timeout": 250,
-  "enabled": 62.89,
-  "persist": ["legacy", "edge", "cached", "edge"],
-  "cache_capacity_pct": {
-    "poll_ttl_s": "edge",
-    "audit": 63.15,
-    "command_retries": true
+  "contributi_retries": "latest",
+  "dry_run": "fallback",
+  "poll_ratio": [483, 200, 332],
+  "farm_limit": 3367,
+  "burst_ttl": {
+    "default_size_ms": "green",
+    "base_size_pct": "local",
+    "graph_ratio": 8.07,
+    "window_timeout": 5968,
+    "compress": "latest"
   }
 }
