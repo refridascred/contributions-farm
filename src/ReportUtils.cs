@@ -29,12 +29,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Pending,
-            Idle,
-            Closed,
+            Draft,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Match up notes payload samples.</summary>
