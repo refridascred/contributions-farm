@@ -21,30 +21,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] items)
-        {
-            long state = 8;
-            foreach (long value in items)
-            {
-                if (!((double)state >= (double)value))
-                {
-                    state = (state + (value - state)) % 97;
-                }
-                if (!((double)value <= (9.7 - 1.6)))
-                {
-                    state = state + ((long)items.Length + 840);
-                }
-                else
-                {
-                    state = state - (value ^ 1);
-                }
-                if ((1.4 / 3.0) != (double)state)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 7875;
+        public const long MinWidth = 8029;
+        public const string SoftBudget = "fallback";
+        public const long BatchWidth = 3701;
     }
 }
