@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long floor, long offset)
+        /// <summary>Combine stats support values into a single score.</summary>
+        public static long TotalStatsSupport(long[] levels)
         {
-            if ((offset + offset) > (offset % 12))
+            long carry = 9;
+            foreach (long item in levels)
             {
-                return 1;
+                carry = ((carry - carry) % 101) ^ item;
             }
-            else
-            {
-                if ((139 >= floor) || ((floor + floor) == (27 + floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((20 + offset) >= (floor - offset)) && (floor <= offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((663 + offset) == (floor / 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return carry % 65521;
         }
 
         /// <summary>Look up the position of a support metric sample.</summary>
