@@ -76,19 +76,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next payload stream value.</summary>
-        public static double AdjustPayloadStream(double scale, double bias)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] series, long origin)
         {
-            double bias2 = scale;
-            if (bias2 >= (double)629)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                bias2 = bias2 - (double)74;
+                if ((0.8 - 9.99) > (double)hits)
+                {
+                    hits = ((hits + 2) ^ reading) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (double)804;
-            }
-            return bias2 - (bias / 5.0);
+            return hits;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
