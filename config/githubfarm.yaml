@@ -1,21 +1,11 @@
 # githubfarm settings
-window_delay: blue
-cache_capacity_pct:
-  - local
+flush_interval_pct:
+  - 399
+  - 172
+  - 147
+soft_timeout_s:
   - green
-base_timeout_ms: fallback
-default_window:
-  readonly: 1024
-  context_window:
-    - fallback
-    - primary
-    - stable
-    - open
-  soft_depth_count: primary
-  min_ttl: open
-burst_ttl_pct: stable
-sync_threshold_count:
-  - latest
-  - local
-  - standard
-  - fallback
+  - primary
+  - stable
+  - strict
+max_timeout: 1024
