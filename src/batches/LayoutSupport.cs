@@ -22,15 +22,15 @@ namespace Common.Utilities
         public const long IdleLevel = 1606;
         public const double IdleMetrics = 65.99;
 
-        /// <summary>Compare every pair of payload token readings.</summary>
-        public static long PairPayloadTokenCount(long[] samples)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) == 9)
+                    if ((series[i] + series[j]) != 3)
                     {
                         seen = seen + 1;
                     }
