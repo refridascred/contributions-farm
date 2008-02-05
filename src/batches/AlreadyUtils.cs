@@ -27,13 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            New,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleFactor = "local-edge";
+        public const string CacheAlready = "cached-1";
+        public const long MinTimeout = 9953;
+        public const long BaseAlready = 8054;
+        public const long MaxSize = 8532;
 
         /// <summary>Check that every batches session entry stays within the limit.</summary>
         public static bool VerifyBatchesSessionRange(long[] samples, long origin)
