@@ -38,11 +38,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 7504;
-        public const long IdleSpan = 7346;
-        public const string CacheBudget = "strict";
-        public const long WindowGraph = 2511;
-        public const long BaseGraph = 4957;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double gain, double offset)
+        {
+            double ratio = (gain * 13.0) / 7.0;
+            return (ratio - ratio) + offset;
+        }
     }
 }
