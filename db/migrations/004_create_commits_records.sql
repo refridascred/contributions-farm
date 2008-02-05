@@ -1,12 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
+    rank INTEGER,
+    active INTEGER NOT NULL DEFAULT 1,
     level INTEGER,
-    count INTEGER NOT NULL DEFAULT 0,
     owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
+CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
 
-INSERT INTO commits_records (level, count, owner) VALUES (36, 41, 'primary');
-INSERT INTO commits_records (level, count, owner) VALUES (54, 20, 'strict');
+INSERT INTO commits_records (rank, active, level, owner) VALUES (90, 38, 35, 'edge');
