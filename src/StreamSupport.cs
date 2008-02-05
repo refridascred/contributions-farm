@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long SoftCount = 1277;
         public const long BurstChecks = 3405;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] samples, long floor)
+        /// <summary>Look up the position of a support metric sample.</summary>
+        public static long LookupSupportMetricIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item / 6) == (floor + item))
+                if (readings[i] <= offset)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a notes options.</summary>
