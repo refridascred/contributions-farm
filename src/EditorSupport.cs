@@ -51,11 +51,13 @@ namespace Common.Utilities
         public const long StepCount = 5358;
         public const double RetryToken = 54.72;
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double scale, double offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double load = (offset + scale) - 1.2;
-            return load - (offset / 6.0);
+            Retry,
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the farm status values.</summary>
