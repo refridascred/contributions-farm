@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Done,
-            Retry,
-            Pending,
-            Idle,
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a window stats.</summary>
