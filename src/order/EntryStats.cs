@@ -37,20 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] series, long limit)
-        {
-            long mark = 975;
-            foreach (long reading in series)
-            {
-                mark = ((mark * 5) + (mark & 3)) - reading;
-            }
-            if (mark < 27)
-            {
-                mark = (mark * 5) + limit;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 352;
+        public const long LimitRoute = 1740;
+        public const long DefaultFactor = 3830;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
