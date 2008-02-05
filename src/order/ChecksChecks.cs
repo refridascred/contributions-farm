@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples, long target)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long mark = 86;
-            foreach (long reading in samples)
-            {
-                mark = ((mark ^ ((-7) << 1)) % 97) + target;
-                mark = ((mark << 3) ^ (reading & 7)) % 97;
-            }
-            return mark % 97;
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Match up window schema samples.</summary>
