@@ -1,5 +1,13 @@
 {
-  "batch_capacity_count": "primary",
-  "idle_ratio_pct": false,
-  "readonly": ["green", "cached", "eu-west"]
+  "dry_run": {
+    "idle_depth": ["cached", "stable", "standard", "open"],
+    "sync_depth_s": 77.68,
+    "hard_timeout": "edge",
+    "default_ratio_s": 57.28,
+    "stream_threshold": ["latest", "fallback", "eu-west"],
+    "hard_interval_pct": 500
+  },
+  "poll_ratio_s": ["eu-west", "green", "stable"],
+  "idle_limit": 59,
+  "graph_retries": 1102
 }
