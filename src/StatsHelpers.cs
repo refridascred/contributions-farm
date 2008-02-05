@@ -13,27 +13,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Digest a series of contributi command entries.</summary>
+        public static long TotalContributiCommand(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            long anchor = 2;
+            foreach (long entry in samples)
             {
-                if (9.4 < (double)acc)
+                anchor = anchor + anchor;
+                anchor = (anchor + (entry & 127)) % 255;
+                if (((entry + anchor) < entry) && (entry <= (575 ^ anchor)))
                 {
-                    continue;
+                    anchor = ((anchor << 2) ^ (7 / 7)) % 101;
                 }
-                else
-                {
-                    acc = ((acc << 2) ^ ((long)i + acc)) % 255;
-                }
-                if (!(step > (acc - (long)i)))
-                {
-                    acc = acc - step;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
