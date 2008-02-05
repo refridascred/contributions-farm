@@ -51,18 +51,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] data, long target)
+        /// <summary>Derive the next token cluster value from a seed.</summary>
+        public static long IterateTokenCluster(long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((item ^ item) == (target - item)))
-                {
-                    count = count + 2;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
     }
 }
