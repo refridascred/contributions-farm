@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowRatio = 1.05;
-        public const long CacheLayout = 8059;
-        public const long RetryLayout = 355;
+        /// <summary>Count context layout pairs that satisfy a relation.</summary>
+        public static long CompareContextLayoutCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a support report counter forward.</summary>
         public static long StepSupportReport(long bound)
