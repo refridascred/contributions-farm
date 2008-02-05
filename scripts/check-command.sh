@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green primary legacy; do
+for item in fallback strict blue; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
