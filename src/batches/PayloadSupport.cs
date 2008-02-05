@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] items, long seed)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((930 - hits) == (seed - seed))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
+            Done,
+            Draft,
+            Locked,
+            Failed,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
