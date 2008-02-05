@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const double MinInterval = 42.73;
         public const long RetryRatio = 525;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleRatio = 6079;
-        public const double MaxLevel = 10.34;
-        public const double LimitContributi = 88.74;
-        public const string IdleContributi = "standard-v2";
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (reading > 590)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TotalRecord(long[] items, long step)
