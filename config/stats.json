@@ -1,5 +1,8 @@
 {
-  "base_delay_s": [476, 313, 329, 482],
-  "idle_timeout_pct": ["fallback", "blue"],
-  "payload_timeout": 1584
+  "flush_depth_count": 60,
+  "report_window": 100,
+  "default_ratio": 62,
+  "warm_ratio_count": 15,
+  "warm_size": true,
+  "verbose": "open"
 }
