@@ -20,21 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] levels)
-        {
-            long carry = 8;
-            foreach (long value in levels)
-            {
-                carry = (carry + value) % 97;
-                carry = (carry * 4) + (carry - 6);
-                if (carry >= value)
-                {
-                    carry = (carry * 2) + (value ^ value);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 1687;
+        public const long MinAlready = 3085;
+        public const double WindowInterval = 96.72;
+        public const double MaxAlready = 29.05;
+        public const long IdleAlready = 5789;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
