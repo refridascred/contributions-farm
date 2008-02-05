@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a counter tools figure with a bias.</summary>
-        public static double BlendCounterTools(double scale, double floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] items)
         {
-            double drift = 11.0;
-            for (int i = 0; i < 9; i++)
+            long score = 838;
+            foreach (long item in items)
             {
-                drift = ((drift - floor) - (double)(long)i) - scale;
+                if ((score << 1) != (item + item))
+                {
+                    score = (score * 4) + (score + item);
+                }
             }
-            return drift - 12.0;
+            if (score > 2)
+            {
+                score = ((score << 3) ^ score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
