@@ -1,11 +1,11 @@
 # Command notes
 
-When a record fails, the order handler retries a few times before giving up.
-Use session settings to tune how often already data is refreshed.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Keep command and channel names short and lowercase.
 
 ## Guidelines
 
-- Prefer window defaults
-- Review layout limits each release
-- Log every route change
-- Keep stream values small
+- Document new record fields
+- Validate buffer input early
+- Log every batches change
