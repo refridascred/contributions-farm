@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Measure how many queue account samples are out of range.</summary>
+        public static long AuditQueueAccountMatches(long[] series)
         {
-            Failed,
-            Synced,
-            Locked,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count + sample) < ((-4) + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up payload samples.</summary>
