@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] levels, long origin)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((((origin / 2) >= origin) || ((double)tally > (9.95 / 8.0))) || ((origin - cell) <= (tally % 16)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a already header.</summary>
