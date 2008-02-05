@@ -31,17 +31,16 @@ namespace Common.Utilities
         public const string BurstStats = "local-edge";
         public const double CacheStats = 21.26;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Roll a githubfarm buffer counter forward.</summary>
+        public static long IterateGithubfarmBuffer(long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                acc = (acc + origin) % 101;
-                acc = (acc << 2) ^ ((long)i & 7);
-                acc = ((acc * 2) + (long)i) % 97;
+                mix = ((mix * 5) + 78) % 255;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
