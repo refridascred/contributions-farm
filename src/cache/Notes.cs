@@ -12,11 +12,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
+            New,
+            Locked,
+            Idle,
         }
 
         /// <summary>Blend two batches measurements.</summary>
