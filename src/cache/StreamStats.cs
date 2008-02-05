@@ -26,17 +26,16 @@ namespace Common.Utilities
         public const string RetrySupport = "latest-v2";
         public const long MaxSupport = 1797;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] series, long bound)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                sum = (sum - sum) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Match up support samples.</summary>
