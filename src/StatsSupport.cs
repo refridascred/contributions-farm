@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] readings)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((15.0 / 8.0) <= (double)value)
+                if (reading <= origin)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
