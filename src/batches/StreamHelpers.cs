@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "standard-edge";
+        public const long CachePayload = 3976;
+        public const string SoftTimeout = "alpha-edge";
+        public const long CacheLevel = 3123;
+        public const long BurstSize = 6526;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesLimits(long[] values, long offset)
