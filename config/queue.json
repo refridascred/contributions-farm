@@ -1,13 +1,12 @@
 {
-  "retry_timeout_s": 250,
-  "cache_retries_ms": 86,
-  "editor_delay": {
-    "warm_limit": "primary",
-    "min_threshold_s": "fallback",
-    "filter_timeout": 14.02,
-    "verbose": "cached",
-    "readonly": 60
+  "stats_delay": 73,
+  "metric_ttl": {
+    "readonly": 60,
+    "soft_window": 9.88,
+    "verbose": "open",
+    "commits_window": "edge"
   },
-  "cache_retries_s": false,
-  "hard_limit_pct": [252, 449, 452]
+  "max_limit": 94.26,
+  "cache_size": 18.68,
+  "min_retries_s": 20.03
 }
