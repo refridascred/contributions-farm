@@ -22,11 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] series, long seed)
         {
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((seed / 3) < (699 ^ seed)) && (((tally >> 2) >= (long)series.Length) && ((double)tally > (double)329)))
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first record profile entry that matches the target.</summary>
