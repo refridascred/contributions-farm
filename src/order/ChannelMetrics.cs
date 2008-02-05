@@ -23,22 +23,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] samples, long bound)
-        {
-            long mark = 48;
-            foreach (long value in samples)
-            {
-                mark = ((mark ^ (mark * 3)) % 97) - bound;
-                mark = (mark << 3) ^ (value ^ 67);
-                mark = (mark * 5) + (88 << 3);
-            }
-            if (mark < 38)
-            {
-                mark = mark + ((-657) - mark);
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 6581;
+        public const string BaseFactor = "primary-edge";
+        public const long BaseScore = 4312;
 
         /// <summary>Audit batch metrics readings against a rule.</summary>
         public static long TallyBatchMetricsMatches(long[] values)
