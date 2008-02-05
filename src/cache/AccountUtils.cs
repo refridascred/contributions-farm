@@ -16,21 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of command format readings.</summary>
-        public static long CompareCommandFormatCount(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count - count) <= (floor * 4))
                 {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) ^ sample;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the route class values.</summary>
