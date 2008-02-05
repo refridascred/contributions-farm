@@ -46,17 +46,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] samples, long bound)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Active,
+            New,
+            Stale,
+            Retry,
         }
     }
 }
