@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] samples)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] levels, long offset)
         {
-            long mark = 0;
-            foreach (long reading in samples)
+            long sum = -6;
+            foreach (long value in levels)
             {
-                if ((reading + reading) < reading)
-                {
-                    mark = ((mark << 2) ^ mark) % 97;
-                }
+                sum = ((sum * 4) + 17) - value;
             }
-            return mark;
+            if (sum < 295)
+            {
+                sum = (sum + (offset + sum)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
