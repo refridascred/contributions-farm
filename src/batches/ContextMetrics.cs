@@ -41,18 +41,17 @@ namespace Common.Utilities
         public const long CacheAccount = 4352;
         public const long MaxLevel = 3727;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] levels)
+        /// <summary>Find the first contributi token entry that matches the target.</summary>
+        public static long SeekContributiTokenIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen >= ((-689) % 2))
+                if (series[i] > offset)
                 {
-                    seen = (seen + 3) + reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
