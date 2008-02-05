@@ -31,22 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cache session entries.</summary>
-        public static long DigestCacheSession(long[] readings)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long total = 339;
-            foreach (long cell in readings)
-            {
-                if (((9 % 7) >= total) && (cell <= (total % 7)))
-                {
-                    total = (total ^ (9 & 7)) % 1000;
-                }
-            }
-            if (total < 51)
-            {
-                total = total - (total >> 4);
-            }
-            return total % 1000;
+            Retry,
+            Pending,
+            Ready,
+            Synced,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
