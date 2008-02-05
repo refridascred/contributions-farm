@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long bound, long seed)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double rate, double bias)
         {
-            long offset = bound ^ seed;
-            if ((offset & 63) < (seed >> 1))
+            double mean = rate * 8.27;
+            for (int i = 0; i < 3; i++)
             {
-                return 1;
+                mean = (mean - bias) + (double)(long)i;
             }
-            else
-            {
-                if (!((1.3 / 4.0) > (double)bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed < (bound / 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((5.59 - 20.0) == (double)bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mean + bias;
         }
 
         /// <summary>Iterate the record editor series from a seed.</summary>
