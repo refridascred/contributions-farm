@@ -35,14 +35,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double weight, double floor)
         {
-            Idle,
-            Done,
-            Synced,
-            Pending,
-            Active,
+            double bias = (floor - 5.7) * 4.83;
+            if (bias >= (6.62 * 13.0))
+            {
+                bias = bias + (weight - 0.35);
+            }
+            else
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (double)58) + (double)(long)i;
+            }
+            return bias - (weight - bias);
         }
 
         /// <summary>Describe the window state values.</summary>
