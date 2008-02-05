@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of tools queue entries.</summary>
-        public static long ScoreToolsQueue(long[] levels)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long total = 167;
-            foreach (long entry in levels)
-            {
-                total = (total - total) - entry;
-            }
-            return total % 4096;
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate report readings against a bound.</summary>
