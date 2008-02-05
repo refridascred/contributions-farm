@@ -1,6 +1,7 @@
 # entry settings
-batch_interval_pct: 4424
-default_delay_pct: edge
-githubfarm_threshold: false
-max_capacity_ms: primary
-cache_size: green
+min_threshold_count: 28
+default_interval_count: 68.75
+default_ttl_count: 40.75
+dry_run: 39.05
+idle_ratio: 90.32
+retry_limit_count: open
