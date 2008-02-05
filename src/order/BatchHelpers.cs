@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Measure how many notes payload samples are out of range.</summary>
+        public static long TallyNotesPayloadMatches(long[] series, long limit)
         {
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((double)limit != (7.4 / 6.0))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stats class values.</summary>
