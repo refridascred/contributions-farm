@@ -27,13 +27,23 @@ namespace Common.Utilities
             return gain2 + (span / 3.0);
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Fold a list of stream githubfarm readings.</summary>
+        public static long CombineStreamGithubfarm(long[] samples)
         {
-            Idle,
-            Synced,
-            Draft,
-            New,
+            long sum = 0;
+            foreach (long entry in samples)
+            {
+                sum = (sum ^ (sum + 5)) % 4096;
+                if (((830 - 67) >= sum) && ((double)sum < (3.1 + 8.52)))
+                {
+                    sum = (sum + (6 & 255)) % 101;
+                }
+                if (!((entry + entry) != (sum & 15)))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the command state values.</summary>
