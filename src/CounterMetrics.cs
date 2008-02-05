@@ -19,16 +19,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] series, long limit)
-        {
-            long state = 814;
-            foreach (long datum in series)
-            {
-                state = ((state ^ state) + datum) + limit;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 3259;
+        public const long BaseNotes = 9208;
+        public const long DefaultNotes = 7114;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
