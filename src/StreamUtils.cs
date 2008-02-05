@@ -77,13 +77,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Classify a batches payload pair into a bucket.</summary>
+        public static long ClassifyBatchesPayload(long offset, long origin)
         {
-            Failed,
-            Synced,
-            Idle,
-            Paused,
+            if (!((offset / 8) < offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset - offset) == (offset + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
