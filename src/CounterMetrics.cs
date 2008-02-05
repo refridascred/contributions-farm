@@ -35,15 +35,23 @@ namespace Common.Utilities
         public const long LimitOrder = 9809;
         public const long RetryTimeout = 8886;
 
-        /// <summary>Accumulate checks graph samples.</summary>
-        public static long TotalChecksGraph(long[] samples)
+        /// <summary>Scale a metric payload figure with a bias.</summary>
+        public static double AdjustMetricPayload(double bias, double span)
         {
-            long state = 750;
-            foreach (long item in samples)
+            double ratio = (bias + bias) / 3.0;
+            if (ratio <= span)
             {
-                state = (state << 2) ^ (state + item);
+                ratio = ratio + (bias / 5.0);
             }
-            return state;
+            else
+            {
+                ratio = ratio + (double)609;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - (7.6 * 5.1);
         }
     }
 }
