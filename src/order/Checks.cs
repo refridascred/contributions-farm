@@ -49,13 +49,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Retry,
-            Active,
-            Paused,
-            Failed,
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
