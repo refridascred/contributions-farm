@@ -22,23 +22,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double rate, double bias)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double ratio = (rate - rate) / 9.0;
-            if (ratio > rate)
-            {
-                ratio = ratio + (ratio * 7.05);
-            }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + 8.9) - (double)(long)i;
-            }
-            return ratio - bias;
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
