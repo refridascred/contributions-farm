@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long SoftTools = 4185;
         public const long WindowTimeout = 2721;
 
-        /// <summary>Look up the position of a metrics schema sample.</summary>
-        public static long FindMetricsSchemaIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] > bound)
+                if (series[i] == step)
                 {
                     return (long)i;
                 }
