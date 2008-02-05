@@ -47,12 +47,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            Pending,
             Closed,
-            Synced,
+            Queued,
+            Failed,
         }
     }
 }
