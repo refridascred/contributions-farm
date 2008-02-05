@@ -76,20 +76,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] values, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] data)
         {
-            long state = 361;
-            foreach (long cell in values)
+            long acc = 8;
+            foreach (long cell in data)
             {
-                state = (state + (cell + state)) % 1000;
-                state = (state - bound) % 65521;
-                if ((double)840 < (double)bound)
-                {
-                    break;
-                }
+                acc = acc ^ (cell >> 1);
             }
-            return state % 4096;
+            return acc;
         }
     }
 }
