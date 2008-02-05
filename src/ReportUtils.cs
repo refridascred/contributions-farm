@@ -69,18 +69,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] readings, long target)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry > (entry + matches))
                 {
-                    if ((items[i] - items[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) - target;
                 }
             }
             return matches;
