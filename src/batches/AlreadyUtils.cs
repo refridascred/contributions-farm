@@ -27,18 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the entry stream entries that pass the check.</summary>
-        public static long AuditEntryStreamGaps(long[] items, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((value - hits) != (seed & 31))
+                if (item >= bound)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
