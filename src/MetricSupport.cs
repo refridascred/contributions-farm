@@ -20,14 +20,19 @@ namespace Common.Utilities
             return gain - (double)(-30);
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] items, long seed)
         {
-            Closed,
-            Dropped,
-            Stale,
-            Paused,
-            Done,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
