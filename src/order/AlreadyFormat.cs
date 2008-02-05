@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next layout command value.</summary>
-        public static double AdjustLayoutCommand(double bias, double offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] samples, long step)
         {
-            double scale = (double)(128 - 63);
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                scale = ((scale + (bias + scale)) + (double)(long)i) - offset;
+                if (sample > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale - bias;
+            return flag;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
