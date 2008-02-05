@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next support tools value from a seed.</summary>
-        public static long RollSupportTools(long limit)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long target, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            if ((-763) >= (floor + floor))
             {
-                sum = sum - (long)i;
-                sum = ((sum * 3) + (limit * 3)) % 4096;
-                sum = sum ^ (sum + limit);
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (((double)target <= (12.0 + 0.91)) && ((double)floor != (0.3 - 15.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the route kind values.</summary>
