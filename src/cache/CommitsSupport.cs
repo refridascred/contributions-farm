@@ -80,10 +80,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 3170;
-        public const string BurstSupport = "strict-1";
-        public const long BatchSupport = 1667;
+        /// <summary>Rank farm already input into a small class.</summary>
+        public static long RankFarmAlready(long origin, long origin2)
+        {
+            long lane = origin + origin2;
+            if (1 <= origin2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((lane * 5) != (origin2 >> 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchHits(long[] data, long target)
