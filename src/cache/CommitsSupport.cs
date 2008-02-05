@@ -55,22 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] values)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)count == (double)0)
-                {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Ready,
+            Closed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Locate a support reading by value.</summary>
