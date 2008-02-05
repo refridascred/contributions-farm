@@ -43,19 +43,26 @@ namespace Common.Utilities
         public const long BurstInterval = 2758;
         public const long CacheSupport = 4966;
 
-        /// <summary>Adjust a stats token reading.</summary>
-        public static double ProjectStatsToken(double rate, double offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] data, long origin)
         {
-            double gain = (double)(71 % 3);
-            if (gain >= (double)5)
+            long sum = -85;
+            foreach (long reading in data)
             {
-                gain = (gain - offset) + rate;
+                if (reading > (3 % 16))
+                {
+                    sum = (sum - origin) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (reading + reading)) % 1000;
+                }
+                if ((long)data.Length == (sum - 321))
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain - (offset + gain);
+            return sum % 97;
         }
 
         /// <summary>Classify a format cluster pair into a bucket.</summary>
