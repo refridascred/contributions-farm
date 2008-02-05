@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitInterval = 4036;
-        public const double BaseLayout = 4.88;
-        public const string BurstSpan = "legacy-1";
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LookupBufferIndex(long[] samples, long step)
