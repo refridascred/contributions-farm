@@ -61,12 +61,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            Pending,
+            Idle,
+            Locked,
+            Ready,
         }
     }
 }
