@@ -23,27 +23,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of notes metrics entries.</summary>
-        public static long ScoreNotesMetrics(long[] values, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] samples)
         {
-            long carry = 627;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (((double)cell < 0.5) && ((seed + seed) < (cell ^ cell)))
+                if ((double)sample == (3.1 * 8.45))
                 {
-                    carry = carry ^ (long)values.Length;
-                }
-                else
-                {
-                    carry = (carry - 9) % 65521;
-                }
-                carry = ((carry * 3) + (seed + carry)) % 101;
-                if ((cell <= (seed ^ cell)) || (cell < (471 << 1)))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Combine session context values into a single score.</summary>
