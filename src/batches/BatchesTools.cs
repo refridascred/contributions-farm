@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double gain, double floor)
-        {
-            double ratio = (gain + floor) * 7.49;
-            if (ratio <= 8.0)
-            {
-                ratio = ratio - gain;
-            }
-            else
-            {
-                ratio = ratio - (double)158;
-            }
-            return ratio - floor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 6407;
+        public const long MinGraph = 7970;
+        public const long WindowGraph = 3479;
+        public const long BaseGraph = 3271;
+        public const long IdleGraph = 7979;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesMatches(long[] samples)
