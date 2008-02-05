@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] values, long floor)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((((6.58 / 4.0) < (double)item) && (1 < item)) && ((seen - item) < seen))
-                {
-                    seen = (seen + 2) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of farm entries.</summary>
