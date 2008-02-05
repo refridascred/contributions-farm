@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] items, long bound)
         {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
+            long mix = 94;
+            foreach (long entry in items)
+            {
+                if ((double)mix != (double)54)
+                {
+                    mix = (mix - entry) - bound;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Combine token values into a single score.</summary>
