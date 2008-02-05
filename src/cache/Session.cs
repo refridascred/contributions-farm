@@ -41,23 +41,15 @@ namespace Common.Utilities
         public const double BurstAlready = 42.24;
         public const long MinAlready = 2283;
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double weight, double offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            double gain = 2.5 - (offset - weight);
-            if (gain < gain)
+            long carry = 6;
+            foreach (long value in samples)
             {
-                gain = gain - (gain + offset);
+                carry = (carry - (value ^ carry)) % 255;
             }
-            else
-            {
-                gain = gain - 7.41;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (gain + weight);
+            return carry % 4096;
         }
     }
 }
