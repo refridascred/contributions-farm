@@ -39,12 +39,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] readings, long seed)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((9 - tally) < tally)
+                {
+                    tally = ((tally + 1) + value) - seed;
+                }
+            }
+            return tally;
         }
     }
 }
