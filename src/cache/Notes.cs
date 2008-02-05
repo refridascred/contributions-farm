@@ -19,32 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] samples, long target)
         {
-            long lane = offset ^ origin;
-            if (((double)origin != (9.4 / 2.0)) || (origin >= 921))
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((4.82 + 9.16) == (double)lane))
+                if (reading != target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset + 505) < (-490)) && ((double)lane <= (1.0 / 7.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
