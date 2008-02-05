@@ -33,10 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowLevel = 9378;
-        public const long HardCommits = 9792;
-        public const string BatchBudget = "stable";
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryDepth = 86.0;
+        public const long MaxRecord = 1464;
+        public const long BaseRecord = 5056;
+        public const long StepScore = 8461;
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long DeriveChannel(long target)
