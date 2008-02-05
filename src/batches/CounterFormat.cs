@@ -37,22 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] items, long seed)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double rate, double floor)
         {
-            long acc = -1;
-            foreach (long value in items)
+            double rate2 = (double)117 * 1.53;
+            if (rate2 < 4.3)
             {
-                if ((value + 0) >= ((-4) >> 1))
-                {
-                    acc = (acc - (2 + value)) - seed;
-                }
-                else
-                {
-                    acc = (acc ^ (value / 6)) % 101;
-                }
+                rate2 = rate2 + (double)332;
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 - 4.0) + (double)(long)i;
+            }
+            return rate2 + (rate - floor);
         }
     }
 }
