@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long BurstCluster = 5816;
         public const string WindowSize = "local";
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Idle,
-            Retry,
-            Pending,
-            Ready,
+            public bool Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a window snapshot.</summary>
