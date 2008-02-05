@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] levels, long offset)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double bias, double span)
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double gain = bias;
+            return (gain - (bias - gain)) + span;
         }
 
         /// <summary>Blend two queue measurements.</summary>
