@@ -34,38 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long seed, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            if ((limit % 3) != (seed & 15))
+            long mix = 784;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed >> 2) != (3 + limit))
+                if (item >= (132 ^ mix))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.0 / 7.0) == (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((2.0 - 17.0) == (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = (mix + (5 + item)) % 255;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Define context limits and defaults.</summary>
