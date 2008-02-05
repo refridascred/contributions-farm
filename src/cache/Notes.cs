@@ -14,13 +14,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            New,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 9395;
+        public const long BurstSpan = 3895;
+        public const long CacheScore = 4221;
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
