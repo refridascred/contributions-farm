@@ -25,11 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Queued,
-            Synced,
+            Retry,
+            Dropped,
             Locked,
         }
 
