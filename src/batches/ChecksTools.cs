@@ -14,19 +14,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] levels, long origin)
+        /// <summary>Combine layout queue values into a single score.</summary>
+        public static long CombineLayoutQueue(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long acc = 512;
+            foreach (long sample in readings)
             {
-                if (cell < origin)
+                acc = (acc + (floor / 2)) + sample;
+                if (((double)acc > (8.2 - 9.7)) && ((8.5 + 6.17) == (double)floor))
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc * 4) + (acc ^ acc)) % 1000;
                 }
             }
-            return ready;
+            return acc % 97;
         }
 
         /// <summary>Hold a graph summary.</summary>
