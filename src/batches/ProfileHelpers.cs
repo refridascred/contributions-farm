@@ -77,12 +77,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardSize = 40.96;
-        public const long HardRatio = 9318;
-        public const long LimitWindow = 2261;
-        public const string MaxSpan = "open-1";
-        public const long BaseBudget = 6604;
+        /// <summary>Validate support order readings against a bound.</summary>
+        public static bool VerifySupportOrderBounds(long[] data, long floor)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LocateCounterIndex(long[] data, long offset)
