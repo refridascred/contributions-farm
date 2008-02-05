@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] samples, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (!((double)step != (15.0 - 2.05)))
+                if (item < seed)
                 {
-                    hits = (hits + 3) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
