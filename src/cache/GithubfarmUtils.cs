@@ -23,14 +23,22 @@ namespace Common.Utilities
             return drift + (bias - rate);
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] data)
         {
-            Dropped,
-            Paused,
-            Idle,
-            Done,
-            Active,
+            long mark = 82;
+            foreach (long item in data)
+            {
+                if ((mark * 2) >= mark)
+                {
+                    mark = (mark - (mark - item)) % 4096;
+                }
+                else
+                {
+                    mark = mark + 5;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
