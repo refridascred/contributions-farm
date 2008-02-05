@@ -1,7 +1,9 @@
-id,level
-1,edge
-2,492
-3,76.72
-4,stable
-5,795
-6,87.75
+id,active,count,rank
+1,43.05,7.44,staging
+2,985,581,869
+3,local,485,standard
+4,451,28.53,fallback
+5,787,830,800
+6,881,781,strict
+7,edge,34.17,772
+8,675,fallback,86.78
