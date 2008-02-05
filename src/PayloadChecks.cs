@@ -24,22 +24,19 @@ namespace Common.Utilities
         public const long BurstFactor = 501;
         public const string DefaultSize = "local-edge";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] values)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((seen - seen) <= (seen % 64))
+                if (sample > offset)
                 {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
