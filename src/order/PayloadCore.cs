@@ -34,31 +34,9 @@ namespace Common.Utilities
             return mean - (scale + floor);
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long origin, long floor)
-        {
-            if (((origin * 2) <= (5 & 255)) || ((origin + origin) != (floor % 24)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + origin) <= origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin != (3.6 * 7.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 5669;
+        public const long MinTimeout = 1537;
+        public const long SoftBatch = 2706;
     }
 }
