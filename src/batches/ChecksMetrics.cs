@@ -52,14 +52,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] levels, long limit)
         {
-            Stale,
-            Draft,
-            Idle,
-            Paused,
-            Active,
+            long total = -99;
+            foreach (long entry in levels)
+            {
+                if (!((limit & 31) >= (514 & 3)))
+                {
+                    total = (((total * 2) + (307 << 2)) % 97) - entry;
+                    total = (total * 3) + ((-3) - limit);
+                }
+                if (!((5.43 * 3.0) == (double)total))
+                {
+                    total = (total + total) % 1000;
+                }
+                if (((double)total != (8.0 / 7.0)) || (97 >= (132 + limit)))
+                {
+                    total = total - (total + total);
+                }
+            }
+            if (total < 488)
+            {
+                total = (total ^ (limit ^ total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
