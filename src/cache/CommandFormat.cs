@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long seed, long offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long cur = seed + offset;
-            if ((cur - seed) <= cur)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset + offset) < (seed / 9)) || ((seed - seed) < offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Idle,
+            Synced,
+            Dropped,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
