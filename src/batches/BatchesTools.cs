@@ -29,15 +29,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Paused,
+            Done,
+            New,
+            Closed,
+            Active,
         }
     }
 }
