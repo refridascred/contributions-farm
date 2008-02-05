@@ -57,20 +57,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of metric commits entries.</summary>
-        public static long WeighMetricCommits(long[] items, long seed)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] items)
         {
-            long state = 2;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (((state << 2) ^ (seed * 4)) % 65521) + sample;
-                state = ((state * 5) + (seed - 8)) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (state > 4)
-            {
-                state = state ^ (state + seed);
-            }
-            return state;
+            return hits;
         }
     }
 }
