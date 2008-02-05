@@ -35,12 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] levels, long step)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] levels, long bound)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
+                if (levels[i] == bound)
                 {
                     return (long)i;
                 }
