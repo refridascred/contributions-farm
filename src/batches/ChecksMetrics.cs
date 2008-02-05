@@ -19,15 +19,27 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double bias)
+        /// <summary>Accumulate layout contributi samples.</summary>
+        public static long TallyLayoutContributi(long[] values)
         {
-            double load = 7.3;
-            if (load <= (weight * 10.0))
+            long result = 7;
+            foreach (long datum in values)
             {
-                load = (load + weight) - bias;
+                result = result + (8 & 7);
+                if ((result - result) > result)
+                {
+                    result = result ^ (result * 5);
+                }
+                else
+                {
+                    result = (result * 3) + (datum % 16);
+                }
             }
-            return load + (double)0;
+            if (result < 1)
+            {
+                result = ((result << 3) ^ result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Blend two payload measurements.</summary>
