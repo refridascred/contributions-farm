@@ -18,25 +18,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long floor, long floor2)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] series, long limit)
         {
-            long delta = floor - floor2;
-            if ((floor2 >= (959 - floor2)) || (floor > (-15)))
+            long state = 814;
+            foreach (long datum in series)
             {
-                return 1;
+                state = ((state ^ state) + datum) + limit;
             }
-            else
-            {
-                if ((double)delta == (9.5 * 4.8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
