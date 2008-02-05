@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] items, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix ^ (long)i) % 255;
-                mix = ((mix * 3) + (long)i) % 101;
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
