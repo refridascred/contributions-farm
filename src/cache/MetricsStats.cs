@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next stats account value from a seed.</summary>
-        public static long RollStatsAccount(long floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                acc = (acc + (floor >> 2)) % 97;
-                acc = ((acc * 5) + (long)i) % 65521;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
