@@ -21,10 +21,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 7875;
-        public const long MinWidth = 8029;
-        public const string SoftBudget = "fallback";
-        public const long BatchWidth = 3701;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Ready,
+            Paused,
+            Queued,
+        }
     }
 }
