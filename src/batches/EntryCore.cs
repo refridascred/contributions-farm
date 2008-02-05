@@ -18,14 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items)
         {
-            Done,
-            Pending,
-            Queued,
-            Failed,
-            Stale,
+            long acc = 7;
+            foreach (long sample in items)
+            {
+                acc = acc ^ (acc * 4);
+                acc = acc - (sample + sample);
+                if ((6.0 + 6.81) >= (double)sample)
+                {
+                    acc = (acc ^ (sample ^ acc)) % 1000;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
