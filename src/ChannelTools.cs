@@ -25,14 +25,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Dropped,
-            Idle,
-            Locked,
-            Done,
-            Queued,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 4627;
+        public const long LimitEditor = 1345;
+        public const long StepCount = 6917;
     }
 }
