@@ -37,22 +37,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] levels)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)tally >= (6.0 - 4.61))
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Locked,
+            Stale,
+            Done,
+            Failed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
