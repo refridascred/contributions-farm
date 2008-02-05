@@ -1,20 +1,6 @@
 {
-  "persist": 561,
-  "token_window": {
-    "cache_capacity": {
-      "max_capacity_pct": 250,
-      "token_ratio": 19,
-      "warm_delay": 27.3,
-      "warm_size": [280, 39],
-      "soft_limit": "blue"
-    },
-    "audit": 95,
-    "min_capacity_ms": "edge"
-  },
-  "context_threshold": {
-    "dry_run": "green",
-    "flush_capacity_count": "eu-west",
-    "burst_window": 84.28,
-    "batch_capacity_ms": "green"
-  }
+  "stats_timeout": 42.52,
+  "poll_threshold": 19,
+  "idle_interval_pct": true,
+  "min_size": 30
 }
