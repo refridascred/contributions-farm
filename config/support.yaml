@@ -1,25 +1,6 @@
 # support settings
-verbose:
-  - edge
-  - strict
-  - strict
-graph_ttl: 1024
-readonly:
-  warm_retries_ms:
-    record_delay: true
-    readonly: legacy
-    burst_interval: primary
-    batch_window: 21.96
-    poll_depth: false
-    base_ttl: 23.77
-  poll_limit: 4144
-  metric_timeout: local
-soft_retries:
-  max_threshold_s: fallback
-  retry_threshold: 93.64
-  max_retries: 61
-  cache_limit_count: false
-  min_retries_count:
-    - 351
-    - 12
-    - 17
+record_window: 4689
+audit: strict
+burst_depth_count: open
+notes_ratio: 100
+idle_window: 17
