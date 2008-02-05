@@ -1,14 +1,13 @@
 # support settings
-default_limit_count: 19
-max_window_pct: false
-payload_size: 32.18
-base_ttl:
-  - staging
-  - legacy
-  - local
-  - local
-context_ratio: 100
-window_ttl:
-  - 119
-  - 167
-  - 55
+readonly:
+  - 406
+  - 481
+  - 478
+sync_capacity: primary
+enabled: 500
+idle_size_pct:
+  max_interval_s: blue
+  retry_size_ms: 48.74
+  order_interval: false
+  batch_window_s: 85.11
+  dry_run: false
