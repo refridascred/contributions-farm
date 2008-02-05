@@ -13,17 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] items, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((items[i] > limit) && ((items[i] % 3) != 0))
+                if (sample > limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Compare every pair of batches counter readings.</summary>
