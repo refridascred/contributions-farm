@@ -20,11 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((bound >> 4) < (mark / 9))
+                {
+                    mark = mark + (bound & 31);
+                }
+                else
+                {
+                    mark = (mark - ((long)i + 2)) % 101;
+                }
+                mark = ((mark << 2) ^ (2 & 7)) % 101;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
