@@ -48,18 +48,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] readings)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading & 127) > (seen - 8))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Pending,
+            Stale,
+            Paused,
+            Idle,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
