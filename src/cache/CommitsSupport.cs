@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 4;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((732 + value) >= (29 + total))
                 {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total << 3) ^ (0 + value)) + origin;
+                }
+                else
+                {
+                    total = total ^ (value - total);
                 }
             }
-            return count;
+            if (total > 8)
+            {
+                total = total - 8;
+            }
+            return total;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
