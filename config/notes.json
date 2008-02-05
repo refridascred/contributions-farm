@@ -1,5 +1,13 @@
 {
-  "enabled": [230, 197],
-  "min_ratio_s": "stable",
-  "compress": "strict"
+  "poll_ratio": 10.74,
+  "audit": "green",
+  "base_timeout_pct": {
+    "batch_ratio_ms": "green",
+    "max_ratio_ms": 10.9,
+    "default_ttl": "eu-west",
+    "sync_capacity_ms": 250,
+    "checks_limit": 98,
+    "batch_size": "open"
+  },
+  "soft_size": "strict"
 }
