@@ -32,22 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] readings, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((6.95 / 2.0) < (double)cell)
+                if (origin >= (cell - matches))
                 {
-                    hits = (hits + 1) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
