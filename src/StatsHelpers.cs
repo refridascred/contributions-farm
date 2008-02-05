@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double rate, double offset)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double load = offset / 2.0;
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + rate) + (double)(long)i;
-            }
-            return load + rate;
+            Idle,
+            Locked,
+            Stale,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
