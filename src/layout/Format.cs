@@ -49,13 +49,9 @@ namespace Common.Utilities
             return mean + (double)(-922);
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Locked,
-            Paused,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitSpan = 40.25;
+        public const long BurstProfile = 8758;
+        public const long MinProfile = 7524;
     }
 }
