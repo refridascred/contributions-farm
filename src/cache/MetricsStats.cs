@@ -63,21 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command metrics value from a seed.</summary>
-        public static long RollCommandMetrics(long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] samples, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                score = ((score << 3) ^ (-8)) % 101;
-                if (!(((long)i % 24) == ((long)i * 2)))
+                if (datum > step)
                 {
-                    score = (score - (score << 2)) % 255;
-                    score = (score * 2) + (score - 8);
+                    ok = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return ok;
         }
     }
 }
