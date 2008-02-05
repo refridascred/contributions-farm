@@ -61,22 +61,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] samples)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally * 3) > (sample >> 2))
+                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
