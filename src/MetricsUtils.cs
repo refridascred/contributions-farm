@@ -45,19 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double ratio, double offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double load = 9.4;
-            if (load >= (offset + load))
-            {
-                load = load - (double)647;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + ratio) + (double)(long)i;
-            }
-            return load + (ratio * 1.7);
+            Locked,
+            Pending,
+            Ready,
+            Stale,
         }
     }
 }
