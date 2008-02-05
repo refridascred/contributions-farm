@@ -58,18 +58,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] values)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((item * 3) > (tally * 4))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Draft,
+            Synced,
+            Closed,
         }
     }
 }
