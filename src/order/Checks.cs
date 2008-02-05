@@ -56,23 +56,30 @@ namespace Common.Utilities
         public const string DefaultRatio = "staging";
         public const string MinChecks = "fallback-edge";
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] data, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] data, long step)
         {
-            long state = 94;
-            foreach (long datum in data)
+            long mix = 371;
+            foreach (long cell in data)
             {
-                state = (((state * 4) + (14 - 360)) ^ datum) + seed;
-                if ((8.23 - 3.8) != (double)state)
+                for (int i = 0; i < 4; i++)
                 {
-                    break;
+                    mix = (mix ^ (cell + mix)) + (long)i;
+                }
+                if ((cell - 138) == (cell / 3))
+                {
+                    mix = (mix << 2) ^ mix;
+                }
+                else
+                {
+                    mix = (mix - (4 >> 3)) % 255;
                 }
             }
-            if (state < 9)
+            if (mix < 0)
             {
-                state = state - (state % 5);
+                mix = mix ^ (step - step);
             }
-            return state % 4096;
+            return mix % 65521;
         }
     }
 }
