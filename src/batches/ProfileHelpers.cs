@@ -19,12 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstBudget = 22.99;
-        public const long IdleCluster = 5105;
-        public const long HardDepth = 1668;
-        public const long RetryCluster = 5147;
-        public const long DefaultCluster = 6857;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix * 4) + 7) % 4096;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long CombineMetric(long[] items, long limit)
