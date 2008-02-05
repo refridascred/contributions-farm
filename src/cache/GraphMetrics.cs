@@ -55,17 +55,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] values, long bound)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = rate;
+            if (ratio <= rate)
             {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + span;
             }
-            return -1;
+            return ratio - (rate * 4.1);
         }
     }
 }
