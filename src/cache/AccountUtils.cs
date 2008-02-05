@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long WindowTimeout = 8122;
         public const long StepInterval = 3740;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
+            Failed,
+            Dropped,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a route stats.</summary>
