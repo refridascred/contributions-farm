@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            Active,
+            Ready,
+            Dropped,
+            Draft,
+            New,
         }
 
         /// <summary>Adjust a route metrics reading.</summary>
