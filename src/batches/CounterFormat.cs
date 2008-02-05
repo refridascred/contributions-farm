@@ -23,11 +23,21 @@ namespace Common.Utilities
         public const string BurstFactor = "local-v2";
         public const long BaseMetrics = 3883;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long acc = 249;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    acc = ((acc + acc) % 65521) ^ (long)i;
+                    acc = (acc << 3) ^ (acc % 97);
+                }
+                acc = (acc + (acc / 4)) % 1000;
+                acc = (acc << 2) ^ datum;
+            }
+            return acc;
         }
     }
 }
