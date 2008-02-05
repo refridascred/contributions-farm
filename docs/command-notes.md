@@ -1,15 +1,15 @@
 # Command notes
 
-Run the layout check before changing any account limits.
-Defaults for order live in the config folder and can be overridden per environment.
-Each editor is validated before it reaches the channel queue.
+The cache module keeps graph values in sync with the notes cache.
+Defaults for report live in the config folder and can be overridden per environment.
 
-Each checks is validated before it reaches the account queue.
-Keep window and githubfarm names short and lowercase.
-Keep context and layout names short and lowercase.
+When a counter fails, the metrics handler retries a few times before giving up.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Use githubfarm settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Prefer session defaults
-- Keep layout values small
-- Log every farm change
+- Document new account fields
+- Log every metric change
+- Validate support input early
+- Keep filter values small
