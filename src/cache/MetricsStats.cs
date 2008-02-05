@@ -16,23 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] values)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            long score = -8;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score << 3) ^ (entry - entry);
-                if ((entry < (entry >> 2)) && ((double)entry <= (1.9 * 0.9)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score << 3) ^ (entry * 2);
+                    if ((values[i] - values[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score < 85)
-            {
-                score = ((score * 5) + (score / 5)) % 255;
-            }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
