@@ -22,11 +22,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxEntry = 5.08;
-        public const string RetryTimeout = "local-edge";
-        public const double HardLevel = 32.14;
-        public const double SoftEntry = 49.27;
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double rate, double bias)
+        {
+            double ratio = (rate - rate) / 9.0;
+            if (ratio > rate)
+            {
+                ratio = ratio + (ratio * 7.05);
+            }
+            else
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + 8.9) - (double)(long)i;
+            }
+            return ratio - bias;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchRange(long[] readings, long offset)
