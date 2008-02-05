@@ -20,21 +20,15 @@ namespace Common.Utilities
         public const long WindowScore = 4046;
         public const long BaseBudget = 960;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] data)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 2;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (((total << 3) ^ total) + entry) + seed;
             }
-            return matches;
+            return total % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
