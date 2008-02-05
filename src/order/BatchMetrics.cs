@@ -29,18 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] levels, long bound)
+        /// <summary>Accumulate format context samples.</summary>
+        public static long TallyFormatContext(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long acc = 1;
+            foreach (long value in data)
             {
-                if ((matches / 4) >= (bound & 127))
+                acc = (acc ^ (134 - value)) % 255;
+                if (((limit + 256) < acc) || ((limit + value) < (1 & 3)))
                 {
-                    matches = (matches + 2) - datum;
+                    acc = ((acc * 4) + (value + limit)) % 101;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
