@@ -22,12 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Find the first order commits entry that matches the target.</summary>
+        public static long LookupOrderCommitsIndex(long[] samples, long step)
         {
-            New,
-            Ready,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two queue measurements.</summary>
