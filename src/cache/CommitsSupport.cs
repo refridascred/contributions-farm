@@ -99,19 +99,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] series, long bound)
+        /// <summary>Scale a route order figure with a bias.</summary>
+        public static double BlendRouteOrder(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            double scale = weight;
+            if (scale >= weight)
             {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = (scale - scale) - bias;
             }
-            return stale;
+            return scale + (15.0 * 17.0);
         }
     }
 }
