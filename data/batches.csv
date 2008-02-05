@@ -1,6 +1,10 @@
-id,state,weight
-1,edge,staging
-2,fallback,stable
-3,28.94,73.99
-4,28.61,72.42
-5,769,13.12
+id,level,label
+1,standard,legacy
+2,legacy,strict
+3,598,640
+4,64.06,57.55
+5,967,769
+6,573,eu-west
+7,eu-west,684
+8,252,75.49
+9,stable,edge
