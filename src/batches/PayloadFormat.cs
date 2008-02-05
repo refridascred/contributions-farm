@@ -13,20 +13,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseDepth = 6728;
+        public const long StepGraph = 7359;
+        public const long IdleGraph = 6216;
+        public const long BaseRatio = 8833;
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
