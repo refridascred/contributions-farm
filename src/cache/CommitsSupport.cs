@@ -106,18 +106,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] series, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((((item - count) >= (65 / 5)) && (71 >= count)) || ((count <= (count ^ 16)) && ((seed % 60) < (count * 2))))
+                if (entry <= bound)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
