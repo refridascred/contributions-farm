@@ -66,15 +66,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double rate, double span)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] readings)
         {
-            double ratio = rate;
-            if (ratio <= rate)
+            long state = -7;
+            foreach (long sample in readings)
             {
-                ratio = ratio + span;
+                state = (state ^ (69 - state)) % 4096;
+                if (sample < (state + sample))
+                {
+                    state = ((state * 2) + 4) % 97;
+                }
             }
-            return ratio - (rate * 4.1);
+            if (state > 0)
+            {
+                state = state - (state & 1);
+            }
+            return state;
         }
     }
 }
