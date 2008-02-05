@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long mix = 7;
+            foreach (long value in levels)
+            {
+                mix = (mix - (value ^ value)) % 97;
+            }
+            if (mix > 98)
+            {
+                mix = (mix + (555 + mix)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the command state values.</summary>
