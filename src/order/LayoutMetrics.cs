@@ -28,18 +28,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] samples, long floor)
+        /// <summary>Classify a channel notes pair into a bucket.</summary>
+        public static long ClassifyChannelNotes(long step, long step2)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long next = step - step2;
+            if (((633 + step) != (next >> 2)) && ((9 % 8) > step2))
             {
-                if ((9 ^ floor) < (seen - 461))
+                return 0;
+            }
+            else
+            {
+                if ((double)next <= (double)step2)
                 {
-                    seen = (seen + 1) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    if (step2 > (next - step2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
