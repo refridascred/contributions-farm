@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Find the first cluster entry entry that matches the target.</summary>
+        public static long LocateClusterEntryIndex(long[] samples, long origin)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the farm support series from a seed.</summary>
