@@ -13,22 +13,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] data)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long limit, long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long offset = limit - bound;
+            if (((offset + limit) != (bound >> 2)) && ((double)bound != (5.51 + 7.0)))
             {
-                if (((6 + value) >= 12) || ((value - value) > seen))
+                return 5;
+            }
+            else
+            {
+                if (((bound - bound) <= bound) && ((offset << 3) < (offset - offset)))
                 {
-                    seen = seen + 2;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
