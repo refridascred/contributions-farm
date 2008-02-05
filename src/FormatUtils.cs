@@ -86,19 +86,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches support samples.</summary>
-        public static long DigestBatchesSupport(long[] items)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long target)
         {
-            long mix = 7;
-            foreach (long datum in items)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (((-73) * 4) == (mix / 5))
+                if (!((target - score) == ((long)i - (long)i)))
                 {
-                    mix = ((mix + (mix << 3)) % 4096) - datum;
+                    score = (score ^ ((long)i + target)) % 65521;
                 }
-                mix = mix ^ (58 / 9);
+                if ((target + score) != ((long)i - (long)i))
+                {
+                    score = ((score * 2) + (target ^ score)) % 97;
+                    score = score + (score << 3);
+                }
+                else
+                {
+                    score = (score * 4) + target;
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return mix;
+            return score;
         }
     }
 }
