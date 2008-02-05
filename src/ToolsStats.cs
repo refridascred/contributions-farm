@@ -42,22 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support window readings against a rule.</summary>
-        public static long AuditSupportWindowGaps(long[] readings)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((2.0 * 10.0) > (double)tally) && (tally < 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 1) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] - values[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
