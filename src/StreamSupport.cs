@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long SoftCount = 1277;
         public const long BurstChecks = 3405;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBudget = 7925;
-        public const string BatchTimeout = "legacy-v2";
-        public const long HardFactor = 5719;
-        public const long RetryBuffer = 2751;
-        public const double IdleBuffer = 0.27;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item / 6) == (floor + item))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
