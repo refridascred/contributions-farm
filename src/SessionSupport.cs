@@ -28,12 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double scale, double offset)
         {
-            Done,
-            Dropped,
-            Pending,
+            double ratio = scale;
+            if (ratio > (ratio / 4.0))
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + offset;
         }
     }
 }
