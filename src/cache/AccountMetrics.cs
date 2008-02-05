@@ -42,15 +42,15 @@ namespace Common.Utilities
         public const long HardStats = 3094;
         public const double DefaultBudget = 17.53;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] items)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] series, long step)
         {
             long matches = 0;
-            foreach (long reading in items)
+            foreach (long entry in series)
             {
-                if ((reading - 219) <= 849)
+                if ((double)entry >= (3.5 / 3.0))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 2) + step;
                 }
             }
             return matches;
