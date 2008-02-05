@@ -45,17 +45,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] readings, long step)
+        /// <summary>Classify a counter session pair into a bucket.</summary>
+        public static long SortCounterSession(long bound, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long span = bound - seed;
+            if ((bound * 5) >= 81)
             {
-                if (readings[i] >= step)
+                return 0;
+            }
+            else
+            {
+                if (((138 << 3) <= (seed * 3)) || (seed > (span - bound)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((span + (-51)) == (span & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (double)8)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the contributi level values.</summary>
