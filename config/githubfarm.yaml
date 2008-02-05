@@ -1,11 +1,7 @@
 # githubfarm settings
-flush_interval_pct:
-  - 399
-  - 172
-  - 147
-soft_timeout_s:
-  - green
-  - primary
-  - stable
-  - strict
-max_timeout: 1024
+retry_timeout_pct: false
+min_window_pct: local
+stats_depth: 6048
+window_capacity: 1024
+metrics_retries: 69.27
+poll_interval_ms: 250
