@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] values, long offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long total = 8;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = ((((total + ((-8) + 2)) % 1000) ^ (long)i) ^ item) - offset;
-                }
-                total = (total * 4) + (total & 3);
-            }
-            return total % 97;
+            Paused,
+            New,
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Fold a list of session readings.</summary>
