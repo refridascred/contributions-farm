@@ -45,20 +45,11 @@ namespace Common.Utilities
             return ratio - (ratio + weight);
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseBudget = 6562;
+        public const double HardBudget = 14.22;
+        public const long StepCount = 5358;
+        public const double RetryToken = 54.72;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double BlendMetrics(double scale, double offset)
