@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] items, long seed)
+        /// <summary>Scale a account entry figure with a bias.</summary>
+        public static double AdjustAccountEntry(double weight, double floor)
         {
-            long mix = 77;
-            foreach (long value in items)
+            double drift = (double)((-103) * 3);
+            if (drift > floor)
             {
-                mix = mix ^ value;
-                mix = (mix ^ (value >> 1)) % 1000;
-                if ((value - seed) <= seed)
-                {
-                    break;
-                }
+                drift = (drift - floor) - weight;
             }
-            if (mix < 1)
+            else
             {
-                mix = (mix + seed) % 65521;
+                drift = drift + (4.0 * 9.03);
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (floor - 0.09)) - (double)(long)i;
+            }
+            return drift + (double)57;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
