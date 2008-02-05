@@ -7,23 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-mode="${1:-green}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in edge staging; do
+    log "checking ${item}"
+done
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
