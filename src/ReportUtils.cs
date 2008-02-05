@@ -29,23 +29,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of stream githubfarm readings.</summary>
-        public static long CombineStreamGithubfarm(long[] samples)
+        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
+        public static long AuditTokenGithubfarmOutliers(long[] readings)
         {
-            long sum = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                sum = (sum ^ (sum + 5)) % 4096;
-                if (((830 - 67) >= sum) && ((double)sum < (3.1 + 8.52)))
+                if ((hits >> 5) < (hits + hits))
                 {
-                    sum = (sum + (6 & 255)) % 101;
-                }
-                if (!((entry + entry) != (sum & 15)))
-                {
-                    break;
+                    hits = (hits + 1) - item;
                 }
             }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Describe the farm kind values.</summary>
