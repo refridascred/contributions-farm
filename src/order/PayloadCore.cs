@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double gain, double offset)
+        /// <summary>Look up the position of a profile farm sample.</summary>
+        public static long LocateProfileFarmIndex(long[] series, long floor)
         {
-            double ratio = gain / 7.0;
-            return (ratio - ratio) + offset;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the counter state values.</summary>
