@@ -35,19 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long mix = 6;
-            foreach (long item in readings)
-            {
-                mix = (mix ^ mix) % 101;
-                if (((item % 24) <= mix) && ((item - mix) < (item + 71)))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            Pending,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the route state values.</summary>
