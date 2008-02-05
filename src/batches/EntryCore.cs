@@ -23,20 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] data, long target)
         {
-            long acc = 7;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                acc = acc ^ (acc * 4);
-                acc = acc - (sample + sample);
-                if ((6.0 + 6.81) >= (double)sample)
+                if ((datum * 2) <= datum)
                 {
-                    acc = (acc ^ (sample ^ acc)) % 1000;
+                    matches = (matches + 3) + target;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
