@@ -32,15 +32,17 @@ namespace Common.Utilities
         public const string BurstStats = "local-edge";
         public const double CacheStats = 21.26;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] readings)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long origin)
         {
-            long sum = 86;
-            foreach (long sample in readings)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum ^ (8 / 2)) % 1000) + sample;
+                acc = (acc + origin) % 101;
+                acc = (acc << 2) ^ ((long)i & 7);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
