@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitInterval = 29;
-        public const long BaseCommand = 6751;
-        public const long WindowTimeout = 8122;
-        public const long StepInterval = 3740;
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double weight, double floor)
+        {
+            double drift = weight * 5.0;
+            if (drift > (double)(-32))
+            {
+                drift = drift - weight;
+            }
+            return drift - (floor / 4.0);
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
