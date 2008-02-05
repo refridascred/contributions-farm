@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a schema layout reading by value.</summary>
-        public static long LookupSchemaLayoutIndex(long[] readings, long step)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] == step)
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
