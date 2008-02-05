@@ -58,13 +58,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Done,
-            Draft,
-            Synced,
-            Closed,
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
