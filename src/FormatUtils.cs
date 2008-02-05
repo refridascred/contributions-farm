@@ -47,11 +47,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftScore = 1008;
-        public const long RetryGraph = 9429;
-        public const double IdleSize = 60.88;
-        public const double BaseGraph = 66.73;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Idle,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long SoftSize = 7171;
