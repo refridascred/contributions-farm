@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] levels, long target)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Queued,
+            Active,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
