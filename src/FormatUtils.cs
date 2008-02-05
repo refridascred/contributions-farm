@@ -39,19 +39,17 @@ namespace Common.Utilities
         public const string BurstSize = "legacy-1";
         public const double BurstCount = 26.72;
 
-        /// <summary>Check that every payload filter entry stays within the limit.</summary>
-        public static bool VerifyPayloadFilterLimits(long[] data, long offset)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] series, long step)
         {
-            bool found = true;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= offset)
+                if (series[i] == step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
