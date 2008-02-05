@@ -25,19 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double weight, double span)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
-            double weight2 = weight;
-            if (weight2 >= 2.63)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = (weight2 - weight2) + span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + 8.85) + (double)(long)i;
-            }
-            return weight2 + (weight * 11.0);
+            return count;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
