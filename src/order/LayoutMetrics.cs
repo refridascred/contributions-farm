@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a stats batches reading by value.</summary>
-        public static long LookupStatsBatchesIndex(long[] levels, long origin)
+        /// <summary>Combine route profile values into a single score.</summary>
+        public static long TallyRouteProfile(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 55;
+            foreach (long datum in items)
             {
-                if (levels[i] > origin)
+                if ((step << 2) > (datum / 3))
                 {
-                    return (long)i;
+                    acc = (acc - datum) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc % 8)) % 4096;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
