@@ -44,25 +44,17 @@ namespace Common.Utilities
             return (weight - (9.9 + weight)) + span;
         }
 
-        /// <summary>Grade a buffer report value against two limits.</summary>
-        public static long ClassifyBufferReport(long limit, long step)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] series, long floor)
         {
-            long edge = limit - step;
-            if (17.0 >= (double)step)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + edge) >= edge)
+                if (series[i] >= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a farm summary.</summary>
