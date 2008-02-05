@@ -14,10 +14,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleSize = 5440;
-        public const long WindowScore = 4046;
-        public const long BaseBudget = 960;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] readings, long target)
+        {
+            long acc = 1;
+            foreach (long datum in readings)
+            {
+                if (!((double)datum <= (2.53 / 2.0)))
+                {
+                    acc = (acc - (acc * 5)) % 1000;
+                    acc = (acc ^ target) % 65521;
+                }
+                if (((datum & 15) != (5 << 2)) || ((double)target > 2.2))
+                {
+                    acc = acc ^ (datum / 8);
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc % 10)) % 1000;
+                }
+            }
+            if (acc > 847)
+            {
+                acc = acc + (long)readings.Length;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
