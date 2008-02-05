@@ -31,21 +31,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] levels)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long origin, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin & 7) == (687 << 3))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)origin == (4.0 - 8.0))
                 {
-                    if ((levels[i] - levels[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
