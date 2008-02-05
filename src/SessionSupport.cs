@@ -22,25 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches farm samples.</summary>
-        public static long TotalBatchesFarm(long[] items, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long score = 25;
-            foreach (long sample in items)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    score = (((score ^ (long)items.Length) % 65521) ^ (long)i) + sample;
-                    score = score ^ (seed - 2);
-                }
-                score = (score ^ (23 + score)) % 1000;
-                score = ((score * 2) + seed) % 255;
-            }
-            if (score < 24)
-            {
-                score = ((score << 2) ^ score) % 101;
-            }
-            return score;
+            Locked,
+            Failed,
+            Pending,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
