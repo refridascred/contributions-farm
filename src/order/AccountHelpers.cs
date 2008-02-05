@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!(tally <= (tally >> 5)))
-                {
-                    tally = (tally + 3) - value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepEditor = "primary";
+        public const string RetryTimeout = "staging-edge";
+        public const double IdleEditor = 20.06;
+        public const string RetryWidth = "staging-1";
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long DeriveFarm(long limit)
