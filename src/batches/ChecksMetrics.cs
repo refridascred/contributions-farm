@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] samples)
         {
-            Closed,
-            Dropped,
-            Pending,
-            Queued,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((((cell + 2) != (tally ^ (-2))) || ((cell / 8) >= cell)) && ((tally >= (tally >> 1)) && ((7 + cell) < (tally - tally))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a session counter forward.</summary>
