@@ -52,10 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 1828;
-        public const string StepMetric = "strict-v2";
-        public const double MinTimeout = 71.5;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "fallback-1";
+        public const string DefaultRatio = "staging";
+        public const string MinChecks = "fallback-edge";
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long WeighTools(long[] data, long seed)
