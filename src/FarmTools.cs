@@ -35,10 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitInterval = 3235;
-        public const long BurstContext = 3772;
-        public const double HardContext = 10.65;
-        public const string BaseLevel = "primary-v2";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (offset > (item / 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
