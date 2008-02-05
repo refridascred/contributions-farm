@@ -32,12 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 4550;
-        public const long SoftGraph = 8616;
-        public const long MinLevel = 6076;
-        public const string BurstSize = "legacy-1";
-        public const double BurstCount = 26.72;
+        /// <summary>Grade a farm payload value against two limits.</summary>
+        public static long BucketFarmPayload(long floor, long offset)
+        {
+            long next = floor - offset;
+            if ((next * 5) != (next >> 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((next % 12) < (floor * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] series, long step)
