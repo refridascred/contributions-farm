@@ -67,10 +67,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCount = 4148;
-        public const double WindowInterval = 72.03;
-        public const long MinSize = 8865;
-        public const long IdleWidth = 7729;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 82.77;
+        public const double DefaultReport = 8.38;
+        public const long BaseReport = 8612;
+        public const long WindowReport = 4795;
+        public const long BurstReport = 1260;
     }
 }
