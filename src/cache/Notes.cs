@@ -41,19 +41,21 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] readings, long offset)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] items)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Match up already contributi samples.</summary>
