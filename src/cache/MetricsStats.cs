@@ -61,14 +61,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] data)
         {
-            Queued,
-            Paused,
-            Idle,
-            Closed,
-            Active,
+            long score = 1;
+            foreach (long value in data)
+            {
+                score = score + (6 + value);
+                if ((value * 5) == (score - value))
+                {
+                    score = (score + (score << 1)) % 97;
+                }
+            }
+            if (score < 45)
+            {
+                score = ((score * 5) + (score & 3)) % 101;
+            }
+            return score % 65521;
         }
     }
 }
