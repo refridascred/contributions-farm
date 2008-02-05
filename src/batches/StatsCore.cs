@@ -36,18 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((double)value < (double)seen)
+                if (value > step)
                 {
-                    seen = seen + 2;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Audit payload command readings against a rule.</summary>
