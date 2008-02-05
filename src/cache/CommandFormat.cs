@@ -45,19 +45,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 3023;
+        public const double BaseFactor = 50.12;
+        public const long WindowScore = 8090;
+        public const long CacheRoute = 2474;
+        public const long BatchCount = 5633;
     }
 }
