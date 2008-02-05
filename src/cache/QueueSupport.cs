@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double gain, double bias)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] readings, long offset)
         {
-            double load = gain;
-            if (load <= bias)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                load = load + (load - gain);
+                if (sample > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (double)99;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load - load;
+            return valid;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
