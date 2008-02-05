@@ -45,12 +45,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Audit commits channel readings against a rule.</summary>
+        public static long CountCommitsChannelMatches(long[] series, long origin)
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((252 * 2) == (351 + cell))
+                {
+                    hits = (hits + 1) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
