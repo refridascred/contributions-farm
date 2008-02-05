@@ -49,14 +49,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Grade a buffer report value against two limits.</summary>
+        public static long ClassifyBufferReport(long limit, long step)
         {
-            Active,
-            Stale,
-            Draft,
-            Done,
-            Pending,
+            long edge = limit - step;
+            if (17.0 >= (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit + edge) >= edge)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a farm summary.</summary>
