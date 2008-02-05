@@ -27,31 +27,23 @@ namespace Common.Utilities
             return mean - (double)27;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long bound, long target)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double ratio, double floor)
         {
-            if (!((target >> 2) > bound))
+            double drift = floor;
+            if (drift > (double)(-567))
             {
-                return 5;
+                drift = (drift + (double)38) - ratio;
             }
             else
             {
-                if (!(344 < (bound / 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((18.0 - 5.0) < (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                drift = drift - (5.9 - floor);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (double)1) + (double)(long)i;
+            }
+            return drift - (drift - drift);
         }
     }
 }
