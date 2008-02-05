@@ -19,10 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 3880;
-        public const double BaseDepth = 66.1;
-        public const long LimitTimeout = 241;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Idle,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterHits(long[] values)
