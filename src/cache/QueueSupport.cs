@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 854;
-        public const long WindowCount = 4016;
-        public const long BurstReport = 1110;
-        public const long DefaultReport = 192;
-        public const long DefaultSpan = 6545;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((step - datum) >= (step / 5))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
