@@ -17,23 +17,19 @@ namespace Common.Utilities
         public const string DefaultCache = "cached-1";
         public const string BatchCache = "strict";
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double weight, double span)
+        /// <summary>Validate schema notes readings against a bound.</summary>
+        public static bool CheckSchemaNotesRange(long[] readings, long offset)
         {
-            double scale = (span + span) - weight;
-            if (scale < (weight * 18.0))
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                scale = scale - (weight - weight);
+                if (datum != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - 7.7;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (span - weight)) + (double)(long)i;
-            }
-            return scale + (scale - 11.0);
+            return ok;
         }
     }
 }
