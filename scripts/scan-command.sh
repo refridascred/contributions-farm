@@ -6,17 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-COMMAND_LIMIT=404
-log "limit is ${COMMAND_LIMIT}"
-
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in open stable local latest; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=88
+log "limit is ${COMMAND_LIMIT}"
