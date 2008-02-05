@@ -25,19 +25,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double gain, double offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long seed)
         {
-            double rate = (7.37 * 0.22) * 8.15;
-            if (rate < (rate - 4.6))
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
             {
-                rate = rate - offset;
+                if ((8 ^ seed) <= seed)
+                {
+                    sum = ((sum << 2) ^ ((long)i << 3)) % 1000;
+                    sum = ((sum * 4) + (seed + sum)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + sum) % 101;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - (offset - gain);
+            return sum;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
