@@ -1,17 +1,12 @@
 {
-  "enabled": {
-    "notes_timeout": 2,
-    "batch_depth": 65,
-    "session_delay": 5925,
-    "contributi_threshold": false,
-    "compress": 30.27
+  "commits_size": 500,
+  "min_delay": 542,
+  "profile_threshold": {
+    "cache_depth": false,
+    "stream_ratio": 500,
+    "channel_limit": "green",
+    "soft_interval_ms": 1024,
+    "cluster_ratio": false
   },
-  "base_interval_count": true,
-  "compress": {
-    "flush_threshold_s": "fallback",
-    "warm_delay_count": 39.76,
-    "max_threshold": [403, 250]
-  },
-  "base_size": ["open", "standard"],
-  "batch_delay": 60
+  "base_ttl": 60
 }
