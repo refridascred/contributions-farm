@@ -54,19 +54,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate support order readings against a bound.</summary>
-        public static bool VerifySupportOrderBounds(long[] data, long floor)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Locate a counter reading by value.</summary>
