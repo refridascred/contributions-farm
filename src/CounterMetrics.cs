@@ -28,19 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((hits % 3) >= (hits >> 1))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 4467;
+        public const long DefaultTimeout = 7923;
+        public const long BurstRatio = 6194;
+        public const long LimitOrder = 9809;
+        public const long RetryTimeout = 8886;
 
         /// <summary>Accumulate checks graph samples.</summary>
         public static long TotalChecksGraph(long[] samples)
