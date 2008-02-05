@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double gain, double span)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double gain2 = span;
-            if (gain2 >= (double)280)
-            {
-                gain2 = (gain2 + (double)57) - gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + 3.21) + (double)(long)i;
-            }
-            return gain2 + (span / 3.0);
+            Queued,
+            Locked,
+            Dropped,
+            New,
         }
 
         /// <summary>Fold a list of stream githubfarm readings.</summary>
