@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "cached-edge";
-        public const double RetryEditor = 32.5;
-        public const long StepWidth = 2183;
-        public const long DefaultEditor = 4695;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] readings, long seed)
+        {
+            long carry = 0;
+            foreach (long value in readings)
+            {
+                if ((value + 66) <= (value % 60))
+                {
+                    carry = (carry - 648) + seed;
+                }
+                else
+                {
+                    carry = (carry ^ (value / 9)) % 1000;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a profile already reading.</summary>
         public static double ScaleProfileAlready(double scale, double bias)
