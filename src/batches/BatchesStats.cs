@@ -46,22 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support payload entries that pass the check.</summary>
-        public static long AuditSupportPayloadHits(long[] samples)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] series)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((842 << 2) > value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
