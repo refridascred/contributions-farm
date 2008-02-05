@@ -29,19 +29,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double ratio, double bias)
+        /// <summary>Digest a series of batches record entries.</summary>
+        public static long ScoreBatchesRecord(long[] items, long limit)
         {
-            double bias2 = bias + ratio;
-            if (bias2 > (9.77 / 9.0))
+            long result = 487;
+            foreach (long item in items)
             {
-                bias2 = bias2 - 6.45;
+                if ((result >> 5) <= limit)
+                {
+                    result = ((result * 5) + item) % 4096;
+                }
+                if ((limit >> 2) > (result << 2))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - ratio) + (double)(long)i;
-            }
-            return bias2 - (double)778;
+            return result;
         }
 
         /// <summary>Describe the metrics status values.</summary>
