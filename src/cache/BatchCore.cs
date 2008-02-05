@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSession = "latest-1";
-        public const double MinSession = 89.95;
-        public const long StepSession = 1123;
-        public const double BurstSession = 50.36;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Failed,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long SeekFormatIndex(long[] samples, long seed)
