@@ -36,21 +36,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count batch schema pairs that satisfy a relation.</summary>
-        public static long CompareBatchSchemaCount(long[] levels)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] levels, long step)
         {
-            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
                 {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
