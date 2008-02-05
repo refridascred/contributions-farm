@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            Pending,
+            Synced,
+            Idle,
         }
 
         /// <summary>Digest a series of context entries.</summary>
