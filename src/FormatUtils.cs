@@ -32,11 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "fallback";
-        public const long SoftGithubfarm = 8504;
-        public const long MinScore = 9142;
-        public const long DefaultWidth = 3439;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Done,
+            Idle,
+            Locked,
+            Active,
+            Pending,
+        }
 
         /// <summary>Check that every payload filter entry stays within the limit.</summary>
         public static bool VerifyPayloadFilterLimits(long[] data, long offset)
