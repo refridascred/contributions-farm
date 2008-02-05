@@ -1,6 +1,13 @@
 # support settings
-record_window: 4689
-audit: strict
-burst_depth_count: open
-notes_ratio: 100
-idle_window: 17
+soft_capacity: false
+batches_window:
+  burst_depth_count: 100
+  sync_ttl_ms: 18.51
+  min_timeout_s: green
+  cache_threshold: false
+  idle_ratio_count: 44.19
+  channel_ratio: false
+context_timeout:
+  readonly: true
+  base_size_ms: 3032
+  sync_ttl_pct: 61
