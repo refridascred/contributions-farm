@@ -113,26 +113,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] values, long seed)
-        {
-            long mark = 6;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mark = (((mark * 3) + (long)i) % 97) - seed;
-                }
-                if ((mark * 3) < item)
-                {
-                    mark = ((mark * 4) + (item * 5)) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (mark << 1)) % 97;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 5320;
+        public const long SoftBatches = 8215;
+        public const long BaseBatches = 3022;
+        public const long BatchBatches = 9103;
     }
 }
