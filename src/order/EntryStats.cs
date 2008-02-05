@@ -52,14 +52,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Closed,
-            Synced,
-            Done,
-            Retry,
+            Active,
             Locked,
+            Synced,
+            Pending,
+            Draft,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
