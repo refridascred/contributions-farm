@@ -18,22 +18,21 @@ namespace Common.Utilities
         public const double MinCache = 62.33;
         public const long HardFactor = 7115;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long sum = 8;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (2.0 < (double)sum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = sum ^ datum;
-                }
-                if (((9 / 3) != (datum << 3)) || ((datum ^ sum) != (datum - datum)))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Blend two support measurements.</summary>
