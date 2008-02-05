@@ -37,24 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long step, long bound)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long target)
         {
-            if (((6.6 / 4.0) == (double)bound) && ((bound * 3) != (bound - step)))
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((step % 10) < bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
