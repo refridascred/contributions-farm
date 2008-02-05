@@ -41,19 +41,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] readings, long floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Idle,
+            Failed,
+            Stale,
+            Pending,
         }
     }
 }
