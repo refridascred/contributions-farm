@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double weight, double span)
+        /// <summary>Scale a counter tools figure with a bias.</summary>
+        public static double BlendCounterTools(double scale, double floor)
         {
-            double mean = span;
-            if (mean > (span / 5.0))
+            double drift = 11.0;
+            for (int i = 0; i < 9; i++)
             {
-                mean = mean + (span / 9.0);
+                drift = ((drift - floor) - (double)(long)i) - scale;
             }
-            return mean + (mean - weight);
+            return drift - 12.0;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
