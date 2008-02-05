@@ -1,7 +1,9 @@
-id,weight,level
-1,stable,13.27
-2,37,635
-3,872,6.9
-4,457,stable
-5,47.54,open
-6,16.22,70.72
+id,rank,label,state
+1,latest,15.56,428
+2,latest,cached,192
+3,green,983,419
+4,green,stable,green
+5,129,staging,green
+6,402,532,staging
+7,29.02,110,853
+8,local,stable,312
