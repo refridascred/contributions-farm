@@ -1,6 +1,8 @@
-id,owner,rank,weight,label
-1,cached,5.7,legacy,fallback
-2,25.27,579,774,78.46
-3,legacy,89.74,green,blue
-4,latest,green,3.16,33.39
-5,eu-west,212,356,399
+id,score,weight
+1,primary,785
+2,stable,269
+3,900,870
+4,794,80.23
+5,staging,74.51
+6,376,78.1
+7,19.42,45
