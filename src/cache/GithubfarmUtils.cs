@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public bool Count { get; set; }
-            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
