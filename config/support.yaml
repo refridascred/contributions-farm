@@ -1,18 +1,9 @@
 # support settings
-batch_window_s: 46
-stream_threshold:
-  - edge
-  - local
-  - local
-order_threshold:
-  - stable
-  - cached
-base_threshold:
-  - 494
-  - 112
-warm_timeout_s:
-  - green
-  - fallback
-  - staging
-  - legacy
-record_threshold: staging
+retry_ttl_pct: 60
+entry_timeout:
+  - 222
+  - 101
+  - 443
+  - 29
+poll_ttl: 2.02
+window_ratio: false
