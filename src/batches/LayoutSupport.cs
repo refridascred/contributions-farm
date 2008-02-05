@@ -31,19 +31,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] readings)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] levels, long bound)
         {
-            long anchor = 8;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = anchor - 770;
-                if ((anchor >> 3) <= sample)
+                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
                 {
-                    anchor = ((anchor * 3) + anchor) % 97;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
