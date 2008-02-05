@@ -1,5 +1,7 @@
 # githubfarm settings
-record_depth: 34.17
-audit: latest
-poll_limit_pct: 30
-base_size_ms: primary
+max_retries_pct: 500
+poll_window_s: 500
+poll_capacity:
+  - 313
+  - 216
+  - 72
