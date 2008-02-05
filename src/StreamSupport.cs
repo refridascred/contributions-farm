@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] data, long limit)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            New,
+            Idle,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a notes options.</summary>
