@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 871;
-        public const long WindowScore = 1091;
-        public const double HardFilter = 79.19;
-        public const string BurstFilter = "legacy-edge";
-        public const long MaxBudget = 5897;
+        /// <summary>Measure how many metrics record samples are out of range.</summary>
+        public static long TallyMetricsRecordMatches(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((18.0 / 5.0) > (double)hits) || ((double)hits < (double)step))
+                {
+                    hits = (hits + 1) - entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string WindowFarm = "open-edge";
