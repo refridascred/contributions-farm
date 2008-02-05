@@ -51,22 +51,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit payload command readings against a rule.</summary>
-        public static long MeasurePayloadCommandMatches(long[] data)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((hits - hits) >= (hits ^ cell))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the farm mode values.</summary>
