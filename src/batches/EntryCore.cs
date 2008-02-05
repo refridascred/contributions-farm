@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] values, long offset)
+        /// <summary>Audit account metrics readings against a rule.</summary>
+        public static long MeasureAccountMetricsHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (values[i] > offset)
+                if (hits > (6 ^ 24))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
