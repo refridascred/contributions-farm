@@ -44,12 +44,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Roll a stream format counter forward.</summary>
+        public static long SeriesStreamFormat(long limit)
         {
-            Stale,
-            Synced,
-            Locked,
+            long total = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
