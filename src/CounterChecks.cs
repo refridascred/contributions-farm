@@ -80,14 +80,20 @@ namespace Common.Utilities
         public const string CacheScore = "cached-edge";
         public const double MaxTimeout = 50.78;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] values, long bound)
         {
-            Closed,
-            Synced,
-            Active,
-            Done,
-            Queued,
+            long state = 361;
+            foreach (long cell in values)
+            {
+                state = (state + (cell + state)) % 1000;
+                state = (state - bound) % 65521;
+                if ((double)840 < (double)bound)
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
     }
 }
