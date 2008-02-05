@@ -67,23 +67,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the batch report entries that pass the check.</summary>
-        public static long MeasureBatchReportMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading <= (7.1 * 1.4))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleBudget = 8624;
+        public const long IdleWidth = 4433;
+        public const string BatchBudget = "legacy-edge";
+        public const long BurstAlready = 1499;
+        public const long SoftTimeout = 8753;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long SeriesQueue(long target)
