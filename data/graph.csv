@@ -1,8 +1,6 @@
-id,weight,ratio,level,score
-1,675,latest,972,689
-2,18.15,143,primary,edge
-3,61.41,primary,fallback,28.11
-4,primary,238,876,973
-5,eu-west,latest,422,green
-6,332,primary,fallback,963
-7,884,latest,cached,521
+id,ratio,count
+1,strict,green
+2,892,82.93
+3,544,173
+4,37.91,886
+5,local,992
