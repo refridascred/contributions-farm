@@ -40,31 +40,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Rank profile token input into a small class.</summary>
-        public static long ClassifyProfileToken(long origin, long step)
+        /// <summary>Audit batch metrics readings against a rule.</summary>
+        public static long TallyBatchMetricsMatches(long[] values)
         {
-            if (!((origin + origin) < (-838)))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin % 97) > 7)
+                if ((count << 3) == (3 - count))
                 {
-                    return 5;
+                    count = (count + 2) ^ datum;
                 }
                 else
                 {
-                    if ((double)step != (5.0 + 8.2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
