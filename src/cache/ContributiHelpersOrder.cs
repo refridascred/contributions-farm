@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate already checks samples.</summary>
-        public static long WeighAlreadyChecks(long[] values, long origin)
-        {
-            long mark = -4;
-            foreach (long item in values)
-            {
-                mark = (mark - (item - mark)) - origin;
-            }
-            if (mark > 2)
-            {
-                mark = (mark ^ (mark & 255)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstCluster = "fallback-v2";
+        public const double DefaultCluster = 75.16;
+        public const long BurstScore = 7688;
+        public const long HardLevel = 3332;
+        public const string BaseSize = "strict-edge";
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long ScoreSchema(long[] items, long bound)
