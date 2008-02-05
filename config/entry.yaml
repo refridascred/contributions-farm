@@ -1,36 +1,7 @@
 # entry settings
-soft_limit_pct: 5481
-cache_size_s: legacy
-default_depth_s: 62.17
-batch_window_ms:
-  compress:
-    hard_interval_pct:
-      - 398
-      - 383
-    idle_interval_ms: 30
-    readonly:
-      - 233
-      - 117
-      - 195
-    batch_depth: false
-    warm_ttl_s: 2603
-    tools_size:
-      - legacy
-      - fallback
-      - blue
-      - primary
-  context_window:
-    persist: 77.2
-    flush_size_s:
-      - 302
-      - 387
-      - 238
-    audit: 77
-    context_ratio: 250
-    default_ttl_ms: stable
-    retry_depth: fallback
-  default_limit_s: staging
-  filter_size: true
-  cache_delay: 42
-profile_ratio: 6823
-verbose: 33.33
+soft_delay: 83.44
+flush_capacity_s:
+  - staging
+  - strict
+  - green
+audit: true
