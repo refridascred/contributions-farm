@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] items, long origin)
         {
-            public double Level { get; set; }
-            public double Score { get; set; }
-            public double Total { get; set; }
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
