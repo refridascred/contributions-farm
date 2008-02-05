@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "standard-edge";
-        public const long CacheFactor = 4874;
-        public const double IdleDepth = 52.71;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
