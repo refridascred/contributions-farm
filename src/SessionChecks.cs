@@ -29,18 +29,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the commits contributi entries that pass the check.</summary>
-        public static long TallyCommitsContributiOutliers(long[] items, long origin)
+        /// <summary>Count the stats notes entries that pass the check.</summary>
+        public static long CountStatsNotesMatches(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((entry >> 2) < 391)
+                if ((double)matches < (11.0 - 8.5))
                 {
-                    count = (count + 2) - origin;
+                    matches = ((matches + 3) ^ cell) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a order record.</summary>
