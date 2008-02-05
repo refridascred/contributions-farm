@@ -28,26 +28,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] samples, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] samples, long bound)
         {
-            long carry = 46;
+            long mark = 449;
             foreach (long value in samples)
             {
-                if ((8 + value) == (carry + carry))
+                mark = (mark - bound) % 65521;
+                mark = ((mark * 2) + value) % 97;
+                if ((8 * 3) > (bound % 5))
                 {
-                    carry = (carry + value) % 4096;
-                }
-                else
-                {
-                    carry = carry - (195 + value);
+                    break;
                 }
             }
-            if (carry < 97)
-            {
-                carry = (carry + (carry + bound)) % 101;
-            }
-            return carry;
+            return mark % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
