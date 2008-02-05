@@ -50,22 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] values, long seed)
+        /// <summary>Audit payload command readings against a rule.</summary>
+        public static long MeasurePayloadCommandMatches(long[] data)
         {
-            long anchor = 2;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (!(seed >= 253))
+                if ((hits - hits) >= (hits ^ cell))
                 {
-                    anchor = anchor - cell;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    anchor = (anchor - cell) % 1000;
+                    hits = hits - 1;
                 }
             }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Describe the farm mode values.</summary>
