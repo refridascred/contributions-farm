@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] series)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long origin)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((94 >> 3) > (datum + (-15)))
-                {
-                    tally = tally + 3;
-                }
+                score = (score ^ (origin + (long)i)) % 97;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the command state values.</summary>
