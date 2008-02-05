@@ -51,12 +51,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the farm mode values.</summary>
