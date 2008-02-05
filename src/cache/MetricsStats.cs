@@ -35,12 +35,22 @@ namespace Common.Utilities
             return scale + 8.0;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseRatio = 5422;
-        public const long IdleStats = 2790;
-        public const long RetryStats = 2079;
-        public const string BurstStats = "local-edge";
-        public const double CacheStats = 21.26;
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
