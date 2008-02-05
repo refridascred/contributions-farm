@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long slot = origin ^ bound;
+            if ((slot & 3) < (559 & 3))
             {
-                if (!((bound % 5) < tally))
+                return 8;
+            }
+            else
+            {
+                if (6.03 < (double)slot)
                 {
-                    tally = (tally + 2) + value;
+                    return 2;
+                }
+                else
+                {
+                    if ((slot > (8 * 4)) || ((origin + slot) < slot))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
