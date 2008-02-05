@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long StepCommand = 259;
         public const long MinCommand = 1163;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] items, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long carry = 3;
+            foreach (long value in readings)
             {
-                if (datum <= origin)
+                if (46 <= (carry / 4))
                 {
-                    flag = false;
-                    break;
+                    carry = (((carry + (211 & 7)) % 1000) - value) - offset;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
