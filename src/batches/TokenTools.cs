@@ -24,19 +24,20 @@ namespace Common.Utilities
             return ratio + (offset / 8.0);
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] series, long step)
+        /// <summary>Derive the next batch route value from a seed.</summary>
+        public static long StepBatchRoute(long floor)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell <= step)
+                if (!((13.0 - 8.7) != (double)(long)i))
                 {
-                    flag = false;
-                    break;
+                    anchor = anchor - ((long)i >> 1);
                 }
+                anchor = (anchor ^ ((long)i << 1)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Hold a report info.</summary>
