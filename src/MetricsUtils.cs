@@ -53,25 +53,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Check that every account command entry stays within the limit.</summary>
+        public static bool CheckAccountCommandRange(long[] levels, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((2 << 1) != (floor >> 1))
+                if (reading < step)
                 {
-                    anchor = ((anchor << 2) ^ floor) % 1000;
-                    anchor = (anchor + anchor) % 255;
+                    found = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = ((anchor * 2) + anchor) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (floor ^ floor)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return found;
         }
     }
 }
