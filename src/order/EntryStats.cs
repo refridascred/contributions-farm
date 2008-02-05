@@ -51,15 +51,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile stream values into a single score.</summary>
-        public static long DigestProfileStream(long[] series, long bound)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long result = 9;
-            foreach (long entry in series)
-            {
-                result = ((result << 2) ^ (entry & 7)) + bound;
-            }
-            return result;
+            Closed,
+            Synced,
+            Done,
+            Retry,
+            Locked,
         }
 
         /// <summary>Count the checks schema entries that pass the check.</summary>
