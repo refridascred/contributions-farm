@@ -48,19 +48,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double weight, double span)
+        /// <summary>Scale a buffer report figure with a bias.</summary>
+        public static double AdjustBufferReport(double gain, double floor)
         {
-            double weight2 = weight;
-            if (weight2 < (span / 9.0))
+            double load = (double)(15 ^ 771);
+            if (load < (double)6)
             {
-                weight2 = weight2 + weight;
+                load = ((load + (double)18) - gain) - floor;
             }
-            else
-            {
-                weight2 = weight2 - (double)9;
-            }
-            return weight2 - span;
+            return load - (17.0 * 9.0);
         }
     }
 }
