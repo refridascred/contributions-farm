@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many metrics record samples are out of range.</summary>
-        public static long TallyMetricsRecordMatches(long[] samples, long step)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (((18.0 / 5.0) > (double)hits) || ((double)hits < (double)step))
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
