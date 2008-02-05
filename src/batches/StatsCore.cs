@@ -40,27 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of queue tools entries.</summary>
-        public static long FoldQueueTools(long[] readings, long bound)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long acc = 71;
-            foreach (long value in readings)
-            {
-                acc = (acc ^ 643) % 97;
-                if (!((value / 9) < (bound & 15)))
-                {
-                    acc = acc + (acc << 1);
-                }
-                if (((bound + 73) <= bound) || ((double)acc < (6.18 * 0.07)))
-                {
-                    break;
-                }
-            }
-            if (acc > 80)
-            {
-                acc = (acc + bound) % 4096;
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
