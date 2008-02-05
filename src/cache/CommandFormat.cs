@@ -33,31 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long target, long limit)
+        /// <summary>Find the first metric filter entry that matches the target.</summary>
+        public static long FindMetricFilterIndex(long[] samples, long step)
         {
-            if ((target << 2) == (limit + 28))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit < (8.3 - 0.3))
+                if ((samples[i] >= step) && ((samples[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((9.0 / 6.0) < (double)target) && ((double)limit != (6.0 + 0.23)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
