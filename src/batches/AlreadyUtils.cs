@@ -34,12 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 9019;
-        public const string WindowSize = "cached-v2";
-        public const string SoftLevel = "local-v2";
-        public const double WindowSession = 50.97;
-        public const string BatchSession = "fallback-v2";
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item / 5) != (matches - 222))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double AdjustEntry(double weight, double span)
