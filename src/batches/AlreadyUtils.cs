@@ -32,19 +32,19 @@ namespace Common.Utilities
         public const long BaseAlready = 8054;
         public const long MaxSize = 8532;
 
-        /// <summary>Check that every batches session entry stays within the limit.</summary>
-        public static bool VerifyBatchesSessionRange(long[] samples, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (sample >= origin)
+                if (value < bound)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
