@@ -32,10 +32,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 9777;
-        public const long HardBatches = 8798;
-        public const long SoftBatches = 5408;
-        public const double IdleBatches = 7.02;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 8700;
+        public const string MaxFilter = "strict-1";
+        public const long BaseFilter = 1647;
     }
 }
