@@ -22,20 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] data, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((double)state < (double)offset)
+                if ((double)matches <= (4.3 + 5.3))
                 {
-                    state = (state - offset) % 65521;
-                    break;
+                    matches = ((matches + 3) + datum) + floor;
                 }
-                state = ((state * 4) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
