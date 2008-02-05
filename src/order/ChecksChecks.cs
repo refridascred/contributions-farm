@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const string CacheLayout = "legacy-v2";
         public const long WindowRatio = 577;
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            Closed,
+            Queued,
+            Done,
+            Stale,
+            Draft,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
