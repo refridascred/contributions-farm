@@ -41,18 +41,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Look up the position of a route session sample.</summary>
-        public static long LookupRouteSessionIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitInterval = 7803;
+        public const long HardSize = 8096;
+        public const long MinContributi = 887;
+        public const string DefaultSpan = "alpha-v2";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftStats = 5675;
