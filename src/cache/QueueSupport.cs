@@ -29,31 +29,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a context stream value against two limits.</summary>
-        public static long BucketContextStream(long offset, long origin)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            if (!((origin & 63) == (origin % 7)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((-60) ^ 5) != (origin << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset ^ origin) <= offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
