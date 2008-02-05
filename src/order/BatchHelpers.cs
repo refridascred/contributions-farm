@@ -36,9 +36,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 1906;
-        public const long LimitLevel = 2558;
-        public const string SoftRatio = "alpha-v2";
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public double Level { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
