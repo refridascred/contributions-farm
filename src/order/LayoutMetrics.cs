@@ -22,13 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Digest a series of farm session entries.</summary>
+        public static long TotalFarmSession(long[] readings, long step)
         {
-            public bool Level { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = 2;
+            foreach (long entry in readings)
+            {
+                sum = (sum - (entry * 5)) + step;
+            }
+            return sum;
         }
 
         /// <summary>Locate a token reading by value.</summary>
