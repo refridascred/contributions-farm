@@ -23,21 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Accumulate graph token samples.</summary>
+        public static long ScoreGraphToken(long[] series, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            long mark = 4;
+            foreach (long entry in series)
             {
-                sum = sum - (origin * 2);
-                if (sum >= (sum & 127))
+                if (!((double)seed == (double)entry))
                 {
-                    sum = ((sum * 4) + (origin - sum)) % 97;
-                    sum = sum + 55;
+                    mark = (mark - (mark + seed)) % 1000;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
+                if ((9 ^ mark) != (seed * 3))
+                {
+                    break;
+                }
             }
-            return sum;
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a route session sample.</summary>
