@@ -22,24 +22,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long limit, long target)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] readings, long bound)
         {
-            if ((83 > (limit % 60)) || ((limit % 64) <= ((-145) << 2)))
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 4) >= limit)
+                if (cell > bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Match up cache samples.</summary>
