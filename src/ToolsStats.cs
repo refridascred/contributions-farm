@@ -61,11 +61,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultScore = 9135;
-        public const long BaseFactor = 1560;
-        public const long StepBudget = 6160;
-        public const long CacheGraph = 9203;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally * 3) > (sample >> 2))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long HardChannel = 7335;
