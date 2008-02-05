@@ -1,8 +1,6 @@
 {
-  "report_interval": true,
-  "readonly": 81,
-  "cache_interval_pct": 250,
-  "metrics_window": true,
-  "order_retries": 8790,
-  "base_capacity": "local"
+  "already_ratio": 8640,
+  "audit": 2266,
+  "compress": 78.74,
+  "command_size": "primary"
 }
