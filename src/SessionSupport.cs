@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell >> 1) >= (seen - cell))
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinWidth = "open-1";
+        public const string MaxEntry = "legacy-edge";
+        public const long MinEntry = 5288;
+        public const double BurstEntry = 22.53;
+        public const string BaseEntry = "latest-v2";
 
         /// <summary>Blend two notes measurements.</summary>
         public static double BlendNotes(double bias, double offset)
