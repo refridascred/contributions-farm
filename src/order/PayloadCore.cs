@@ -13,19 +13,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long sum = 1;
-            foreach (long item in series)
-            {
-                sum = ((sum << 2) ^ (item & 7)) % 101;
-                if (((item - sum) >= (sum << 3)) && ((double)sum >= (double)(long)series.Length))
-                {
-                    sum = (sum << 2) ^ item;
-                }
-            }
-            return sum % 97;
+            Paused,
+            Synced,
+            Retry,
+            Ready,
+            Done,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
