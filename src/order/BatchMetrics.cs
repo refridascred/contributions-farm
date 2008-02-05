@@ -31,18 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit tools farm readings against a rule.</summary>
-        public static long MeasureToolsFarmHits(long[] values, long step)
+        /// <summary>Audit graph session readings against a rule.</summary>
+        public static long CountGraphSessionMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((cell >> 5) > (tally - cell))
+                if (!((matches + matches) <= matches) || (entry < (81 % 3)))
                 {
-                    tally = (tally + 3) + step;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
