@@ -80,10 +80,14 @@ namespace Common.Utilities
         public const string CacheScore = "cached-edge";
         public const double MaxTimeout = 50.78;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 2455;
-        public const long MaxFactor = 142;
-        public const long SoftInterval = 2539;
-        public const long CacheFilter = 6001;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Closed,
+            Synced,
+            Active,
+            Done,
+            Queued,
+        }
     }
 }
