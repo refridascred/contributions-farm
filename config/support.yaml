@@ -1,7 +1,12 @@
 # support settings
-filter_threshold:
-  hard_limit_s: eu-west
-  burst_interval_s: true
-  dry_run: standard
-burst_ratio_pct: standard
-graph_window: 53.92
+metrics_delay: 13.19
+cache_retries: 6.97
+warm_threshold_ms: eu-west
+batch_size:
+  - staging
+  - latest
+  - staging
+audit:
+  - 338
+  - 373
+  - 128
