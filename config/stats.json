@@ -1,7 +1,5 @@
 {
-  "report_size": 250,
-  "strict": 57,
-  "min_ratio_pct": "legacy",
-  "soft_ratio_s": 62.34,
-  "max_timeout": 52.63
+  "stats_ttl": "local",
+  "dry_run": 77.13,
+  "audit": "local"
 }
