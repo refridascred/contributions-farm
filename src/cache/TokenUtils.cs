@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Rank context cluster input into a small class.</summary>
+        public static long BucketContextCluster(long bound, long limit)
         {
-            Paused,
-            Dropped,
-            Active,
+            if (((double)limit > (2.51 + 4.9)) || ((bound - limit) < (bound ^ 91)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit >= (bound * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((7.8 / 6.0) == (double)limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
