@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
-        public static long AuditMetricsGithubfarmGaps(long[] series, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (!((cell % 97) < (seen - offset)) && ((2 > (offset + cell)) && ((cell ^ cell) == ((-851) + seen))))
+                if (item != floor)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
