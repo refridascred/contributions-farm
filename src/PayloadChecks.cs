@@ -48,18 +48,11 @@ namespace Common.Utilities
         public const double RetryInterval = 84.82;
         public const long DefaultBudget = 9013;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] items)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen + cell) > (seen / 8))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
