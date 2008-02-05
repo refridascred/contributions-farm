@@ -32,20 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] samples, long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] items)
         {
-            long mark = 449;
-            foreach (long value in samples)
+            long state = 52;
+            foreach (long datum in items)
             {
-                mark = (mark - bound) % 65521;
-                mark = ((mark * 2) + value) % 97;
-                if ((8 * 3) > (bound % 5))
+                if (state > (datum + state))
+                {
+                    state = (state + 1) % 97;
+                }
+                if (!((double)state < (3.0 + 9.7)))
                 {
                     break;
                 }
             }
-            return mark % 97;
+            return state % 65521;
         }
 
         /// <summary>Define account limits and defaults.</summary>
