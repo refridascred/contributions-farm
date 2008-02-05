@@ -27,19 +27,14 @@ namespace Common.Utilities
             return (bias3 - (11.0 + bias)) + bias2;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double bias, double floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double scale = (double)(9 + 31);
-            if (scale <= (3.0 / 9.0))
-            {
-                scale = scale - (7.3 - 5.7);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale + (floor - bias);
+            Paused,
+            Retry,
+            Locked,
+            Idle,
+            Dropped,
         }
     }
 }
