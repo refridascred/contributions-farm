@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] values, long offset)
+        /// <summary>Roll a route metrics counter forward.</summary>
+        public static long RollRouteMetrics(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (values[i] <= offset)
+                if (!((total % 3) < bound))
                 {
-                    return (long)i;
+                    break;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
