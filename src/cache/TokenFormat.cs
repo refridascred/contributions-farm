@@ -22,11 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double bias, double span)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long origin, long step)
         {
-            double gain = bias;
-            return (gain - (bias - gain)) + span;
+            if ((double)step != (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step >= (double)4)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin > (origin * 2)) || ((origin + origin) >= (origin % 16)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two queue measurements.</summary>
