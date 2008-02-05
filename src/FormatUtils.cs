@@ -61,23 +61,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double bias, double offset)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double bias, double floor)
         {
-            double mean = (double)(902 - 262);
-            if (mean < (mean - bias))
+            double rate = bias;
+            if (rate > 5.27)
             {
-                mean = mean - (offset - 2.76);
+                rate = rate + (1.3 + rate);
             }
             else
             {
-                mean = mean + (bias * 9.02);
+                rate = rate - floor;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 9; i++)
             {
-                mean = (mean + 2.97) - (double)(long)i;
+                rate = rate + (double)(long)i;
             }
-            return mean + mean;
+            return rate - 5.96;
         }
 
         /// <summary>Count the farm batches entries that pass the check.</summary>
