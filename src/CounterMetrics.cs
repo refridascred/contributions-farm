@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] levels, long bound)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double scale, double offset)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            double rate = (double)(8 & 255);
+            if (rate >= (offset / 3.0))
             {
-                if (sample != bound)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (rate - 8.48) - scale;
             }
-            return found;
+            else
+            {
+                rate = rate - (double)756;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (rate + rate)) + (double)(long)i;
+            }
+            return rate + 14.0;
         }
 
         /// <summary>Describe the route state values.</summary>
