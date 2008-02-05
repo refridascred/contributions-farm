@@ -22,21 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = bias;
+            if (load <= bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load + bias) - bias2;
             }
-            return tally;
+            return load - (bias + bias);
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
