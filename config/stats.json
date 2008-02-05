@@ -1,15 +1,12 @@
 {
-  "payload_ratio": 60,
-  "hard_timeout": 24.41,
-  "support_window": 250,
-  "default_capacity_ms": false,
-  "idle_threshold": 77.29,
-  "readonly": {
-    "schema_interval": 27.54,
-    "cache_timeout": 38.14,
-    "idle_delay": "blue",
-    "persist": 100,
-    "dry_run": 70,
-    "filter_size": 52.42
-  }
+  "soft_limit_count": [147, 158, 468],
+  "default_retries_pct": {
+    "token_retries": 1118,
+    "burst_retries_s": true,
+    "checks_timeout": "legacy",
+    "compress": 74.25
+  },
+  "idle_delay_ms": 20.73,
+  "compress": "green",
+  "max_size_count": 30
 }
