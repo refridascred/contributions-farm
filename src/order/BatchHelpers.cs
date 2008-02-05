@@ -31,18 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] levels)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample + matches) != (sample >> 3)) && (sample >= (sample + 57)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
