@@ -31,26 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session context values into a single score.</summary>
-        public static long DigestSessionContext(long[] items)
-        {
-            long result = 0;
-            foreach (long entry in items)
-            {
-                if (!((result + entry) > result))
-                {
-                    result = (result - entry) % 4096;
-                }
-                if (((result & 31) <= (result % 8)) || (76 >= (result & 255)))
-                {
-                    result = (result ^ (entry + entry)) % 65521;
-                }
-                else
-                {
-                    result = ((result * 5) + (result - entry)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitRatio = 5912;
+        public const long BaseCount = 5287;
+        public const long LimitInterval = 547;
+        public const long LimitFormat = 1368;
+        public const long BurstRatio = 1368;
     }
 }
