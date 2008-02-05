@@ -13,14 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] samples, long origin)
         {
-            Paused,
-            Queued,
-            New,
-            Retry,
-            Active,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (!((long)samples.Length >= (entry + 136)))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every record session entry stays within the limit.</summary>
