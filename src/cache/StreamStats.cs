@@ -20,31 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] values, long offset)
-        {
-            long anchor = 6;
-            foreach (long entry in values)
-            {
-                if ((6.1 + 1.0) >= (double)entry)
-                {
-                    anchor = ((anchor * 3) + (entry + entry)) % 97;
-                }
-                if ((double)entry >= (double)anchor)
-                {
-                    anchor = (anchor * 2) + (long)values.Length;
-                }
-                else
-                {
-                    anchor = anchor - (offset + entry);
-                }
-            }
-            if (anchor > 7)
-            {
-                anchor = ((anchor << 2) ^ 189) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSpan = "legacy";
+        public const long CacheSize = 996;
+        public const string RetrySupport = "latest-v2";
+        public const long MaxSupport = 1797;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
