@@ -60,18 +60,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] items, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (offset > hits)
-                {
-                    hits = (hits + 2) - cell;
-                }
-            }
-            return hits;
+            double load = (offset + scale) - 1.2;
+            return load - (offset / 6.0);
         }
 
         /// <summary>Describe the farm status values.</summary>
