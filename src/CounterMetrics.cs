@@ -28,12 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 4467;
-        public const long DefaultTimeout = 7923;
-        public const long BurstRatio = 6194;
-        public const long LimitOrder = 9809;
-        public const long RetryTimeout = 8886;
+        /// <summary>Count the githubfarm account entries that pass the check.</summary>
+        public static long AuditGithubfarmAccountHits(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((491 << 2) >= (hits << 1))
+                {
+                    hits = ((hits + 3) - datum) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a metric payload figure with a bias.</summary>
         public static double AdjustMetricPayload(double bias, double span)
