@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] series, long offset)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Find the first buffer farm entry that matches the target.</summary>
