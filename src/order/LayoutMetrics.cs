@@ -24,11 +24,19 @@ namespace Common.Utilities
             return drift + (double)57;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxRatio = 9918;
-        public const string WindowSize = "alpha-edge";
-        public const long MinCache = 5408;
-        public const long BatchRatio = 419;
+        /// <summary>Audit githubfarm metrics readings against a rule.</summary>
+        public static long MeasureGithubfarmMetricsOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (hits < reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LocateChannelIndex(long[] readings, long offset)
