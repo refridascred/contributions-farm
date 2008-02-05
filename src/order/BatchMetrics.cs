@@ -66,19 +66,18 @@ namespace Common.Utilities
         public const string BatchSpan = "fallback";
         public const long StepDepth = 6133;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] samples, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (value <= step)
+                if ((double)entry <= 8.87)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
