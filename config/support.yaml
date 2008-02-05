@@ -1,9 +1,16 @@
 # support settings
-flush_limit_s: 55.28
-burst_interval_count: false
-hard_depth_s:
-  - local
-  - fallback
-  - legacy
-readonly: stable
-githubfarm_window: 2730
+warm_depth_ms: 100
+filter_capacity:
+  - 301
+  - 455
+cluster_ttl:
+  min_limit: staging
+  poll_ratio_count:
+    - legacy
+    - stable
+    - edge
+    - strict
+  audit: staging
+persist: false
+report_threshold: 14.91
+soft_threshold: cached
