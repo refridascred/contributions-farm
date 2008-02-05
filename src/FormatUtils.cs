@@ -72,12 +72,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Count the farm batches entries that pass the check.</summary>
+        public static long MeasureFarmBatchesMatches(long[] data, long target)
         {
-            Idle,
-            Draft,
-            Locked,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (((tally % 7) < (value - target)) || (tally >= ((long)data.Length + 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
