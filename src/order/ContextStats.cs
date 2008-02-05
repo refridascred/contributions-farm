@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
             public long Region { get; set; }
         }
 
