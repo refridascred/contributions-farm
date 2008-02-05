@@ -20,10 +20,33 @@ namespace Common.Utilities
             return gain + (double)(-930);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryFactor = 1204;
-        public const string StepSchema = "local-1";
-        public const long LimitSchema = 2476;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long target, long limit)
+        {
+            long next = target + limit;
+            if ((next ^ limit) < target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)next > 2.1)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit <= (next + 74)) || ((limit + limit) != (next / 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseRatio = 5422;
