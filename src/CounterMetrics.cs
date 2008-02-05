@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batch counter readings against a rule.</summary>
-        public static long MeasureBatchCounterGaps(long[] readings)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (matches >= 52)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) ^ cell;
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
