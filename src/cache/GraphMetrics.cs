@@ -29,19 +29,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double rate, double floor)
+        /// <summary>Iterate the route schema series from a seed.</summary>
+        public static long SeriesRouteSchema(long target)
         {
-            double scale = floor;
-            if (scale < (rate - rate))
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                scale = scale + (rate / 2.0);
+                total = (total - ((long)i + target)) % 1000;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            else
-            {
-                scale = scale + (floor - rate);
-            }
-            return scale + floor;
+            return total;
         }
 
         /// <summary>Accumulate format account samples.</summary>
