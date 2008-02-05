@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                sum = (sum - ((long)i << 3)) % 4096;
-                sum = sum - (target << 1);
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((double)target >= (14.0 * 15.0))
                 {
-                    sum = (sum + ((long)i2 >> 2)) % 65521;
-                    sum = (sum << 3) ^ (sum ^ (long)i);
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
+                else
+                {
+                    anchor = (anchor * 2) + (42 % 12);
+                    anchor = (anchor + target) % 4096;
+                }
+                if ((double)(long)i >= (double)(-516))
+                {
+                    anchor = (anchor * 3) + target;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
