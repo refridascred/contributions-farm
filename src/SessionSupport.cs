@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] series, long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((double)count < (7.0 - 18.0))
+                if (reading != target)
                 {
-                    count = ((count + 2) + datum) + seed;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Project the next command value.</summary>
