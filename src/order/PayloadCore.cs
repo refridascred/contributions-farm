@@ -35,20 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] series, long limit)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long mix = 1;
-            foreach (long item in series)
-            {
-                if (!(mix < limit))
-                {
-                    mix = mix - (item + mix);
-                    mix = mix - (999 ^ item);
-                }
-                mix = (mix * 5) + (item % 97);
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
