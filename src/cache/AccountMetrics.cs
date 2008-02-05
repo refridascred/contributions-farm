@@ -43,21 +43,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = -89;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result * 5) + (step / 3);
+                result = (result * 5) + (result + step);
+                result = (result + result) % 65521;
+                if ((item ^ step) < (item + step))
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Combine metrics account values into a single score.</summary>
