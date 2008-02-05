@@ -13,18 +13,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first batches filter entry that matches the target.</summary>
-        public static long FindBatchesFilterIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 7694;
+        public const long StepWidth = 8113;
+        public const double BurstNotes = 89.62;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long PairStreamCount(long[] values)
