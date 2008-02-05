@@ -44,20 +44,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] items, long bound)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 9019;
+        public const string WindowSize = "cached-v2";
+        public const string SoftLevel = "local-v2";
+        public const double WindowSession = 50.97;
+        public const string BatchSession = "fallback-v2";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string BurstSize = "cached";
