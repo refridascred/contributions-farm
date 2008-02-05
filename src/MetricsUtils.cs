@@ -30,19 +30,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
+            long acc = 0;
+            foreach (long sample in levels)
             {
-                if ((sum * 2) < sum)
-                {
-                    sum = ((sum * 2) + (floor * 3)) % 1000;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
+                acc = (((acc << 2) ^ acc) % 255) - sample;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Accumulate checks samples.</summary>
