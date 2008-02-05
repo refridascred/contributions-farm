@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Queued,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 5550;
+        public const long LimitRatio = 2400;
+        public const long BaseRatio = 1439;
+        public const string WindowRecord = "alpha-edge";
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long IterateEntry(long target)
