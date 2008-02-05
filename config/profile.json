@@ -1,7 +1,5 @@
 {
-  "dry_run": "legacy",
-  "retry_capacity_count": 181,
-  "token_limit": true,
-  "flush_depth_count": "edge",
-  "stats_interval": 17
+  "persist": "eu-west",
+  "base_timeout_pct": 1024,
+  "cache_limit": "blue"
 }
