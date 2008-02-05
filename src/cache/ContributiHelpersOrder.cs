@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const string WindowBatch = "primary-1";
         public const long CacheWidth = 1457;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Validate context stats readings against a bound.</summary>
+        public static bool ValidateContextStatsLimits(long[] data, long origin)
         {
-            Locked,
-            Synced,
-            New,
-            Active,
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate token samples.</summary>
