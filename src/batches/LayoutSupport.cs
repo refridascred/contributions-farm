@@ -59,14 +59,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Paused,
-            Active,
-            Failed,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 6200;
+        public const long BurstBatches = 7939;
+        public const long BaseBatches = 3067;
     }
 }
