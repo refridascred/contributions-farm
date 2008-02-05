@@ -1,16 +1,7 @@
 # support settings
-warm_depth_ms: 100
-filter_capacity:
-  - 301
-  - 455
-cluster_ttl:
-  min_limit: staging
-  poll_ratio_count:
-    - legacy
-    - stable
-    - edge
-    - strict
-  audit: staging
-persist: false
-report_threshold: 14.91
-soft_threshold: cached
+verbose: 89
+persist: 100
+flush_size_pct:
+  - edge
+  - strict
+  - green
