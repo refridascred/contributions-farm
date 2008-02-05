@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] levels, long offset)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item & 7) > (seen - 410))
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
