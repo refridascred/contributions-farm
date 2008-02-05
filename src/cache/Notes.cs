@@ -12,22 +12,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] samples)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item > (6.0 - 9.86))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Blend two batches measurements.</summary>
