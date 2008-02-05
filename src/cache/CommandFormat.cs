@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double weight, double offset)
+        /// <summary>Validate editor graph readings against a bound.</summary>
+        public static bool GuardEditorGraphLimits(long[] series, long bound)
         {
-            double weight2 = weight * 16.0;
-            if (weight2 < (double)76)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                weight2 = weight2 - (weight2 / 4.0);
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - (double)287) + (double)(long)i;
-            }
-            return weight2 + weight2;
+            return ready;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
