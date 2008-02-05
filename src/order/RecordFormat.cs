@@ -34,16 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheCount = 5326;
+        public const long MinOrder = 9891;
+        public const long BaseFactor = 3500;
+        public const string BaseTimeout = "stable-v2";
 
         /// <summary>Audit commits channel readings against a rule.</summary>
         public static long CountCommitsChannelMatches(long[] series, long origin)
