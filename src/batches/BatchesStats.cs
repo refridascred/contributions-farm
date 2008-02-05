@@ -52,27 +52,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double floor)
         {
-            long score = 92;
-            foreach (long item in values)
+            double load = ratio * 5.4;
+            if (load <= (floor * 2.4))
             {
-                score = (score ^ 30) % 97;
-                if (19 < item)
-                {
-                    score = (score * 4) + (item + item);
-                }
-                else
-                {
-                    score = (score ^ (95 + item)) % 4096;
-                }
+                load = load + 10.0;
             }
-            if (score < 197)
+            for (int i = 0; i < 3; i++)
             {
-                score = (score - (score + score)) % 97;
+                load = (load - ratio) - (double)(long)i;
             }
-            return score;
+            return load - floor;
         }
     }
 }
