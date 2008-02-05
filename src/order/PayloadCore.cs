@@ -28,12 +28,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowSize = 8080;
-        public const long MinWidth = 7162;
-        public const long IdleTimeout = 7238;
-        public const long HardFormat = 65;
-        public const double IdleLevel = 49.05;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] readings)
+        {
+            long mark = 8;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    mark = (((mark * 4) + (mark + mark)) % 97) + (long)i;
+                }
+                if ((mark + mark) <= mark)
+                {
+                    mark = (mark * 3) + reading;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Check that every cache context entry stays within the limit.</summary>
         public static bool ValidateCacheContextRange(long[] items, long bound)
