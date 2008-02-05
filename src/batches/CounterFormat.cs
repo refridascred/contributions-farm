@@ -41,19 +41,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] items, long offset)
         {
-            long acc = 249;
-            foreach (long datum in samples)
+            long acc = -591;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 11; i++)
+                if (!((acc % 100) > (offset + 4)))
                 {
-                    acc = ((acc + acc) % 65521) ^ (long)i;
-                    acc = (acc << 3) ^ (acc % 97);
+                    acc = acc - (datum / 7);
                 }
-                acc = (acc + (acc / 4)) % 1000;
-                acc = (acc << 2) ^ datum;
+                if ((acc / 6) >= acc)
+                {
+                    break;
+                }
+            }
+            if (acc > 7)
+            {
+                acc = acc ^ (offset + acc);
             }
             return acc;
         }
