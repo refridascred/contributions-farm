@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary latest cached local; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=313
-log "limit is ${BUFFER_LIMIT}"
-
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in primary strict cached; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=259
+log "limit is ${BUFFER_LIMIT}"
