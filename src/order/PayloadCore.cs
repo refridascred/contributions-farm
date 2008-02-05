@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleWidth = "open";
-        public const long DefaultRecord = 8089;
-        public const string IdleCount = "cached-v2";
-        public const long SoftTimeout = 6844;
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
