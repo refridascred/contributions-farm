@@ -56,21 +56,19 @@ namespace Common.Utilities
             return bias2 + 14.0;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 2;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                sum = sum + (reading ^ reading);
+                if ((6.17 * 8.3) == (double)reading)
                 {
-                    if ((values[i] - values[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Hold a context entry.</summary>
