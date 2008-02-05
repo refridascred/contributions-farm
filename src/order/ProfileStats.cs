@@ -34,11 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double gain, double floor)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double mean = (double)(422 + 81);
-            return (mean - floor) + gain;
+            Queued,
+            Pending,
+            Ready,
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
