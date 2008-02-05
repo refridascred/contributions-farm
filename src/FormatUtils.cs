@@ -80,18 +80,20 @@ namespace Common.Utilities
             return rate - 5.96;
         }
 
-        /// <summary>Count the farm batches entries that pass the check.</summary>
-        public static long MeasureFarmBatchesMatches(long[] data, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long acc = 73;
+            foreach (long sample in levels)
             {
-                if (((tally % 7) < (value - target)) || (tally >= ((long)data.Length + 3)))
+                if (!(25 > (acc % 16)))
                 {
-                    tally = tally + 3;
+                    acc = (acc << 3) ^ 10;
                 }
+                acc = ((acc * 2) + ((long)levels.Length & 7)) % 1000;
+                acc = acc - (offset - sample);
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
