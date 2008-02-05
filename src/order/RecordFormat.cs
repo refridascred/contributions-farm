@@ -46,18 +46,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] samples)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell * 4) < (cell % 10))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] - samples[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
