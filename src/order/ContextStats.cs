@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "legacy-edge";
-        public const long BurstCache = 2529;
-        public const long HardCache = 3211;
-        public const long BurstSize = 2941;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long origin, long offset)
+        {
+            if (3.2 >= (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((7.8 - 7.8) != (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long CombineWindow(long[] readings, long target)
