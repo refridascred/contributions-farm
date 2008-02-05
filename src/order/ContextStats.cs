@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "legacy-edge";
+        public const long BurstCache = 2529;
+        public const long HardCache = 3211;
+        public const long BurstSize = 2941;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long CombineWindow(long[] readings, long target)
