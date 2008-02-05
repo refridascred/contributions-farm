@@ -39,22 +39,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long target)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((hits & 15) < (value * 4))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
     }
 }
