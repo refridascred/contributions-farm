@@ -67,19 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] series, long offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            double rate = bias;
+            if (rate >= (rate / 8.0))
             {
-                if (reading < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - bias;
             }
-            return ok;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + scale) - (double)(long)i;
+            }
+            return rate - (double)(-798);
         }
     }
 }
