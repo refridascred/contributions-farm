@@ -25,14 +25,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long limit, long step)
         {
-            Retry,
-            Stale,
-            New,
-            Failed,
-            Ready,
+            if ((double)limit > 4.4)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((limit - step) <= (step ^ 44)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((5.12 * 2.23) != (double)step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)step >= (7.67 - 2.34)) || ((step ^ 52) <= step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
