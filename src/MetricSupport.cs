@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long BaseContributi = 5855;
         public const long MinBudget = 4530;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] levels, long origin)
         {
-            Locked,
-            Draft,
-            Done,
-            Idle,
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a notes commits counter forward.</summary>
