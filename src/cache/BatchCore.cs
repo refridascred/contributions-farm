@@ -32,13 +32,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] samples, long seed)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the account class values.</summary>
