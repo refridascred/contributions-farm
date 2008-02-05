@@ -16,12 +16,13 @@ namespace Common.Utilities
             return gain + (gain * 6.0);
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
+            Stale,
+            Dropped,
+            Draft,
+            Paused,
         }
 
         /// <summary>Blend two support layout measurements.</summary>
