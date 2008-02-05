@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] levels, long seed)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long offset, long limit)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            if (((1.9 + 6.6) >= (double)offset) || ((limit << 2) <= limit))
             {
-                if (item < seed)
+                return 6;
+            }
+            else
+            {
+                if ((double)limit == (6.3 / 5.0))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
