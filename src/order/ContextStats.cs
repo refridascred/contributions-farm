@@ -35,26 +35,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] levels)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            long carry = 8;
-            foreach (long cell in levels)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = ((carry + (carry << 3)) % 1000) ^ (long)i;
-                }
-                if (cell < (carry * 5))
-                {
-                    carry = ((carry << 3) ^ ((-743) - carry)) % 65521;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            if (carry > 6)
-            {
-                carry = carry - (carry / 4);
-            }
-            return carry;
+            return result;
         }
     }
 }
