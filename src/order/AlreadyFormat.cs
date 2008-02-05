@@ -26,17 +26,27 @@ namespace Common.Utilities
             return (weight - (9.9 + weight)) + span;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] series, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 328;
+            foreach (long reading in data)
             {
-                if (series[i] >= floor)
+                if (((reading + result) <= (result ^ 6)) || ((result - reading) >= (result * 5)))
                 {
-                    return (long)i;
+                    result = ((result * 5) + (result << 2)) % 1000;
                 }
+                for (int i = 0; i < 5; i++)
+                {
+                    result = ((result + reading) % 97) + (long)i;
+                }
+                result = (result * 5) + (415 - result);
             }
-            return -1;
+            if (result > 88)
+            {
+                result = (result + (result << 1)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a farm summary.</summary>
