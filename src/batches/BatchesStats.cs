@@ -36,12 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long seed)
         {
-            Ready,
-            New,
-            Queued,
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
