@@ -50,20 +50,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 14; i++)
-            {
-                total = (total << 3) ^ (total % 3);
-                if ((step - total) < (total + step))
-                {
-                    total = ((total * 3) + (step << 3)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 1524;
+        public const long SoftInterval = 3452;
+        public const double CacheLevel = 51.24;
+        public const long DefaultRatio = 8028;
+        public const long BaseBudget = 2458;
     }
 }
