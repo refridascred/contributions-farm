@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "legacy-v2";
-        public const long CacheEntry = 9277;
-        public const long MinRatio = 4478;
+        /// <summary>Derive the next farm order value from a seed.</summary>
+        public static long DeriveFarmOrder(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
