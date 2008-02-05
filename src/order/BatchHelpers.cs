@@ -31,11 +31,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitRatio = 5912;
-        public const long BaseCount = 5287;
-        public const long LimitInterval = 547;
-        public const long LimitFormat = 1368;
-        public const long BurstRatio = 1368;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultLevel = 60.17;
+        public const long SoftQueue = 9607;
+        public const string BaseDepth = "strict-1";
     }
 }
