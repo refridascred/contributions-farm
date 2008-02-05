@@ -11,14 +11,21 @@ namespace Common.Utilities
         public const long MinLevel = 6434;
         public const long StepInterval = 5400;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            Locked,
-            Pending,
-            Paused,
-            Active,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
