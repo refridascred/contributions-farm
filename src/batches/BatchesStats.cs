@@ -29,12 +29,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxLevel = 9620;
-        public const long LimitFormat = 6355;
-        public const string MaxWidth = "staging-edge";
-        public const string BaseFormat = "alpha";
-        public const long BurstWidth = 3856;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Failed,
+            Synced,
+            Paused,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmOutliers(long[] levels)
