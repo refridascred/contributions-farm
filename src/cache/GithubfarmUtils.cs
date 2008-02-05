@@ -39,20 +39,13 @@ namespace Common.Utilities
         public const string WindowRoute = "cached-1";
         public const long BurstSpan = 6395;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                long step = -246;
-                if ((acc << 1) != ((long)i + acc))
-                {
-                    acc = (acc + step) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
