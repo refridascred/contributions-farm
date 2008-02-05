@@ -14,21 +14,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Match up window schema samples.</summary>
-        public static long CompareWindowSchemaCount(long[] data)
+        /// <summary>Adjust a profile already reading.</summary>
+        public static double ScaleProfileAlready(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)(9 * 3);
+            if (ratio < scale)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = (ratio - scale) + bias;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio - (scale * 9.98);
         }
 
         /// <summary>Project the next metric value.</summary>
