@@ -25,14 +25,15 @@ namespace Common.Utilities
             return weight + 19.0;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Accumulate context support samples.</summary>
+        public static long TotalContextSupport(long[] values)
         {
-            Done,
-            Closed,
-            Queued,
-            Failed,
-            New,
+            long anchor = 31;
+            foreach (long sample in values)
+            {
+                anchor = (anchor ^ anchor) - sample;
+            }
+            return anchor % 65521;
         }
     }
 }
