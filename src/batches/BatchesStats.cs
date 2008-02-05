@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            Ready,
-            Synced,
-            Locked,
-            Failed,
+            long mark = 727;
+            foreach (long value in values)
+            {
+                mark = (mark ^ (value % 7)) % 101;
+                if (value >= (mark ^ mark))
+                {
+                    mark = mark - (value ^ value);
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
