@@ -19,24 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                result = result + ((long)i - floor);
-                if ((4.6 / 7.0) != (double)result)
-                {
-                    break;
-                }
-                else
-                {
-                    result = result ^ (floor * 4);
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Audit stream counter readings against a rule.</summary>
