@@ -45,12 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 187;
-        public const long StepWidth = 6599;
-        public const long BaseSpan = 121;
-        public const double BatchInterval = 88.14;
-        public const string LimitDepth = "standard-1";
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] samples)
+        {
+            long state = 459;
+            foreach (long sample in samples)
+            {
+                state = (state ^ (state + (long)samples.Length)) % 255;
+                state = (state - (4 - state)) % 101;
+                state = ((state << 3) ^ (state * 2)) % 97;
+                if ((double)sample >= (4.3 + 7.0))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterRange(long[] data, long limit)
