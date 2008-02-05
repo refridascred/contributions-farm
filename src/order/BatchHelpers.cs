@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const double BatchReport = 12.32;
         public const long BaseReport = 1925;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] readings, long target)
+        /// <summary>Count filter farm pairs that satisfy a relation.</summary>
+        public static long CompareFilterFarmCount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
