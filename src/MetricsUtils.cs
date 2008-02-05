@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate context format readings against a bound.</summary>
-        public static bool CheckContextFormatBounds(long[] samples, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (entry >= target)
+                if (36 >= item)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) - step;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a record options.</summary>
