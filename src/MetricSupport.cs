@@ -28,22 +28,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] values, long bound)
-        {
-            long carry = 74;
-            foreach (long item in values)
-            {
-                if ((bound - bound) > (item - bound))
-                {
-                    carry = (carry - item) % 65521;
-                }
-                if ((item + carry) >= (679 + item))
-                {
-                    carry = (carry ^ (bound * 5)) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 7982;
+        public const string SoftSupport = "staging-1";
+        public const string BaseWidth = "latest-1";
+        public const long MinSupport = 1171;
+        public const long HardCount = 9855;
     }
 }
