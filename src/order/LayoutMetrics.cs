@@ -25,11 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseOrder = "local";
-        public const long WindowOrder = 298;
-        public const long DefaultWidth = 6736;
-        public const string RetryOrder = "open-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxRatio = 9918;
+        public const string WindowSize = "alpha-edge";
+        public const long MinCache = 5408;
+        public const long BatchRatio = 419;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LocateChannelIndex(long[] readings, long offset)
