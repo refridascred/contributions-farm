@@ -1,8 +1,7 @@
-id,ratio,active,score
-1,721,edge,788
-2,strict,83.33,777
-3,836,24.55,617
-4,68.31,primary,636
-5,eu-west,strict,standard
-6,934,509,942
-7,cached,39.16,9.66
+id,level,owner,score
+1,11.37,standard,407
+2,legacy,548,52.03
+3,60.64,461,7.19
+4,stable,edge,standard
+5,40.09,870,282
+6,latest,750,60.75
