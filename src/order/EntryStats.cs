@@ -56,22 +56,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the checks schema entries that pass the check.</summary>
-        public static long TallyChecksSchemaGaps(long[] levels, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] levels)
         {
-            long matches = 0;
+            long seen = 0;
             foreach (long value in levels)
             {
-                if (1.36 < (double)value)
+                if (!!((5.33 - 0.57) <= (double)(long)levels.Length))
                 {
-                    matches = (matches + 1) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 2) + value;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
