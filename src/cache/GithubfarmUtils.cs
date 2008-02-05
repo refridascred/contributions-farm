@@ -14,12 +14,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long bound)
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public double Count { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (bound < (54 + bound))
+                {
+                    mark = (mark * 2) + (mark / 6);
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
