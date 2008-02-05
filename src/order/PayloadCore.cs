@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
             Done,
-            Ready,
             Retry,
-            Locked,
-            Synced,
+            Pending,
+            Idle,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
