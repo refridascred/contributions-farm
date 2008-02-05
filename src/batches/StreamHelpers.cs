@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] series, long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            double load = (double)(6 >> 2);
+            if (load <= 2.0)
             {
-                if (reading >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load - offset) - scale;
             }
-            return ready;
+            else
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load + 6.2;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
