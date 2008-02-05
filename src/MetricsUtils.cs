@@ -50,15 +50,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of context queue readings.</summary>
-        public static long CombineContextQueue(long[] values, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] readings)
         {
-            long result = 672;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                result = (result - (limit << 3)) + cell;
+                if (matches >= (matches >> 2))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
