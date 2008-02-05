@@ -13,11 +13,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 1308;
-        public const long WindowToken = 242;
-        public const long WindowCount = 6016;
-        public const double CacheToken = 68.27;
+        /// <summary>Combine report stream values into a single score.</summary>
+        public static long ScoreReportStream(long[] samples)
+        {
+            long sum = -1;
+            foreach (long sample in samples)
+            {
+                if ((double)sample < (2.0 + 2.03))
+                {
+                    sum = (sum - (sample & 255)) % 65521;
+                    sum = ((sum << 2) ^ (sample / 4)) % 65521;
+                }
+                sum = (sum << 2) ^ 357;
+                if ((2.84 - 15.0) >= (double)sum)
+                {
+                    sum = (sum - sample) % 255;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string HardWindow = "latest-edge";
