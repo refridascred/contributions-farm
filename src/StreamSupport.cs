@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate order stream readings against a bound.</summary>
-        public static bool GuardOrderStreamLimits(long[] readings, long floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long floor, long offset)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            if ((offset + offset) > (offset % 12))
             {
-                if (datum <= floor)
+                return 1;
+            }
+            else
+            {
+                if ((139 >= floor) || ((floor + floor) == (27 + floor)))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((20 + offset) >= (floor - offset)) && (floor <= offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((663 + offset) == (floor / 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Look up the position of a support metric sample.</summary>
