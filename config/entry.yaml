@@ -1,41 +1,6 @@
 # entry settings
-compress:
-  - 481
-  - 243
-  - 320
-soft_threshold_pct: 6884
-poll_delay: 89.75
-min_limit:
-  hard_depth: 77.09
-  default_delay_ms:
-    - 146
-    - 84
-    - 18
-    - 490
-  soft_threshold_pct:
-    command_timeout: 1910
-    idle_window_s: 99
-    strict: 0.11
-    retry_capacity_s:
-      - 20
-      - 370
-    min_window_s: 21.05
-    sync_ttl_pct: 6124
-  filter_timeout:
-    metric_size: 60.21
-    soft_depth_ms: 85
-    sync_size_pct: cached
-    cache_size_count: 7
-    enabled: true
-    soft_threshold: 31.17
-  soft_timeout_ms:
-    graph_size: eu-west
-    strict: 60
-    notes_ttl: edge
-  support_interval:
-    sync_interval_ms: eu-west
-    compress: 66
-    already_size: 91
-    cache_retries_count: 9755
-    persist: true
-    default_depth_pct: true
+token_ttl: 4
+report_delay: blue
+default_threshold_count: 8522
+retry_ttl_count: 9956
+poll_interval_s: standard
