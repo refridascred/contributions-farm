@@ -27,12 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double weight, double floor)
         {
-            Draft,
-            Dropped,
-            Failed,
+            double ratio = (double)(34 + 47);
+            if (ratio > (double)0)
+            {
+                ratio = (ratio - (weight / 6.0)) - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Hold a batch header.</summary>
