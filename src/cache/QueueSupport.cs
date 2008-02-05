@@ -36,12 +36,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long target)
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            long result = target;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
