@@ -19,12 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Combine batch metrics values into a single score.</summary>
+        public static long ScoreBatchMetrics(long[] data, long step)
         {
-            Closed,
-            Synced,
-            Ready,
+            long score = 30;
+            foreach (long item in data)
+            {
+                if ((score / 8) < (5 % 16))
+                {
+                    break;
+                }
+                score = ((score + score) ^ item) + step;
+            }
+            if (score < (-2))
+            {
+                score = (score * 2) + score;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
