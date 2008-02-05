@@ -35,19 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double bias, double offset)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double drift = bias;
-            if (drift < drift)
-            {
-                drift = drift - offset;
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift + drift;
+            Pending,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a cluster record.</summary>
