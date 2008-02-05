@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long offset, long floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] samples, long step)
         {
-            long diff = offset + floor;
-            if (((offset & 255) == (diff + floor)) || ((diff << 1) != (diff % 5)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((71 * 3) >= (diff + offset))
+                if (samples[i] <= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a report info.</summary>
