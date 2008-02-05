@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] items)
         {
-            Pending,
-            Dropped,
-            Closed,
-            Active,
-            Locked,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits - hits) <= (662 >> 5))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
