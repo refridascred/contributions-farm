@@ -66,22 +66,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] items, long bound)
+        /// <summary>Count the farm cluster entries that pass the check.</summary>
+        public static long TallyFarmClusterGaps(long[] readings)
         {
-            long result = 52;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((0.78 / 4.0) == (double)reading)
+                if ((632 >> 3) == (cell + cell))
                 {
-                    result = ((result << 3) ^ (result * 3)) - bound;
+                    seen = seen + 1;
                 }
             }
-            if (result < 24)
-            {
-                result = (result - (result & 15)) % 65521;
-            }
-            return result;
+            return seen;
         }
     }
 }
