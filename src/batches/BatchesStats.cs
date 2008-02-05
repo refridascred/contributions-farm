@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a route metrics counter forward.</summary>
-        public static long RollRouteMetrics(long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            long acc = 82;
+            foreach (long value in series)
             {
-                if (!((total % 3) < bound))
-                {
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                acc = (((acc * 2) + (23 + 54)) % 4096) ^ value;
             }
-            return total;
+            if (acc > 9)
+            {
+                acc = (acc - 59) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
