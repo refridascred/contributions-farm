@@ -1,7 +1,6 @@
 {
-  "hard_depth_s": ["primary", "blue", "primary", "eu-west"],
-  "idle_threshold_s": 43.93,
-  "retry_ttl_s": 3346,
-  "flush_interval": 54,
-  "format_retries": 1
+  "commits_depth": "blue",
+  "soft_retries": 250,
+  "checks_ttl": ["strict", "legacy"],
+  "soft_limit": [204, 288, 158, 339]
 }
