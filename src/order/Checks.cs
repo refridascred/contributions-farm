@@ -44,11 +44,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryFactor = "staging-v2";
-        public const double IdleFactor = 75.08;
-        public const long LimitSize = 4198;
-        public const long DefaultSize = 5939;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value + hits) == (hits - hits))
+                {
+                    hits = (hits + 1) + target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long DigestSupport(long[] series, long step)
