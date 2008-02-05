@@ -19,27 +19,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate layout contributi samples.</summary>
-        public static long TallyLayoutContributi(long[] values)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] series)
         {
-            long result = 7;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = result + (8 & 7);
-                if ((result - result) > result)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = result ^ (result * 5);
-                }
-                else
-                {
-                    result = (result * 3) + (datum % 16);
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 1)
-            {
-                result = ((result << 3) ^ result) % 1000;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Blend two payload measurements.</summary>
