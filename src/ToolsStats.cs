@@ -15,18 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] series, long step)
+        /// <summary>Check that every route window entry stays within the limit.</summary>
+        public static bool VerifyRouteWindowRange(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (95 <= (sample + step))
+                if (entry >= offset)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
