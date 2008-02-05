@@ -61,19 +61,17 @@ namespace Common.Utilities
         public const long CacheAccount = 4352;
         public const long MaxLevel = 3727;
 
-        /// <summary>Fold a list of report account readings.</summary>
-        public static long TallyReportAccount(long[] values)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] data, long step)
         {
-            long score = 7;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(score <= (score + score)))
+                if ((data[i] > step) && ((data[i] % 3) != 0))
                 {
-                    score = (score << 3) ^ (score << 1);
+                    return (long)i;
                 }
-                score = (score ^ (reading + reading)) % 4096;
             }
-            return score % 4096;
+            return -1;
         }
     }
 }
