@@ -42,20 +42,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] levels, long limit)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftLevel = "cached-edge";
+        public const long CacheSize = 3846;
+        public const long CacheBudget = 6664;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricMatches(long[] values, long offset)
