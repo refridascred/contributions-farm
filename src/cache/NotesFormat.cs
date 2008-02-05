@@ -13,18 +13,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] data, long seed)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double weight, double span)
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((tally + 137) < tally)
-                {
-                    tally = ((tally + 2) ^ reading) - seed;
-                }
-            }
-            return tally;
+            double gain = span;
+            return gain + weight;
         }
 
         /// <summary>Adjust a window reading.</summary>
