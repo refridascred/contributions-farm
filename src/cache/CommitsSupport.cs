@@ -85,38 +85,22 @@ namespace Common.Utilities
         public const string BurstSupport = "strict-1";
         public const long BatchSupport = 1667;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long limit, long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] data, long target)
         {
-            if (((limit + limit) <= (limit * 5)) || ((limit + target) <= (4 - target)))
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((14 - limit) >= (limit + 76))
+                if ((sample ^ sample) > sample)
                 {
-                    return 5;
+                    count = (count + 3) + target;
                 }
                 else
                 {
-                    if (target >= (target % 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target ^ 43) > (limit & 31))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
