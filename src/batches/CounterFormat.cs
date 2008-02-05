@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] samples, long offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double weight, double span)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            double load = weight / 3.0;
+            if (load > load)
             {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load + span;
             }
-            return flag;
+            return load - (double)60;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
