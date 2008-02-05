@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the filter profile series from a seed.</summary>
-        public static long StepFilterProfile(long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((matches <= (matches / 7)) || ((matches + item) > (matches & 1)))
                 {
-                    acc = ((acc + (step << 2)) % 65521) + (long)i2;
+                    matches = matches + 1;
                 }
-                acc = ((acc * 3) + (acc + 19)) % 4096;
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Project the next account value.</summary>
