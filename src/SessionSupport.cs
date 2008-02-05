@@ -14,11 +14,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
