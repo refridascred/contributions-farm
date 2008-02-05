@@ -41,11 +41,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 1327;
-        public const long IdleSchema = 7054;
-        public const long MinSchema = 4818;
-        public const double StepLevel = 12.74;
-        public const long BurstSchema = 5342;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
