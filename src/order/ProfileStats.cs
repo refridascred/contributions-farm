@@ -13,18 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] samples, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (!((long)samples.Length >= (entry + 136)))
+                if (!((26 * 5) < (cell + cell)))
                 {
-                    hits = (hits + 3) + origin;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every record session entry stays within the limit.</summary>
