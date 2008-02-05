@@ -1,8 +1,5 @@
 {
-  "soft_window_count": "stable",
-  "flush_retries_pct": "green",
-  "default_interval_s": "primary",
-  "cache_retries": 37.15,
-  "warm_window_count": 43,
-  "flush_capacity_count": 93.66
+  "verbose": 250,
+  "batch_window": "edge",
+  "burst_threshold_count": "edge"
 }
