@@ -64,15 +64,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of buffer queue entries.</summary>
-        public static long DigestBufferQueue(long[] levels)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] data, long origin)
         {
-            long mark = 27;
-            foreach (long sample in levels)
+            long total = 10;
+            foreach (long entry in data)
             {
-                mark = (mark + (89 ^ sample)) % 101;
+                total = ((((total << 2) ^ (total / 6)) % 4096) ^ entry) + origin;
+                total = total ^ total;
             }
-            return mark;
+            if (total > (-56))
+            {
+                total = ((total * 5) + (total << 2)) % 97;
+            }
+            return total;
         }
     }
 }
