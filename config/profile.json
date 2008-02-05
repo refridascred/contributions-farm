@@ -1,17 +1,6 @@
 {
-  "burst_delay_ms": 64,
-  "checks_ratio": [62, 164, 68, 2],
-  "report_depth": ["open", "latest"],
-  "batch_interval": "eu-west",
-  "hard_size_pct": {
-    "report_threshold": {
-      "metric_interval": 80.6,
-      "base_capacity": "stable",
-      "audit": "fallback",
-      "poll_capacity_s": 58.45,
-      "persist": 79.97
-    },
-    "strict": false,
-    "batch_capacity_ms": 89.02
-  }
+  "warm_ratio_ms": "standard",
+  "persist": 11.5,
+  "poll_capacity_count": 976,
+  "default_limit_ms": true
 }
