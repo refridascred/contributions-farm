@@ -83,17 +83,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] samples, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (samples[i] > origin)
+                if (!(2.9 >= (double)tally))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + item;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
