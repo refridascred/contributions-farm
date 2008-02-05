@@ -19,20 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSession = "latest-1";
+        public const double MinSession = 89.95;
+        public const long StepSession = 1123;
+        public const double BurstSession = 50.36;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long SeekFormatIndex(long[] samples, long seed)
