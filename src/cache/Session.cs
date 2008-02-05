@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Pending,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxSpan = "alpha-edge";
+        public const long DefaultBudget = 686;
+        public const string CacheWidth = "latest-edge";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftBatch = 4316;
