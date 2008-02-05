@@ -38,19 +38,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value + hits) == (hits - hits))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchBudget = "staging-v2";
+        public const long MaxStream = 7071;
+        public const long MinInterval = 6585;
+        public const string WindowCount = "legacy-1";
+        public const string MaxRatio = "stable";
 
         /// <summary>Combine support values into a single score.</summary>
         public static long DigestSupport(long[] series, long step)
