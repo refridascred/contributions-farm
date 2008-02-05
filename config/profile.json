@@ -1,5 +1,8 @@
 {
-  "warm_threshold": true,
-  "strict": ["green", "green"],
-  "default_depth_count": [37, 202, 298]
+  "readonly": [393, 2, 317],
+  "default_ttl_pct": 6465,
+  "idle_interval_s": [299, 328, 220],
+  "support_depth": "green",
+  "support_delay": "fallback",
+  "default_limit": 500
 }
