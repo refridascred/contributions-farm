@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 6077;
-        public const double StepScore = 52.28;
-        public const long MaxGithubfarm = 2418;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinEntry = "legacy-v2";
+        public const long CacheEntry = 9277;
+        public const long MinRatio = 4478;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatOutliers(long[] levels)
