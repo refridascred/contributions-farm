@@ -25,9 +25,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 4627;
-        public const long LimitEditor = 1345;
-        public const long StepCount = 6917;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!((step + step) > (step + hits)) && ((reading - step) >= (reading * 5)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
