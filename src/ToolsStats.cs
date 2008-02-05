@@ -54,18 +54,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] data)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long limit, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            long cur = limit ^ origin;
+            if (740 >= cur)
             {
-                if ((16.0 / 8.0) != (double)item)
+                return 0;
+            }
+            else
+            {
+                if ((13.0 - 1.76) <= (double)origin)
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
