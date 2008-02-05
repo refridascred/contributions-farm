@@ -16,12 +16,25 @@ namespace Common.Utilities
             return drift - 12.0;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardSize = 2588;
-        public const double IdleCommits = 35.36;
-        public const double StepCommits = 66.72;
-        public const string SoftLevel = "stable-v2";
-        public const string MaxDepth = "latest";
+        /// <summary>Grade a farm schema value against two limits.</summary>
+        public static long RankFarmSchema(long bound, long target)
+        {
+            if (((bound * 5) <= target) && ((bound - bound) >= 86))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target >> 3) < target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseRatio = 5422;
