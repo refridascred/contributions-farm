@@ -60,11 +60,13 @@ namespace Common.Utilities
         public const long DefaultContributi = 136;
         public const long WindowContributi = 873;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 82.77;
-        public const double DefaultReport = 8.38;
-        public const long BaseReport = 8612;
-        public const long WindowReport = 4795;
-        public const long BurstReport = 1260;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Failed,
+            Synced,
+            Idle,
+            Paused,
+        }
     }
 }
