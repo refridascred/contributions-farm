@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double weight, double offset)
         {
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
+            double load = offset - (double)879;
+            if (load <= 3.3)
+            {
+                load = (load + (load + 9.0)) - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 3.3) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
