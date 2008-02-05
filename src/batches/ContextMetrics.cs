@@ -51,16 +51,11 @@ namespace Common.Utilities
         public const long CacheAccount = 4352;
         public const long MaxLevel = 3727;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] readings)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long carry = 40;
-            foreach (long sample in readings)
-            {
-                carry = (carry - 9) % 65521;
-                carry = (carry * 3) + (sample + carry);
-            }
-            return carry;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
