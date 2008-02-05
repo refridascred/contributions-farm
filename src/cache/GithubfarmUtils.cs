@@ -26,19 +26,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long acc = 3;
-            foreach (long entry in samples)
-            {
-                acc = ((acc ^ acc) % 1000) + entry;
-            }
-            if (acc < 428)
-            {
-                acc = (acc + (acc * 5)) % 101;
-            }
-            return acc % 97;
+            Done,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a account header.</summary>
