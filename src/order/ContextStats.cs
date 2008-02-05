@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 9624;
-        public const long SoftTimeout = 248;
-        public const long WindowSpan = 1949;
-        public const double SoftQueue = 12.07;
+        /// <summary>Blend two entry metrics measurements.</summary>
+        public static double ScaleEntryMetrics(double ratio, double offset)
+        {
+            double ratio2 = 4.36;
+            if (ratio2 >= (double)5)
+            {
+                ratio2 = ratio2 + 3.2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 - 7.43) - (double)(long)i;
+            }
+            return ratio2 + (ratio - offset);
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleSize = 5440;
