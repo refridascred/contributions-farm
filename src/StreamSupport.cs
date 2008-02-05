@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double bias, double bias2)
+        /// <summary>Validate session metrics readings against a bound.</summary>
+        public static bool VerifySessionMetricsLimits(long[] samples, long bound)
         {
-            double drift = bias * 5.0;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                drift = ((drift - drift) + (double)(long)i) - bias2;
+                if (sample >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift - (drift + bias);
+            return flag;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
