@@ -69,13 +69,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Count the batch report entries that pass the check.</summary>
+        public static long MeasureBatchReportMatches(long[] readings)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading <= (7.1 * 1.4))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of already readings.</summary>
