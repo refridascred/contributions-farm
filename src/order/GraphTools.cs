@@ -28,24 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] readings, long floor)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] items, long step)
         {
-            long state = -7;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state << 2) ^ (6 & 15)) % 255;
-                state = (state + (state - state)) % 65521;
-                if ((cell + 6) < ((long)readings.Length & 1))
+                if ((items[i] < step) && ((items[i] % 2) != 0))
                 {
-                    state = ((state * 3) + (floor - state)) % 97;
+                    return (long)i;
                 }
             }
-            if (state > (-6))
-            {
-                state = state + (539 * 2);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
