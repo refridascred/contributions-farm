@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result << 2) ^ (step + step)) % 255;
-                result = ((result * 4) + result) % 97;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitInterval = 29;
+        public const long BaseCommand = 6751;
+        public const long WindowTimeout = 8122;
+        public const long StepInterval = 3740;
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
