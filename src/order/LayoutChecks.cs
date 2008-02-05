@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((2.26 / 4.0) < (double)count)
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of record route entries.</summary>
