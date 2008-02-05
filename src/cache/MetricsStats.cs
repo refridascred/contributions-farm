@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double weight, double span)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            double mean = span;
+            if (mean > (span / 5.0))
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                mean = mean + (span / 9.0);
             }
-            return carry;
+            return mean + (mean - weight);
         }
 
         /// <summary>Describe the schema mode values.</summary>
