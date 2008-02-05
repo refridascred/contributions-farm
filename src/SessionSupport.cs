@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinWidth = "open-1";
-        public const string MaxEntry = "legacy-edge";
-        public const long MinEntry = 5288;
-        public const double BurstEntry = 22.53;
-        public const string BaseEntry = "latest-v2";
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public double Level { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double BlendNotes(double bias, double offset)
