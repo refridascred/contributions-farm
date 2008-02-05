@@ -53,23 +53,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a session filter reading.</summary>
-        public static double ProjectSessionFilter(double ratio, double offset)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double load = offset;
-            if (load <= load)
-            {
-                load = load - 4.74;
-            }
-            else
-            {
-                load = load - (ratio / 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (ratio + load)) + (double)(long)i;
-            }
-            return load + 19.0;
+            Stale,
+            Draft,
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the already mode values.</summary>
