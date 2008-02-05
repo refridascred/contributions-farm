@@ -32,14 +32,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
+            Stale,
+            Failed,
             Queued,
-            Idle,
             Closed,
-            Locked,
-            New,
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
