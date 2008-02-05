@@ -49,13 +49,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] series)
         {
-            New,
-            Failed,
-            Synced,
-            Ready,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum > 6.7)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
