@@ -27,11 +27,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryInterval = 6341;
-        public const long SoftScore = 4430;
-        public const long BaseSpan = 8080;
-        public const long CacheRoute = 5790;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double bias, double offset)
+        {
+            double weight = 8.0 + (bias * 8.46);
+            if (weight > (2.9 + weight))
+            {
+                weight = weight + (weight - offset);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + offset) + (double)(long)i;
+            }
+            return weight + offset;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchRange(long[] readings, long offset)
