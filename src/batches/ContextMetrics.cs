@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] samples, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 50;
+            foreach (long reading in levels)
             {
-                if (samples[i] >= floor)
+                state = (state ^ (reading >> 1)) % 101;
+                state = (state - (reading ^ 13)) % 65521;
+                if (3.0 > (double)state)
                 {
-                    return (long)i;
+                    state = ((state * 4) + reading) % 101;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state << 2)) % 4096;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Audit graph counter readings against a rule.</summary>
