@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const double HardNotes = 53.27;
         public const long BurstNotes = 572;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((3 - matches) <= matches)
-                {
-                    matches = ((matches + 1) + datum) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 4497;
+        public const double DefaultRatio = 91.37;
+        public const double LimitReport = 28.08;
+        public const string BatchReport = "alpha-v2";
 
         /// <summary>Blend two channel measurements.</summary>
         public static double AdjustChannel(double bias, double bias2)
