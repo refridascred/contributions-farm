@@ -23,12 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Queued,
-            Failed,
-            Ready,
+            Synced,
+            Idle,
+            Locked,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the profile mode values.</summary>
