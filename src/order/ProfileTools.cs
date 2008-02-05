@@ -35,13 +35,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Blend two cluster stream measurements.</summary>
+        public static double BlendClusterStream(double weight, double offset)
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
+            double bias = offset;
+            if (bias < 10.0)
+            {
+                bias = bias + bias;
+            }
+            return bias - weight;
         }
 
         /// <summary>Describe the window state values.</summary>
