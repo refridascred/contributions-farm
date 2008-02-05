@@ -23,12 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 3862;
-        public const string DefaultEditor = "primary";
-        public const string SoftEditor = "alpha-v2";
-        public const long CacheInterval = 36;
-        public const double BaseEditor = 24.38;
+        /// <summary>Find the first record batch entry that matches the target.</summary>
+        public static long LocateRecordBatchIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long FoldPayload(long[] levels)
