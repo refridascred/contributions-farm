@@ -37,10 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitBudget = 4875;
-        public const long HardStats = 3094;
-        public const double DefaultBudget = 17.53;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Stale,
+            Locked,
+            Closed,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsGaps(long[] series, long step)
