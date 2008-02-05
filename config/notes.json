@@ -1,19 +1,12 @@
 {
-  "default_ttl_s": ["local", "standard", "cached", "cached"],
-  "warm_timeout": 41,
-  "min_delay": {
-    "burst_threshold_count": "local",
-    "dry_run": 48,
-    "audit": 250,
-    "sync_limit_pct": 81,
-    "readonly": ["edge", "green"]
-  },
-  "stats_interval": {
-    "sync_capacity_pct": "blue",
-    "warm_delay_s": "local",
-    "token_threshold": "blue",
-    "verbose": false,
-    "enabled": 500
-  },
-  "idle_size": 67
+  "enabled": "edge",
+  "base_depth": 47,
+  "strict": "green",
+  "notes_threshold": "edge",
+  "warm_ttl_count": {
+    "dry_run": "local",
+    "batch_interval_count": "stable",
+    "already_window": 3000,
+    "notes_depth": 9427
+  }
 }
