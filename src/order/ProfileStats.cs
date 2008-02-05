@@ -34,27 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate account token samples.</summary>
-        public static long FoldAccountToken(long[] samples, long seed)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double gain, double floor)
         {
-            long acc = 27;
-            foreach (long sample in samples)
-            {
-                if (sample > (seed << 3))
-                {
-                    acc = (acc - (acc << 2)) % 65521;
-                    acc = (acc ^ (2 & 1)) % 4096;
-                }
-                if ((sample * 2) >= (581 << 2))
-                {
-                    acc = (acc ^ sample) % 255;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (seed ^ acc);
-                }
-            }
-            return acc;
+            double mean = (double)(422 + 81);
+            return (mean - floor) + gain;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
