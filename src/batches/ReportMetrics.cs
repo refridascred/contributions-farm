@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultCount = 2.48;
-        public const long BatchSpan = 6992;
-        public const long MaxQueue = 9361;
-        public const long BurstCount = 3977;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinSpan = 7183;
+        public const long HardContext = 7001;
+        public const string WindowWidth = "stable";
+        public const long WindowContext = 799;
+        public const string BaseContext = "strict-1";
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileGaps(long[] levels)
