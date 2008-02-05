@@ -24,18 +24,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] series, long limit)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long mark = -6;
-            foreach (long entry in series)
-            {
-                if ((limit + entry) < (757 - limit))
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-            }
-            return mark;
+            Dropped,
+            Locked,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the tools level values.</summary>
