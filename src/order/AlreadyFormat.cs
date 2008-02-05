@@ -37,18 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] readings)
+        /// <summary>Measure how many channel metrics samples are out of range.</summary>
+        public static long TallyChannelMetricsGaps(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((1 < item) || (((-24) - item) == (count - item)))
+                if (!((datum & 1) >= datum))
                 {
-                    count = count + 2;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the report phase values.</summary>
