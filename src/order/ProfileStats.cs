@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public double Level { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchFactor = "alpha";
+        public const double CacheLevel = 75.36;
+        public const long MinLevel = 6434;
+        public const long StepInterval = 5400;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
