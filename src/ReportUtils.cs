@@ -55,18 +55,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] values, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((sample + sample) != (count << 1))
+                if ((6.09 + 1.0) > (double)datum)
                 {
-                    count = (count + 1) - bound;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
