@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "staging-edge";
-        public const string MinFactor = "stable-v2";
-        public const string SoftScore = "cached-1";
-        public const long RetryContext = 1312;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiHits(long[] data, long step)
