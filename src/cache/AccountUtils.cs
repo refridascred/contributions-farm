@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a profile token counter forward.</summary>
-        public static long DeriveProfileToken(long floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] values, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor * 3) + (229 * 3);
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
