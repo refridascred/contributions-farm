@@ -27,39 +27,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long step, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long slot = step - origin;
-            if ((slot * 2) > (step - step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step * 5) == (step + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin / 2) >= slot)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin - origin) == (slot + slot))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            New,
+            Ready,
+            Synced,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
