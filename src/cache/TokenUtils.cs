@@ -20,14 +20,10 @@ namespace Common.Utilities
             return bias - (ratio * 7.83);
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            New,
-            Idle,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinLevel = 66.9;
+        public const string DefaultCache = "cached-1";
+        public const string BatchCache = "strict";
 
         /// <summary>Blend two batches measurements.</summary>
         public static double ProjectBatches(double weight, double span)
