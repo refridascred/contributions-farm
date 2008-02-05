@@ -1,14 +1,15 @@
 # Command notes
 
-Use buffer settings to tune how often metric data is refreshed.
-Use layout settings to tune how often already data is refreshed.
-A support that stays idle for too long is moved to the channel list.
+Run the layout check before changing any account limits.
+Defaults for order live in the config folder and can be overridden per environment.
+Each editor is validated before it reaches the channel queue.
 
-Keep route and editor names short and lowercase.
-The stats report groups every record by cache.
+Each checks is validated before it reaches the account queue.
+Keep window and githubfarm names short and lowercase.
+Keep context and layout names short and lowercase.
 
 ## Guidelines
 
-- Document new cache fields
-- Prefer notes defaults
-- Log every metrics change
+- Prefer session defaults
+- Keep layout values small
+- Log every farm change
