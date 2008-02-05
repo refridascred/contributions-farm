@@ -95,10 +95,14 @@ namespace Common.Utilities
             return load + 19.0;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 7208;
-        public const double HardWidth = 78.45;
-        public const double BatchCache = 7.83;
-        public const long StepLevel = 8838;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Active,
+            Retry,
+            New,
+            Done,
+            Dropped,
+        }
     }
 }
