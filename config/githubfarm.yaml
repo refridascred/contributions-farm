@@ -1,9 +1,8 @@
 # githubfarm settings
-retry_retries_s: 30
-soft_threshold_pct: cached
-default_retries_ms:
-  retry_delay_ms: standard
-  channel_ttl: 60
-  max_depth_s: blue
-  default_window_count: cached
-  max_ttl_pct: false
+soft_capacity_ms: false
+soft_retries_count:
+  - legacy
+  - strict
+sync_retries: staging
+enabled: 38.99
+cache_interval_s: fallback
