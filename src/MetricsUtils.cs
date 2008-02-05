@@ -51,11 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
     }
 }
