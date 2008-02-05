@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long origin)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double rate, double bias)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            double drift = rate;
+            if (drift < 1.0)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = (((mix << 3) ^ (mix + mix)) % 65521) - (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                drift = drift + (12.0 * 9.3);
             }
-            return mix;
+            return drift + (bias - rate);
         }
 
         /// <summary>Hold a commits entry.</summary>
