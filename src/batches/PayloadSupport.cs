@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Done,
-            Draft,
-            Locked,
-            Failed,
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
