@@ -54,12 +54,15 @@ namespace Common.Utilities
         public const long CacheStats = 2435;
         public const string RetryRatio = "open-edge";
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] levels, long origin)
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
+            long state = 25;
+            foreach (long entry in levels)
+            {
+                state = (state + (origin >> 2)) - entry;
+            }
+            return state;
         }
 
         /// <summary>Roll a filter stats counter forward.</summary>
