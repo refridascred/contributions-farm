@@ -70,12 +70,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public double Score { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
