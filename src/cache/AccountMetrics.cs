@@ -20,14 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            Locked,
-            Done,
-            Dropped,
-            Paused,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
