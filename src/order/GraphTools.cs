@@ -29,18 +29,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] values)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((hits >> 2) != (sample >> 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            New,
+            Done,
         }
 
         /// <summary>Match up commits samples.</summary>
