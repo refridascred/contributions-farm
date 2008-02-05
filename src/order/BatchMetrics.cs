@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 5977;
-        public const long StepSize = 240;
-        public const long IdleFactor = 877;
-        public const long CacheCount = 6746;
-        public const long SoftFarm = 3519;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double gain, double span)
+        {
+            double ratio = 0.1;
+            if (ratio >= (double)5)
+            {
+                ratio = ((ratio - ratio) + gain) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - ratio;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool CheckSupportRange(long[] readings, long bound)
