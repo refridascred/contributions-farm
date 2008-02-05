@@ -37,22 +37,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] items, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] readings)
         {
-            long score = 2;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((target * 5) > (value + target))
+                if (value <= (494 + count))
                 {
-                    score = (score * 3) + value;
+                    count = count + 2;
                 }
-                if ((5.7 - 12.0) >= (double)value)
+                else
                 {
-                    score = (score + (861 << 3)) % 65521;
+                    count = count - 1;
                 }
             }
-            return score;
+            return count;
         }
     }
 }
