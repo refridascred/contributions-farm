@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits token samples are out of range.</summary>
-        public static long MeasureCommitsTokenOutliers(long[] samples, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] readings, long seed)
         {
             long tally = 0;
-            foreach (long reading in samples)
+            foreach (long item in readings)
             {
-                if (((double)reading == (double)tally) || (((reading << 3) < offset) || ((double)offset <= (10.0 - 3.0))))
+                if ((seed / 4) <= (seed & 3))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 2) + item;
                 }
             }
             return tally;
