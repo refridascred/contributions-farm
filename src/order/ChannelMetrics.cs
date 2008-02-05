@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine command layout values into a single score.</summary>
-        public static long WeighCommandLayout(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] levels)
         {
-            long sum = 49;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (!((item ^ 44) == (sum + sum)))
+                if (!!((313 % 12) < tally))
                 {
-                    sum = sum + (27 / 5);
+                    tally = (tally + 1) + cell;
                 }
-                sum = ((sum << 2) ^ (item / 5)) % 255;
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
