@@ -20,16 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] items, long bound)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = sum ^ (7 + sum);
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((items[i] == bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Roll a token counter forward.</summary>
