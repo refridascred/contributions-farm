@@ -1,8 +1,11 @@
 {
-  "flush_ttl": "cached",
-  "audit": "eu-west",
-  "stats_interval": "local",
-  "warm_size_pct": "cached",
-  "enabled": "green",
-  "readonly": "standard"
+  "max_capacity_ms": "standard",
+  "profile_timeout": 250,
+  "enabled": 62.89,
+  "persist": ["legacy", "edge", "cached", "edge"],
+  "cache_capacity_pct": {
+    "poll_ttl_s": "edge",
+    "audit": 63.15,
+    "command_retries": true
+  }
 }
