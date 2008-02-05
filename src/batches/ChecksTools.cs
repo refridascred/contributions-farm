@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a route token pair into a bucket.</summary>
-        public static long GradeRouteToken(long floor, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] values)
         {
-            long bound = floor ^ origin;
-            if ((86 + origin) == (origin + floor))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor > (bound * 4))
+                if ((hits + hits) != (136 ^ hits))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + 602) >= (bound & 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor < (bound << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = (hits + 1) + entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
