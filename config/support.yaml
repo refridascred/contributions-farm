@@ -1,6 +1,11 @@
 # support settings
-flush_limit: true
-base_interval_count: true
-soft_timeout: 27.43
-audit: 100
-cache_size: staging
+stats_threshold: 59
+dry_run: green
+idle_size: 30
+max_capacity_count: staging
+sync_limit_ms: true
+record_retries:
+  - 282
+  - 482
+  - 314
+  - 147
