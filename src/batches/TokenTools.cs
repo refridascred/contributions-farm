@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
+            Active,
+            Pending,
+            Queued,
+            New,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
