@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] values, long target)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((3 <= (hits << 3)) && !((double)target == (4.71 + 3.0)))
-                {
-                    hits = (hits + 3) - entry;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
