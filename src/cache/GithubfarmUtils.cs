@@ -27,11 +27,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long floor)
         {
-            public bool Size { get; set; }
-            public double Region { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                long count = sum & 7;
+                if ((double)sum == (double)(-25))
+                {
+                    sum = ((sum * 2) + count) % 97;
+                    count = (count ^ count) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a account header.</summary>
