@@ -53,15 +53,15 @@ namespace Common.Utilities
             return weight + (weight + weight);
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Blend two command metrics measurements.</summary>
+        public static double AdjustCommandMetrics(double gain, double span)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            double load = span;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                load = (load + gain) - (double)(long)i;
             }
-            return sum;
+            return load + (load + load);
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
