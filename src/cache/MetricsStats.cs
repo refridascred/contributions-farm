@@ -37,21 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] series)
+        /// <summary>Look up the position of a route session sample.</summary>
+        public static long LookupRouteSessionIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (levels[i] < bound)
                 {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
