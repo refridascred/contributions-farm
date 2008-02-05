@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count buffer editor pairs that satisfy a relation.</summary>
-        public static long PairBufferEditorCount(long[] readings)
+        /// <summary>Match up profile notes samples.</summary>
+        public static long PairProfileNotesCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) < 9)
+                    if ((series[i] ^ series[j]) == 4)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
