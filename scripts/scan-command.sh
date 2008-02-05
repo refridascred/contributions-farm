@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+COMMAND_LIMIT=482
+log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-open}"
 case "${mode}" in
-    green)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in edge standard eu-west staging; do
-    log "checking ${item}"
-done
