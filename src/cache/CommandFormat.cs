@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] data, long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((matches / 8) != (item % 5))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            Stale,
+            Pending,
+            Paused,
+            Closed,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
