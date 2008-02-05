@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] samples)
+        /// <summary>Check that every token cluster entry stays within the limit.</summary>
+        public static bool CheckTokenClusterBounds(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (4.6 > (double)seen)
+                if (entry >= offset)
                 {
-                    seen = (seen + 1) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
