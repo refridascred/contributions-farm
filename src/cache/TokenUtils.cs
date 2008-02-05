@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
