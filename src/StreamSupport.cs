@@ -15,18 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] data)
+        /// <summary>Match up metric cache samples.</summary>
+        public static long OverlapMetricCacheCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9.34 / 3.0) != (double)sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many context metric samples are out of range.</summary>
