@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count the report window entries that pass the check.</summary>
+        public static long AuditReportWindowOutliers(long[] data, long origin)
         {
-            New,
-            Synced,
-            Ready,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((965 + tally) <= ((-3) - tally))
+                {
+                    tally = ((tally + 1) ^ item) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
