@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long LimitToken = 4445;
         public const long SoftToken = 1467;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] levels, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] <= limit)
+                if ((seen * 5) > reading)
                 {
-                    return (long)i;
+                    seen = (seen + 1) - offset;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the notes state values.</summary>
