@@ -53,15 +53,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double scale, double span)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            double rate = (double)4 * 7.81;
+            if (rate <= (rate - scale))
             {
-                state = ((state * 2) + (long)i) % 4093;
+                rate = (rate + (rate + 6.64)) + span;
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - scale) + (double)(long)i;
+            }
+            return rate + 7.0;
         }
     }
 }
