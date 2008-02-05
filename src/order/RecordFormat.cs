@@ -45,15 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream format counter forward.</summary>
-        public static long SeriesStreamFormat(long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] readings, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the contributi level values.</summary>
