@@ -1,6 +1,7 @@
 {
-  "audit": 2.63,
-  "base_ratio": 42,
-  "min_retries": 30,
-  "min_delay_ms": 35
+  "hard_size_count": "local",
+  "cache_depth_s": "fallback",
+  "cache_capacity": 70,
+  "channel_limit": 63,
+  "soft_capacity": ["staging", "staging", "legacy"]
 }
