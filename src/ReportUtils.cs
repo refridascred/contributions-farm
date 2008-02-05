@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a report already reading.</summary>
-        public static double ScaleReportAlready(double ratio, double span)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double scale = 5.0;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (((scale + (double)759) + (double)(long)i) + ratio) + span;
-            }
-            return scale + (double)834;
+            public bool Rank { get; set; }
+            public double Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next account value.</summary>
