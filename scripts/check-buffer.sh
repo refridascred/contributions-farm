@@ -7,16 +7,15 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in staging open local; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=135
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-fallback}"
+mode="${1:-eu-west}"
 case "${mode}" in
     strict)
         log "fast path"
