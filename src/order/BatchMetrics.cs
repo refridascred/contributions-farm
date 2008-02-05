@@ -20,21 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] series)
+        /// <summary>Validate token window readings against a bound.</summary>
+        public static bool CheckTokenWindowBounds(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading > limit)
                 {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Accumulate format context samples.</summary>
