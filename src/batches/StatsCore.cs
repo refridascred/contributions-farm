@@ -22,14 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            New,
-            Pending,
-            Ready,
-            Dropped,
+            Draft,
+            Queued,
             Paused,
+            Closed,
         }
 
         /// <summary>Match up batches samples.</summary>
