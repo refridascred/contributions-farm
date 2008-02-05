@@ -42,15 +42,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
