@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowRatio = 1.05;
+        public const long CacheLayout = 8059;
+        public const long RetryLayout = 355;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TallyBatches(long[] items, long origin)
