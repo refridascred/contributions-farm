@@ -1,11 +1,14 @@
 # Command notes
 
-The contributi module keeps graph values in sync with the route cache.
-Use counter settings to tune how often farm data is refreshed.
-Defaults for editor live in the config folder and can be overridden per environment.
+Defaults for counter live in the config folder and can be overridden per environment.
+The queue report groups every window by filter.
+
+The context module keeps queue values in sync with the account cache.
+Use route settings to tune how often schema data is refreshed.
+The farm report groups every checks by batch.
 
 ## Guidelines
 
-- Review record limits each release
-- Prefer report defaults
-- Validate graph input early
+- Validate counter input early
+- Log every checks change
+- Prefer filter defaults
