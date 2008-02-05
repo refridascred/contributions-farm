@@ -16,17 +16,27 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                sum = (sum + (28 + limit)) % 255;
-                sum = (sum << 3) ^ limit;
-                sum = ((sum * 2) + (long)i) % 101;
+                if (9.4 < (double)acc)
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ ((long)i + acc)) % 255;
+                }
+                if (!(step > (acc - (long)i)))
+                {
+                    acc = acc - step;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Combine support values into a single score.</summary>
