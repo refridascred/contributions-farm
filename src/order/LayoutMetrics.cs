@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long seed, long bound)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long edge = seed - bound;
-            if ((69 * 2) == (seed - seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((edge % 8) >= (edge << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed <= (bound + edge))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of farm session entries.</summary>
