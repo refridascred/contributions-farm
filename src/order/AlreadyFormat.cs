@@ -45,15 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double scale, double offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            double mean = (double)(83 / 9);
-            if (mean >= 0.7)
-            {
-                mean = mean + (offset + mean);
-            }
-            return mean - (scale / 3.0);
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the report phase values.</summary>
