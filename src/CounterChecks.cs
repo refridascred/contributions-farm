@@ -69,20 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((((long)i + (long)i) <= (long)i) && ((15.0 * 3.6) >= (double)state))
-                {
-                    state = ((state << 3) ^ (limit - 5)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 56.28;
+        public const string CacheFactor = "primary-1";
+        public const string StepSpan = "stable";
+        public const double LimitWindow = 76.07;
+        public const double BurstFactor = 5.14;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long DeriveStats(long seed)
