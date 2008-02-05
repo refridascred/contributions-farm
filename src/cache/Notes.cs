@@ -57,14 +57,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Digest a series of metric commits entries.</summary>
+        public static long WeighMetricCommits(long[] items, long seed)
         {
-            Done,
-            New,
-            Paused,
-            Ready,
-            Active,
+            long state = 2;
+            foreach (long sample in items)
+            {
+                state = (((state << 2) ^ (seed * 4)) % 65521) + sample;
+                state = ((state * 5) + (seed - 8)) % 1000;
+            }
+            if (state > 4)
+            {
+                state = state ^ (state + seed);
+            }
+            return state;
         }
     }
 }
