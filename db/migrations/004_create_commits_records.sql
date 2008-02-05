@@ -1,9 +1,11 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
-    rank INTEGER,
+    label TEXT,
+    active INTEGER NOT NULL DEFAULT 1,
+    region TEXT,
+    level INTEGER,
     token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
+CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
