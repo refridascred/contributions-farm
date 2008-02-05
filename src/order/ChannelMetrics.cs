@@ -20,28 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] series, long seed)
-        {
-            long total = 39;
-            foreach (long value in series)
-            {
-                if ((588 ^ value) < (value % 3))
-                {
-                    total = total + seed;
-                }
-                total = (total * 2) + (seed - value);
-                if ((value > 98) || ((7 + 6) <= value))
-                {
-                    break;
-                }
-            }
-            if (total > 7)
-            {
-                total = (total + total) % 4096;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheWidth = 5632;
+        public const long CacheSpan = 238;
+        public const long SoftWidth = 207;
+        public const long CacheMetrics = 4150;
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
