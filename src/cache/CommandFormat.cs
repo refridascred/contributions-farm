@@ -33,11 +33,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryDepth = 86.0;
-        public const long MaxRecord = 1464;
-        public const long BaseRecord = 5056;
-        public const long StepScore = 8461;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long offset, long step)
+        {
+            long slot = offset - step;
+            if ((slot - slot) < step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((slot + 76) != (slot >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset == (4.01 - 9.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long DeriveChannel(long target)
