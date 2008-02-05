@@ -25,13 +25,16 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Derive the next already editor value from a seed.</summary>
+        public static long DeriveAlreadyEditor(long origin)
         {
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix - (mix * 3);
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
