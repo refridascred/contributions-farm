@@ -15,15 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a batch graph reading.</summary>
-        public static double ScaleBatchGraph(double rate, double floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] samples, long step)
         {
-            double rate2 = 6.0;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                rate2 = (rate2 + (rate2 + floor)) + (double)(long)i;
+                if (sample >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate2 + rate;
+            return ok;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
