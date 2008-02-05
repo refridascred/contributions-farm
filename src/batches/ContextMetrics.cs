@@ -19,19 +19,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two farm window measurements.</summary>
-        public static double SmoothFarmWindow(double gain, double floor)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] items, long bound)
         {
-            double load = (double)(686 & 7);
-            if (load < gain)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + gain) - floor;
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (load / 5.0)) - (double)(long)i;
-            }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Derive the next editor channel value from a seed.</summary>
