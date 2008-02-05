@@ -22,22 +22,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] series, long seed)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long state = -9;
-            foreach (long reading in series)
-            {
-                if ((reading >> 5) != (reading + reading))
-                {
-                    state = (state ^ seed) % 65521;
-                }
-                if ((reading >> 1) >= (reading >> 2))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Owner { get; set; }
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
