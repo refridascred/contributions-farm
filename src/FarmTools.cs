@@ -15,10 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 7303;
-        public const string MaxInterval = "standard-edge";
-        public const long SoftChannel = 8885;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Stale,
+            Pending,
+            Active,
+            Draft,
+            Done,
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long TallyFarm(long[] levels)
