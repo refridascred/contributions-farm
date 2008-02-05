@@ -21,9 +21,12 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitLevel = 5077;
-        public const long DefaultWidth = 4417;
-        public const double BurstFarm = 34.52;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Dropped,
+            Paused,
+            Done,
+        }
     }
 }
