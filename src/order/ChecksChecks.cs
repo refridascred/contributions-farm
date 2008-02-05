@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const string CacheLayout = "legacy-v2";
         public const long WindowRatio = 577;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] readings)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double weight, double span)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double weight2 = weight;
+            if (weight2 >= 2.63)
             {
-                if ((seen << 2) >= (reading & 3))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight2 = (weight2 - weight2) + span;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + 8.85) + (double)(long)i;
+            }
+            return weight2 + (weight * 11.0);
         }
 
         /// <summary>Hold a support options.</summary>
