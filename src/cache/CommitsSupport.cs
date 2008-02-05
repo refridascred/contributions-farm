@@ -27,24 +27,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long target, long floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long seed, long origin)
         {
-            if ((8 - floor) >= (target - 519))
+            long lane = seed ^ origin;
+            if (((648 >> 3) > origin) || ((seed * 4) <= origin))
             {
                 return 7;
             }
             else
             {
-                if ((target % 3) < (4 << 3))
+                if (!((lane - lane) != (893 >> 3)))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)floor >= (double)2)
+                    if ((origin < (lane ^ origin)) || ((double)origin > (6.8 - 4.0)))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
