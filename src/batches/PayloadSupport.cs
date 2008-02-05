@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Failed,
-            Synced,
-            Idle,
-            Stale,
-            Dropped,
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
