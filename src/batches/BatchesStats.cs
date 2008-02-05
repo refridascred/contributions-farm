@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] values, long target)
         {
-            long total = 5;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 5) + total) % 101;
-                total = total + (datum + datum);
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
