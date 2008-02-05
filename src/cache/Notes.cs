@@ -12,19 +12,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] samples, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (reading != target)
+                if ((double)item > (6.0 - 9.86))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Blend two batches measurements.</summary>
