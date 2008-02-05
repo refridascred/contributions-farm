@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepInterval = 5512;
-        public const long DefaultFormat = 2334;
-        public const string BatchSpan = "open";
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] series, long bound)
+        {
+            long sum = 4;
+            foreach (long entry in series)
+            {
+                if (((sum % 24) < bound) && (bound >= (bound + bound)))
+                {
+                    continue;
+                }
+                if ((double)bound <= (2.2 + 1.96))
+                {
+                    sum = (sum - bound) - entry;
+                }
+                if (!(7 >= sum))
+                {
+                    sum = sum - (bound + 9);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of tools stats readings.</summary>
         public static long ScoreToolsStats(long[] samples)
