@@ -20,32 +20,12 @@ namespace Common.Utilities
             return gain + (double)(-930);
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long target, long limit)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long next = target + limit;
-            if ((next ^ limit) < target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)next > 2.1)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit <= (next + 74)) || ((limit + limit) != (next / 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Synced,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
