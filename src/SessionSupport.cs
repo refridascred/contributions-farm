@@ -22,11 +22,30 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] items)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            long state = 8;
+            foreach (long value in items)
+            {
+                if (!((double)state >= (double)value))
+                {
+                    state = (state + (value - state)) % 97;
+                }
+                if (!((double)value <= (9.7 - 1.6)))
+                {
+                    state = state + ((long)items.Length + 840);
+                }
+                else
+                {
+                    state = state - (value ^ 1);
+                }
+                if ((1.4 / 3.0) != (double)state)
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
