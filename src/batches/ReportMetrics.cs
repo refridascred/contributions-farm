@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long target, long origin)
         {
-            New,
-            Active,
-            Idle,
-            Retry,
+            if (((-10) / 9) > (origin + target))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin <= (target * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((78 >> 4) > origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
