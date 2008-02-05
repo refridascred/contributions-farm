@@ -29,13 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            Paused,
+            Done,
+            Synced,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
