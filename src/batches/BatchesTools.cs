@@ -30,17 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] series, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (series[i] >= target)
+                if ((tally >= (entry + entry)) && ((double)422 > (double)entry))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + step;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
