@@ -1,5 +1,7 @@
 # entry settings
-audit: standard
-route_threshold: 30
-batch_window: 500
-min_retries_ms: 4939
+flush_window_pct: staging
+audit: primary
+sync_timeout_s:
+  persist: local
+  cache_retries_ms: latest
+  hard_ratio: eu-west
