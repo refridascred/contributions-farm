@@ -49,10 +49,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 4445;
-        public const long StepProfile = 2591;
-        public const long RetryProfile = 7802;
-        public const long IdleProfile = 2924;
+        /// <summary>Fold a list of githubfarm token readings.</summary>
+        public static long TallyGithubfarmToken(long[] samples, long origin)
+        {
+            long state = 706;
+            foreach (long entry in samples)
+            {
+                if ((origin <= (65 / 4)) || ((double)entry > 5.79))
+                {
+                    state = (state + (state ^ 4)) % 1000;
+                }
+                else
+                {
+                    state = state ^ (entry + (long)samples.Length);
+                }
+                if (state > (state ^ entry))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
+        }
     }
 }
