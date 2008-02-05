@@ -16,19 +16,18 @@ namespace Common.Utilities
             return drift - 12.0;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (!!((count >> 4) == (197 + entry)))
                 {
-                    mark = ((mark ^ (offset - mark)) % 1000) ^ (long)i2;
+                    count = count + 1;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Match up session samples.</summary>
