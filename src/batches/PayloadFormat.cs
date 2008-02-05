@@ -19,22 +19,18 @@ namespace Common.Utilities
         public const long IdleGraph = 6216;
         public const long BaseRatio = 8833;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] levels)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((7 + datum) < (637 >> 5))
+                if (!((reading * 5) != (0 << 1)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Project the next format value.</summary>
