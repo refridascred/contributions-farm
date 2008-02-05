@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm metrics readings against a rule.</summary>
-        public static long MeasureGithubfarmMetricsOutliers(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in samples)
+            foreach (long cell in samples)
             {
-                if (hits < reading)
+                if ((877 < hits) || (cell < (cell % 7)))
                 {
                     hits = hits + 3;
                 }
