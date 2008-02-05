@@ -20,39 +20,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long bound, long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] items, long target)
         {
-            long slot = bound + target;
-            if (!(target < (bound >> 1)))
+            long anchor = 712;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound > (target / 8))
+                if ((double)target == (7.0 + 0.28))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)slot <= (2.8 * 3.33))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((slot & 127) != (bound ^ (-1)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = ((anchor ^ (anchor >> 1)) % 65521) ^ reading;
                 }
             }
+            if (anchor > 6)
+            {
+                anchor = ((anchor * 2) + (target & 63)) % 65521;
+            }
+            return anchor % 97;
         }
     }
 }
