@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] readings, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long total = 31;
+            foreach (long cell in series)
             {
-                if (entry >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total - ((long)series.Length % 100)) % 1000) ^ cell;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
