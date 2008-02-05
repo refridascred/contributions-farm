@@ -20,11 +20,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftRecord = 81.03;
-        public const string BurstRecord = "fallback";
-        public const long WindowFactor = 8417;
-        public const string RetryRecord = "staging-edge";
-        public const string LimitRecord = "open-v2";
+        /// <summary>Project the next order filter value.</summary>
+        public static double ProjectOrderFilter(double scale, double span)
+        {
+            double load = 12.0;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (((load - (5.51 * 18.0)) + (double)(long)i) + scale) - span;
+            }
+            return load + (double)4;
+        }
     }
 }
