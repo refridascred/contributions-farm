@@ -27,22 +27,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 89.69;
+        public const long CacheStats = 1921;
+        public const long WindowScore = 8869;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long BucketRoute(long step, long origin)
