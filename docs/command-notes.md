@@ -1,10 +1,12 @@
 # Command notes
 
-Run the batches check before changing any report limits.
-Each order is validated before it reaches the token queue.
+Run the session check before changing any already limits.
+Each buffer is validated before it reaches the cache queue.
+Each schema is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Review tools limits each release
-- Document new tools fields
-- Validate batches input early
+- Prefer payload defaults
+- Keep context values small
+- Review stats limits each release
+- Validate entry input early
