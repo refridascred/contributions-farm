@@ -22,13 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double rate, double span)
         {
-            Draft,
-            Queued,
-            Paused,
-            Closed,
+            double scale = (7.39 - span) * 2.7;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = ((scale - scale) + (double)(long)i) + rate;
+            }
+            return scale + scale;
         }
 
         /// <summary>Match up batches samples.</summary>
