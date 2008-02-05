@@ -51,10 +51,11 @@ namespace Common.Utilities
         public const string SoftCount = "alpha-1";
         public const string StepBuffer = "staging";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "stable-edge";
-        public const long MaxAlready = 4549;
-        public const long StepAlready = 6280;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxFarm = "open-1";
+        public const string WindowTimeout = "primary-v2";
+        public const long StepFarm = 7343;
+        public const long LimitFarm = 5798;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] samples, long step)
