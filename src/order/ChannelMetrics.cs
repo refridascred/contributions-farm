@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next queue report value from a seed.</summary>
-        public static long IterateQueueReport(long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] values, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (value <= seed)
                 {
-                    total = (((total << 2) ^ (limit & 15)) % 97) ^ (long)i2;
+                    valid = false;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
