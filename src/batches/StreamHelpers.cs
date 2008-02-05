@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
             New,
-            Closed,
-            Ready,
+            Pending,
             Synced,
+            Done,
         }
 
         /// <summary>Blend two command measurements.</summary>
