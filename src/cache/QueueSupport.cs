@@ -19,12 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Find the first batch payload entry that matches the target.</summary>
+        public static long LocateBatchPayloadIndex(long[] data, long floor)
         {
-            Synced,
-            Dropped,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
