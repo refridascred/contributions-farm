@@ -22,18 +22,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] data, long floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)floor > (double)matches)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) ^ datum;
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
