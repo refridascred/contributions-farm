@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=246
-log "limit is ${BUFFER_LIMIT}"
+for item in standard cached; do
+    log "checking ${item}"
+done
 
-mode="${1:-standard}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-blue}"
 case "${mode}" in
-    eu-west)
+    primary)
         log "fast path"
         ;;
     *)
