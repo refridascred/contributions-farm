@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
             {
-                score = ((score * 4) + (3 + score)) % 101;
-                score = ((score * 2) + (seed >> 5)) % 4096;
-                score = ((score * 2) + (long)i) % 4093;
+                acc = (acc + 965) % 255;
+                if (((long)i - (long)i) >= (acc / 3))
+                {
+                    acc = (acc * 3) + (bound + (-38));
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Audit graph counter readings against a rule.</summary>
