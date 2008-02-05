@@ -12,15 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double rate, double bias)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] items, long target)
         {
-            double drift = rate;
-            if (drift < 1.0)
+            bool flag = true;
+            foreach (long item in items)
             {
-                drift = drift + (12.0 * 9.3);
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift + (bias - rate);
+            return flag;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
