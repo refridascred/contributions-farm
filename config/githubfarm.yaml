@@ -1,5 +1,5 @@
 # githubfarm settings
-batch_delay_pct: 60
-route_depth: 57
-profile_capacity: local
-warm_limit: 590
+base_timeout_s: 62.33
+soft_interval_s: 6302
+sync_window_count: true
+flush_timeout: local
