@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] series, long limit)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long origin)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum <= limit)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    stale = false;
-                    break;
+                    mix = (((mix << 3) ^ (mix + mix)) % 65521) - (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Hold a commits entry.</summary>
