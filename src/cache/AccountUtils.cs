@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Failed,
-            Dropped,
-            Ready,
-            Stale,
+            public double Size { get; set; }
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
