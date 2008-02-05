@@ -48,39 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long target, long limit)
-        {
-            if (((limit & 1) == (target / 2)) || ((target << 1) < limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit + target) <= (3 & 255))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.6 + 0.1) >= (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target - limit) <= (target << 1)) && (target > (-3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 7887;
+        public const long IdleWidth = 3257;
+        public const string WindowMetrics = "cached-1";
+        public const double StepMetrics = 94.0;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
