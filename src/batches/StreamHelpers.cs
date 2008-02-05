@@ -36,17 +36,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] data, long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long target, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (bound >= (bound & 31))
             {
-                if ((data[i] <= origin) && ((data[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if (target < 71)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((target << 2) >= (510 & 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the context state values.</summary>
