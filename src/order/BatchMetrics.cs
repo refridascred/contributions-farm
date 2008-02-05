@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] levels, long floor)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] series)
         {
-            long sum = 3;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum ^ (floor >> 1)) % 101;
-                if ((entry & 31) < entry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum + (floor >> 5);
+                    if ((series[i] - series[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
