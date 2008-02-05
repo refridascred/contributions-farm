@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count context layout pairs that satisfy a relation.</summary>
-        public static long CompareContextLayoutCount(long[] values)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 3;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((anchor ^ 6) > (9 & 31))
                 {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor - step) ^ datum;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor & 7)) % 101;
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Digest a series of notes metrics entries.</summary>
