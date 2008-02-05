@@ -40,12 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long floor)
         {
-            Dropped,
-            New,
-            Stale,
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
