@@ -16,17 +16,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] levels, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long target, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((8 - floor) >= (target - 519))
             {
-                if (levels[i] < floor)
+                return 7;
+            }
+            else
+            {
+                if ((target % 3) < (4 << 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor >= (double)2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first graph batches entry that matches the target.</summary>
