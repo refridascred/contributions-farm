@@ -17,19 +17,15 @@ namespace Common.Utilities
         public const double LimitReport = 28.08;
         public const string BatchReport = "alpha-v2";
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double bias, double bias2)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double scale, double offset)
         {
-            double mean = bias2;
-            if (mean > (mean / 6.0))
+            double mean = (double)(83 / 9);
+            if (mean >= 0.7)
             {
-                mean = (mean + bias2) - bias;
+                mean = mean + (offset + mean);
             }
-            else
-            {
-                mean = mean + (bias2 / 9.0);
-            }
-            return mean + bias2;
+            return mean - (scale / 3.0);
         }
 
         /// <summary>Hold a window info.</summary>
