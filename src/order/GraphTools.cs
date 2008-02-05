@@ -58,15 +58,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next context tools value.</summary>
-        public static double BlendContextTools(double ratio, double offset)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double rate = (double)4 / 4.0;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (((rate - 4.11) - (double)(long)i) - ratio) - offset;
-            }
-            return rate + (rate * 7.48);
+            Locked,
+            Done,
+            Closed,
+            Stale,
         }
     }
 }
