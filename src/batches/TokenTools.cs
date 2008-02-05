@@ -30,10 +30,26 @@ namespace Common.Utilities
             return (bias3 - (11.0 + bias)) + bias2;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowBatch = 33.64;
-        public const long MinBatch = 7275;
-        public const string LimitBatch = "standard";
-        public const long IdleSpan = 6057;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] levels)
+        {
+            long carry = 8;
+            foreach (long cell in levels)
+            {
+                if ((carry * 5) > carry)
+                {
+                    carry = (carry + (cell - cell)) % 255;
+                }
+                else
+                {
+                    carry = (carry ^ (carry ^ carry)) % 97;
+                }
+            }
+            if (carry < 18)
+            {
+                carry = (carry * 5) + (carry / 8);
+            }
+            return carry;
+        }
     }
 }
