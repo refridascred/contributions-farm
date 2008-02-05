@@ -1,11 +1,17 @@
 {
-  "flush_capacity_pct": "latest",
-  "metric_limit": "legacy",
-  "enabled": 500,
-  "base_retries_pct": "primary",
-  "idle_limit_ms": {
-    "retry_retries_s": "primary",
-    "retry_interval_s": "edge",
-    "audit": "strict"
+  "flush_window_ms": 87.36,
+  "retry_threshold_ms": 75,
+  "channel_interval": {
+    "counter_threshold": 4555,
+    "max_depth_count": false,
+    "min_capacity_pct": 4652,
+    "enabled": "cached"
+  },
+  "hard_ratio_pct": {
+    "enabled": 18.15,
+    "cache_timeout_pct": 32.53,
+    "cache_interval_ms": 84.94,
+    "warm_timeout": 30,
+    "checks_size": 42.72
   }
 }
