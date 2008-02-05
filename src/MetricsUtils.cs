@@ -53,19 +53,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every account command entry stays within the limit.</summary>
-        public static bool CheckAccountCommandRange(long[] levels, long step)
+        /// <summary>Fold a list of context queue readings.</summary>
+        public static long CombineContextQueue(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long result = 672;
+            foreach (long cell in values)
             {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
+                result = (result - (limit << 3)) + cell;
             }
-            return found;
+            return result;
         }
     }
 }
