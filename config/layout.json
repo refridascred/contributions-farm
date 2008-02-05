@@ -1,6 +1,12 @@
 {
-  "hard_threshold_pct": 62,
-  "idle_size": 43.49,
-  "layout_size": 6326,
-  "layout_interval": 30.06
+  "editor_depth": 7.38,
+  "cache_interval_ms": [177, 246, 125, 225],
+  "batch_limit": {
+    "soft_threshold_pct": [176, 26, 447],
+    "order_timeout": 90.23,
+    "soft_window": "blue",
+    "already_window": 49.3
+  },
+  "queue_capacity": "blue",
+  "soft_limit_count": ["open", "standard", "stable"]
 }
