@@ -23,18 +23,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] data)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (!!((count >> 4) == (197 + entry)))
+                sum = sum - (origin * 2);
+                if (sum >= (sum & 127))
                 {
-                    count = count + 1;
+                    sum = ((sum * 4) + (origin - sum)) % 97;
+                    sum = sum + 55;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Look up the position of a route session sample.</summary>
