@@ -22,17 +22,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first context already entry that matches the target.</summary>
-        public static long SeekContextAlreadyIndex(long[] items, long limit)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = -9;
+            foreach (long reading in series)
             {
-                if (items[i] == limit)
+                if ((reading >> 5) != (reading + reading))
                 {
-                    return (long)i;
+                    state = (state ^ seed) % 65521;
+                }
+                if ((reading >> 1) >= (reading >> 2))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
