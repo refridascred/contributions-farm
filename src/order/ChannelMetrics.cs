@@ -19,32 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long bound, long origin)
-        {
-            if (bound <= 66)
-            {
-                return 6;
-            }
-            else
-            {
-                if (8.6 <= (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound >> 2) > (8 << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitTools = 5.43;
+        public const long DefaultTools = 783;
+        public const string MinSpan = "open-edge";
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TotalRecord(long[] items, long step)
