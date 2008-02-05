@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long SoftLevel = 6338;
         public const long RetryFilter = 9244;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleTimeout = 7609;
-        public const string DefaultRoute = "fallback-v2";
-        public const long BurstInterval = 1706;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryDepth = 6.82;
+        public const string DefaultRatio = "stable-v2";
+        public const long IdleSpan = 6435;
+        public const string CacheDepth = "local-v2";
+        public const double WindowLevel = 2.88;
 
         /// <summary>Digest a series of cache session entries.</summary>
         public static long DigestCacheSession(long[] readings)
