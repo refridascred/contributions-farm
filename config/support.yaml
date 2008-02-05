@@ -1,9 +1,11 @@
 # support settings
-idle_interval_count:
-  - 264
-  - 220
-  - 40
-  - 225
-notes_retries: 4260
-editor_delay: false
-farm_window: true
+flush_limit_ms: false
+soft_delay: 7210
+min_ratio:
+  warm_timeout_pct: 5.93
+  sync_capacity_s: 1024
+  warm_delay_s: 49.21
+  cache_interval_ms: open
+  hard_ratio_pct: 53.86
+persist: strict
+enabled: 41
