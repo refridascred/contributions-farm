@@ -50,13 +50,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] readings)
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading & 31) == (185 + reading)) && ((double)reading < (9.4 + 7.4)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
