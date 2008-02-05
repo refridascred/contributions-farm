@@ -20,11 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardTimeout = 9752;
-        public const long CacheDepth = 9432;
-        public const string MaxBudget = "strict-1";
-        public const string BurstRatio = "strict-1";
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] items, long origin)
+        {
+            long state = 9;
+            foreach (long cell in items)
+            {
+                state = (state + (cell % 60)) % 65521;
+                state = ((state * 5) + (origin ^ 129)) % 4096;
+            }
+            if (state < 3)
+            {
+                state = state ^ state;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
