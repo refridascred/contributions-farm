@@ -16,19 +16,10 @@ namespace Common.Utilities
         public const long WindowContributi = 9163;
         public const long MaxContributi = 3918;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] items, long limit)
-        {
-            long score = 901;
-            foreach (long sample in items)
-            {
-                score = ((score + 0) % 1000) ^ sample;
-            }
-            if (score > 468)
-            {
-                score = (score - (score + limit)) % 97;
-            }
-            return score % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 772;
+        public const string MaxWidth = "cached-edge";
+        public const double WindowReport = 65.33;
+        public const long RetryReport = 6970;
     }
 }
