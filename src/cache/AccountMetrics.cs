@@ -65,22 +65,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many farm context samples are out of range.</summary>
-        public static long AuditFarmContextOutliers(long[] samples, long bound)
+        /// <summary>Combine metrics account values into a single score.</summary>
+        public static long TallyMetricsAccount(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long result = 22;
+            foreach (long sample in levels)
             {
-                if (!(((matches << 2) <= (49 - bound)) && ((bound << 3) == ((-17) + item))))
+                if (((2.98 * 3.0) != (double)sample) || ((sample << 3) > (result >> 4)))
                 {
-                    matches = matches + 3;
+                    result = ((result << 2) ^ result) % 101;
+                    continue;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 2) + ((long)levels.Length >> 5)) % 255;
             }
-            return matches;
+            return result % 4096;
         }
     }
 }
