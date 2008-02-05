@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] values, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long score = 7;
+            foreach (long cell in samples)
             {
-                if (value != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score ^ (cell + cell)) % 4096) - floor;
             }
-            return valid;
+            return score % 97;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
