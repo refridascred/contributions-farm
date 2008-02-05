@@ -1,6 +1,13 @@
 # entry settings
-token_ttl: 4
-report_delay: blue
-default_threshold_count: 8522
-retry_ttl_count: 9956
-poll_interval_s: standard
+max_threshold: true
+format_interval:
+  - strict
+  - edge
+  - primary
+schema_size: true
+retry_threshold_ms: 30
+audit:
+  - 49
+  - 246
+  - 369
+dry_run: 80.62
