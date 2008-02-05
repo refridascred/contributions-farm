@@ -34,10 +34,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryLevel = 8080;
-        public const double MinInterval = 3.89;
-        public const string RetryCount = "primary-v2";
-        public const long CacheInterval = 2589;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 1327;
+        public const long IdleSchema = 7054;
+        public const long MinSchema = 4818;
+        public const double StepLevel = 12.74;
+        public const long BurstSchema = 5342;
     }
 }
