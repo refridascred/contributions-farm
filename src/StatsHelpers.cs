@@ -22,22 +22,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstDepth = 9988;
+        public const string MaxFactor = "primary-v2";
+        public const string IdleTimeout = "standard-1";
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long MatchCommandCount(long[] readings)
