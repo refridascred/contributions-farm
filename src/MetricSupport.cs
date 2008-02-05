@@ -14,16 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] values)
-        {
-            long sum = 2;
-            foreach (long item in values)
-            {
-                sum = ((sum + (sum ^ sum)) % 255) - item;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchInterval = 953;
+        public const long WindowChecks = 1465;
+        public const long CacheSpan = 9130;
+        public const long RetryChecks = 8692;
 
         /// <summary>Roll a notes commits counter forward.</summary>
         public static long DeriveNotesCommits(long step)
