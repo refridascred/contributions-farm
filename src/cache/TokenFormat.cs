@@ -22,17 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first order commits entry that matches the target.</summary>
-        public static long LookupOrderCommitsIndex(long[] samples, long step)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Blend two queue measurements.</summary>
