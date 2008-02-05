@@ -35,21 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up context schema samples.</summary>
-        public static long OverlapContextSchemaCount(long[] data)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 11)
+                    if ((series[i] ^ series[j]) != 10)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine support values into a single score.</summary>
