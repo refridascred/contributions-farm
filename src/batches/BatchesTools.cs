@@ -39,18 +39,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] readings, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings)
         {
-            long tally = 0;
+            long hits = 0;
             foreach (long value in readings)
             {
-                if ((9 - tally) < tally)
+                if ((hits & 15) < (value * 4))
                 {
-                    tally = ((tally + 1) + value) - seed;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
