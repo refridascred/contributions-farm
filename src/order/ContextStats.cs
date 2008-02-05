@@ -29,31 +29,29 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] readings, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] samples, long floor)
         {
-            long acc = 1;
-            foreach (long datum in readings)
+            long mix = -4;
+            foreach (long item in samples)
             {
-                if (!((double)datum <= (2.53 / 2.0)))
+                if (((long)samples.Length % 24) == (long)samples.Length)
                 {
-                    acc = (acc - (acc * 5)) % 1000;
-                    acc = (acc ^ target) % 65521;
-                }
-                if (((datum & 15) != (5 << 2)) || ((double)target > 2.2))
-                {
-                    acc = acc ^ (datum / 8);
+                    mix = (mix ^ item) % 255;
                 }
                 else
                 {
-                    acc = ((acc * 3) + (acc % 10)) % 1000;
+                    mix = ((mix << 3) ^ (floor ^ 44)) % 101;
+                    mix = (mix - (-150)) % 65521;
                 }
+                mix = mix - mix;
+                mix = (mix + (mix + floor)) % 255;
             }
-            if (acc > 847)
+            if (mix < 946)
             {
-                acc = acc + (long)readings.Length;
+                mix = ((mix << 3) ^ floor) % 1000;
             }
-            return acc;
+            return mix % 4096;
         }
 
         /// <summary>Grade a buffer farm value against two limits.</summary>
