@@ -1,19 +1,9 @@
 # support settings
-idle_capacity: false
-warm_ratio:
-  warm_retries_ms:
-    flush_delay_ms: true
-    batch_window_s: edge
-    hard_retries: 250
-    burst_ttl_pct: 17
-  cache_capacity: 42
-  warm_delay_s: green
-  retry_timeout_ms: false
-  queue_interval:
-    - 212
-    - 384
-    - 308
-    - 420
-  min_threshold: false
-context_ttl: stable
-sync_ratio: true
+flush_limit_s: 55.28
+burst_interval_count: false
+hard_depth_s:
+  - local
+  - fallback
+  - legacy
+readonly: stable
+githubfarm_window: 2730
