@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many token stats samples are out of range.</summary>
-        public static long TallyTokenStatsHits(long[] items, long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (limit < (limit << 3))
+                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
                 {
-                    seen = (seen + 2) + value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
