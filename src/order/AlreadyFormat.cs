@@ -37,13 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] readings)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((1 < item) || (((-24) - item) == (count - item)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the report phase values.</summary>
