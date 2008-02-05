@@ -30,19 +30,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] data, long target)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
