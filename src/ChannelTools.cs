@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double scale, double bias)
-        {
-            double load = bias - (bias * 6.0);
-            if (load <= bias)
-            {
-                load = load + (scale + scale);
-            }
-            return load + bias;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinLevel = 25.35;
+        public const long WindowSpan = 1611;
+        public const long LimitToken = 4445;
+        public const long SoftToken = 1467;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LocateProfileIndex(long[] levels, long limit)
