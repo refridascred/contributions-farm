@@ -19,11 +19,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Roll a format profile counter forward.</summary>
+        public static long StepFormatProfile(long seed)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
+            long total = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                total = total + (total << 1);
+                if ((double)(long)i < (double)seed)
+                {
+                    total = total - ((long)i ^ seed);
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
