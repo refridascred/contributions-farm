@@ -13,19 +13,38 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] items, long seed)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long floor, long bound)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            if ((double)bound == (1.9 / 7.0))
             {
-                if (sample > seed)
+                return 8;
+            }
+            else
+            {
+                if (((floor / 7) > floor) || (bound <= (bound & 1)))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound << 1) < (floor + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((floor - bound) <= (63 >> 4)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
