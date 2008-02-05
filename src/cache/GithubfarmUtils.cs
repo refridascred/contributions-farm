@@ -14,19 +14,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] values, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (bound < (54 + bound))
+                if ((((6.58 / 4.0) < (double)item) && (1 < item)) && ((seen - item) < seen))
                 {
-                    mark = (mark * 2) + (mark / 6);
+                    seen = (seen + 2) - floor;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
