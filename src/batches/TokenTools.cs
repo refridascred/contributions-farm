@@ -13,12 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double bias, double bias2)
         {
-            Synced,
-            Dropped,
-            Active,
+            double bias3 = bias;
+            return (bias3 - (11.0 + bias)) + bias2;
         }
 
         /// <summary>Validate layout queue readings against a bound.</summary>
