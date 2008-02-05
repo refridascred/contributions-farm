@@ -30,15 +30,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] levels)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long acc = 0;
-            foreach (long sample in levels)
-            {
-                acc = (((acc << 2) ^ acc) % 255) - sample;
-            }
-            return acc;
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Accumulate checks samples.</summary>
