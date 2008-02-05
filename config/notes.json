@@ -1,5 +1,23 @@
 {
-  "soft_ttl": 19,
-  "hard_retries_ms": true,
-  "soft_size_pct": 73.53
+  "already_capacity": {
+    "max_threshold_count": 1054,
+    "warm_timeout": 1024,
+    "burst_retries_count": 30
+  },
+  "max_window_pct": {
+    "soft_ratio_pct": 51,
+    "compress": 29.05,
+    "poll_size_count": {
+      "session_timeout": 9413,
+      "already_delay": 33,
+      "cluster_interval": 4
+    },
+    "strict": 14
+  },
+  "retry_capacity": [235, 98, 99],
+  "stream_delay": {
+    "audit": [419, 235],
+    "soft_ratio": 70.68,
+    "cache_ratio_count": ["edge", "open", "stable", "primary"]
+  }
 }
