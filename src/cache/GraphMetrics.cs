@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] samples)
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every tools context entry stays within the limit.</summary>
