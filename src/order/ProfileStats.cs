@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long target)
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long total = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((target - 203) <= (target - target))
+                {
+                    total = (total * 5) + (0 & 63);
+                    total = (total - (total * 4)) % 255;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Accumulate account token samples.</summary>
