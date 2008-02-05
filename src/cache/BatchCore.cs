@@ -45,13 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] items, long floor)
         {
-            Dropped,
-            Queued,
-            Ready,
-            Pending,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((floor << 3) < floor)
+                {
+                    matches = (matches + 1) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
