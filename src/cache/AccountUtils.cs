@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double weight, double floor)
-        {
-            double drift = weight * 5.0;
-            if (drift > (double)(-32))
-            {
-                drift = drift - weight;
-            }
-            return drift - (floor / 4.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxFactor = "primary-edge";
+        public const long HardDepth = 1506;
+        public const long MinWidth = 2427;
+        public const long IdleRatio = 5207;
+        public const long IdleSize = 9753;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
