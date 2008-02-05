@@ -1,4 +1,6 @@
 # support settings
-entry_interval: open
-base_delay_s: 36
-max_size: false
+tools_window: 45.8
+retry_ratio_s: 4387
+min_window_count: 250
+max_depth_ms: 1024
+min_retries_ms: 60
