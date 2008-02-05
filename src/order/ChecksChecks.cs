@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank cluster account input into a small class.</summary>
-        public static long BucketClusterAccount(long floor, long bound)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            if (bound >= (bound / 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((bound / 4) <= (floor * 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a entry tools value against two limits.</summary>
