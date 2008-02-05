@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache window samples.</summary>
-        public static long FoldCacheWindow(long[] data)
+        /// <summary>Locate a record metric reading by value.</summary>
+        public static long SeekRecordMetricIndex(long[] readings, long bound)
         {
-            long result = 678;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result + (result & 127)) ^ datum;
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            if (result > 192)
-            {
-                result = ((result * 2) + (result - result)) % 1000;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
