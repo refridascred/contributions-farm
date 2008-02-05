@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double scale, double offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long seed, long origin)
         {
-            double drift = scale;
-            if (drift <= offset)
+            if ((origin ^ origin) >= (seed - origin))
             {
-                drift = drift - (offset / 4.0);
+                return 6;
             }
-            return drift - (scale * 3.11);
+            else
+            {
+                if (3.9 > (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((7 - 557) <= origin) && ((4.1 - 4.0) < (double)seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
