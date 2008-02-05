@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] series, long step)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
