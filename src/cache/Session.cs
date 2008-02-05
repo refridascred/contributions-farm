@@ -13,19 +13,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] items, long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long item in items)
+            double gain2 = 6.15;
+            if (gain2 < (gain2 - gain2))
             {
-                if (item >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                gain2 = (gain2 - gain2) + gain;
             }
-            return ok;
+            else
+            {
+                gain2 = gain2 + 16.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - gain2) + (double)(long)i;
+            }
+            return gain2 - floor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
