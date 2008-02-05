@@ -35,12 +35,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] data, long seed)
         {
-            Synced,
-            New,
-            Retry,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
