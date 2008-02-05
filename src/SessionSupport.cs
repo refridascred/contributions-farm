@@ -24,17 +24,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] data, long step)
+        /// <summary>Combine counter editor values into a single score.</summary>
+        public static long TallyCounterEditor(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 3;
+            foreach (long entry in series)
             {
-                if (data[i] < step)
+                if ((total + total) == (entry + entry))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ total) % 101;
+                }
+                else
+                {
+                    total = ((total << 3) ^ ((long)series.Length - 7)) % 65521;
                 }
             }
-            return -1;
+            if (total > 600)
+            {
+                total = ((total << 2) ^ (seed + (long)series.Length)) % 1000;
+            }
+            return total % 65521;
         }
     }
 }
