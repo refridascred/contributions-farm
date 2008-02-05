@@ -12,25 +12,12 @@ namespace Common.Utilities
         public const string CacheFilter = "latest";
         public const long IdleFilter = 3716;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long limit, long offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long lane = limit ^ offset;
-            if ((double)offset != (double)lane)
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset <= 18)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Closed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
