@@ -37,10 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 352;
-        public const long LimitRoute = 1740;
-        public const long DefaultFactor = 3830;
+        /// <summary>Validate metrics record readings against a bound.</summary>
+        public static bool CheckMetricsRecordBounds(long[] values, long step)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
