@@ -84,13 +84,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long seed)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            long result = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = ((result + (30 >> 2)) % 4096) ^ (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Accumulate layout samples.</summary>
