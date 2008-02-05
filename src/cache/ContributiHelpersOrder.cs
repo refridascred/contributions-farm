@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark << 2) ^ (1 >> 1)) % 255;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
