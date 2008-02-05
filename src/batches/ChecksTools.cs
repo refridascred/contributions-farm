@@ -46,18 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] levels)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((-184) < (cell - 18))
+                if (reading < offset)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
