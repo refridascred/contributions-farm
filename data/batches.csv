@@ -1,8 +1,6 @@
-id,owner,count
-1,855,green
-2,staging,blue
-3,850,70.2
-4,386,6.82
-5,184,edge
-6,8.56,561
-7,primary,813
+id,label,region,owner
+1,522,55.95,green
+2,465,796,strict
+3,standard,41.03,green
+4,standard,572,legacy
+5,green,staging,local
