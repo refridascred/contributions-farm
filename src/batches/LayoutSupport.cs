@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
