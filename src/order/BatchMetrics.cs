@@ -51,11 +51,19 @@ namespace Common.Utilities
         public const string SoftCount = "alpha-1";
         public const string StepBuffer = "staging";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFarm = "open-1";
-        public const string WindowTimeout = "primary-v2";
-        public const long StepFarm = 7343;
-        public const long LimitFarm = 5798;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((((617 ^ cell) <= (cell - cell)) && ((cell % 24) < (tally >> 3))) && !((double)cell >= (1.92 * 3.42)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] samples, long step)
