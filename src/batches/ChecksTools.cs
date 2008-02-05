@@ -67,18 +67,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metric editor samples are out of range.</summary>
-        public static long MeasureMetricEditorOutliers(long[] readings)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long state = 3;
+            foreach (long value in readings)
             {
-                if ((seen - seen) >= ((long)readings.Length << 2))
-                {
-                    seen = (seen + 2) + item;
-                }
+                state = ((state ^ (state & 1)) + value) + limit;
             }
-            return seen;
+            if (state < (-702))
+            {
+                state = (state - state) % 4096;
+            }
+            return state;
         }
     }
 }
