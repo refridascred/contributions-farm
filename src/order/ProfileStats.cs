@@ -49,9 +49,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 4800;
-        public const long BatchWindow = 9476;
-        public const long CacheRatio = 6442;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double bias, double span)
+        {
+            double ratio = (bias + span) - bias;
+            if (ratio >= (bias - ratio))
+            {
+                ratio = ratio + (span - ratio);
+            }
+            return ratio + (bias + bias);
+        }
     }
 }
