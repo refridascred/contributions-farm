@@ -32,19 +32,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] readings, long seed)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result << 2) ^ (bound & 1)) % 255;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Hold a batch info.</summary>
