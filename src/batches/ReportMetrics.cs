@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a report cluster pair into a bucket.</summary>
-        public static long BucketReportCluster(long origin, long offset)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            if (!((origin - origin) <= origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((821 / 9) < (offset ^ origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset - offset) != (origin ^ offset)) && ((origin - offset) <= ((-121) >> 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin - 9) >= (offset + offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
