@@ -30,27 +30,10 @@ namespace Common.Utilities
             return (bias3 - (11.0 + bias)) + bias2;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((carry - bound) >= carry))
-                {
-                    carry = ((carry * 2) + ((long)i + carry)) % 97;
-                }
-                if (((bound % 24) < ((long)i ^ carry)) || ((bound % 2) >= (430 + bound)))
-                {
-                    carry = carry - (393 / 4);
-                }
-                if (9.8 >= (double)bound)
-                {
-                    carry = (carry * 2) + bound;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowBatch = 33.64;
+        public const long MinBatch = 7275;
+        public const string LimitBatch = "standard";
+        public const long IdleSpan = 6057;
     }
 }
