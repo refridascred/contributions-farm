@@ -24,22 +24,18 @@ namespace Common.Utilities
         public const double BaseDepth = 66.1;
         public const long LimitTimeout = 241;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] items, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] values)
         {
-            long state = 71;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((state >> 4) <= state)
+                if ((1 * 4) > cell)
                 {
-                    state = ((state - (929 / 2)) % 97) + reading;
+                    hits = hits + 1;
                 }
             }
-            if (state < 400)
-            {
-                state = state - limit;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
