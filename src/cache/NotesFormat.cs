@@ -20,15 +20,21 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double weight, double bias)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            double scale = (double)569 / 7.0;
-            if (scale > (0.1 + weight))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale - (double)(-80);
+            return seen;
         }
     }
 }
