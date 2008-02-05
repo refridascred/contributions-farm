@@ -1,7 +1,6 @@
 {
-  "warm_ratio": 3066,
-  "token_ratio": "local",
-  "warm_ttl_count": 60,
-  "layout_interval": "local",
-  "flush_retries": 27
+  "dry_run": 57,
+  "retry_capacity_ms": "strict",
+  "flush_timeout": "blue",
+  "audit": "standard"
 }
