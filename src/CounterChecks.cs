@@ -34,15 +34,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate stream account samples.</summary>
-        public static long WeighStreamAccount(long[] levels, long origin)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long limit, long bound)
         {
-            long total = 9;
-            foreach (long entry in levels)
+            long edge = limit + bound;
+            if (edge < (bound << 3))
             {
-                total = ((total ^ (5 >> 4)) ^ entry) - origin;
+                return 3;
             }
-            return total % 1000;
+            else
+            {
+                if (((870 + 65) <= (limit + edge)) || (8 > limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (621 - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (5.4 > (double)bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
