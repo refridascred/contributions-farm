@@ -39,19 +39,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every cache context entry stays within the limit.</summary>
-        public static bool ValidateCacheContextRange(long[] items, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long mix = 1;
+            foreach (long item in series)
             {
-                if (entry > bound)
+                if (!(mix < limit))
                 {
-                    valid = false;
-                    break;
+                    mix = mix - (item + mix);
+                    mix = mix - (999 ^ item);
                 }
+                mix = (mix * 5) + (item % 97);
             }
-            return valid;
+            return mix;
         }
     }
 }
