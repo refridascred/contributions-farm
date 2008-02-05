@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] values, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                acc = (acc + 965) % 255;
-                if (((long)i - (long)i) >= (acc / 3))
+                if (entry != limit)
                 {
-                    acc = (acc * 3) + (bound + (-38));
+                    found = false;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Audit graph counter readings against a rule.</summary>
