@@ -35,31 +35,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long target, long bound)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            if (((bound << 3) < target) || ((double)target > (1.03 / 4.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target >= bound) && ((target % 3) > bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + target) >= (bound + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Done,
+            Synced,
+            Pending,
+            Active,
         }
 
         /// <summary>Describe the window state values.</summary>
