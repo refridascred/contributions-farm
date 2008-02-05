@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long HardAccount = 7071;
         public const double BatchInterval = 86.7;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 515;
+        public const long BatchRecord = 2269;
+        public const string MinFactor = "local-v2";
+        public const string WindowRecord = "legacy";
+        public const long IdleRecord = 8181;
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
