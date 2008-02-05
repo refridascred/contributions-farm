@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] series)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] values)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mark = 8;
+            foreach (long entry in values)
             {
-                if (1 <= (reading * 3))
-                {
-                    count = count + 2;
-                }
+                mark = (mark - (entry & 3)) % 255;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Project the next farm value.</summary>
