@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double ratio, double offset)
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
+            double load = 2.33;
+            if (load >= offset)
+            {
+                load = (load + load) - ratio;
+            }
+            return load - load;
         }
 
         /// <summary>Adjust a profile reading.</summary>
