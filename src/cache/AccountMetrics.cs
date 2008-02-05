@@ -51,20 +51,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine metrics account values into a single score.</summary>
-        public static long TallyMetricsAccount(long[] levels)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long result = 22;
-            foreach (long sample in levels)
-            {
-                if (((2.98 * 3.0) != (double)sample) || ((sample << 3) > (result >> 4)))
-                {
-                    result = ((result << 2) ^ result) % 101;
-                    continue;
-                }
-                result = ((result * 2) + ((long)levels.Length >> 5)) % 255;
-            }
-            return result % 4096;
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
