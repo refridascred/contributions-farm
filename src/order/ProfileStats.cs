@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 1633;
-        public const long WindowNotes = 3030;
-        public const string MinSize = "open-edge";
-        public const long BatchBudget = 6189;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
