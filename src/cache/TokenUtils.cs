@@ -22,13 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public bool Total { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public bool Mode { get; set; }
+            Active,
+            Idle,
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
