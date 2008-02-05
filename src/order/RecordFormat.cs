@@ -43,19 +43,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of editor stats readings.</summary>
-        public static long DigestEditorStats(long[] series)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long offset, long limit)
         {
-            long total = 1;
-            foreach (long cell in series)
+            long diff = offset + limit;
+            if (!((offset >> 5) > (diff + offset)))
             {
-                total = ((total - 0) % 97) - cell;
+                return 1;
             }
-            if (total > 288)
+            else
             {
-                total = total ^ (total - total);
+                if (((double)offset < (19.0 - 6.33)) || (offset <= (limit - limit)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset > (offset % 16))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (9.99 > (double)limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Describe the context mode values.</summary>
