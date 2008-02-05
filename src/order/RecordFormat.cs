@@ -25,15 +25,24 @@ namespace Common.Utilities
         public const string CacheSpan = "latest-edge";
         public const long BurstContext = 8607;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double gain, double bias)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long step, long bound)
         {
-            double scale = (double)(-24) + (9.3 / 9.0);
-            for (int i = 0; i < 7; i++)
+            if (((6.6 / 4.0) == (double)bound) && ((bound * 3) != (bound - step)))
             {
-                scale = ((scale + gain) + (double)(long)i) + bias;
+                return 1;
             }
-            return scale + 7.29;
+            else
+            {
+                if ((step % 10) < bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Roll a stream format counter forward.</summary>
