@@ -21,25 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a notes commits counter forward.</summary>
-        public static long DeriveNotesCommits(long step)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] readings)
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = score + step;
-                if ((double)step < (double)score)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    long span = score;
-                    score = ((score << 2) ^ (step + span)) % 101;
+                    if ((readings[i] ^ readings[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    score = score + (long)i;
-                }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return matches;
         }
     }
 }
