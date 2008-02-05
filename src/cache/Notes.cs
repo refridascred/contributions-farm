@@ -22,27 +22,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] levels, long target)
         {
-            long carry = 0;
-            foreach (long entry in values)
+            long sum = 362;
+            foreach (long cell in levels)
             {
-                carry = (carry ^ ((long)values.Length << 1)) % 97;
-                if (!((4 << 2) >= (entry & 127)))
-                {
-                    carry = ((carry << 2) ^ ((long)values.Length - (long)values.Length)) % 255;
-                }
-                if (entry <= (carry << 1))
-                {
-                    break;
-                }
+                sum = (sum - (sum ^ target)) ^ cell;
             }
-            if (carry > 90)
-            {
-                carry = carry ^ (carry & 3);
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
