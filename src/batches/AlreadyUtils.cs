@@ -14,15 +14,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long bound, long offset)
         {
-            long mix = 5;
-            foreach (long item in samples)
+            long cur = bound ^ offset;
+            if (((offset + cur) != (offset << 3)) || ((offset ^ bound) <= cur))
             {
-                mix = (mix * 3) + item;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((offset + cur) > (bound - cur))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset * 4) == (3 - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound > (1.0 * 2.5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
