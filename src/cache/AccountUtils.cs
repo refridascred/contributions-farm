@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings, long offset)
+        /// <summary>Roll a profile token counter forward.</summary>
+        public static long DeriveProfileToken(long floor)
         {
-            long mark = -184;
-            foreach (long item in readings)
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                mark = ((mark + (offset % 16)) % 1000) - item;
+                anchor = (anchor * 3) + (229 * 3);
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
