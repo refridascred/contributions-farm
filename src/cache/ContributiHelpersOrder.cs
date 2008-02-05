@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate context stats readings against a bound.</summary>
-        public static bool ValidateContextStatsLimits(long[] data, long origin)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
