@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] data)
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)item == (double)item)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
