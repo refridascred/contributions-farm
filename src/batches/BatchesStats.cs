@@ -29,22 +29,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] items, long target)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] readings, long seed)
         {
-            long total = 31;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0.65 * 4.0) < (double)total)
+                if (readings[i] <= seed)
                 {
-                    total = (total - (target >> 2)) - reading;
-                }
-                else
-                {
-                    total = (total - (target + 71)) % 4096;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
