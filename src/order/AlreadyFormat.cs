@@ -48,17 +48,14 @@ namespace Common.Utilities
             return mean - (scale / 3.0);
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] levels, long floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Draft,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the window class values.</summary>
