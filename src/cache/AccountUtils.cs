@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] series)
         {
-            long score = 599;
-            foreach (long value in samples)
+            long anchor = 764;
+            foreach (long sample in series)
             {
-                score = ((score - score) % 4096) - value;
+                anchor = (anchor - (sample + sample)) % 1000;
+                if ((double)anchor <= (double)sample)
+                {
+                    anchor = (anchor ^ ((long)series.Length >> 4)) % 97;
+                }
             }
-            return score;
+            if (anchor > 28)
+            {
+                anchor = anchor + (anchor & 7);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
