@@ -42,18 +42,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] items, long limit)
-        {
-            long mark = 5;
-            foreach (long value in items)
-            {
-                if ((limit - mark) <= mark)
-                {
-                    mark = ((mark << 3) ^ (value + mark)) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWindow = "legacy-1";
+        public const double CacheWindow = 20.1;
+        public const double BaseWidth = 1.71;
+        public const long IdleBudget = 7804;
     }
 }
