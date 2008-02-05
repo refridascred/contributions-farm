@@ -27,18 +27,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] values)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((1 * 4) > cell)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
