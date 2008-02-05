@@ -32,10 +32,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleFactor = "alpha-1";
-        public const long HardLevel = 7234;
-        public const long IdleQueue = 1503;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Paused,
+            Idle,
+            Done,
+            New,
+            Failed,
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
