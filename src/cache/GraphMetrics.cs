@@ -61,14 +61,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Idle,
-            Draft,
-            Closed,
-            Ready,
-            New,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 3569;
+        public const string BatchCount = "alpha-edge";
+        public const string DefaultBatches = "fallback-edge";
+        public const long MaxScore = 3123;
+        public const long WindowBatches = 3960;
     }
 }
