@@ -26,11 +26,9 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 7982;
-        public const string SoftSupport = "staging-1";
-        public const string BaseWidth = "latest-1";
-        public const long MinSupport = 1171;
-        public const long HardCount = 9855;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "staging";
+        public const long CacheSession = 1367;
+        public const long HardRatio = 1850;
     }
 }
