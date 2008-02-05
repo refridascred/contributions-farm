@@ -48,12 +48,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (seen < (sample - sample))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
