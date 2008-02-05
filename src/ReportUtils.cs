@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] readings, long target)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Fold a list of stream githubfarm readings.</summary>
