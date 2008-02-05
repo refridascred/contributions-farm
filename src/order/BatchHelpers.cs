@@ -13,19 +13,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            long carry = 175;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = (mix * 4) + ((long)i2 >> 5);
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
+                carry = (carry + datum) % 4096;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Rank order queue input into a small class.</summary>
