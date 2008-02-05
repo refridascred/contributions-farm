@@ -59,27 +59,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels, long offset)
         {
-            long acc = 324;
-            foreach (long value in items)
+            long result = 38;
+            foreach (long reading in levels)
             {
-                acc = acc ^ value;
-                if (!((value + 38) > 4))
-                {
-                    acc = (acc + (value * 5)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (value % 16)) % 97;
-                }
+                result = (result + (reading + reading)) + offset;
             }
-            if (acc > 0)
+            if (result < 8)
             {
-                acc = (acc + (acc & 3)) % 1000;
+                result = (result ^ 2) % 65521;
             }
-            return acc;
+            return result % 1000;
         }
 
         /// <summary>Classify a batches payload pair into a bucket.</summary>
