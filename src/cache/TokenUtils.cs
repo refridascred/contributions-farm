@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up profile notes samples.</summary>
-        public static long PairProfileNotesCount(long[] series)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)(1 - 9);
+            if (bias < (double)965)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias + ratio) - floor;
             }
-            return tally;
+            else
+            {
+                bias = bias - ratio;
+            }
+            return bias - (ratio * 7.83);
         }
 
         /// <summary>Describe the profile kind values.</summary>
