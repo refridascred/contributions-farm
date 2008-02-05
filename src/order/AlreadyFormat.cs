@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleScore = 9.39;
-        public const double StepCount = 34.85;
-        public const long BurstDepth = 1843;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long target, long bound)
+        {
+            if (!((33 ^ target) <= (bound + 5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target >> 3) > (target + 39))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound & 15) > (target & 3)) && ((3 + bound) <= (46 + target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long ClassifyChannel(long offset, long offset2)
