@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] samples, long bound)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count the report cluster entries that pass the check.</summary>
