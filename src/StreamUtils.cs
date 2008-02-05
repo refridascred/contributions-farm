@@ -16,15 +16,18 @@ namespace Common.Utilities
             return weight + (span - span);
         }
 
-        /// <summary>Accumulate schema checks samples.</summary>
-        public static long TallySchemaChecks(long[] series, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] series, long limit)
         {
-            long state = -105;
+            long anchor = -55;
             foreach (long datum in series)
             {
-                state = (state - (state + seed)) - datum;
+                if (((6.0 - 19.0) >= (8.2 / 9.0)) && (datum > anchor))
+                {
+                    anchor = ((anchor + ((-80) << 2)) % 255) - limit;
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Hold a commits record.</summary>
