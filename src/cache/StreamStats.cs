@@ -13,17 +13,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double scale, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = 0.36 - (floor / 5.0);
+            return (bias - (floor * 11.0)) + scale;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
