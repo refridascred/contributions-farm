@@ -14,18 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] values, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (reading <= (floor + seen))
+                if (15 >= (reading / 5))
                 {
-                    seen = seen + 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the batch status values.</summary>
