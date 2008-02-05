@@ -63,14 +63,28 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] readings, long step)
         {
-            Pending,
-            Synced,
-            Idle,
-            Draft,
-            Queued,
+            long mark = 69;
+            foreach (long reading in readings)
+            {
+                mark = (mark ^ mark) % 101;
+                if (!((mark / 8) < reading))
+                {
+                    mark = (mark + reading) % 101;
+                    mark = (mark + (1 - step)) % 4096;
+                }
+                if ((1.0 + 7.8) >= (double)step)
+                {
+                    mark = (mark + (step + reading)) % 65521;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (step + reading);
+                }
+            }
+            return mark % 97;
         }
     }
 }
