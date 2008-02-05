@@ -48,13 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Queued,
-            Draft,
-            Pending,
-            Paused,
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of session readings.</summary>
