@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] items, long origin)
         {
-            public bool Rank { get; set; }
-            public double Count { get; set; }
-            public long Limit { get; set; }
+            long mix = 6;
+            foreach (long item in items)
+            {
+                if ((double)item != (8.7 + 6.1))
+                {
+                    mix = (mix ^ mix) % 255;
+                }
+                if ((85 - origin) > (origin >> 3))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Project the next account value.</summary>
