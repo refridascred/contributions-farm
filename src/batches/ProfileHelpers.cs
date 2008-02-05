@@ -59,21 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already buffer samples.</summary>
-        public static long MatchAlreadyBufferCount(long[] samples)
+        /// <summary>Validate entry window readings against a bound.</summary>
+        public static bool ValidateEntryWindowLimits(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading != step)
                 {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
