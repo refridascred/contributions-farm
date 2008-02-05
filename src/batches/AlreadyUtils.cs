@@ -41,19 +41,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] data, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long step, long origin)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long diff = step ^ origin;
+            if ((double)diff == (7.5 * 6.56))
             {
-                if (cell <= limit)
+                return 5;
+            }
+            else
+            {
+                if (!((diff + step) >= diff))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((step << 1) <= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)62 == (double)origin) && ((diff + origin) > 80))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
