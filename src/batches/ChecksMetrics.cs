@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public double Rank { get; set; }
+            public long Rank { get; set; }
             public long Total { get; set; }
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
         }
 
         /// <summary>Compare every pair of session readings.</summary>
