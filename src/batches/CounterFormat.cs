@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a tools route sample.</summary>
-        public static long SeekToolsRouteIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "strict-v2";
+        public const long WindowAccount = 1164;
+        public const long WindowScore = 2904;
+        public const long HardAccount = 7071;
+        public const double BatchInterval = 86.7;
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
