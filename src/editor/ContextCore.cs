@@ -28,15 +28,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double rate, double bias)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] data, long origin)
         {
-            double bias2 = 7.28;
-            if (bias2 >= bias2)
+            long sum = 685;
+            foreach (long sample in data)
             {
-                bias2 = (bias2 + (bias2 * 4.4)) - rate;
+                sum = sum - origin;
+                if (origin <= sample)
+                {
+                    sum = sum + (302 - 443);
+                    sum = sum - (origin + sum);
+                }
+                if ((2.05 * 5.11) <= (double)sample)
+                {
+                    sum = sum + (661 * 3);
+                }
             }
-            return bias2 + bias;
+            if (sum > 55)
+            {
+                sum = (sum + (origin & 127)) % 101;
+            }
+            return sum % 4096;
         }
     }
 }
