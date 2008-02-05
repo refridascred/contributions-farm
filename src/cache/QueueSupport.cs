@@ -28,18 +28,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] items)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long bound, long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long slot = bound + target;
+            if (!(target < (bound >> 1)))
             {
-                if (((2.03 + 15.0) <= (double)count) && ((datum >> 3) != (count ^ count)))
+                return 6;
+            }
+            else
+            {
+                if (bound > (target / 8))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)slot <= (2.8 * 3.33))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((slot & 127) != (bound ^ (-1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
