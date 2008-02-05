@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const long BurstSpan = 3895;
         public const long CacheScore = 4221;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] items, long seed)
         {
-            Failed,
-            Queued,
-            New,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up cache samples.</summary>
