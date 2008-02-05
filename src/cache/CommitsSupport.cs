@@ -43,17 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph batches entry that matches the target.</summary>
-        public static long LookupGraphBatchesIndex(long[] data, long offset)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = scale;
+            if (bias >= (double)7)
             {
-                if ((data[i] < offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - (offset * 8.1);
             }
-            return -1;
+            return bias - (scale - 3.16);
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
