@@ -57,19 +57,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] values, long offset)
         {
-            long result = 38;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long item in values)
             {
-                result = (result + (reading + reading)) + offset;
+                if ((12 + offset) <= ((-20) - matches))
+                {
+                    matches = (matches + 3) - item;
+                }
             }
-            if (result < 8)
-            {
-                result = (result ^ 2) % 65521;
-            }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Classify a batches payload pair into a bucket.</summary>
