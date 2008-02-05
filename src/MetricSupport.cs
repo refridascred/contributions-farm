@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstFactor = 81.97;
+        public const long BaseContributi = 5855;
+        public const long MinBudget = 4530;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BatchInterval = 953;
