@@ -16,13 +16,22 @@ namespace Common.Utilities
             return gain + (gain * 6.0);
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] series)
         {
-            Active,
-            New,
-            Failed,
-            Idle,
+            long sum = 2;
+            foreach (long value in series)
+            {
+                if ((double)value > 1.1)
+                {
+                    sum = (sum - (value - sum)) % 97;
+                }
+                else
+                {
+                    sum = sum + (value ^ sum);
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Blend two support layout measurements.</summary>
