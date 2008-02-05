@@ -1,8 +1,20 @@
 {
-  "soft_delay_ms": [286, 168, 399, 283],
-  "enabled": 30,
-  "burst_ttl_ms": 9157,
-  "cache_limit_s": "eu-west",
-  "warm_capacity": [68, 495],
-  "min_threshold_ms": 83
+  "persist": 561,
+  "token_window": {
+    "cache_capacity": {
+      "max_capacity_pct": 250,
+      "token_ratio": 19,
+      "warm_delay": 27.3,
+      "warm_size": [280, 39],
+      "soft_limit": "blue"
+    },
+    "audit": 95,
+    "min_capacity_ms": "edge"
+  },
+  "context_threshold": {
+    "dry_run": "green",
+    "flush_capacity_count": "eu-west",
+    "burst_window": 84.28,
+    "batch_capacity_ms": "green"
+  }
 }
