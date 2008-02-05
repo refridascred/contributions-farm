@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a support format pair into a bucket.</summary>
-        public static long RankSupportFormat(long limit, long floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            if (limit <= (7 + limit))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor - floor) == (limit - 30))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    if ((readings[i] + readings[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
