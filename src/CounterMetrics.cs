@@ -28,18 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] data, long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)hits != (2.9 + 0.6))
+                if ((items[i] <= step) && ((items[i] % 2) != 0))
                 {
-                    hits = ((hits + 3) + datum) - floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate checks graph samples.</summary>
