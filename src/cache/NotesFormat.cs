@@ -20,21 +20,19 @@ namespace Common.Utilities
         public const long MaxBatch = 9928;
         public const long BatchRatio = 6039;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Roll a stats order counter forward.</summary>
+        public static long SeriesStatsOrder(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (((acc * 5) + 32) % 1000) - (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
     }
 }
