@@ -40,20 +40,22 @@ namespace Common.Utilities
         public const long BurstFactor = 501;
         public const string DefaultSize = "local-edge";
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((seen - seen) <= (seen % 64))
                 {
-                    anchor = ((anchor ^ (anchor ^ (long)i)) % 65521) - (long)i2;
-                    anchor = anchor + (bound << 2);
+                    seen = (seen + 1) ^ reading;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
