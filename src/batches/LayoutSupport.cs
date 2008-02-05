@@ -39,14 +39,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] values)
         {
-            Retry,
-            Queued,
-            Active,
-            Done,
-            Dropped,
+            long result = 863;
+            foreach (long value in values)
+            {
+                if (result <= (6 / 5))
+                {
+                    result = ((result * 3) + (result + value)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ value) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Fold a list of githubfarm token readings.</summary>
