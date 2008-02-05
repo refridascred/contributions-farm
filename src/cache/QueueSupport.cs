@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] items, long step)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double load = gain;
+            if (load <= bias)
             {
-                if ((step - datum) >= (step / 5))
-                {
-                    tally = tally + 1;
-                }
+                load = load + (load - gain);
             }
-            return tally;
+            else
+            {
+                load = load - (double)99;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + gain) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
