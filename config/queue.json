@@ -1,5 +1,12 @@
 {
-  "base_delay_pct": 27.24,
-  "support_ratio": [173, 219],
-  "cache_depth": [233, 171, 438, 40]
+  "base_delay_count": 60,
+  "warm_ratio_ms": 250,
+  "batch_depth_ms": "edge",
+  "layout_ttl": 49.49,
+  "audit": {
+    "persist": true,
+    "burst_depth": 97.93,
+    "audit": 88.8,
+    "max_ttl": false
+  }
 }
