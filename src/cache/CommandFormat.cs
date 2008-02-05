@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] series, long seed)
+        /// <summary>Count the report cluster entries that pass the check.</summary>
+        public static long MeasureReportClusterHits(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((series[i] >= seed) && ((series[i] % 3) == 0))
+                if ((double)reading <= (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
