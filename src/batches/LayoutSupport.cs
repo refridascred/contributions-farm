@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public double Label { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
