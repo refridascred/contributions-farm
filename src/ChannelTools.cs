@@ -12,25 +12,15 @@ namespace Common.Utilities
         public const long HardInterval = 8647;
         public const string MinToken = "fallback-v2";
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long seed, long target)
+        /// <summary>Project the next contributi profile value.</summary>
+        public static double BlendContributiProfile(double weight, double span)
         {
-            long span = seed - target;
-            if ((target >> 1) > span)
+            double load = (double)(-443) / 8.0;
+            if (load > (double)(-810))
             {
-                return 2;
+                load = ((load + (10.0 * 8.6)) + weight) + span;
             }
-            else
-            {
-                if (!((double)seed > 8.9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return load - load;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
