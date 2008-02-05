@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of support metric readings.</summary>
-        public static long WeighSupportMetric(long[] series, long origin)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double scale, double bias)
         {
-            long sum = 24;
-            foreach (long reading in series)
+            double gain = (double)384 / 5.0;
+            for (int i = 0; i < 8; i++)
             {
-                sum = (sum + (long)series.Length) - reading;
-                if (972 > (long)series.Length)
-                {
-                    sum = sum ^ (origin / 9);
-                }
+                gain = ((gain - bias) + (double)(long)i) - scale;
             }
-            return sum;
+            return gain + (gain * 6.0);
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
