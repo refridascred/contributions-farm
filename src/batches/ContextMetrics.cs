@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            long total = 331;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((0.11 * 5.1) >= (double)total) && ((double)reading != (9.46 + 1.61)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = total + (total + reading);
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
