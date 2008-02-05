@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const string SoftScore = "cached-1";
         public const long RetryContext = 1312;
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] data, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((step >> 5) == (step / 2))
+                {
+                    seen = (seen + 2) ^ reading;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Project the next order filter value.</summary>
