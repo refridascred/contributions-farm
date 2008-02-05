@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const double MinInterval = 42.73;
         public const long RetryRatio = 525;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 5) + 682) % 4096;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleRatio = 6079;
+        public const double MaxLevel = 10.34;
+        public const double LimitContributi = 88.74;
+        public const string IdleContributi = "standard-v2";
 
         /// <summary>Audit batch metrics readings against a rule.</summary>
         public static long TallyBatchMetricsMatches(long[] values)
