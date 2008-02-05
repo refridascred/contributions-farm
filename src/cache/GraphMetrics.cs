@@ -41,12 +41,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultCount = "latest-1";
-        public const string CacheCount = "alpha-1";
-        public const string RetryFactor = "latest";
-        public const double RetryInterval = 94.46;
-        public const long SoftFactor = 5072;
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a report token sample.</summary>
         public static long LocateReportTokenIndex(long[] data, long origin)
