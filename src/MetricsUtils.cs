@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] levels, long offset)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the entry kind values.</summary>
