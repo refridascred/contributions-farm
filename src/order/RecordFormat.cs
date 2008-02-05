@@ -54,17 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] values, long offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor * 4) + (long)i;
+                anchor = (anchor + (limit + anchor)) % 65521;
+                anchor = (anchor << 2) ^ ((long)i >> 3);
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
     }
 }
