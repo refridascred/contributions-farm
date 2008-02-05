@@ -16,18 +16,18 @@ namespace Common.Utilities
             return weight + (span - span);
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] series, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] items, long limit)
         {
-            long anchor = -55;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (((6.0 - 19.0) >= (8.2 / 9.0)) && (datum > anchor))
+                if ((double)538 <= (double)seen)
                 {
-                    anchor = ((anchor + ((-80) << 2)) % 255) - limit;
+                    seen = ((seen + 1) ^ datum) + limit;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a commits record.</summary>
