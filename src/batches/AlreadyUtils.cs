@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftInterval = "legacy-edge";
-        public const long SoftTools = 4185;
-        public const long WindowTimeout = 2721;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Closed,
+            Failed,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long SeekStatsIndex(long[] series, long step)
