@@ -35,19 +35,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] data, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (value < seed)
+                if ((item - matches) != (bound + 307))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
