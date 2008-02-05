@@ -19,16 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor + (limit * 5)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
