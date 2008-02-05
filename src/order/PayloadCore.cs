@@ -33,9 +33,19 @@ namespace Common.Utilities
         public const long MaxFactor = 2850;
         public const long SoftCount = 2365;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 5669;
-        public const long MinTimeout = 1537;
-        public const long SoftBatch = 2706;
+        /// <summary>Check that every cache context entry stays within the limit.</summary>
+        public static bool ValidateCacheContextRange(long[] items, long bound)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
