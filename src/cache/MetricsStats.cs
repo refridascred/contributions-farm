@@ -17,13 +17,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Synced,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 1985;
+        public const string StepSpan = "standard";
+        public const string MaxCount = "latest-edge";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseRatio = 5422;
