@@ -19,12 +19,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Scale a session farm figure with a bias.</summary>
+        public static double AdjustSessionFarm(double scale, double bias)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
+            double scale2 = (double)(5 & 3);
+            if (scale2 <= (scale2 + scale))
+            {
+                scale2 = scale2 - bias;
+            }
+            return scale2 + (double)7;
         }
 
         /// <summary>Audit stream counter readings against a rule.</summary>
