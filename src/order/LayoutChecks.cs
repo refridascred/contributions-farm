@@ -27,23 +27,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate githubfarm payload samples.</summary>
-        public static long FoldGithubfarmPayload(long[] items, long target)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long sum = 822;
-            foreach (long entry in items)
-            {
-                sum = (sum * 5) + (-621);
-                if (target < (entry - sum))
-                {
-                    sum = (sum + target) % 255;
-                }
-            }
-            if (sum < 839)
-            {
-                sum = (sum ^ (target - sum)) % 1000;
-            }
-            return sum;
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Hold a graph info.</summary>
