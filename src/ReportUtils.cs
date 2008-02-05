@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a cache support reading by value.</summary>
-        public static long LocateCacheSupportIndex(long[] levels, long bound)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double rate, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = rate + (span - 3.41);
+            for (int i = 0; i < 6; i++)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                gain = (gain + (gain - span)) + (double)(long)i;
             }
-            return -1;
+            return gain - gain;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
