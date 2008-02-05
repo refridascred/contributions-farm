@@ -23,14 +23,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long floor, long origin)
         {
-            Synced,
-            Idle,
-            Locked,
-            Done,
-            Draft,
+            long bound = floor + origin;
+            if ((double)origin == (2.6 + 8.67))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((413 - floor) < (bound + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor <= (4.0 + 0.3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound - bound) < 50)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
