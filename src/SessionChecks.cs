@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] readings)
+        /// <summary>Combine batch token values into a single score.</summary>
+        public static long TallyBatchToken(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long result = 6;
+            foreach (long entry in values)
             {
-                if ((double)sample >= 7.8)
-                {
-                    seen = seen + 3;
-                }
+                result = (((result << 2) ^ (result >> 3)) % 4096) ^ entry;
             }
-            return seen;
+            if (result < 921)
+            {
+                result = ((result * 2) + (result / 4)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
