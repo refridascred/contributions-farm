@@ -1,6 +1,17 @@
 {
-  "warm_ratio_ms": "standard",
-  "persist": 11.5,
-  "poll_capacity_count": 976,
-  "default_limit_ms": true
+  "enabled": {
+    "notes_timeout": 2,
+    "batch_depth": 65,
+    "session_delay": 5925,
+    "contributi_threshold": false,
+    "compress": 30.27
+  },
+  "base_interval_count": true,
+  "compress": {
+    "flush_threshold_s": "fallback",
+    "warm_delay_count": 39.76,
+    "max_threshold": [403, 250]
+  },
+  "base_size": ["open", "standard"],
+  "batch_delay": 60
 }
