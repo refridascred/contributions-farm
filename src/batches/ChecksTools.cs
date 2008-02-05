@@ -54,28 +54,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route counter input into a small class.</summary>
-        public static long RankRouteCounter(long floor, long bound)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long step, long origin)
         {
-            if (((1.5 + 10.0) <= (double)bound) && ((floor >> 2) < 399))
+            if (11.0 < (double)origin)
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((bound > floor) && ((12.0 / 6.0) < (8.0 + 6.11)))
+                if (732 < (step % 97))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (!(9.8 > (double)bound))
+                    if ((step - origin) < step)
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        return 8;
+                        if ((origin - origin) > (step % 7))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
