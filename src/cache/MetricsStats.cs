@@ -48,14 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 5675;
+        public const long WindowStats = 4472;
+        public const long CacheInterval = 4440;
+        public const long BatchFactor = 2597;
 
         /// <summary>Roll a route counter forward.</summary>
         public static long RollRoute(long target)
