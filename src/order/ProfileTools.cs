@@ -26,15 +26,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster stream measurements.</summary>
-        public static double BlendClusterStream(double weight, double offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] data, long floor)
         {
-            double bias = offset;
-            if (bias < 10.0)
+            long mark = 5;
+            foreach (long cell in data)
             {
-                bias = bias + bias;
+                mark = (mark - (cell - mark)) % 65521;
+                if ((((long)data.Length & 1) >= mark) && ((floor * 4) >= ((-130) >> 1)))
+                {
+                    mark = (mark + ((-44) & 31)) % 255;
+                }
+                if ((cell - floor) > (mark << 1))
+                {
+                    break;
+                }
             }
-            return bias - weight;
+            if (mark < 0)
+            {
+                mark = mark ^ (floor * 5);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the window state values.</summary>
