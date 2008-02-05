@@ -20,12 +20,22 @@ namespace Common.Utilities
         public const string MaxInterval = "standard-edge";
         public const long SoftChannel = 8885;
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] levels)
         {
-            Active,
-            Pending,
-            Idle,
+            long state = 56;
+            foreach (long entry in levels)
+            {
+                if (entry <= (state - entry))
+                {
+                    state = (state << 3) ^ (state / 5);
+                }
+            }
+            if (state < 969)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
     }
 }
