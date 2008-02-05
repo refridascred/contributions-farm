@@ -25,12 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Paused,
-            Done,
-            Synced,
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
