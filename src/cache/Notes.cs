@@ -65,16 +65,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long seed, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
+            long delta = seed - offset;
+            if ((delta >> 1) <= (delta % 3))
             {
-                acc = ((acc << 3) ^ ((long)i % 8)) % 1000;
-                acc = ((acc * 2) + (long)i) % 65521;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((5.0 - 14.0) == (double)delta)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
