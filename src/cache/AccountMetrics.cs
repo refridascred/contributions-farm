@@ -35,13 +35,10 @@ namespace Common.Utilities
         public const long HardStats = 3094;
         public const double DefaultBudget = 17.53;
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 1612;
+        public const long HardInterval = 2954;
+        public const long LimitQueue = 4862;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
