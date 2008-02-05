@@ -35,18 +35,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] data)
+        /// <summary>Look up the position of a format token sample.</summary>
+        public static long SeekFormatTokenIndex(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)datum < (1.09 + 8.21))
+                if (levels[i] <= limit)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate batch session samples.</summary>
