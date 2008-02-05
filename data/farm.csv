@@ -1,7 +1,7 @@
-id,state,token,level
-1,edge,150,460
-2,68.33,741,43.25
-3,edge,973,96.5
-4,663,strict,923
-5,5.25,529,staging
-6,100,strict,90.61
+id,weight,level,region
+1,554,edge,15.62
+2,83.67,0.79,97.46
+3,704,90.75,94.32
+4,820,staging,295
+5,90.92,689,staging
+6,5,eu-west,41.16
