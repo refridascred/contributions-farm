@@ -30,17 +30,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] readings, long origin)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = anchor + (seed - (long)i);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Match up format samples.</summary>
