@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
