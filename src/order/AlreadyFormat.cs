@@ -24,11 +24,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 4497;
-        public const double DefaultRatio = 91.37;
-        public const double LimitReport = 28.08;
-        public const string BatchReport = "alpha-v2";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardWidth = 9374;
+        public const double BatchInterval = 82.48;
+        public const double SoftTimeout = 66.7;
 
         /// <summary>Adjust a schema reading.</summary>
         public static double AdjustSchema(double scale, double offset)
