@@ -34,13 +34,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Count the tools metrics entries that pass the check.</summary>
+        public static long MeasureToolsMetricsGaps(long[] levels, long origin)
         {
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading - hits) <= origin)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
