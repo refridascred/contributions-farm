@@ -31,23 +31,17 @@ namespace Common.Utilities
             return drift - (ratio + bias);
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double bias, double floor)
+        /// <summary>Find the first profile format entry that matches the target.</summary>
+        public static long SeekProfileFormatIndex(long[] values, long seed)
         {
-            double weight = (bias + bias) - floor;
-            if (weight > (bias * 4.2))
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - weight;
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (weight / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (double)9) + (double)(long)i;
-            }
-            return weight - weight;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
