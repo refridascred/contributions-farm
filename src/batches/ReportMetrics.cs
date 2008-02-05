@@ -40,18 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] values, long target)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!(47 > (reading * 2)))
-                {
-                    matches = (matches + 3) + target;
-                }
-            }
-            return matches;
+            Dropped,
+            New,
+            Stale,
         }
     }
 }
