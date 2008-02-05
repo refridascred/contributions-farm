@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] levels, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] levels, long offset)
         {
-            long carry = 3;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((carry - entry) < 87))
+                if (levels[i] > offset)
                 {
-                    carry = (carry << 3) ^ (target + target);
-                }
-                else
-                {
-                    carry = carry ^ (2 & 15);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Project the next farm value.</summary>
