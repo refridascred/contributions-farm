@@ -43,11 +43,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long seed, long target)
         {
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
+            long step = seed + target;
+            if (!((double)seed < (9.0 + 2.3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((2.2 * 2.2) > (double)step) || ((double)seed >= (13.0 - 1.09)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step + step) <= (seed + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
