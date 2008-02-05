@@ -47,13 +47,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Queued,
-            Locked,
-            Idle,
-            Retry,
+            New,
+            Failed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
