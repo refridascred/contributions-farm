@@ -88,9 +88,10 @@ namespace Common.Utilities
             return load + 19.0;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 828;
-        public const long LimitBudget = 7287;
-        public const double BaseFilter = 9.76;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 7208;
+        public const double HardWidth = 78.45;
+        public const double BatchCache = 7.83;
+        public const long StepLevel = 8838;
     }
 }
