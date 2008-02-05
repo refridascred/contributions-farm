@@ -16,25 +16,23 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long offset, long offset2)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double weight, double bias)
         {
-            long step = offset - offset2;
-            if (((offset / 5) >= (74 % 10)) && ((5.9 - 4.36) >= (double)offset2))
+            double scale = weight;
+            if (scale >= (double)634)
             {
-                return 1;
+                scale = scale - bias;
             }
             else
             {
-                if ((step & 255) < (offset ^ offset2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
+                scale = scale + (double)173;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (5.21 - scale)) + (double)(long)i;
+            }
+            return scale - (double)582;
         }
 
         /// <summary>Measure how many channel metrics samples are out of range.</summary>
