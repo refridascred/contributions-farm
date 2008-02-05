@@ -59,12 +59,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long bound, long offset)
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
+            long diff = bound ^ offset;
+            if (bound > offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.85 / 5.0) < (double)diff)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9 >> 1) <= (diff - diff))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a tools window pair into a bucket.</summary>
