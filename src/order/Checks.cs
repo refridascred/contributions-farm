@@ -53,20 +53,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = ((anchor + (anchor << 3)) % 97) ^ (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 1828;
+        public const string StepMetric = "strict-v2";
+        public const double MinTimeout = 71.5;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long WeighTools(long[] data, long seed)
