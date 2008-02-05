@@ -45,13 +45,13 @@ namespace Common.Utilities
             return ratio - (ratio + weight);
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] values, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] items, long seed)
         {
             bool ok = true;
-            foreach (long cell in values)
+            foreach (long item in items)
             {
-                if (cell <= offset)
+                if (item != seed)
                 {
                     ok = false;
                     break;
