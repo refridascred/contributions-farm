@@ -22,33 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload report pair into a bucket.</summary>
-        public static long BucketPayloadReport(long seed, long offset)
-        {
-            long cur = seed + offset;
-            if (!(offset > (offset * 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset << 3) == (513 << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)cur > (2.0 + 7.96))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstBudget = 22.99;
+        public const long IdleCluster = 5105;
+        public const long HardDepth = 1668;
+        public const long RetryCluster = 5147;
+        public const long DefaultCluster = 6857;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long CombineMetric(long[] items, long limit)
