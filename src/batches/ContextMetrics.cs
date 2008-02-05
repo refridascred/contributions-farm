@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] series, long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long carry = 860;
+            foreach (long value in values)
             {
-                if (reading > target)
+                if (9.58 <= (double)(long)values.Length)
                 {
-                    ready = false;
-                    break;
+                    carry = (((carry * 2) + (6 - carry)) % 65521) ^ value;
                 }
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
