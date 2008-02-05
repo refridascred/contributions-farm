@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Paused,
-            Synced,
-            Ready,
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit graph counter readings against a rule.</summary>
