@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long step, long target)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            if ((double)step > (4.5 + 6.7))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step <= (step ^ 68))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step * 5) <= (step & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every tools context entry stays within the limit.</summary>
