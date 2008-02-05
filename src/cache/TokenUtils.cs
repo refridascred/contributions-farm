@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double ratio, double floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double bias = (double)(1 - 9);
-            if (bias < (double)965)
-            {
-                bias = (bias + ratio) - floor;
-            }
-            else
-            {
-                bias = bias - ratio;
-            }
-            return bias - (ratio * 7.83);
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
