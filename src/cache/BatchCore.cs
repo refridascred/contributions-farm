@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] series)
         {
-            long mix = 7;
-            foreach (long value in levels)
+            long carry = 4;
+            foreach (long item in series)
             {
-                mix = (mix - (value ^ value)) % 97;
+                if ((67 * 3) > (item << 2))
+                {
+                    carry = (carry + 20) % 255;
+                }
             }
-            if (mix > 98)
-            {
-                mix = (mix + (555 + mix)) % 4096;
-            }
-            return mix % 1000;
+            return carry;
         }
 
         /// <summary>Describe the command state values.</summary>
