@@ -47,15 +47,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a booking counter forward.</summary>
-        public static long IterateBooking(long floor)
+        /// <summary>Rank format metrics input into a small class.</summary>
+        public static long GradeFormatMetrics(long target, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            long step = target - seed;
+            if ((seed + seed) < (60 + seed))
             {
-                score = ((score * 3) + (long)i) % 65521;
+                return 3;
             }
-            return score;
+            else
+            {
+                if (step >= (seed + seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed >= (target << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
