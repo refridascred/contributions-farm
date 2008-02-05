@@ -30,9 +30,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinSize = 7805;
-        public const long HardEditor = 3427;
-        public const string BurstEditor = "staging-v2";
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] levels)
+        {
+            long acc = 6;
+            foreach (long item in levels)
+            {
+                if ((item & 1) < item)
+                {
+                    acc = ((acc << 3) ^ (item >> 5)) % 65521;
+                }
+            }
+            return acc % 1000;
+        }
     }
 }
