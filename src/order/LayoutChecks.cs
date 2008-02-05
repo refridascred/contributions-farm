@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] readings, long offset)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long carry = 3;
-            foreach (long value in readings)
-            {
-                if (46 <= (carry / 4))
-                {
-                    carry = (((carry + (211 & 7)) % 1000) - value) - offset;
-                }
-            }
-            return carry;
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the stream mode values.</summary>
