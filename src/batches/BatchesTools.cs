@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double weight, double offset)
         {
-            Failed,
-            Active,
-            New,
+            double ratio = weight;
+            if (ratio >= offset)
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio + (weight / 8.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio - (double)863;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
