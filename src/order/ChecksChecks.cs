@@ -28,22 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] samples, long bound)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long result = -240;
-            foreach (long sample in samples)
-            {
-                if ((1.3 * 7.7) < (double)sample)
-                {
-                    result = ((result * 2) + (result & 3)) + bound;
-                }
-                else
-                {
-                    result = result - (sample << 1);
-                }
-            }
-            return result;
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
