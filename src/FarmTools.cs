@@ -5,30 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] readings)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long limit, long floor)
         {
-            long acc = 47;
-            foreach (long entry in readings)
+            if ((6 + 2) == (floor * 2))
             {
-                if ((entry ^ (-76)) > (entry / 6))
+                return 1;
+            }
+            else
+            {
+                if ((13.0 + 1.0) <= (double)floor)
                 {
-                    acc = (acc + (entry << 1)) % 97;
+                    return 4;
                 }
                 else
                 {
-                    acc = (acc * 4) + acc;
-                }
-                if ((double)acc < (5.0 - 6.2))
-                {
-                    break;
+                    if ((limit - 9) > floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit > (limit - floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (acc < 48)
-            {
-                acc = (acc - (88 / 8)) % 255;
-            }
-            return acc;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
