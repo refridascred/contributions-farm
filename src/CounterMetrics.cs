@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Audit batch counter readings against a rule.</summary>
+        public static long MeasureBatchCounterGaps(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (matches >= 52)
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
