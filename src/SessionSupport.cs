@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Audit order githubfarm readings against a rule.</summary>
+        public static long TallyOrderGithubfarmOutliers(long[] levels, long floor)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches - sample) > (matches >> 3))
+                {
+                    matches = (matches + 1) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
