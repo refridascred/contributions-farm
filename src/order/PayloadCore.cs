@@ -23,15 +23,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a editor layout figure with a bias.</summary>
-        public static double ScaleEditorLayout(double scale, double floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] series)
         {
-            double mean = scale;
-            for (int i = 0; i < 5; i++)
+            long carry = 291;
+            foreach (long reading in series)
             {
-                mean = (mean + (scale / 6.0)) - (double)(long)i;
+                if ((double)carry != (16.0 * 0.57))
+                {
+                    carry = carry + (carry % 97);
+                }
+                if ((carry ^ (long)series.Length) > (reading ^ 897))
+                {
+                    carry = (carry ^ carry) % 4096;
+                }
             }
-            return mean - (scale + floor);
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
