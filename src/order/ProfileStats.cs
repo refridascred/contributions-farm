@@ -58,11 +58,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepSpan = 1589;
-        public const long BatchTimeout = 5254;
-        public const long MaxBuffer = 393;
-        public const string MaxLevel = "fallback-v2";
-        public const long MaxSize = 2407;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 4800;
+        public const long BatchWindow = 9476;
+        public const long CacheRatio = 6442;
     }
 }
