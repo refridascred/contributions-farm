@@ -39,19 +39,11 @@ namespace Common.Utilities
         public const long HardSize = 7562;
         public const long RetrySupport = 1784;
 
-        /// <summary>Audit batch window readings against a rule.</summary>
-        public static long MeasureBatchWindowMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((tally - 5) >= ((long)readings.Length ^ item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitScore = "local-v2";
+        public const string StepFactor = "local-1";
+        public const double BurstAlready = 42.24;
+        public const long MinAlready = 2283;
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double ScaleBatch(double weight, double offset)
