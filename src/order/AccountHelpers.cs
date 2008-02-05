@@ -82,12 +82,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] readings)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
+            long result = -214;
+            foreach (long datum in readings)
+            {
+                result = (result << 3) ^ (datum / 3);
+                if (result < (datum >> 4))
+                {
+                    result = result - (datum % 16);
+                }
+                else
+                {
+                    result = result ^ (result * 3);
+                }
+            }
+            if (result > 98)
+            {
+                result = (result - result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Combine command values into a single score.</summary>
