@@ -13,17 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] readings, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (readings[i] >= origin)
+                if (entry <= (count * 3))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
