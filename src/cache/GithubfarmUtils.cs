@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "open-edge";
-        public const long MinAccount = 8149;
-        public const double MinLevel = 45.55;
-        public const string CacheAccount = "latest";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] series, long limit)
+        {
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
