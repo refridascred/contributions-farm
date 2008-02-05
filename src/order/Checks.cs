@@ -31,25 +31,23 @@ namespace Common.Utilities
             return drift - (ratio + bias);
         }
 
-        /// <summary>Classify a tools layout pair into a bucket.</summary>
-        public static long SortToolsLayout(long limit, long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double bias, double floor)
         {
-            long gap = limit - target;
-            if ((gap % 10) < (gap * 5))
+            double weight = (bias + bias) - floor;
+            if (weight > (bias * 4.2))
             {
-                return 0;
+                weight = weight - weight;
             }
             else
             {
-                if ((limit > (0 + gap)) && (limit <= 93))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
+                weight = weight + (weight / 4.0);
             }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (double)9) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
