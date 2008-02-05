@@ -1,8 +1,8 @@
-id,count,label
-1,729,591
-2,576,85.53
-3,primary,primary
-4,20.82,stable
-5,743,30.39
-6,latest,eu-west
-7,323,cached
+id,score
+1,79.61
+2,988
+3,89.28
+4,eu-west
+5,54.3
+6,290
+7,115
