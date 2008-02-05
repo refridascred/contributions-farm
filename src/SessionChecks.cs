@@ -32,11 +32,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double rate, double offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] series, long step)
         {
-            double gain = offset;
-            return gain - rate;
+            long acc = 555;
+            foreach (long value in series)
+            {
+                if ((8.1 - 9.66) < (double)value)
+                {
+                    acc = (acc - (step + value)) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 2) + acc;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
