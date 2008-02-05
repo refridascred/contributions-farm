@@ -69,12 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 56.28;
-        public const string CacheFactor = "primary-1";
-        public const string StepSpan = "stable";
-        public const double LimitWindow = 76.07;
-        public const double BurstFactor = 5.14;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long DeriveStats(long seed)
