@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] data, long origin)
         {
-            Paused,
-            Queued,
-            Dropped,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches / 8) != (item % 5))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the report cluster entries that pass the check.</summary>
