@@ -28,9 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 8700;
-        public const string MaxFilter = "strict-1";
-        public const long BaseFilter = 1647;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
