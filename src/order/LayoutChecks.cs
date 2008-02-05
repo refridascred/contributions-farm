@@ -59,18 +59,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] levels, long target)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long acc = 5;
-            foreach (long entry in levels)
-            {
-                if ((double)entry != (0.94 - 12.0))
-                {
-                    acc = (acc ^ (acc + (-5))) - target;
-                }
-            }
-            return acc % 1000;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate batch layout samples.</summary>
