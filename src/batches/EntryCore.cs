@@ -34,19 +34,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry * 2) >= hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseTimeout = 4261;
+        public const string MaxGithubfarm = "strict";
+        public const long BaseGithubfarm = 4760;
+        public const long CacheRatio = 368;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] levels)
