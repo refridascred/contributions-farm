@@ -48,18 +48,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] levels)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((6.09 + 1.0) > (double)datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Draft,
+            Queued,
+            Active,
+            Locked,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
