@@ -43,15 +43,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Roll a profile command counter forward.</summary>
-        public static long DeriveProfileCommand(long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] data, long target)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if (cell < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
