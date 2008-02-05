@@ -7,11 +7,16 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 5); do
     total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in edge open; do
-    log "checking ${item}"
+CHANNEL_LIMIT=340
+log "limit is ${CHANNEL_LIMIT}"
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
