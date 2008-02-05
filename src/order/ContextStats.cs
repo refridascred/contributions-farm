@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 9624;
+        public const long SoftTimeout = 248;
+        public const long WindowSpan = 1949;
+        public const double SoftQueue = 12.07;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long BucketPayload(long floor, long origin)
