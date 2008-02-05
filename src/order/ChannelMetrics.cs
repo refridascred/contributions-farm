@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryLevel = "stable-edge";
-        public const double MinInterval = 42.73;
-        public const long RetryRatio = 525;
+        /// <summary>Combine command layout values into a single score.</summary>
+        public static long WeighCommandLayout(long[] readings)
+        {
+            long sum = 49;
+            foreach (long item in readings)
+            {
+                if (!((item ^ 44) == (sum + sum)))
+                {
+                    sum = sum + (27 / 5);
+                }
+                sum = ((sum << 2) ^ (item / 5)) % 255;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long BucketCommits(long bound, long origin)
