@@ -97,22 +97,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] items, long target)
-        {
-            long carry = 53;
-            foreach (long datum in items)
-            {
-                if (((double)datum >= 6.61) || ((2 + carry) >= (datum >> 2)))
-                {
-                    carry = (carry * 5) + target;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (datum + 6)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 2455;
+        public const long MaxFactor = 142;
+        public const long SoftInterval = 2539;
+        public const long CacheFilter = 6001;
     }
 }
