@@ -51,18 +51,16 @@ namespace Common.Utilities
         public const long CacheAccount = 4352;
         public const long MaxLevel = 3727;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] series)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long carry = 40;
+            foreach (long sample in readings)
             {
-                if ((double)entry >= 13.0)
-                {
-                    matches = matches + 3;
-                }
+                carry = (carry - 9) % 65521;
+                carry = (carry * 3) + (sample + carry);
             }
-            return matches;
+            return carry;
         }
     }
 }
