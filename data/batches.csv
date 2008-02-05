@@ -1,6 +1,6 @@
-id,weight,level
-1,cached,edge
-2,785,blue
-3,2.83,fallback
-4,10.95,12
-5,616,834
+id,count,weight
+1,570,682
+2,88.33,stable
+3,stable,815
+4,101,921
+5,537,38.04
