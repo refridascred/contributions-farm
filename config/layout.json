@@ -1,8 +1,21 @@
 {
-  "flush_timeout_s": "staging",
-  "persist": "strict",
-  "batch_threshold_ms": 6681,
-  "notes_ttl": "latest",
-  "commits_ttl": 100,
-  "strict": "primary"
+  "audit": true,
+  "idle_size": true,
+  "strict": true,
+  "flush_size_s": [180, 363],
+  "compress": {
+    "default_ratio": [376, 299, 396, 449],
+    "editor_window": 30,
+    "default_retries_ms": "local",
+    "warm_depth": {
+      "poll_capacity": 89.65,
+      "persist": 7804,
+      "max_ttl_pct": [183, 308],
+      "compress": false,
+      "context_capacity": "cached",
+      "batch_window": ["primary", "stable"]
+    },
+    "enabled": "primary",
+    "queue_limit": "local"
+  }
 }
