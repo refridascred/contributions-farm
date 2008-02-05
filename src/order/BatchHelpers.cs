@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] items, long step)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long anchor = 3;
-            foreach (long datum in items)
-            {
-                if ((anchor ^ 6) > (9 & 31))
-                {
-                    anchor = (anchor - step) ^ datum;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor & 7)) % 101;
-                }
-            }
-            return anchor % 4096;
+            Dropped,
+            Active,
+            Pending,
         }
 
         /// <summary>Define session limits and defaults.</summary>
