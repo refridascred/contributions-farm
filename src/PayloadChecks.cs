@@ -35,19 +35,17 @@ namespace Common.Utilities
         public const double RetryInterval = 84.82;
         public const long DefaultBudget = 9013;
 
-        /// <summary>Adjust a already route reading.</summary>
-        public static double BlendAlreadyRoute(double bias, double floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] readings, long offset)
         {
-            double gain = (double)(95 ^ 69);
-            if (gain > bias)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain + bias) + floor;
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - 6.7;
+            return -1;
         }
 
         /// <summary>Adjust a entry reading.</summary>
