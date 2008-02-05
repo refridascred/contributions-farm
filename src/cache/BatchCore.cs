@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many metrics layout samples are out of range.</summary>
-        public static long CountMetricsLayoutOutliers(long[] levels, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry < (double)matches)
-                {
-                    matches = (matches + 2) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowDepth = 6703;
+        public const string HardTimeout = "alpha-1";
+        public const string StepBudget = "primary-1";
+        public const long LimitTimeout = 6108;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
