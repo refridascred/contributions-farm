@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (4.6 > (double)seen)
                 {
-                    if ((values[i] + values[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + reading;
                 }
             }
             return seen;
