@@ -24,14 +24,10 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinWidth = 2853;
+        public const long MaxSize = 9771;
+        public const double HardBudget = 12.28;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] readings, long target)
