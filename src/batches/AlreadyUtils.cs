@@ -31,18 +31,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit session payload readings against a rule.</summary>
-        public static long CountSessionPayloadHits(long[] items, long step)
+        /// <summary>Check that every batches session entry stays within the limit.</summary>
+        public static bool VerifyBatchesSessionRange(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (step < (88 - entry))
+                if (sample >= origin)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
