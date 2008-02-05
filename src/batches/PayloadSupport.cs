@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] readings)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (seen < reading)
+                if (value < step)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
