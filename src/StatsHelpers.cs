@@ -36,15 +36,34 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] samples, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            long acc = 2;
-            foreach (long entry in samples)
+            long total = 0;
+            foreach (long datum in readings)
             {
-                acc = (acc ^ (entry ^ 99)) - bound;
+                if (((total % 5) < datum) && ((double)datum > (5.86 - 1.0)))
+                {
+                    total = (total ^ total) % 101;
+                }
+                if ((total & 3) <= ((-13) >> 1))
+                {
+                    total = ((total << 2) ^ (8 / 9)) % 65521;
+                }
+                if (((double)total != (8.0 + 1.9)) && (0 >= total))
+                {
+                    total = ((total << 3) ^ (total & 1)) % 4096;
+                }
+                else
+                {
+                    total = (total * 2) + (total + datum);
+                }
             }
-            return acc;
+            if (total < 72)
+            {
+                total = (total - (total / 6)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
