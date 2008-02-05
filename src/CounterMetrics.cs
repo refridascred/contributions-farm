@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] samples)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!!((double)entry < (10.0 * 2.4)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Pending,
+            Retry,
+            Idle,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
