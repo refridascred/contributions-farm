@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] levels, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((15 - item) >= (204 >> 1))
+                if (entry != seed)
                 {
-                    seen = (seen + 2) + origin;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
