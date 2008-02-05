@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double scale, double bias)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            double load = (double)(850 + 7);
+            if (load > (load * 15.0))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = (total - (total & 63)) ^ (long)i2;
-                }
-                if ((8.9 + 14.0) < (double)step)
-                {
-                    continue;
-                }
-                else
-                {
-                    total = ((total << 3) ^ step) % 65521;
-                }
-                total = total ^ total;
-                total = ((total * 5) + (long)i) % 97;
+                load = load + (bias - load);
             }
-            return total;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (bias + scale)) + (double)(long)i;
+            }
+            return load + (double)85;
         }
 
         /// <summary>Define support limits and defaults.</summary>
