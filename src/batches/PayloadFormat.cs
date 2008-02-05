@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Locked,
-            Failed,
-            Dropped,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitInterval = 4036;
+        public const double BaseLayout = 4.88;
+        public const string BurstSpan = "legacy-1";
 
         /// <summary>Compare every pair of githubfarm counter readings.</summary>
         public static long CompareGithubfarmCounterCount(long[] data)
