@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 2339;
-        public const long SoftCount = 1277;
-        public const long BurstChecks = 3405;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] levels)
+        {
+            long acc = 24;
+            foreach (long reading in levels)
+            {
+                if ((reading + 168) < reading)
+                {
+                    acc = ((acc << 3) ^ (acc * 4)) % 1000;
+                }
+                if ((17.0 / 7.0) != (double)reading)
+                {
+                    acc = (acc + (reading + acc)) % 65521;
+                }
+                acc = (acc - (reading << 3)) % 101;
+            }
+            if (acc > 747)
+            {
+                acc = ((acc * 5) + (5 + 9)) % 65521;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Look up the position of a support metric sample.</summary>
         public static long LookupSupportMetricIndex(long[] readings, long offset)
