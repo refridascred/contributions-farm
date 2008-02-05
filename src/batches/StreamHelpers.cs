@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double scale, double offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] values, long floor)
         {
-            double load = (double)(6 >> 2);
-            if (load <= 2.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load - offset) - scale;
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load + 6.2;
+            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
