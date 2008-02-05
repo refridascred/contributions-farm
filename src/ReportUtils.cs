@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long limit, long offset)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] readings, long offset)
         {
-            if ((limit / 2) >= 8)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset & 15) <= (offset ^ 4))
+                if (readings[i] >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset % 16) > (offset % 97))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit >= (offset - limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
