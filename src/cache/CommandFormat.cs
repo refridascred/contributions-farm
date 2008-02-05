@@ -33,18 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric filter entry that matches the target.</summary>
-        public static long FindMetricFilterIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowLevel = 9378;
+        public const long HardCommits = 9792;
+        public const string BatchBudget = "stable";
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long DeriveChannel(long target)
