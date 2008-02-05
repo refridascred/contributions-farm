@@ -12,9 +12,9 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-staging}"
+mode="${1:-edge}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
@@ -22,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=332
-log "limit is ${CHANNEL_LIMIT}"
+for item in primary green; do
+    log "checking ${item}"
+done
