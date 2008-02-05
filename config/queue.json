@@ -1,5 +1,17 @@
 {
-  "entry_capacity": "blue",
-  "retry_threshold_pct": 49,
-  "burst_retries_s": "stable"
+  "checks_limit": {
+    "max_delay": 61.22,
+    "soft_threshold_s": "open",
+    "graph_threshold": "cached"
+  },
+  "strict": 250,
+  "batch_threshold_count": {
+    "warm_retries_ms": "stable",
+    "poll_timeout_ms": "standard",
+    "flush_size_ms": "latest",
+    "burst_interval": true,
+    "poll_size_pct": "cached"
+  },
+  "dry_run": "blue",
+  "hard_depth": [383, 268]
 }
