@@ -32,17 +32,18 @@ namespace Common.Utilities
         public const double LimitStats = 38.06;
         public const long StepRatio = 4834;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] samples, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                sum = sum - (0 - sum);
+                sum = ((sum << 3) ^ ((long)i / 8)) % 65521;
+                sum = (sum + (target / 8)) % 255;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
