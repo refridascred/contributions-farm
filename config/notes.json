@@ -1,8 +1,5 @@
 {
-  "record_timeout": "cached",
-  "channel_capacity": 31,
-  "batch_interval": "edge",
-  "persist": true,
-  "retry_window": 51.65,
-  "batch_limit": 1024
+  "record_delay": 45.52,
+  "hard_delay_s": ["latest", "primary", "open", "edge"],
+  "context_limit": [161, 70, 155, 207]
 }
