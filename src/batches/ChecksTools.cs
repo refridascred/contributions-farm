@@ -57,39 +57,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a payload profile value against two limits.</summary>
-        public static long GradePayloadProfile(long step, long limit)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double ratio, double bias)
         {
-            long diff = step - limit;
-            if ((diff % 97) > (limit << 1))
+            double drift = bias;
+            if (drift >= 2.0)
             {
-                return 8;
+                drift = drift - ratio;
             }
             else
             {
-                if ((double)step < (2.9 * 4.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step >= (298 << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (990 < (diff ^ limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                drift = drift - (drift + ratio);
             }
+            return drift + (ratio / 5.0);
         }
 
         /// <summary>Adjust a command reading.</summary>
