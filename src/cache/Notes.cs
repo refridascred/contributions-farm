@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many metrics report samples are out of range.</summary>
-        public static long TallyMetricsReportMatches(long[] data)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((1.3 - 4.87) > (double)item)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
