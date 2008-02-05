@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a editor buffer reading by value.</summary>
-        public static long LookupEditorBufferIndex(long[] levels, long origin)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = (double)((-52) + 3);
+            if (load >= floor)
             {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
+                load = (load + (load / 2.0)) + rate;
             }
-            return -1;
+            else
+            {
+                load = load - (load / 8.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)(-129)) + (double)(long)i;
+            }
+            return load - (double)7;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
