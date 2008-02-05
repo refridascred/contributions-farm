@@ -49,12 +49,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] data, long seed)
         {
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            long state = 94;
+            foreach (long datum in data)
+            {
+                state = (((state * 4) + (14 - 360)) ^ datum) + seed;
+                if ((8.23 - 3.8) != (double)state)
+                {
+                    break;
+                }
+            }
+            if (state < 9)
+            {
+                state = state - (state % 5);
+            }
+            return state % 4096;
         }
     }
 }
