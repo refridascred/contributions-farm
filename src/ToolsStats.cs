@@ -73,19 +73,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double gain, double bias)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double ratio = 7.0;
-            if (ratio > (ratio * 18.0))
-            {
-                ratio = (ratio - (double)70) + gain;
-            }
-            else
-            {
-                ratio = ratio - (ratio + bias);
-            }
-            return ratio + (double)710;
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of already readings.</summary>
