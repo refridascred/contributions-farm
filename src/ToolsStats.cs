@@ -79,20 +79,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items, long floor)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long target)
         {
-            long state = 85;
-            foreach (long item in items)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((floor + item) < (524 + floor))
-                {
-                    state = ((state * 3) + state) % 255;
-                    state = (state - (item >> 1)) % 101;
-                }
-                state = state - item;
+                total = ((total * 2) + 52) % 65521;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return state % 65521;
+            return total;
         }
     }
 }
