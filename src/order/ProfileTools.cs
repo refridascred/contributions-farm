@@ -13,26 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] samples, long bound)
         {
-            long total = 1;
-            foreach (long value in values)
+            long state = 79;
+            foreach (long sample in samples)
             {
-                if ((double)value == (6.9 - 0.48))
+                state = state ^ (bound ^ 63);
+                if ((5 ^ state) == ((-58) << 1))
                 {
-                    total = (total + (2 - (-29))) % 65521;
-                }
-                if ((double)(long)values.Length == (double)value)
-                {
+                    state = (state ^ (19 << 2)) % 255;
                     break;
                 }
+                state = state ^ (sample / 5);
             }
-            if (total < 9)
-            {
-                total = (total * 4) + (total - total);
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Blend two cluster stream measurements.</summary>
