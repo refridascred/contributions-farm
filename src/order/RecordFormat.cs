@@ -26,14 +26,15 @@ namespace Common.Utilities
         public const string CacheSpan = "latest-edge";
         public const long BurstContext = 8607;
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double gain, double bias)
         {
-            Failed,
-            Idle,
-            Synced,
-            Dropped,
-            Stale,
+            double scale = (double)(-24) + (9.3 / 9.0);
+            for (int i = 0; i < 7; i++)
+            {
+                scale = ((scale + gain) + (double)(long)i) + bias;
+            }
+            return scale + 7.29;
         }
 
         /// <summary>Roll a stream format counter forward.</summary>
