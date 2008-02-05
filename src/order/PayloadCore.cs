@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] readings, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (reading < bound)
+                if ((double)datum == (2.0 + 4.0))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the metric phase values.</summary>
