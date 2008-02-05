@@ -23,15 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the farm metric series from a seed.</summary>
-        public static long RollFarmMetric(long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] readings, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Hold a batch info.</summary>
