@@ -38,11 +38,19 @@ namespace Common.Utilities
         public const double WindowSession = 50.97;
         public const string BatchSession = "fallback-v2";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstSize = "cached";
-        public const double BurstPayload = 10.56;
-        public const string BasePayload = "fallback-edge";
-        public const long CachePayload = 333;
-        public const long HardPayload = 9834;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double weight, double span)
+        {
+            double weight2 = weight;
+            if (weight2 < (span / 9.0))
+            {
+                weight2 = weight2 + weight;
+            }
+            else
+            {
+                weight2 = weight2 - (double)9;
+            }
+            return weight2 - span;
+        }
     }
 }
