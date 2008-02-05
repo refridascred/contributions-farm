@@ -1,8 +1,9 @@
-id,label,weight,ratio,state
-1,stable,29.17,78.23,218
-2,42.33,fallback,695,468
-3,181,30.51,21.98,80.3
-4,blue,663,889,stable
-5,86,7.04,142,595
-6,368,763,11,local
-7,26.92,60.28,231,958
+id,score,count,weight
+1,601,93.71,206
+2,49,499,569
+3,430,593,281
+4,29.67,staging,618
+5,strict,edge,45.94
+6,standard,eu-west,stable
+7,106,blue,63.77
+8,latest,98.51,cached
