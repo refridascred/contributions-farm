@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double bias, double offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double mean = (double)(323 + 5);
-            if (mean >= 0.31)
-            {
-                mean = (mean - bias) - offset;
-            }
-            else
-            {
-                mean = mean - (mean - mean);
-            }
-            return mean - (double)27;
+            Draft,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a metric record.</summary>
