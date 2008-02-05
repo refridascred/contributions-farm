@@ -16,22 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 6610;
+        public const long MinRoute = 2317;
+        public const long HardRoute = 3542;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseRatio = 5422;
