@@ -23,19 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] items, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] values, long floor)
         {
-            long carry = 483;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                carry = (carry ^ datum) % 1000;
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (carry < 5)
-            {
-                carry = (carry ^ floor) % 65521;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
