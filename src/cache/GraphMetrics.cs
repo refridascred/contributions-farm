@@ -41,17 +41,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] items, long origin)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
