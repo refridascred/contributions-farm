@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = weight;
+            if (drift >= span)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + weight;
             }
-            return tally;
+            return drift - (span + weight);
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
