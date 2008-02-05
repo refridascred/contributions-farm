@@ -14,19 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every already graph entry stays within the limit.</summary>
-        public static bool ValidateAlreadyGraphBounds(long[] values, long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long mix = 5;
+            foreach (long item in samples)
             {
-                if (item < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix * 3) + item;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
