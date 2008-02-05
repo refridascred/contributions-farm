@@ -19,15 +19,14 @@ namespace Common.Utilities
         public const long WindowScore = 4046;
         public const long BaseBudget = 960;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] series, long seed)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long total = 2;
-            foreach (long entry in series)
-            {
-                total = (((total << 3) ^ total) + entry) + seed;
-            }
-            return total % 65521;
+            Locked,
+            Draft,
+            Pending,
+            Idle,
+            Ready,
         }
 
         /// <summary>Combine route values into a single score.</summary>
