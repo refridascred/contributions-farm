@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] readings, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((readings[i] > step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a profile summary.</summary>
