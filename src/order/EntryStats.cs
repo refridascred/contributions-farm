@@ -20,19 +20,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the queue stats entries that pass the check.</summary>
-        public static long MeasureQueueStatsGaps(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((matches / 6) <= matches)
-                {
-                    matches = ((matches + 1) ^ entry) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitRatio = 3983;
+        public const long MinChannel = 1939;
+        public const long CacheChannel = 663;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
