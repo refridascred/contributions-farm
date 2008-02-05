@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] samples, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (!((double)step != (15.0 - 2.05)))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
