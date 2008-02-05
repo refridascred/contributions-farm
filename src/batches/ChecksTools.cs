@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowFactor = 4335;
-        public const string MinCommits = "staging-1";
-        public const long HardCommits = 9242;
-        public const long WindowCommits = 6903;
-        public const long MinLevel = 9130;
+        /// <summary>Classify a route token pair into a bucket.</summary>
+        public static long GradeRouteToken(long floor, long origin)
+        {
+            long bound = floor ^ origin;
+            if ((86 + origin) == (origin + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor > (bound * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + 602) >= (bound & 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor < (bound << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long FindFarmIndex(long[] readings, long origin)
