@@ -1,18 +1,18 @@
 # support settings
-route_threshold:
-  - staging
+batch_window_s: 46
+stream_threshold:
   - edge
+  - local
+  - local
+order_threshold:
+  - stable
   - cached
-audit:
-  window_size:
-    idle_limit_s: open
-    batch_size_pct: true
-    verbose: 79.6
-    warm_threshold: 2986
-  schema_window: 3358
-  cluster_interval: 28.64
-  verbose: 5527
-  schema_size: true
-soft_timeout_s: eu-west
-readonly: blue
-poll_retries_ms: 250
+base_threshold:
+  - 494
+  - 112
+warm_timeout_s:
+  - green
+  - fallback
+  - staging
+  - legacy
+record_threshold: staging
