@@ -20,10 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinLevel = 66.9;
-        public const string DefaultCache = "cached-1";
-        public const string BatchCache = "strict";
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Validate schema notes readings against a bound.</summary>
         public static bool CheckSchemaNotesRange(long[] readings, long offset)
