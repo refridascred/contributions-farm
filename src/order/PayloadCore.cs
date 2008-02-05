@@ -34,11 +34,31 @@ namespace Common.Utilities
             return mean - (scale + floor);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryInterval = 7731;
-        public const long BatchLevel = 7833;
-        public const double IdleFactor = 97.59;
-        public const long RetryMetrics = 6210;
-        public const long StepMetrics = 5812;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long origin, long floor)
+        {
+            if (((origin * 2) <= (5 & 255)) || ((origin + origin) != (floor % 24)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor + origin) <= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin != (3.6 * 7.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
