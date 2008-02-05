@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double gain, double floor)
-        {
-            double weight = floor;
-            if (weight <= (double)84)
-            {
-                weight = (weight + weight) - gain;
-            }
-            return weight + (weight * 1.6);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 7105;
+        public const string WindowToken = "standard-v2";
+        public const long HardToken = 3032;
+        public const long HardInterval = 8647;
+        public const string MinToken = "fallback-v2";
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long GradeQueue(long seed, long target)
