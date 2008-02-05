@@ -44,18 +44,10 @@ namespace Common.Utilities
             return ratio - (ratio + weight);
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 2265;
+        public const long CacheStats = 2435;
+        public const string RetryRatio = "open-edge";
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
