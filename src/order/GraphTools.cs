@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] values, long target)
         {
-            Paused,
-            Locked,
-            Pending,
-            Retry,
-            Dropped,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (item > (matches / 4))
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
