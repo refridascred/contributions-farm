@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record metric reading by value.</summary>
-        public static long SeekRecordMetricIndex(long[] readings, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (readings[i] < bound)
+                if (((29 * 2) > entry) && ((double)entry <= (5.0 + 2.2)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
