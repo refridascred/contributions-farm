@@ -1,14 +1,7 @@
 {
-  "audit": "staging",
-  "verbose": 1024,
-  "base_ratio_ms": "standard",
-  "persist": 4163,
-  "counter_limit": {
-    "editor_window": "strict",
-    "hard_timeout_count": "fallback",
-    "batch_capacity_ms": "strict",
-    "token_timeout": "blue",
-    "retry_timeout": [376, 403]
-  },
-  "profile_threshold": 65.09
+  "retry_delay": 63,
+  "retry_delay_s": 55,
+  "stats_delay": 989,
+  "dry_run": [409, 95, 412, 470],
+  "retry_ratio_count": false
 }
