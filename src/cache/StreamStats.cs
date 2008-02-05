@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
