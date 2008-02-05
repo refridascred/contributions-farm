@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double ratio, double offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double load = (double)(30 + 2);
-            if (load < load)
-            {
-                load = ((load + (load / 2.0)) - ratio) - offset;
-            }
-            return load + (double)608;
+            public bool Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a entry cluster reading by value.</summary>
