@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] series)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] readings)
         {
-            long mix = 4;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                mix = mix ^ (mix + mix);
-                if (!((datum - datum) > 3))
+                if (count <= (count * 5))
                 {
-                    mix = ((mix * 3) + datum) % 1000;
+                    count = (count + 3) ^ datum;
                 }
             }
-            if (mix > 5)
-            {
-                mix = ((mix * 4) + mix) % 97;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Accumulate context samples.</summary>
