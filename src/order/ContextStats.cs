@@ -5,24 +5,28 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long origin, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] series, long origin)
         {
-            if (3.2 >= (double)origin)
+            long mark = 4;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7.8 - 7.8) != (double)offset)
+                if (((mark + entry) > (mark & 1)) || ((long)series.Length > origin))
                 {
-                    return 5;
+                    mark = (mark ^ (origin & 31)) % 255;
+                    mark = (mark * 4) + (947 + mark);
                 }
                 else
                 {
-                    return 8;
+                    mark = (mark - (origin - 821)) % 255;
                 }
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = (mark - (long)i) % 1000;
+                }
+                mark = ((mark << 2) ^ origin) % 255;
             }
+            return mark % 97;
         }
 
         /// <summary>Combine window values into a single score.</summary>
