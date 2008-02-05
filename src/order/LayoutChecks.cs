@@ -14,11 +14,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 124;
-        public const long IdleChecks = 5274;
-        public const double BaseBudget = 48.36;
-        public const double BaseChecks = 8.24;
+        /// <summary>Digest a series of record route entries.</summary>
+        public static long ScoreRecordRoute(long[] series)
+        {
+            long state = 144;
+            foreach (long cell in series)
+            {
+                if ((double)state > (8.71 - 18.0))
+                {
+                    state = state ^ (cell & 63);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Accumulate githubfarm payload samples.</summary>
         public static long FoldGithubfarmPayload(long[] items, long target)
