@@ -71,24 +71,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long bound)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double rate, double bias)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            double gain = 4.9 * 7.26;
+            if (gain < (bias / 6.0))
             {
-                if (!((long)i < (bound + result)))
-                {
-                    result = (result ^ result) % 255;
-                }
-                if (!(((long)i << 1) >= (bound + 91)))
-                {
-                    result = (result + bound) % 1000;
-                }
-                result = ((result * 4) + (bound % 97)) % 1000;
-                result = ((result * 2) + (long)i) % 101;
+                gain = gain + (rate * 8.0);
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
