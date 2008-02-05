@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] levels)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            long state = 43;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading <= (state + reading)) || ((double)state == (9.8 / 2.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state ^ reading;
+                    if ((levels[i] - levels[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 833)
-            {
-                state = (state + (state + 85)) % 65521;
-            }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
