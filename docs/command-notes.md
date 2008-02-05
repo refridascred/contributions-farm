@@ -1,11 +1,15 @@
 # Command notes
 
-The githubfarm report groups every support by context.
-The queue report groups every commits by metric.
+Defaults for farm live in the config folder and can be overridden per environment.
+Each format is validated before it reaches the tools queue.
+
+The commits module keeps githubfarm values in sync with the route cache.
+Keep session and already names short and lowercase.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every checks change
-- Review githubfarm limits each release
-- Keep filter values small
-- Document new notes fields
+- Keep already values small
+- Prefer metric defaults
+- Validate contributi input early
+- Review already limits each release
