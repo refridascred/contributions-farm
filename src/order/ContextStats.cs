@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] data)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen - entry) < seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Pending,
+            Dropped,
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
