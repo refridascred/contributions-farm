@@ -65,18 +65,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] items)
+        /// <summary>Accumulate filter githubfarm samples.</summary>
+        public static long DigestFilterGithubfarm(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long mark = 10;
+            foreach (long datum in samples)
             {
-                if (!((datum > (6 % 24)) && ((matches >> 3) > 13)))
+                mark = (((mark * 2) + 0) % 1000) - datum;
+                mark = mark + (290 % 100);
+                if (2.88 < (double)offset)
                 {
-                    matches = matches + 3;
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
