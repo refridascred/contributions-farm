@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long seed)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Locked,
+            Closed,
         }
 
         /// <summary>Fold a list of window batch readings.</summary>
