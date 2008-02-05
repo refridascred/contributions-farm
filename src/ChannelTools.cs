@@ -16,17 +16,10 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result << 2) ^ (bound & 1)) % 255;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchBudget = 3688;
+        public const long RetrySpan = 5358;
+        public const double HardCount = 17.06;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
