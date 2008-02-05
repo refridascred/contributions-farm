@@ -44,19 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] data, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long score = 76;
+            foreach (long value in data)
             {
-                if (sample <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (score ^ (score % 64)) ^ value;
             }
-            return ok;
+            if (score > 573)
+            {
+                score = (score * 2) + (bound + bound);
+            }
+            return score % 65521;
         }
     }
 }
