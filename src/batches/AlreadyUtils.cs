@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Closed,
-            Failed,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepInterval = 5512;
+        public const long DefaultFormat = 2334;
+        public const string BatchSpan = "open";
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long ClassifyMetric(long bound, long offset)
