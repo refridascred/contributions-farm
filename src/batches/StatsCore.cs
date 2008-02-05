@@ -65,17 +65,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a notes graph reading by value.</summary>
-        public static long LocateNotesGraphIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardSpan = 3958;
+        public const double BaseStream = 90.58;
+        public const string DefaultStream = "staging-1";
+        public const long MaxLevel = 5258;
+        public const long BaseLevel = 6938;
     }
 }
