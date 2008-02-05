@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank already buffer input into a small class.</summary>
-        public static long SortAlreadyBuffer(long floor, long offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long slot = floor ^ offset;
-            if ((double)offset > (5.2 * 12.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((slot & 15) == (floor * 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((199 & 63) > offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Iterate the farm support series from a seed.</summary>
