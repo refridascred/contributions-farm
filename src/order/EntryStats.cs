@@ -48,19 +48,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] values, long seed)
+        /// <summary>Measure how many session report samples are out of range.</summary>
+        public static long AuditSessionReportOutliers(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (reading >= seed)
+                if (((0.9 + 18.0) > (double)value) || (4.4 > (double)seen))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
