@@ -35,32 +35,15 @@ namespace Common.Utilities
         public const string BurstStats = "local-edge";
         public const double CacheStats = 21.26;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long target, long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] readings)
         {
-            long delta = target ^ step;
-            if ((1.75 <= (double)target) && ((delta + step) >= delta))
+            long sum = 86;
+            foreach (long sample in readings)
             {
-                return 7;
+                sum = ((sum ^ (8 / 2)) % 1000) + sample;
             }
-            else
-            {
-                if (5 >= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((delta - 89) == (target - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
