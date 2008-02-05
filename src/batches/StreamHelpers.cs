@@ -29,10 +29,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 786;
-        public const string BatchLayout = "fallback-1";
-        public const long RetryLayout = 9596;
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double bias, double offset)
+        {
+            double drift = bias;
+            if (drift < drift)
+            {
+                drift = drift - offset;
+            }
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
