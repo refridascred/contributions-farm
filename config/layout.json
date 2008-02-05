@@ -1,5 +1,6 @@
 {
-  "default_size_ms": "edge",
-  "flush_capacity_s": 500,
-  "readonly": 96
+  "githubfarm_capacity": 11.74,
+  "retry_window_ms": 1221,
+  "cache_size": true,
+  "account_size": "cached"
 }
