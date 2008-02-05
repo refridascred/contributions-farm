@@ -34,14 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Stale,
-            Locked,
-            Closed,
-            Idle,
-            Paused,
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
