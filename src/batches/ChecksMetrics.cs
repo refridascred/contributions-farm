@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] levels, long limit)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long score = 597;
+            foreach (long datum in levels)
+            {
+                if (((score - limit) > (datum >> 4)) || ((7.6 - 7.9) >= (double)score))
+                {
+                    score = ((score * 5) + score) % 1000;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
