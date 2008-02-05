@@ -23,13 +23,18 @@ namespace Common.Utilities
         public const double MaxAlready = 29.05;
         public const long IdleAlready = 5789;
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] data, long bound)
         {
-            public double Rank { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((bound / 3) == (bound >> 5))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
     }
 }
