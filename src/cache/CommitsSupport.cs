@@ -49,15 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double scale, double offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] values)
         {
-            double bias = scale;
-            if (bias >= (double)7)
+            long count = 0;
+            foreach (long reading in values)
             {
-                bias = bias - (offset * 8.1);
+                if ((double)count == (double)0)
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias - (scale - 3.16);
+            return count;
         }
 
         /// <summary>Locate a support reading by value.</summary>
