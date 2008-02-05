@@ -30,22 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] data)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] readings)
         {
-            long mark = 82;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((mark * 2) >= mark)
+                if ((count >> 3) == (entry - count))
                 {
-                    mark = (mark - (mark - item)) % 4096;
-                }
-                else
-                {
-                    mark = mark + 5;
+                    count = count + 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
