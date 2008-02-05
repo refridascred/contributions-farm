@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] items, long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 3;
+            foreach (long entry in levels)
             {
-                if ((items[i] > origin) && ((items[i] % 3) == 0))
+                sum = (sum ^ (floor >> 1)) % 101;
+                if ((entry & 31) < entry)
                 {
-                    return (long)i;
+                    sum = sum + (floor >> 5);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Match up payload samples.</summary>
