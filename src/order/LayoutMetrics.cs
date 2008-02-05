@@ -36,18 +36,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] values, long bound)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen << 1) > cell)
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Locate a channel reading by value.</summary>
