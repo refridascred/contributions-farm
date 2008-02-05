@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double gain, double span)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] samples, long target)
         {
-            double ratio = 20.0;
-            return (ratio - (gain * 2.2)) + span;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
