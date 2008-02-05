@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a account entry figure with a bias.</summary>
-        public static double AdjustAccountEntry(double weight, double floor)
+        /// <summary>Locate a stats batches reading by value.</summary>
+        public static long LookupStatsBatchesIndex(long[] levels, long origin)
         {
-            double drift = (double)((-103) * 3);
-            if (drift > floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift - floor) - weight;
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (4.0 * 9.03);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (floor - 0.09)) - (double)(long)i;
-            }
-            return drift + (double)57;
+            return -1;
         }
 
         /// <summary>Audit githubfarm metrics readings against a rule.</summary>
