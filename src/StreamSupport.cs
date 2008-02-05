@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long SoftCount = 1277;
         public const long BurstChecks = 3405;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Retry,
-            New,
-            Idle,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBudget = 7925;
+        public const string BatchTimeout = "legacy-v2";
+        public const long HardFactor = 5719;
+        public const long RetryBuffer = 2751;
+        public const double IdleBuffer = 0.27;
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
