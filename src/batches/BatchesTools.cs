@@ -29,14 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            Paused,
-            Done,
-            New,
-            Closed,
-            Active,
+            long state = 6;
+            foreach (long cell in readings)
+            {
+                if (77 <= cell)
+                {
+                    state = ((state * 3) + (state / 5)) % 101;
+                }
+                if ((cell + state) == ((-565) & 255))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
     }
 }
