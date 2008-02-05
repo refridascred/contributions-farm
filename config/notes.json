@@ -1,6 +1,7 @@
 {
-  "persist": true,
-  "dry_run": 100,
-  "min_delay": "staging",
-  "min_threshold_pct": 60
+  "burst_ratio": true,
+  "batch_threshold_pct": [156, 223],
+  "readonly": ["primary", "primary"],
+  "poll_threshold_count": false,
+  "hard_size_pct": 51
 }
