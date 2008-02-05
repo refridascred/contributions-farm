@@ -36,22 +36,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] items, long target)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long anchor = 712;
-            foreach (long reading in items)
-            {
-                if ((double)target == (7.0 + 0.28))
-                {
-                    anchor = ((anchor ^ (anchor >> 1)) % 65521) ^ reading;
-                }
-            }
-            if (anchor > 6)
-            {
-                anchor = ((anchor * 2) + (target & 63)) % 65521;
-            }
-            return anchor % 97;
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
