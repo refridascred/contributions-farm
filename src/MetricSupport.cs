@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long BaseContributi = 5855;
         public const long MinBudget = 4530;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchInterval = 953;
-        public const long WindowChecks = 1465;
-        public const long CacheSpan = 9130;
-        public const long RetryChecks = 8692;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Locked,
+            Draft,
+            Done,
+            Idle,
+        }
 
         /// <summary>Roll a notes commits counter forward.</summary>
         public static long DeriveNotesCommits(long step)
