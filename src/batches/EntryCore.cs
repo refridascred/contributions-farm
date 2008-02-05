@@ -59,19 +59,19 @@ namespace Common.Utilities
         public const double BatchInterval = 88.14;
         public const string LimitDepth = "standard-1";
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] items, long floor)
         {
-            long state = 7;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                state = (state - datum) % 255;
+                if (reading > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (state > (-97))
-            {
-                state = (state - (7 >> 2)) % 97;
-            }
-            return state % 4096;
+            return ok;
         }
 
         /// <summary>Describe the farm level values.</summary>
