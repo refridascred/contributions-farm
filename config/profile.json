@@ -1,6 +1,7 @@
 {
-  "cache_window_ms": 37.02,
-  "default_timeout": "latest",
-  "retry_timeout_count": [214, 101, 16, 38],
-  "cache_timeout_count": 13
+  "warm_ratio": 3066,
+  "token_ratio": "local",
+  "warm_ttl_count": 60,
+  "layout_interval": "local",
+  "flush_retries": 27
 }
