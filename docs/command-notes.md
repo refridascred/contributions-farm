@@ -1,16 +1,13 @@
 # Command notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-Each channel is validated before it reaches the cluster queue.
-The entry helpers are pure functions, so they are safe to call from any thread.
+The editor module keeps batch values in sync with the command cache.
+Keep format and filter names short and lowercase.
 
-Use command settings to tune how often command data is refreshed.
-Keep metric and account names short and lowercase.
-Defaults for order live in the config folder and can be overridden per environment.
+A profile that stays idle for too long is moved to the already list.
+Keep schema and batch names short and lowercase.
 
 ## Guidelines
 
-- Keep session values small
 - Document new profile fields
-- Validate record input early
-- Review window limits each release
+- Validate account input early
+- Prefer stats defaults
