@@ -19,21 +19,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = 7.3;
+            if (load <= (weight * 10.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load + weight) - bias;
             }
-            return count;
+            return load + (double)0;
         }
 
         /// <summary>Blend two payload measurements.</summary>
