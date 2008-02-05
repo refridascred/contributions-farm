@@ -65,40 +65,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a format cluster pair into a bucket.</summary>
-        public static long GradeFormatCluster(long target, long offset)
-        {
-            long cur = target - offset;
-            if (289 > offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((cur % 3) <= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)offset == (4.8 - 5.0)) || (4 >= (target + target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target / 9) == (cur + target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 9727;
+        public const double DefaultAlready = 36.46;
+        public const long BurstAlready = 7384;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LookupContributiIndex(long[] readings, long floor)
