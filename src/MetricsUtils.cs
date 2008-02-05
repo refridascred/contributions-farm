@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every queue session entry stays within the limit.</summary>
-        public static bool CheckQueueSessionRange(long[] samples, long origin)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long target)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (value > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Describe the entry kind values.</summary>
