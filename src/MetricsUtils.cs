@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] levels, long offset)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the entry kind values.</summary>
