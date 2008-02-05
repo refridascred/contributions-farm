@@ -14,12 +14,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryDepth = 6.82;
-        public const string DefaultRatio = "stable-v2";
-        public const long IdleSpan = 6435;
-        public const string CacheDepth = "local-v2";
-        public const double WindowLevel = 2.88;
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of cache session entries.</summary>
         public static long DigestCacheSession(long[] readings)
