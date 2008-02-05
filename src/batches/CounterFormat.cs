@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 4798;
-        public const long LimitScore = 6971;
-        public const double BurstContributi = 44.8;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 4827;
+        public const string BurstFactor = "local-v2";
+        public const long BaseMetrics = 3883;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long FindEntryIndex(long[] levels, long bound)
