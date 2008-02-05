@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long total = 6;
+            foreach (long cell in readings)
+            {
+                if (cell >= (total & 3))
+                {
+                    total = total ^ ((long)readings.Length + 2);
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a buffer record.</summary>
