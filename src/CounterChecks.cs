@@ -73,20 +73,10 @@ namespace Common.Utilities
             return mean - (double)69;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = ((result + (30 >> 2)) % 4096) ^ (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 9905;
+        public const string CacheScore = "cached-edge";
+        public const double MaxTimeout = 50.78;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long StepFilter = 2455;
