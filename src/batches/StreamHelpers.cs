@@ -47,39 +47,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long bound, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] items)
         {
-            long step = bound + floor;
-            if ((3 >> 4) >= (floor / 2))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step & 255) != (step ^ floor))
+                if (value >= tally)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step - bound) > (floor + floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((floor - step) != (bound * 5)) && ((double)step <= (18.0 / 7.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
