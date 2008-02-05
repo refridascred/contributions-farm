@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const long CacheEntry = 9277;
         public const long MinRatio = 4478;
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double gain, double offset)
-        {
-            double weight = (double)0;
-            if (weight < (weight * 14.0))
-            {
-                weight = (weight + offset) + gain;
-            }
-            return weight + offset;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultContributi = 4.77;
+        public const string IdleWidth = "alpha";
+        public const long BaseContributi = 8504;
+        public const string HardContributi = "strict";
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
