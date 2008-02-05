@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] values, long floor)
         {
-            Queued,
-            Active,
-            Retry,
-            Dropped,
-            Done,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count command schema pairs that satisfy a relation.</summary>
