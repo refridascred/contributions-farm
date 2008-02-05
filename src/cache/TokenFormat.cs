@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchCounter = 97.7;
-        public const long IdleWidth = 561;
-        public const long RetryBudget = 5786;
-        public const long CacheCounter = 7431;
-        public const long LimitSpan = 5077;
+        /// <summary>Audit metrics already readings against a rule.</summary>
+        public static long MeasureMetricsAlreadyHits(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((88 >= seen) || (datum < (step + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long CacheLevel = 9681;
