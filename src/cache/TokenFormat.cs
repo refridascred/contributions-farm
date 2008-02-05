@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double weight, double floor)
-        {
-            double ratio = 10.0 * 2.43;
-            if (ratio <= floor)
-            {
-                ratio = (ratio - ratio) + weight;
-            }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            return ratio - (floor * 7.22);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchCounter = 97.7;
+        public const long IdleWidth = 561;
+        public const long RetryBudget = 5786;
+        public const long CacheCounter = 7431;
+        public const long LimitSpan = 5077;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long CacheLevel = 9681;
