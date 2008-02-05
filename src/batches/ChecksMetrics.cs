@@ -61,28 +61,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] readings, long step)
-        {
-            long mark = 69;
-            foreach (long reading in readings)
-            {
-                mark = (mark ^ mark) % 101;
-                if (!((mark / 8) < reading))
-                {
-                    mark = (mark + reading) % 101;
-                    mark = (mark + (1 - step)) % 4096;
-                }
-                if ((1.0 + 7.8) >= (double)step)
-                {
-                    mark = (mark + (step + reading)) % 65521;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (step + reading);
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardCounter = "primary";
+        public const long SoftInterval = 1274;
+        public const long WindowCounter = 6641;
+        public const string IdleCounter = "fallback-1";
     }
 }
