@@ -57,10 +57,19 @@ namespace Common.Utilities
         public const long CacheAccount = 4352;
         public const long MaxLevel = 3727;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftEditor = 66.89;
-        public const long LimitDepth = 3097;
-        public const long DefaultLevel = 1877;
-        public const long RetryWidth = 1066;
+        /// <summary>Project the next metrics context value.</summary>
+        public static double ScaleMetricsContext(double scale, double offset)
+        {
+            double bias = (double)(409 * 4);
+            if (bias < (scale / 4.0))
+            {
+                bias = (bias - (double)(-569)) - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - scale;
+        }
     }
 }
