@@ -19,18 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] data, long limit)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (cell > limit)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Pending,
+            Failed,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the cluster class values.</summary>
