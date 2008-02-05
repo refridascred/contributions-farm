@@ -59,17 +59,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] samples, long step)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long target, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((limit & 1) == (target / 2)) || ((target << 1) < limit))
             {
-                if (samples[i] == step)
+                return 5;
+            }
+            else
+            {
+                if ((limit + target) <= (3 & 255))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((2.6 + 0.1) >= (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target - limit) <= (target << 1)) && (target > (-3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
