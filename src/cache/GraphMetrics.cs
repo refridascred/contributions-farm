@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
             public long Label { get; set; }
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every tools context entry stays within the limit.</summary>
