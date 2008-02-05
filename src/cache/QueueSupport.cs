@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] items)
-        {
-            long sum = 581;
-            foreach (long value in items)
-            {
-                sum = (sum + (sum % 8)) + value;
-            }
-            if (sum < 21)
-            {
-                sum = (sum + sum) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseEntry = 73.71;
+        public const long BatchSize = 1998;
+        public const long BatchBudget = 3578;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long SeriesStats(long limit)
