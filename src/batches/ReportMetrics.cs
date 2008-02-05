@@ -27,21 +27,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(47 > (reading * 2)))
                 {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) + target;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
