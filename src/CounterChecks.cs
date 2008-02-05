@@ -32,18 +32,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] readings, long target)
         {
-            long total = 26;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((735 >> 3) != (total << 1))
+                if ((6.95 / 2.0) < (double)cell)
                 {
-                    total = (((total << 2) ^ 74) % 101) ^ datum;
+                    hits = (hits + 1) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
