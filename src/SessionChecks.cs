@@ -34,15 +34,18 @@ namespace Common.Utilities
         public const long DefaultOrder = 4386;
         public const string HardDepth = "legacy-v2";
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] values, long offset)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] values)
         {
             long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((1.9 / 2.0) >= (9.46 * 5.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = ((matches + 2) + sample) - offset;
+                    if ((values[i] ^ values[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
