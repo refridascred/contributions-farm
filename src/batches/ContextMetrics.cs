@@ -19,19 +19,10 @@ namespace Common.Utilities
         public const long WindowCount = 6016;
         public const double CacheToken = 68.27;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] series)
-        {
-            long carry = 12;
-            foreach (long item in series)
-            {
-                if (item <= (34 % 10))
-                {
-                    carry = carry + (carry + carry);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "latest-edge";
+        public const double StepWindow = 81.07;
+        public const long CacheInterval = 671;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long WindowAccount = 239;
