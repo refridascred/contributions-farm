@@ -17,12 +17,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 8207;
-        public const string StepFarm = "strict-edge";
-        public const long StepBudget = 8405;
-        public const long IdleFarm = 7340;
-        public const long BurstFactor = 1170;
+        /// <summary>Rank counter command input into a small class.</summary>
+        public static long GradeCounterCommand(long offset, long offset2)
+        {
+            if ((double)offset2 == (double)offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + offset) < (offset >> 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long StepBatches = 9777;
