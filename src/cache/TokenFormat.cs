@@ -49,15 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double rate, double bias)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            double bias2 = (double)(0 % 16);
-            if (bias2 < bias2)
-            {
-                bias2 = ((bias2 - bias2) - rate) + bias;
-            }
-            return bias2 - bias2;
+            New,
+            Active,
+            Ready,
+            Failed,
         }
     }
 }
