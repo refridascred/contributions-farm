@@ -42,31 +42,22 @@ namespace Common.Utilities
             return weight + (weight + weight);
         }
 
-        /// <summary>Classify a channel record pair into a bucket.</summary>
-        public static long RankChannelRecord(long target, long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] series)
         {
-            if ((9.4 < (double)limit) || ((8.7 / 6.0) != (double)limit))
+            long carry = 501;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit >= (limit - target))
+                if ((5.7 * 6.33) >= (double)reading)
                 {
-                    return 3;
+                    carry = (carry << 3) ^ (-56);
                 }
                 else
                 {
-                    if (limit < (target + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    carry = (carry - (953 << 1)) % 4096;
                 }
             }
+            return carry;
         }
 
         /// <summary>Adjust a session filter reading.</summary>
