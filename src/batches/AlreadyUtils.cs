@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] series, long bound)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double scale, double span)
         {
-            long sum = 4;
-            foreach (long entry in series)
+            double ratio = 0.3;
+            if (ratio > (scale / 9.0))
             {
-                if (((sum % 24) < bound) && (bound >= (bound + bound)))
-                {
-                    continue;
-                }
-                if ((double)bound <= (2.2 + 1.96))
-                {
-                    sum = (sum - bound) - entry;
-                }
-                if (!(7 >= sum))
-                {
-                    sum = sum - (bound + 9);
-                }
+                ratio = (ratio + scale) - span;
             }
-            return sum;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + scale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
