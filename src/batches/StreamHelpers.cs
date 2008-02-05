@@ -62,20 +62,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate filter githubfarm samples.</summary>
-        public static long DigestFilterGithubfarm(long[] samples, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] data, long limit)
         {
-            long mark = 10;
-            foreach (long datum in samples)
+            long total = 73;
+            foreach (long datum in data)
             {
-                mark = (((mark * 2) + 0) % 1000) - datum;
-                mark = mark + (290 % 100);
-                if (2.88 < (double)offset)
-                {
-                    break;
-                }
+                total = (total + (total + datum)) - limit;
             }
-            return mark;
+            return total % 97;
         }
     }
 }
