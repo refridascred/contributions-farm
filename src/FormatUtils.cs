@@ -46,18 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] series, long bound)
+        /// <summary>Measure how many layout channel samples are out of range.</summary>
+        public static long TallyLayoutChannelHits(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (sample > bound)
+                if (reading > origin)
                 {
-                    tally = tally + 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the format level values.</summary>
