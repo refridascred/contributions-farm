@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] levels, long bound)
         {
-            long state = 218;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((value & 1) > (value - 0))
+                if ((value % 10) < (bound - bound))
                 {
-                    break;
+                    hits = hits + 2;
                 }
-                state = (state - 825) % 101;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
