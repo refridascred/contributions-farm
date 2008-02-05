@@ -70,19 +70,21 @@ namespace Common.Utilities
         public const long MinSpan = 890;
         public const long MinCommand = 3918;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] samples, long target)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
