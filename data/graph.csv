@@ -1,7 +1,6 @@
-id,level
-1,74.47
-2,944
-3,616
-4,86.28
-5,standard
-6,999
+id,weight,count,level,score
+1,637,166,edge,cached
+2,standard,primary,standard,60.77
+3,blue,716,91.97,255
+4,149,primary,6.95,530
+5,75.1,strict,63.38,eu-west
