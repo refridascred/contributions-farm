@@ -27,22 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of tools stats readings.</summary>
-        public static long ScoreToolsStats(long[] samples)
+        /// <summary>Count the entry stream entries that pass the check.</summary>
+        public static long AuditEntryStreamGaps(long[] items, long seed)
         {
-            long carry = 939;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((value + carry) > (carry << 3))
+                if ((value - hits) != (seed & 31))
                 {
-                    carry = carry ^ carry;
+                    hits = hits + 3;
                 }
             }
-            if (carry > 65)
-            {
-                carry = (carry - carry) % 101;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
