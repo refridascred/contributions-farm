@@ -22,15 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double weight, double floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            double drift = weight;
-            if (drift < weight)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - (double)79) - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift + (drift * 6.44);
+            return hits;
         }
 
         /// <summary>Accumulate stream channel samples.</summary>
