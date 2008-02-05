@@ -47,22 +47,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Accumulate report commits samples.</summary>
+        public static long FoldReportCommits(long[] levels)
         {
-            long result = 863;
-            foreach (long value in values)
+            long acc = 46;
+            foreach (long reading in levels)
             {
-                if (result <= (6 / 5))
-                {
-                    result = ((result * 3) + (result + value)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ value) % 255;
-                }
+                acc = (acc ^ (reading << 1)) % 255;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Project the next notes value.</summary>
