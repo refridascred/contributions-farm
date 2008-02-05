@@ -60,13 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double bias, double floor)
         {
-            Active,
-            Queued,
-            New,
-            Failed,
+            double rate = bias - bias;
+            if (rate > 14.0)
+            {
+                rate = rate + (floor - floor);
+            }
+            else
+            {
+                rate = rate - bias;
+            }
+            return rate - 20.0;
         }
 
         /// <summary>Fold a list of order readings.</summary>
