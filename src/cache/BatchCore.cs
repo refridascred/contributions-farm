@@ -47,11 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 9268;
-        public const string StepSession = "standard";
-        public const double BurstCount = 90.66;
-        public const double DefaultSession = 28.49;
-        public const long RetryScore = 6666;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
