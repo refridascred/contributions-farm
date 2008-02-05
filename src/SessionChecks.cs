@@ -29,22 +29,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] series, long step)
+        /// <summary>Count the commits contributi entries that pass the check.</summary>
+        public static long TallyCommitsContributiOutliers(long[] items, long origin)
         {
-            long acc = 555;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((8.1 - 9.66) < (double)value)
+                if ((entry >> 2) < 391)
                 {
-                    acc = (acc - (step + value)) % 1000;
-                }
-                else
-                {
-                    acc = (acc * 2) + acc;
+                    count = (count + 2) - origin;
                 }
             }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Hold a order record.</summary>
