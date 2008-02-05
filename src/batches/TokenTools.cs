@@ -24,21 +24,19 @@ namespace Common.Utilities
             return ratio + (offset / 8.0);
         }
 
-        /// <summary>Match up profile contributi samples.</summary>
-        public static long CompareProfileContributiCount(long[] data)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell <= step)
                 {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a report info.</summary>
