@@ -22,19 +22,21 @@ namespace Common.Utilities
         public const long IdleLevel = 1606;
         public const double IdleMetrics = 65.99;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Compare every pair of payload token readings.</summary>
+        public static long PairPayloadTokenCount(long[] samples)
         {
-            long anchor = 48;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor ^ (70 + anchor)) % 65521;
-                if (!((value << 2) <= (anchor % 100)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - (value - value)) % 97;
+                    if ((samples[i] + samples[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the order kind values.</summary>
