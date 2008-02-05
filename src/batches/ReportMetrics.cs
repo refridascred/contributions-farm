@@ -16,17 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first batches cluster entry that matches the target.</summary>
-        public static long FindBatchesClusterIndex(long[] levels, long limit)
+        /// <summary>Iterate the account support series from a seed.</summary>
+        public static long DeriveAccountSupport(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the batch status values.</summary>
