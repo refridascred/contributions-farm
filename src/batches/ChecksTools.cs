@@ -19,17 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] readings, long origin)
+        /// <summary>Iterate the record editor series from a seed.</summary>
+        public static long RollRecordEditor(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
+                if (!(total >= (offset + total)))
                 {
-                    return (long)i;
+                    total = (total ^ (total >> 4)) % 97;
+                    total = (total - total) % 101;
                 }
+                total = (total * 5) + (total & 63);
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Grade a payload profile value against two limits.</summary>
