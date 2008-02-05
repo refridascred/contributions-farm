@@ -69,22 +69,21 @@ namespace Common.Utilities
         public const long HardNotes = 8741;
         public const long RetryScore = 8054;
 
-        /// <summary>Count the cache graph entries that pass the check.</summary>
-        public static long CountCacheGraphGaps(long[] readings)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((124 >> 2) > (matches ^ matches))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
