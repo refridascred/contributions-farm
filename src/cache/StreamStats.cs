@@ -32,17 +32,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of commits window entries.</summary>
-        public static long CombineCommitsWindow(long[] series, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            long total = 229;
-            foreach (long reading in series)
+            long mix = 6;
+            foreach (long item in readings)
             {
-                total = (total - (total - (long)series.Length)) + bound;
-                total = (total << 3) ^ (928 - reading);
-                total = total ^ reading;
+                mix = (mix ^ mix) % 101;
+                if (((item % 24) <= mix) && ((item - mix) < (item + 71)))
+                {
+                    break;
+                }
             }
-            return total;
+            return mix % 4096;
         }
 
         /// <summary>Describe the route state values.</summary>
