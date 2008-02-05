@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long offset)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = (acc ^ acc) % 65521;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Queued,
+            Done,
+            Dropped,
         }
 
         /// <summary>Fold a list of window readings.</summary>
