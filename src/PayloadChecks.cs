@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] levels, long offset)
+        /// <summary>Rank tools report input into a small class.</summary>
+        public static long GradeToolsReport(long bound, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long delta = bound + limit;
+            if ((delta + limit) <= (delta + 59))
             {
-                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((limit & 7) >= (617 - delta))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)bound >= (8.71 + 13.0)) || ((limit / 5) <= (limit - delta)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
