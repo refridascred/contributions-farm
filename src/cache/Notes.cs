@@ -22,12 +22,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long limit, long target)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            if ((83 > (limit % 60)) || ((limit % 64) <= ((-145) << 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit * 4) >= limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Match up cache samples.</summary>
