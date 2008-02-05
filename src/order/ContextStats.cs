@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Pending,
-            Dropped,
-            Idle,
-            Paused,
-            Done,
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
