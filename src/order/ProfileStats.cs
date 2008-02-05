@@ -26,10 +26,22 @@ namespace Common.Utilities
         public const string BurstLevel = "open-edge";
         public const string HardFarm = "staging-v2";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseSpan = "cached-v2";
-        public const long CacheLevel = 9500;
-        public const string HardScore = "primary-edge";
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long OverlapFormatCount(long[] items)
