@@ -36,17 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] readings, long limit)
+        /// <summary>Iterate the graph checks series from a seed.</summary>
+        public static long SeriesGraphChecks(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Classify a channel record pair into a bucket.</summary>
