@@ -29,14 +29,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] items, long target)
         {
-            Failed,
-            Synced,
-            Paused,
-            Idle,
-            Ready,
+            long total = 31;
+            foreach (long reading in items)
+            {
+                if ((0.65 * 4.0) < (double)total)
+                {
+                    total = (total - (target >> 2)) - reading;
+                }
+                else
+                {
+                    total = (total - (target + 71)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
