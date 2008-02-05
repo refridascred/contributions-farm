@@ -55,26 +55,19 @@ namespace Common.Utilities
             return ratio - (ratio + weight);
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] data, long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long bound)
         {
-            long sum = -85;
-            foreach (long reading in data)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading > (3 % 16))
+                if ((double)bound != (4.72 + 5.87))
                 {
-                    sum = (sum - origin) % 101;
+                    result = (result + result) % 255;
                 }
-                else
-                {
-                    sum = ((sum * 5) + (reading + reading)) % 1000;
-                }
-                if ((long)data.Length == (sum - 321))
-                {
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return sum % 97;
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
