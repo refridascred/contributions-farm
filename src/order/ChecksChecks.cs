@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const string CacheLayout = "legacy-v2";
         public const long WindowRatio = 577;
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] values, long offset)
         {
-            Closed,
-            Queued,
-            Done,
-            Stale,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
