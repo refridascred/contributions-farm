@@ -20,12 +20,22 @@ namespace Common.Utilities
             return mean - (mean + gain);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 930;
-        public const long MaxContext = 9787;
-        public const string MinContext = "primary-1";
-        public const string CacheSpan = "latest-edge";
-        public const long BurstContext = 8607;
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long ClassifyOrder(long step, long bound)
