@@ -20,16 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = mix ^ (mix << 1);
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Ready,
+            Queued,
+            Retry,
+            Stale,
+            New,
         }
 
         /// <summary>Accumulate stream account samples.</summary>
