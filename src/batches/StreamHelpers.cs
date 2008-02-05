@@ -45,32 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long target, long bound)
-        {
-            if (bound >= (bound & 31))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target < 71)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target << 2) >= (510 & 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepCache = 96.7;
+        public const long BatchLevel = 7028;
+        public const string MaxCache = "standard-1";
+        public const string BatchCache = "alpha";
+        public const long SoftCache = 2970;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
