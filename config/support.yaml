@@ -1,32 +1,18 @@
 # support settings
-min_ttl_s:
-  verbose: 20
-  min_capacity_s:
-    readonly:
-      - 401
-      - 212
-    batch_size_ms:
-      - 145
-      - 368
-    idle_ratio: 65.96
-    retry_interval_s:
-      - latest
-      - strict
-      - eu-west
-    min_retries_ms: edge
-    cache_size_ms: false
-  retry_ttl_count:
-    githubfarm_window: strict
-    already_ratio:
-      - strict
-      - open
-      - stable
-      - latest
-    compress: 14.75
-    farm_size: 40.99
-  sync_retries:
-    max_window: legacy
-    token_threshold: 30
-    context_depth: blue
-context_threshold: staging
-stream_interval: primary
+route_threshold:
+  - staging
+  - edge
+  - cached
+audit:
+  window_size:
+    idle_limit_s: open
+    batch_size_pct: true
+    verbose: 79.6
+    warm_threshold: 2986
+  schema_window: 3358
+  cluster_interval: 28.64
+  verbose: 5527
+  schema_size: true
+soft_timeout_s: eu-west
+readonly: blue
+poll_retries_ms: 250
