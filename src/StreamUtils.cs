@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] readings, long floor)
+        /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
+        public static long AuditMetricsGithubfarmGaps(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (((double)cell < (2.0 + 17.0)) || !(cell < (floor ^ floor)))
+                if (!((cell % 97) < (seen - offset)) && ((2 > (offset + cell)) && ((cell ^ cell) == ((-851) + seen))))
                 {
-                    count = count + 3;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the already state values.</summary>
