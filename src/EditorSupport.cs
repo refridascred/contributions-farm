@@ -36,24 +36,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long step, long offset)
+        /// <summary>Blend two support layout measurements.</summary>
+        public static double AdjustSupportLayout(double weight, double offset)
         {
-            if (((87 / 2) == (offset ^ offset)) && ((95 - offset) == ((-781) % 5)))
+            double ratio = (offset * 4.4) - (double)(-5);
+            if (ratio < 9.6)
             {
-                return 3;
+                ratio = ratio - (ratio * 4.5);
             }
             else
             {
-                if ((offset / 4) != (step - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
+                ratio = ratio - (double)(-774);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + offset) + (double)(long)i;
+            }
+            return ratio - (ratio + weight);
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
