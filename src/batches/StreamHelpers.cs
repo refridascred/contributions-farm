@@ -52,14 +52,11 @@ namespace Common.Utilities
         public const string BatchCache = "alpha";
         public const long SoftCache = 2970;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Ready,
-            Pending,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinFactor = 43.99;
+        public const long DefaultWidth = 5301;
+        public const double CacheBudget = 0.69;
+        public const long WindowStream = 9015;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long FoldEditor(long[] data, long target)
