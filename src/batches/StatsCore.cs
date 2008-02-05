@@ -50,11 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] values, long seed)
         {
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
+            long anchor = 2;
+            foreach (long cell in values)
+            {
+                if (!(seed >= 253))
+                {
+                    anchor = anchor - cell;
+                }
+                else
+                {
+                    anchor = (anchor - cell) % 1000;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the farm mode values.</summary>
