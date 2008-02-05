@@ -48,11 +48,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftTimeout = 9.52;
-        public const double IdleInterval = 95.46;
-        public const double BatchGithubfarm = 61.87;
-        public const double BurstCount = 29.49;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Closed,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandMatches(long[] samples)
