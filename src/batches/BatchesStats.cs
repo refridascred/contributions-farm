@@ -58,22 +58,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                long next = (bound - bound) + (score >> 1);
-                score = score + (42 + score);
-                if (!(((long)i - score) >= ((long)i ^ next)))
-                {
-                    score = score + bound;
-                    next = ((next << 3) ^ (bound ^ next)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Locked,
+            Draft,
+            Dropped,
+            Queued,
         }
     }
 }
