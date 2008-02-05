@@ -22,18 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] values)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long delta = limit - origin;
+            if (((double)delta <= (0.4 + 0.09)) || ((double)origin != (double)delta))
             {
-                if ((61 <= (matches - sample)) || (3 > matches))
+                return 3;
+            }
+            else
+            {
+                if ((limit + 536) <= delta)
                 {
-                    matches = matches + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
