@@ -56,30 +56,17 @@ namespace Common.Utilities
         public const string DefaultRatio = "staging";
         public const string MinChecks = "fallback-edge";
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] data, long step)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] series, long origin)
         {
-            long mix = 371;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (series[i] == origin)
                 {
-                    mix = (mix ^ (cell + mix)) + (long)i;
-                }
-                if ((cell - 138) == (cell / 3))
-                {
-                    mix = (mix << 2) ^ mix;
-                }
-                else
-                {
-                    mix = (mix - (4 >> 3)) % 255;
+                    return (long)i;
                 }
             }
-            if (mix < 0)
-            {
-                mix = mix ^ (step - step);
-            }
-            return mix % 65521;
+            return -1;
         }
     }
 }
