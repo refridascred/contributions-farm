@@ -27,18 +27,13 @@ namespace Common.Utilities
             return gain2 + (span / 3.0);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] samples)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (((entry + 7) == (entry * 4)) || (((entry * 2) >= entry) && (hits < (hits + entry))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Synced,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the command state values.</summary>
