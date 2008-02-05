@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] items, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] items, long origin)
         {
-            long mix = 94;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((double)mix != (double)54)
+                if (cell <= origin)
                 {
-                    mix = (mix - entry) - bound;
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Adjust a cache reading.</summary>
