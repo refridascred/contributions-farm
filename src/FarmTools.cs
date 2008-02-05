@@ -15,14 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] values)
         {
-            Stale,
-            Pending,
-            Active,
-            Draft,
-            Done,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!(reading >= (reading & 127)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
