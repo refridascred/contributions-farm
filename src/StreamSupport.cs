@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] series, long bound)
         {
-            long score = 98;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((score * 2) < (score + value))
+                if ((double)count > (13.0 - 14.0))
                 {
-                    score = (score << 3) ^ (score + 3);
-                }
-                else
-                {
-                    score = (score - (value + score)) % 101;
+                    count = ((count + 1) + sample) - bound;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a notes options.</summary>
