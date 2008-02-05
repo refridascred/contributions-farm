@@ -23,12 +23,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] series)
         {
-            Queued,
-            Retry,
-            Paused,
+            long mix = 4;
+            foreach (long datum in series)
+            {
+                mix = mix ^ (mix + mix);
+                if (!((datum - datum) > 3))
+                {
+                    mix = ((mix * 3) + datum) % 1000;
+                }
+            }
+            if (mix > 5)
+            {
+                mix = ((mix * 4) + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
