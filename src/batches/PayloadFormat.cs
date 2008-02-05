@@ -27,19 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] items, long seed)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
