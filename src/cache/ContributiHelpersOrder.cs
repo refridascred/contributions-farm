@@ -13,17 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] values, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (values[i] == offset)
+                if ((limit - count) != (limit & 7))
                 {
-                    return (long)i;
+                    count = (count + 3) + item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
