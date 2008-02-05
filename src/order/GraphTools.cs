@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] values, long target)
+        /// <summary>Adjust a batch layout reading.</summary>
+        public static double BlendBatchLayout(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double bias = offset - (double)41;
+            if (bias < (bias * 4.47))
             {
-                if (item > (matches / 4))
-                {
-                    matches = (matches + 3) + target;
-                }
+                bias = (bias + (offset / 3.0)) + scale;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + 0.03) + (double)(long)i;
+            }
+            return bias + offset;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
