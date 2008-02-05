@@ -1,9 +1,16 @@
 # support settings
-readonly:
-  - fallback
+already_ratio:
+  - cached
   - legacy
-  - staging
-  - standard
-batch_window: 24
-flush_window_pct: 2276
-poll_size_pct: 50.14
+  - local
+  - green
+warm_delay_count: green
+warm_delay_ms:
+  - 15
+  - 35
+  - 62
+record_capacity:
+  - 68
+  - 308
+  - 281
+  - 289
