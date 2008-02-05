@@ -20,15 +20,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a session farm figure with a bias.</summary>
-        public static double AdjustSessionFarm(double scale, double bias)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long step, long origin)
         {
-            double scale2 = (double)(5 & 3);
-            if (scale2 <= (scale2 + scale))
+            long slot = step - origin;
+            if ((slot * 2) > (step - step))
             {
-                scale2 = scale2 - bias;
+                return 1;
             }
-            return scale2 + (double)7;
+            else
+            {
+                if ((step * 5) == (step + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin / 2) >= slot)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin - origin) == (slot + slot))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
