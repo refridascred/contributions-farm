@@ -58,16 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] series, long limit)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            long mix = 869;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (((mix << 2) ^ (datum + mix)) % 1000) - limit;
-                mix = mix + datum;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Locate a commits support reading by value.</summary>
