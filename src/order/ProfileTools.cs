@@ -54,19 +54,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double rate, double bias)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long step)
         {
-            double gain = 4.9 * 7.26;
-            if (gain < (bias / 6.0))
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                gain = gain + (rate * 8.0);
+                total = (total << 3) ^ (total % 3);
+                if ((step - total) < (total + step))
+                {
+                    total = ((total * 3) + (step << 3)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - gain;
+            return total;
         }
     }
 }
