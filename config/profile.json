@@ -1,10 +1,6 @@
 {
-  "token_ttl": [109, 331, 105, 415],
-  "metric_timeout": {
-    "command_capacity": 100,
-    "stats_size": "stable",
-    "persist": 65.19
-  },
-  "retry_ratio": 250,
-  "persist": 81.71
+  "strict": 5477,
+  "order_depth": 39.84,
+  "counter_threshold": ["edge", "legacy", "strict"],
+  "stream_retries": "cached"
 }
