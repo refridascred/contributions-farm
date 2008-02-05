@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const double StepScore = 52.28;
         public const long MaxGithubfarm = 2418;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] levels)
         {
-            Ready,
-            Draft,
-            Pending,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen + reading) <= seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate context support samples.</summary>
