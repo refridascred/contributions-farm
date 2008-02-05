@@ -46,22 +46,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] levels)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell / 3) >= (matches % 7))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Active,
+            Closed,
+            Synced,
+            Locked,
         }
     }
 }
