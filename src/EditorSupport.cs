@@ -68,10 +68,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 9727;
-        public const double DefaultAlready = 36.46;
-        public const long BurstAlready = 7384;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double weight, double floor)
+        {
+            double load = (double)(83 & 15);
+            if (load < weight)
+            {
+                load = load + (floor * 5.44);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (weight - weight)) + (double)(long)i;
+            }
+            return load + (double)90;
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LookupContributiIndex(long[] readings, long floor)
