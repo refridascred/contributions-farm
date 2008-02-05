@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Compare every pair of batch cache readings.</summary>
-        public static long OverlapBatchCacheCount(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)offset != (14.0 + 5.0))
                 {
-                    if ((values[i] + values[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) - datum;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
