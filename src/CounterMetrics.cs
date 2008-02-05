@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of checks stats readings.</summary>
-        public static long TallyChecksStats(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] samples)
         {
-            long mark = 7;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                long edge = (mark % 7) - (mark << 3);
-                mark = (mark - (edge << 1)) % 4096;
-                if ((long)values.Length == (mark * 4))
+                if (!!((double)entry < (10.0 * 2.4)))
                 {
-                    mark = (mark - (value << 1)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (value - value)) % 255;
+                    seen = seen + 2;
                 }
             }
-            if (mark > (-8))
-            {
-                mark = (mark - (mark - mark)) % 65521;
-            }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Audit batch counter readings against a rule.</summary>
