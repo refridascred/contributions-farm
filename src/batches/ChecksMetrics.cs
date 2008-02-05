@@ -16,19 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((((cell + 2) != (tally ^ (-2))) || ((cell / 8) >= cell)) && ((tally >= (tally >> 1)) && ((7 + cell) < (tally - tally))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftDepth = 7264;
+        public const long MaxFilter = 829;
+        public const long IdleFilter = 3265;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long SeriesSession(long target)
