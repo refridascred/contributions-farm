@@ -32,37 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long offset, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long floor, long floor2)
         {
-            long edge = offset - seed;
-            if (((double)offset == (3.4 - 0.4)) || ((edge - offset) < seed))
+            long delta = floor - floor2;
+            if ((floor2 >= (959 - floor2)) || (floor > (-15)))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if (offset >= (offset % 97))
+                if ((double)delta == (9.5 * 4.8))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if (((5.1 / 5.0) != (double)offset) || ((double)offset > (3.4 * 6.91)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((932 & 63) != (offset * 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
