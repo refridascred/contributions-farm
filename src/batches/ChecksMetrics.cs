@@ -77,13 +77,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 828;
+        public const long LimitBudget = 7287;
+        public const double BaseFilter = 9.76;
     }
 }
