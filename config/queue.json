@@ -1,17 +1,5 @@
 {
-  "checks_limit": {
-    "max_delay": 61.22,
-    "soft_threshold_s": "open",
-    "graph_threshold": "cached"
-  },
-  "strict": 250,
-  "batch_threshold_count": {
-    "warm_retries_ms": "stable",
-    "poll_timeout_ms": "standard",
-    "flush_size_ms": "latest",
-    "burst_interval": true,
-    "poll_size_pct": "cached"
-  },
-  "dry_run": "blue",
-  "hard_depth": [383, 268]
+  "metrics_ttl": false,
+  "compress": false,
+  "strict": [64, 364, 1]
 }
