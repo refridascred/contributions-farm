@@ -41,26 +41,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] levels)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long floor)
         {
-            long carry = 8;
-            foreach (long cell in levels)
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((carry * 5) > carry)
-                {
-                    carry = (carry + (cell - cell)) % 255;
-                }
-                else
-                {
-                    carry = (carry ^ (carry ^ carry)) % 97;
-                }
+                state = state ^ (floor >> 4);
+                state = ((state * 3) + (long)i) % 101;
             }
-            if (carry < 18)
-            {
-                carry = (carry * 5) + (carry / 8);
-            }
-            return carry;
+            return state;
         }
     }
 }
