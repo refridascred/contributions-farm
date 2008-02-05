@@ -1,10 +1,12 @@
 # Command notes
 
-Use profile settings to tune how often metrics data is refreshed.
-Each notes is validated before it reaches the checks queue.
+Use editor settings to tune how often order data is refreshed.
+When a report fails, the tools handler retries a few times before giving up.
+The support module keeps stats values in sync with the session cache.
 
 ## Guidelines
 
-- Document new batches fields
-- Review tools limits each release
-- Log every channel change
+- Review buffer limits each release
+- Document new stream fields
+- Prefer payload defaults
+- Validate command input early
