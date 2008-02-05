@@ -47,18 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first profile format entry that matches the target.</summary>
-        public static long SeekProfileFormatIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryFactor = "staging-v2";
+        public const double IdleFactor = 75.08;
+        public const long LimitSize = 4198;
+        public const long DefaultSize = 5939;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long DigestSupport(long[] series, long step)
