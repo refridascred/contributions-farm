@@ -1,6 +1,6 @@
 {
-  "min_retries": 72.26,
-  "poll_capacity_count": "staging",
-  "burst_delay_pct": 5101,
-  "schema_interval": "edge"
+  "base_limit_pct": true,
+  "strict": ["green", "primary"],
+  "audit": "edge",
+  "warm_interval_count": 86
 }
