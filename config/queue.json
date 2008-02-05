@@ -1,7 +1,6 @@
 {
-  "verbose": 51.03,
-  "burst_timeout_pct": 59.68,
-  "sync_retries_ms": [272, 294, 167],
-  "order_retries": "legacy",
-  "burst_threshold_s": true
+  "default_limit_ms": "cached",
+  "batch_depth_s": [215, 500, 393],
+  "dry_run": 157,
+  "account_timeout": false
 }
