@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] values, long seed)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (seed >= (cell + 42))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            New,
+            Retry,
+            Stale,
+            Closed,
         }
 
         /// <summary>Count tools notes pairs that satisfy a relation.</summary>
