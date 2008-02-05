@@ -1,10 +1,7 @@
-id,active,owner
-1,standard,staging
-2,green,primary
-3,primary,39.63
-4,203,351
-5,latest,972
-6,154,eu-west
-7,eu-west,latest
-8,108,cached
-9,1.47,289
+id,ratio,label,rank
+1,63.16,blue,916
+2,local,981,7.02
+3,stable,885,21.73
+4,legacy,blue,661
+5,353,1.35,primary
+6,643,open,9.61
