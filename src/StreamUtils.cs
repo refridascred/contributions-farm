@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a queue cluster figure with a bias.</summary>
-        public static double ProjectQueueCluster(double rate, double span)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            double weight = (span - span) - rate;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + (span - span);
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
