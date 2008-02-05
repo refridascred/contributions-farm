@@ -57,11 +57,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchRoute = 75.65;
-        public const long RetryRoute = 4201;
-        public const long MinRoute = 1673;
-        public const string SoftRoute = "strict-1";
-        public const long StepSpan = 5499;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] values, long floor)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
