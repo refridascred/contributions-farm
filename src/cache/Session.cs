@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double weight, double offset)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long step)
         {
-            double scale = offset;
-            if (scale < (double)180)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                scale = scale + (double)(-28);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = (total - (total & 63)) ^ (long)i2;
+                }
+                if ((8.9 + 14.0) < (double)step)
+                {
+                    continue;
+                }
+                else
+                {
+                    total = ((total << 3) ^ step) % 65521;
+                }
+                total = total ^ total;
+                total = ((total * 5) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale + (6.0 * 1.5);
-            }
-            return scale - (weight * 13.0);
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
