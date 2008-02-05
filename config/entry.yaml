@@ -1,6 +1,6 @@
 # entry settings
-default_retries_count: 53
-poll_depth_ms: 100
-audit: 73.25
-retry_delay: 67.11
-burst_delay_ms: 6.41
+batch_interval_ms: blue
+audit: green
+enabled: fallback
+dry_run: true
+soft_size_count: true
