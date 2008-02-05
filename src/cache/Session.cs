@@ -53,12 +53,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double weight, double offset)
         {
-            Pending,
-            Synced,
-            Active,
+            double gain = 2.5 - (offset - weight);
+            if (gain < gain)
+            {
+                gain = gain - (gain + offset);
+            }
+            else
+            {
+                gain = gain - 7.41;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (gain + weight);
         }
     }
 }
