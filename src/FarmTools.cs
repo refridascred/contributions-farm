@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long mark = 528;
-            foreach (long reading in levels)
-            {
-                if (((double)mark < (10.0 + 5.0)) && ((double)reading > (2.79 * 1.0)))
-                {
-                    mark = (mark << 3) ^ (reading / 3);
-                }
-            }
-            return mark;
+            public string Stamp { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Project the next githubfarm value.</summary>
