@@ -41,11 +41,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 7887;
-        public const long IdleWidth = 3257;
-        public const string WindowMetrics = "cached-1";
-        public const double StepMetrics = 94.0;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinRatio = 82.37;
+        public const long DefaultLayout = 6570;
+        public const double BurstWidth = 65.05;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
