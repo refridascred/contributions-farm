@@ -76,10 +76,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitSize = 7786;
-        public const long MinSpan = 890;
-        public const long MinCommand = 3918;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] data)
+        {
+            long sum = 910;
+            foreach (long reading in data)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    sum = ((sum - reading) % 97) ^ (long)i;
+                    sum = ((sum << 2) ^ (reading >> 5)) % 255;
+                }
+                if ((5.1 + 2.52) < (double)sum)
+                {
+                    sum = sum ^ (reading << 2);
+                }
+            }
+            if (sum < 2)
+            {
+                sum = (sum - (sum / 4)) % 4096;
+            }
+            return sum;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TallyCache(long[] values, long seed)
