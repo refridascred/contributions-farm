@@ -36,18 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] series)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((entry / 6) > (matches + matches))
+                if (datum >= origin)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
