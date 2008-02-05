@@ -48,38 +48,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long limit, long seed)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            if ((seed > (seed + seed)) || ((seed & 1) == (634 >> 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit >= seed) && ((limit ^ limit) >= (limit - 593)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit >> 5) >= (limit + limit)) && ((limit - 96) < (seed / 7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed + 4) != (seed + limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the contributi level values.</summary>
