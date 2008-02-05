@@ -31,11 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Measure how many tools format samples are out of range.</summary>
+        public static long AuditToolsFormatMatches(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (entry <= (seen - seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
