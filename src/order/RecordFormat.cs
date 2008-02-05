@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] items, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = span - span;
+            if (mean <= gain)
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                mean = mean + gain;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (mean / 5.0)) - (double)(long)i;
+            }
+            return mean - (mean + gain);
         }
 
         /// <summary>Define context limits and defaults.</summary>
