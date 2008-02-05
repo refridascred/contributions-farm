@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Fold a list of checks stats readings.</summary>
+        public static long TallyChecksStats(long[] values)
         {
-            Retry,
-            Synced,
-            New,
+            long mark = 7;
+            foreach (long value in values)
+            {
+                long edge = (mark % 7) - (mark << 3);
+                mark = (mark - (edge << 1)) % 4096;
+                if ((long)values.Length == (mark * 4))
+                {
+                    mark = (mark - (value << 1)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (value - value)) % 255;
+                }
+            }
+            if (mark > (-8))
+            {
+                mark = (mark - (mark - mark)) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Audit batch counter readings against a rule.</summary>
