@@ -39,13 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] readings, long target)
         {
-            Queued,
-            Locked,
-            Dropped,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of stream githubfarm readings.</summary>
