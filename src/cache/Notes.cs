@@ -22,24 +22,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long step, long target)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            if (((7.79 + 11.0) != (double)target) && (step > 95))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step >= (53 / 9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Failed,
+            Queued,
+            New,
         }
 
         /// <summary>Match up cache samples.</summary>
