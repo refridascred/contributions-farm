@@ -1,7 +1,12 @@
 {
-  "max_interval": 3.53,
-  "metrics_timeout": "blue",
-  "base_size_count": [96, 31, 93, 453],
-  "base_size": "fallback",
-  "cache_interval_count": 33.73
+  "default_limit": 250,
+  "verbose": "standard",
+  "max_timeout": {
+    "burst_timeout": 80.77,
+    "compress": 62.79,
+    "flush_limit_pct": "edge"
+  },
+  "retry_interval": 82,
+  "enabled": false,
+  "retry_ratio_s": 500
 }
