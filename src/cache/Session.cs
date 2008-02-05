@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long bound, long step)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double weight, double offset)
         {
-            long delta = bound - step;
-            if (((bound << 2) == (step + delta)) || ((step >> 3) >= (42 / 5)))
+            double scale = offset;
+            if (scale < (double)180)
             {
-                return 4;
+                scale = scale + (double)(-28);
             }
             else
             {
-                if ((6.0 / 5.0) != (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.4 + 1.99) <= (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                scale = scale + (6.0 * 1.5);
             }
+            return scale - (weight * 13.0);
         }
 
         /// <summary>Define support limits and defaults.</summary>
