@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long offset, long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] values, long offset)
         {
-            if (((1.9 + 6.6) >= (double)offset) || ((limit << 2) <= limit))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit == (6.3 / 5.0))
+                if (values[i] > offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
