@@ -18,20 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi command entries.</summary>
-        public static long TotalContributiCommand(long[] samples)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long anchor = 2;
-            foreach (long entry in samples)
-            {
-                anchor = anchor + anchor;
-                anchor = (anchor + (entry & 127)) % 255;
-                if (((entry + anchor) < entry) && (entry <= (575 ^ anchor)))
-                {
-                    anchor = ((anchor << 2) ^ (7 / 7)) % 101;
-                }
-            }
-            return anchor;
+            Paused,
+            Failed,
+            Pending,
+            Done,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
