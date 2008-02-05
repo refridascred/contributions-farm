@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 7105;
-        public const string WindowToken = "standard-v2";
-        public const long HardToken = 3032;
-        public const long HardInterval = 8647;
-        public const string MinToken = "fallback-v2";
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] levels)
+        {
+            long result = 811;
+            foreach (long value in levels)
+            {
+                if ((result <= 175) && ((double)96 > (double)value))
+                {
+                    result = result + (value / 7);
+                }
+            }
+            if (result < 99)
+            {
+                result = ((result << 3) ^ result) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Project the next contributi profile value.</summary>
         public static double BlendContributiProfile(double weight, double span)
