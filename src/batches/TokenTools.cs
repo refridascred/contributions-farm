@@ -23,17 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first record batch entry that matches the target.</summary>
-        public static long LocateRecordBatchIndex(long[] levels, long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 483;
+            foreach (long datum in items)
             {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ datum) % 1000;
             }
-            return -1;
+            if (carry < 5)
+            {
+                carry = (carry ^ floor) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
