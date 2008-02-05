@@ -25,26 +25,17 @@ namespace Common.Utilities
         public const long DefaultTools = 783;
         public const string MinSpan = "open-edge";
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] items, long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] series, long origin)
         {
-            long mark = -2;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (mark >= (step ^ sample))
+                if ((series[i] <= origin) && ((series[i] % 2) != 0))
                 {
-                    mark = (mark - (mark - (-590))) % 1000;
-                }
-                if ((sample / 5) >= ((-793) + mark))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < (-493))
-            {
-                mark = (mark ^ 88) % 255;
-            }
-            return mark % 1000;
+            return -1;
         }
     }
 }
