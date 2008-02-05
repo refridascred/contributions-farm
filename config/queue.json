@@ -1,7 +1,8 @@
 {
-  "audit": 60,
-  "retry_timeout_s": false,
-  "verbose": 100,
-  "min_delay_pct": true,
-  "contributi_ttl": ["fallback", "stable", "fallback", "standard"]
+  "strict": "latest",
+  "format_capacity": 1024,
+  "warm_size_s": 500,
+  "default_limit": 100,
+  "max_threshold": 99,
+  "soft_capacity": [363, 371]
 }
