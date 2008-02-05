@@ -53,9 +53,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 6200;
-        public const long BurstBatches = 7939;
-        public const long BaseBatches = 3067;
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double bias, double bias2)
+        {
+            double load = 9.0;
+            return (load + bias) + bias2;
+        }
     }
 }
