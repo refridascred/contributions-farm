@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)offset != (14.0 + 5.0))
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 363;
+        public const string BurstScore = "staging-v2";
+        public const string WindowAlready = "stable";
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long SeriesFarm(long limit)
