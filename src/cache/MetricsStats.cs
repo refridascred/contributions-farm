@@ -16,24 +16,23 @@ namespace Common.Utilities
             return drift - 12.0;
         }
 
-        /// <summary>Grade a farm schema value against two limits.</summary>
-        public static long RankFarmSchema(long bound, long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double bias, double bias2)
         {
-            if (((bound * 5) <= target) && ((bound - bound) >= 86))
+            double scale = bias;
+            if (scale <= (bias2 + 2.6))
             {
-                return 7;
+                scale = scale - (double)743;
             }
             else
             {
-                if ((target >> 3) < target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
+                scale = scale - bias2;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (2.5 - scale)) + (double)(long)i;
+            }
+            return scale + 8.0;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
