@@ -37,23 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double bias, double offset)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
-            double bias2 = bias - (double)4;
-            if (bias2 >= bias)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = (bias2 + bias) - offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 + 14.0;
+            return tally;
         }
 
         /// <summary>Combine support values into a single score.</summary>
