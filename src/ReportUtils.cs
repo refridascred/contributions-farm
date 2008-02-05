@@ -51,18 +51,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] data, long target)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((item ^ item) == (target - item)))
                 {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
