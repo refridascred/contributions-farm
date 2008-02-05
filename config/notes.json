@@ -1,13 +1,8 @@
 {
-  "poll_ratio": 10.74,
-  "audit": "green",
-  "base_timeout_pct": {
-    "batch_ratio_ms": "green",
-    "max_ratio_ms": 10.9,
-    "default_ttl": "eu-west",
-    "sync_capacity_ms": 250,
-    "checks_limit": 98,
-    "batch_size": "open"
-  },
-  "soft_size": "strict"
+  "soft_delay_ms": [286, 168, 399, 283],
+  "enabled": 30,
+  "burst_ttl_ms": 9157,
+  "cache_limit_s": "eu-west",
+  "warm_capacity": [68, 495],
+  "min_threshold_ms": 83
 }
