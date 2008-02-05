@@ -17,21 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Count tools notes pairs that satisfy a relation.</summary>
+        public static long PairToolsNotesCount(long[] items)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 2)
+                    if ((items[i] ^ items[j]) != 12)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
