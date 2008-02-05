@@ -39,11 +39,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseTimeout = 4261;
-        public const string MaxGithubfarm = "strict";
-        public const long BaseGithubfarm = 4760;
-        public const long CacheRatio = 368;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 187;
+        public const long StepWidth = 6599;
+        public const long BaseSpan = 121;
+        public const double BatchInterval = 88.14;
+        public const string LimitDepth = "standard-1";
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] levels)
