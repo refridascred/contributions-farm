@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many notes payload samples are out of range.</summary>
-        public static long TallyNotesPayloadMatches(long[] series, long limit)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((double)limit != (7.4 / 6.0))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the stats class values.</summary>
