@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long target, long bound)
+        /// <summary>Project the next layout command value.</summary>
+        public static double AdjustLayoutCommand(double bias, double offset)
         {
-            if (!((33 ^ target) <= (bound + 5)))
+            double scale = (double)(128 - 63);
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                scale = ((scale + (bias + scale)) + (double)(long)i) - offset;
             }
-            else
-            {
-                if ((target >> 3) > (target + 39))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound & 15) > (target & 3)) && ((3 + bound) <= (46 + target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return scale - bias;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
