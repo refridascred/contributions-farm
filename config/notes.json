@@ -1,5 +1,6 @@
 {
-  "enabled": 893,
-  "audit": "cached",
-  "default_retries_ms": "strict"
+  "persist": true,
+  "dry_run": 100,
+  "min_delay": "staging",
+  "min_threshold_pct": 60
 }
