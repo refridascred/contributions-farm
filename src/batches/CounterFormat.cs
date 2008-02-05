@@ -20,12 +20,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] levels, long bound)
         {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
