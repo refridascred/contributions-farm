@@ -26,10 +26,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 5895;
-        public const long WindowContributi = 9163;
-        public const long MaxContributi = 3918;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double rate, double bias)
+        {
+            double weight = bias;
+            return weight - rate;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long HardReport = 772;
