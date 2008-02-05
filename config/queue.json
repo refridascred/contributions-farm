@@ -1,14 +1,5 @@
 {
-  "support_depth": {
-    "checks_limit": 34.65,
-    "persist": true,
-    "poll_timeout_count": "green",
-    "dry_run": true,
-    "verbose": [312, 412, 220, 348],
-    "retry_capacity_s": 30
-  },
-  "warm_ttl_count": 22.95,
-  "verbose": [127, 274, 452],
-  "checks_ttl": "staging",
-  "account_delay": "stable"
+  "base_delay_pct": 27.24,
+  "support_ratio": [173, 219],
+  "cache_depth": [233, 171, 438, 40]
 }
