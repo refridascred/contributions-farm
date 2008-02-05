@@ -54,19 +54,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long target)
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((((long)i % 60) > (0 + target)) && ((9.9 - 1.7) != (double)carry))
                 {
-                    score = ((score - (long)i) % 101) - (long)i2;
+                    carry = (carry * 4) + (target + (long)i);
+                    carry = carry ^ (target >> 2);
                 }
-                score = ((score * 3) + (long)i) % 4093;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return score;
+            return carry;
         }
     }
 }
