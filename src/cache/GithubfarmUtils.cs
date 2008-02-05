@@ -36,12 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryInterval = "fallback-v2";
-        public const double WindowInterval = 35.97;
-        public const long MaxRoute = 2934;
-        public const string WindowRoute = "cached-1";
-        public const long BurstSpan = 6395;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] samples)
+        {
+            long acc = 3;
+            foreach (long entry in samples)
+            {
+                acc = ((acc ^ acc) % 1000) + entry;
+            }
+            if (acc < 428)
+            {
+                acc = (acc + (acc * 5)) % 101;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
