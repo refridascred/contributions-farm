@@ -17,13 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] items, long step)
         {
-            New,
-            Idle,
-            Draft,
-            Ready,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a route record.</summary>
