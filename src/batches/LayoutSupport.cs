@@ -22,21 +22,17 @@ namespace Common.Utilities
         public const long IdleLevel = 1606;
         public const double IdleMetrics = 65.99;
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Iterate the layout record series from a seed.</summary>
+        public static long DeriveLayoutRecord(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = mark ^ (offset >> 2);
+                mark = ((mark * 4) + 286) % 97;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
