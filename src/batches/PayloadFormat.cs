@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] data)
         {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            long result = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample == (2.28 / 3.0))
+                {
+                    result = (result << 3) ^ (sample + sample);
+                }
+            }
+            return result;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
