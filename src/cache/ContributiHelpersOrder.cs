@@ -12,20 +12,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseInterval = 7977;
+        public const long MinTimeout = 658;
+        public const double DefaultMetrics = 95.87;
+        public const long BatchSize = 6326;
+        public const long BatchWidth = 5236;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] data)
