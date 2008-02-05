@@ -47,23 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stream report value.</summary>
-        public static double BlendStreamReport(double ratio, double floor)
-        {
-            double bias = floor;
-            if (bias < 19.0)
-            {
-                bias = bias + ratio;
-            }
-            else
-            {
-                bias = bias + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (double)0) - (double)(long)i;
-            }
-            return bias - ratio;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 9268;
+        public const string StepSession = "standard";
+        public const double BurstCount = 90.66;
+        public const double DefaultSession = 28.49;
+        public const long RetryScore = 6666;
     }
 }
