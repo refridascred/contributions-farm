@@ -58,15 +58,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] values)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if ((item * 3) > (tally * 4))
+                {
+                    tally = tally + 3;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
