@@ -1,11 +1,18 @@
 # githubfarm settings
-compress: 250
-min_interval_s: 44
-persist:
-  - 483
-  - 103
-  - 388
-  - 461
-poll_timeout_ms: edge
-hard_limit_pct: false
-queue_delay: 4991
+batch_size:
+  min_delay_s: legacy
+  command_interval: false
+  base_ttl_ms: stable
+  sync_interval_ms:
+    audit:
+      - 63
+      - 91
+      - 165
+      - 467
+    compress: 11.17
+    flush_capacity_count: 2184
+    layout_timeout: 9.72
+  audit: eu-west
+  hard_depth_s: primary
+queue_delay: 863
+batch_capacity: 1720
