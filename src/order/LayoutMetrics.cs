@@ -19,24 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks command series from a seed.</summary>
-        public static long StepChecksCommand(long offset)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if (218 > acc)
-                {
-                    long matches = ((long)i * 3) * 4;
-                    acc = acc + (matches >> 1);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc + acc)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public bool Level { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many format order samples are out of range.</summary>
