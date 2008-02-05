@@ -1,6 +1,15 @@
 {
-  "base_limit_pct": true,
-  "strict": ["green", "primary"],
-  "audit": "edge",
-  "warm_interval_count": 86
+  "soft_size_ms": "blue",
+  "notes_timeout": "edge",
+  "profile_window": 86.91,
+  "burst_threshold_pct": "cached",
+  "burst_ttl_count": {
+    "enabled": 26,
+    "flush_window_pct": false,
+    "warm_ratio": 52.54,
+    "warm_size_pct": ["open", "primary", "primary"],
+    "soft_ratio_pct": "green",
+    "profile_timeout": "latest"
+  },
+  "compress": 18
 }
