@@ -13,25 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long limit, long bound)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long offset = limit - bound;
-            if (((offset + limit) != (bound >> 2)) && ((double)bound != (5.51 + 7.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((bound - bound) <= bound) && ((offset << 3) < (offset - offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
