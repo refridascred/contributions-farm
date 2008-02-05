@@ -25,14 +25,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Active,
-            Closed,
-            Synced,
-            Retry,
-            Failed,
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
