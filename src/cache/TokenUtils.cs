@@ -15,19 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] items, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] samples, long step)
         {
-            long carry = 311;
-            foreach (long cell in items)
+            long result = 9;
+            foreach (long datum in samples)
             {
-                carry = ((carry ^ (seed / 9)) % 4096) + cell;
+                result = ((result ^ (step ^ result)) % 1000) + datum;
             }
-            if (carry < 1)
-            {
-                carry = (carry - (-17)) % 101;
-            }
-            return carry;
+            return result % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
