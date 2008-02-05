@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metric cache samples.</summary>
-        public static long OverlapMetricCacheCount(long[] series)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Measure how many context metric samples are out of range.</summary>
