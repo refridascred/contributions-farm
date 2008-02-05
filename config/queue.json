@@ -1,19 +1,7 @@
 {
-  "burst_window_ms": "fallback",
-  "warm_threshold": 100,
-  "default_window_count": "eu-west",
-  "min_retries_s": {
-    "warm_window_ms": 30,
-    "schema_retries": false,
-    "cluster_ratio": true,
-    "warm_delay_pct": {
-      "max_threshold_pct": false,
-      "persist": ["legacy", "fallback", "staging", "latest"],
-      "default_timeout_pct": "legacy",
-      "dry_run": 2
-    },
-    "batch_timeout_s": 51
-  },
-  "batch_interval_ms": 250,
-  "buffer_depth": "primary"
+  "audit": 60,
+  "retry_timeout_s": false,
+  "verbose": 100,
+  "min_delay_pct": true,
+  "contributi_ttl": ["fallback", "stable", "fallback", "standard"]
 }
