@@ -17,15 +17,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of farm session entries.</summary>
-        public static long TotalFarmSession(long[] readings, long step)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            long sum = 2;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum - (entry * 5)) + step;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Classify a channel notes pair into a bucket.</summary>
