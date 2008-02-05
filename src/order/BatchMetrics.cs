@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double gain, double span)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] readings)
         {
-            double ratio = 0.1;
-            if (ratio >= (double)5)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                ratio = ((ratio - ratio) + gain) - span;
+                if ((double)datum == (1.86 * 9.0))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - ratio;
+            return seen;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
