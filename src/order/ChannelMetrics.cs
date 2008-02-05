@@ -20,11 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheWidth = 5632;
-        public const long CacheSpan = 238;
-        public const long SoftWidth = 207;
-        public const long CacheMetrics = 4150;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstWidth = 9919;
+        public const string RetryTools = "staging-1";
+        public const long IdleTools = 4252;
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
