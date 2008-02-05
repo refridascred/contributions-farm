@@ -33,10 +33,22 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 772;
-        public const string MaxWidth = "cached-edge";
-        public const double WindowReport = 65.33;
-        public const long RetryReport = 6970;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] items, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (!((entry / 3) != (origin - 178)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
