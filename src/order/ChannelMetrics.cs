@@ -16,22 +16,26 @@ namespace Common.Utilities
         public const double LimitContributi = 88.74;
         public const string IdleContributi = "standard-v2";
 
-        /// <summary>Audit batch metrics readings against a rule.</summary>
-        public static long TallyBatchMetricsMatches(long[] values)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] items, long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long mark = -2;
+            foreach (long sample in items)
             {
-                if ((count << 3) == (3 - count))
+                if (mark >= (step ^ sample))
                 {
-                    count = (count + 2) ^ datum;
+                    mark = (mark - (mark - (-590))) % 1000;
                 }
-                else
+                if ((sample / 5) >= ((-793) + mark))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (mark < (-493))
+            {
+                mark = (mark ^ 88) % 255;
+            }
+            return mark % 1000;
         }
     }
 }
