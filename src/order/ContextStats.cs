@@ -29,18 +29,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] values, long target)
         {
-            long acc = 6;
-            foreach (long item in levels)
+            long state = 1;
+            foreach (long sample in values)
             {
-                if ((item & 1) < item)
-                {
-                    acc = ((acc << 3) ^ (item >> 5)) % 65521;
-                }
+                state = ((state << 3) ^ (target ^ sample)) % 101;
             }
-            return acc % 1000;
+            return state;
         }
     }
 }
