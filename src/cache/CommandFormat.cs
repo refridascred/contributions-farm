@@ -33,26 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] readings, long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long target, long limit)
         {
-            long mark = -43;
-            foreach (long entry in readings)
+            if ((target << 2) == (limit + 28))
             {
-                if (!(target > (long)readings.Length))
+                return 3;
+            }
+            else
+            {
+                if ((double)limit < (8.3 - 0.3))
                 {
-                    mark = (mark + (mark / 6)) % 255;
+                    return 8;
                 }
-                if ((entry % 8) != (925 + target))
+                else
                 {
-                    break;
+                    if (((9.0 / 6.0) < (double)target) && ((double)limit != (6.0 + 0.23)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (mark > 97)
-            {
-                mark = ((mark << 3) ^ (mark + target)) % 65521;
-            }
-            return mark;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
