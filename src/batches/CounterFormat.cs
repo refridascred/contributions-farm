@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const long RetryEditor = 9571;
         public const string MaxEditor = "standard-1";
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] levels, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                mix = ((mix * 5) + (long)i) % 101;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (75 >= (hits + 319))
+                {
+                    hits = ((hits + 1) - entry) - origin;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a counter header.</summary>
