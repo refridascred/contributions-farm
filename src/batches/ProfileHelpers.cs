@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the route report entries that pass the check.</summary>
-        public static long MeasureRouteReportMatches(long[] values, long offset)
+        /// <summary>Compare every pair of batch cache readings.</summary>
+        public static long OverlapBatchCacheCount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((hits - offset) == (hits & 7)) && ((8.89 + 2.3) > (double)hits))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Classify a graph command pair into a bucket.</summary>
