@@ -1,4 +1,7 @@
 # support settings
-githubfarm_depth: strict
-poll_interval: 81.71
-verbose: 66
+filter_threshold:
+  hard_limit_s: eu-west
+  burst_interval_s: true
+  dry_run: standard
+burst_ratio_pct: standard
+graph_window: 53.92
