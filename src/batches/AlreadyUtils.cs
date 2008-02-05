@@ -16,19 +16,22 @@ namespace Common.Utilities
         public const long CacheStats = 1921;
         public const long WindowScore = 8869;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] series, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (item < bound)
+                if (((8.46 + 1.99) <= (double)count) || (((step + datum) >= (step ^ count)) || (step <= (count + step))))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
