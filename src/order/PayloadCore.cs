@@ -21,22 +21,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] data, long origin)
         {
-            long mark = 8;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if ((data[i] >= origin) && ((data[i] % 5) == 0))
                 {
-                    mark = (((mark * 4) + (mark + mark)) % 97) + (long)i;
-                }
-                if ((mark + mark) <= mark)
-                {
-                    mark = (mark * 3) + reading;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
