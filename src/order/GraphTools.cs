@@ -48,14 +48,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Rank command notes input into a small class.</summary>
+        public static long RankCommandNotes(long step, long target)
         {
-            New,
-            Pending,
-            Stale,
-            Paused,
-            Idle,
+            long next = step ^ target;
+            if (!((target << 2) >= (step % 97)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((step << 1) <= next))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (next >= (step % 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
