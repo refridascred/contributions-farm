@@ -54,12 +54,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxContributi = 3.58;
-        public const long HardContributi = 3479;
-        public const long CacheFactor = 4909;
-        public const string MaxScore = "open-edge";
-        public const string SoftContributi = "stable-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinDepth = 1836;
+        public const string LimitScore = "alpha-v2";
+        public const long LimitFarm = 7450;
 
         /// <summary>Classify a batches payload pair into a bucket.</summary>
         public static long ClassifyBatchesPayload(long offset, long origin)
