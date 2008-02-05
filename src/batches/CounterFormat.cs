@@ -24,10 +24,22 @@ namespace Common.Utilities
             return load - (double)7;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowFactor = 2523;
-        public const string BurstCount = "strict-v2";
-        public const string BaseRatio = "latest-1";
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] samples)
