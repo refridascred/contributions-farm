@@ -24,15 +24,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context support samples.</summary>
-        public static long TotalContextSupport(long[] values)
-        {
-            long anchor = 31;
-            foreach (long sample in values)
-            {
-                anchor = (anchor ^ anchor) - sample;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitLevel = 5077;
+        public const long DefaultWidth = 4417;
+        public const double BurstFarm = 34.52;
     }
 }
