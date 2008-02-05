@@ -20,23 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double weight, double bias)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            double scale = weight;
-            if (scale >= (double)634)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (double)173;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (5.21 - scale)) + (double)(long)i;
-            }
-            return scale - (double)582;
+            return count;
         }
 
         /// <summary>Project the next context batches value.</summary>
