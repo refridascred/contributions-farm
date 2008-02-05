@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 3574;
+        public const string MinRatio = "fallback";
+        public const long HardCommits = 7454;
+        public const long HardSize = 3224;
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
