@@ -48,19 +48,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long floor, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
+            long diff = floor - step;
+            if ((double)diff != (7.1 / 6.0))
             {
-                if (2 < (mark + mark))
-                {
-                    mark = ((mark * 2) + (long)i) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((step - floor) > diff)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step * 4) < (1 / 6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(step < (50 ^ 384)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
