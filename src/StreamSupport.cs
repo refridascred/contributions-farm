@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] items, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (items[i] <= bound)
+                if (5 > seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + cell) - step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the support class values.</summary>
