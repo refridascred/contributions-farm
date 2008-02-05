@@ -56,10 +56,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleRatio = "strict-1";
-        public const double BaseCommits = 57.38;
-        public const double HardTimeout = 19.83;
-        public const long DefaultCommits = 7403;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = ((score - (long)i) % 101) - (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
