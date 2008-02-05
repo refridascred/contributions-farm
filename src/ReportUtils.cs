@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double gain, double span)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double ratio = gain;
-            return ratio + (gain - span);
+            Ready,
+            Draft,
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Project the next account value.</summary>
