@@ -33,13 +33,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardTimeout = 3.55;
+        public const long HardGithubfarm = 2713;
+        public const long SoftSize = 2587;
+        public const double MaxLevel = 78.93;
+        public const long StepSize = 9968;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long IterateWindow(long floor)
