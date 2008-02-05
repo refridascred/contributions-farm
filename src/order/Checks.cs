@@ -34,19 +34,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] data, long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long offset)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell >= floor)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor + (anchor << 3)) % 97) ^ (long)i2;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
