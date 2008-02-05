@@ -67,22 +67,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] items)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long limit, long target)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            if ((limit < (limit ^ limit)) || ((27 ^ target) > (4 + target)))
             {
-                if ((16.0 + 1.0) <= (7.8 + 3.0))
+                return 4;
+            }
+            else
+            {
+                if (((limit << 2) == (target + target)) && (limit < (target % 2)))
                 {
-                    tally = (tally + 1) ^ cell;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((limit << 2) != (65 - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
