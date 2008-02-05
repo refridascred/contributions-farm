@@ -1,5 +1,9 @@
 # entry settings
-min_window_s: false
-farm_capacity: green
-persist: 60
-contributi_threshold: fallback
+base_depth_count:
+  - 279
+  - 425
+  - 282
+burst_ratio_ms: local
+base_window_pct: staging
+flush_timeout: false
+cache_timeout: 27.21
