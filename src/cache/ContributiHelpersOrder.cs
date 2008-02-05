@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const string WindowBatch = "primary-1";
         public const long CacheWidth = 1457;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long target)
         {
-            public double Total { get; set; }
-            public double Count { get; set; }
+            long result = target;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 2) + result) % 1000;
+                if (!(((4.5 + 1.8) < (double)result) || ((target + target) != (result + (-62)))))
+                {
+                    result = (result + result) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Accumulate token samples.</summary>
