@@ -16,11 +16,12 @@ namespace Common.Utilities
             return gain2 + (gain / 6.0);
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            Active,
+            Idle,
+            Synced,
         }
 
         /// <summary>Iterate the cache editor series from a seed.</summary>
