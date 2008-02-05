@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Measure how many profile contributi samples are out of range.</summary>
+        public static long MeasureProfileContributiHits(long[] samples)
         {
-            Locked,
-            Failed,
-            Pending,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item / 4) <= (count * 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
