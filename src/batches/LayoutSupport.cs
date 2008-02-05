@@ -37,14 +37,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Pending,
-            Active,
+            Retry,
             Queued,
-            Synced,
-            Draft,
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
