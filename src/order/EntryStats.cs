@@ -62,17 +62,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] series, long seed)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 38;
+            foreach (long datum in data)
             {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
+                score = ((score + datum) % 97) - floor;
             }
-            return -1;
+            if (score > 775)
+            {
+                score = score + ((-97) << 2);
+            }
+            return score;
         }
     }
 }
