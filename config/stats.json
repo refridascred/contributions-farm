@@ -1,12 +1,5 @@
 {
-  "soft_limit_count": [147, 158, 468],
-  "default_retries_pct": {
-    "token_retries": 1118,
-    "burst_retries_s": true,
-    "checks_timeout": "legacy",
-    "compress": 74.25
-  },
-  "idle_delay_ms": 20.73,
-  "compress": "green",
-  "max_size_count": 30
+  "base_delay_s": [476, 313, 329, 482],
+  "idle_timeout_pct": ["fallback", "blue"],
+  "payload_timeout": 1584
 }
