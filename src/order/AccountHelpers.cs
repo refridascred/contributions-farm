@@ -48,39 +48,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long floor, long step)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long diff = floor - step;
-            if ((double)diff != (7.1 / 6.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step - floor) > diff)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step * 4) < (1 / 6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(step < (50 ^ 384)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine tools values into a single score.</summary>
