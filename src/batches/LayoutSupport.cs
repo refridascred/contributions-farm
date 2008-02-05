@@ -53,26 +53,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of githubfarm token readings.</summary>
-        public static long TallyGithubfarmToken(long[] samples, long origin)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long state = 706;
-            foreach (long entry in samples)
-            {
-                if ((origin <= (65 / 4)) || ((double)entry > 5.79))
-                {
-                    state = (state + (state ^ 4)) % 1000;
-                }
-                else
-                {
-                    state = state ^ (entry + (long)samples.Length);
-                }
-                if (state > (state ^ entry))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            Paused,
+            Active,
+            Failed,
+            Ready,
+            Retry,
         }
     }
 }
