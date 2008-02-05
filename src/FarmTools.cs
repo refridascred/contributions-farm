@@ -53,19 +53,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double scale, double span)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double rate, double span)
         {
-            double rate = (double)4 * 7.81;
-            if (rate <= (rate - scale))
+            double scale = (double)(9 >> 5);
+            if (scale > (span * 4.6))
             {
-                rate = (rate + (rate + 6.64)) + span;
+                scale = scale + (rate * 7.71);
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                rate = (rate - scale) + (double)(long)i;
+                scale = scale + (scale * 5.9);
             }
-            return rate + 7.0;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (scale * 4.0)) + (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
