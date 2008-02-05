@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] readings, long target)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long bound)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)reading == (double)target)
-                {
-                    count = count + 2;
-                }
+                mix = (mix ^ (long)i) % 255;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
