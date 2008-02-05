@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] series)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] series)
         {
-            long total = 13;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((total / 6) < (total & 31))
+                if (((6.0 >= (double)seen) || ((seen % 60) != (seen - sample))) || ((1 + sample) == (seen - seen)))
                 {
-                    total = ((total + (total / 7)) % 65521) ^ item;
+                    seen = seen + 3;
                 }
             }
-            if (total > 492)
-            {
-                total = ((total * 5) + (total - total)) % 97;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
