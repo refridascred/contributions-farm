@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Pending,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleTimeout = 3814;
+        public const string CacheSpan = "latest-1";
+        public const long DefaultGraph = 5093;
+        public const long BurstGraph = 3689;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountGaps(long[] readings)
