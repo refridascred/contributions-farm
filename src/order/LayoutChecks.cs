@@ -62,13 +62,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate batch layout samples.</summary>
