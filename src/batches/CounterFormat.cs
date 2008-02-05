@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double weight, double span)
+        /// <summary>Look up the position of a tools route sample.</summary>
+        public static long SeekToolsRouteIndex(long[] series, long offset)
         {
-            double load = weight / 3.0;
-            if (load > load)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + span;
+                if ((series[i] > offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load - (double)60;
+            return -1;
         }
 
         /// <summary>Hold a report stats.</summary>
