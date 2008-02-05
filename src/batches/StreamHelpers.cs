@@ -41,18 +41,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] items)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (value >= tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Synced,
+            New,
+            Retry,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
