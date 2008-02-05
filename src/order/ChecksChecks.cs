@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxSize = 4789;
+        public const long HardCommand = 7738;
+        public const double MaxScore = 22.82;
+        public const string BurstCommand = "primary-1";
 
         /// <summary>Adjust a profile already reading.</summary>
         public static double ScaleProfileAlready(double scale, double bias)
