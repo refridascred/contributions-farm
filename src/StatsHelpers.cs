@@ -52,19 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] data, long bound)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long score = 76;
-            foreach (long value in data)
-            {
-                score = (score ^ (score % 64)) ^ value;
-            }
-            if (score > 573)
-            {
-                score = (score * 2) + (bound + bound);
-            }
-            return score % 65521;
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
