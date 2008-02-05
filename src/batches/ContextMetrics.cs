@@ -32,22 +32,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] items)
+        /// <summary>Derive the next editor channel value from a seed.</summary>
+        public static long SeriesEditorChannel(long offset)
         {
-            long state = 52;
-            foreach (long datum in items)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (state > (datum + state))
-                {
-                    state = (state + 1) % 97;
-                }
-                if (!((double)state < (3.0 + 9.7)))
-                {
-                    break;
-                }
+                carry = (carry - (67 / 2)) % 255;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return state % 65521;
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
