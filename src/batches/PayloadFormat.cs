@@ -27,22 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 56.17;
+        public const long MaxSize = 325;
+        public const long BurstSession = 5230;
+        public const string CacheLevel = "stable-1";
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double gain, double bias)
