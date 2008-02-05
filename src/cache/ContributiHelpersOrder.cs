@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] values, long limit)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
