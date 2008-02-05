@@ -30,16 +30,13 @@ namespace Common.Utilities
         public const string BurstStats = "local-edge";
         public const double CacheStats = 21.26;
 
-        /// <summary>Roll a githubfarm buffer counter forward.</summary>
-        public static long IterateGithubfarmBuffer(long origin)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 5) + 78) % 255;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the payload kind values.</summary>
