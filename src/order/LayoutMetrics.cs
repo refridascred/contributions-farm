@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the batches notes entries that pass the check.</summary>
-        public static long AuditBatchesNotesMatches(long[] data, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (((matches - offset) >= value) || (matches <= (value % 2)))
+                if (datum != target)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a context options.</summary>
