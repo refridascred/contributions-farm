@@ -63,14 +63,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Active,
-            Retry,
-            New,
-            Done,
-            Dropped,
+            Pending,
+            Synced,
+            Idle,
+            Draft,
+            Queued,
         }
     }
 }
