@@ -26,13 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] levels)
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((item & 127) > (hits + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
