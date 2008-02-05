@@ -35,21 +35,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up notes payload samples.</summary>
-        public static long OverlapNotesPayloadCount(long[] samples)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next token cluster value from a seed.</summary>
