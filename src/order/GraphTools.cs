@@ -34,12 +34,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftWidth = 7605;
-        public const string BurstWidth = "legacy-edge";
-        public const long HardSize = 6564;
-        public const long SoftPayload = 6435;
-        public const string IdlePayload = "latest-edge";
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] readings, long floor)
+        {
+            long state = -7;
+            foreach (long cell in readings)
+            {
+                state = ((state << 2) ^ (6 & 15)) % 255;
+                state = (state + (state - state)) % 65521;
+                if ((cell + 6) < ((long)readings.Length & 1))
+                {
+                    state = ((state * 3) + (floor - state)) % 97;
+                }
+            }
+            if (state > (-6))
+            {
+                state = state + (539 * 2);
+            }
+            return state;
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
