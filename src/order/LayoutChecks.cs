@@ -72,13 +72,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Accumulate batch layout samples.</summary>
+        public static long FoldBatchLayout(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
+            long score = -3;
+            foreach (long cell in data)
+            {
+                if ((3.58 / 8.0) != (double)score)
+                {
+                    score = (score - (cell - score)) % 4096;
+                }
+                else
+                {
+                    score = (score << 3) ^ score;
+                }
+            }
+            return score;
         }
     }
 }
