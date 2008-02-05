@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] items)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long step, long target)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if ((double)step > (4.5 + 6.7))
             {
-                if ((hits - hits) <= (662 >> 5))
+                return 5;
+            }
+            else
+            {
+                if (step <= (step ^ 68))
                 {
-                    hits = (hits + 2) + value;
+                    return 8;
+                }
+                else
+                {
+                    if ((step * 5) <= (step & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a editor stats.</summary>
