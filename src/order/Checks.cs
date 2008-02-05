@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] levels, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (levels[i] > offset)
+                if (!((bound % 5) < tally))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
