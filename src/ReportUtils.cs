@@ -61,25 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits cache readings.</summary>
-        public static long TallyCommitsCache(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] samples)
         {
-            long result = 434;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (datum <= (datum >> 3))
+                if (!((entry - count) != (count ^ entry)) || (((double)entry < (17.0 + 12.0)) || ((entry % 16) >= count)))
                 {
-                    result = (result ^ (result & 15)) % 65521;
-                    result = ((result * 3) + (datum + datum)) % 1000;
+                    count = count + 3;
                 }
-                else
-                {
-                    result = (result ^ (897 % 100)) % 4096;
-                    result = result ^ result;
-                }
-                result = (result + 602) % 97;
             }
-            return result;
+            return count;
         }
     }
 }
