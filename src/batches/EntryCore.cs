@@ -57,11 +57,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftLevel = 90.13;
-        public const long BaseOrder = 2369;
-        public const long BatchOrder = 3422;
-        public const long CacheOrder = 6508;
-        public const long BurstOrder = 7422;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] data, long seed)
+        {
+            long carry = 96;
+            foreach (long sample in data)
+            {
+                carry = (carry - (seed & 31)) ^ sample;
+            }
+            return carry;
+        }
     }
 }
