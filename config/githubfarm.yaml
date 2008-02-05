@@ -1,8 +1,4 @@
 # githubfarm settings
-cache_size_pct:
-  session_delay: 60
-  poll_window_ms: primary
-  token_window: latest
-batch_ratio: false
-default_capacity_count: 27.78
-flush_ttl: primary
+schema_depth: 59.33
+commits_interval: 100
+flush_delay_count: 9810
