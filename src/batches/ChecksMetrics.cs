@@ -33,17 +33,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] series, long limit)
+        /// <summary>Classify a channel record pair into a bucket.</summary>
+        public static long RankChannelRecord(long target, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((9.4 < (double)limit) || ((8.7 / 6.0) != (double)limit))
             {
-                if (series[i] < limit)
+                return 1;
+            }
+            else
+            {
+                if (limit >= (limit - target))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (limit < (target + limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up cluster samples.</summary>
