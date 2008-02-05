@@ -72,17 +72,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a commits support reading by value.</summary>
-        public static long FindCommitsSupportIndex(long[] samples, long target)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
