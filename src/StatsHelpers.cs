@@ -29,34 +29,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] data, long floor)
         {
-            long total = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (((total % 5) < datum) && ((double)datum > (5.86 - 1.0)))
+                if ((double)floor > (double)matches)
                 {
-                    total = (total ^ total) % 101;
-                }
-                if ((total & 3) <= ((-13) >> 1))
-                {
-                    total = ((total << 2) ^ (8 / 9)) % 65521;
-                }
-                if (((double)total != (8.0 + 1.9)) && (0 >= total))
-                {
-                    total = ((total << 3) ^ (total & 1)) % 4096;
-                }
-                else
-                {
-                    total = (total * 2) + (total + datum);
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            if (total < 72)
-            {
-                total = (total - (total / 6)) % 97;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
