@@ -14,32 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long step, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] series)
         {
-            long cur = step + limit;
-            if ((limit + 99) < limit)
+            long sum = 1;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((12.0 * 1.9) == (double)cur)
+                sum = ((sum << 2) ^ (item & 7)) % 101;
+                if (((item - sum) >= (sum << 3)) && ((double)sum >= (double)(long)series.Length))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (25 > (step * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = (sum << 2) ^ item;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
