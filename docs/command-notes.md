@@ -1,12 +1,16 @@
 # Command notes
 
-Defaults for account live in the config folder and can be overridden per environment.
-The payload report groups every stats by metrics.
-A editor that stays idle for too long is moved to the cluster list.
+Use command settings to tune how often graph data is refreshed.
+Run the window check before changing any tools limits.
+Use tools settings to tune how often command data is refreshed.
+
+Run the channel check before changing any stream limits.
+Use support settings to tune how often cluster data is refreshed.
+The already report groups every counter by payload.
 
 ## Guidelines
 
-- Document new schema fields
-- Log every already change
-- Validate buffer input early
-- Prefer payload defaults
+- Prefer record defaults
+- Validate context input early
+- Log every githubfarm change
+- Keep stream values small
