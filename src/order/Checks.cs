@@ -31,26 +31,25 @@ namespace Common.Utilities
             return drift - (ratio + bias);
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] data, long limit)
+        /// <summary>Classify a tools layout pair into a bucket.</summary>
+        public static long SortToolsLayout(long limit, long target)
         {
-            long mix = 10;
-            foreach (long datum in data)
+            long gap = limit - target;
+            if ((gap % 10) < (gap * 5))
             {
-                if (((datum >> 3) > 89) && ((limit ^ datum) <= (limit & 3)))
+                return 0;
+            }
+            else
+            {
+                if ((limit > (0 + gap)) && (limit <= 93))
                 {
-                    mix = (mix * 3) + (limit ^ datum);
+                    return 5;
                 }
-                if ((4.5 - 4.75) > (double)mix)
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            if (mix > 35)
-            {
-                mix = mix + (mix ^ 13);
-            }
-            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
