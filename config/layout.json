@@ -1,7 +1,7 @@
 {
-  "batch_limit_count": 72.43,
-  "cache_retries_ms": 30,
-  "strict": 250,
-  "report_threshold": false,
-  "readonly": 29
+  "max_interval": 3.53,
+  "metrics_timeout": "blue",
+  "base_size_count": [96, 31, 93, 453],
+  "base_size": "fallback",
+  "cache_interval_count": 33.73
 }
