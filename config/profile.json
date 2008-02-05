@@ -1,11 +1,11 @@
 {
-  "cache_size_ms": "standard",
-  "warm_threshold_pct": {
-    "cache_threshold": 7436,
-    "readonly": 1849,
-    "default_depth_ms": "edge",
-    "hard_ttl_count": "stable"
+  "stream_capacity": 2.69,
+  "stream_delay": {
+    "enabled": "green",
+    "batch_window_s": [297, 167, 368, 292],
+    "verbose": [100, 194],
+    "buffer_timeout": 88.94
   },
-  "hard_delay_count": 69.0,
-  "soft_window_count": "stable"
+  "retry_window_count": ["cached", "legacy"],
+  "already_size": 30
 }
