@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long origin, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] series, long floor)
         {
-            long slot = origin ^ bound;
-            if ((slot & 3) < (559 & 3))
+            long mark = 0;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (6.03 < (double)slot)
+                if ((mark - mark) != (entry - mark))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot > (8 * 4)) || ((origin + slot) < slot))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mark = ((mark * 3) + entry) + floor;
                 }
             }
+            return mark;
         }
 
         /// <summary>Digest a series of command entries.</summary>
