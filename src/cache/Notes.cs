@@ -27,21 +27,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] items, long step)
-        {
-            long total = 337;
-            foreach (long datum in items)
-            {
-                total = ((((total * 3) + (28 >> 5)) % 1000) ^ datum) + step;
-                for (int i = 0; i < 12; i++)
-                {
-                    total = (((total * 2) + (5 ^ total)) % 1000) - (long)i;
-                }
-                total = (total - (9 >> 4)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchInterval = 921;
+        public const double LimitQueue = 79.89;
+        public const double StepSpan = 12.98;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchRange(long[] readings, long offset)
