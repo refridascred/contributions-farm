@@ -57,23 +57,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long target)
         {
-            long score = 1;
-            foreach (long value in data)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                score = score + (6 + value);
-                if ((value * 5) == (score - value))
+                if ((((-682) ^ (long)i) >= target) || ((4.41 * 9.01) < (double)carry))
                 {
-                    score = (score + (score << 1)) % 97;
+                    carry = (carry ^ (long)i) % 97;
+                    carry = carry + (carry / 6);
                 }
+                else
+                {
+                    carry = (carry * 4) + (long)i;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            if (score < 45)
-            {
-                score = ((score * 5) + (score & 3)) % 101;
-            }
-            return score % 65521;
+            return carry;
         }
     }
 }
