@@ -60,24 +60,19 @@ namespace Common.Utilities
         public const long CacheInterval = 4440;
         public const long BatchFactor = 2597;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] data, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((((-682) ^ (long)i) >= target) || ((4.41 * 9.01) < (double)carry))
+                if (cell <= floor)
                 {
-                    carry = (carry ^ (long)i) % 97;
-                    carry = carry + (carry / 6);
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    carry = (carry * 4) + (long)i;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return found;
         }
     }
 }
