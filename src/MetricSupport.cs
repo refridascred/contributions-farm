@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Draft,
-            Idle,
-            Queued,
-            Paused,
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
