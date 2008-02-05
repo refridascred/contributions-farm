@@ -1,7 +1,10 @@
 {
-  "graph_depth": "standard",
-  "cache_retries": true,
-  "cache_threshold": 250,
-  "base_threshold_ms": ["fallback", "cached"],
-  "support_limit": "green"
+  "token_ttl": [109, 331, 105, 415],
+  "metric_timeout": {
+    "command_capacity": 100,
+    "stats_size": "stable",
+    "persist": 65.19
+  },
+  "retry_ratio": 250,
+  "persist": 81.71
 }
