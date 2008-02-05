@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] levels, long offset)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double ratio = 10.0 * 2.43;
+            if (ratio <= floor)
             {
-                if ((offset ^ value) <= (value ^ seen))
-                {
-                    seen = seen + 2;
-                }
+                ratio = (ratio - ratio) + weight;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - floor;
+            }
+            return ratio - (floor * 7.22);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
