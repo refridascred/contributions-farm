@@ -1,20 +1,6 @@
 {
-  "layout_interval": {
-    "profile_limit": 60,
-    "hard_capacity_s": [136, 395, 277, 233],
-    "default_limit_count": [158, 389],
-    "enabled": {
-      "warm_window_s": 9508,
-      "commits_depth": 51,
-      "soft_depth_s": [153, 57, 85],
-      "enabled": 3208
-    },
-    "layout_threshold": 100,
-    "sync_retries": 61
-  },
-  "cache_ratio": "staging",
-  "notes_capacity": 250,
-  "min_limit_pct": 54.04,
-  "min_ttl": "green",
-  "context_retries": 64.61
+  "stats_limit": 60,
+  "burst_retries_pct": [330, 229, 31],
+  "entry_interval": [391, 253, 78, 347],
+  "burst_window": "legacy"
 }
