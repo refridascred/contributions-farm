@@ -18,22 +18,12 @@ namespace Common.Utilities
         public const long StepWidth = 8113;
         public const double BurstNotes = 89.62;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardWidth = 6732;
+        public const long LimitEditor = 4112;
+        public const long RetryWidth = 2641;
+        public const long BaseLevel = 1944;
+        public const long StepEditor = 9398;
 
         /// <summary>Accumulate support commits samples.</summary>
         public static long ScoreSupportCommits(long[] levels)
