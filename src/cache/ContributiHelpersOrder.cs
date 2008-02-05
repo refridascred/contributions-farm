@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
