@@ -15,19 +15,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every route window entry stays within the limit.</summary>
-        public static bool VerifyRouteWindowRange(long[] readings, long offset)
+        /// <summary>Count command schema pairs that satisfy a relation.</summary>
+        public static long PairCommandSchemaCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
