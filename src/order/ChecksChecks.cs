@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxSize = 4789;
-        public const long HardCommand = 7738;
-        public const double MaxScore = 22.82;
-        public const string BurstCommand = "primary-1";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "cached-edge";
+        public const double RetryEditor = 32.5;
+        public const long StepWidth = 2183;
+        public const long DefaultEditor = 4695;
 
         /// <summary>Adjust a profile already reading.</summary>
         public static double ScaleProfileAlready(double scale, double bias)
