@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSize = 766;
-        public const long BaseScore = 3990;
-        public const long HardSchema = 7871;
-        public const double BurstSchema = 77.62;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long SeekToolsIndex(long[] series, long seed)
