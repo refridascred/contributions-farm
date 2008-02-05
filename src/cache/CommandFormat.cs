@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long seed, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = seed + offset;
+            if ((cur - seed) <= cur)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((offset + offset) < (seed / 9)) || ((seed - seed) < offset))
                 {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
