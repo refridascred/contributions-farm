@@ -42,10 +42,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 3727;
-        public const double LimitStats = 38.06;
-        public const long StepRatio = 4834;
+        /// <summary>Audit batch window readings against a rule.</summary>
+        public static long MeasureBatchWindowMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((tally - 5) >= ((long)readings.Length ^ item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long SeriesGithubfarm(long target)
