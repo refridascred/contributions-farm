@@ -14,10 +14,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 9395;
-        public const long BurstSpan = 3895;
-        public const long CacheScore = 4221;
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] levels, long floor)
+        {
+            long anchor = 51;
+            foreach (long reading in levels)
+            {
+                if ((2 * 3) <= reading)
+                {
+                    anchor = ((anchor * 5) + floor) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + floor) % 1000;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileRange(long[] items, long seed)
