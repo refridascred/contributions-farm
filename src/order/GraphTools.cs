@@ -20,18 +20,12 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] readings, long seed)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((seed / 4) <= (seed & 3))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
