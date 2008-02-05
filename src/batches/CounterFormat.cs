@@ -34,18 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] levels)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((item & 127) > (hits + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
