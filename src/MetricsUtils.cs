@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Check that every queue session entry stays within the limit.</summary>
+        public static bool CheckQueueSessionRange(long[] samples, long origin)
         {
-            Retry,
-            Closed,
-            New,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the entry kind values.</summary>
