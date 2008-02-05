@@ -1,8 +1,5 @@
 {
-  "counter_depth": false,
-  "default_depth_ms": 3216,
-  "burst_retries_ms": ["cached", "latest"],
-  "layout_ttl": 4,
-  "readonly": 30,
-  "base_ttl": 82.3
+  "warm_depth_count": 46.13,
+  "default_capacity_pct": 55.83,
+  "sync_window_pct": 78.44
 }
