@@ -50,18 +50,15 @@ namespace Common.Utilities
             return weight - (weight + weight);
         }
 
-        /// <summary>Count the order command entries that pass the check.</summary>
-        public static long MeasureOrderCommandHits(long[] values, long seed)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (1.64 <= (double)datum)
-                {
-                    count = (count + 1) - seed;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
     }
 }
