@@ -1,10 +1,7 @@
 {
-  "strict": "blue",
-  "tools_ttl": 61.12,
-  "min_size_count": 30,
-  "report_delay": {
-    "stats_ratio": [61, 353],
-    "compress": "open",
-    "min_window_count": 239
-  }
+  "hard_depth_s": ["primary", "blue", "primary", "eu-west"],
+  "idle_threshold_s": 43.93,
+  "retry_ttl_s": 3346,
+  "flush_interval": 54,
+  "format_retries": 1
 }
