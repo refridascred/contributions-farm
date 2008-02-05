@@ -1,16 +1,24 @@
 # entry settings
-default_ratio_count: true
-readonly:
+warm_timeout_count: 15
+cache_threshold_pct: strict
+counter_timeout:
+  - stable
+  - edge
   - eu-west
-  - staging
-  - staging
-  - blue
-idle_limit_count: true
-persist: false
-strict:
-  - 108
-  - 263
-  - 287
-flush_delay_pct:
-  - 128
-  - 70
+route_depth:
+  base_size: 60
+  cluster_interval: blue
+  sync_ratio_s:
+    githubfarm_capacity: 66.65
+    idle_ratio_count: 36.36
+    poll_limit: 100
+  idle_ratio_count: 60
+  verbose:
+    stats_retries: fallback
+    compress:
+      - eu-west
+      - latest
+      - local
+      - green
+    already_depth: fallback
+  cache_capacity: open
