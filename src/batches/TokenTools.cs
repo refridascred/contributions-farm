@@ -24,12 +24,21 @@ namespace Common.Utilities
             return ratio + (offset / 8.0);
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Match up profile contributi samples.</summary>
+        public static long CompareProfileContributiCount(long[] data)
         {
-            Draft,
-            Done,
-            Ready,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a report info.</summary>
