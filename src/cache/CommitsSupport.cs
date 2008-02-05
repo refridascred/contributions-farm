@@ -72,17 +72,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] items, long offset)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((items[i] >= offset) && ((items[i] % 2) != 0))
+                if (2 > ((long)i + total))
                 {
-                    return (long)i;
+                    total = total + (total - origin);
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
