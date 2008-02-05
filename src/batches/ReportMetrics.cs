@@ -36,12 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
+                if (items[i] < seed)
                 {
                     return (long)i;
                 }
