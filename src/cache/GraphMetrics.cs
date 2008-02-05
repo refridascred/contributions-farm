@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Check that every tools context entry stays within the limit.</summary>
+        public static bool ValidateToolsContextRange(long[] samples, long offset)
         {
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-            public double Mode { get; set; }
-            public string Level { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a stream stats.</summary>
