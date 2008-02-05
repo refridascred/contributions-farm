@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = (((mark * 3) + (mark >> 5)) % 255) - (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryBudget = "open";
+        public const long StepFilter = 8184;
+        public const long SoftLevel = 6338;
+        public const long RetryFilter = 9244;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long IdleTimeout = 7609;
