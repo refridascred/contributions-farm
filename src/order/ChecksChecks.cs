@@ -23,10 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxSize = 9226;
-        public const long StepTimeout = 1318;
-        public const long BaseStats = 9340;
+        /// <summary>Match up window schema samples.</summary>
+        public static long CompareWindowSchemaCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next metric value.</summary>
         public static double SmoothMetric(double gain, double offset)
