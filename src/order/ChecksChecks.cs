@@ -25,11 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Grade a entry tools value against two limits.</summary>
+        public static long ClassifyEntryTools(long origin, long bound)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long gap = origin ^ bound;
+            if (!((double)bound == (double)origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound != (6.83 / 2.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin * 3) <= gap)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the tools metrics entries that pass the check.</summary>
