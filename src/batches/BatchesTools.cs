@@ -27,19 +27,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] samples, long floor)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (cell >= floor)
+                if (reading != target)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
