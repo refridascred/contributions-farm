@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Adjust a batches tools reading.</summary>
+        public static double ScaleBatchesTools(double weight, double floor)
         {
-            long state = 7;
-            foreach (long value in samples)
+            double gain = floor - floor;
+            if (gain <= (gain / 5.0))
             {
-                state = ((state ^ state) % 65521) ^ value;
+                gain = gain - (gain + weight);
             }
-            if (state < 6)
+            else
             {
-                state = (state - (-626)) % 4096;
+                gain = gain + weight;
             }
-            return state;
+            return gain + floor;
         }
 
         /// <summary>Describe the format mode values.</summary>
