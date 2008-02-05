@@ -31,14 +31,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] data, long bound)
         {
-            Retry,
-            Idle,
-            Failed,
-            Stale,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
