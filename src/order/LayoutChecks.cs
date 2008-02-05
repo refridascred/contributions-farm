@@ -27,12 +27,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long target)
         {
-            Active,
-            Queued,
-            New,
+            long sum = target;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = sum ^ (99 / 2);
+                if ((19.0 / 3.0) < (double)target)
+                {
+                    sum = sum + target;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = (sum - (target + sum)) ^ (long)i2;
+                    sum = (sum ^ (3 - target)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a graph info.</summary>
