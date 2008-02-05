@@ -1,18 +1,32 @@
 # support settings
-base_interval:
-  window_window:
-    queue_depth: 2271
-    cache_timeout: 27
-    hard_ratio_ms: 56.07
-    hard_ratio_count: 51.78
-  profile_retries: local
-  cluster_ratio: 83.16
-editor_retries: 500
-dry_run: open
-idle_size_s: 6473
-warm_interval_pct:
-  route_delay: 49
-  burst_interval_count: 6798
-  default_capacity:
-    - 422
-    - 40
+min_ttl_s:
+  verbose: 20
+  min_capacity_s:
+    readonly:
+      - 401
+      - 212
+    batch_size_ms:
+      - 145
+      - 368
+    idle_ratio: 65.96
+    retry_interval_s:
+      - latest
+      - strict
+      - eu-west
+    min_retries_ms: edge
+    cache_size_ms: false
+  retry_ttl_count:
+    githubfarm_window: strict
+    already_ratio:
+      - strict
+      - open
+      - stable
+      - latest
+    compress: 14.75
+    farm_size: 40.99
+  sync_retries:
+    max_window: legacy
+    token_threshold: 30
+    context_depth: blue
+context_threshold: staging
+stream_interval: primary
