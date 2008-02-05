@@ -1,15 +1,6 @@
 {
-  "soft_size_ms": "blue",
-  "notes_timeout": "edge",
-  "profile_window": 86.91,
-  "burst_threshold_pct": "cached",
-  "burst_ttl_count": {
-    "enabled": 26,
-    "flush_window_pct": false,
-    "warm_ratio": 52.54,
-    "warm_size_pct": ["open", "primary", "primary"],
-    "soft_ratio_pct": "green",
-    "profile_timeout": "latest"
-  },
-  "compress": 18
+  "batch_capacity": 30,
+  "batch_capacity_count": "staging",
+  "min_ttl_s": "local",
+  "counter_timeout": 250
 }
