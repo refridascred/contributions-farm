@@ -20,17 +20,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftRecord = 81.03;
+        public const string BurstRecord = "fallback";
+        public const long WindowFactor = 8417;
+        public const string RetryRecord = "staging-edge";
+        public const string LimitRecord = "open-v2";
     }
 }
