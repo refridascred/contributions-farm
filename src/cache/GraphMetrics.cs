@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools context entry stays within the limit.</summary>
-        public static bool ValidateToolsContextRange(long[] samples, long offset)
+        /// <summary>Iterate the notes checks series from a seed.</summary>
+        public static long SeriesNotesChecks(long seed)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading <= offset)
+                if ((double)state < (double)(long)i)
                 {
-                    flag = false;
-                    break;
+                    state = ((state << 2) ^ (16 + seed)) % 97;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
