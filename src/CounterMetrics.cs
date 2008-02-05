@@ -32,15 +32,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] readings, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] data, long floor)
         {
-            long acc = 514;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                acc = (acc + (origin % 12)) ^ reading;
+                if ((double)hits != (2.9 + 0.6))
+                {
+                    hits = ((hits + 3) + datum) - floor;
+                }
             }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
