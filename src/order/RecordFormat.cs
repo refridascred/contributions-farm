@@ -57,35 +57,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter session pair into a bucket.</summary>
-        public static long SortCounterSession(long bound, long seed)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long limit, long seed)
         {
-            long span = bound - seed;
-            if ((bound * 5) >= 81)
+            if ((seed > (seed + seed)) || ((seed & 1) == (634 >> 2)))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (((138 << 3) <= (seed * 3)) || (seed > (span - bound)))
+                if ((limit >= seed) && ((limit ^ limit) >= (limit - 593)))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((span + (-51)) == (span & 7))
+                    if (((limit >> 5) >= (limit + limit)) && ((limit - 96) < (seed / 7)))
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        if ((double)seed <= (double)8)
+                        if ((seed + 4) != (seed + limit))
                         {
-                            return 2;
+                            return 0;
                         }
                         else
                         {
-                            return 5;
+                            return 7;
                         }
                     }
                 }
