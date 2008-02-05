@@ -13,18 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] values, long target)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
-            long acc = 757;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)acc > 4.5)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (((acc << 2) ^ (acc << 2)) + cell) + target;
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
