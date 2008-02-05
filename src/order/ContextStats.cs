@@ -33,13 +33,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Draft,
-            Active,
-            Done,
-            New,
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
