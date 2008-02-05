@@ -49,13 +49,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] values, long bound)
         {
-            Done,
-            Draft,
-            Retry,
-            Pending,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((sample + sample) != (count << 1))
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
