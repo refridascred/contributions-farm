@@ -30,23 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double bias, double span)
+        /// <summary>Check that every record session entry stays within the limit.</summary>
+        public static bool CheckRecordSessionBounds(long[] series, long origin)
         {
-            double load = 5.99;
-            if (load > (load * 7.3))
+            bool stale = true;
+            foreach (long entry in series)
             {
-                load = (load - load) - span;
+                if (entry != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (bias - load)) + (double)(long)i;
-            }
-            return load - (double)(-348);
+            return stale;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
