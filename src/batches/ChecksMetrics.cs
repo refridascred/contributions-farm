@@ -19,22 +19,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "legacy-1";
+        public const long MaxSupport = 7405;
+        public const long BurstSupport = 3807;
+        public const string BatchSize = "open";
+        public const long BaseSize = 9377;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ScalePayload(double rate, double floor)
