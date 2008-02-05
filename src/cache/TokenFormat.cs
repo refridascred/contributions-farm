@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] samples, long seed)
+        /// <summary>Compare every pair of already layout readings.</summary>
+        public static long CompareAlreadyLayoutCount(long[] values)
         {
-            long mix = -5;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)entry == (double)(-362))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix << 2) ^ (578 / 7);
-                }
-                if ((double)seed > (double)8)
-                {
-                    break;
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < (-68))
-            {
-                mix = (mix * 3) + ((-16) / 8);
-            }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Describe the entry state values.</summary>
