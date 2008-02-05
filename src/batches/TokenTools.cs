@@ -24,13 +24,12 @@ namespace Common.Utilities
             return ratio + (offset / 8.0);
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Active,
-            Pending,
-            Queued,
-            New,
+            Draft,
+            Done,
+            Ready,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
