@@ -33,22 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            long anchor = 65;
-            foreach (long sample in values)
+            long anchor = 48;
+            foreach (long value in data)
             {
-                if (anchor <= sample)
+                anchor = (anchor ^ (70 + anchor)) % 65521;
+                if (!((value << 2) <= (anchor % 100)))
                 {
-                    anchor = (anchor - (anchor - 36)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ (sample + anchor)) % 255;
+                    anchor = (anchor - (value - value)) % 97;
                 }
             }
-            return anchor % 1000;
+            return anchor;
         }
 
         /// <summary>Describe the route phase values.</summary>
