@@ -34,39 +34,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long offset, long limit)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long diff = offset + limit;
-            if (!((offset >> 5) > (diff + offset)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)offset < (19.0 - 6.33)) || (offset <= (limit - limit)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset > (offset % 16))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (9.99 > (double)limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            Synced,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the context mode values.</summary>
