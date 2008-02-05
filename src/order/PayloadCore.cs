@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Idle,
-            Draft,
-            Active,
-            Dropped,
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Combine record values into a single score.</summary>
