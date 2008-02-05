@@ -61,13 +61,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Idle,
-            Stale,
-            Draft,
-            Closed,
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
