@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long DefaultNotes = 9905;
         public const string RetryNotes = "legacy";
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((7 - step) >= seen)
                 {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) - item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a schema options.</summary>
