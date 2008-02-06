@@ -33,17 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] series, long origin)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = scale - offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
+                load = (load - (load + offset)) + (double)(long)i;
             }
-            return -1;
+            return load - scale;
         }
 
         /// <summary>Validate editor report readings against a bound.</summary>
