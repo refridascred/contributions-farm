@@ -58,25 +58,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long limit, long origin)
+        /// <summary>Derive the next payload metric value from a seed.</summary>
+        public static long SeriesPayloadMetric(long target)
         {
-            long cur = limit ^ origin;
-            if (740 >= cur)
+            long carry = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((13.0 - 1.76) <= (double)origin)
+                carry = ((carry * 3) + ((long)i + carry)) % 65521;
+                if (((long)i % 64) > (carry >> 1))
                 {
-                    return 5;
+                    break;
                 }
-                else
-                {
-                    return 2;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Describe the window level values.</summary>
