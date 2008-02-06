@@ -32,13 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] series, long bound)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!((hits << 3) != (bound & 7)))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
     }
 }
