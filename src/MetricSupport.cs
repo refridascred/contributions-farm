@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] data, long origin)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] levels, long limit)
         {
-            long sum = 58;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 8; i++)
+                if (cell != limit)
                 {
-                    sum = (sum - sum) - (long)i;
-                }
-                if ((6 - cell) <= (origin % 3))
-                {
-                    sum = ((sum << 2) ^ (sum + origin)) % 65521;
-                }
-                if (((2 >> 4) >= cell) || ((cell - cell) < (cell * 3)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return sum % 65521;
+            return stale;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
