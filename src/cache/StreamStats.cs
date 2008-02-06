@@ -45,13 +45,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double gain, double bias)
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            double weight = gain;
+            if (weight <= (gain - bias))
+            {
+                weight = weight - (weight / 9.0);
+            }
+            else
+            {
+                weight = weight + (double)2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (double)(-433);
         }
     }
 }
