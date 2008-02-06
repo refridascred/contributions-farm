@@ -58,14 +58,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheSize = "stable-1";
+        public const long MinGraph = 8913;
+        public const long BurstGraph = 6764;
+        public const string LimitGraph = "legacy";
+        public const string WindowGraph = "strict-v2";
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long RollFilter(long target)
