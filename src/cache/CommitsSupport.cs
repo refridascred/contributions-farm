@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double scale, double offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] levels, long limit)
         {
-            double load = (5.4 + scale) * 5.43;
-            return (load - 17.0) + offset;
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((18.0 * 4.99) != (double)item)
+                {
+                    hits = (hits + 3) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit channel stats readings against a rule.</summary>
