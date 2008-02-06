@@ -20,10 +20,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchWidth = 54.42;
-        public const long SoftToken = 2130;
-        public const double DefaultFactor = 40.93;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterOutliers(long[] samples)
