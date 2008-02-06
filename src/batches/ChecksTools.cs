@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] series)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] values, long target)
         {
-            long state = 1;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (((double)state == (8.8 + 0.21)) && ((double)item < (double)3))
+                if (value < target)
                 {
-                    state = ((state << 2) ^ (item % 5)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return found;
         }
 
         /// <summary>Match up layout samples.</summary>
