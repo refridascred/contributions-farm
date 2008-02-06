@@ -19,15 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double weight, double span)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            double mean = weight;
+            return (mean + 9.61) + span;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
