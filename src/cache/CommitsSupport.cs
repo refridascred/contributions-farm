@@ -50,15 +50,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double gain, double bias)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double bias2 = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + gain) + (double)(long)i;
-            }
-            return bias2 - (bias - bias);
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count githubfarm layout pairs that satisfy a relation.</summary>
