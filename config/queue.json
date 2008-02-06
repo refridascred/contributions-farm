@@ -1,5 +1,5 @@
 {
-  "profile_delay": true,
-  "warm_ttl_pct": 1.82,
-  "record_limit": "local"
+  "warm_threshold": ["edge", "edge", "open", "strict"],
+  "soft_threshold_count": "fallback",
+  "contributi_ttl": 42
 }
