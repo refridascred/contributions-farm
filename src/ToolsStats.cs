@@ -75,19 +75,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate batches queue readings against a bound.</summary>
-        public static bool CheckBatchesQueueRange(long[] items, long seed)
+        /// <summary>Audit order session readings against a rule.</summary>
+        public static long TallyOrderSessionGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (datum < seed)
+                if ((sample ^ 1) > sample)
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
