@@ -23,23 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] series)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long mix = 6;
-            foreach (long reading in series)
-            {
-                mix = mix - (reading >> 1);
-                if (2 <= (reading / 5))
-                {
-                    mix = (mix + (mix + (-864))) % 4096;
-                }
-            }
-            if (mix > (-96))
-            {
-                mix = (mix + (3 / 6)) % 255;
-            }
-            return mix;
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a account header.</summary>
