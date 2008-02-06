@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double rate, double span)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long target)
         {
-            double rate2 = span;
-            if (rate2 > 3.6)
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                rate2 = rate2 - (double)(-113);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return rate2 + rate;
+            return state;
         }
 
         /// <summary>Fold a list of account format readings.</summary>
