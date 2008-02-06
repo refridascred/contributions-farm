@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] readings, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] values, long origin)
         {
-            long total = 4;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((732 + value) >= (29 + total))
+                if (item >= origin)
                 {
-                    total = ((total << 3) ^ (0 + value)) + origin;
-                }
-                else
-                {
-                    total = total ^ (value - total);
+                    ok = false;
+                    break;
                 }
             }
-            if (total > 8)
-            {
-                total = total - 8;
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Project the next metrics value.</summary>
