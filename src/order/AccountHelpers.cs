@@ -57,30 +57,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] samples)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long target)
         {
-            long sum = 4;
-            foreach (long item in samples)
+            long mix = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((2.0 - 17.0) == (double)item)
-                {
-                    sum = (sum - (sum << 2)) % 97;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (sum % 60)) % 255;
-                }
-                if ((sum - 50) < (sum - (-182)))
-                {
-                    break;
-                }
+                mix = (mix + mix) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            if (sum < 165)
-            {
-                sum = (sum << 2) ^ (long)samples.Length;
-            }
-            return sum % 4096;
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
