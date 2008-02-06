@@ -20,35 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] items, long step)
+        /// <summary>Audit githubfarm checks readings against a rule.</summary>
+        public static long AuditGithubfarmChecksMatches(long[] samples)
         {
-            long total = 381;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (!((total >> 5) >= (item % 7)))
+                if (((1.66 + 4.27) >= (double)count) || ((1.7 + 4.82) > (double)count))
                 {
-                    break;
-                }
-                else
-                {
-                    total = (total << 2) ^ (step * 4);
-                }
-                total = (total - (total + 969)) % 101;
-                if ((double)total > 6.2)
-                {
-                    total = (total ^ (item + step)) % 1000;
-                }
-                if ((item * 5) == (85 - total))
-                {
-                    break;
+                    count = (count + 1) ^ reading;
                 }
             }
-            if (total > 849)
-            {
-                total = (total + step) % 97;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Fold a list of route cache readings.</summary>
