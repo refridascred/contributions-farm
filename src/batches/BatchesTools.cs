@@ -32,11 +32,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double rate, double floor)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            double rate2 = rate / 4.0;
-            return rate2 + floor;
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
