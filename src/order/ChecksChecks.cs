@@ -12,18 +12,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] series, long origin)
+        /// <summary>Derive the next order schema value from a seed.</summary>
+        public static long RollOrderSchema(long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((item << 1) == (matches - matches)))
-                {
-                    matches = (matches + 1) - origin;
-                }
+                result = ((result * 4) + (result + 45)) % 255;
+                result = result + origin;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
