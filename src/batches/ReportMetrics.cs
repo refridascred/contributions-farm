@@ -33,38 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long seed, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] data, long seed)
         {
-            if (((seed * 3) <= (seed & 31)) && ((seed * 5) != (seed + step)))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed <= (step ^ seed))
+                if ((seed & 31) > (seed * 2))
                 {
-                    return 2;
+                    seen = (seen + 1) ^ cell;
                 }
                 else
                 {
-                    if ((double)seed != (11.0 * 8.48))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(seed > step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
