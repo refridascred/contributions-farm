@@ -33,26 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] values, long bound)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long sum = 29;
-            foreach (long cell in values)
-            {
-                if ((cell >> 3) > sum)
-                {
-                    sum = (sum - (bound << 2)) % 4096;
-                }
-                if (cell > (bound + 9))
-                {
-                    break;
-                }
-            }
-            if (sum > 475)
-            {
-                sum = ((sum << 3) ^ (bound * 5)) % 65521;
-            }
-            return sum;
+            Stale,
+            New,
+            Pending,
+            Done,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
