@@ -47,39 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long target, long limit)
+        /// <summary>Audit metric payload readings against a rule.</summary>
+        public static long CountMetricPayloadGaps(long[] samples, long offset)
         {
-            long edge = target ^ limit;
-            if (limit > (304 + limit))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target != (6.5 - 5.6))
+                if ((matches ^ matches) > ((-4) ^ reading))
                 {
-                    return 6;
+                    matches = (matches + 1) + offset;
                 }
                 else
                 {
-                    if ((569 ^ limit) > (target + edge))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target > (118 - limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
