@@ -43,22 +43,19 @@ namespace Common.Utilities
         public const long MinTimeout = 5561;
         public const double StepSupport = 40.83;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Check that every profile editor entry stays within the limit.</summary>
+        public static bool ValidateProfileEditorRange(long[] data, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                long hits = (offset + offset) + (908 + 6);
-                mark = (mark * 2) + (mark + hits);
-                if (((1.4 - 1.3) <= (3.7 + 1.09)) && ((double)hits < (5.9 - 18.0)))
+                if (sample != bound)
                 {
-                    hits = hits + hits;
-                    continue;
+                    stale = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Match up farm samples.</summary>
