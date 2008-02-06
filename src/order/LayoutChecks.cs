@@ -49,10 +49,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "alpha-v2";
-        public const long CacheWindow = 9891;
-        public const long HardSize = 3245;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] values, long limit)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordHits(long[] samples, long seed)
