@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 207;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum + (338 + reading)) % 255;
             }
-            return tally;
+            if (sum < 6)
+            {
+                sum = sum ^ (4 & 3);
+            }
+            return sum;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
