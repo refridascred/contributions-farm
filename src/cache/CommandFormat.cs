@@ -46,20 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((double)acc > (8.4 / 5.0)))
-                {
-                    acc = ((acc << 3) ^ (floor % 2)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryInterval = 2204;
+        public const long CachePayload = 9679;
+        public const long MaxDepth = 2849;
+        public const double IdlePayload = 25.31;
+        public const long SoftPayload = 9949;
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ProjectChecks(double scale, double floor)
