@@ -21,21 +21,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((bound % 5) <= (state / 6)) && ((double)(long)i > (2.7 / 3.0)))
-                {
-                    state = ((state << 3) ^ (long)i) % 255;
-                    state = (state + bound) % 101;
-                }
-                state = state ^ (bound & 1);
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
