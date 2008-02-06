@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double bias, double bias2)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            double bias3 = (bias + bias2) - bias2;
+            if (bias3 <= (bias / 2.0))
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                bias3 = bias3 - (double)16;
             }
-            return anchor;
+            return bias3 + (bias * 0.66);
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
