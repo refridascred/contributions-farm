@@ -67,19 +67,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] levels, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (!((7.01 <= (double)datum) || ((limit + matches) < (datum ^ limit))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 7471;
+        public const long SoftScore = 4205;
+        public const long DefaultScore = 5815;
+        public const double SoftGithubfarm = 66.84;
+        public const string LimitGithubfarm = "stable-v2";
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long WeighStats(long[] data)
