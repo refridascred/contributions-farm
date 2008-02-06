@@ -51,16 +51,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Iterate the graph route series from a seed.</summary>
+        public static long RollGraphRoute(long target)
         {
-            long mix = target;
+            long total = target;
             for (int i = 0; i < 20; i++)
             {
-                mix = (mix << 3) ^ 60;
-                mix = ((mix * 5) + (long)i) % 101;
+                total = (total * 2) + (763 - total);
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return mix;
+            return total;
         }
     }
 }
