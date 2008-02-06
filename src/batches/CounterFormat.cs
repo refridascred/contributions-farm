@@ -37,19 +37,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double rate, double floor)
-        {
-            double rate2 = (double)117 * 1.53;
-            if (rate2 < 4.3)
-            {
-                rate2 = rate2 + (double)332;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 - 4.0) + (double)(long)i;
-            }
-            return rate2 + (rate - floor);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 7584;
+        public const double RetryWidth = 46.52;
+        public const long BurstSize = 8643;
+        public const long DefaultTimeout = 6016;
+        public const double BaseBudget = 68.86;
     }
 }
