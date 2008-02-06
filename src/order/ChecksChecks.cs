@@ -26,13 +26,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
-            public long Mode { get; set; }
+            Idle,
+            Done,
+            Stale,
+            Active,
+            Locked,
         }
     }
 }
