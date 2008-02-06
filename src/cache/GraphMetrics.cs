@@ -39,11 +39,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinFactor = "strict-v2";
-        public const string BatchRecord = "open-1";
-        public const string BaseCount = "cached";
-        public const long RetrySize = 1961;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Closed,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ProjectProfile(double ratio, double span)
