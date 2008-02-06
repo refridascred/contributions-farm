@@ -33,23 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            long sum = 441;
-            foreach (long entry in data)
+            long carry = 53;
+            foreach (long entry in readings)
             {
-                if ((sum % 8) == (entry + sum))
+                if (carry > (entry * 2))
                 {
-                    continue;
+                    carry = (carry << 3) ^ carry;
                 }
-                sum = sum ^ (entry ^ sum);
+                else
+                {
+                    carry = (carry - entry) % 4096;
+                }
             }
-            if (sum > 54)
-            {
-                sum = (sum + (sum - (long)data.Length)) % 101;
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Hold a route header.</summary>
