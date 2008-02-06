@@ -61,27 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token checks samples.</summary>
-        public static long TallyTokenChecks(long[] data)
-        {
-            long score = 2;
-            foreach (long reading in data)
-            {
-                if (!(score < (reading % 12)))
-                {
-                    score = (score - (263 - reading)) % 255;
-                }
-                else
-                {
-                    score = (score * 4) + reading;
-                }
-            }
-            if (score < 59)
-            {
-                score = (score + (score / 2)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxBudget = 6116;
+        public const long StepDepth = 4883;
+        public const long CacheProfile = 3065;
+        public const string CacheBudget = "cached-v2";
+        public const double BurstProfile = 91.68;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long offset, long origin)
