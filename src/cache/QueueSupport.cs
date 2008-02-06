@@ -28,20 +28,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] values)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long total = 443;
-            foreach (long datum in values)
-            {
-                total = ((total << 3) ^ (datum % 16)) % 101;
-                total = (total - (total << 3)) % 65521;
-                if ((4.73 * 3.4) < (double)datum)
-                {
-                    break;
-                }
-            }
-            return total;
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
