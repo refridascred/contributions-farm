@@ -47,18 +47,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] data, long step)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long target, long seed)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            if ((seed + seed) == (29 + seed))
             {
-                if (step <= (653 + hits))
+                return 2;
+            }
+            else
+            {
+                if ((seed ^ target) >= (seed / 7))
                 {
-                    hits = (hits + 2) ^ cell;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the support status values.</summary>
