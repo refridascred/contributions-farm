@@ -20,23 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] data, long limit)
         {
-            long result = -548;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                result = ((result * 3) + (result + result)) % 101;
-                if (((item + 72) == (item - result)) || ((double)item != (6.9 / 8.0)))
+                if (cell != limit)
                 {
-                    result = (result << 3) ^ (item ^ result);
+                    valid = false;
+                    break;
                 }
             }
-            if (result < 22)
-            {
-                result = (result - result) % 1000;
-            }
-            return result % 4096;
+            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
