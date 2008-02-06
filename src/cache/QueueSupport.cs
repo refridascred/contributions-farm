@@ -28,10 +28,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinFactor = 45.13;
-        public const long HardFactor = 5955;
-        public const long BatchStats = 5189;
-        public const long LimitStats = 1261;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] values)
+        {
+            long total = 443;
+            foreach (long datum in values)
+            {
+                total = ((total << 3) ^ (datum % 16)) % 101;
+                total = (total - (total << 3)) % 65521;
+                if ((4.73 * 3.4) < (double)datum)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
     }
 }
