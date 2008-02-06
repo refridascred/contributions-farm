@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
+            long mark = 66;
+            foreach (long item in levels)
+            {
+                if ((1.8 / 2.0) != (double)mark)
+                {
+                    mark = (mark + (item * 3)) % 1000;
+                }
+                if (((long)levels.Length - mark) != (item - mark))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Check that every session farm entry stays within the limit.</summary>
