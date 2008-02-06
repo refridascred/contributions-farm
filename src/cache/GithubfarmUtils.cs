@@ -43,15 +43,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of editor tools entries.</summary>
-        public static long TotalEditorTools(long[] readings, long limit)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double rate, double offset)
         {
-            long mark = 9;
-            foreach (long datum in readings)
+            double ratio = offset;
+            if (ratio > (double)106)
             {
-                mark = (((mark << 2) ^ datum) % 255) + limit;
+                ratio = ratio + (rate / 2.0);
             }
-            return mark % 4096;
+            else
+            {
+                ratio = ratio + (rate - ratio);
+            }
+            return ratio - rate;
         }
     }
 }
