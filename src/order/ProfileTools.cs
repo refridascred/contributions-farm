@@ -16,19 +16,18 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] samples, long seed)
+        /// <summary>Count the counter account entries that pass the check.</summary>
+        public static long TallyCounterAccountHits(long[] samples)
         {
-            long acc = 4;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                acc = ((acc ^ seed) % 255) + cell;
+                if ((hits << 2) == (208 + (-6)))
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            if (acc < 0)
-            {
-                acc = (acc ^ (acc - seed)) % 97;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
