@@ -53,12 +53,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Failed,
+            Queued,
+            Active,
             Dropped,
-            Synced,
+            Draft,
+            Retry,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
