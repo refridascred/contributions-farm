@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 7010;
-        public const long CacheBatches = 3905;
-        public const long BatchBatches = 947;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public bool Label { get; set; }
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Digest a series of report account entries.</summary>
         public static long WeighReportAccount(long[] series, long bound)
