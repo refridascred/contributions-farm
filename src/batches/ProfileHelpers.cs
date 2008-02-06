@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] series, long offset)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((591 + offset) > (cell & 15)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a checks info.</summary>
