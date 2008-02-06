@@ -34,17 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] samples, long offset)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Stale,
+            Queued,
+            Retry,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
