@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Ready,
-            Done,
-            Locked,
-            Queued,
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
