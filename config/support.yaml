@@ -1,10 +1,8 @@
 # support settings
-warm_delay_s:
-  - 154
-  - 127
-cache_capacity:
-  - latest
-  - staging
-  - stable
-  - staging
-idle_ttl_s: true
+cluster_retries:
+  - 432
+  - 236
+  - 452
+  - 30
+idle_timeout_count: 65.25
+verbose: 2353
