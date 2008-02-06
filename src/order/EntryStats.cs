@@ -20,21 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix + mix) % 4096;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Validate metrics record readings against a bound.</summary>
