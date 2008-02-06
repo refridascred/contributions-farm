@@ -64,21 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of buffer filter readings.</summary>
-        public static long OverlapBufferFilterCount(long[] data)
+        /// <summary>Count the session schema entries that pass the check.</summary>
+        public static long AuditSessionSchemaOutliers(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((1.82 * 4.26) == (double)matches)
                 {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    matches = ((matches + 3) - reading) + floor;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
