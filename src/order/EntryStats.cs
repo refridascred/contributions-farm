@@ -41,18 +41,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] readings)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (tally >= sample)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            Active,
+            Draft,
+            Locked,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
