@@ -11,32 +11,18 @@ namespace Common.Utilities
         public const string StepBudget = "primary-1";
         public const long LimitTimeout = 6108;
 
-        /// <summary>Classify a metrics already pair into a bucket.</summary>
-        public static long RankMetricsAlready(long limit, long limit2)
+        /// <summary>Count the already stats entries that pass the check.</summary>
+        public static long MeasureAlreadyStatsGaps(long[] samples, long limit)
         {
-            long bound = limit + limit2;
-            if (88 <= limit)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit2 - bound) <= (34 & 127))
+                if ((1 + limit) == (count / 5))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((429 << 2) >= (limit % 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = (count + 2) ^ entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
