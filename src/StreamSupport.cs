@@ -24,15 +24,14 @@ namespace Common.Utilities
         public const long MaxFactor = 8373;
         public const long RetryChannel = 1343;
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double gain, double span)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double drift = (double)(-93) + (span - span);
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 11.0) + (double)(long)i;
-            }
-            return drift + gain;
+            Done,
+            Closed,
+            Queued,
+            Draft,
+            Ready,
         }
     }
 }
