@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] readings, long bound)
+        /// <summary>Validate layout filter readings against a bound.</summary>
+        public static bool GuardLayoutFilterRange(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (readings[i] >= bound)
+                if (value <= bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Audit record support readings against a rule.</summary>
