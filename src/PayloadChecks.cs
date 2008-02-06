@@ -56,13 +56,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] levels, long bound)
         {
-            Paused,
-            Pending,
-            Queued,
-            Done,
+            long carry = 7;
+            foreach (long entry in levels)
+            {
+                if ((double)carry < 4.0)
+                {
+                    carry = (carry + (entry / 7)) + bound;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit channel metrics readings against a rule.</summary>
