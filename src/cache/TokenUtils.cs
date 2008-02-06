@@ -22,27 +22,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long state = -138;
-            foreach (long reading in series)
-            {
-                state = ((state * 4) + state) % 4096;
-                if ((state & 3) >= (state * 5))
-                {
-                    state = ((state * 2) + (state - reading)) % 97;
-                }
-                else
-                {
-                    state = (state ^ (state - reading)) % 97;
-                }
-            }
-            if (state < 1)
-            {
-                state = state - (state % 7);
-            }
-            return state;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Compare every pair of counter farm readings.</summary>
