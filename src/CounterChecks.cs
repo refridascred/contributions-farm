@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long origin, long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long offset, long floor)
         {
-            long step = origin - bound;
-            if ((origin << 1) >= bound)
+            if ((floor - offset) != (floor & 127))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if (!((step >> 2) == (9 / 4)))
+                if ((floor << 2) <= (floor * 5))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((origin / 4) > bound)
+                    if ((floor >> 2) != (floor - floor))
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        if ((step >> 3) >= (bound & 127))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 1;
                     }
                 }
             }
