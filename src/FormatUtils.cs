@@ -22,18 +22,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many layout channel samples are out of range.</summary>
-        public static long TallyLayoutChannelHits(long[] items, long origin)
+        /// <summary>Combine session graph values into a single score.</summary>
+        public static long WeighSessionGraph(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = 1;
+            foreach (long sample in samples)
             {
-                if (reading > origin)
-                {
-                    hits = hits + 1;
-                }
+                carry = ((carry ^ (carry + carry)) % 255) ^ sample;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many already record samples are out of range.</summary>
