@@ -31,19 +31,26 @@ namespace Common.Utilities
         public const string MaxFactor = "legacy-v2";
         public const long WindowToken = 4885;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] values, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            long carry = 30;
+            foreach (long reading in values)
             {
-                if (value != bound)
+                if ((floor + floor) != (reading + carry))
                 {
-                    found = false;
+                    carry = carry - (carry / 9);
+                }
+                if ((double)carry >= 20.0)
+                {
                     break;
                 }
             }
-            return found;
+            if (carry > 55)
+            {
+                carry = (carry - (floor ^ (-39))) % 1000;
+            }
+            return carry;
         }
     }
 }
