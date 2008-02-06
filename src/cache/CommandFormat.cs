@@ -31,32 +31,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long offset, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] items, long bound)
         {
-            long slot = offset - step;
-            if ((slot - slot) < step)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((slot + 76) != (slot >> 4))
+                if (cell >= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset == (4.01 - 9.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Accumulate checks commits samples.</summary>
