@@ -79,14 +79,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long floor)
         {
-            Closed,
-            Stale,
-            Pending,
-            Idle,
-            Retry,
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
