@@ -85,13 +85,39 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Grade a githubfarm tools value against two limits.</summary>
+        public static long SortGithubfarmTools(long floor, long limit)
         {
-            Closed,
-            New,
-            Done,
-            Failed,
+            long slot = floor ^ limit;
+            if ((double)slot > (1.0 * 6.3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)floor > (double)limit) && ((double)limit > (double)slot))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor - slot) == (limit * 5)) && ((2.0 - 2.22) <= (double)limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor >= (46 + 539))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
