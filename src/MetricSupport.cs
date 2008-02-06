@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] levels, long step)
+        /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmProfileLimits(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (reading != step)
+                if (entry <= target)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
