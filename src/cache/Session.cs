@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double scale, double bias)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double load = (double)(850 + 7);
-            if (load > (load * 15.0))
-            {
-                load = load + (bias - load);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (bias + scale)) + (double)(long)i;
-            }
-            return load + (double)85;
+            Draft,
+            Stale,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define support limits and defaults.</summary>
