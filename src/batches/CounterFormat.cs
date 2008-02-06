@@ -26,13 +26,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a notes route counter forward.</summary>
-        public static long RollNotesRoute(long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                result = ((result * 5) + (long)i) % 97;
+                result = ((result * 2) + (long)i) % 97;
             }
             return result;
         }
