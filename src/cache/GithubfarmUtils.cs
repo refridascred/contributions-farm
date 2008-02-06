@@ -51,19 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double rate, double offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] readings)
         {
-            double ratio = offset;
-            if (ratio > (double)106)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                ratio = ratio + (rate / 2.0);
+                if (((long)readings.Length - 94) != (count >> 1))
+                {
+                    count = (count + 1) + cell;
+                }
             }
-            else
-            {
-                ratio = ratio + (rate - ratio);
-            }
-            return ratio - rate;
+            return count;
         }
     }
 }
