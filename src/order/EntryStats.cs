@@ -40,19 +40,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every farm batches entry stays within the limit.</summary>
-        public static bool GuardFarmBatchesBounds(long[] samples, long offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double bias, double floor)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            double weight = bias / 4.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum < offset)
-                {
-                    found = false;
-                    break;
-                }
+                weight = (weight - 7.92) + (double)(long)i;
             }
-            return found;
+            return weight + (floor / 4.0);
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
