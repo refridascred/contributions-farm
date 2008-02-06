@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitRatio = 1539;
+        public const double LimitTimeout = 45.41;
+        public const long BurstAlready = 4383;
+        public const double BatchLevel = 0.83;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesRange(long[] values, long limit)
