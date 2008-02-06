@@ -61,19 +61,18 @@ namespace Common.Utilities
         public const long MaxRatio = 404;
         public const long SoftScore = 2154;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] data, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell < target)
-                {
-                    found = false;
-                    break;
-                }
+                long span = (limit & 7) + (limit & 63);
+                long slot = (acc + span) << 1;
+                span = (span - (slot - limit)) % 97;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
