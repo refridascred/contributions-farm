@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] series, long offset)
         {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the support token entries that pass the check.</summary>
