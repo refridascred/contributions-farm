@@ -7,11 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in edge legacy blue open; do
+for item in edge primary legacy open; do
     log "checking ${item}"
 done
