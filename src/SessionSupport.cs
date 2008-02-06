@@ -35,19 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] data)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] samples, long step)
         {
-            long total = 749;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                total = (total << 3) ^ sample;
-                if (736 <= sample)
+                if (item < step)
                 {
-                    total = (total * 3) + (43 % 16);
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
     }
 }
