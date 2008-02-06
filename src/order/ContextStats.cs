@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 4374;
-        public const long DefaultLevel = 3143;
-        public const long IdleStream = 2516;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Compare every pair of buffer entry readings.</summary>
         public static long CompareBufferEntryCount(long[] readings)
