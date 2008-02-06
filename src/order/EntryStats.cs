@@ -50,21 +50,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] data)
+        /// <summary>Fold a list of order batch readings.</summary>
+        public static long FoldOrderBatch(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 75;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)entry != (double)bound)
                 {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry + (bound + carry);
                 }
             }
-            return hits;
+            if (carry > 2)
+            {
+                carry = (carry + (-17)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a batch stats.</summary>
