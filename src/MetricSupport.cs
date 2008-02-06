@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmProfileLimits(long[] values, long target)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (entry <= target)
+                if ((value - value) <= (value & 7))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
