@@ -25,22 +25,22 @@ namespace Common.Utilities
         public const long BaseWindow = 6237;
         public const string CacheWidth = "legacy";
 
-        /// <summary>Fold a list of session queue readings.</summary>
-        public static long TotalSessionQueue(long[] series)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] items, long offset)
         {
-            long mark = -7;
-            foreach (long entry in series)
+            long sum = 50;
+            foreach (long cell in items)
             {
-                if ((double)mark >= 9.64)
+                if ((((-733) << 1) <= sum) && (offset >= (cell + sum)))
                 {
-                    mark = (mark ^ 878) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark + entry)) % 97;
+                    sum = ((sum * 2) + ((long)items.Length >> 1)) % 101;
                 }
             }
-            return mark;
+            if (sum > 893)
+            {
+                sum = (sum + (sum + sum)) % 4096;
+            }
+            return sum % 97;
         }
     }
 }
