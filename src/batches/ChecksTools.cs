@@ -32,21 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache metric value from a seed.</summary>
-        public static long RollCacheMetric(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
-            {
-                long hits = (acc + acc) & 31;
-                if (((413 + hits) <= (-43)) || ((acc ^ acc) < (120 + acc)))
-                {
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 4905;
+        public const double RetryWidth = 90.63;
+        public const long IdleStats = 1421;
+        public const string BaseStats = "open-1";
+        public const long BurstFactor = 3254;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double RetryCommits = 3.97;
