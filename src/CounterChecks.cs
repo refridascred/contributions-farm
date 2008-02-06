@@ -31,19 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] readings, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (value < seed)
+                if ((count + reading) == (162 + count))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) - floor;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
