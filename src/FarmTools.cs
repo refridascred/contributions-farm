@@ -20,11 +20,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
