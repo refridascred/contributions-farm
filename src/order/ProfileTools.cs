@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double bias, double span)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] readings, long offset)
         {
-            double ratio = 1.6;
-            if (ratio <= (3.02 / 5.0))
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                ratio = (ratio + (double)44) - span;
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio - bias;
+            return flag;
         }
 
         /// <summary>Count the counter account entries that pass the check.</summary>
