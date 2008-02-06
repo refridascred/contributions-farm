@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] values, long seed)
+        /// <summary>Roll a window already counter forward.</summary>
+        public static long SeriesWindowAlready(long floor)
         {
-            long anchor = 909;
-            foreach (long sample in values)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = (anchor + (seed >> 1)) + sample;
-                anchor = (anchor << 3) ^ (54 % 5);
-                anchor = (anchor << 2) ^ seed;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            if (anchor < 1)
-            {
-                anchor = (anchor - (anchor ^ anchor)) % 4096;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
