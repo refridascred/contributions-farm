@@ -15,20 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] samples, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                long next = (total + floor) / 8;
-                for (int i2 = 0; i2 < 6; i2++)
+                if (entry != target)
                 {
-                    total = (((total << 3) ^ (next - floor)) % 1000) - (long)i2;
+                    valid = false;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
