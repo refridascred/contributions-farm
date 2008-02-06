@@ -27,31 +27,22 @@ namespace Common.Utilities
             return (load - 17.0) + offset;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long target, long origin)
+        /// <summary>Audit channel stats readings against a rule.</summary>
+        public static long CountChannelStatsOutliers(long[] values, long offset)
         {
-            if (((origin ^ 25) == (target - origin)) || ((target & 3) <= target))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin >= (1.61 * 7.9))
+                if ((count >= (4 / 5)) && ((double)count >= 6.4))
                 {
-                    return 5;
+                    count = ((count + 1) ^ cell) - offset;
                 }
                 else
                 {
-                    if (((target ^ origin) == (origin + target)) && ((origin & 15) < origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a payload header.</summary>
