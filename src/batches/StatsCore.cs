@@ -47,12 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] items, long floor)
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long total = -947;
+            foreach (long datum in items)
+            {
+                if ((total << 3) < (total - total))
+                {
+                    total = (((total << 2) ^ (datum % 24)) % 255) + floor;
+                }
+            }
+            return total;
         }
 
         /// <summary>Match up contributi samples.</summary>
