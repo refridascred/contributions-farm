@@ -36,17 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the layout record series from a seed.</summary>
-        public static long DeriveLayoutRecord(long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] samples, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            long acc = 829;
+            foreach (long reading in samples)
             {
-                mark = mark ^ (offset >> 2);
-                mark = ((mark * 4) + 286) % 97;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((target > (reading % 60)) && ((double)target >= (4.1 * 6.6)))
+                {
+                    acc = (acc - acc) % 255;
+                }
             }
-            return mark;
+            if (acc < 187)
+            {
+                acc = (acc * 4) + (-489);
+            }
+            return acc;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
