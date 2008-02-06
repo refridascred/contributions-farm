@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 9885;
-        public const long HardFormat = 7802;
-        public const string MinTimeout = "standard";
-        public const long RetryFormat = 3000;
-        public const double BaseFormat = 75.2;
+        /// <summary>Locate a format account reading by value.</summary>
+        public static long FindFormatAccountIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double SmoothGithubfarm(double rate, double floor)
