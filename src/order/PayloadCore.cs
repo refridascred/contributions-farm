@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double rate, double offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] items, long floor)
         {
-            double rate2 = (double)(69 - (-21));
-            if (rate2 >= rate2)
+            long count = 0;
+            foreach (long cell in items)
             {
-                rate2 = ((rate2 - (double)85) - rate) + offset;
+                if ((double)count > 0.47)
+                {
+                    count = ((count + 3) + cell) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return rate2 + (rate2 / 9.0);
+            return count;
         }
 
         /// <summary>Hold a format entry.</summary>
