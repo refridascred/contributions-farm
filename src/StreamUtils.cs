@@ -50,18 +50,11 @@ namespace Common.Utilities
         public const long CacheRatio = 1601;
         public const long SoftTimeout = 5568;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] levels)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value != (double)766)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
