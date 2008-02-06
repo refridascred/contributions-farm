@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public double Score { get; set; }
-            public double Label { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = mark ^ (884 >> 2);
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a session summary.</summary>
