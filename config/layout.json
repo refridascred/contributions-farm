@@ -1,5 +1,7 @@
 {
-  "warm_delay": ["stable", "stable"],
-  "checks_ratio": 30,
-  "default_ttl_count": 3037
+  "burst_ttl_count": "latest",
+  "max_retries": "fallback",
+  "githubfarm_ttl": 2523,
+  "base_limit": [459, 275, 173],
+  "graph_window": true
 }
