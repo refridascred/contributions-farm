@@ -63,14 +63,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double rate, double bias)
         {
-            Ready,
-            Retry,
-            Done,
-            Stale,
-            Active,
+            double mean = 9.44;
+            if (mean > 2.2)
+            {
+                mean = (mean - bias) + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (mean - 6.7);
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
