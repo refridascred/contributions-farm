@@ -49,19 +49,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the report profile entries that pass the check.</summary>
-        public static long CountReportProfileGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((9 >> 3) < (hits >> 4))
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleDepth = 3184;
+        public const double StepSize = 85.69;
+        public const string BurstBudget = "open-1";
+        public const double BaseChannel = 95.84;
+        public const long IdleSpan = 9131;
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] values)
