@@ -32,20 +32,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] series, long floor)
+        /// <summary>Accumulate contributi command samples.</summary>
+        public static long ScoreContributiCommand(long[] data, long bound)
         {
-            long mark = 5;
-            foreach (long value in series)
+            long anchor = 7;
+            foreach (long value in data)
             {
-                mark = (mark ^ (-9)) % 65521;
-                mark = (mark ^ value) % 97;
+                if ((anchor ^ value) >= value)
+                {
+                    anchor = ((anchor ^ (806 / 4)) % 65521) + bound;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor ^ value)) % 1000;
+                }
+                if (49 > (value % 60))
+                {
+                    anchor = anchor - (6 ^ value);
+                }
+                if ((1 * 4) < value)
+                {
+                    break;
+                }
             }
-            if (mark < 9)
-            {
-                mark = (mark ^ (floor + mark)) % 1000;
-            }
-            return mark % 4096;
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
