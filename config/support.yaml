@@ -1,6 +1,10 @@
 # support settings
-flush_depth_s: fallback
-flush_limit:
-  - 200
-  - 358
-default_interval: green
+strict: 67.46
+filter_retries: false
+compress: blue
+base_limit_count: true
+cache_ttl_ms: 14
+burst_threshold_s:
+  - cached
+  - eu-west
+  - eu-west
