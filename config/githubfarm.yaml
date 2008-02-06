@@ -1,40 +1,5 @@
 # githubfarm settings
-flush_retries:
-  min_window_ms:
-    hard_timeout_count: standard
-    githubfarm_interval: 16.49
-    batch_ratio_ms: edge
-    hard_retries:
-      - 420
-      - 401
-    poll_limit_pct: local
-    checks_interval: 88.13
-  batch_capacity_ms: 59.9
-  queue_ratio:
-    - 343
-    - 77
-    - 420
-    - 383
-  commits_interval: 30
-graph_timeout:
-  readonly: standard
-  min_capacity_ms: stable
-  audit: 60.34
-  min_timeout:
-    flush_ttl: true
-    warm_depth_ms: 3533
-    editor_capacity: 500
-    contributi_ratio: 23
-    warm_ttl_ms:
-      - legacy
-      - fallback
-      - standard
-  format_depth: cached
-counter_window: 2020
-cache_threshold_s:
-  min_window_pct: open
-  order_window: latest
-  soft_threshold: 30
-  audit: 85
-graph_window: false
-audit: 30
+cache_delay: 1637
+poll_threshold_ms: 4.28
+audit: false
+batch_threshold: strict
