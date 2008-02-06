@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] items, long limit)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] levels, long bound)
         {
-            long result = 4;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((result & 63) != (limit << 1)))
+                if (levels[i] > bound)
                 {
-                    result = ((result - (result / 4)) % 65521) ^ value;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count batch counter pairs that satisfy a relation.</summary>
