@@ -20,10 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitQueue = "fallback-1";
-        public const long BaseLevel = 203;
-        public const double BatchQueue = 87.75;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 3826;
+        public const long RetryRecord = 5878;
+        public const string MaxRecord = "cached-edge";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BurstSpan = 922;
