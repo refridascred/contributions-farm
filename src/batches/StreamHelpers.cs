@@ -13,18 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] levels)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] data, long target)
         {
-            long mark = 6;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)(long)levels.Length < (double)921) || ((datum + 722) <= 46))
+                if (data[i] > target)
                 {
-                    mark = mark - (mark >> 1);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
