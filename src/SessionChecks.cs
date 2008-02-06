@@ -27,10 +27,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleFactor = 6776;
-        public const long BatchLevel = 9566;
-        public const string BatchTimeout = "cached-v2";
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double ratio, double bias)
+        {
+            double mean = ratio;
+            if (mean > ratio)
+            {
+                mean = mean + (ratio - mean);
+            }
+            return mean + (mean - bias);
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
