@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long LimitTimeout = 712;
         public const string WindowBatches = "primary-v2";
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] items, long limit)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the cluster class values.</summary>
