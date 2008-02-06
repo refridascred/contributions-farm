@@ -14,17 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a counter layout reading by value.</summary>
-        public static long LocateCounterLayoutIndex(long[] values, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (values[i] <= target)
+                if ((double)origin == (1.0 - 4.96))
                 {
-                    return (long)i;
+                    count = (count + 1) - value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of report readings.</summary>
