@@ -24,9 +24,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryMetric = "alpha-edge";
-        public const long BatchMetric = 9581;
-        public const string MinScore = "primary-v2";
+        /// <summary>Compare every pair of entry counter readings.</summary>
+        public static long PairEntryCounterCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
