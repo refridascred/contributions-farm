@@ -1,4 +1,12 @@
 # entry settings
-flush_delay: latest
-notes_retries: 30
-batch_ttl_pct: 251
+max_depth: staging
+batch_retries_count: fallback
+burst_timeout_ms: 16.25
+min_limit_pct:
+  - blue
+  - primary
+  - eu-west
+warm_ttl:
+  - 356
+  - 87
+  - 168
