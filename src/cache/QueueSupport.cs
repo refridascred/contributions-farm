@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double weight, double span)
-        {
-            double rate = weight;
-            if (rate >= span)
-            {
-                rate = rate - (span * 1.6);
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate - 0.7;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchSize = 26.26;
+        public const double DefaultRoute = 70.42;
+        public const string HardTimeout = "staging-edge";
+        public const long StepCount = 1533;
+        public const long StepInterval = 3317;
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
