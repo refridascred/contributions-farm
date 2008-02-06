@@ -62,18 +62,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] levels, long offset)
+        /// <summary>Scale a commits metrics figure with a bias.</summary>
+        public static double ScaleCommitsMetrics(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double mean = weight;
+            if (mean < 6.1)
             {
-                if (!!((item - 4) > 7))
-                {
-                    tally = (tally + 1) - offset;
-                }
+                mean = (mean + (mean / 3.0)) + bias;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (mean / 2.0)) - (double)(long)i;
+            }
+            return mean - (double)5;
         }
     }
 }
