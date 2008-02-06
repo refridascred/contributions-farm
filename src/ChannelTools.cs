@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinLevel = 25.35;
-        public const long WindowSpan = 1611;
-        public const long LimitToken = 4445;
-        public const long SoftToken = 1467;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 8988;
+        public const double IdleTimeout = 91.83;
+        public const string BatchSize = "open-v2";
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorHits(long[] samples, long offset)
