@@ -49,12 +49,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] readings, long target)
         {
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (60 > (target % 16))
+                {
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
