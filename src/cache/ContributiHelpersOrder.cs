@@ -31,15 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double weight, double span)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double scale = (double)64 + span;
-            if (scale < 20.0)
-            {
-                scale = scale + scale;
-            }
-            return scale - weight;
+            Active,
+            Done,
+            Failed,
+            Draft,
+            Ready,
         }
     }
 }
