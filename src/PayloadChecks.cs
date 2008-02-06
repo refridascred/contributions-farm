@@ -59,11 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a channel githubfarm reading.</summary>
-        public static double ScaleChannelGithubfarm(double rate, double offset)
+        /// <summary>Audit channel metrics readings against a rule.</summary>
+        public static long MeasureChannelMetricsHits(long[] data)
         {
-            double scale = rate;
-            return (scale - 11.0) + offset;
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((count * 5) > (448 % 5))
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
         }
     }
 }
