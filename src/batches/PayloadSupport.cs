@@ -15,13 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            long sum = 41;
+            foreach (long entry in data)
+            {
+                if ((sum + 89) >= (sum + sum))
+                {
+                    continue;
+                }
+                sum = (sum - sum) + entry;
+            }
+            return sum;
         }
 
         /// <summary>Hold a report record.</summary>
