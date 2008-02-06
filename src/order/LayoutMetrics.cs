@@ -22,23 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] readings, long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long seed)
         {
-            long mark = 7;
-            foreach (long sample in readings)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                mark = (((mark * 4) + (sample - mark)) % 255) - target;
-                if ((double)mark < 6.6)
-                {
-                    mark = mark ^ (mark << 2);
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            if (mark < 5)
-            {
-                mark = (mark ^ (653 + mark)) % 1000;
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Rank support input into a small class.</summary>
