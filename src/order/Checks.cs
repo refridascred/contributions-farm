@@ -48,18 +48,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache stats entries that pass the check.</summary>
-        public static long MeasureCacheStatsGaps(long[] levels, long origin)
+        /// <summary>Digest a series of layout route entries.</summary>
+        public static long DigestLayoutRoute(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long mark = 848;
+            foreach (long entry in readings)
             {
-                if ((seen << 3) <= (seen + datum))
+                mark = (mark * 2) + (mark + mark);
+                if ((entry ^ entry) != (entry - 909))
                 {
-                    seen = (seen + 3) - origin;
+                    mark = ((mark << 2) ^ ((long)readings.Length >> 1)) % 101;
+                }
+                if ((mark & 31) == (entry + entry))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mark < 142)
+            {
+                mark = (mark + (mark - 1)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
