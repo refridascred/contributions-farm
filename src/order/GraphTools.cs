@@ -20,10 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxBudget = 79;
-        public const long CacheSize = 1747;
-        public const long BurstNotes = 8387;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiOutliers(long[] items)
