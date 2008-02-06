@@ -26,22 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter window samples are out of range.</summary>
-        public static long AuditCounterWindowOutliers(long[] series, long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!((2.9 - 6.0) <= (double)seed))
-                {
-                    matches = (matches + 2) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
