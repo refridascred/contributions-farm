@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] items, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] data, long step)
         {
-            long score = 4;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long item in data)
             {
-                score = score ^ (item - item);
-                if ((score * 5) == (offset + 12))
+                if (item < step)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return score % 65521;
+            return ready;
         }
     }
 }
