@@ -22,14 +22,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Locate a notes token reading by value.</summary>
+        public static long SeekNotesTokenIndex(long[] data, long offset)
         {
-            Queued,
-            Idle,
-            Paused,
-            Pending,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
