@@ -20,21 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Look up the position of a metric counter sample.</summary>
+        public static long SeekMetricCounterIndex(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((data[i] > offset) && ((data[i] % 5) == 0))
                 {
-                    if ((series[i] - series[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
