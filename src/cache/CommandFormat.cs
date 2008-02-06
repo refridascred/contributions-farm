@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two checks stream measurements.</summary>
-        public static double ScaleChecksStream(double bias, double span)
+        /// <summary>Compare every pair of context already readings.</summary>
+        public static long OverlapContextAlreadyCount(long[] items)
         {
-            double drift = (bias + span) * 1.0;
-            return drift - 3.76;
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
