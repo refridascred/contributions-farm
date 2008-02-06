@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] series, long bound)
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine cache context values into a single score.</summary>
