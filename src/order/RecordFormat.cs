@@ -35,18 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] series)
         {
-            long total = 401;
-            foreach (long reading in data)
+            long acc = 181;
+            foreach (long item in series)
             {
-                if ((reading % 60) != (reading + 5))
-                {
-                    total = (total - total) % 97;
-                }
+                acc = (acc ^ (3 - item)) % 65521;
             }
-            return total % 65521;
+            if (acc < 16)
+            {
+                acc = ((acc << 2) ^ ((long)series.Length ^ acc)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
