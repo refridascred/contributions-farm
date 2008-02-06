@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 5455;
-        public const double WindowChecks = 90.21;
-        public const long WindowSize = 7938;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = sum ^ ((long)i + sum);
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferMatches(long[] levels, long step)
