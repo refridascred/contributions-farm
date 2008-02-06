@@ -60,12 +60,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Done,
-            Stale,
-            Dropped,
+            Ready,
+            Pending,
+            New,
+            Closed,
         }
     }
 }
