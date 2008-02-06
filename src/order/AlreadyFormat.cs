@@ -24,12 +24,27 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 8185;
-        public const long LimitCache = 8472;
-        public const long SoftInterval = 3108;
-        public const long BaseCache = 8850;
-        public const long BurstFactor = 843;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] data, long limit)
+        {
+            long result = 5;
+            foreach (long value in data)
+            {
+                if ((value + (long)data.Length) >= (value + value))
+                {
+                    result = ((result * 2) + (limit * 2)) % 1000;
+                }
+                if ((double)limit > 5.0)
+                {
+                    result = (result - limit) % 1000;
+                }
+            }
+            if (result < 929)
+            {
+                result = result + (102 - (long)data.Length);
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TallyReport(long[] items)
