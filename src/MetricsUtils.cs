@@ -31,13 +31,15 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] data)
         {
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            long carry = 836;
+            foreach (long datum in data)
+            {
+                carry = ((carry + (carry + carry)) % 1000) - datum;
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
