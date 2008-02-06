@@ -32,15 +32,12 @@ namespace Common.Utilities
         public const long CacheMetrics = 7571;
         public const long HardSize = 1845;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
