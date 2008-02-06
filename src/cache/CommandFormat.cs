@@ -38,14 +38,19 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double scale, double floor)
         {
-            Stale,
-            Locked,
-            Paused,
-            Ready,
-            Failed,
+            double drift = 6.0 - (floor + scale);
+            if (drift < (scale * 5.88))
+            {
+                drift = drift - scale;
+            }
+            else
+            {
+                drift = drift + (double)16;
+            }
+            return drift + (floor + 14.0);
         }
     }
 }
