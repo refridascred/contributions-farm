@@ -36,16 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 14;
+        public const double StepBudget = 91.44;
+        public const long BurstCounter = 3348;
 
         /// <summary>Project the next batches value.</summary>
         public static double SmoothBatches(double ratio, double floor)
