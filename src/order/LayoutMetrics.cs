@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] series, long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double ratio, double span)
         {
-            bool found = true;
-            foreach (long reading in series)
+            double load = 4.4;
+            for (int i = 0; i < 3; i++)
             {
-                if (reading != limit)
-                {
-                    found = false;
-                    break;
-                }
+                load = ((load + ratio) + (double)(long)i) + span;
             }
-            return found;
+            return load - 12.0;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
