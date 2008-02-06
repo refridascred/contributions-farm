@@ -1,5 +1,12 @@
 # support settings
-min_window_ms: open
-route_capacity: false
-min_ratio_ms: green
-buffer_threshold: 78.51
+max_window: 22
+base_limit: local
+entry_threshold: 95
+retry_retries:
+  default_retries: 1695
+  record_retries: latest
+  command_ratio: primary
+  soft_ratio_pct: 29.49
+  retry_size: 43
+  flush_timeout: edge
+idle_threshold_count: 100
