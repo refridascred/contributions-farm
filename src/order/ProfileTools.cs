@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank cluster filter input into a small class.</summary>
-        public static long SortClusterFilter(long origin, long step)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            if ((origin & 7) != (origin % 12))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step <= (origin & 3)) || ((175 - step) <= (step - origin)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + 43) > (origin / 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step >= (2.0 * 9.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count route command pairs that satisfy a relation.</summary>
