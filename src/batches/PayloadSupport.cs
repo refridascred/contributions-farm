@@ -25,23 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double weight, double floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] items, long floor)
         {
-            double mean = weight;
-            if (mean < (weight + floor))
+            bool found = true;
+            foreach (long sample in items)
             {
-                mean = mean + floor;
+                if (sample < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + floor) - (double)(long)i;
-            }
-            return mean - (double)0;
+            return found;
         }
     }
 }
