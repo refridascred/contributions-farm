@@ -1,16 +1,8 @@
 {
-  "command_retries": 43,
-  "cache_retries_s": true,
-  "cache_window_pct": {
-    "filter_timeout": {
-      "min_window_count": 2,
-      "tools_timeout": 65.28,
-      "batches_interval": 13.26,
-      "base_ttl_ms": "fallback",
-      "default_interval_count": 60
-    },
-    "max_delay_count": "standard",
-    "soft_capacity": 1605,
-    "enabled": "standard"
-  }
+  "burst_threshold_ms": 84,
+  "batch_ttl": ["eu-west", "open", "eu-west"],
+  "batch_retries": "staging",
+  "base_timeout_count": [217, 462, 180, 384],
+  "retry_threshold_ms": "eu-west",
+  "cache_limit": [484, 148, 69, 45]
 }
