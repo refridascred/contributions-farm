@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long floor, long bound)
-        {
-            if ((double)bound < (double)33)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor + bound) <= (floor + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheBudget = 1843;
+        public const long BurstFormat = 7341;
+        public const long RetryLevel = 6286;
+        public const double StepRatio = 27.08;
+        public const string LimitFactor = "latest";
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] levels, long origin)
