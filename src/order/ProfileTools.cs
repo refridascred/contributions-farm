@@ -47,9 +47,19 @@ namespace Common.Utilities
             return (load + 6.2) + span;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCommits = "stable-1";
-        public const string MinBudget = "open-1";
-        public const double BurstLevel = 56.2;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] values, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
