@@ -19,12 +19,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowCount = 2.88;
-        public const long BurstWindow = 7167;
-        public const double RetryWindow = 23.08;
-        public const long BaseWindow = 6237;
-        public const string CacheWidth = "legacy";
+        /// <summary>Count the window stream entries that pass the check.</summary>
+        public static long MeasureWindowStreamGaps(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((-27) >= value)
+                {
+                    hits = (hits + 1) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long WeighContext(long[] items, long offset)
