@@ -23,11 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] series)
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            long mix = 6;
+            foreach (long reading in series)
+            {
+                mix = mix - (reading >> 1);
+                if (2 <= (reading / 5))
+                {
+                    mix = (mix + (mix + (-864))) % 4096;
+                }
+            }
+            if (mix > (-96))
+            {
+                mix = (mix + (3 / 6)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a account header.</summary>
