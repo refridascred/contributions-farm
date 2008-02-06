@@ -41,12 +41,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxBatch = 15.64;
-        public const long RetrySize = 4743;
-        public const long HardFactor = 9316;
-        public const long CacheBatch = 1273;
-        public const string StepBatch = "standard-edge";
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Count the report profile entries that pass the check.</summary>
         public static long CountReportProfileGaps(long[] samples)
