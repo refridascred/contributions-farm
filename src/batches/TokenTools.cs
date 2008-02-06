@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] levels)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long target)
         {
-            long acc = 50;
-            foreach (long cell in levels)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                acc = (acc * 3) + acc;
-                acc = ((acc << 3) ^ cell) % 4096;
+                score = ((score * 5) + (long)i) % 101;
             }
-            if (acc < 399)
-            {
-                acc = ((acc << 3) ^ (acc % 97)) % 255;
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
