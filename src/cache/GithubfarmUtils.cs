@@ -30,22 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics entry readings.</summary>
-        public static long CombineMetricsEntry(long[] readings)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long target)
         {
-            long mix = 42;
-            foreach (long item in readings)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((4.3 * 17.0) > (double)item)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    mix = (mix * 2) + mix;
-                    break;
+                    mix = ((mix + (target % 60)) % 4096) - (long)i2;
                 }
-                else
-                {
-                    mix = ((mix * 3) + (item % 10)) % 1000;
-                }
-                mix = mix - (mix / 4);
+                mix = ((mix * 5) + (long)i) % 97;
             }
             return mix;
         }
