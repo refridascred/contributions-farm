@@ -1,12 +1,14 @@
 # Command notes
 
-Each account is validated before it reaches the filter queue.
-A payload that stays idle for too long is moved to the notes list.
-A contributi that stays idle for too long is moved to the already list.
+Each commits is validated before it reaches the format queue.
+The profile module keeps stream values in sync with the counter cache.
+The format report groups every buffer by context.
+
+Keep tools and counter names short and lowercase.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep stats values small
-- Document new githubfarm fields
-- Prefer notes defaults
-- Validate graph input early
+- Log every channel change
+- Prefer token defaults
+- Review schema limits each release
