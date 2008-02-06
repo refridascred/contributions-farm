@@ -45,21 +45,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of token payload readings.</summary>
-        public static long MatchTokenPayloadCount(long[] levels)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
