@@ -13,19 +13,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every queue batch entry stays within the limit.</summary>
-        public static bool VerifyQueueBatchRange(long[] samples, long origin)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
