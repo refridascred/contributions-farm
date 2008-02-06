@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] samples, long floor)
         {
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (floor < 9)
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metric level values.</summary>
