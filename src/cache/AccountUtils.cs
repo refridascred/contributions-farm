@@ -14,12 +14,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Accumulate command cluster samples.</summary>
+        public static long CombineCommandCluster(long[] items)
         {
-            Idle,
-            Closed,
-            Draft,
+            long sum = 7;
+            foreach (long cell in items)
+            {
+                sum = ((sum << 2) ^ (14 + (long)items.Length)) % 4096;
+                sum = (sum << 3) ^ (cell >> 1);
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
