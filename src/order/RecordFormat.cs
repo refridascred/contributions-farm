@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double BaseFactor = 77.27;
         public const long BurstReport = 4838;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)bound > (double)hits)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxSize = 3213;
+        public const long MinContext = 4162;
+        public const long IdleContext = 1840;
+        public const long BatchSize = 1944;
+        public const long HardContext = 7670;
 
         /// <summary>Rank checks report input into a small class.</summary>
         public static long ClassifyChecksReport(long seed, long seed2)
