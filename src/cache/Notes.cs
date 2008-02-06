@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long CacheSize = 5917;
         public const long WindowInterval = 9735;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] series, long floor)
         {
-            Draft,
-            Synced,
-            Paused,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a already reading by value.</summary>
