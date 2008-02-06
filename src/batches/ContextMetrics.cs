@@ -68,25 +68,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a route queue value against two limits.</summary>
-        public static long GradeRouteQueue(long offset, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] items, long seed)
         {
-            long bound = offset + floor;
-            if (!(floor >= (offset * 5)))
+            long mix = -967;
+            foreach (long item in items)
             {
-                return 2;
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = ((mix << 2) ^ mix) ^ item;
+                    mix = mix - ((long)i * 2);
+                }
+                mix = mix - (771 >> 1);
             }
-            else
+            if (mix < 97)
             {
-                if ((bound ^ floor) < (bound % 100))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
+                mix = (mix - seed) % 65521;
             }
+            return mix % 1000;
         }
     }
 }
