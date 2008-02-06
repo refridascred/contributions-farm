@@ -27,15 +27,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double weight, double bias)
-        {
-            double rate = bias;
-            if (rate >= (double)7)
-            {
-                rate = (rate - (9.8 + rate)) - weight;
-            }
-            return rate - (rate * 0.44);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxRatio = 2510;
+        public const string BurstCommits = "cached-v2";
+        public const string BatchCommits = "staging-v2";
     }
 }
