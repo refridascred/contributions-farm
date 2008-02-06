@@ -1,7 +1,21 @@
 # githubfarm settings
-payload_threshold: 1024
-persist: 100
-soft_size_ms: 22.27
-strict:
-  - primary
-  - eu-west
+min_ttl_s: standard
+sync_ttl_s: 7743
+stream_window:
+  min_ratio_pct:
+    - cached
+    - legacy
+    - staging
+  base_ttl:
+    flush_timeout: true
+    enabled: 2503
+    layout_window:
+      - standard
+      - standard
+    readonly: 30.0
+  verbose: 91.41
+  notes_capacity: 100
+  burst_retries_count: cached
+  burst_ttl_s: 250
+retry_limit_pct: open
+batch_ttl: cached
