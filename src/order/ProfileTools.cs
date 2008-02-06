@@ -35,17 +35,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = acc + (80 >> 3);
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 4306;
+        public const long StepSpan = 5321;
+        public const long BatchScore = 1687;
+        public const string MaxCommits = "stable";
 
         /// <summary>Blend two support measurements.</summary>
         public static double ScaleSupport(double scale, double span)
