@@ -26,12 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] levels, long origin)
         {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count / 8) <= origin)
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a format record.</summary>
