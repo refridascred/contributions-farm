@@ -46,12 +46,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long offset, long limit)
         {
-            public double Token { get; set; }
-            public double Weight { get; set; }
-            public double Offset { get; set; }
+            long span = offset - limit;
+            if ((448 << 2) > limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset > (6.2 * 8.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((19 << 1) >= limit) && ((5.5 - 6.06) >= (double)limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((span & 63) == (offset << 3)) && ((9.0 * 9.15) >= (double)span))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream snapshot.</summary>
