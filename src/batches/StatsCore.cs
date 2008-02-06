@@ -59,18 +59,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] items, long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long total = -947;
-            foreach (long datum in items)
-            {
-                if ((total << 3) < (total - total))
-                {
-                    total = (((total << 2) ^ (datum % 24)) % 255) + floor;
-                }
-            }
-            return total;
+            Idle,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
