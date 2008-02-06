@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long StepChannel = 5854;
         public const long MinRatio = 5776;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] samples, long bound)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
