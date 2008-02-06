@@ -1,19 +1,5 @@
 # entry settings
-default_delay_pct: 31.6
-retry_threshold: 94
-base_threshold_pct:
-  - 11
-  - 149
-enabled:
-  cache_threshold: legacy
-  notes_limit: false
-  cluster_window: primary
-  layout_retries:
-    burst_capacity_ms: fallback
-    stats_ttl:
-      - 422
-      - 31
-      - 280
-      - 93
-    persist: 66
-audit: 76.34
+soft_delay: stable
+persist: 53.07
+cache_timeout: 30
+record_timeout: edge
