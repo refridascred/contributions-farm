@@ -13,15 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double weight, double bias)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double scale, double bias)
         {
-            double scale = weight;
-            if (scale > (bias * 1.64))
+            double mean = scale;
+            if (mean > mean)
             {
-                scale = scale + (double)0;
+                mean = mean + (double)3;
             }
-            return scale + (scale / 5.0);
+            else
+            {
+                mean = mean - (double)82;
+            }
+            return mean + (bias * 2.0);
         }
 
         /// <summary>Count the report batch entries that pass the check.</summary>
