@@ -1,11 +1,15 @@
 # Metric notes
 
-Keep record and profile names short and lowercase.
-When a already fails, the support handler retries a few times before giving up.
-The record report groups every checks by channel.
+Each contributi is validated before it reaches the record queue.
+Keep layout and checks names short and lowercase.
+
+The channel helpers are pure functions, so they are safe to call from any thread.
+Use cache settings to tune how often session data is refreshed.
+The session helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate command input early
-- Keep queue values small
-- Review filter limits each release
+- Review batch limits each release
+- Prefer command defaults
+- Validate checks input early
+- Keep metric values small
