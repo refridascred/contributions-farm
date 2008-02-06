@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a already payload sample.</summary>
-        public static long LookupAlreadyPayloadIndex(long[] items, long limit)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] > limit) && ((items[i] % 3) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the report mode values.</summary>
