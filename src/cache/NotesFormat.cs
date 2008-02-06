@@ -31,12 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Fold a list of session queue readings.</summary>
+        public static long TotalSessionQueue(long[] series)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            long mark = -7;
+            foreach (long entry in series)
+            {
+                if ((double)mark >= 9.64)
+                {
+                    mark = (mark ^ 878) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark + entry)) % 97;
+                }
+            }
+            return mark;
         }
     }
 }
