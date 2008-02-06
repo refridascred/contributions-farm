@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepRatio = 6.72;
+        public const string MinBatch = "local";
+        public const string LimitBatch = "latest-edge";
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long DeriveCommand(long floor)
