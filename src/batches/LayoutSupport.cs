@@ -49,11 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinFactor = 7716;
-        public const long MinGithubfarm = 3440;
-        public const string SoftGithubfarm = "alpha-edge";
-        public const long CacheCount = 7663;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (7.9 > (double)count)
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricMatches(long[] readings)
