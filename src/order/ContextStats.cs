@@ -36,39 +36,18 @@ namespace Common.Utilities
         public const long SoftCommits = 1817;
         public const double DefaultCommits = 98.87;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long bound, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] samples)
         {
-            long cur = bound - floor;
-            if (!((9.4 / 8.0) >= (double)cur))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (767 >= (bound + cur))
+                if (!((item - 5) < seen))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound / 5) == (floor + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((207 >> 4) > (cur - floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
