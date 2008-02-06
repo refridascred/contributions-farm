@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] levels)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if ((double)sample < (9.3 * 17.0))
+                {
+                    seen = seen + 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
