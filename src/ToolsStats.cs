@@ -43,15 +43,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Accumulate payload record samples.</summary>
+        public static long CombinePayloadRecord(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long acc = 99;
+            foreach (long sample in levels)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                acc = (acc * 3) + (sample * 4);
+                acc = ((acc * 4) + (sample + acc)) % 255;
             }
-            return mark;
+            if (acc < 343)
+            {
+                acc = (acc ^ (acc + acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
