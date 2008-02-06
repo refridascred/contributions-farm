@@ -58,19 +58,22 @@ namespace Common.Utilities
             return (mean - bias) + weight;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] samples, long seed)
+        /// <summary>Combine command report values into a single score.</summary>
+        public static long TallyCommandReport(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long carry = -99;
+            foreach (long cell in series)
             {
-                if (value > seed)
+                if ((double)cell == (double)483)
                 {
-                    valid = false;
-                    break;
+                    carry = (carry - (carry + carry)) + bound;
                 }
             }
-            return valid;
+            if (carry < 3)
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry;
         }
     }
 }
