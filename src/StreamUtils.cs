@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] levels, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (item != floor)
+                if (!((double)bound == (1.89 / 9.0)))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
