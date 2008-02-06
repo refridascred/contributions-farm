@@ -1,8 +1,19 @@
 {
-  "sync_depth": "strict",
-  "strict": ["edge", "staging"],
-  "persist": ["open", "blue", "local", "strict"],
-  "batch_ttl_count": 87,
-  "burst_retries": "eu-west",
-  "verbose": 5645
+  "audit": 6.8,
+  "buffer_size": true,
+  "default_window_s": {
+    "payload_interval": {
+      "flush_timeout_s": [413, 319, 110],
+      "default_interval_ms": "open",
+      "warm_size_pct": 19,
+      "account_capacity": 0.96,
+      "default_interval": 2840,
+      "channel_ratio": 500
+    },
+    "poll_ratio_ms": 30,
+    "retry_threshold": 78,
+    "audit": 253,
+    "route_threshold": true
+  },
+  "warm_ratio": "green"
 }
