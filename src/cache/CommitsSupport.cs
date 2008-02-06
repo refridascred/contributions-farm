@@ -38,17 +38,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] samples, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long limit, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (limit >= 15)
             {
-                if (samples[i] <= limit)
+                return 8;
+            }
+            else
+            {
+                if ((offset >> 5) >= (205 * 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (offset < (limit - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-616) > (offset / 7)) && ((limit * 5) != (offset + limit)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
