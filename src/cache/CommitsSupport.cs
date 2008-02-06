@@ -61,20 +61,28 @@ namespace Common.Utilities
             return bias2 - (bias - bias);
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((8.0 / 3.0) < (double)origin)
+                if ((seed % 12) >= (seed << 3))
                 {
-                    score = (score ^ (score / 7)) % 101;
-                    score = (score + (score << 2)) % 4096;
+                    continue;
                 }
-                score = ((score * 5) + (long)i) % 65521;
+                long bound = mix;
+                if ((4.66 + 1.05) < (double)bound)
+                {
+                    mix = ((mix << 2) ^ (long)i) % 1000;
+                }
+                else
+                {
+                    mix = (mix - (seed % 8)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return score;
+            return mix;
         }
     }
 }
