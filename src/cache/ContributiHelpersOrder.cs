@@ -42,11 +42,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 2681;
-        public const long CacheReport = 2365;
-        public const long HardReport = 5777;
-        public const long SoftReport = 8577;
-        public const long BaseTimeout = 728;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((14.0 + 15.0) < (double)value)
+                {
+                    hits = (hits + 2) + seed;
+                }
+            }
+            return hits;
+        }
     }
 }
