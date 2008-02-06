@@ -62,39 +62,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long limit, long limit2)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] items, long origin)
         {
-            long span = limit - limit2;
-            if (((limit2 % 12) > (span - limit)) || ((7 - span) >= (limit2 - limit)))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit2 % 3) < (2 ^ limit2))
+                if ((4.3 * 6.0) > (double)matches)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit2 + limit2) == (limit2 + span)) && ((span >> 3) > limit2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit2 < (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = ((matches + 2) ^ sample) + origin;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
