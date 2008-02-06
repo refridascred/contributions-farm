@@ -1,8 +1,6 @@
 {
-  "sync_capacity": 60,
-  "entry_interval": [154, 181, 104, 176],
-  "strict": 100,
-  "verbose": "staging",
-  "audit": true,
-  "warm_timeout": [327, 347, 337, 306]
+  "base_capacity": false,
+  "hard_ratio_ms": 76,
+  "batch_capacity_pct": 250,
+  "cache_retries": 30
 }
