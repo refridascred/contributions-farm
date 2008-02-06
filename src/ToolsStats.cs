@@ -36,19 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel cluster entry stays within the limit.</summary>
-        public static bool GuardChannelClusterLimits(long[] values, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (entry != bound)
+                if (((959 & 1) > datum) || (((double)count != (6.6 - 5.67)) && ((7.0 * 5.13) > (double)count)))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) + offset;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Derive the next payload metric value from a seed.</summary>
