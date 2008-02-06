@@ -1,12 +1,4 @@
 # entry settings
-dry_run: local
-cache_retries: latest
-max_limit_ms: true
-enabled: 40.86
-poll_limit_count:
-  retry_window_count: false
-  base_limit_s: 1024
-  max_retries_pct:
-    - green
-    - blue
-  retry_delay_count: 30
+flush_delay: latest
+notes_retries: 30
+batch_ttl_pct: 251
