@@ -72,10 +72,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryInterval = "standard";
-        public const double SoftCommits = 19.85;
-        public const long DefaultTimeout = 6924;
-        public const long SoftTimeout = 9117;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] samples, long target)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
