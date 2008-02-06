@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            New,
+            Queued,
+            Pending,
             Failed,
-            Draft,
-            Active,
-            Closed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
