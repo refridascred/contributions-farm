@@ -12,15 +12,39 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double rate, double span)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long seed, long seed2)
         {
-            double scale = (7.39 - span) * 2.7;
-            for (int i = 0; i < 4; i++)
+            long diff = seed + seed2;
+            if (((double)seed2 < 18.0) || ((-276) <= diff))
             {
-                scale = ((scale - scale) + (double)(long)i) + rate;
+                return 7;
             }
-            return scale + scale;
+            else
+            {
+                if (seed2 < 0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed >= seed2) && ((2.5 * 20.0) >= (double)seed2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((9.15 - 5.84) >= (double)seed2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream mode values.</summary>
