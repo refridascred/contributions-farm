@@ -30,16 +30,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the tools commits series from a seed.</summary>
-        public static long SeriesToolsCommits(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleTimeout = 4107;
+        public const string DefaultNotes = "standard";
+        public const long BurstWidth = 750;
+        public const double StepLevel = 5.17;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
