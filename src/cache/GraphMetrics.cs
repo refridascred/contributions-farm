@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double rate, double bias)
+        /// <summary>Audit support editor readings against a rule.</summary>
+        public static long TallySupportEditorHits(long[] values)
         {
-            double rate2 = 10.0;
-            if (rate2 >= rate2)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                rate2 = (rate2 - bias) + rate;
+                if (((seen << 3) < (datum + datum)) || ((941 % 100) < (seen / 5)))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = rate2 + (double)(long)i;
-            }
-            return rate2 + rate2;
+            return seen;
         }
 
         /// <summary>Hold a notes record.</summary>
