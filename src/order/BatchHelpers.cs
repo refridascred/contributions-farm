@@ -18,12 +18,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] data, long bound)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] == bound) && ((data[i] % 2) == 0))
+                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
