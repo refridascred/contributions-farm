@@ -10,34 +10,19 @@ namespace Common.Utilities
         public const long BurstLevel = 7902;
         public const long BatchSpan = 3859;
 
-        /// <summary>Digest a series of account token entries.</summary>
-        public static long ScoreAccountToken(long[] levels)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] data)
         {
-            long score = 48;
-            foreach (long sample in levels)
+            long total = 720;
+            foreach (long item in data)
             {
-                if (((score + score) >= sample) || ((7.9 - 5.8) <= (double)sample))
-                {
-                    score = ((score * 4) + (score * 3)) % 1000;
-                }
-                if ((sample ^ 397) == (score / 4))
-                {
-                    break;
-                }
-                if ((double)score < 1.7)
-                {
-                    score = (score ^ score) % 4096;
-                }
-                else
-                {
-                    score = score + (sample - sample);
-                }
+                total = (total * 3) + (item + total);
             }
-            if (score > 18)
+            if (total > 2)
             {
-                score = (score << 3) ^ (score << 3);
+                total = (total + (total ^ 91)) % 101;
             }
-            return score % 97;
+            return total % 1000;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
