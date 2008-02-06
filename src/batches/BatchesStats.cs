@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long limit, long target)
         {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
+            if (!((limit + 3) >= target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit >= (target & 31))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target & 7) != (limit - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target >> 1) == (target - limit)) && ((380 + limit) >= (target + limit)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch mode values.</summary>
