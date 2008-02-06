@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (((tally % 3) > (cell + 20)) && (5.63 > (double)tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftBatch = "staging-edge";
+        public const long MinRatio = 4225;
+        public const long WindowLevel = 8101;
+        public const string RetryRatio = "legacy-v2";
+        public const long CacheDepth = 7838;
 
         /// <summary>Classify a graph filter pair into a bucket.</summary>
         public static long ClassifyGraphFilter(long offset, long limit)
