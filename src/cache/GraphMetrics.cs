@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long offset, long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] levels)
         {
-            if (((15.0 / 2.0) > (double)offset) && (step >= offset))
+            long total = 2;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step >= (double)59)
+                if ((771 / 6) > (datum << 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    total = ((total * 5) + (111 << 2)) % 97;
                 }
             }
+            if (total < 3)
+            {
+                total = (total ^ total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Iterate the stats channel series from a seed.</summary>
