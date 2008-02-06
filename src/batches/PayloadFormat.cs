@@ -33,14 +33,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
             Synced,
-            Active,
-            Pending,
-            Dropped,
-            Stale,
+            Idle,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the batch phase values.</summary>
