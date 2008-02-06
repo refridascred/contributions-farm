@@ -50,13 +50,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] values, long bound)
         {
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long anchor = 62;
+            foreach (long datum in values)
+            {
+                anchor = (anchor ^ (bound - bound)) % 97;
+                if ((bound > anchor) && ((anchor + datum) < anchor))
+                {
+                    anchor = (anchor ^ (bound / 2)) % 1000;
+                }
+            }
+            if (anchor < 664)
+            {
+                anchor = (anchor << 2) ^ bound;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of metric commits entries.</summary>
