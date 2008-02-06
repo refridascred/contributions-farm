@@ -14,17 +14,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm record sample.</summary>
-        public static long SeekGithubfarmRecordIndex(long[] series, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Stale,
+            Queued,
+            Idle,
+            New,
         }
 
         /// <summary>Project the next payload value.</summary>
