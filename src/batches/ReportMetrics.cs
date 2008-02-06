@@ -18,18 +18,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] levels)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (15 >= (reading / 5))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
