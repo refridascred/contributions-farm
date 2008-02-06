@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] levels, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] series)
         {
-            long score = 597;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (((score - limit) > (datum >> 4)) || ((7.6 - 7.9) >= (double)score))
+                if ((matches - matches) <= (matches + matches))
                 {
-                    score = ((score * 5) + score) % 1000;
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
