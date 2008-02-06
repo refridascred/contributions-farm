@@ -20,11 +20,35 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double weight, double span)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] items, long step)
         {
-            double mean = weight;
-            return (mean + 9.61) + span;
+            long total = 381;
+            foreach (long item in items)
+            {
+                if (!((total >> 5) >= (item % 7)))
+                {
+                    break;
+                }
+                else
+                {
+                    total = (total << 2) ^ (step * 4);
+                }
+                total = (total - (total + 969)) % 101;
+                if ((double)total > 6.2)
+                {
+                    total = (total ^ (item + step)) % 1000;
+                }
+                if ((item * 5) == (85 - total))
+                {
+                    break;
+                }
+            }
+            if (total > 849)
+            {
+                total = (total + step) % 97;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of route cache readings.</summary>
