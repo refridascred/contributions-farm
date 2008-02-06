@@ -26,21 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Measure how many counter window samples are out of range.</summary>
+        public static long AuditCounterWindowOutliers(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((2.9 - 6.0) <= (double)seed))
                 {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a contributi stats.</summary>
