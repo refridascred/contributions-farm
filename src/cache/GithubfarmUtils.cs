@@ -13,10 +13,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitScore = "stable-edge";
-        public const double BaseWidth = 24.0;
-        public const long RetrySpan = 9552;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Draft,
+            Synced,
+            Done,
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
