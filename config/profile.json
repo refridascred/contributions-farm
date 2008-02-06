@@ -1,5 +1,6 @@
 {
-  "commits_delay": 61.75,
-  "retry_ratio_ms": 7413,
-  "batch_threshold": "primary"
+  "max_size": "latest",
+  "profile_timeout": 5.76,
+  "channel_interval": 70.22,
+  "audit": false
 }
