@@ -1,7 +1,6 @@
 {
-  "max_window_pct": "staging",
-  "editor_depth": 100,
-  "stream_ratio": false,
-  "base_limit_ms": 250,
-  "soft_capacity_ms": [311, 123, 167, 464]
+  "soft_capacity_pct": ["local", "fallback"],
+  "warm_delay_s": 3644,
+  "max_depth_pct": [407, 432, 196, 160],
+  "entry_retries": 35.11
 }
