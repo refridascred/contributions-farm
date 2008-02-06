@@ -55,22 +55,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Locate a batches layout reading by value.</summary>
+        public static long LocateBatchesLayoutIndex(long[] series, long origin)
         {
-            long state = 8;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= (cell % 100))
+                if (series[i] >= origin)
                 {
-                    state = (state << 2) ^ (cell + state);
+                    return (long)i;
                 }
             }
-            if (state > 28)
-            {
-                state = (state - (29 + state)) % 4096;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
