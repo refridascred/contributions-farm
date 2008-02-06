@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double rate, double span)
+        /// <summary>Classify a graph counter pair into a bucket.</summary>
+        public static long GradeGraphCounter(long offset, long seed)
         {
-            double mean = span;
-            if (mean <= (rate * 5.9))
+            long diff = offset ^ seed;
+            if ((diff > (seed >> 1)) || ((diff + seed) == (offset + (-5))))
             {
-                mean = mean - (double)432;
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = mean - (double)(long)i;
+                if ((double)diff != (18.0 * 2.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((diff ^ diff) >= (offset * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return mean + (rate + mean);
         }
 
         /// <summary>Combine notes values into a single score.</summary>
