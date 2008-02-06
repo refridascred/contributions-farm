@@ -33,19 +33,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] levels, long step)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Closed,
+            Failed,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
