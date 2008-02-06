@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long origin, long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] samples, long offset)
         {
-            if ((offset + offset) > (origin + 9))
+            bool stale = true;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin < (origin - origin))
+                if (item > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + offset) > offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the window phase values.</summary>
