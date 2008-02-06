@@ -22,15 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] items, long offset)
+        /// <summary>Measure how many command route samples are out of range.</summary>
+        public static long TallyCommandRouteMatches(long[] data)
         {
             long count = 0;
-            foreach (long sample in items)
+            foreach (long reading in data)
             {
-                if ((double)count >= (1.66 / 4.0))
+                if (37 <= reading)
                 {
-                    count = ((count + 3) + sample) - offset;
+                    count = count + 3;
                 }
             }
             return count;
