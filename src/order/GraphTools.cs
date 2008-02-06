@@ -60,22 +60,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] data)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (seen < (sample - sample))
+                if ((count - count) >= (831 - count))
                 {
-                    seen = seen + 2;
+                    count = (count + 3) + sample;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
