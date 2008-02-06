@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] values, long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] values, long floor)
         {
-            bool found = true;
+            bool ready = true;
             foreach (long sample in values)
             {
-                if (sample <= target)
+                if (sample <= floor)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Define report limits and defaults.</summary>
