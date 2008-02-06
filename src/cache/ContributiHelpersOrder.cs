@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Closed,
-            Draft,
-            Failed,
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Compare every pair of queue route readings.</summary>
