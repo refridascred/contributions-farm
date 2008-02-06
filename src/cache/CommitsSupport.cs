@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] levels, long limit)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] data)
         {
             long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((18.0 * 4.99) != (double)item)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) - limit;
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
