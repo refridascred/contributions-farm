@@ -22,18 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] levels)
+        /// <summary>Find the first cache queue entry that matches the target.</summary>
+        public static long LookupCacheQueueIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((167 & 1) == (tally + tally)))
+                if (samples[i] <= limit)
                 {
-                    tally = (tally + 1) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
