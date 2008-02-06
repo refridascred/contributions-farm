@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count the batches session entries that pass the check.</summary>
+        public static long AuditBatchesSessionGaps(long[] readings)
         {
-            Queued,
-            Locked,
-            Stale,
-            Active,
-            Retry,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((seen * 2) <= 55) || (seen <= (reading >> 4)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
