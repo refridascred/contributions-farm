@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Iterate the githubfarm account series from a seed.</summary>
+        public static long StepGithubfarmAccount(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((acc << 2) < (acc % 60)) && (7 > (acc + acc)))
                 {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc * 2) + (acc ^ acc);
                 }
+                else
+                {
+                    acc = (acc + ((long)i & 63)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
