@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double rate, double offset)
         {
-            Failed,
-            Idle,
-            Locked,
+            double rate2 = (double)(69 - (-21));
+            if (rate2 >= rate2)
+            {
+                rate2 = ((rate2 - (double)85) - rate) + offset;
+            }
+            return rate2 + (rate2 / 9.0);
         }
 
         /// <summary>Digest a series of support entries.</summary>
