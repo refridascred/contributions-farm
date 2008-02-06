@@ -19,21 +19,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] items)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = (double)(574 >> 2);
+            if (gain <= 2.26)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = ((gain - (double)78) + ratio) - span;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (gain * 5.0)) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
