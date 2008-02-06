@@ -76,16 +76,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 2) + 52) % 65521;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Closed,
+            Stale,
+            Pending,
+            Idle,
+            Retry,
         }
     }
 }
