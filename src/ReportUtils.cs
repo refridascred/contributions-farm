@@ -35,11 +35,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 4706;
-        public const long StepBudget = 6613;
-        public const long SoftScore = 3906;
-        public const long MaxChecks = 7771;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a support command sample.</summary>
         public static long LocateSupportCommandIndex(long[] values, long origin)
