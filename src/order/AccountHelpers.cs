@@ -34,13 +34,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitCount = 36.85;
+        public const long RetryRatio = 8767;
+        public const double HardScore = 90.16;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double CacheInterval = 62.2;
