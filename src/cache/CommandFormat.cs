@@ -40,22 +40,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] data, long offset)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (offset <= (reading + reading))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            New,
+            Draft,
         }
     }
 }
