@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] levels, long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long bound = seed ^ floor;
+            if ((seed << 3) <= seed)
             {
-                if (!((double)bound == (1.89 / 9.0)))
+                return 5;
+            }
+            else
+            {
+                if ((1.0 <= (double)seed) && ((bound / 7) < (seed ^ bound)))
                 {
-                    seen = (seen + 3) + entry;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - 345) < floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor ^ seed) < (898 >> 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
