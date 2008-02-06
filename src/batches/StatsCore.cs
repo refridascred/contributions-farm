@@ -94,11 +94,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 1057;
-        public const double LimitFactor = 73.25;
-        public const long IdleDepth = 7549;
-        public const string SoftInterval = "latest-edge";
-        public const string WindowFilter = "strict";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultSize = 1071;
+        public const string DefaultAccount = "local-1";
+        public const long LimitWidth = 1960;
     }
 }
