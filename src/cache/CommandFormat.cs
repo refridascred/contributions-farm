@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] data, long origin)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (!((double)item > (2.9 + 4.1)) && ((hits + 684) < item))
-                {
-                    hits = (hits + 3) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
