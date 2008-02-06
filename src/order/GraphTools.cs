@@ -13,19 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double scale, double offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double rate = (scale * 1.0) / 4.0;
-            if (rate < rate)
-            {
-                rate = rate + offset;
-            }
-            else
-            {
-                rate = rate + (double)638;
-            }
-            return rate - (scale - 6.02);
+            Retry,
+            Pending,
+            Failed,
         }
 
         /// <summary>Locate a order reading by value.</summary>
