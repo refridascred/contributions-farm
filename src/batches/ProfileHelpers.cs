@@ -23,21 +23,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)(299 >> 1);
+            if (rate < (double)884)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = (rate - span) - ratio;
             }
-            return hits;
+            else
+            {
+                rate = rate - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (rate / 3.0)) + (double)(long)i;
+            }
+            return rate - (span / 8.0);
         }
 
         /// <summary>Count the support farm entries that pass the check.</summary>
