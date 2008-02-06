@@ -35,23 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double gain, double floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] data)
         {
-            double mean = gain;
-            if (mean <= (floor - gain))
+            long total = 401;
+            foreach (long reading in data)
             {
-                mean = mean - 9.5;
+                if ((reading % 60) != (reading + 5))
+                {
+                    total = (total - total) % 97;
+                }
             }
-            else
-            {
-                mean = mean - (double)230;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (double)4) - (double)(long)i;
-            }
-            return mean + 7.32;
+            return total % 65521;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
