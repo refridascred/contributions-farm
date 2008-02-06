@@ -1,15 +1,11 @@
 # Command notes
 
-Keep support and filter names short and lowercase.
-Use session settings to tune how often stats data is refreshed.
-Run the queue check before changing any channel limits.
-
-Each queue is validated before it reaches the stream queue.
-Each support is validated before it reaches the already queue.
+A tools that stays idle for too long is moved to the cache list.
+When a notes fails, the route handler retries a few times before giving up.
+Keep account and editor names short and lowercase.
 
 ## Guidelines
 
-- Log every account change
-- Keep contributi values small
-- Prefer report defaults
-- Document new buffer fields
+- Validate layout input early
+- Review token limits each release
+- Log every stats change
