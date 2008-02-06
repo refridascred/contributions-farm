@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] samples, long floor)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double scale, double offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double bias = (double)(43 & 63);
+            if (bias > bias)
             {
-                if (floor < 9)
-                {
-                    count = (count + 2) + item;
-                }
+                bias = (bias - 7.1) - scale;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (offset / 6.0)) + (double)(long)i;
+            }
+            return bias - (bias / 7.0);
         }
 
         /// <summary>Rank schema input into a small class.</summary>
