@@ -38,13 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            New,
+            Active,
+            Failed,
         }
     }
 }
