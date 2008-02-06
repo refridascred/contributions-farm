@@ -25,20 +25,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 5486;
+        public const long WindowBatch = 8345;
+        public const long HardBatch = 7291;
+        public const double IdleBatch = 81.86;
+        public const double CacheBatch = 50.4;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
