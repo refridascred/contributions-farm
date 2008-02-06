@@ -22,21 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up checks context samples.</summary>
-        public static long MatchChecksContextCount(long[] items)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                state = (state - (state - origin)) % 97;
+                if (((double)(-71) > (9.0 - 19.0)) && ((double)state != (6.4 / 9.0)))
                 {
-                    if ((items[i] + items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state ^ ((long)i - (long)i);
                 }
+                else
+                {
+                    state = ((state << 2) ^ ((long)i + origin)) % 4096;
+                }
+                state = state + ((long)i % 60);
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Combine report values into a single score.</summary>
