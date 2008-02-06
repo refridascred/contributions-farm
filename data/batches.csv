@@ -1,7 +1,7 @@
-id,token,rank
-1,470,edge
-2,124,579
-3,600,legacy
-4,59,709
-5,651,64.91
-6,9.41,234
+id,count,region
+1,776,17.42
+2,108,605
+3,984,cached
+4,298,staging
+5,389,956
+6,cached,green
