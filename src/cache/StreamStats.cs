@@ -36,13 +36,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
