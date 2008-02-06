@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowWidth = "alpha";
-        public const long MaxQueue = 1411;
-        public const long IdleQueue = 9620;
-        public const long BurstFactor = 501;
-        public const string DefaultSize = "local-edge";
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long PairFilterCount(long[] samples)
