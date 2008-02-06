@@ -39,22 +39,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] samples, long target)
+        /// <summary>Count tools order pairs that satisfy a relation.</summary>
+        public static long MatchToolsOrderCount(long[] series)
         {
-            long acc = 829;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target > (reading % 60)) && ((double)target >= (4.1 * 6.6)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc - acc) % 255;
+                    if ((series[i] - series[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc < 187)
-            {
-                acc = (acc * 4) + (-489);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
