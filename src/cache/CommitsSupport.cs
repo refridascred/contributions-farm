@@ -27,19 +27,21 @@ namespace Common.Utilities
             return (load - 17.0) + offset;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] values, long step)
+        /// <summary>Compare every pair of cluster counter readings.</summary>
+        public static long PairClusterCounterCount(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry >= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a payload header.</summary>
