@@ -1,9 +1,12 @@
 {
-  "persist": 54,
-  "warm_capacity": 19,
-  "enabled": {
-    "command_size": 20.62,
-    "idle_size": "edge",
-    "persist": false
-  }
+  "cache_retries": "latest",
+  "sync_capacity": "latest",
+  "base_retries": true,
+  "idle_retries_ms": {
+    "dry_run": "primary",
+    "persist": "blue",
+    "strict": 4346,
+    "audit": 7.93
+  },
+  "cache_size_ms": false
 }
