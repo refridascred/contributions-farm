@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] data, long floor)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long step)
         {
-            long sum = 175;
-            foreach (long datum in data)
+            long mix = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((floor + datum) > (datum % 100))
-                {
-                    sum = (sum << 3) ^ (floor << 1);
-                }
+                mix = mix - ((long)i ^ (long)i);
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
