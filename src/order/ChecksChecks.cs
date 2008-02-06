@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] readings, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if (datum > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Count the support token entries that pass the check.</summary>
