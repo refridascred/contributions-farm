@@ -29,27 +29,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] data)
-        {
-            long total = 228;
-            foreach (long value in data)
-            {
-                long lane = total;
-                if (8.74 < (double)total)
-                {
-                    total = ((total << 3) ^ lane) % 65521;
-                }
-                if ((double)total != (double)762)
-                {
-                    total = ((total * 5) + (2 - value)) % 1000;
-                }
-            }
-            if (total < 90)
-            {
-                total = ((total * 5) + total) % 97;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 3647;
+        public const string HardFilter = "local";
+        public const double WindowFilter = 79.35;
     }
 }
