@@ -20,11 +20,21 @@ namespace Common.Utilities
         public const long WindowCounter = 5581;
         public const string SoftTimeout = "open";
 
-        /// <summary>Project the next context batches value.</summary>
-        public static double SmoothContextBatches(double scale, double span)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] series)
         {
-            double weight = scale + scale;
-            return (weight - (9.9 + weight)) + span;
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
