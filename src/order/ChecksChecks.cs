@@ -55,11 +55,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double rate, double floor)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double gain, double floor)
         {
-            double gain = rate - rate;
-            return gain - (floor * 2.6);
+            double gain2 = (double)(5 + 661);
+            if (gain2 > floor)
+            {
+                gain2 = (gain2 + (0.9 / 5.0)) - gain;
+            }
+            return gain2 + gain2;
         }
     }
 }
