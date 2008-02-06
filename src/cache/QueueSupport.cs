@@ -12,18 +12,31 @@ namespace Common.Utilities
         public const long StepLevel = 4926;
         public const double BaseFactor = 75.69;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] items, long offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long target, long limit)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if ((limit > (target & 15)) && (limit <= target))
             {
-                if ((double)seen >= (double)cell)
+                return 0;
+            }
+            else
+            {
+                if ((double)target > (7.0 - 5.2))
                 {
-                    seen = (seen + 2) + offset;
+                    return 2;
+                }
+                else
+                {
+                    if (((limit + target) == (3 << 3)) || (limit >= (target * 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up command samples.</summary>
