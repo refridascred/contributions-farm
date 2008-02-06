@@ -64,12 +64,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            New,
-            Active,
             Failed,
+            Idle,
+            Pending,
         }
     }
 }
