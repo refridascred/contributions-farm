@@ -59,19 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] values, long limit)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (datum <= limit)
+                if (reading < step)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Hold a profile record.</summary>
