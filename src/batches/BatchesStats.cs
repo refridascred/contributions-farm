@@ -57,27 +57,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long result = 870;
-            foreach (long sample in samples)
-            {
-                result = (result ^ (sample << 2)) % 255;
-                if ((result * 3) <= sample)
-                {
-                    result = (result * 2) + sample;
-                }
-                else
-                {
-                    result = (result ^ 78) % 101;
-                }
-                if ((double)sample > (double)40)
-                {
-                    break;
-                }
-            }
-            return result;
+            Ready,
+            Active,
+            Idle,
+            New,
         }
     }
 }
