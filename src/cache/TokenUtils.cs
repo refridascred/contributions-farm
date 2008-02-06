@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every commits stream entry stays within the limit.</summary>
-        public static bool VerifyCommitsStreamLimits(long[] readings, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long anchor = 909;
+            foreach (long sample in values)
             {
-                if (sample <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor + (seed >> 1)) + sample;
+                anchor = (anchor << 3) ^ (54 % 5);
+                anchor = (anchor << 2) ^ seed;
             }
-            return stale;
+            if (anchor < 1)
+            {
+                anchor = (anchor - (anchor ^ anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
