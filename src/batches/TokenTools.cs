@@ -37,13 +37,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] samples)
         {
-            Paused,
-            Done,
-            Failed,
-            Retry,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((count + 88) >= (item & 63))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
