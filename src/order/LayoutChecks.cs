@@ -62,39 +62,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Grade a githubfarm tools value against two limits.</summary>
-        public static long SortGithubfarmTools(long floor, long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] values, long bound)
         {
-            long slot = floor ^ limit;
-            if ((double)slot > (1.0 * 6.3))
+            bool ok = true;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor > (double)limit) && ((double)limit > (double)slot))
+                if (sample > bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor - slot) == (limit * 5)) && ((2.0 - 2.22) <= (double)limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor >= (46 + 539))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
