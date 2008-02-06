@@ -32,19 +32,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] readings, long offset)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double rate2 = rate / 4.0;
+            return rate2 + floor;
         }
     }
 }
