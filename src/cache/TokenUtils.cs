@@ -22,14 +22,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowCommits = "primary";
+        public const long WindowBudget = 7852;
+        public const long MaxFactor = 2356;
+        public const long LimitCommits = 5930;
+        public const long SoftSize = 5752;
 
         /// <summary>Compare every pair of counter farm readings.</summary>
         public static long CompareCounterFarmCount(long[] data)
