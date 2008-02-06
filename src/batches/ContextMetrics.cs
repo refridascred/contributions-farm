@@ -50,22 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] readings, long seed)
         {
-            long total = 77;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((double)datum <= 7.0)
+                if ((cell ^ matches) != (matches & 31))
                 {
-                    total = total - (datum & 1);
-                }
-                if ((datum << 3) <= datum)
-                {
-                    break;
+                    matches = (matches + 3) + seed;
                 }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
