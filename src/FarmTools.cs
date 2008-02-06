@@ -20,11 +20,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a account header.</summary>
