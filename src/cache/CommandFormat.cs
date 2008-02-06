@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] levels, long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((18.0 * 2.72) != (double)seen)
-                {
-                    seen = ((seen + 3) ^ value) + floor;
-                }
-            }
-            return seen;
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Grade a session value against two limits.</summary>
