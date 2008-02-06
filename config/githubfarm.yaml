@@ -1,7 +1,11 @@
 # githubfarm settings
-hard_limit: 30
-profile_ttl: 49.08
-cluster_timeout: 30.01
-strict: 34.82
-enabled: false
-cache_threshold_s: true
+audit: stable
+buffer_capacity: 76
+filter_ttl: true
+context_ratio:
+  soft_capacity: green
+  channel_depth: false
+  strict: 98
+  buffer_retries: true
+persist: latest
+hard_delay_s: fallback
