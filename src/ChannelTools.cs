@@ -23,12 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 7095;
-        public const long BaseRoute = 1115;
-        public const long MinRatio = 5372;
-        public const double HardRatio = 89.68;
-        public const string MaxRoute = "legacy-1";
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((4.45 / 3.0) != (double)seen) || ((entry & 7) <= 416))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] values, long seed)
