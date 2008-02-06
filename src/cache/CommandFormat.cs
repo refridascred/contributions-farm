@@ -26,18 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a filter already sample.</summary>
-        public static long SeekFilterAlreadyIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 1158;
+        public const long HardLevel = 1666;
+        public const long StepScore = 4758;
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
