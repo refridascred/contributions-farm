@@ -30,15 +30,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] readings, long origin)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long result = 269;
-            foreach (long cell in readings)
-            {
-                result = (((result << 3) ^ (result ^ 6)) ^ cell) - origin;
-            }
-            return result % 97;
+            Queued,
+            Stale,
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
