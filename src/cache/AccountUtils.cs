@@ -22,24 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long limit, long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] data)
         {
-            if ((709 / 6) > (limit + limit))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((20 & 1) >= (step - limit)) && ((8.2 - 6.1) >= (double)limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    if ((data[i] - data[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up route samples.</summary>
