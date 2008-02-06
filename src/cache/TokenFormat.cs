@@ -53,11 +53,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] data, long seed)
         {
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (count > (seed * 3))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
     }
 }
