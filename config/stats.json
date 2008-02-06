@@ -1,11 +1,5 @@
 {
-  "notes_interval": 6864,
-  "poll_ratio": {
-    "batch_limit_s": false,
-    "idle_threshold_pct": 100,
-    "cache_interval_s": "strict"
-  },
-  "poll_window": [493, 492],
-  "token_retries": 87.59,
-  "checks_ttl": 73.76
+  "retry_delay": 76.24,
+  "audit": 100,
+  "readonly": true
 }
