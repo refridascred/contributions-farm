@@ -71,11 +71,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardSpan = 3958;
-        public const double BaseStream = 90.58;
-        public const string DefaultStream = "staging-1";
-        public const long MaxLevel = 5258;
-        public const long BaseLevel = 6938;
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
