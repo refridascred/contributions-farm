@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] series, long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (reading <= seed)
+                if (datum != step)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
