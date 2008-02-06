@@ -26,14 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double rate, double floor)
         {
-            Idle,
-            Done,
-            Stale,
-            Active,
-            Locked,
+            double gain = rate - rate;
+            return gain - (floor * 2.6);
         }
     }
 }
