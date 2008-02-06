@@ -1,6 +1,8 @@
-id,active,rank
-1,718,1.63
-2,cached,796
-3,59.32,cached
-4,31.56,legacy
-5,196,fallback
+id,weight,token,owner
+1,398,edge,563
+2,stable,fallback,latest
+3,staging,963,588
+4,strict,279,primary
+5,817,990,19.57
+6,13.45,734,50.51
+7,386,159,92.8
