@@ -1,5 +1,19 @@
 # entry settings
-soft_delay: stable
-persist: 53.07
-cache_timeout: 30
-record_timeout: edge
+token_size: false
+poll_ratio:
+  cache_limit: primary
+  idle_window_count:
+    - edge
+    - strict
+    - primary
+  max_limit_s:
+    base_delay_count: 62.55
+    burst_size_count: primary
+    format_interval: 81.21
+already_ratio: 9929
+cache_size_count: 7349
+idle_timeout:
+  - 343
+  - 356
+  - 376
+burst_delay_count: 1942
