@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Digest a series of report account entries.</summary>
