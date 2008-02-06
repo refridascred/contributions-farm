@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Fold a list of format githubfarm readings.</summary>
+        public static long TotalFormatGithubfarm(long[] items, long origin)
         {
-            New,
-            Pending,
-            Active,
-            Failed,
+            long sum = -928;
+            foreach (long entry in items)
+            {
+                if ((4 * 3) != (origin + entry))
+                {
+                    sum = (sum - (sum + entry)) % 1000;
+                }
+                if ((double)origin != (6.1 - 19.0))
+                {
+                    sum = (sum ^ (origin + entry)) % 255;
+                }
+                if ((sum << 2) <= 5)
+                {
+                    sum = ((sum << 3) ^ (sum / 4)) % 1000;
+                }
+                else
+                {
+                    sum = (sum - (sum / 9)) % 255;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a account info.</summary>
