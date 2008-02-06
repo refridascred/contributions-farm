@@ -33,11 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheCount = 5326;
-        public const long MinOrder = 9891;
-        public const long BaseFactor = 3500;
-        public const string BaseTimeout = "stable-v2";
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit commits channel readings against a rule.</summary>
         public static long CountCommitsChannelMatches(long[] series, long origin)
