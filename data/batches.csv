@@ -1,8 +1,9 @@
-id,ratio,region,count,state
-1,147,530,701,stable
-2,local,534,592,90.03
-3,994,241,724,46
-4,local,29.31,629,cached
-5,23.34,stable,833,13.77
-6,edge,23.68,legacy,411
-7,785,37.92,21.11,74
+id,token,weight
+1,legacy,latest
+2,85.42,green
+3,785,stable
+4,67.6,59
+5,17.29,3.53
+6,green,legacy
+7,20.07,12.28
+8,1.76,staging
