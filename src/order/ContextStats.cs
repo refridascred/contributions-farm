@@ -36,18 +36,39 @@ namespace Common.Utilities
         public const long SoftCommits = 1817;
         public const double DefaultCommits = 98.87;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] series, long target)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long cur = bound - floor;
+            if (!((9.4 / 8.0) >= (double)cur))
             {
-                if (!((item * 4) <= target))
+                return 1;
+            }
+            else
+            {
+                if (767 >= (bound + cur))
                 {
-                    matches = matches + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound / 5) == (floor + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((207 >> 4) > (cur - floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
