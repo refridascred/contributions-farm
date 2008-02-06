@@ -1,9 +1,23 @@
 {
-  "layout_retries": "local",
-  "soft_interval_ms": {
-    "idle_ratio_count": [74, 38],
-    "schema_delay": 30,
-    "stream_retries": 100
+  "idle_timeout_pct": {
+    "entry_retries": false,
+    "dry_run": false,
+    "soft_capacity_ms": "stable",
+    "warm_limit": "eu-west",
+    "hard_delay_count": {
+      "base_depth_count": 80.23,
+      "idle_size": "primary",
+      "hard_interval_s": "latest",
+      "counter_interval": "fallback",
+      "base_ratio_ms": 73
+    },
+    "idle_depth_pct": ["fallback", "legacy", "primary", "primary"]
   },
-  "flush_threshold_count": ["local", "staging", "staging"]
+  "soft_capacity": true,
+  "command_window": {
+    "min_depth_count": true,
+    "base_limit": 9287,
+    "soft_ttl_pct": true
+  },
+  "idle_delay_count": 39
 }
