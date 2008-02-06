@@ -1,4 +1,17 @@
 # entry settings
-metric_ttl: false
-audit: blue
-default_timeout: latest
+persist: cached
+flush_timeout_s: 16
+batch_delay_pct:
+  dry_run: eu-west
+  flush_timeout:
+    - primary
+    - stable
+    - open
+  flush_limit_ms: 39.45
+  sync_delay_pct: open
+  cluster_size: 16.4
+hard_timeout_s:
+  - open
+  - legacy
+  - latest
+  - staging
