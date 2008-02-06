@@ -13,18 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] data)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!((26 * 5) < (cell + cell)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
