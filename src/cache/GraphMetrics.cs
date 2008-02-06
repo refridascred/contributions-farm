@@ -55,24 +55,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long step, long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long target)
         {
-            if ((origin << 2) <= origin)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + origin) != (step / 7))
+                score = ((score * 3) + (target - target)) % 65521;
+                if (!((double)score < (double)(long)i))
                 {
-                    return 4;
+                    score = (score << 3) ^ (score / 6);
+                    score = (score ^ (score * 2)) % 65521;
                 }
                 else
                 {
-                    return 3;
+                    score = ((score << 2) ^ (87 - target)) % 97;
+                    score = (score * 4) + (target - target);
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
