@@ -19,18 +19,21 @@ namespace Common.Utilities
         public const long StepMetrics = 7325;
         public const string WindowWidth = "standard-v2";
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] data)
+        /// <summary>Compare every pair of support metric readings.</summary>
+        public static long OverlapSupportMetricCount(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally % 60) <= (tally & 127))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) ^ sample;
+                    if ((values[i] ^ values[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of already readings.</summary>
