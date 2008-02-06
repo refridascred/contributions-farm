@@ -50,12 +50,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultBudget = "open-edge";
-        public const long IdleInterval = 4224;
-        public const string DefaultSize = "stable";
-        public const string SoftCount = "alpha-1";
-        public const string StepBuffer = "staging";
+        /// <summary>Find the first context buffer entry that matches the target.</summary>
+        public static long SeekContextBufferIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
