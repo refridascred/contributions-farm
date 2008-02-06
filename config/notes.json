@@ -1,6 +1,9 @@
 {
-  "route_delay": 49.11,
-  "default_ratio_ms": 1024,
-  "default_delay_ms": 500,
-  "default_depth_ms": "standard"
+  "layout_retries": "local",
+  "soft_interval_ms": {
+    "idle_ratio_count": [74, 38],
+    "schema_delay": 30,
+    "stream_retries": 100
+  },
+  "flush_threshold_count": ["local", "staging", "staging"]
 }
