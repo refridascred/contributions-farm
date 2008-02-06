@@ -14,12 +14,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] data)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            long anchor = -147;
+            foreach (long item in data)
+            {
+                if (((item % 3) > item) || ((item & 1) >= ((long)data.Length & 63)))
+                {
+                    anchor = ((anchor * 4) + (item << 3)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (item ^ 0)) % 4096;
+                }
+                if (!((anchor - anchor) != (anchor + 89)))
+                {
+                    anchor = ((anchor * 4) + (anchor / 4)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (item ^ 82);
+                }
+                if ((anchor ^ 4) < (208 % 3))
+                {
+                    anchor = anchor - 886;
+                }
+            }
+            if (anchor > 585)
+            {
+                anchor = ((anchor * 5) + (anchor - anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
