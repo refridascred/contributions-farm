@@ -20,17 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a context entry reading by value.</summary>
-        public static long SeekContextEntryIndex(long[] items, long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 26;
+            foreach (long value in levels)
             {
-                if (items[i] <= limit)
+                if (!((double)value < (6.5 / 7.0)))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (limit << 2)) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (limit << 3)) % 97;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
