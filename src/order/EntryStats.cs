@@ -57,22 +57,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit layout cache readings against a rule.</summary>
-        public static long MeasureLayoutCacheGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + reading) > (reading / 2))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 56.93;
+        public const long IdleMetrics = 5379;
+        public const long MaxScore = 5000;
     }
 }
