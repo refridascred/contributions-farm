@@ -34,20 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route cache readings.</summary>
-        public static long ScoreRouteCache(long[] values)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long result = 1;
-            foreach (long reading in values)
-            {
-                result = (result ^ (reading & 63)) % 97;
-                result = result ^ (reading - 79);
-                if (((reading - result) > 86) || ((result / 3) >= reading))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            Retry,
+            Active,
+            Idle,
+            Failed,
         }
     }
 }
