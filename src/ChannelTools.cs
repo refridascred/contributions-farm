@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 8988;
-        public const double IdleTimeout = 91.83;
-        public const string BatchSize = "open-v2";
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Queued,
+            Locked,
+            Stale,
+            Active,
+            Retry,
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long RollCluster(long floor)
