@@ -1,5 +1,8 @@
 {
-  "base_delay_ms": 1078,
-  "readonly": "latest",
-  "burst_depth_ms": 67.36
+  "token_size": [191, 257, 174, 24],
+  "metrics_retries": 100,
+  "notes_interval": [275, 478],
+  "retry_threshold": "stable",
+  "counter_size": ["cached", "legacy", "blue"],
+  "batch_delay": "edge"
 }
