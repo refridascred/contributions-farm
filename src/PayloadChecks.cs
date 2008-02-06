@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double SoftReport = 48.35;
         public const long WindowReport = 7962;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] items, long offset)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum < offset)
+                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
