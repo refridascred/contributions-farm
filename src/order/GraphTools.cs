@@ -20,13 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Retry,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 8148;
+        public const long SoftCommand = 8690;
+        public const string RetryFactor = "strict";
+        public const long MaxCommand = 3469;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] values, long bound)
