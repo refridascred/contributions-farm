@@ -42,12 +42,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] data)
         {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
