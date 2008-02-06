@@ -54,19 +54,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate counter batches readings against a bound.</summary>
-        public static bool ValidateCounterBatchesLimits(long[] samples, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (datum != limit)
+                if ((matches ^ matches) > (cell - matches))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
