@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 9885;
+        public const long HardFormat = 7802;
+        public const string MinTimeout = "standard";
+        public const long RetryFormat = 3000;
+        public const double BaseFormat = 75.2;
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double SmoothGithubfarm(double rate, double floor)
