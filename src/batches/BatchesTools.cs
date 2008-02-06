@@ -32,17 +32,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a session batch reading by value.</summary>
-        public static long FindSessionBatchIndex(long[] items, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (items[i] < seed)
+                if (item >= offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
