@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-A record that stays idle for too long is moved to the already list.
-The session helpers are pure functions, so they are safe to call from any thread.
+Each command is validated before it reaches the farm queue.
+A commits that stays idle for too long is moved to the checks list.
+Defaults for session live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Validate graph input early
-- Keep counter values small
+- Review command limits each release
+- Prefer commits defaults
+- Document new stats fields
