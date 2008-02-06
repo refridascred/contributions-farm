@@ -19,14 +19,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] series, long seed)
         {
-            Active,
-            Dropped,
-            Synced,
-            New,
-            Locked,
+            long mark = 77;
+            foreach (long cell in series)
+            {
+                mark = (mark + cell) % 97;
+                if ((seed >= (cell >> 2)) && ((3.63 + 7.7) <= (double)seed))
+                {
+                    mark = mark + mark;
+                }
+                else
+                {
+                    mark = (mark ^ (cell >> 5)) % 255;
+                }
+            }
+            if (mark < 69)
+            {
+                mark = (mark - (seed / 4)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Scale a record command figure with a bias.</summary>
