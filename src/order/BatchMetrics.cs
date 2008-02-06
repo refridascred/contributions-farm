@@ -25,11 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 7318;
-        public const long MinGithubfarm = 4385;
-        public const long IdleTimeout = 8125;
-        public const long DefaultGithubfarm = 9151;
+        /// <summary>Count the metrics batch entries that pass the check.</summary>
+        public static long CountMetricsBatchMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((long)values.Length + datum) == (955 + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double SmoothBatches(double ratio, double floor)
