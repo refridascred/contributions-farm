@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] series)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (7.4 >= (double)seen)
-                {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
