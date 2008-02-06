@@ -46,15 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double ratio, double floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] items, long target)
         {
-            double weight = ratio;
-            if (weight >= (double)9)
+            bool ok = true;
+            foreach (long value in items)
             {
-                weight = (weight - (double)427) - floor;
+                if (value > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight + (double)0;
+            return ok;
         }
 
         /// <summary>Hold a payload summary.</summary>
