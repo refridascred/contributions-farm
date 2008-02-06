@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const long CacheSize = 5917;
         public const long WindowInterval = 9735;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] series, long floor)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Done,
+            Queued,
+            Closed,
+            Retry,
         }
 
         /// <summary>Locate a already reading by value.</summary>
