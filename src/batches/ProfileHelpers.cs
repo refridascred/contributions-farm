@@ -87,18 +87,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] samples)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(2.9 >= (double)tally))
-                {
-                    tally = (tally + 2) + item;
-                }
+                anchor = (anchor * 2) + (56 ^ target);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
     }
 }
