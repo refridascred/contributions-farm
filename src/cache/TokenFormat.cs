@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long limit, long limit2)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] samples, long origin)
         {
-            if ((18.0 > (double)limit2) || (limit > (limit + limit)))
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit < (limit - limit2))
+                if (reading >= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((802 - limit) == (limit / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a support entry.</summary>
