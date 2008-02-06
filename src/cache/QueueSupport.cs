@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] data, long limit)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long floor)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long gap = offset ^ floor;
+            if ((gap - floor) >= (813 * 4))
             {
-                if (entry > limit)
+                return 6;
+            }
+            else
+            {
+                if ((floor - offset) <= (floor + gap))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a contributi header.</summary>
