@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public double Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a session summary.</summary>
