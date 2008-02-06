@@ -53,12 +53,19 @@ namespace Common.Utilities
         public const long IdleInterval = 3955;
         public const long MinRatio = 1492;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 80.47;
-        public const double BaseReport = 6.2;
-        public const double LimitBudget = 58.59;
-        public const string RetryReport = "local";
-        public const long BurstReport = 1881;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((tally <= (tally << 1)) && (((long)series.Length + tally) == (origin >> 1)))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long WeighStats(long[] data)
