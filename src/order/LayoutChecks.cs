@@ -76,15 +76,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double ratio, double span)
-        {
-            double load = (ratio - ratio) - (ratio + span);
-            if (load <= 0.1)
-            {
-                load = load + (double)804;
-            }
-            return load + load;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWidth = 1271;
+        public const double DefaultInterval = 10.88;
+        public const long DefaultScore = 1239;
     }
 }
