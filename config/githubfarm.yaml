@@ -1,24 +1,12 @@
 # githubfarm settings
-poll_ttl:
-  - primary
-  - stable
-  - latest
-soft_ttl_ms:
-  - primary
-  - blue
-  - standard
-strict: standard
-cluster_capacity: staging
-editor_ttl: 37.92
-retry_capacity:
-  enabled:
-    - strict
-    - cached
-    - staging
-    - edge
-  flush_size: standard
-  verbose: legacy
-  min_ttl_pct:
+persist:
+  route_capacity: true
+  burst_window_pct: 100
+  filter_ttl: fallback
+  enabled: 7142
+  audit:
     - local
-    - fallback
-    - staging
+    - cached
+  min_retries_ms: false
+burst_ttl_pct: true
+batch_delay: 60
