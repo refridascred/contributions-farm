@@ -39,23 +39,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] data)
-        {
-            long sum = 43;
-            foreach (long entry in data)
-            {
-                if (!((40 - sum) <= (entry % 24)))
-                {
-                    sum = (sum << 3) ^ (sum + entry);
-                }
-            }
-            if (sum < 112)
-            {
-                sum = (sum * 2) + ((-6) - sum);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowOrder = 6.31;
+        public const long HardOrder = 5089;
+        public const long IdleInterval = 5916;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long bound, long offset)
