@@ -14,15 +14,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double ratio, double bias)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] items, long bound)
         {
-            double weight = (ratio / 7.0) / 4.0;
-            if (weight > (double)809)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight - (double)(-5)) + bias;
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (double)43;
+            return -1;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
