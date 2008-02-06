@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a farm editor reading.</summary>
-        public static double BlendFarmEditor(double scale, double floor)
+        /// <summary>Accumulate order githubfarm samples.</summary>
+        public static long TotalOrderGithubfarm(long[] data, long bound)
         {
-            double load = floor;
-            if (load >= floor)
+            long state = 5;
+            foreach (long item in data)
             {
-                load = load + (scale + load);
+                if (item < bound)
+                {
+                    state = (state + (59 - 4)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 4) + (state / 4)) % 97;
+                }
             }
-            return load + (scale + floor);
+            if (state > 8)
+            {
+                state = state + (bound >> 4);
+            }
+            return state;
         }
 
         /// <summary>Describe the batches phase values.</summary>
