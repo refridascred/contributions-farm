@@ -34,18 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm filter entries that pass the check.</summary>
-        public static long AuditFarmFilterOutliers(long[] items, long target)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!(target <= (datum + tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
