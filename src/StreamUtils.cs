@@ -41,11 +41,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "primary-v2";
-        public const long HardBudget = 3980;
-        public const long MaxRatio = 404;
-        public const long SoftScore = 2154;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public double Size { get; set; }
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BurstGithubfarm = 7347;
