@@ -26,22 +26,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] data, long seed)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seed & 31) > (seed * 2))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public double Level { get; set; }
         }
     }
 }
