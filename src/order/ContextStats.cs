@@ -82,15 +82,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] values, long target)
+        /// <summary>Combine account githubfarm values into a single score.</summary>
+        public static long DigestAccountGithubfarm(long[] data, long offset)
         {
-            long state = 1;
-            foreach (long sample in values)
+            long state = 174;
+            foreach (long cell in data)
             {
-                state = ((state << 3) ^ (target ^ sample)) % 101;
+                state = (state ^ (cell * 5)) % 101;
+                if ((667 ^ cell) < (0 + cell))
+                {
+                    state = ((state << 2) ^ offset) % 4096;
+                }
+                else
+                {
+                    state = (state - state) % 1000;
+                    state = state - (cell - offset);
+                }
+                state = (state << 3) ^ (offset + 488);
             }
-            return state;
+            if (state > 608)
+            {
+                state = (state << 3) ^ offset;
+            }
+            return state % 1000;
         }
     }
 }
