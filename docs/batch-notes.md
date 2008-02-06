@@ -1,14 +1,10 @@
 # Batch notes
 
-Use tools settings to tune how often channel data is refreshed.
-Each counter is validated before it reaches the contributi queue.
-The batch module keeps metrics values in sync with the payload cache.
-
-Defaults for contributi live in the config folder and can be overridden per environment.
-A profile that stays idle for too long is moved to the editor list.
+A queue that stays idle for too long is moved to the entry list.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep command values small
-- Validate farm input early
-- Log every report change
+- Document new already fields
+- Validate entry input early
+- Prefer order defaults
