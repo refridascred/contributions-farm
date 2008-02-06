@@ -12,17 +12,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next order schema value from a seed.</summary>
-        public static long RollOrderSchema(long origin)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] data, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 4) + (result + 45)) % 255;
-                result = result + origin;
-                result = ((result * 5) + (long)i) % 97;
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
