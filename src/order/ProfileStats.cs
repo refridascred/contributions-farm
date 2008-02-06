@@ -44,21 +44,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up githubfarm stream samples.</summary>
-        public static long OverlapGithubfarmStreamCount(long[] levels)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (weight * 3.5) * 6.0;
+            if (scale > (scale * 4.2))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale + floor;
             }
-            return tally;
+            else
+            {
+                scale = scale + 7.0;
+            }
+            return scale + (double)(-2);
         }
     }
 }
