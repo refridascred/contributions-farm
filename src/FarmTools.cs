@@ -39,12 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] data, long target)
         {
-            public string Stamp { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            long mark = 0;
+            foreach (long reading in data)
+            {
+                mark = (mark + reading) + target;
+            }
+            return mark;
         }
 
         /// <summary>Hold a account header.</summary>
