@@ -42,11 +42,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double weight, double bias)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            double mean = (double)216 + 9.33;
-            return (mean - bias) + weight;
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Combine command report values into a single score.</summary>
