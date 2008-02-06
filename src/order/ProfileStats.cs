@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Locked,
-            Stale,
-            Paused,
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a filter stats.</summary>
