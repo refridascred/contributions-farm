@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] items, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 206;
+            foreach (long cell in data)
             {
-                if (items[i] <= origin)
+                if ((cell << 2) > (-47))
                 {
-                    return (long)i;
+                    anchor = anchor ^ (target + cell);
+                }
+                else
+                {
+                    anchor = anchor - (anchor >> 1);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Look up the position of a githubfarm record sample.</summary>
