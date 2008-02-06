@@ -42,18 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] samples)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((7 ^ datum) >= (tally + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a channel record.</summary>
