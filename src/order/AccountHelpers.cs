@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] series)
+        /// <summary>Rank counter report input into a small class.</summary>
+        public static long RankCounterReport(long seed, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long lane = seed + floor;
+            if ((lane - lane) != (seed - seed))
             {
-                if ((datum - datum) <= 0)
+                return 5;
+            }
+            else
+            {
+                if (!((lane - seed) >= lane))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
