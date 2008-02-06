@@ -1,8 +1,7 @@
 {
-  "flush_limit_s": "stable",
-  "persist": 44.39,
-  "idle_ttl_s": [238, 384, 127, 13],
-  "tools_delay": "edge",
-  "audit": 66.08,
-  "flush_depth": "open"
+  "stream_size": 62,
+  "filter_threshold": [430, 445],
+  "verbose": 1024,
+  "sync_capacity": 28,
+  "cache_size_count": 29.32
 }
