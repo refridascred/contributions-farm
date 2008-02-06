@@ -23,23 +23,31 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double ratio, double span)
+        /// <summary>Classify a channel metric pair into a bucket.</summary>
+        public static long GradeChannelMetric(long offset, long step)
         {
-            double rate = (double)(299 >> 1);
-            if (rate < (double)884)
+            if (offset <= (offset >> 3))
             {
-                rate = (rate - span) - ratio;
+                return 4;
             }
             else
             {
-                rate = rate - span;
+                if (offset <= step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset & 63) > (step & 127)) && (1.0 < (double)offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (rate / 3.0)) + (double)(long)i;
-            }
-            return rate - (span / 8.0);
         }
 
         /// <summary>Count the support farm entries that pass the check.</summary>
