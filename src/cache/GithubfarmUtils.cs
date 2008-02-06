@@ -31,18 +31,16 @@ namespace Common.Utilities
         public const long MaxStream = 4547;
         public const long IdleLevel = 5255;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] readings, long bound)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long acc = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((16.0 / 4.0) >= (double)cell)
-                {
-                    tally = (tally + 2) + bound;
-                }
+                acc = acc + target;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Digest a series of editor tools entries.</summary>
