@@ -42,14 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Roll a queue contributi counter forward.</summary>
+        public static long RollQueueContributi(long origin)
         {
-            Idle,
-            Stale,
-            New,
-            Active,
-            Ready,
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
