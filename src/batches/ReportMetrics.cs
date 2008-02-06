@@ -19,18 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] values)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            if ((seed >> 3) >= (546 + offset))
             {
-                if ((matches + entry) != (matches - 8))
+                return 3;
+            }
+            else
+            {
+                if ((offset >> 2) > seed)
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset * 3) <= (offset - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit farm cluster readings against a rule.</summary>
