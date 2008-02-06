@@ -14,22 +14,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] items, long offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!((double)offset > (6.0 - 4.9)))
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine cache context values into a single score.</summary>
