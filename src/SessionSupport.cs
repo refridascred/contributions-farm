@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Combine farm stats values into a single score.</summary>
+        public static long FoldFarmStats(long[] series)
         {
-            Active,
-            Paused,
-            Closed,
-            Pending,
+            long anchor = 233;
+            foreach (long cell in series)
+            {
+                if ((double)cell != (double)anchor)
+                {
+                    anchor = (anchor - (cell * 4)) % 97;
+                }
+            }
+            if (anchor < 111)
+            {
+                anchor = (anchor << 2) ^ (anchor + 1);
+            }
+            return anchor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
