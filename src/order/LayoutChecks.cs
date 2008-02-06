@@ -27,17 +27,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first record profile entry that matches the target.</summary>
-        public static long SeekRecordProfileIndex(long[] samples, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
+                if ((((matches + item) != (item - matches)) && ((7.68 * 3.6) != (double)matches)) || ((7 ^ (-55)) <= (item - (long)data.Length)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a token stats.</summary>
