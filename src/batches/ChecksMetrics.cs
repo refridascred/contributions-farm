@@ -43,32 +43,19 @@ namespace Common.Utilities
             return rate - 13.0;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] items, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] series, long seed)
         {
-            long total = 492;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((cell > (floor * 5)) && (1.5 > (double)(long)items.Length))
+                if (datum <= seed)
                 {
-                    total = (total + (cell * 3)) % 4096;
-                    total = (total << 2) ^ (floor / 6);
+                    found = false;
                     break;
                 }
-                if (((17.0 + 6.2) >= 12.0) && ((double)floor <= (3.2 - 7.0)))
-                {
-                    total = (total * 3) + (floor % 2);
-                }
-                else
-                {
-                    total = total + (0 / 2);
-                }
             }
-            if (total < 45)
-            {
-                total = (total ^ (total / 4)) % 65521;
-            }
-            return total % 4096;
+            return found;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
