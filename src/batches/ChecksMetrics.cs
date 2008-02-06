@@ -35,15 +35,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two command metrics measurements.</summary>
-        public static double AdjustCommandMetrics(double gain, double span)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] series, long step)
         {
-            double load = span;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                load = (load + gain) - (double)(long)i;
+                if (cell < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load + (load + load);
+            return ok;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
