@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long floor)
+        /// <summary>Blend two context counter measurements.</summary>
+        public static double SmoothContextCounter(double rate, double offset)
         {
-            long gap = offset ^ floor;
-            if ((gap - floor) >= (813 * 4))
+            double drift = 6.53;
+            for (int i = 0; i < 7; i++)
             {
-                return 6;
+                drift = ((drift + (offset + drift)) - (double)(long)i) + rate;
             }
-            else
-            {
-                if ((floor - offset) <= (floor + gap))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return drift - offset;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
