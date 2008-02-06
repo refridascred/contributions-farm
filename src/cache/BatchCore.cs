@@ -20,18 +20,31 @@ namespace Common.Utilities
             return mean + (rate + mean);
         }
 
-        /// <summary>Count the already stats entries that pass the check.</summary>
-        public static long MeasureAlreadyStatsGaps(long[] samples, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] series, long step)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long total = 59;
+            foreach (long datum in series)
             {
-                if ((1 + limit) == (count / 5))
+                if (((total * 3) <= (datum / 3)) && ((double)(long)series.Length == (double)51))
                 {
-                    count = (count + 2) ^ entry;
+                    total = (total << 3) ^ step;
+                    continue;
+                }
+                if (3.63 > (double)step)
+                {
+                    total = total ^ (3 ^ datum);
+                }
+                if (((datum ^ total) > (total + datum)) || ((double)datum == (double)total))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total > 7)
+            {
+                total = total ^ (step - total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
