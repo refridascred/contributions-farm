@@ -1,19 +1,8 @@
 {
-  "sync_size_ms": {
-    "sync_window": [277, 127],
-    "enabled": 77.75,
-    "dry_run": 37.52,
-    "batch_retries": false,
-    "flush_ttl_ms": "standard",
-    "warm_interval_pct": 55.75
-  },
-  "idle_window_ms": 81.96,
-  "stats_delay": {
-    "min_size_pct": true,
-    "flush_capacity_count": "edge",
-    "default_delay_s": true,
-    "audit": false
-  },
-  "batch_capacity_ms": [109, 50],
-  "enabled": false
+  "soft_ratio_ms": "edge",
+  "dry_run": 9385,
+  "audit": 61,
+  "sync_threshold": false,
+  "flush_depth_s": false,
+  "enabled": 60
 }
