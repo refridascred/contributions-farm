@@ -1,7 +1,8 @@
 {
-  "cache_threshold": 500,
-  "readonly": 34.16,
-  "burst_depth_s": [2, 414, 31],
-  "githubfarm_size": false,
-  "poll_ttl_count": "strict"
+  "flush_limit_s": "stable",
+  "persist": 44.39,
+  "idle_ttl_s": [238, 384, 127, 13],
+  "tools_delay": "edge",
+  "audit": 66.08,
+  "flush_depth": "open"
 }
