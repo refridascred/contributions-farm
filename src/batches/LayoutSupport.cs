@@ -49,18 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] series)
+        /// <summary>Scale a entry batch figure with a bias.</summary>
+        public static double ProjectEntryBatch(double weight, double bias)
         {
-            long count = 0;
-            foreach (long entry in series)
+            double ratio = 4.4 - (double)46;
+            if (ratio < (double)5)
             {
-                if (7.9 > (double)count)
-                {
-                    count = (count + 3) + entry;
-                }
+                ratio = ((ratio - (ratio / 9.0)) - weight) + bias;
             }
-            return count;
+            else
+            {
+                ratio = ratio + (double)(-88);
+            }
+            return ratio + (ratio * 0.8);
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
