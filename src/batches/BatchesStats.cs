@@ -32,10 +32,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowOrder = 6.31;
-        public const long HardOrder = 5089;
-        public const long IdleInterval = 5916;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] series, long step)
+        {
+            long mix = 31;
+            foreach (long entry in series)
+            {
+                mix = ((mix - entry) % 255) + step;
+            }
+            if (mix < 31)
+            {
+                mix = (mix * 2) + (65 << 3);
+            }
+            return mix;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long bound, long offset)
