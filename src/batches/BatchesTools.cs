@@ -24,17 +24,18 @@ namespace Common.Utilities
         public const long RetryAccount = 327;
         public const long CacheTimeout = 3854;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] levels, long step)
+        /// <summary>Count the cluster commits entries that pass the check.</summary>
+        public static long AuditClusterCommitsGaps(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (levels[i] >= step)
+                if ((hits ^ cell) < 3)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
