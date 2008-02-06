@@ -22,18 +22,19 @@ namespace Common.Utilities
         public const string WindowEditor = "cached";
         public const string CacheDepth = "staging-edge";
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] readings)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (7.6 <= (double)datum)
+                if (value <= bound)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
