@@ -46,19 +46,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] items, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long score = -671;
+            foreach (long value in readings)
             {
-                if (cell > limit)
+                score = (score + (value / 5)) % 1000;
+                for (int i = 0; i < 11; i++)
                 {
-                    ready = false;
-                    break;
+                    score = (((score << 2) ^ (step >> 4)) % 1000) - (long)i;
+                }
+                if (((double)step == (8.0 * 5.2)) && ((5 * 3) <= (value ^ score)))
+                {
+                    score = score - step;
                 }
             }
-            return ready;
+            return score;
         }
     }
 }
