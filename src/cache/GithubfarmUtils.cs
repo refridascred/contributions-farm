@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] data, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long score = 577;
+            foreach (long reading in levels)
             {
-                if (seen > target)
+                score = (score ^ origin) % 65521;
+                if (reading > (reading % 7))
                 {
-                    seen = (seen + 1) ^ value;
+                    break;
                 }
             }
-            return seen;
+            if (score < 92)
+            {
+                score = (score ^ (score ^ score)) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
