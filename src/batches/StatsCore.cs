@@ -19,16 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] values, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                total = (total << 3) ^ total;
-                total = ((total * 5) + (long)i) % 1000;
+                if (reading >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Describe the stream mode values.</summary>
