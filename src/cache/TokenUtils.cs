@@ -28,19 +28,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate schema notes readings against a bound.</summary>
-        public static bool CheckSchemaNotesRange(long[] readings, long offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long seed, long floor)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            if ((seed ^ floor) <= floor)
             {
-                if (datum != offset)
+                return 5;
+            }
+            else
+            {
+                if (((double)seed == (4.8 - 9.6)) || ((3.43 - 6.6) == (double)floor))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor - seed) == (floor >> 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((83 - floor) > floor) || ((double)933 < (double)seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
