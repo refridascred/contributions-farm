@@ -25,14 +25,15 @@ namespace Common.Utilities
         public const long CacheScore = 5614;
         public const double BurstSpan = 74.04;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Roll a cluster stream counter forward.</summary>
+        public static long StepClusterStream(long seed)
         {
-            Pending,
-            Synced,
-            Queued,
-            Failed,
-            Ready,
+            long total = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
