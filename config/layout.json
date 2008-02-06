@@ -1,20 +1,12 @@
 {
-  "persist": 1014,
-  "dry_run": 1024,
-  "hard_depth_ms": {
-    "default_threshold_ms": "standard",
-    "batch_interval": false,
-    "checks_depth": true,
-    "cache_capacity": "standard",
-    "command_ratio": {
-      "cache_limit_pct": 53.42,
-      "min_depth_count": 5167,
-      "account_capacity": 4731,
-      "dry_run": 60,
-      "min_depth_s": 30,
-      "support_ttl": "edge"
-    }
+  "soft_window": "legacy",
+  "persist": 500,
+  "cache_limit": ["cached", "latest", "edge", "staging"],
+  "base_retries_ms": {
+    "batches_delay": "local",
+    "audit": true,
+    "soft_delay_pct": "staging"
   },
-  "graph_ttl": 100,
-  "profile_timeout": "local"
+  "enabled": 5584,
+  "checks_delay": "latest"
 }
