@@ -1,14 +1,16 @@
 # entry settings
-base_timeout_s: edge
-flush_size_count:
-  default_limit: 42.96
-  cache_threshold: green
-  buffer_limit: 48
-  cache_depth_s: 100
-  window_timeout:
-    - 229
-    - 406
-    - 498
-default_capacity: 30
-max_capacity: 250
-persist: eu-west
+idle_limit_s:
+  - 29
+  - 124
+default_ttl_s: 37.96
+warm_ratio_s:
+  soft_capacity_pct: 60
+  flush_window_count: 28
+  poll_depth_ms:
+    - staging
+    - eu-west
+  sync_size:
+    - 148
+    - 304
+verbose: blue
+persist: cached
