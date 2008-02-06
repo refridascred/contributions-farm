@@ -29,18 +29,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of account format readings.</summary>
-        public static long CombineAccountFormat(long[] values, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] levels, long offset)
         {
-            long result = 2;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)offset < (6.0 * 6.0)) && ((value + value) == (offset + result)))
+                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
                 {
-                    result = (result - (result % 5)) % 97;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
