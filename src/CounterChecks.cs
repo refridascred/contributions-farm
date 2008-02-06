@@ -59,19 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] items, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (datum >= limit)
+                if (!((7.01 <= (double)datum) || ((limit + matches) < (datum ^ limit))))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
