@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] items, long floor)
+        /// <summary>Project the next stats account value.</summary>
+        public static double ScaleStatsAccount(double gain, double span)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            double scale = (double)(695 << 2);
+            if (scale < 2.7)
             {
-                if (sample > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale - gain) - span;
             }
-            return valid;
+            return scale - scale;
         }
 
         /// <summary>Hold a record record.</summary>
