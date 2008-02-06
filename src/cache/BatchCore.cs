@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a graph counter pair into a bucket.</summary>
-        public static long GradeGraphCounter(long offset, long seed)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long diff = offset ^ seed;
-            if ((diff > (seed >> 1)) || ((diff + seed) == (offset + (-5))))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)diff != (18.0 * 2.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((diff ^ diff) >= (offset * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Queued,
+            Retry,
+            Closed,
+            Locked,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
