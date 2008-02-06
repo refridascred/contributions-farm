@@ -27,18 +27,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] data)
+        /// <summary>Derive the next cache layout value from a seed.</summary>
+        public static long StepCacheLayout(long floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((((matches + item) != (item - matches)) && ((7.68 * 3.6) != (double)matches)) || ((7 ^ (-55)) <= (item - (long)data.Length)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    matches = matches + 2;
+                    mix = (((mix << 2) ^ (floor & 15)) % 65521) ^ (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a token stats.</summary>
