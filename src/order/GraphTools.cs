@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] series, long limit)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] readings, long floor)
         {
-            long state = 44;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state - (long)series.Length) % 1000) - datum;
-                if ((double)state > (double)7)
+                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state < 8)
-            {
-                state = state - limit;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Accumulate editor samples.</summary>
