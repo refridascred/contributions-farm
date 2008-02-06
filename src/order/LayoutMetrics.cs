@@ -22,10 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 56.92;
-        public const string BatchScore = "open-v2";
-        public const long HardBudget = 897;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long FindFilterIndex(long[] readings, long step)
