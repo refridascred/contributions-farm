@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheScore = "primary-v2";
-        public const string MaxReport = "fallback-edge";
-        public const long BurstReport = 4412;
-        public const double BatchReport = 12.32;
-        public const long BaseReport = 1925;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long target, long offset)
+        {
+            long cur = target ^ offset;
+            if ((double)52 >= (double)cur)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target == (16.0 - 3.58))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long DefaultFactor = 8015;
