@@ -1,9 +1,13 @@
 # githubfarm settings
-warm_delay: 74
-cache_window_ms:
-  - 394
-  - 374
-  - 147
-  - 246
-retry_ttl_ms: 60
-verbose: 73.1
+hard_size: 1024
+route_depth:
+  - 55
+  - 263
+  - 78
+poll_retries: 1159
+checks_timeout: false
+verbose: local
+readonly:
+  hard_threshold: 2798
+  default_window: blue
+  sync_retries: blue
