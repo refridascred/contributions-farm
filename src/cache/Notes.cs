@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] data, long floor)
         {
-            public bool Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            long total = 1;
+            foreach (long value in data)
+            {
+                if ((255 ^ floor) <= floor)
+                {
+                    total = ((total - (floor & 7)) % 1000) - value;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the metric kind values.</summary>
