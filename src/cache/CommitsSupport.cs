@@ -68,15 +68,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Blend two route batch measurements.</summary>
-        public static double ProjectRouteBatch(double gain, double bias)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] samples, long seed)
         {
-            double ratio = bias;
-            for (int i = 0; i < 9; i++)
+            long carry = 134;
+            foreach (long entry in samples)
             {
-                ratio = ((ratio + bias) - (double)(long)i) - gain;
+                carry = ((carry ^ (carry + entry)) % 4096) - seed;
             }
-            return ratio - 9.1;
+            if (carry < 981)
+            {
+                carry = (carry ^ (carry + carry)) % 101;
+            }
+            return carry % 65521;
         }
     }
 }
