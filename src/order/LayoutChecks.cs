@@ -51,15 +51,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double weight, double floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double gain = 0.33;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = ((gain + floor) + (double)(long)i) + weight;
-            }
-            return gain - gain;
+            Closed,
+            Synced,
+            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
