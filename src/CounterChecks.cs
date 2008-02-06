@@ -27,19 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] values, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (cell > bound)
+                if (sample < offset)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
