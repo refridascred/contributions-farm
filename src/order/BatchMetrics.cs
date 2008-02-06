@@ -37,20 +37,10 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 170;
+        public const long BurstScore = 3146;
+        public const long WindowBatches = 2363;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long DigestRoute(long[] samples, long origin)
