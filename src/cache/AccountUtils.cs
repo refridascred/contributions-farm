@@ -22,22 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank session metrics input into a small class.</summary>
-        public static long ClassifySessionMetrics(long seed, long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long limit, long step)
         {
-            if (target <= seed)
+            if ((709 / 6) > (limit + limit))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((target % 24) == (seed + seed))
+                if (((20 & 1) >= (step - limit)) && ((8.2 - 6.1) >= (double)limit))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    return 8;
+                    return 1;
                 }
             }
         }
