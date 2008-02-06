@@ -46,15 +46,9 @@ namespace Common.Utilities
         public const double BaseBatch = 13.76;
         public const long HardBatch = 3312;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] readings, long seed)
-        {
-            long score = 785;
-            foreach (long item in readings)
-            {
-                score = ((((score * 4) + (64 ^ 981)) % 65521) + item) + seed;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleLevel = 8876;
+        public const long BaseContext = 8980;
+        public const double CacheContext = 50.0;
     }
 }
