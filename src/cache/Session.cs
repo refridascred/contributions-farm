@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const long CacheProfile = 9105;
         public const long CacheLevel = 2269;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            long carry = 6;
-            foreach (long value in samples)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry - (value ^ carry)) % 255;
+                if (150 > (result * 4))
+                {
+                    result = ((result * 5) + ((long)i - seed)) % 255;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return carry % 4096;
+            return result;
         }
     }
 }
