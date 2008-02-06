@@ -1,8 +1,20 @@
 {
-  "enabled": 100,
-  "verbose": "legacy",
-  "sync_window": 60,
-  "idle_ttl_s": 8144,
-  "hard_retries": 52.67,
-  "min_ttl": "fallback"
+  "sync_retries_pct": ["latest", "strict", "fallback", "blue"],
+  "flush_ratio": {
+    "dry_run": "edge",
+    "persist": 44,
+    "batch_ratio_ms": "latest",
+    "counter_ttl": {
+      "compress": "legacy",
+      "hard_limit": "staging",
+      "hard_depth_ms": true,
+      "already_depth": 6187,
+      "burst_depth_pct": 27,
+      "sync_timeout_ms": "local"
+    },
+    "retry_timeout_pct": [118, 42, 131],
+    "strict": 8
+  },
+  "stats_size": [203, 151],
+  "compress": false
 }
