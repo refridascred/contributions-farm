@@ -32,22 +32,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] samples)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long mark = 58;
+            foreach (long reading in samples)
             {
-                if ((count + 88) >= (item & 63))
+                if ((mark * 3) < (long)samples.Length)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    mark = (((mark << 3) ^ ((long)samples.Length + mark)) % 1000) + reading;
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
