@@ -1,10 +1,6 @@
-id,score,owner,active
-1,strict,994,4.72
-2,852,383,312
-3,strict,999,primary
-4,747,legacy,staging
-5,568,70.81,137
-6,eu-west,1,42.32
-7,69.76,42.1,27.42
-8,6.24,609,65.35
-9,staging,51.42,93.22
+id,rank,weight,owner
+1,eu-west,918,latest
+2,blue,latest,fallback
+3,625,527,367
+4,75.68,269,654
+5,337,291,fallback
