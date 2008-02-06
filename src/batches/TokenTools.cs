@@ -21,20 +21,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next batch route value from a seed.</summary>
-        public static long StepBatchRoute(long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] samples, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (!((13.0 - 8.7) != (double)(long)i))
+                if (!((step >> 1) > (tally << 1)))
                 {
-                    anchor = anchor - ((long)i >> 1);
+                    tally = (tally + 1) + reading;
                 }
-                anchor = (anchor ^ ((long)i << 1)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a notes entry.</summary>
