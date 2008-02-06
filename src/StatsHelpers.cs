@@ -22,23 +22,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double rate, double bias)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double load = (double)162 / 6.0;
-            if (load <= load)
-            {
-                load = load + (load + rate);
-            }
-            else
-            {
-                load = load - (bias - rate);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + rate) - (double)(long)i;
-            }
-            return load - (rate * 2.51);
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
