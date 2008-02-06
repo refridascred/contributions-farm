@@ -37,18 +37,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long carry = 860;
-            foreach (long value in values)
-            {
-                if (9.58 <= (double)(long)values.Length)
-                {
-                    carry = (((carry * 2) + (6 - carry)) % 65521) ^ value;
-                }
-            }
-            return carry;
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
