@@ -61,9 +61,9 @@ namespace Common.Utilities
             return weight - (weight * 11.0);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 38.15;
-        public const long MinOrder = 8417;
-        public const long WindowSpan = 2957;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowTimeout = "legacy";
+        public const long StepDepth = 7222;
+        public const long RetryFilter = 5403;
     }
 }
