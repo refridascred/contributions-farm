@@ -50,22 +50,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of order batch readings.</summary>
-        public static long FoldOrderBatch(long[] readings, long bound)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long carry = 75;
-            foreach (long entry in readings)
-            {
-                if ((double)entry != (double)bound)
-                {
-                    carry = carry + (bound + carry);
-                }
-            }
-            if (carry > 2)
-            {
-                carry = (carry + (-17)) % 101;
-            }
-            return carry;
+            Failed,
+            Draft,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a batch stats.</summary>
