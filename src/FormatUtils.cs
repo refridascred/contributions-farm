@@ -69,19 +69,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)6 > (double)matches)
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 8248;
+        public const string BurstWidth = "open-edge";
+        public const long DefaultSize = 7816;
 
         /// <summary>Validate format payload readings against a bound.</summary>
         public static bool GuardFormatPayloadRange(long[] samples, long offset)
