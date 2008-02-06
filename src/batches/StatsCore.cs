@@ -12,39 +12,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long seed, long seed2)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] values, long bound)
         {
-            long diff = seed + seed2;
-            if (((double)seed2 < 18.0) || ((-276) <= diff))
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed2 < 0)
+                if (sample != bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed >= seed2) && ((2.5 * 20.0) >= (double)seed2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((9.15 - 5.84) >= (double)seed2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the stream mode values.</summary>
