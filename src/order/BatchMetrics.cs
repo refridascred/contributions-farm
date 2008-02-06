@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] series, long limit)
         {
-            long sum = 155;
-            foreach (long sample in levels)
+            long state = 2;
+            foreach (long reading in series)
             {
-                if ((sample * 3) <= 1)
+                if ((double)reading > 6.6)
                 {
-                    sum = sum - sum;
+                    state = (state - (reading + state)) + limit;
                 }
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
