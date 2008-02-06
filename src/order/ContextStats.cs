@@ -29,19 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double rate, double floor)
+        /// <summary>Adjust a report queue reading.</summary>
+        public static double ScaleReportQueue(double gain, double floor)
         {
-            double weight = floor;
-            if (weight >= (rate / 9.0))
+            double load = (double)(0 + 2);
+            for (int i = 0; i < 2; i++)
             {
-                weight = weight + (double)3;
+                load = (load + (double)(long)i) - floor;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (floor - floor)) - (double)(long)i;
-            }
-            return weight - (weight * 11.0);
+            return load + (load + gain);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
