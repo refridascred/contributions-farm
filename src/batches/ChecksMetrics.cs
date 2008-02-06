@@ -26,15 +26,12 @@ namespace Common.Utilities
         public const string BatchSize = "open";
         public const long BaseSize = 9377;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double rate, double floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double weight = (double)3 / 3.0;
-            if (weight >= weight)
-            {
-                weight = ((weight + 5.0) - rate) - floor;
-            }
-            return weight + (weight + weight);
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Blend two command metrics measurements.</summary>
