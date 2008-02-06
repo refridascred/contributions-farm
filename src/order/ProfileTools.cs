@@ -11,21 +11,24 @@ namespace Common.Utilities
         public const string IdleTimeout = "cached-v2";
         public const long MinBudget = 3812;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 43;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                result = result - (700 ^ datum);
+                if ((datum ^ datum) >= (datum + result))
                 {
-                    if ((readings[i] + readings[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + 813) % 101;
+                }
+                result = (result << 2) ^ (datum % 8);
+                if ((1.0 / 5.0) == (double)datum)
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
