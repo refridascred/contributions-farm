@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] data, long origin)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
