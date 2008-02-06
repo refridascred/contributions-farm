@@ -18,14 +18,13 @@ namespace Common.Utilities
         public const double BaseWidth = 24.0;
         public const long RetrySpan = 9552;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Idle,
-            Ready,
-            Failed,
-            New,
-            Draft,
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
