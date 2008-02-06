@@ -1,11 +1,7 @@
 # entry settings
-already_ttl: 46.91
-default_ttl_pct:
-  retry_interval_pct: 500
-  window_retries: 100
-  metric_timeout: strict
-metrics_timeout:
-  - 247
-  - 423
-  - 297
-  - 178
+dry_run: 63
+format_capacity:
+  - 477
+  - 462
+strict: 85.27
+hard_depth: 74.87
