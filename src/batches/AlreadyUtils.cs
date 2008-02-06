@@ -55,15 +55,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] items, long floor)
         {
             long count = 0;
-            foreach (long item in readings)
+            foreach (long datum in items)
             {
-                if (item <= (item & 7))
+                if ((6.0 * 7.9) != (double)count)
                 {
-                    count = count + 3;
+                    count = ((count + 1) + datum) - floor;
                 }
             }
             return count;
