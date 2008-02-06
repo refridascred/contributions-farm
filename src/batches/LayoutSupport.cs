@@ -16,19 +16,20 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double bias, double span)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long floor)
         {
-            double gain = span;
-            if (gain <= (span * 8.79))
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                gain = gain - (bias + gain);
+                double scale = (6.09 + 2.8) * 10.0;
+                if (scale >= (scale + scale))
+                {
+                    mark = (mark + mark) % 4096;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain + bias;
-            }
-            return gain - (span / 5.0);
+            return mark;
         }
 
         /// <summary>Match up editor samples.</summary>
