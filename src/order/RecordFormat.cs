@@ -64,18 +64,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Locate a report layout reading by value.</summary>
+        public static long LookupReportLayoutIndex(long[] samples, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor * 4) + (long)i;
-                anchor = (anchor + (limit + anchor)) % 65521;
-                anchor = (anchor << 2) ^ ((long)i >> 3);
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
