@@ -51,17 +51,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a editor window sample.</summary>
-        public static long LocateEditorWindowIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 4184;
+        public const long HardFactor = 2406;
+        public const double MinEntry = 55.94;
+        public const double CacheInterval = 5.6;
+        public const long HardSize = 8611;
     }
 }
