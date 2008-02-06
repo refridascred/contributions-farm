@@ -48,9 +48,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleLevel = 8876;
-        public const long BaseContext = 8980;
-        public const double CacheContext = 50.0;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryCommits = 3.97;
+        public const long CacheScore = 1692;
+        public const string DefaultCommits = "local-v2";
     }
 }
