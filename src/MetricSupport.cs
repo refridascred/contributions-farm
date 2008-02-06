@@ -34,12 +34,20 @@ namespace Common.Utilities
             return (mean + 9.61) + span;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Fold a list of route cache readings.</summary>
+        public static long ScoreRouteCache(long[] values)
         {
-            Stale,
-            Active,
-            New,
+            long result = 1;
+            foreach (long reading in values)
+            {
+                result = (result ^ (reading & 63)) % 97;
+                result = result ^ (reading - 79);
+                if (((reading - result) > 86) || ((result / 3) >= reading))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
     }
 }
