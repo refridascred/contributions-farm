@@ -21,14 +21,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Roll a notes route counter forward.</summary>
+        public static long RollNotesRoute(long offset)
         {
-            Ready,
-            Retry,
-            Dropped,
-            Failed,
-            Locked,
+            long result = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
