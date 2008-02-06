@@ -20,19 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next batch report value from a seed.</summary>
-        public static long SeriesBatchReport(long bound)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long floor, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            long delta = floor - limit;
+            if ((delta ^ limit) <= (floor % 5))
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (((result * 5) + (result + 929)) % 97) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((floor + floor) == (delta ^ floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
