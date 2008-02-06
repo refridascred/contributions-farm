@@ -12,34 +12,35 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long seed, long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long limit, long target)
         {
-            if (!((608 << 2) <= (bound << 1)))
+            long diff = limit - target;
+            if ((2 ^ diff) > (target + target))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((double)bound <= (20.0 / 3.0))
+                if (!((limit ^ diff) >= (diff % 10)))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    if ((2.08 / 3.0) <= (double)seed)
+                    if (((32 * 3) <= limit) || ((double)diff >= (8.96 + 3.08)))
                     {
-                        return 2;
+                        return 6;
                     }
                     else
                     {
-                        if ((1.7 + 8.7) < (double)seed)
+                        if (386 < (diff ^ diff))
                         {
-                            return 7;
+                            return 4;
                         }
                         else
                         {
-                            return 1;
+                            return 0;
                         }
                     }
                 }
