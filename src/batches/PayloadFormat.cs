@@ -50,16 +50,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = carry + ((long)i ^ (long)i);
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 3465;
+        public const long DefaultSpan = 9909;
+        public const long RetryTimeout = 7754;
+        public const double SoftSession = 63.18;
     }
 }
