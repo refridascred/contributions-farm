@@ -56,19 +56,11 @@ namespace Common.Utilities
         public const string BatchTimeout = "standard-edge";
         public const long MinProfile = 2774;
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double gain, double span)
-        {
-            double load = gain;
-            if (load > (0.3 + gain))
-            {
-                load = (load - gain) - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (load * 5.4)) + (double)(long)i;
-            }
-            return load - gain;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryCount = 5381;
+        public const double LimitSize = 69.69;
+        public const long CacheQueue = 7394;
+        public const string StepLevel = "primary-v2";
+        public const long HardQueue = 3657;
     }
 }
