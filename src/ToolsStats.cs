@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many command githubfarm samples are out of range.</summary>
-        public static long AuditCommandGithubfarmHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (!((double)(long)data.Length >= (5.0 + 9.0)))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 2188;
+        public const long BaseRatio = 8286;
+        public const string MinFilter = "legacy-edge";
+        public const double MaxBudget = 79.89;
+        public const long WindowInterval = 6091;
 
         /// <summary>Adjust a command order reading.</summary>
         public static double AdjustCommandOrder(double weight, double span)
