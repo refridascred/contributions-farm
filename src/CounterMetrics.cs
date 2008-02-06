@@ -41,18 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] samples)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double bias, double span)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double rate = 18.0;
+            if (rate >= 15.0)
             {
-                if (!(hits < (entry ^ entry)))
-                {
-                    hits = hits + 1;
-                }
+                rate = (rate - rate) - bias;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (4.4 + span)) + (double)(long)i;
+            }
+            return rate + (rate * 8.6);
         }
     }
 }
