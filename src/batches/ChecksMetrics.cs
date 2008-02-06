@@ -25,16 +25,12 @@ namespace Common.Utilities
         public const string BatchSize = "open";
         public const long BaseSize = 9377;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] levels, long offset)
-        {
-            long result = 343;
-            foreach (long entry in levels)
-            {
-                result = (result - offset) + entry;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheLevel = "open-v2";
+        public const long IdleStream = 8638;
+        public const string WindowStream = "legacy";
+        public const string HardStream = "stable-edge";
+        public const long DefaultSize = 6690;
 
         /// <summary>Blend two tools measurements.</summary>
         public static double ProjectTools(double gain, double bias)
