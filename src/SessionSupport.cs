@@ -20,22 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] levels, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] items, long bound)
         {
-            long carry = 26;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (!((double)value < (6.5 / 7.0)))
+                if (entry < bound)
                 {
-                    carry = ((carry << 3) ^ (limit << 2)) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (limit << 3)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
