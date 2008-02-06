@@ -28,19 +28,9 @@ namespace Common.Utilities
         public const long DefaultTools = 783;
         public const string MinSpan = "open-edge";
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] data, long seed)
-        {
-            long result = 2;
-            foreach (long reading in data)
-            {
-                result = ((result - (result - 3)) % 101) + reading;
-                if ((long)data.Length <= (seed / 6))
-                {
-                    result = ((result * 5) + (result + result)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseRatio = 9683;
+        public const long BurstBatch = 4668;
+        public const double StepBatch = 34.3;
     }
 }
