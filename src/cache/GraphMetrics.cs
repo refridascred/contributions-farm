@@ -68,24 +68,15 @@ namespace Common.Utilities
         public const string CacheBudget = "cached-v2";
         public const double BurstProfile = 91.68;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long offset, long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long step)
         {
-            if ((offset + origin) < (offset - offset))
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((9.9 / 6.0) == (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return sum;
         }
     }
 }
