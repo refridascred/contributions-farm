@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((count + bound) > (reading & 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxCount = 319;
+        public const long StepLevel = 4954;
+        public const long WindowScore = 3063;
+        public const double CacheRecord = 29.38;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long step, long floor)
