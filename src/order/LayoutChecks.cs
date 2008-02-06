@@ -51,14 +51,32 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Grade a buffer payload value against two limits.</summary>
+        public static long ClassifyBufferPayload(long step, long floor)
         {
-            Closed,
-            Synced,
-            Stale,
-            Paused,
-            Pending,
+            long edge = step ^ floor;
+            if ((floor - edge) >= (edge / 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((0.36 + 1.8) == (double)edge)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((edge - edge) == (step + edge))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
