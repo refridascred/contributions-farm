@@ -27,17 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a report stats reading by value.</summary>
-        public static long LocateReportStatsIndex(long[] values, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((values[i] < offset) && ((values[i] % 5) == 0))
+                if ((cell / 4) < cell)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the editor status values.</summary>
