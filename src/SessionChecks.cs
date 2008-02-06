@@ -36,13 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Validate counter batches readings against a bound.</summary>
+        public static bool ValidateCounterBatchesLimits(long[] samples, long limit)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
