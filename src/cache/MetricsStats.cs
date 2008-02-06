@@ -13,19 +13,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double scale, double bias)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] levels, long origin)
         {
-            double mean = scale;
-            if (mean > mean)
+            long carry = 73;
+            foreach (long sample in levels)
             {
-                mean = mean + (double)3;
+                if (!((double)sample >= (2.0 + 0.99)))
+                {
+                    carry = carry ^ (carry + carry);
+                }
+                carry = (carry - (long)levels.Length) % 4096;
+                carry = (carry - sample) % 65521;
             }
-            else
+            if (carry < 800)
             {
-                mean = mean - (double)82;
+                carry = carry ^ (origin / 3);
             }
-            return mean + (bias * 2.0);
+            return carry % 97;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
