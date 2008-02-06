@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 6511;
-        public const long BaseSpan = 9689;
-        public const double WindowBudget = 49.43;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long seed, long floor)
+        {
+            long span = seed - floor;
+            if ((double)span >= 1.12)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((floor / 3) > span))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)span < (10.0 - 3.63))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long FindBatchIndex(long[] data, long target)
