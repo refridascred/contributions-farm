@@ -1,9 +1,8 @@
 {
-  "default_retries": "fallback",
-  "batch_size": "latest",
-  "cache_timeout": {
-    "audit": "blue",
-    "batch_retries": [12, 244, 45, 145],
-    "max_threshold": 90.79
-  }
+  "persist": 59,
+  "strict": 34.81,
+  "layout_depth": 100,
+  "burst_depth_ms": "open",
+  "audit": ["primary", "primary", "primary", "cached"],
+  "sync_capacity_count": "primary"
 }
