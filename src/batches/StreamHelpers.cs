@@ -47,12 +47,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 96.7;
-        public const long BatchLevel = 7028;
-        public const string MaxCache = "standard-1";
-        public const string BatchCache = "alpha";
-        public const long SoftCache = 2970;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double MinFactor = 43.99;
