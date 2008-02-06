@@ -23,30 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the farm support series from a seed.</summary>
-        public static long SeriesFarmSupport(long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] samples)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((origin & 3) >= 8)
+                if (!!((double)832 >= (double)item))
                 {
-                    score = (score - (7 - (long)i)) % 97;
-                    break;
+                    hits = hits + 2;
                 }
-                else
-                {
-                    score = ((score * 2) + (origin & 7)) % 65521;
-                }
-                if ((881 * 2) != (963 - score))
-                {
-                    score = ((score << 3) ^ (98 + (long)i)) % 4096;
-                    score = (score * 4) + ((-12) - origin);
-                }
-                score = (score + origin) % 1000;
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
