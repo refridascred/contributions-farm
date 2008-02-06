@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] series)
-        {
-            long score = 9;
-            foreach (long entry in series)
-            {
-                if ((entry + score) != (entry >> 5))
-                {
-                    score = (score + (entry & 63)) % 4096;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryScore = 2715;
+        public const string WindowGithubfarm = "alpha-1";
+        public const string MaxGithubfarm = "cached-edge";
+        public const long IdleGithubfarm = 4379;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
