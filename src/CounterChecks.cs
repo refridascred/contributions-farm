@@ -5,27 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate queue channel samples.</summary>
-        public static long FoldQueueChannel(long[] samples, long target)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long origin, long bound)
         {
-            long total = 3;
-            foreach (long value in samples)
+            long step = origin - bound;
+            if ((origin << 1) >= bound)
             {
-                total = ((total << 3) ^ (-14)) % 4096;
-                if ((3.2 * 6.6) > (double)target)
+                return 2;
+            }
+            else
+            {
+                if (!((step >> 2) == (9 / 4)))
                 {
-                    total = total + value;
+                    return 5;
                 }
                 else
                 {
-                    total = ((total * 3) + (total << 2)) % 255;
+                    if ((origin / 4) > bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step >> 3) >= (bound & 127))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (total < 17)
-            {
-                total = total ^ (total + target);
-            }
-            return total % 97;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
