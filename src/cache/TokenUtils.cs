@@ -16,24 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long offset, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] data, long origin)
         {
-            if ((7.0 - 3.76) < (double)seed)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset >= 0.33)
+                if ((double)origin != (9.21 / 5.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    hits = (hits + 1) + cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine already values into a single score.</summary>
