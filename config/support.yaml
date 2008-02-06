@@ -1,12 +1,4 @@
 # support settings
-max_window: 22
-base_limit: local
-entry_threshold: 95
-retry_retries:
-  default_retries: 1695
-  record_retries: latest
-  command_ratio: primary
-  soft_ratio_pct: 29.49
-  retry_size: 43
-  flush_timeout: edge
-idle_threshold_count: 100
+compress: green
+batch_ratio_s: false
+max_depth: false
