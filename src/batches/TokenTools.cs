@@ -32,18 +32,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] values, long target)
         {
-            long mark = 58;
-            foreach (long reading in samples)
+            long carry = 88;
+            foreach (long reading in values)
             {
-                if ((mark * 3) < (long)samples.Length)
-                {
-                    mark = (((mark << 3) ^ ((long)samples.Length + mark)) % 1000) + reading;
-                }
+                carry = (carry ^ (target & 15)) - reading;
             }
-            return mark;
+            return carry % 1000;
         }
     }
 }
