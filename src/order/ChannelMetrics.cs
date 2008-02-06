@@ -23,12 +23,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long limit, long limit2)
         {
-            public bool Token { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            if ((double)limit <= (4.0 * 0.9))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit & 255) < limit) || ((limit2 / 4) <= limit2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((limit - limit) == (limit >> 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit2 <= (limit2 + limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
