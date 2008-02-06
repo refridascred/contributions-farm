@@ -29,15 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a report queue reading.</summary>
-        public static double ScaleReportQueue(double gain, double floor)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double scale, double bias)
         {
-            double load = (double)(0 + 2);
-            for (int i = 0; i < 2; i++)
+            double ratio = (double)(87 ^ 3);
+            if (ratio <= scale)
             {
-                load = (load + (double)(long)i) - floor;
+                ratio = ratio + (bias / 5.0);
             }
-            return load + (load + gain);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (bias - 17.0)) + (double)(long)i;
+            }
+            return ratio - (7.38 / 9.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
