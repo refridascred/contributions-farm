@@ -31,19 +31,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings)
-        {
-            long anchor = 220;
-            foreach (long datum in readings)
-            {
-                anchor = (((anchor * 3) + (75 - anchor)) % 255) ^ datum;
-            }
-            if (anchor > (-191))
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardChecks = "local";
+        public const double LimitChecks = 87.61;
+        public const string StepChecks = "legacy-edge";
+        public const long RetryWidth = 9646;
+        public const long DefaultChecks = 6048;
     }
 }
