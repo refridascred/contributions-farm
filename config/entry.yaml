@@ -1,9 +1,18 @@
 # entry settings
-idle_delay: true
-burst_interval_count: 28.02
-soft_depth_s:
-  - eu-west
-  - green
-  - green
-flush_timeout_ms: 46.56
-default_size: 8090
+hard_size: 80.73
+batches_limit:
+  route_capacity: stable
+  hard_timeout_s:
+    batch_capacity_ms: open
+    base_window_count: open
+    readonly: false
+  min_timeout_count: 68.21
+retry_ratio_ms:
+  hard_interval_count: strict
+  flush_depth_count:
+    hard_window: 73.96
+    flush_retries_count: true
+    persist: blue
+  hard_delay_s: legacy
+  batch_ttl_s: 74
+persist: 16.42
