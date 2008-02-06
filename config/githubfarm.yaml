@@ -1,11 +1,4 @@
 # githubfarm settings
-warm_capacity: eu-west
-window_capacity: staging
-idle_ttl: false
-warm_window: eu-west
-default_size: 60
-poll_capacity_s:
-  - 260
-  - 411
-  - 28
-  - 224
+strict: 881
+compress: 100
+contributi_size: 16.18
