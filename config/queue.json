@@ -1,18 +1,8 @@
 {
-  "max_limit_ms": true,
-  "commits_delay": "cached",
-  "retry_window_pct": 100,
-  "sync_timeout": {
-    "tools_window": 61,
-    "sync_ratio": "green",
-    "retry_delay_count": [250, 201, 311],
-    "audit": {
-      "idle_threshold_count": 15.18,
-      "flush_ratio": "eu-west",
-      "layout_timeout": true,
-      "order_capacity": "cached",
-      "compress": 72
-    },
-    "default_retries_s": 16.21
-  }
+  "default_ttl": "green",
+  "payload_depth": true,
+  "max_limit": false,
+  "persist": "staging",
+  "cache_capacity_pct": "eu-west",
+  "record_size": false
 }
