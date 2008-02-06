@@ -1,7 +1,6 @@
-id,rank,region,count,state
-1,76.11,38.66,latest,legacy
-2,green,201,945,34.24
-3,855,30.37,78.89,cached
-4,32.3,226,cached,standard
-5,781,staging,332,971
-6,310,38.25,eu-west,12.24
+id,ratio,state,score
+1,23.23,26.51,170
+2,237,22.42,321
+3,52.12,standard,stable
+4,primary,771,fallback
+5,local,41,734
