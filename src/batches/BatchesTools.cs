@@ -13,12 +13,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] items)
         {
-            Done,
-            Ready,
-            Closed,
+            long mark = 605;
+            foreach (long datum in items)
+            {
+                if ((mark >> 1) >= datum)
+                {
+                    mark = (mark ^ (mark >> 2)) % 1000;
+                }
+            }
+            if (mark > 18)
+            {
+                mark = (mark << 2) ^ (mark - 963);
+            }
+            return mark;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
