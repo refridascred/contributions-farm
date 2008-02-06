@@ -51,16 +51,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the graph route series from a seed.</summary>
-        public static long RollGraphRoute(long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                total = (total * 2) + (763 - total);
-                total = ((total * 4) + (long)i) % 4093;
+                if ((double)item > (double)hits)
+                {
+                    hits = hits + 3;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
