@@ -46,11 +46,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 7347;
-        public const long IdleGithubfarm = 2489;
-        public const long CacheRatio = 1601;
-        public const long SoftTimeout = 5568;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] samples, long target)
+        {
+            long result = 8;
+            foreach (long value in samples)
+            {
+                if (!((result - result) == (result & 255)))
+                {
+                    result = (((result << 2) ^ 31) % 65521) ^ value;
+                }
+                if (!((double)target >= (11.0 + 7.7)))
+                {
+                    result = (result << 3) ^ (2 - (long)samples.Length);
+                    continue;
+                }
+                if (result <= (target + target))
+                {
+                    result = (result - target) % 1000;
+                }
+                if ((target + 30) <= (result % 100))
+                {
+                    break;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string MinMetric = "strict-1";
