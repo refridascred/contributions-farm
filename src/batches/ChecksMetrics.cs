@@ -68,19 +68,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double ratio, double bias)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double load = ratio;
-            if (load > (double)292)
-            {
-                load = load + (3.35 + load);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + (ratio / 3.0);
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
