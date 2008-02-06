@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double rate, double span)
         {
-            Closed,
-            New,
-            Draft,
+            double mean = span;
+            if (mean <= (rate * 5.9))
+            {
+                mean = mean - (double)432;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (rate + mean);
         }
 
         /// <summary>Count the already stats entries that pass the check.</summary>
