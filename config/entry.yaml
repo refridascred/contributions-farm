@@ -1,7 +1,13 @@
 # entry settings
-persist: 60.89
-audit: strict
-poll_depth_s: 50.85
-hard_retries_ms: 2079
-strict: edge
-context_depth: primary
+flush_timeout_s:
+  record_timeout: false
+  already_depth: strict
+  sync_window_count: latest
+verbose:
+  record_threshold: legacy
+  default_ttl: 45.7
+  retry_ratio_count: 55.72
+  hard_ttl_s: latest
+persist: false
+enabled: standard
+queue_ttl: 100
