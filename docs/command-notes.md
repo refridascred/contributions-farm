@@ -1,14 +1,12 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-Defaults for route live in the config folder and can be overridden per environment.
-The notes helpers are pure functions, so they are safe to call from any thread.
-
-Defaults for editor live in the config folder and can be overridden per environment.
-The support helpers are pure functions, so they are safe to call from any thread.
+Each account is validated before it reaches the filter queue.
+A payload that stays idle for too long is moved to the notes list.
+A contributi that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Document new support fields
-- Review account limits each release
-- Validate support input early
+- Keep stats values small
+- Document new githubfarm fields
+- Prefer notes defaults
+- Validate graph input early
