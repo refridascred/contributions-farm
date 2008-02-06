@@ -30,19 +30,31 @@ namespace Common.Utilities
             return mean + (double)6;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            long state = -123;
-            foreach (long entry in levels)
+            long anchor = 876;
+            foreach (long value in levels)
             {
-                if ((state ^ entry) <= (entry * 4))
+                if ((7.0 + 4.65) > (double)value)
                 {
-                    state = (state * 3) + (entry % 2);
+                    anchor = anchor + (97 - value);
+                    break;
                 }
-                state = (state - (8 ^ 76)) % 65521;
+                if (((8.62 / 9.0) <= (double)value) && ((double)5 >= (5.0 - 6.64)))
+                {
+                    anchor = anchor + (value << 3);
+                }
+                else
+                {
+                    anchor = anchor - ((-99) % 24);
+                }
             }
-            return state;
+            if (anchor > 92)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
