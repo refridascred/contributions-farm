@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long target, long offset)
-        {
-            long step = target + offset;
-            if (((target << 1) < target) && ((double)target != (19.0 + 6.6)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset - step) < 7)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.0 / 6.0) <= (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardBudget = 7848;
+        public const long BatchToken = 3008;
+        public const long BatchInterval = 4007;
+        public const double IdleLevel = 70.01;
+        public const long MinDepth = 6028;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long GradeContext(long floor, long origin)
