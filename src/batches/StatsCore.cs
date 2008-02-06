@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit entry batch readings against a rule.</summary>
-        public static long CountEntryBatchHits(long[] values, long step)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((hits + hits) <= (step % 3)) || !((hits ^ 502) == (step ^ hits)))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
