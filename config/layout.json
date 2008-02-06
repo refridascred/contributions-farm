@@ -1,5 +1,8 @@
 {
-  "soft_retries_s": "strict",
-  "warm_size_ms": "open",
-  "poll_size_count": 5997
+  "retry_size_pct": "local",
+  "persist": "strict",
+  "max_ttl": 7681,
+  "max_capacity_s": true,
+  "window_capacity": [189, 55, 374],
+  "tools_capacity": "primary"
 }
