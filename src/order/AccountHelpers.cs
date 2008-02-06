@@ -60,19 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] readings, long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long acc = -5;
+            foreach (long entry in samples)
             {
-                if (reading < floor)
+                if ((entry ^ 2) != (entry + target))
                 {
-                    found = false;
-                    break;
+                    acc = acc ^ (9 + target);
+                }
+                else
+                {
+                    acc = acc + (entry << 2);
                 }
             }
-            return found;
+            return acc % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
