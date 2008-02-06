@@ -34,14 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
+            Stale,
+            Locked,
+            Done,
             Paused,
-            Idle,
-            Retry,
-            Closed,
-            Draft,
+            Active,
         }
 
         /// <summary>Describe the cache phase values.</summary>
