@@ -47,22 +47,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepScore = 8538;
+        public const double BurstBatch = 81.7;
+        public const long LimitFactor = 5464;
+        public const long IdleInterval = 3955;
+        public const long MinRatio = 1492;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MinReport = 80.47;
