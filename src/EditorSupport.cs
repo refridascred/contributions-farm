@@ -43,11 +43,19 @@ namespace Common.Utilities
             return ratio - (ratio + weight);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseBudget = 6562;
-        public const double HardBudget = 14.22;
-        public const long StepCount = 5358;
-        public const double RetryToken = 54.72;
+        /// <summary>Count the queue tools entries that pass the check.</summary>
+        public static long CountQueueToolsOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((62 >> 4) > (seen << 3))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LocateContributiIndex(long[] series, long seed)
