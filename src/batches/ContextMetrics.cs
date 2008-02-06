@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long step, long step2)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long span = step + step2;
-            if ((double)span <= 14.0)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)span > (double)449)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public bool Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the entry kind values.</summary>
