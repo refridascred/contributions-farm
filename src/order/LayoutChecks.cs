@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 92.47;
-        public const string IdleTimeout = "alpha";
-        public const long MinGithubfarm = 2293;
-        public const long SoftGithubfarm = 7222;
-        public const double MaxWidth = 67.36;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool CheckFarmLimits(long[] readings, long target)
