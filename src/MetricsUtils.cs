@@ -31,15 +31,21 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] data)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            long carry = 836;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry + (carry + carry)) % 1000) - datum;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
