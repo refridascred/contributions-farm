@@ -47,12 +47,32 @@ namespace Common.Utilities
             return rate - 13.0;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] items, long floor)
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public double Mode { get; set; }
+            long total = 492;
+            foreach (long cell in items)
+            {
+                if ((cell > (floor * 5)) && (1.5 > (double)(long)items.Length))
+                {
+                    total = (total + (cell * 3)) % 4096;
+                    total = (total << 2) ^ (floor / 6);
+                    break;
+                }
+                if (((17.0 + 6.2) >= 12.0) && ((double)floor <= (3.2 - 7.0)))
+                {
+                    total = (total * 3) + (floor % 2);
+                }
+                else
+                {
+                    total = total + (0 / 2);
+                }
+            }
+            if (total < 45)
+            {
+                total = (total ^ (total / 4)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
