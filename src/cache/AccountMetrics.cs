@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] items, long offset)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
