@@ -31,17 +31,15 @@ namespace Common.Utilities
             return rate + (double)2;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] readings, long seed)
+        /// <summary>Project the next metric checks value.</summary>
+        public static double AdjustMetricChecks(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
+                gain = (gain + (offset - offset)) - (double)(long)i;
             }
-            return -1;
+            return gain + gain;
         }
 
         /// <summary>Accumulate checks samples.</summary>
