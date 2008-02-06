@@ -1,16 +1,15 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-Run the buffer check before changing any command limits.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Run the payload check before changing any order limits.
+Run the window check before changing any account limits.
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-Use checks settings to tune how often buffer data is refreshed.
-When a route fails, the contributi handler retries a few times before giving up.
+When a record fails, the layout handler retries a few times before giving up.
+Each stream is validated before it reaches the metrics queue.
+The contributi module keeps account values in sync with the metrics cache.
 
 ## Guidelines
 
-- Document new counter fields
-- Review batches limits each release
-- Keep stream values small
-- Log every payload change
+- Keep profile values small
+- Prefer githubfarm defaults
+- Log every tools change
+- Document new notes fields
