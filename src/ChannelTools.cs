@@ -13,20 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] samples, long target)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 7095;
+        public const long BaseRoute = 1115;
+        public const long MinRatio = 5372;
+        public const double HardRatio = 89.68;
+        public const string MaxRoute = "legacy-1";
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorOutliers(long[] readings)
