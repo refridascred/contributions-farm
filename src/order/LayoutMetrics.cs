@@ -39,17 +39,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] readings, long step)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long seed, long seed2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed2 - seed2) > (seed + 3))
             {
-                if (readings[i] == step)
+                return 7;
+            }
+            else
+            {
+                if (seed2 <= (seed2 + 53))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
