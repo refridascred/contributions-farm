@@ -63,12 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] series)
         {
-            Pending,
-            Locked,
-            Ready,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
