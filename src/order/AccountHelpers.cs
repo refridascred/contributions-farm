@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (cell > target)
+                if (value >= origin)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Describe the record kind values.</summary>
