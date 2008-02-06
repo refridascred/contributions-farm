@@ -37,15 +37,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long step)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                state = state ^ state;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = (((state * 3) + (state / 8)) % 1000) ^ (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
     }
 }
