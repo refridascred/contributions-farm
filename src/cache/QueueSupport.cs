@@ -44,21 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((values[i] == seed) && ((values[i] % 5) != 0))
                 {
-                    if ((data[i] + data[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
