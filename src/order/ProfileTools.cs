@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] values, long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (values[i] == seed)
+                if (cell <= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Accumulate format samples.</summary>
