@@ -19,12 +19,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 9281;
-        public const double HardWidth = 14.8;
-        public const string BaseRecord = "stable-v2";
-        public const string MaxRatio = "cached";
-        public const double BurstTimeout = 11.14;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((origin - result) > result)
+                {
+                    result = ((result << 3) ^ (origin + (long)i)) % 101;
+                    result = ((result << 2) ^ result) % 4096;
+                }
+                if ((origin & 63) < result)
+                {
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TallySchema(long[] items, long limit)
