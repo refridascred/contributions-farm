@@ -20,18 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] samples, long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long limit, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            if (9.5 > (double)origin)
             {
-                if (((origin * 5) < 744) || ((count << 3) < count))
+                return 6;
+            }
+            else
+            {
+                if ((49 + 846) > (limit & 15))
                 {
-                    count = (count + 3) + value;
+                    return 7;
+                }
+                else
+                {
+                    if (2 < (origin * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
