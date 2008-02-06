@@ -1,18 +1,8 @@
 # entry settings
-entry_threshold: 8714
-retry_ratio_ms: 67.57
-readonly:
-  dry_run: eu-west
-  base_capacity_count: green
-  metrics_delay:
-    sync_retries_ms:
-      - staging
-      - edge
-      - open
-    cache_limit: green
-    burst_timeout: 52
-    route_interval: true
-    idle_timeout: true
-  metric_delay: false
-flush_capacity: fallback
-cache_delay_s: 96.46
+filter_retries:
+  - 397
+  - 12
+  - 337
+poll_delay: 2
+context_threshold: 89
+commits_retries: 76.38
