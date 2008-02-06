@@ -49,16 +49,12 @@ namespace Common.Utilities
         public const string RetrySize = "staging-v2";
         public const long StepStream = 9798;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] values)
-        {
-            long mix = 34;
-            foreach (long sample in values)
-            {
-                mix = mix ^ (sample + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 80.47;
+        public const double BaseReport = 6.2;
+        public const double LimitBudget = 58.59;
+        public const string RetryReport = "local";
+        public const long BurstReport = 1881;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long WeighStats(long[] data)
