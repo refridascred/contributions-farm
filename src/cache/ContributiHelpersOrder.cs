@@ -18,10 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseSize = 7120;
-        public const string IdleCount = "open-1";
-        public const long IdleCommand = 1523;
+        /// <summary>Look up the position of a githubfarm record sample.</summary>
+        public static long SeekGithubfarmRecordIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a format reading.</summary>
         public static double SmoothFormat(double weight, double span)
