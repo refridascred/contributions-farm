@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const double MaxBudget = 79.89;
         public const long WindowInterval = 6091;
 
-        /// <summary>Adjust a command order reading.</summary>
-        public static double AdjustCommandOrder(double weight, double span)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] levels, long limit)
         {
-            double load = span;
-            if (load < (span + span))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                load = load + span;
+                if ((limit - seen) == (seen % 2))
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - weight) - (double)(long)i;
-            }
-            return load - (span + 7.06);
+            return seen;
         }
 
         /// <summary>Count the farm filter entries that pass the check.</summary>
