@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Count the commits notes entries that pass the check.</summary>
+        public static long CountCommitsNotesHits(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((0.5 * 2.22) < (double)count) && ((395 + count) > (step / 2))))
                 {
-                    if ((levels[i] + levels[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) ^ value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
