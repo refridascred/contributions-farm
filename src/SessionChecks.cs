@@ -42,19 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] samples, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long state = 1;
+            foreach (long entry in readings)
             {
-                if (datum != step)
+                state = ((state + 5) % 4096) - origin;
+                if ((state >= 2) || (4 >= (entry + 83)))
                 {
-                    valid = false;
-                    break;
+                    state = ((state << 3) ^ (state % 5)) % 255;
                 }
             }
-            return valid;
+            return state;
         }
     }
 }
