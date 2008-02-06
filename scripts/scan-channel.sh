@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west local edge blue; do
+CHANNEL_LIMIT=288
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in fallback legacy cached edge; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
