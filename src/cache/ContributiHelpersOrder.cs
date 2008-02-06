@@ -24,11 +24,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultSpan = 6277;
-        public const string LimitWidth = "primary-edge";
-        public const double LimitFactor = 34.73;
-        public const string MaxBudget = "staging-v2";
-        public const long RetryWindow = 5680;
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double gain, double bias)
+        {
+            double load = bias;
+            if (load >= load)
+            {
+                load = (load - (1.51 / 6.0)) + gain;
+            }
+            return load + load;
+        }
     }
 }
