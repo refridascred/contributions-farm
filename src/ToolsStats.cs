@@ -34,11 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] data, long target)
         {
-            public double Total { get; set; }
-            public double Token { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
