@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] values, long seed)
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate format samples.</summary>
