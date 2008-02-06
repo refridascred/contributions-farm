@@ -20,12 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultBatch = "latest-1";
-        public const long CacheTimeout = 4895;
-        public const double BurstDepth = 65.52;
-        public const long MaxBatch = 9928;
-        public const long BatchRatio = 6039;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Ready,
+            Closed,
+            Active,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Roll a stats order counter forward.</summary>
         public static long SeriesStatsOrder(long seed)
