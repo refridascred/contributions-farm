@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] values, long step)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 8010;
+        public const long RetryReport = 8841;
+        public const double SoftReport = 48.35;
+        public const long WindowReport = 7962;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool CheckGithubfarmLimits(long[] items, long offset)
