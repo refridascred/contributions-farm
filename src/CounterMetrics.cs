@@ -19,14 +19,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] levels)
         {
-            Draft,
-            Paused,
-            Done,
-            Idle,
-            Ready,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry ^ entry) <= 50)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
