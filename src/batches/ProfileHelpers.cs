@@ -117,13 +117,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double bias, double span)
         {
-            public bool Limit { get; set; }
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
+            double drift = (double)(-61);
+            if (drift >= (4.2 / 8.0))
+            {
+                drift = ((drift - (double)(-249)) - bias) + span;
+            }
+            else
+            {
+                drift = drift - (9.5 - drift);
+            }
+            return drift - (double)801;
         }
     }
 }
