@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] data, long target)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long anchor = 206;
-            foreach (long cell in data)
-            {
-                if ((cell << 2) > (-47))
-                {
-                    anchor = anchor ^ (target + cell);
-                }
-                else
-                {
-                    anchor = anchor - (anchor >> 1);
-                }
-            }
-            return anchor;
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm record sample.</summary>
