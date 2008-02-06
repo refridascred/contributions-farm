@@ -59,21 +59,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count githubfarm layout pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmLayoutCount(long[] values)
+        /// <summary>Digest a series of metric commits entries.</summary>
+        public static long TallyMetricCommits(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 424;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seed - sample) > seed)
                 {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor - ((-82) << 2);
+                }
+                if (1 < anchor)
+                {
+                    anchor = ((anchor << 3) ^ (seed + 84)) % 255;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
