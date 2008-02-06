@@ -43,19 +43,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry window readings against a bound.</summary>
-        public static bool ValidateEntryWindowLimits(long[] items, long step)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
