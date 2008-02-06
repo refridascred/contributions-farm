@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const long MaxWidth = 8846;
         public const string BaseInterval = "latest-v2";
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] series, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((double)entry < (double)seed)
+                if ((count - count) >= (count & 255))
                 {
-                    matches = matches + 2;
+                    count = (count + 2) - datum;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
