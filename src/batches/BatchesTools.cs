@@ -22,11 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 82.86;
-        public const long MinScore = 8258;
-        public const long CacheScore = 5614;
-        public const double BurstSpan = 74.04;
+        /// <summary>Classify a stream profile pair into a bucket.</summary>
+        public static long RankStreamProfile(long floor, long seed)
+        {
+            if (!((seed & 7) == (seed * 3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((floor + seed) > floor) || ((18.0 * 20.0) <= (double)floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Locate a session batch reading by value.</summary>
         public static long FindSessionBatchIndex(long[] items, long seed)
