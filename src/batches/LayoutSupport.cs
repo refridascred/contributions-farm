@@ -40,15 +40,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate report commits samples.</summary>
-        public static long FoldReportCommits(long[] levels)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] samples)
         {
-            long acc = 46;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc ^ (reading << 1)) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
