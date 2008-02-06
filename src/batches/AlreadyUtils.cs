@@ -44,18 +44,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] items, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = 44;
+            foreach (long value in items)
             {
-                if ((6.0 * 7.9) != (double)count)
+                if (((limit << 2) < 3) || (result >= (value >> 4)))
                 {
-                    count = ((count + 1) + datum) - floor;
+                    result = (result ^ (long)items.Length) % 1000;
                 }
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
