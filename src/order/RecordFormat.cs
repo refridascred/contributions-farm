@@ -35,13 +35,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Rank checks report input into a small class.</summary>
+        public static long ClassifyChecksReport(long seed, long seed2)
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long diff = seed ^ seed2;
+            if (diff >= (diff / 6))
+            {
+                return 1;
+            }
+            else
+            {
+                if (diff < (0 * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(((-56) / 8) < (seed2 >> 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed < (4.5 * 9.54))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema info.</summary>
