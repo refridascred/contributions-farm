@@ -1,7 +1,9 @@
-id,score,owner
-1,blue,strict
-2,695,open
-3,75.44,248
-4,77.17,66.17
-5,primary,67.63
-6,0,4.54
+id,level,owner
+1,stable,828
+2,cached,22.05
+3,224,primary
+4,34.07,blue
+5,20.07,standard
+6,0.83,16.84
+7,25.05,48.82
+8,latest,63.21
