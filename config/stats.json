@@ -1,6 +1,17 @@
 {
-  "already_capacity": 6.52,
-  "burst_retries_ms": false,
-  "idle_timeout": 60,
-  "soft_ratio_pct": "cached"
+  "audit": {
+    "verbose": {
+      "stream_interval": 32.19,
+      "cache_retries_pct": 82,
+      "soft_depth_ms": 81,
+      "default_timeout": "staging",
+      "soft_ratio_pct": 11.47
+    },
+    "enabled": true,
+    "base_size_pct": 70
+  },
+  "poll_timeout_ms": "standard",
+  "soft_window_s": true,
+  "poll_ratio_s": 84,
+  "dry_run": false
 }
