@@ -85,9 +85,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWidth = 1271;
-        public const double DefaultInterval = 10.88;
-        public const long DefaultScore = 1239;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Closed,
+            New,
+            Done,
+            Failed,
+        }
     }
 }
