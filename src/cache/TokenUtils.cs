@@ -42,38 +42,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long seed, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] samples, long limit)
         {
-            if ((seed ^ floor) <= floor)
+            long total = 5;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)seed == (4.8 - 9.6)) || ((3.43 - 6.6) == (double)floor))
+                if (reading > limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor - seed) == (floor >> 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((83 - floor) > floor) || ((double)933 < (double)seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    total = ((total * 3) + (long)samples.Length) % 255;
                 }
             }
+            return total;
         }
     }
 }
