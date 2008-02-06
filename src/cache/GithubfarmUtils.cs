@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Check that every queue batch entry stays within the limit.</summary>
+        public static bool VerifyQueueBatchRange(long[] samples, long origin)
         {
-            long result = 60;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (!((double)result >= (0.6 - 3.24)))
+                if (reading != origin)
                 {
-                    result = (result ^ result) % 97;
-                }
-                if ((long)data.Length > (result + 935))
-                {
-                    result = (result - (90 + result)) % 65521;
-                }
-                else
-                {
-                    result = result - (sample - result);
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
