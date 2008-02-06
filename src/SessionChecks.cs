@@ -32,18 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] series)
+        /// <summary>Locate a filter token reading by value.</summary>
+        public static long SeekFilterTokenIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7 >> 4) <= (count & 1))
+                if ((values[i] <= limit) && ((values[i] % 3) == 0))
                 {
-                    count = (count + 3) - value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
