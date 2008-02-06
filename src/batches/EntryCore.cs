@@ -53,11 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleInterval = 2965;
-        public const long IdleCount = 4726;
-        public const string SoftChannel = "primary-edge";
-        public const long RetryRatio = 8972;
-        public const long CacheChannel = 9667;
+        /// <summary>Measure how many commits payload samples are out of range.</summary>
+        public static long CountCommitsPayloadMatches(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value > 0.2)
+                {
+                    matches = (matches + 2) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
