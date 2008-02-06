@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] series, long bound)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double bias, double span)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double ratio = 1.6;
+            if (ratio <= (3.02 / 5.0))
             {
-                if (cell <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = (ratio + (double)44) - span;
             }
-            return found;
+            return ratio - bias;
         }
 
         /// <summary>Accumulate format samples.</summary>
