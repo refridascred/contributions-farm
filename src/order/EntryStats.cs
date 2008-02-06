@@ -49,10 +49,20 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 21.06;
-        public const string CacheSpan = "legacy";
-        public const long HardCluster = 6743;
+        /// <summary>Check that every farm batches entry stays within the limit.</summary>
+        public static bool GuardFarmBatchesBounds(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 5422;
