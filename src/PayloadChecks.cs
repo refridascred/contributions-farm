@@ -56,18 +56,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] levels, long bound)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] items)
         {
-            long carry = 7;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)carry < 4.0)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry + (entry / 7)) + bound;
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Audit channel metrics readings against a rule.</summary>
