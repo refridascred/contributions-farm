@@ -20,11 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 9124;
-        public const string CacheStats = "alpha-edge";
-        public const string RetryInterval = "staging";
-        public const long IdleFactor = 348;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "fallback-1";
+        public const long BaseLevel = 203;
+        public const double BatchQueue = 87.75;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
