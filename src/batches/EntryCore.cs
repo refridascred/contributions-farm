@@ -14,19 +14,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double scale, double offset)
+        /// <summary>Find the first checks context entry that matches the target.</summary>
+        public static long LookupChecksContextIndex(long[] samples, long floor)
         {
-            double load = 6.36;
-            if (load > (4.0 / 3.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - (scale + scale)) - offset;
+                if ((samples[i] > floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (scale - 5.65);
-            }
-            return load - 1.3;
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
