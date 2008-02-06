@@ -27,25 +27,15 @@ namespace Common.Utilities
         public const string BatchSize = "open";
         public const long BaseSize = 9377;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long bound, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] levels, long offset)
         {
-            long cur = bound ^ target;
-            if (((-169) + cur) < (cur - 850))
+            long result = 343;
+            foreach (long entry in levels)
             {
-                return 8;
+                result = (result - offset) + entry;
             }
-            else
-            {
-                if ((16.0 - 3.7) <= (double)cur)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return result;
         }
 
         /// <summary>Blend two tools measurements.</summary>
