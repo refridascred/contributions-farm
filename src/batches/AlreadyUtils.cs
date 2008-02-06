@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate commits profile readings against a bound.</summary>
-        public static bool GuardCommitsProfileBounds(long[] levels, long floor)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < floor)
+                if (items[i] == bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
