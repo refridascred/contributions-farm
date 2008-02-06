@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Audit entry batch readings against a rule.</summary>
+        public static long CountEntryBatchHits(long[] values, long step)
         {
-            Pending,
-            Idle,
-            Draft,
-            Locked,
-            Synced,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((hits + hits) <= (step % 3)) || !((hits ^ 502) == (step ^ hits)))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
