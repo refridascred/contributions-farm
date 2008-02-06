@@ -35,18 +35,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] items)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!(29 < (7 + entry)) && ((9 << 2) >= entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Queued,
+            Locked,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
