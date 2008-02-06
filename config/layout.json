@@ -1,6 +1,6 @@
 {
-  "commits_depth": "blue",
-  "soft_retries": 250,
-  "checks_ttl": ["strict", "legacy"],
-  "soft_limit": [204, 288, 158, 339]
+  "batches_delay": 13.82,
+  "batch_timeout": "eu-west",
+  "soft_ttl_pct": [113, 250, 454, 169],
+  "batch_capacity": "green"
 }
