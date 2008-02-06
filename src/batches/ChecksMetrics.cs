@@ -34,12 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheLevel = "open-v2";
-        public const long IdleStream = 8638;
-        public const string WindowStream = "legacy";
-        public const string HardStream = "stable-edge";
-        public const long DefaultSize = 6690;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Blend two already farm measurements.</summary>
         public static double SmoothAlreadyFarm(double gain, double bias)
