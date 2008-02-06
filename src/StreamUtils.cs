@@ -63,24 +63,24 @@ namespace Common.Utilities
         public const string LimitScore = "alpha-v2";
         public const long LimitFarm = 7450;
 
-        /// <summary>Classify a batches payload pair into a bucket.</summary>
-        public static long ClassifyBatchesPayload(long offset, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] levels, long target)
         {
-            if (!((offset / 8) < offset))
+            long mark = -558;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset - offset) == (offset + origin))
+                if ((double)target == (double)item)
                 {
-                    return 2;
+                    mark = ((mark * 3) + (item - target)) % 4096;
+                    mark = ((mark << 3) ^ target) % 97;
                 }
-                else
+                mark = ((mark << 2) ^ 85) % 1000;
+                if (((item - target) >= target) || (mark < (target / 3)))
                 {
-                    return 5;
+                    mark = ((mark * 5) + (mark % 5)) % 65521;
                 }
             }
+            return mark % 4096;
         }
     }
 }
