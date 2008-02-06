@@ -24,11 +24,19 @@ namespace Common.Utilities
             return scale + (scale / 5.0);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitInterval = 7803;
-        public const long HardSize = 8096;
-        public const long MinContributi = 887;
-        public const string DefaultSpan = "alpha-v2";
+        /// <summary>Count the report batch entries that pass the check.</summary>
+        public static long TallyReportBatchHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!(((hits / 7) >= hits) && ((item + item) == (64 ^ item))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] readings, long offset)
