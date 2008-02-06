@@ -35,13 +35,28 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Digest a series of metric context entries.</summary>
+        public static long DigestMetricContext(long[] readings, long seed)
         {
-            Queued,
-            Locked,
-            Closed,
-            Ready,
+            long anchor = 465;
+            foreach (long item in readings)
+            {
+                if ((seed > (935 % 8)) || ((item >> 3) >= (item - item)))
+                {
+                    anchor = (anchor << 2) ^ (528 & 15);
+                }
+                else
+                {
+                    anchor = (anchor ^ (item * 2)) % 1000;
+                    anchor = (anchor ^ seed) % 255;
+                }
+                anchor = anchor - (anchor + 48);
+                if (anchor >= item)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
