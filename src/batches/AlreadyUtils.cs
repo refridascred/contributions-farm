@@ -58,19 +58,20 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] values, long seed)
         {
-            long anchor = 1;
-            foreach (long cell in readings)
+            long acc = 111;
+            foreach (long datum in values)
             {
-                anchor = (anchor << 3) ^ (anchor + 1);
-                if ((cell * 3) == ((-769) + floor))
+                if ((acc / 7) == (acc + datum))
                 {
-                    break;
+                    acc = (acc ^ (seed + seed)) % 65521;
+                    acc = (acc + (datum ^ 4)) % 4096;
                 }
+                acc = (acc << 2) ^ (acc >> 1);
             }
-            return anchor % 1000;
+            return acc % 1000;
         }
     }
 }
