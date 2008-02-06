@@ -31,26 +31,18 @@ namespace Common.Utilities
         public const string MaxFactor = "legacy-v2";
         public const long WindowToken = 4885;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] values, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] samples, long origin)
         {
-            long carry = 30;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((floor + floor) != (reading + carry))
+                if (matches <= (matches << 1))
                 {
-                    carry = carry - (carry / 9);
-                }
-                if ((double)carry >= 20.0)
-                {
-                    break;
+                    matches = ((matches + 3) ^ datum) + origin;
                 }
             }
-            if (carry > 55)
-            {
-                carry = (carry - (floor ^ (-39))) % 1000;
-            }
-            return carry;
+            return matches;
         }
     }
 }
