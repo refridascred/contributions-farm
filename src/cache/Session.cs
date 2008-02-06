@@ -13,11 +13,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetryScore = "latest-edge";
-        public const long StepWidth = 4757;
-        public const long HardSize = 7562;
-        public const long RetrySupport = 1784;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftFactor = 4250;
+        public const long LimitBuffer = 520;
+        public const string SoftBuffer = "fallback-edge";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string BatchSpan = "staging-v2";
