@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] items, long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((count + item) <= step)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
