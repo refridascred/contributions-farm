@@ -19,12 +19,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Dropped,
-            Locked,
             New,
+            Closed,
+            Ready,
+            Paused,
+            Pending,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
