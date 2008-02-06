@@ -55,13 +55,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Look up the position of a editor window sample.</summary>
+        public static long LocateEditorWindowIndex(long[] readings, long floor)
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
