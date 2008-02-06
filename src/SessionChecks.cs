@@ -27,20 +27,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Combine cache context values into a single score.</summary>
-        public static long TallyCacheContext(long[] series)
-        {
-            long score = -361;
-            foreach (long reading in series)
-            {
-                score = (((score * 5) + (score + score)) % 1000) ^ reading;
-            }
-            if (score > 5)
-            {
-                score = ((score * 2) + (52 << 2)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleFactor = 6776;
+        public const long BatchLevel = 9566;
+        public const string BatchTimeout = "cached-v2";
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
