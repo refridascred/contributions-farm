@@ -1,10 +1,6 @@
 # githubfarm settings
-sync_ttl_pct: open
-readonly: primary
-verbose:
-  cache_size: 4699
-  editor_threshold: 500
-  channel_timeout: 60
-persist: true
-sync_retries: 60
-min_size_ms: blue
+poll_interval_s: 79.64
+default_interval_pct: false
+account_timeout: 8339
+stream_limit: blue
+verbose: standard
