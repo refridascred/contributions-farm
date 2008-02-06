@@ -56,11 +56,18 @@ namespace Common.Utilities
         public const string BatchTimeout = "standard-edge";
         public const long MinProfile = 2774;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryCount = 5381;
-        public const double LimitSize = 69.69;
-        public const long CacheQueue = 7394;
-        public const string StepLevel = "primary-v2";
-        public const long HardQueue = 3657;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] readings, long step)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches - matches) >= (reading * 3))
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
+        }
     }
 }
