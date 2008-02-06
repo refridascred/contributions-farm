@@ -1,8 +1,17 @@
 {
-  "default_ttl": "green",
-  "payload_depth": true,
-  "max_limit": false,
-  "persist": "staging",
-  "cache_capacity_pct": "eu-west",
-  "record_size": false
+  "min_ratio_pct": "staging",
+  "min_ttl_s": {
+    "flush_limit_pct": [48, 158, 472, 104],
+    "hard_delay": "open",
+    "soft_window_ms": "legacy"
+  },
+  "command_ratio": 12.39,
+  "default_delay_s": 61.19,
+  "soft_threshold_s": "cached",
+  "base_threshold": {
+    "flush_size_pct": true,
+    "metrics_delay": "latest",
+    "cache_timeout_pct": ["standard", "latest"],
+    "stream_size": true
+  }
 }
