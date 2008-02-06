@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] readings, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (readings[i] > seed)
                 {
-                    mark = ((mark ^ (seed + seed)) % 255) + (long)i2;
+                    return (long)i;
                 }
-                if ((double)mark <= (9.74 - 3.82))
-                {
-                    mark = mark + mark;
-                    mark = mark + (829 + 408);
-                }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a already header.</summary>
