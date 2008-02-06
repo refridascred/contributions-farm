@@ -53,11 +53,22 @@ namespace Common.Utilities
             return weight + (floor / 4.0);
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] data, long seed)
         {
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
+            long mix = 3;
+            foreach (long datum in data)
+            {
+                if ((seed & 255) >= (seed >> 4))
+                {
+                    mix = (mix ^ (seed + 13)) ^ datum;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (mix / 5)) % 101;
+                }
+            }
+            return mix;
         }
     }
 }
