@@ -1,10 +1,8 @@
 # entry settings
-record_window:
-  - legacy
-  - blue
-enabled: 30
-batch_depth: 100
-sync_ttl_count: open
-compress:
-  - green
-  - open
+farm_timeout:
+  - 265
+  - 157
+  - 181
+  - 134
+burst_capacity_s: 33
+soft_interval_count: 53
