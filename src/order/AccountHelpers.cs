@@ -34,10 +34,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitCount = 36.85;
-        public const long RetryRatio = 8767;
-        public const double HardScore = 90.16;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double CacheInterval = 62.2;
