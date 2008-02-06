@@ -42,24 +42,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long offset, long offset2)
+        /// <summary>Validate editor report readings against a bound.</summary>
+        public static bool ValidateEditorReportLimits(long[] series, long target)
         {
-            if ((6.0 - 3.0) < (double)offset2)
+            bool found = true;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset2 % 8) != (offset2 - 54))
+                if (item >= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
