@@ -62,18 +62,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] values, long offset)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((offset << 2) > reading))
-                {
-                    tally = tally + 1;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
     }
 }
