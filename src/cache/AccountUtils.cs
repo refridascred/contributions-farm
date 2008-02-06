@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double scale, double span)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double ratio, double floor)
         {
-            double mean = scale;
-            for (int i = 0; i < 9; i++)
+            double gain = 6.6;
+            if (gain <= (double)42)
             {
-                mean = (mean + (mean + span)) + (double)(long)i;
+                gain = (gain - gain) - ratio;
             }
-            return mean - (mean * 5.13);
+            else
+            {
+                gain = gain + (9.0 / 9.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (double)604) + (double)(long)i;
+            }
+            return gain - floor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
