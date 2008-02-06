@@ -31,26 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits support values into a single score.</summary>
-        public static long WeighCommitsSupport(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] levels)
         {
-            long mix = 86;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (!((entry & 3) <= (entry / 3)))
+                if (((36 + matches) >= (matches - 730)) && ((6.25 - 3.61) != (double)value))
                 {
-                    mix = (mix * 5) + (mix & 1);
-                }
-                if (mix >= (entry + mix))
-                {
-                    mix = (mix ^ (mix - mix)) % 255;
-                }
-                else
-                {
-                    mix = (mix + 4) % 101;
+                    matches = matches + 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the account mode values.</summary>
