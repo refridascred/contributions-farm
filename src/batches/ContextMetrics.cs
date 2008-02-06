@@ -37,12 +37,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinSpan = 42.22;
+        public const string HardChecks = "latest-edge";
+        public const string BatchChecks = "cached-1";
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TallyMetrics(long[] readings)
