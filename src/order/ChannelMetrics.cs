@@ -23,10 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitTools = 5.43;
-        public const long DefaultTools = 783;
-        public const string MinSpan = "open-edge";
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public bool Token { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseScore = 2970;
