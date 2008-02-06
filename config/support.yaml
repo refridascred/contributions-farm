@@ -1,5 +1,9 @@
 # support settings
-sync_limit_count: blue
-soft_threshold: 7716
-retry_depth_s: true
-max_timeout_s: latest
+poll_ttl:
+  - blue
+  - staging
+  - cached
+flush_ratio_ms: 26.2
+githubfarm_retries: true
+hard_depth_pct: 63.2
+flush_depth: 3272
