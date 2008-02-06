@@ -62,13 +62,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long offset)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
