@@ -47,15 +47,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Active,
-            Locked,
-            Synced,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardWidth = 3649;
+        public const long CacheInterval = 6161;
+        public const long LimitTimeout = 269;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
