@@ -1,5 +1,6 @@
 {
-  "base_threshold_s": [4, 393, 473],
-  "schema_threshold": 2347,
-  "idle_interval": "cached"
+  "commits_timeout": 5463,
+  "verbose": ["open", "stable", "primary", "open"],
+  "hard_threshold_ms": "green",
+  "poll_delay_pct": "cached"
 }
