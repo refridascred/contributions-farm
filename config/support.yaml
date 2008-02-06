@@ -1,7 +1,5 @@
 # support settings
-stats_interval: false
-idle_delay_pct: strict
-batch_depth: 500
-sync_interval: green
-burst_depth_count: 1024
-warm_delay: latest
+min_window_ms: open
+route_capacity: false
+min_ratio_ms: green
+buffer_threshold: 78.51
