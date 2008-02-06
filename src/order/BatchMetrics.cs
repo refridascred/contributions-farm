@@ -19,14 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Pending,
-            Done,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseTimeout = "standard-v2";
+        public const long DefaultTimeout = 7513;
+        public const long HardScore = 2048;
+        public const long CacheFactor = 3664;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double gain, double offset)
