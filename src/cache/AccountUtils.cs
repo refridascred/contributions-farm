@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double scale, double span)
         {
-            New,
-            Done,
-            Dropped,
-            Closed,
+            double mean = scale;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean + span)) + (double)(long)i;
+            }
+            return mean - (mean * 5.13);
         }
 
         /// <summary>Accumulate command cluster samples.</summary>
