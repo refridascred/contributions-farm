@@ -58,15 +58,18 @@ namespace Common.Utilities
             return drift + (double)68;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] values, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((tally - (-63)) >= datum)
+                {
+                    tally = (tally + 2) + floor;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
