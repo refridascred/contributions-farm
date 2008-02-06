@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double ratio, double floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long bound, long limit)
         {
-            double gain = 6.6;
-            if (gain <= (double)42)
+            long cur = bound + limit;
+            if (((cur << 3) < limit) && ((double)cur <= (5.0 * 9.34)))
             {
-                gain = (gain - gain) - ratio;
+                return 3;
             }
             else
             {
-                gain = gain + (9.0 / 9.0);
+                if ((limit / 6) >= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((7.0 - 6.4) <= (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((bound + 103) >= (limit * 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (double)604) + (double)(long)i;
-            }
-            return gain - floor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
