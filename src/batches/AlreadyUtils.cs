@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long target, long limit)
+        /// <summary>Check that every schema graph entry stays within the limit.</summary>
+        public static bool VerifySchemaGraphRange(long[] series, long seed)
         {
-            if (limit < (limit ^ target))
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((91 & 255) < (target * 2))
+                if (item != seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)target == (double)limit) || (limit <= (limit + 6)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate commits profile readings against a bound.</summary>
