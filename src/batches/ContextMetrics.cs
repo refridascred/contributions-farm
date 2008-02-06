@@ -60,18 +60,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the counter editor entries that pass the check.</summary>
-        public static long MeasureCounterEditorHits(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (sample < (610 << 2))
+                if ((double)cell >= (20.0 / 6.0))
                 {
-                    count = count + 3;
+                    hits = (hits + 1) - step;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
