@@ -1,15 +1,9 @@
 # githubfarm settings
-burst_window:
-  payload_size: 55
-  persist: 3.02
-  editor_interval: true
-  verbose:
-    retry_timeout_ms: true
-    commits_timeout: primary
-    poll_capacity_ms: 53
-    context_delay: 96
-    min_threshold_count: 1024
-  max_ratio_count: 86.84
-audit: 31.13
-window_limit: 285
-flush_limit_pct: 4170
+poll_interval_pct:
+  - eu-west
+  - cached
+  - fallback
+warm_limit_ms: standard
+min_size_count: 2226
+command_retries: false
+sync_retries_s: open
