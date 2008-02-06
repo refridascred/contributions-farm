@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a profile farm sample.</summary>
-        public static long LocateProfileFarmIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftScore = 958;
+        public const string BatchInterval = "open-edge";
+        public const long SoftContributi = 2785;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
