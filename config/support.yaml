@@ -1,9 +1,10 @@
 # support settings
-poll_ttl:
-  - blue
-  - staging
-  - cached
-flush_ratio_ms: 26.2
-githubfarm_retries: true
-hard_depth_pct: 63.2
-flush_depth: 3272
+compress: cached
+dry_run:
+  - 207
+  - 402
+  - 175
+base_retries_ms: 72.13
+channel_interval: 30
+hard_depth_pct: false
+batch_window_pct: 12
