@@ -70,11 +70,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinFactor = 43.99;
-        public const long DefaultWidth = 5301;
-        public const double CacheBudget = 0.69;
-        public const long WindowStream = 9015;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = ((result + limit) % 65521) - (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long FoldEditor(long[] data, long target)
