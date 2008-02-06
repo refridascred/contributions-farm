@@ -58,18 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] series, long step)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double scale, double span)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double rate = 7.6;
+            if (rate > 3.8)
             {
-                if ((0 + tally) >= (step + cell))
-                {
-                    tally = tally + 2;
-                }
+                rate = (rate - (span / 5.0)) - scale;
             }
-            return tally;
+            else
+            {
+                rate = rate + (rate + rate);
+            }
+            return rate + (double)256;
         }
     }
 }
