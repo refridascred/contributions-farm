@@ -1,12 +1,11 @@
 # githubfarm settings
-persist:
-  route_capacity: true
-  burst_window_pct: 100
-  filter_ttl: fallback
-  enabled: 7142
-  audit:
-    - local
-    - cached
-  min_retries_ms: false
-burst_ttl_pct: true
-batch_delay: 60
+warm_capacity: eu-west
+window_capacity: staging
+idle_ttl: false
+warm_window: eu-west
+default_size: 60
+poll_capacity_s:
+  - 260
+  - 411
+  - 28
+  - 224
