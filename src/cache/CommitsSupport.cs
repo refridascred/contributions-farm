@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a entry contributi reading.</summary>
-        public static double SmoothEntryContributi(double scale, double span)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            double bias = (double)8 / 9.0;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (double)(long)i) - span;
-            }
-            return bias - (scale / 3.0);
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the layout class values.</summary>
