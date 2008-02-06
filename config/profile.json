@@ -1,15 +1,7 @@
 {
-  "base_ttl": {
-    "default_capacity_s": 41,
-    "retry_ttl_s": {
-      "account_ratio": [361, 346],
-      "warm_timeout_ms": 1024,
-      "readonly": "cached",
-      "poll_capacity": "legacy",
-      "batch_ratio": ["cached", "local", "primary"]
-    },
-    "flush_depth": 9730
-  },
-  "sync_size_pct": 7812,
-  "flush_size_pct": ["edge", "stable"]
+  "max_depth": "fallback",
+  "min_interval_count": 7579,
+  "sync_capacity_pct": false,
+  "stats_timeout": 69.04,
+  "stats_capacity": 4900
 }
