@@ -31,13 +31,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Synced,
-            Locked,
-            Dropped,
-            New,
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
