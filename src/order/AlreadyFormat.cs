@@ -14,28 +14,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] values)
-        {
-            long score = 69;
-            foreach (long cell in values)
-            {
-                if ((cell / 4) != (score - (-31)))
-                {
-                    break;
-                }
-                score = (score * 3) + (score - score);
-                if (1 < (score % 2))
-                {
-                    score = ((score * 3) + (cell + score)) % 65521;
-                }
-            }
-            if (score < 560)
-            {
-                score = ((score * 2) + (5 + 3)) % 101;
-            }
-            return score % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseDepth = 8468;
+        public const long MaxLevel = 3199;
+        public const long MaxMetrics = 232;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
