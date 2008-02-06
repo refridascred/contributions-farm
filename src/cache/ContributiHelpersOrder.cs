@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] readings, long floor)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading * 4) >= (seen + seen))
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
