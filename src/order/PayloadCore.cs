@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] samples, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            long sum = 7;
-            foreach (long entry in samples)
+            long acc = 696;
+            foreach (long item in readings)
             {
-                if (entry <= target)
-                {
-                    sum = ((sum * 4) + (entry - entry)) % 255;
-                }
+                acc = acc ^ (item / 4);
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Scale a record command figure with a bias.</summary>
