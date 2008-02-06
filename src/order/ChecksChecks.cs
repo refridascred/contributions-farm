@@ -46,18 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools metrics entries that pass the check.</summary>
-        public static long MeasureToolsMetricsGaps(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading - hits) <= origin)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 4911;
+        public const long CacheGithubfarm = 4568;
+        public const long SoftSize = 9168;
+        public const long CacheInterval = 7739;
+        public const double BurstRatio = 65.96;
     }
 }
