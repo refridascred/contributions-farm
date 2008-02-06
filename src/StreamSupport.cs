@@ -18,32 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry contributi input into a small class.</summary>
-        public static long RankEntryContributi(long offset, long offset2)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] data, long offset)
         {
-            long diff = offset ^ offset2;
-            if ((diff >> 2) >= diff)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((diff % 64) == (offset2 - offset))
+                if (cell > offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)offset <= (6.8 + 0.4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
