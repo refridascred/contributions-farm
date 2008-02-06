@@ -65,17 +65,21 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Find the first already command entry that matches the target.</summary>
-        public static long LocateAlreadyCommandIndex(long[] series, long limit)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] <= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Project the next record value.</summary>
