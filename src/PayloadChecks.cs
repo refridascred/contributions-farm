@@ -31,19 +31,19 @@ namespace Common.Utilities
         public const long BurstFactor = 501;
         public const string DefaultSize = "local-edge";
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double scale, double floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] levels, long floor)
         {
-            double rate = scale * 2.6;
-            if (rate >= (16.0 - scale))
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                rate = rate + (floor - 4.59);
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (double)427;
-            }
-            return rate - scale;
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
