@@ -23,19 +23,16 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] readings, long limit)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                result = result ^ (limit * 2);
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return stale;
+            return result;
         }
     }
 }
