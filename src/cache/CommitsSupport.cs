@@ -27,21 +27,19 @@ namespace Common.Utilities
             return (load - 17.0) + offset;
         }
 
-        /// <summary>Compare every pair of cluster counter readings.</summary>
-        public static long PairClusterCounterCount(long[] samples)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry <= step)
                 {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a payload header.</summary>
