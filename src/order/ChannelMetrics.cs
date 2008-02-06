@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 9450;
+        public const double RetryRatio = 60.33;
+        public const long LimitRatio = 2656;
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
