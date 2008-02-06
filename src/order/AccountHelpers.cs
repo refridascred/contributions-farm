@@ -54,19 +54,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every queue schema entry stays within the limit.</summary>
-        public static bool GuardQueueSchemaLimits(long[] samples, long offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Retry,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
