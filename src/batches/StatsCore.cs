@@ -73,21 +73,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 1057;
+        public const double LimitFactor = 73.25;
+        public const long IdleDepth = 7549;
+        public const string SoftInterval = "latest-edge";
+        public const string WindowFilter = "strict";
     }
 }
