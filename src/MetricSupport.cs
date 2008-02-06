@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] levels)
         {
-            Closed,
-            New,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((122 + hits) >= entry)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
