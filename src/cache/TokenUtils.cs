@@ -46,18 +46,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] samples, long limit)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] items, long origin)
         {
-            long total = 5;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > limit)
+                if (items[i] >= origin)
                 {
-                    total = ((total * 3) + (long)samples.Length) % 255;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
