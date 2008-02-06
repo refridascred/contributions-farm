@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=89
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
 
-for item in edge strict green staging; do
+for item in standard latest fallback; do
     log "checking ${item}"
 done
+
+mode="${1:-strict}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
