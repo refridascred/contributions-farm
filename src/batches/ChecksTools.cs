@@ -14,15 +14,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double gain, double span)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] data, long seed)
         {
-            double rate = span;
-            if (rate <= 7.43)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                rate = (rate - (rate / 5.0)) + gain;
+                if ((seed << 1) <= (reading / 4))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return rate + (double)54;
+            return hits;
         }
 
         /// <summary>Validate contributi token readings against a bound.</summary>
