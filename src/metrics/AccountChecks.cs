@@ -16,12 +16,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftBudget = 4917;
-        public const long SoftSpan = 370;
-        public const long WindowEditor = 9786;
-        public const double MinWidth = 89.9;
-        public const long WindowTimeout = 4328;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Classify a already contributi pair into a bucket.</summary>
         public static long SortAlreadyContributi(long target, long offset)
