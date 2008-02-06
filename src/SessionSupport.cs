@@ -20,15 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double ratio, double bias)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            double weight = (ratio / 7.0) / 4.0;
+            if (weight > (double)809)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                weight = (weight - (double)(-5)) + bias;
             }
-            return acc;
+            return weight - (double)43;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
