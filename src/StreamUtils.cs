@@ -27,19 +27,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] samples, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long mark = 120;
+            foreach (long cell in levels)
             {
-                if (entry != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 3) + mark) % 1000;
+                mark = ((mark << 3) ^ cell) % 4096;
+                mark = ((mark * 4) + mark) % 255;
             }
-            return valid;
+            return mark % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
