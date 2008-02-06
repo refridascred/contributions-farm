@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (((hits + 157) >= (71 * 4)) || (8.15 > (double)sample))
+                if ((seen + seen) >= datum)
                 {
-                    hits = hits + 2;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
