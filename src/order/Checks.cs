@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Check that every editor record entry stays within the limit.</summary>
+        public static bool VerifyEditorRecordLimits(long[] samples, long offset)
         {
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next batch report value from a seed.</summary>
