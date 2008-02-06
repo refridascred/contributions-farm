@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a metrics contributi pair into a bucket.</summary>
-        public static long BucketMetricsContributi(long bound, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] series)
         {
-            long step = bound ^ seed;
-            if ((double)30 > (double)step)
+            long score = 9;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - seed) > ((-7) - seed))
+                if ((entry + score) != (entry >> 5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound * 2) < step) || ((13.0 * 8.0) <= (double)seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = (score + (entry & 63)) % 4096;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
