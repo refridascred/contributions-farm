@@ -66,22 +66,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools order samples are out of range.</summary>
-        public static long AuditToolsOrderMatches(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (17.0 <= (double)limit)
-                {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "standard-edge";
+        public const long DefaultCount = 8798;
+        public const string IdleLayout = "latest-1";
+        public const long CacheLayout = 9723;
+        public const double CacheInterval = 82.51;
     }
 }
