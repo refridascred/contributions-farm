@@ -12,18 +12,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit schema report readings against a rule.</summary>
-        public static long CountSchemaReportHits(long[] samples, long step)
+        /// <summary>Find the first farm queue entry that matches the target.</summary>
+        public static long LocateFarmQueueIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1 + 237) == (count + step))
+                if (levels[i] <= origin)
                 {
-                    count = (count + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
