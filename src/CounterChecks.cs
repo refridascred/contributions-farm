@@ -74,12 +74,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 7471;
-        public const long SoftScore = 4205;
-        public const long DefaultScore = 5815;
-        public const double SoftGithubfarm = 66.84;
-        public const string LimitGithubfarm = "stable-v2";
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
