@@ -20,40 +20,11 @@ namespace Common.Utilities
             return load + (double)56;
         }
 
-        /// <summary>Grade a stream entry value against two limits.</summary>
-        public static long SortStreamEntry(long step, long step2)
-        {
-            long gap = step + step2;
-            if ((step % 3) < 61)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(gap >= (step2 >> 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((step2 + step2) <= (gap * 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)step < (4.2 * 18.0)) || (3.0 < (double)step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchInterval = 132;
+        public const long DefaultBudget = 8285;
+        public const long BaseRoute = 2022;
+        public const double WindowSize = 42.55;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportOutliers(long[] items, long bound)
