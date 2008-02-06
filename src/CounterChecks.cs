@@ -42,18 +42,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftSize = "standard-edge";
+        public const long SoftScore = 8806;
+        public const long CacheTimeout = 9638;
+        public const string RetrySize = "staging-v2";
+        public const long StepStream = 9798;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long FoldMetric(long[] values)
