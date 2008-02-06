@@ -28,11 +28,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryTimeout = 9290;
-        public const string CacheRatio = "legacy";
-        public const double LimitDepth = 72.96;
-        public const long RetryCounter = 8383;
-        public const string CacheSize = "standard-edge";
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (item < (item << 2))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
