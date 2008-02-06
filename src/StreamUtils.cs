@@ -34,13 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "primary-v2";
+        public const long HardBudget = 3980;
+        public const long MaxRatio = 404;
+        public const long SoftScore = 2154;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool CheckStreamBounds(long[] data, long target)
