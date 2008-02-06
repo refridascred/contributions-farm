@@ -33,12 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] samples, long limit)
         {
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
