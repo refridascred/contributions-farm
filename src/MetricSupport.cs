@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit githubfarm checks readings against a rule.</summary>
-        public static long AuditGithubfarmChecksMatches(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] series)
         {
             long count = 0;
-            foreach (long reading in samples)
+            foreach (long value in series)
             {
-                if (((1.66 + 4.27) >= (double)count) || ((1.7 + 4.82) > (double)count))
+                if (((count % 97) < 50) || ((double)0 != (double)value))
                 {
-                    count = (count + 1) ^ reading;
+                    count = count + 1;
                 }
             }
             return count;
