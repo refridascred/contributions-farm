@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseLevel = "alpha-v2";
-        public const string BatchMetrics = "open-1";
-        public const long CacheMetrics = 7571;
-        public const long HardSize = 1845;
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long MaxCounter = 6056;
