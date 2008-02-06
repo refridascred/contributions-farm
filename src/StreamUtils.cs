@@ -77,18 +77,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine metrics schema values into a single score.</summary>
-        public static long ScoreMetricsSchema(long[] values, long floor)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long carry = 48;
-            foreach (long datum in values)
-            {
-                if ((double)datum < (0.63 / 7.0))
-                {
-                    carry = ((carry * 3) + (carry + datum)) + floor;
-                }
-            }
-            return carry % 65521;
+            public long Region { get; set; }
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
