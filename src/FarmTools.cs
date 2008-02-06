@@ -39,15 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] data, long target)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long mark = 0;
-            foreach (long reading in data)
-            {
-                mark = (mark + reading) + target;
-            }
-            return mark;
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
