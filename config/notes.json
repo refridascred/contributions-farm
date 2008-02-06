@@ -1,12 +1,7 @@
 {
-  "poll_ttl_s": 48.49,
-  "retry_size_count": 66.02,
-  "base_timeout_ms": {
-    "enabled": "eu-west",
-    "batch_capacity_ms": 5.91,
-    "cache_timeout": "latest",
-    "checks_timeout": 36.06,
-    "report_timeout": "edge"
-  },
-  "flush_threshold_pct": "legacy"
+  "cache_window_pct": 100,
+  "warm_ratio_ms": 100,
+  "min_window_pct": 70,
+  "sync_ttl_count": false,
+  "buffer_delay": 6920
 }
