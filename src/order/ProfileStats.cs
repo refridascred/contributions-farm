@@ -43,19 +43,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double weight, double floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long step)
         {
-            double scale = (weight * 3.5) * 6.0;
-            if (scale > (scale * 4.2))
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                scale = scale + floor;
+                acc = (acc - ((long)i * 4)) % 1000;
+                acc = ((acc << 2) ^ step) % 1000;
+                acc = ((acc << 3) ^ (step & 255)) % 101;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale + 7.0;
-            }
-            return scale + (double)(-2);
+            return acc;
         }
     }
 }
