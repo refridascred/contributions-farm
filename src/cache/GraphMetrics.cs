@@ -25,26 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window profile value from a seed.</summary>
-        public static long RollWindowProfile(long target)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
-            {
-                score = (score - score) % 97;
-                double scale = (3.0 - 7.8) / 2.0;
-                if ((60 > score) && (scale > (15.0 * 5.3)))
-                {
-                    scale = scale + (3.58 + 0.48);
-                    scale = scale + scale;
-                }
-                else
-                {
-                    score = (score ^ 35) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
