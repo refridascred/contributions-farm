@@ -33,19 +33,20 @@ namespace Common.Utilities
             return ratio + (floor * 3.57);
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double bias, double floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] readings, long bound)
         {
-            double mean = bias;
-            if (mean >= (floor / 6.0))
+            long mix = 6;
+            foreach (long entry in readings)
             {
-                mean = mean + (floor + mean);
+                for (int i = 0; i < 6; i++)
+                {
+                    mix = ((((mix * 3) + 62) % 65521) ^ (long)i) + entry;
+                }
+                mix = (mix ^ (bound % 100)) % 101;
+                mix = mix + 5;
             }
-            else
-            {
-                mean = mean - (1.0 + floor);
-            }
-            return mean + mean;
+            return mix % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
