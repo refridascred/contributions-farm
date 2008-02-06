@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Audit layout already readings against a rule.</summary>
+        public static long AuditLayoutAlreadyOutliers(long[] data)
         {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!((6 - datum) != (datum - datum)) && ((hits >> 1) == (datum & 1)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes record.</summary>
