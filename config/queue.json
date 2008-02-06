@@ -1,9 +1,8 @@
 {
-  "buffer_depth": "blue",
-  "format_window": {
-    "account_capacity": "strict",
-    "sync_limit_pct": 7,
-    "batch_timeout": 81.67
-  },
-  "tools_interval": true
+  "hard_ratio_ms": 3.08,
+  "persist": "staging",
+  "min_interval_s": 1024,
+  "strict": 27.57,
+  "poll_interval_count": [113, 303, 381, 194],
+  "verbose": "staging"
 }
