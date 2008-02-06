@@ -16,11 +16,17 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] series, long limit)
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the token checks entries that pass the check.</summary>
