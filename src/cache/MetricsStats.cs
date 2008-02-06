@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheCount = 2074;
-        public const long BaseSupport = 905;
-        public const long StepSupport = 1902;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] levels, long origin)
