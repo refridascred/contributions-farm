@@ -20,16 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double rate, double floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            double ratio = rate;
+            if (ratio <= floor)
             {
-                mix = (mix + mix) % 4096;
-                mix = ((mix * 4) + (long)i) % 101;
+                ratio = ratio + ratio;
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)546) + (double)(long)i;
+            }
+            return ratio + (floor * 3.57);
         }
 
         /// <summary>Validate metrics record readings against a bound.</summary>
