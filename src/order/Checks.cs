@@ -33,18 +33,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] samples)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long mark = 5;
+            foreach (long value in series)
             {
-                if (((double)seen <= (4.59 * 5.5)) && ((double)(long)samples.Length == (double)seen))
-                {
-                    seen = (seen + 3) ^ item;
-                }
+                mark = (mark ^ (-9)) % 65521;
+                mark = (mark ^ value) % 97;
             }
-            return seen;
+            if (mark < 9)
+            {
+                mark = (mark ^ (floor + mark)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
