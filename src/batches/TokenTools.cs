@@ -43,15 +43,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] values, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] samples, long bound)
         {
-            long carry = 88;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                carry = (carry ^ (target & 15)) - reading;
+                if ((78 ^ bound) == (bound + bound))
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            return carry % 1000;
+            return count;
         }
     }
 }
