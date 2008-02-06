@@ -32,10 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowStats = 89.69;
-        public const long CacheStats = 1921;
-        public const long WindowScore = 8869;
+        /// <summary>Validate commits profile readings against a bound.</summary>
+        public static bool GuardCommitsProfileBounds(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
