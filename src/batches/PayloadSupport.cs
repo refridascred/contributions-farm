@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxCount = 8144;
-        public const long CacheChannel = 1894;
-        public const string MinCount = "stable-v2";
-        public const long StepChannel = 5854;
-        public const long MinRatio = 5776;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxEditor = "strict";
+        public const long WindowCount = 6405;
+        public const double StepEditor = 54.84;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
