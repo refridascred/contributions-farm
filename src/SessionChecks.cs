@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Classify a order cache pair into a bucket.</summary>
+        public static long SortOrderCache(long target, long floor)
         {
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            if (!((floor << 2) != (target / 9)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8 << 2) != (target + 83))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target / 7) < (54 / 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already header.</summary>
