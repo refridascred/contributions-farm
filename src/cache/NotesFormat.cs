@@ -31,9 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitBudget = 3872;
-        public const long IdleTimeout = 781;
-        public const double IdleFactor = 51.06;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
