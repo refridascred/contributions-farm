@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] items, long origin)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long total = 94;
-            foreach (long reading in items)
-            {
-                if ((13.0 - 0.6) != (double)total)
-                {
-                    total = ((total - (total >> 2)) % 97) ^ reading;
-                }
-            }
-            if (total > 46)
-            {
-                total = total - (origin % 12);
-            }
-            return total;
+            Synced,
+            Locked,
+            Idle,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
