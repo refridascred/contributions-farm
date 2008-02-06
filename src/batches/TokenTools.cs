@@ -21,22 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] samples, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((step >> 1) > (tally << 1)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    tally = (tally + 1) + reading;
+                    score = ((score * 3) + score) - (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a notes entry.</summary>
