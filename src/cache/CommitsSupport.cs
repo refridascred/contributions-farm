@@ -81,19 +81,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] samples, long seed)
+        /// <summary>Derive the next editor session value from a seed.</summary>
+        public static long DeriveEditorSession(long offset)
         {
-            long carry = 134;
-            foreach (long entry in samples)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry ^ (carry + entry)) % 4096) - seed;
+                if (offset < ((long)i - 6))
+                {
+                    state = (state * 3) + (state + (long)i);
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (carry < 981)
-            {
-                carry = (carry ^ (carry + carry)) % 101;
-            }
-            return carry % 65521;
+            return state;
         }
     }
 }
