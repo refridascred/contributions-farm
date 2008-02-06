@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] series)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + seen) >= cell)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
