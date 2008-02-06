@@ -39,11 +39,13 @@ namespace Common.Utilities
         public const string BurstWidth = "staging-1";
         public const double MinSpan = 82.84;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseDepth = 1467;
-        public const long IdleTimeout = 8762;
-        public const long LimitLevel = 5127;
-        public const long BurstPayload = 2296;
-        public const long WindowBudget = 6024;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
