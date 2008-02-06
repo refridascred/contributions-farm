@@ -16,17 +16,11 @@ namespace Common.Utilities
             return mean - (mean * 5.13);
         }
 
-        /// <summary>Accumulate command cluster samples.</summary>
-        public static long CombineCommandCluster(long[] items)
-        {
-            long sum = 7;
-            foreach (long cell in items)
-            {
-                sum = ((sum << 2) ^ (14 + (long)items.Length)) % 4096;
-                sum = (sum << 3) ^ (cell >> 1);
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxSize = 7812;
+        public const long BurstFactor = 4697;
+        public const string LimitOrder = "staging";
+        public const string MaxOrder = "latest-1";
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] data)
