@@ -13,13 +13,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Draft,
-            Synced,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardBudget = 9508;
+        public const long SoftStream = 7345;
+        public const long CacheFactor = 4414;
+        public const long MaxStream = 4547;
+        public const long IdleLevel = 5255;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
