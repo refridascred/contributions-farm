@@ -50,11 +50,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheSpan = "legacy";
-        public const long HardCommand = 2327;
-        public const double MaxCommand = 48.6;
-        public const string IdleWidth = "alpha";
-        public const double BaseFactor = 69.5;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = carry + ((long)i ^ (long)i);
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
