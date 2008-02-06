@@ -34,17 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] levels, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = -123;
+            foreach (long entry in levels)
             {
-                if (levels[i] > seed)
+                if ((state ^ entry) <= (entry * 4))
                 {
-                    return (long)i;
+                    state = (state * 3) + (entry % 2);
                 }
+                state = (state - (8 ^ 76)) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a buffer header.</summary>
