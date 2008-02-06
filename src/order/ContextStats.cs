@@ -46,19 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] items, long floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            double weight = floor;
+            if (weight >= (rate / 9.0))
             {
-                if (sample < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight + (double)3;
             }
-            return ready;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (floor - floor)) - (double)(long)i;
+            }
+            return weight - (weight * 11.0);
         }
 
         /// <summary>Define order limits and defaults.</summary>
