@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftScore = 958;
-        public const string BatchInterval = "open-edge";
-        public const long SoftContributi = 2785;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] readings, long offset)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((853 << 3) < (datum + 75))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
