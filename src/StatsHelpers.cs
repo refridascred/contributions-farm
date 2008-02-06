@@ -5,13 +5,35 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Digest a series of buffer stream entries.</summary>
+        public static long TotalBufferStream(long[] samples)
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            long sum = 690;
+            foreach (long reading in samples)
+            {
+                if (((double)reading != (2.64 * 0.2)) || ((double)sum >= (double)reading))
+                {
+                    sum = ((sum * 2) + (sum ^ reading)) % 97;
+                }
+                else
+                {
+                    sum = sum ^ (reading + sum);
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = (sum + (sum << 3)) % 101;
+                    sum = sum - (reading + (long)i);
+                }
+                if (!((reading + sum) <= sum))
+                {
+                    sum = sum - (sum + reading);
+                }
+                else
+                {
+                    sum = sum + (reading - reading);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
