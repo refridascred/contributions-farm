@@ -14,26 +14,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Grade a stream entry value against two limits.</summary>
+        public static long SortStreamEntry(long step, long step2)
         {
-            long state = 293;
-            foreach (long sample in items)
+            long gap = step + step2;
+            if ((step % 3) < 61)
             {
-                if ((double)sample <= (14.0 * 8.0))
+                return 8;
+            }
+            else
+            {
+                if (!(gap >= (step2 >> 3)))
                 {
-                    state = ((state * 4) + (sample + sample)) % 1000;
+                    return 7;
                 }
                 else
                 {
-                    state = state - (state >> 2);
+                    if (!((step2 + step2) <= (gap * 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)step < (4.2 * 18.0)) || (3.0 < (double)step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (state < 251)
-            {
-                state = (state - (5 >> 2)) % 97;
-            }
-            return state;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
