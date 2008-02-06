@@ -25,17 +25,22 @@ namespace Common.Utilities
         public const long CacheSize = 1747;
         public const long BurstNotes = 8387;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] values, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (values[i] <= bound)
+                if ((8 + count) < (reading % 8))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
