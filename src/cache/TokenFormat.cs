@@ -16,21 +16,22 @@ namespace Common.Utilities
             return load + (scale + floor);
         }
 
-        /// <summary>Compare every pair of counter cluster readings.</summary>
-        public static long PairCounterClusterCount(long[] series)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell >= (54 * 4))
                 {
-                    if ((series[i] - series[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
