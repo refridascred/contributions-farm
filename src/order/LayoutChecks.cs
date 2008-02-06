@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine record route values into a single score.</summary>
-        public static long CombineRecordRoute(long[] values)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long result = 3;
-            foreach (long cell in values)
-            {
-                if ((cell & 127) > (result << 1))
-                {
-                    result = (result << 2) ^ (cell + cell);
-                }
-            }
-            if (result < 1)
-            {
-                result = (result - (result + result)) % 101;
-            }
-            return result;
+            Failed,
+            Locked,
+            Idle,
+            Stale,
+            Paused,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
