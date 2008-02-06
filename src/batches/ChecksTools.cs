@@ -32,9 +32,21 @@ namespace Common.Utilities
         public const string BaseStats = "open-1";
         public const long BurstFactor = 3254;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCommits = 3.97;
-        public const long CacheScore = 1692;
-        public const string DefaultCommits = "local-v2";
+        /// <summary>Count window metrics pairs that satisfy a relation.</summary>
+        public static long PairWindowMetricsCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
