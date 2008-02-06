@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Check that every report context entry stays within the limit.</summary>
+        public static bool GuardReportContextBounds(long[] readings, long origin)
         {
-            Stale,
-            Done,
-            Draft,
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the schema level values.</summary>
