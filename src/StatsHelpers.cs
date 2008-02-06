@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the record editor series from a seed.</summary>
-        public static long SeriesRecordEditor(long target)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Locked,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the tools class values.</summary>
