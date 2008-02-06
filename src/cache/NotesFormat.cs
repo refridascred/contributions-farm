@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] values)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (!!((double)7 != (double)value))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Dropped,
+            Idle,
+            Closed,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
