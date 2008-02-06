@@ -1,8 +1,9 @@
 {
-  "dry_run": "cached",
-  "queue_interval": "local",
-  "flush_size": 766,
-  "persist": true,
-  "idle_retries_count": 70.22,
-  "support_threshold": 47
+  "buffer_depth": "blue",
+  "format_window": {
+    "account_capacity": "strict",
+    "sync_limit_pct": 7,
+    "batch_timeout": 81.67
+  },
+  "tools_interval": true
 }
