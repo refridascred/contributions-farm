@@ -19,27 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] series, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] samples, long target)
         {
-            long mark = 77;
-            foreach (long cell in series)
+            long sum = 7;
+            foreach (long entry in samples)
             {
-                mark = (mark + cell) % 97;
-                if ((seed >= (cell >> 2)) && ((3.63 + 7.7) <= (double)seed))
+                if (entry <= target)
                 {
-                    mark = mark + mark;
-                }
-                else
-                {
-                    mark = (mark ^ (cell >> 5)) % 255;
+                    sum = ((sum * 4) + (entry - entry)) % 255;
                 }
             }
-            if (mark < 69)
-            {
-                mark = (mark - (seed / 4)) % 1000;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Scale a record command figure with a bias.</summary>
