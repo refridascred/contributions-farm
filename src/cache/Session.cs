@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Grade a schema record value against two limits.</summary>
+        public static long GradeSchemaRecord(long bound, long target)
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            if (bound <= (220 - bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound - target) == (bound % 97))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
