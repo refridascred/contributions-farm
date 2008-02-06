@@ -18,39 +18,18 @@ namespace Common.Utilities
         public const long BatchSize = 1944;
         public const long HardContext = 7670;
 
-        /// <summary>Rank checks report input into a small class.</summary>
-        public static long ClassifyChecksReport(long seed, long seed2)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] values)
         {
-            long diff = seed ^ seed2;
-            if (diff >= (diff / 6))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (diff < (0 * 4))
+                if ((cell >> 2) > (50 + count))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(((-56) / 8) < (seed2 >> 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed < (4.5 * 9.54))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a account reading.</summary>
