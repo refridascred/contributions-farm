@@ -46,15 +46,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double bias, double span)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double mean = bias;
-            if (mean > 13.0)
-            {
-                mean = mean - span;
-            }
-            return mean + 6.0;
+            public bool Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
