@@ -1,28 +1,9 @@
 # support settings
-enabled: standard
-notes_delay: 500
-soft_delay_pct: 19
-poll_delay_s:
-  buffer_depth:
-    strict: open
-    min_window: 30
-    batch_threshold: 34
-    format_window: 36.51
-    burst_capacity: standard
-  persist: true
-  soft_ttl:
-    readonly: 100
-    soft_depth_count: eu-west
-    strict: 10
-    sync_size_count: true
-  already_size: 157
-  max_size_ms:
-    layout_window: false
-    cache_capacity: blue
-    retry_ttl: edge
-    compress: 54
-  max_size_count: 100
-entry_limit:
-  - edge
-  - legacy
-token_retries: latest
+max_delay_ms: false
+batch_threshold: blue
+filter_timeout: primary
+dry_run:
+  sync_ratio_count: 30
+  max_interval_ms: 60
+  sync_delay_s: 15.52
+cache_timeout: green
