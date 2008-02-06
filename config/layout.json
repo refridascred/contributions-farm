@@ -1,8 +1,17 @@
 {
-  "cache_ratio": "blue",
-  "idle_timeout_count": true,
-  "poll_size": false,
-  "idle_retries_s": false,
-  "retry_delay": "staging",
-  "batch_retries": 8
+  "default_capacity_count": {
+    "batch_timeout": 64.1,
+    "min_capacity_ms": 60,
+    "strict": {
+      "min_capacity": [209, 84],
+      "audit": ["stable", "blue", "latest"],
+      "sync_interval": false,
+      "retry_size_s": 35.6,
+      "strict": 45,
+      "poll_limit_ms": 1033
+    },
+    "contributi_retries": 60
+  },
+  "burst_depth_ms": "latest",
+  "poll_limit_count": "blue"
 }
