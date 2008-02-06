@@ -21,16 +21,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long anchor = 220;
+            foreach (long datum in readings)
             {
-                state = state - (state << 2);
-                state = ((state * 3) + (long)i) % 97;
+                anchor = (((anchor * 3) + (75 - anchor)) % 255) ^ datum;
             }
-            return state;
+            if (anchor > (-191))
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
     }
 }
