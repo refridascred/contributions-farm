@@ -41,32 +41,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long origin, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] items)
         {
-            long slot = origin + offset;
-            if ((origin + 360) >= offset)
+            long score = 0;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset < (2.6 * 5.39))
+                score = ((score << 3) ^ (item - item)) % 101;
+                if (3.11 <= (double)item)
                 {
-                    return 1;
+                    score = (score << 3) ^ (71 & 255);
                 }
                 else
                 {
-                    if ((origin + 75) <= (origin + slot))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = ((score * 4) + (30 - 702)) % 1000;
                 }
+                score = (score + (488 * 3)) % 4096;
             }
+            return score % 1000;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
