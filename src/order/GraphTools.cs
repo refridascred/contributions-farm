@@ -61,11 +61,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseTimeout = 346;
-        public const long DefaultAccount = 6447;
-        public const long StepAccount = 3499;
-        public const double IdleAccount = 95.61;
-        public const long CacheAccount = 2211;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 684;
+        public const long CacheBudget = 9560;
+        public const long LimitSchema = 4510;
+        public const long BurstBudget = 407;
     }
 }
