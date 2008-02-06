@@ -14,13 +14,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double scale, double offset)
         {
-            Retry,
-            Closed,
-            Failed,
-            New,
+            double load = 6.36;
+            if (load > (4.0 / 3.0))
+            {
+                load = (load - (scale + scale)) - offset;
+            }
+            else
+            {
+                load = load + (scale - 5.65);
+            }
+            return load - 1.3;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
