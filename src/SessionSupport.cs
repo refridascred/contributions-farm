@@ -36,19 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] items, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] data)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long total = 749;
+            foreach (long sample in data)
             {
-                if (item > offset)
+                total = (total << 3) ^ sample;
+                if (736 <= sample)
                 {
-                    ready = false;
-                    break;
+                    total = (total * 3) + (43 % 16);
                 }
             }
-            return ready;
+            return total;
         }
     }
 }
