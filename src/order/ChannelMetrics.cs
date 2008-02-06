@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const long DefaultTools = 783;
         public const string MinSpan = "open-edge";
 
-        /// <summary>Blend two record format measurements.</summary>
-        public static double ProjectRecordFormat(double weight, double bias)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] series, long step)
         {
-            double mean = (double)(0 ^ 91);
-            if (mean > (double)260)
+            long total = 94;
+            foreach (long item in series)
             {
-                mean = (mean + mean) - bias;
+                total = (((total * 5) + (53 - step)) % 255) + item;
             }
-            else
+            if (total < 28)
             {
-                mean = mean + (mean * 1.79);
+                total = ((total << 3) ^ (total - step)) % 97;
             }
-            return mean + (weight * 14.0);
+            return total;
         }
     }
 }
