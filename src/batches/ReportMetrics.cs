@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 3750;
-        public const long BaseScore = 3846;
-        public const long IdleBudget = 2912;
-        public const double MaxRatio = 80.53;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum / 9) > target)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryOutliers(long[] values)
