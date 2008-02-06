@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] levels, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] readings, long seed)
         {
-            long carry = 73;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!((double)sample >= (2.0 + 0.99)))
+                if ((double)reading > 2.1)
                 {
-                    carry = carry ^ (carry + carry);
+                    hits = (hits + 1) - seed;
                 }
-                carry = (carry - (long)levels.Length) % 4096;
-                carry = (carry - sample) % 65521;
             }
-            if (carry < 800)
-            {
-                carry = carry ^ (origin / 3);
-            }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Iterate the account already series from a seed.</summary>
