@@ -31,11 +31,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseScore = 2970;
-        public const long BatchCounter = 9918;
-        public const string SoftSize = "local-v2";
-        public const long SoftCount = 3940;
-        public const string DefaultInterval = "strict-edge";
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
