@@ -19,14 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Combine buffer checks values into a single score.</summary>
+        public static long TallyBufferChecks(long[] items, long bound)
         {
-            Synced,
-            Done,
-            Queued,
-            Closed,
-            Retry,
+            long total = 222;
+            foreach (long value in items)
+            {
+                if ((340 - total) > (total - (long)items.Length))
+                {
+                    total = ((total - bound) % 4096) ^ value;
+                }
+                else
+                {
+                    total = ((total * 2) + (total * 3)) % 1000;
+                }
+            }
+            if (total < 8)
+            {
+                total = (total ^ total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
