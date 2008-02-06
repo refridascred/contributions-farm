@@ -26,15 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a checks route figure with a bias.</summary>
-        public static double ProjectChecksRoute(double ratio, double bias)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long floor)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 2; i++)
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                bias2 = (bias2 + (double)(long)i) + ratio;
+                if (!((double)acc > (8.4 / 5.0)))
+                {
+                    acc = ((acc << 3) ^ (floor % 2)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return bias2 + bias2;
+            return acc;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
