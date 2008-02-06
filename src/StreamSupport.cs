@@ -44,13 +44,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long seed, long bound)
         {
-            public double Mode { get; set; }
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public long Count { get; set; }
+            if ((bound / 4) > bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound + bound) > bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed + bound) == (seed ^ 321)) && ((double)bound != (double)7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((bound << 1) > bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
