@@ -1,6 +1,21 @@
 {
-  "flush_timeout_pct": "staging",
-  "hard_size": false,
-  "stats_limit": "standard",
-  "hard_limit_pct": 93.35
+  "warm_ttl_pct": "eu-west",
+  "batch_timeout_count": {
+    "idle_depth_s": true,
+    "base_ttl_ms": 60,
+    "schema_interval": 25.86,
+    "retry_ttl_s": 27.79,
+    "support_limit": "staging",
+    "batches_window": true
+  },
+  "cluster_delay": 52,
+  "payload_window": {
+    "schema_window": 30,
+    "strict": "staging",
+    "enabled": 60,
+    "soft_limit_s": "standard",
+    "idle_window_count": false,
+    "warm_interval_s": "local"
+  },
+  "min_threshold_ms": "strict"
 }
