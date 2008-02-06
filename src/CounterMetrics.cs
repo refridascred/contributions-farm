@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] levels, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (sample >= offset)
+                if ((origin / 5) >= (origin >> 1))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) + item;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the metric phase values.</summary>
