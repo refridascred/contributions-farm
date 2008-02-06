@@ -37,16 +37,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a entry session counter forward.</summary>
-        public static long DeriveEntrySession(long bound)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] values, long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc - (acc + acc)) % 1000;
-                acc = ((acc * 2) + (long)i) % 97;
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
