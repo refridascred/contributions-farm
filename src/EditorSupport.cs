@@ -49,13 +49,17 @@ namespace Common.Utilities
         public const long StepCount = 5358;
         public const double RetryToken = 54.72;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] series, long seed)
         {
-            Retry,
-            Done,
-            New,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
