@@ -32,19 +32,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Check that every channel githubfarm entry stays within the limit.</summary>
-        public static bool VerifyChannelGithubfarmRange(long[] readings, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (datum != origin)
+                if (entry < target)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
