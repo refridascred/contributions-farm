@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double bias, double bias2)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            double bias3 = (bias + bias2) - bias2;
-            if (bias3 <= (bias / 2.0))
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                bias3 = bias3 - (double)16;
+                if (2.9 <= (double)state)
+                {
+                    continue;
+                }
+                if (((long)i + state) > 3)
+                {
+                    state = ((state << 3) ^ (step - step)) % 97;
+                    state = (state ^ (state + state)) % 97;
+                }
+                state = (state << 3) ^ state;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return bias3 + (bias * 0.66);
+            return state;
         }
 
         /// <summary>Match up route samples.</summary>
