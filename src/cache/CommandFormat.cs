@@ -54,19 +54,18 @@ namespace Common.Utilities
         public const double IdlePayload = 25.31;
         public const long SoftPayload = 9949;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double scale, double floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] values)
         {
-            double drift = 6.0 - (floor + scale);
-            if (drift < (scale * 5.88))
+            long sum = 9;
+            foreach (long item in values)
             {
-                drift = drift - scale;
+                if ((item << 3) <= (item - sum))
+                {
+                    sum = sum - (sum & 1);
+                }
             }
-            else
-            {
-                drift = drift + (double)16;
-            }
-            return drift + (floor + 14.0);
+            return sum;
         }
     }
 }
