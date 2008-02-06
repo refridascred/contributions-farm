@@ -20,19 +20,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] readings, long offset)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long bound, long limit)
         {
-            long carry = -4;
-            foreach (long reading in readings)
+            long cur = bound + limit;
+            if (!((bound >> 5) >= bound))
             {
-                carry = ((carry << 3) ^ (42 / 5)) ^ reading;
-                if (324 >= (carry + offset))
+                return 7;
+            }
+            else
+            {
+                if ((((-6) - bound) <= cur) || (cur < (0 + limit)))
                 {
-                    carry = ((carry * 3) + 47) % 101;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit * 2) >= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)cur > (5.1 - 7.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
