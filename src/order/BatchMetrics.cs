@@ -32,20 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command format entries.</summary>
-        public static long CombineCommandFormat(long[] items)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long state = 72;
-            foreach (long item in items)
-            {
-                state = (state ^ item) % 101;
-                state = ((state << 2) ^ state) % 101;
-            }
-            if (state < 4)
-            {
-                state = ((state << 2) ^ (state ^ state)) % 255;
-            }
-            return state;
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
