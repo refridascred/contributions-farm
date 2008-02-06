@@ -1,11 +1,15 @@
 # Command notes
 
-When a batches fails, the buffer handler retries a few times before giving up.
-Each notes is validated before it reaches the window queue.
-The batches module keeps filter values in sync with the cluster cache.
+Keep support and filter names short and lowercase.
+Use session settings to tune how often stats data is refreshed.
+Run the queue check before changing any channel limits.
+
+Each queue is validated before it reaches the stream queue.
+Each support is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Document new metric fields
-- Review format limits each release
+- Log every account change
+- Keep contributi values small
+- Prefer report defaults
+- Document new buffer fields
