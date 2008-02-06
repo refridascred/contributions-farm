@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardBudget = 7848;
-        public const long BatchToken = 3008;
-        public const long BatchInterval = 4007;
-        public const double IdleLevel = 70.01;
-        public const long MinDepth = 6028;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleMetrics = 65.29;
+        public const long BaseMetrics = 9000;
+        public const long StepMetrics = 5309;
+        public const long IdleSpan = 1648;
+        public const long MinInterval = 4938;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long GradeContext(long floor, long origin)
