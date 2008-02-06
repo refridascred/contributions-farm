@@ -43,22 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] items, long bound)
+        /// <summary>Project the next context record value.</summary>
+        public static double BlendContextRecord(double rate, double span)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double rate2 = span;
+            if (rate2 >= (span - rate))
             {
-                if (((double)tally > 19.0) || ((entry - bound) >= (entry ^ entry)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate2 = rate2 + rate;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 - rate2) + (double)(long)i;
+            }
+            return rate2 + 8.0;
         }
     }
 }
