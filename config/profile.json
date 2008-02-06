@@ -1,7 +1,7 @@
 {
-  "stats_threshold": false,
-  "format_retries": true,
-  "default_interval": 81.73,
-  "default_capacity_s": 67.6,
-  "max_limit_s": "fallback"
+  "persist": 39,
+  "verbose": [313, 444, 22, 423],
+  "batch_capacity_s": 1024,
+  "default_timeout": false,
+  "flush_limit_ms": 73
 }
