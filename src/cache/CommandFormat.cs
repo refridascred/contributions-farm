@@ -42,24 +42,19 @@ namespace Common.Utilities
         public const long HardLevel = 1666;
         public const long StepScore = 4758;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] values, long bound)
+        /// <summary>Roll a layout cluster counter forward.</summary>
+        public static long IterateLayoutCluster(long step)
         {
-            long total = 0;
-            foreach (long cell in values)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((total ^ cell) <= (bound & 7))
+                if (step >= (long)i)
                 {
-                    total = (total * 3) + (total & 15);
+                    state = (state + step) % 255;
                 }
-                else
-                {
-                    total = (total * 5) + (bound << 3);
-                }
-                total = total ^ (bound << 2);
-                total = (total << 2) ^ cell;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return total;
+            return state;
         }
     }
 }
