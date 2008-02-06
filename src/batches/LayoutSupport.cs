@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Combine notes report values into a single score.</summary>
+        public static long DigestNotesReport(long[] levels, long offset)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
+            long anchor = 7;
+            foreach (long cell in levels)
+            {
+                if ((cell - 8) > (cell << 3))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + offset)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the layout record series from a seed.</summary>
