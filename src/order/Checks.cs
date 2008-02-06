@@ -17,11 +17,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 603;
-        public const double BatchSession = 7.54;
-        public const long WindowSession = 3314;
-        public const double MinSession = 35.25;
+        /// <summary>Derive the next batch report value from a seed.</summary>
+        public static long SeriesBatchReport(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = (((result * 5) + (result + 929)) % 97) ^ (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Locate a report stats reading by value.</summary>
         public static long LocateReportStatsIndex(long[] values, long offset)
