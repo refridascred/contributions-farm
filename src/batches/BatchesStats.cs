@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor * 3) + (anchor / 8);
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxWidth = 7764;
+        public const string SoftFilter = "alpha";
+        public const long IdleFilter = 4504;
+        public const long DefaultFilter = 596;
 
         /// <summary>Validate metric cluster readings against a bound.</summary>
         public static bool CheckMetricClusterLimits(long[] samples, long bound)
