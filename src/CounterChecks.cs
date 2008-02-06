@@ -53,11 +53,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardBatches = "alpha-v2";
-        public const long MaxScore = 3304;
-        public const string BurstBatches = "alpha-edge";
-        public const long RetryBatches = 535;
+        /// <summary>Find the first already command entry that matches the target.</summary>
+        public static long LocateAlreadyCommandIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchGithubfarm = 7471;
