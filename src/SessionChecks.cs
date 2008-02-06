@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank schema batch input into a small class.</summary>
-        public static long BucketSchemaBatch(long limit, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] samples)
         {
-            long next = limit - bound;
-            if (((bound & 255) > bound) && (next < (limit - next)))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((2.0 - 1.0) == (double)limit)
+                if (((count + sample) < count) || ((97 * 3) == (74 + count)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)next < 7.66)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a already header.</summary>
