@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchSize = 26.26;
-        public const double DefaultRoute = 70.42;
-        public const string HardTimeout = "staging-edge";
-        public const long StepCount = 1533;
-        public const long StepInterval = 3317;
+        /// <summary>Check that every metric editor entry stays within the limit.</summary>
+        public static bool ValidateMetricEditorBounds(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
