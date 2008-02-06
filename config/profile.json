@@ -1,5 +1,8 @@
 {
-  "idle_interval_s": ["legacy", "latest"],
-  "warm_ratio_ms": 5.98,
-  "warm_retries_s": 3601
+  "persist": 8433,
+  "format_limit": "strict",
+  "default_limit": 4556,
+  "flush_limit_ms": false,
+  "readonly": 32,
+  "enabled": true
 }
