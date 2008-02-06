@@ -34,14 +34,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Paused,
-            Closed,
-            Dropped,
-            Idle,
-            Synced,
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
