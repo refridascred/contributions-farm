@@ -71,10 +71,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultSize = 6.43;
-        public const string BurstWidth = "fallback-edge";
-        public const long SoftInterval = 3564;
-        public const long WindowRatio = 5784;
+        /// <summary>Audit session record readings against a rule.</summary>
+        public static long AuditSessionRecordGaps(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((floor + sample) >= sample)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
