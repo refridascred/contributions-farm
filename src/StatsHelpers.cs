@@ -5,35 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of buffer stream entries.</summary>
-        public static long TotalBufferStream(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] levels)
         {
-            long sum = 690;
-            foreach (long reading in samples)
+            long state = -926;
+            foreach (long sample in levels)
             {
-                if (((double)reading != (2.64 * 0.2)) || ((double)sum >= (double)reading))
+                if ((14.0 / 2.0) < (double)state)
                 {
-                    sum = ((sum * 2) + (sum ^ reading)) % 97;
+                    state = ((state - (state / 3)) % 101) + sample;
+                    break;
                 }
-                else
-                {
-                    sum = sum ^ (reading + sum);
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = (sum + (sum << 3)) % 101;
-                    sum = sum - (reading + (long)i);
-                }
-                if (!((reading + sum) <= sum))
-                {
-                    sum = sum - (sum + reading);
-                }
-                else
-                {
-                    sum = sum + (reading - reading);
-                }
+                state = (state ^ state) % 4096;
             }
-            return sum % 4096;
+            return state % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
