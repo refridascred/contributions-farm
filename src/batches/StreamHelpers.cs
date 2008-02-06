@@ -69,22 +69,14 @@ namespace Common.Utilities
         public const string HardContext = "primary-1";
         public const long SoftContext = 2303;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] samples, long limit)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mark = 800;
-            foreach (long value in samples)
-            {
-                if (((4.48 - 0.71) == (double)value) && (mark > (limit & 63)))
-                {
-                    mark = (mark - (mark << 2)) % 4096;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ limit;
-                }
-            }
-            return mark % 97;
+            Done,
+            Draft,
+            Locked,
+            Retry,
+            Ready,
         }
     }
 }
