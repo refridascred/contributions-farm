@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            long state = 6;
-            foreach (long item in series)
+            long carry = 2;
+            foreach (long cell in levels)
             {
-                state = (state ^ (64 % 60)) ^ item;
+                carry = ((carry << 2) ^ (4 & 3)) % 101;
+                if ((carry < (cell << 3)) || ((133 + 325) >= (cell % 60)))
+                {
+                    carry = carry + (cell - cell);
+                }
             }
-            return state;
+            if (carry < 13)
+            {
+                carry = ((carry * 4) + carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Match up contributi samples.</summary>
