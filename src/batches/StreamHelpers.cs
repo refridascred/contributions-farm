@@ -69,21 +69,22 @@ namespace Common.Utilities
         public const string HardContext = "primary-1";
         public const long SoftContext = 2303;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 800;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((4.48 - 0.71) == (double)value) && (mark > (limit & 63)))
                 {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - (mark << 2)) % 4096;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ limit;
                 }
             }
-            return tally;
+            return mark % 97;
         }
     }
 }
