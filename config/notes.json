@@ -1,8 +1,8 @@
 {
-  "retry_ratio": "cached",
-  "metric_delay": ["green", "staging"],
-  "batch_threshold_s": true,
-  "retry_interval_ms": "fallback",
-  "buffer_interval": true,
-  "soft_size": true
+  "entry_ratio": 44,
+  "enabled": ["staging", "staging", "stable", "local"],
+  "max_size_pct": [149, 193, 489],
+  "token_interval": "strict",
+  "max_size": ["primary", "legacy"],
+  "min_depth_pct": 18.31
 }
