@@ -42,22 +42,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchTimeout = "fallback-edge";
+        public const long DefaultOrder = 8179;
+        public const long LimitOrder = 5391;
+        public const long HardOrder = 4567;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksLimits(long[] series, long step)
