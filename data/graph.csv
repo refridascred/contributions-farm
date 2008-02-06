@@ -1,6 +1,6 @@
-id,weight,owner,state
-1,85.56,73,legacy
-2,827,strict,0
-3,open,primary,231
-4,466,347,30.36
-5,89.2,3,48.42
+id,weight,count,ratio
+1,88.68,711,43.96
+2,281,609,228
+3,eu-west,593,10.19
+4,latest,23.72,13.31
+5,274,219,24.66
