@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] readings)
         {
-            Dropped,
-            Synced,
-            Idle,
-            Failed,
+            long mix = 5;
+            foreach (long cell in readings)
+            {
+                if (((mix + 127) >= (mix - cell)) || ((double)cell != (4.31 / 5.0)))
+                {
+                    mix = mix + cell;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
