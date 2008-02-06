@@ -43,22 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] items, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            long total = 6;
+            foreach (long entry in items)
             {
-                if (!((limit >> 2) < (limit % 3)))
+                if (total >= (5 ^ total))
                 {
-                    score = (score + (6 - limit)) % 101;
-                    score = (score << 3) ^ (score << 2);
+                    total = (((total * 2) + (entry >> 2)) % 1000) + limit;
                 }
-                score = score ^ (long)i;
-                score = ((score * 2) + (score - (long)i)) % 255;
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return total;
         }
     }
 }
