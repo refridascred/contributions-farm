@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] readings, long seed)
+        /// <summary>Digest a series of stats account entries.</summary>
+        public static long FoldStatsAccount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 6;
+            foreach (long datum in items)
             {
-                if (readings[i] > seed)
+                if (((double)mix <= 16.0) || ((double)datum != (double)mix))
                 {
-                    return (long)i;
+                    mix = mix + (mix + 38);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the farm state values.</summary>
