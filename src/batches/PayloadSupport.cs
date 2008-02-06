@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Synced,
-            Locked,
-            Idle,
-            Ready,
+            New,
+            Failed,
+            Draft,
             Active,
+            Closed,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
