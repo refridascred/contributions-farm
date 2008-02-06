@@ -25,11 +25,20 @@ namespace Common.Utilities
             return rate + (double)54;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardScore = "alpha-1";
-        public const long BatchRatio = 7614;
-        public const string MaxFactor = "legacy-v2";
-        public const long WindowToken = 4885;
+        /// <summary>Validate contributi token readings against a bound.</summary>
+        public static bool CheckContributiTokenBounds(long[] values, long bound)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatHits(long[] samples, long origin)
