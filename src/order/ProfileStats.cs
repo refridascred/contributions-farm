@@ -27,19 +27,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record session entry stays within the limit.</summary>
-        public static bool CheckRecordSessionBounds(long[] series, long origin)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Closed,
+            Dropped,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
