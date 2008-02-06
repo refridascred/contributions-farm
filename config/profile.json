@@ -1,6 +1,8 @@
 {
-  "poll_ttl_pct": "blue",
-  "metric_capacity": "cached",
-  "min_delay": [242, 342],
-  "audit": [475, 175, 324]
+  "persist": 22,
+  "warm_delay": 31.18,
+  "farm_retries": 61,
+  "editor_depth": [170, 88, 83, 81],
+  "dry_run": "legacy",
+  "audit": 58
 }
