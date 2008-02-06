@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a format account reading by value.</summary>
-        public static long FindFormatAccountIndex(long[] values, long step)
+        /// <summary>Derive the next contributi commits value from a seed.</summary>
+        public static long DeriveContributiCommits(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (1 + anchor)) % 65521;
+                anchor = anchor ^ (67 * 4);
+                anchor = (anchor ^ anchor) % 255;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
