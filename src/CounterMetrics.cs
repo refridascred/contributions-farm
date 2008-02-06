@@ -52,19 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double bias, double span)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long floor)
         {
-            double rate = 18.0;
-            if (rate >= 15.0)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                rate = (rate - rate) - bias;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (4.4 + span)) + (double)(long)i;
-            }
-            return rate + (rate * 8.6);
+            return carry;
         }
     }
 }
