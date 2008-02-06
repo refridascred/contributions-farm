@@ -1,6 +1,8 @@
 {
-  "soft_capacity": ["standard", "blue", "cached"],
-  "hard_ttl": [158, 349, 187, 89],
-  "batch_ttl": 7583,
-  "soft_interval": 16.05
+  "idle_depth_count": 28,
+  "flush_capacity": "primary",
+  "enabled": [83, 207],
+  "batch_retries_pct": 500,
+  "audit": "strict",
+  "batch_window": [164, 81, 486, 143]
 }
