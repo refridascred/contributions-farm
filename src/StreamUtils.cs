@@ -29,12 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] values, long offset)
         {
-            public double Size { get; set; }
-            public double Count { get; set; }
-            public string Score { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
