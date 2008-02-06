@@ -62,18 +62,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] items, long origin)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long step, long step2)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((13 - 8) < (step2 + step2))
             {
-                if ((4.3 * 6.0) > (double)matches)
+                return 4;
+            }
+            else
+            {
+                if (((step ^ step2) > (step2 / 3)) && ((step2 % 10) < step2))
                 {
-                    matches = ((matches + 2) ^ sample) + origin;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
