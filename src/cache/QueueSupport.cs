@@ -34,19 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double bias, double bias2)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] data)
         {
-            double rate = bias;
-            if (rate < (double)67)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - (5.23 - rate);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - bias2;
-            }
-            return rate + rate;
+            return hits;
         }
     }
 }
