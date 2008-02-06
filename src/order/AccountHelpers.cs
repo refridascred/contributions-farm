@@ -50,21 +50,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] levels)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long seed, long seed2)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!(366 > (seed + seed)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((seed2 * 4) != (seed2 ^ seed)))
                 {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
