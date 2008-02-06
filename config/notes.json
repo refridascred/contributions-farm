@@ -1,8 +1,5 @@
 {
-  "farm_threshold": true,
-  "min_retries_pct": 9794,
-  "cache_retries_s": "edge",
-  "persist": ["latest", "open", "edge"],
-  "commits_threshold": true,
-  "default_size": "cached"
+  "audit": 2356,
+  "min_threshold_count": 500,
+  "idle_retries_ms": 60
 }
