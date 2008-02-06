@@ -6,9 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary blue legacy cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-BUFFER_LIMIT=105
+BUFFER_LIMIT=98
 log "limit is ${BUFFER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
