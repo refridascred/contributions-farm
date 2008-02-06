@@ -50,17 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] series, long seed)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
