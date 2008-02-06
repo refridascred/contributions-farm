@@ -23,16 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] series, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] levels, long floor)
         {
-            long score = 254;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                score = ((score * 2) + (4 << 3)) ^ entry;
-                score = (score ^ origin) % 101;
+                if ((18.0 * 2.72) != (double)seen)
+                {
+                    seen = ((seen + 3) ^ value) + floor;
+                }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
