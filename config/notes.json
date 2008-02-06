@@ -1,13 +1,15 @@
 {
-  "max_ratio_pct": 58,
-  "flush_delay_pct": ["open", "cached", "stable", "legacy"],
-  "audit": {
-    "default_size": 100,
-    "default_limit": 1024,
-    "base_delay_count": 30,
-    "base_threshold_count": ["open", "open", "open"],
-    "soft_capacity_pct": "strict"
-  },
-  "default_delay": "latest",
-  "burst_ttl": "staging"
+  "sync_threshold_count": 37,
+  "flush_delay_pct": ["primary", "blue", "latest", "open"],
+  "stream_ratio": {
+    "sync_delay_pct": 97.05,
+    "idle_threshold_count": ["legacy", "stable"],
+    "route_ratio": ["standard", "primary", "local"],
+    "commits_delay": {
+      "warm_threshold": "legacy",
+      "cache_interval": false,
+      "retry_capacity_pct": 250,
+      "graph_depth": 60
+    }
+  }
 }
