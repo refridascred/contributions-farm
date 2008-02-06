@@ -17,21 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally << 2) > (tally << 1))
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
