@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstDepth = "fallback-edge";
-        public const long BurstBatches = 5958;
-        public const double BurstRatio = 2.55;
-        public const long LimitTimeout = 712;
-        public const string WindowBatches = "primary-v2";
+        /// <summary>Measure how many support window samples are out of range.</summary>
+        public static long AuditSupportWindowMatches(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (cell <= matches)
+                {
+                    matches = (matches + 3) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool ValidateOrderRange(long[] items, long limit)
