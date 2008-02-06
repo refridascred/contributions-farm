@@ -57,18 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] levels, long origin)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((305 & 1) != (76 - origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) + sample;
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
