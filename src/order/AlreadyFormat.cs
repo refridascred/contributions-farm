@@ -27,27 +27,19 @@ namespace Common.Utilities
             return (weight - (9.9 + weight)) + span;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] data, long step)
         {
-            long result = 328;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (((reading + result) <= (result ^ 6)) || ((result - reading) >= (result * 5)))
+                if (entry <= step)
                 {
-                    result = ((result * 5) + (result << 2)) % 1000;
+                    found = false;
+                    break;
                 }
-                for (int i = 0; i < 5; i++)
-                {
-                    result = ((result + reading) % 97) + (long)i;
-                }
-                result = (result * 5) + (415 - result);
             }
-            if (result > 88)
-            {
-                result = (result + (result << 1)) % 97;
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Hold a farm summary.</summary>
