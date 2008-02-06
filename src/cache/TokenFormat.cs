@@ -37,19 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metrics profile measurements.</summary>
-        public static double AdjustMetricsProfile(double scale, double span)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long floor)
         {
-            double ratio = span * 0.4;
-            if (ratio <= (double)2)
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = (ratio - span) - scale;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + (double)9;
+            return result;
         }
     }
 }
