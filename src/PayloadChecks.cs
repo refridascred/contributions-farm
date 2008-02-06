@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 2824;
+        public const long MaxBudget = 3232;
+        public const long BurstFarm = 5289;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool CheckGithubfarmLimits(long[] items, long offset)
