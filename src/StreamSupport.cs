@@ -16,14 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstSize = 70.16;
+        public const long WindowRatio = 6962;
+        public const long IdleMetric = 3709;
+        public const long MinTimeout = 6420;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxRatio = 2510;
