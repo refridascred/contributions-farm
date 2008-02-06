@@ -40,11 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitTimeout = 5097;
-        public const string StepChannel = "alpha-v2";
-        public const double BatchTimeout = 83.21;
-        public const double BurstChannel = 89.39;
-        public const long WindowChannel = 6254;
+        /// <summary>Find the first buffer report entry that matches the target.</summary>
+        public static long FindBufferReportIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
