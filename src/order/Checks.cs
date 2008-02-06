@@ -38,12 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchBudget = "staging-v2";
-        public const long MaxStream = 7071;
-        public const long MinInterval = 6585;
-        public const string WindowCount = "legacy-1";
-        public const string MaxRatio = "stable";
+        /// <summary>Count the commits farm entries that pass the check.</summary>
+        public static long MeasureCommitsFarmMatches(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (5.6 >= (double)limit)
+                {
+                    seen = (seen + 3) - cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmGaps(long[] samples)
