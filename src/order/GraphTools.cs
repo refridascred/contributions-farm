@@ -50,11 +50,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 53.89;
-        public const double BatchProfile = 60.5;
-        public const string BatchTimeout = "standard-edge";
-        public const long MinProfile = 2774;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Queued,
+            Stale,
+            Ready,
+            Active,
+            Draft,
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionGaps(long[] readings, long step)
