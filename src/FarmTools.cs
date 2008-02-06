@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine record order values into a single score.</summary>
-        public static long CombineRecordOrder(long[] data)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] series)
         {
-            long sum = 73;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                sum = ((sum ^ sum) % 65521) + sample;
+                if (seen < (98 ^ reading))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (sum > 10)
-            {
-                sum = (sum ^ (141 >> 3)) % 1000;
-            }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Hold a window entry.</summary>
