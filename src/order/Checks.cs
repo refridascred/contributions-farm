@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a cluster token sample.</summary>
-        public static long SeekClusterTokenIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 9239;
+        public const double HardDepth = 1.07;
+        public const long MaxSpan = 1069;
+        public const double IdleLevel = 75.82;
+        public const double StepBudget = 9.01;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinScore = 5693;
