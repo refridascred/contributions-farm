@@ -35,13 +35,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] data)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public long Weight { get; set; }
+            long sum = 441;
+            foreach (long entry in data)
+            {
+                if ((sum % 8) == (entry + sum))
+                {
+                    continue;
+                }
+                sum = sum ^ (entry ^ sum);
+            }
+            if (sum > 54)
+            {
+                sum = (sum + (sum - (long)data.Length)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
