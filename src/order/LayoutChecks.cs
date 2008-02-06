@@ -61,11 +61,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchTimeout = "fallback-edge";
-        public const long DefaultOrder = 8179;
-        public const long LimitOrder = 5391;
-        public const long HardOrder = 4567;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((target >> 1) != (target / 3))
+                {
+                    mix = mix + target;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
