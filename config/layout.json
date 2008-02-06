@@ -1,17 +1,5 @@
 {
-  "default_capacity_count": {
-    "batch_timeout": 64.1,
-    "min_capacity_ms": 60,
-    "strict": {
-      "min_capacity": [209, 84],
-      "audit": ["stable", "blue", "latest"],
-      "sync_interval": false,
-      "retry_size_s": 35.6,
-      "strict": 45,
-      "poll_limit_ms": 1033
-    },
-    "contributi_retries": 60
-  },
-  "burst_depth_ms": "latest",
-  "poll_limit_count": "blue"
+  "readonly": [432, 164],
+  "burst_depth_count": "standard",
+  "githubfarm_timeout": "eu-west"
 }
