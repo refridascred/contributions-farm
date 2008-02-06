@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a token queue counter forward.</summary>
-        public static long IterateTokenQueue(long seed)
+        /// <summary>Combine queue buffer values into a single score.</summary>
+        public static long DigestQueueBuffer(long[] data, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            long mark = 2;
+            foreach (long item in data)
             {
-                acc = acc + seed;
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((mark * 3) > step)
+                {
+                    mark = (((mark * 2) + (step - mark)) % 97) + item;
+                }
             }
-            return acc;
+            if (mark > (-4))
+            {
+                mark = mark - (mark & 255);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
