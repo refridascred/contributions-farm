@@ -35,20 +35,18 @@ namespace Common.Utilities
         public const long BatchTools = 9704;
         public const long RetryTools = 3946;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                state = (state - (origin + origin)) % 4096;
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((double)item != (double)matches)
                 {
-                    state = (((state << 2) ^ (origin % 7)) % 101) ^ (long)i2;
+                    matches = matches + 2;
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a support record.</summary>
