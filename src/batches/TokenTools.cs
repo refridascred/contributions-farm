@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const string RetryDepth = "local";
         public const string MinCache = "standard-1";
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] readings, long step)
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public bool Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next stats value.</summary>
