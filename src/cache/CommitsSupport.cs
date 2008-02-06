@@ -72,10 +72,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBudget = 5694;
-        public const long BatchBuffer = 2351;
-        public const long BatchDepth = 9878;
-        public const string SoftInterval = "strict-edge";
+        /// <summary>Blend two route batch measurements.</summary>
+        public static double ProjectRouteBatch(double gain, double bias)
+        {
+            double ratio = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio + bias) - (double)(long)i) - gain;
+            }
+            return ratio - 9.1;
+        }
     }
 }
