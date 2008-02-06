@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultSpan = 56.26;
-        public const long BatchChannel = 5322;
-        public const long MaxFactor = 8373;
-        public const long RetryChannel = 1343;
+        /// <summary>Roll a record support counter forward.</summary>
+        public static long StepRecordSupport(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)result > (1.0 - 3.0))
+                {
+                    result = (result * 4) + (step + step);
+                }
+                if ((step << 3) >= (long)i)
+                {
+                    result = result - (result + step);
+                    result = result - (result ^ step);
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
