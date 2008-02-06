@@ -22,23 +22,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double scale, double floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long offset, long seed)
         {
-            double gain = scale * 0.67;
-            if (gain <= 18.0)
+            if ((7.0 - 3.76) < (double)seed)
             {
-                gain = gain + (floor - 5.0);
+                return 3;
             }
             else
             {
-                gain = gain + 13.0;
+                if ((double)offset >= 0.33)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (floor / 9.0)) - (double)(long)i;
-            }
-            return gain + (double)918;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
