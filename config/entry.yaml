@@ -1,4 +1,4 @@
 # entry settings
-min_threshold_ms: 7511
-batch_capacity: 4986
-window_depth: 100
+metric_ttl: false
+audit: blue
+default_timeout: latest
