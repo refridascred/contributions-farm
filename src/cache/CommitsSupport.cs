@@ -50,23 +50,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] values, long bound)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long anchor = 62;
-            foreach (long datum in values)
-            {
-                anchor = (anchor ^ (bound - bound)) % 97;
-                if ((bound > anchor) && ((anchor + datum) < anchor))
-                {
-                    anchor = (anchor ^ (bound / 2)) % 1000;
-                }
-            }
-            if (anchor < 664)
-            {
-                anchor = (anchor << 2) ^ bound;
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of metric commits entries.</summary>
