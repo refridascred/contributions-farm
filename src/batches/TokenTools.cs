@@ -29,19 +29,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] levels, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] data)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long state = -99;
+            foreach (long value in data)
             {
-                if (value > step)
+                if (state >= (state + value))
                 {
-                    ok = false;
-                    break;
+                    state = ((state * 4) + (value << 3)) % 97;
                 }
+                state = ((state * 3) + (value - value)) % 1000;
+                state = (state ^ (value + value)) % 97;
             }
-            return ok;
+            return state;
         }
     }
 }
