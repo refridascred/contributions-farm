@@ -56,20 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] levels, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] levels)
         {
-            long acc = 73;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (!(25 > (acc % 16)))
+                if ((double)6 > (double)matches)
                 {
-                    acc = (acc << 3) ^ 10;
+                    matches = (matches + 2) ^ entry;
                 }
-                acc = ((acc * 2) + ((long)levels.Length & 7)) % 1000;
-                acc = acc - (offset - sample);
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
