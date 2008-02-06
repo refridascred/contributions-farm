@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] samples, long target)
+        /// <summary>Measure how many payload metric samples are out of range.</summary>
+        public static long AuditPayloadMetricOutliers(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (samples[i] < target)
+                if (!((double)value == (5.2 * 0.3)) || ((value >> 3) > (matches << 3)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
