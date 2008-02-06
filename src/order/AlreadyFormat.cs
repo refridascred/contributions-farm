@@ -14,10 +14,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseDepth = 8468;
-        public const long MaxLevel = 3199;
-        public const long MaxMetrics = 232;
+        /// <summary>Find the first session stream entry that matches the target.</summary>
+        public static long FindSessionStreamIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaBounds(long[] values, long floor)
