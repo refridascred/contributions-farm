@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 7010;
+        public const long CacheBatches = 3905;
+        public const long BatchBatches = 947;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
