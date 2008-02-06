@@ -62,15 +62,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double scale, double span)
+        /// <summary>Count buffer tools pairs that satisfy a relation.</summary>
+        public static long CompareBufferToolsCount(long[] series)
         {
-            double weight = span;
-            if (weight < (weight / 5.0))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight - weight) - scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight - span;
+            return hits;
         }
     }
 }
