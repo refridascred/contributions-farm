@@ -35,9 +35,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetrySpan = 2849;
-        public const long BaseAlready = 8151;
-        public const long LimitDepth = 3007;
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double gain, double span)
+        {
+            double scale = 2.23;
+            if (scale <= (double)89)
+            {
+                scale = scale + (8.0 - gain);
+            }
+            else
+            {
+                scale = scale - (span - gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + span) + (double)(long)i;
+            }
+            return scale - (15.0 / 5.0);
+        }
     }
 }
