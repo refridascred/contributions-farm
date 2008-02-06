@@ -19,14 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long offset)
         {
-            Queued,
-            Draft,
-            Done,
-            Failed,
-            Locked,
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
