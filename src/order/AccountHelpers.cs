@@ -19,13 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Measure how many metrics schema samples are out of range.</summary>
+        public static long AuditMetricsSchemaOutliers(long[] series)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((double)seen == (14.0 - 3.41))
+                {
+                    seen = (seen + 3) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the record kind values.</summary>
