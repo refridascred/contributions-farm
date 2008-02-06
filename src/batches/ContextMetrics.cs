@@ -41,13 +41,18 @@ namespace Common.Utilities
         public const long BatchPayload = 9567;
         public const long RetryPayload = 6044;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] data, long step)
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count + step) >= 615)
+                {
+                    count = (count + 2) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine support values into a single score.</summary>
