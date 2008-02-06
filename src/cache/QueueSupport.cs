@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] series, long limit)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double bias, double span)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double ratio = (double)80;
+            for (int i = 0; i < 7; i++)
             {
-                if ((limit % 97) < matches)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
+                ratio = ((ratio - (ratio * 6.0)) + (double)(long)i) + bias;
             }
-            return matches;
+            return ratio - (ratio + span);
         }
 
         /// <summary>Fold a list of schema readings.</summary>
