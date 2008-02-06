@@ -26,18 +26,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] items, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] data)
         {
-            long total = 6;
-            foreach (long entry in items)
+            long mark = 890;
+            foreach (long datum in data)
             {
-                if (total >= (5 ^ total))
+                mark = (mark + (datum + 6)) % 97;
+                if (((datum + mark) > (datum % 60)) || ((mark & 63) < (datum % 64)))
                 {
-                    total = (((total * 2) + (entry >> 2)) % 1000) + limit;
+                    break;
                 }
             }
-            return total;
+            return mark;
         }
     }
 }
