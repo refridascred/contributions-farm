@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            Idle,
+            Retry,
+            Stale,
         }
 
         /// <summary>Audit record support readings against a rule.</summary>
