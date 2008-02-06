@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] series, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                score = ((score * 5) + (long)i) % 101;
+                if ((double)cell > 0.46)
+                {
+                    count = (count + 3) - seed;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
