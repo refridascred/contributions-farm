@@ -14,12 +14,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            Pending,
-            Done,
-            Idle,
+            long total = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                total = (total << 3) ^ total;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the stream mode values.</summary>
