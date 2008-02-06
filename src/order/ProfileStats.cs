@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] series)
         {
-            Queued,
-            Retry,
-            New,
+            long anchor = 780;
+            foreach (long value in series)
+            {
+                if (!(value <= (value / 6)))
+                {
+                    anchor = (anchor - anchor) % 255;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + value;
+                }
+            }
+            if (anchor > 85)
+            {
+                anchor = ((anchor * 4) + (anchor + anchor)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a tools record.</summary>
