@@ -1,6 +1,5 @@
 {
-  "base_timeout_ms": ["staging", "latest"],
-  "strict": 2.57,
-  "default_size_count": 1024,
-  "flush_depth": "fallback"
+  "base_delay_ms": 1078,
+  "readonly": "latest",
+  "burst_depth_ms": 67.36
 }
