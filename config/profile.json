@@ -1,6 +1,7 @@
 {
-  "cache_ratio": "primary",
-  "min_capacity_ms": [249, 393],
-  "base_timeout_pct": "legacy",
-  "max_timeout": ["cached", "green"]
+  "dry_run": "stable",
+  "min_ratio_s": 32,
+  "strict": ["green", "legacy", "fallback", "blue"],
+  "poll_threshold_count": "legacy",
+  "idle_ttl_count": "fallback"
 }
