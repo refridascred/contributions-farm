@@ -28,18 +28,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit editor batches readings against a rule.</summary>
-        public static long CountEditorBatchesMatches(long[] items, long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((386 + bound) <= (value + value))
-                {
-                    tally = tally + 3;
-                }
+                acc = acc + (80 >> 3);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Blend two support measurements.</summary>
