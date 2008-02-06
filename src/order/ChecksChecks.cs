@@ -18,9 +18,21 @@ namespace Common.Utilities
         public const long RetryDepth = 5288;
         public const long StepScore = 2738;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstDepth = 955;
-        public const double IdleCache = 77.78;
-        public const long CacheSpan = 3497;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((bound % 5) <= (state / 6)) && ((double)(long)i > (2.7 / 3.0)))
+                {
+                    state = ((state << 3) ^ (long)i) % 255;
+                    state = (state + bound) % 101;
+                }
+                state = state ^ (bound & 1);
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
