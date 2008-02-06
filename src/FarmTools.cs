@@ -23,19 +23,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Count the token checks entries that pass the check.</summary>
+        public static long CountTokenChecksHits(long[] readings)
         {
-            long total = 231;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                total = (((total * 2) + (total - 490)) % 4096) + cell;
+                if (((sample - sample) <= seen) && ((double)sample >= 10.0))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (total > 888)
-            {
-                total = (total + (60 * 5)) % 97;
-            }
-            return total;
+            return seen;
         }
     }
 }
