@@ -1,7 +1,15 @@
 {
-  "retry_size_s": 75.98,
-  "base_retries_s": 4355,
-  "soft_window_pct": 60,
-  "compress": "cached",
-  "retry_timeout_ms": ["local", "standard", "eu-west"]
+  "verbose": "eu-west",
+  "compress": {
+    "channel_threshold": 1.28,
+    "max_threshold": 8.34,
+    "strict": 77,
+    "payload_delay": true,
+    "verbose": "blue",
+    "filter_retries": "stable"
+  },
+  "soft_interval": 73.99,
+  "retry_depth_pct": 4,
+  "min_depth_s": "standard",
+  "counter_threshold": [71, 213]
 }
