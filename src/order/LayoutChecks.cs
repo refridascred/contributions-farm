@@ -53,19 +53,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long target)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((target >> 1) != (target / 3))
-                {
-                    mix = mix + target;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a counter header.</summary>
