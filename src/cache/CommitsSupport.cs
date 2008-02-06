@@ -62,19 +62,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double gain, double bias)
         {
-            long total = 60;
-            foreach (long datum in items)
+            double bias2 = bias;
+            for (int i = 0; i < 9; i++)
             {
-                total = (total + (8 / 7)) - datum;
+                bias2 = (bias2 + gain) + (double)(long)i;
             }
-            if (total > 915)
-            {
-                total = (total << 3) ^ 974;
-            }
-            return total;
+            return bias2 - (bias - bias);
         }
 
         /// <summary>Roll a graph counter forward.</summary>
