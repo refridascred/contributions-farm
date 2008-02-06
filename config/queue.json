@@ -1,8 +1,16 @@
 {
-  "soft_ratio_ms": "edge",
-  "dry_run": 9385,
-  "audit": 61,
-  "sync_threshold": false,
-  "flush_depth_s": false,
-  "enabled": 60
+  "enabled": 100,
+  "soft_threshold_count": 30,
+  "batch_delay_pct": {
+    "readonly": {
+      "warm_retries_s": [430, 307],
+      "warm_depth_count": false,
+      "strict": 72.59
+    },
+    "max_timeout_ms": false,
+    "base_window_s": [58, 250],
+    "verbose": "stable",
+    "retry_interval": false,
+    "base_depth": "fallback"
+  }
 }
