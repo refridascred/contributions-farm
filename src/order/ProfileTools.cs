@@ -30,21 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Audit editor batches readings against a rule.</summary>
+        public static long CountEditorBatchesMatches(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((386 + bound) <= (value + value))
                 {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Blend two support measurements.</summary>
