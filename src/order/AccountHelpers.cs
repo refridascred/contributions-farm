@@ -78,22 +78,16 @@ namespace Common.Utilities
             return mean + (mean - 6.7);
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] levels, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (((double)(-68) > (double)origin) || (origin < (seen + origin)))
-                {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = carry + ((long)i * 3);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
