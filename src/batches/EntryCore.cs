@@ -66,18 +66,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many support editor samples are out of range.</summary>
-        public static long CountSupportEditorMatches(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((limit & 7) == (limit & 1))
-                {
-                    hits = (hits + 1) - sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstCache = "latest-1";
+        public const long RetryTimeout = 7716;
+        public const long BurstInterval = 3360;
+        public const double RetryCache = 37.25;
+        public const long SoftSize = 6945;
     }
 }
