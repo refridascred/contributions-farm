@@ -19,19 +19,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double gain, double offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            double rate = (double)194 * 0.4;
-            if (rate >= (double)(-46))
-            {
-                rate = (rate + 9.4) + offset;
-            }
-            else
-            {
-                rate = rate + gain;
-            }
-            return rate - rate;
+            Pending,
+            Done,
+            Draft,
+            Locked,
         }
 
         /// <summary>Adjust a farm reading.</summary>
