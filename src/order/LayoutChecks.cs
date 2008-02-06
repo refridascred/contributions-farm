@@ -15,18 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit metric stats readings against a rule.</summary>
-        public static long CountMetricStatsOutliers(long[] series, long origin)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (origin < (origin + 93))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Stale,
+            Paused,
+            Pending,
+            Idle,
+            Done,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
