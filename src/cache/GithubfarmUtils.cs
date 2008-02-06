@@ -18,19 +18,14 @@ namespace Common.Utilities
         public const double BaseWidth = 24.0;
         public const long RetrySpan = 9552;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long target)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = ((mix + (target % 60)) % 4096) - (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Idle,
+            Ready,
+            Failed,
+            New,
+            Draft,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
