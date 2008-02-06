@@ -20,21 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] values)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = ((state << 2) ^ ((long)i - step)) % 255;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state + (long)i2) % 1000;
                 }
+                state = ((state * 2) + (step << 2)) % 65521;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Fold a list of session readings.</summary>
