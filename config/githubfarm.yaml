@@ -1,6 +1,5 @@
 # githubfarm settings
-poll_interval_s: 79.64
-default_interval_pct: false
-account_timeout: 8339
-stream_limit: blue
-verbose: standard
+session_capacity: 1784
+audit: 99
+entry_retries: green
+batch_threshold: stable
