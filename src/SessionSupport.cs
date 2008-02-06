@@ -23,15 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Dropped,
+            Idle,
+            Locked,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
