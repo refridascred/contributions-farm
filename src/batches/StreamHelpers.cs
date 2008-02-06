@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank channel notes input into a small class.</summary>
-        public static long BucketChannelNotes(long target, long target2)
-        {
-            if (((target & 127) <= (target2 * 3)) && ((target + target) > (target << 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target < (double)target2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target2 * 3) < (target << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)target2 != (0.64 - 3.0)) && ((double)target < (8.99 * 19.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchWidth = 6866;
+        public const double SoftAccount = 85.8;
+        public const double BurstDepth = 46.67;
+        public const long BurstAccount = 3998;
+        public const long HardAccount = 3840;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long SortOrder(long offset, long step)
