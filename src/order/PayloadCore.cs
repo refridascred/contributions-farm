@@ -19,22 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] items, long floor)
+        /// <summary>Look up the position of a command notes sample.</summary>
+        public static long FindCommandNotesIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)count > 0.47)
+                if (samples[i] > limit)
                 {
-                    count = ((count + 3) + cell) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a format entry.</summary>
