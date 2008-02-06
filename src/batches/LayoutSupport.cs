@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of stats account entries.</summary>
-        public static long FoldStatsAccount(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] data, long floor)
         {
-            long mix = 6;
-            foreach (long datum in items)
+            long result = 1;
+            foreach (long cell in data)
             {
-                if (((double)mix <= 16.0) || ((double)datum != (double)mix))
+                if ((cell % 24) <= result)
                 {
-                    mix = mix + (mix + 38);
+                    result = result + cell;
+                }
+                else
+                {
+                    result = ((result * 4) + (cell ^ result)) % 65521;
                 }
             }
-            return mix;
+            if (result > 797)
+            {
+                result = result + (floor << 3);
+            }
+            return result % 4096;
         }
 
         /// <summary>Match up tools samples.</summary>
