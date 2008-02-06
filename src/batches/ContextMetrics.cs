@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the githubfarm account series from a seed.</summary>
-        public static long StepGithubfarmAccount(long target)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long step, long step2)
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
+            long span = step + step2;
+            if ((double)span <= 14.0)
             {
-                if (((acc << 2) < (acc % 60)) && (7 > (acc + acc)))
+                return 2;
+            }
+            else
+            {
+                if ((double)span > (double)449)
                 {
-                    acc = (acc * 2) + (acc ^ acc);
+                    return 4;
                 }
                 else
                 {
-                    acc = (acc + ((long)i & 63)) % 65521;
+                    return 6;
                 }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
         }
 
         /// <summary>Describe the entry kind values.</summary>
