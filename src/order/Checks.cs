@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double bias, double bias2)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double drift = bias - (double)591;
-            return (drift + bias) + bias2;
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Derive the next batch report value from a seed.</summary>
