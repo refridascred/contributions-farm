@@ -20,22 +20,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] data)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (item < (item << 2))
+                if (sample > limit)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
