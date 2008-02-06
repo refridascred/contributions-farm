@@ -58,19 +58,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Derive the next editor session value from a seed.</summary>
-        public static long DeriveEditorSession(long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (offset < ((long)i - 6))
+                if ((double)entry <= (19.0 / 3.0))
                 {
-                    state = (state * 3) + (state + (long)i);
+                    matches = matches + 2;
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
     }
 }
