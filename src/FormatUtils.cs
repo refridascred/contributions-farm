@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double gain, double offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            double weight = (double)(2 & 31);
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (((weight + (double)0) + (double)(long)i) + gain) + offset;
-            }
-            return weight - weight;
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit report readings against a rule.</summary>
