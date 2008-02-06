@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] samples, long seed)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public double Token { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the support mode values.</summary>
