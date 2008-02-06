@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            Synced,
+            Locked,
+            Idle,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a filter stats.</summary>
