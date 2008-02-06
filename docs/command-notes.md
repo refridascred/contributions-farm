@@ -1,11 +1,11 @@
 # Command notes
 
-Run the order check before changing any cluster limits.
-Use filter settings to tune how often metrics data is refreshed.
-Use report settings to tune how often token data is refreshed.
+Each metrics is validated before it reaches the report queue.
+When a notes fails, the channel handler retries a few times before giving up.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate farm input early
-- Log every record change
-- Prefer batch defaults
+- Log every stream change
+- Keep githubfarm values small
+- Review window limits each release
