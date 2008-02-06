@@ -22,19 +22,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] values, long seed)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            double gain = scale * 0.67;
+            if (gain <= 18.0)
             {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain + (floor - 5.0);
             }
-            return flag;
+            else
+            {
+                gain = gain + 13.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (floor / 9.0)) - (double)(long)i;
+            }
+            return gain + (double)918;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
