@@ -33,22 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] items, long offset)
+        /// <summary>Accumulate farm stats samples.</summary>
+        public static long TotalFarmStats(long[] series, long offset)
         {
-            long sum = 50;
-            foreach (long cell in items)
+            long total = 986;
+            foreach (long value in series)
             {
-                if ((((-733) << 1) <= sum) && (offset >= (cell + sum)))
+                if (10 >= (offset + total))
                 {
-                    sum = ((sum * 2) + ((long)items.Length >> 1)) % 101;
+                    total = ((total * 5) + total) % 65521;
+                }
+                if (offset < (value + value))
+                {
+                    total = (total ^ (value - value)) % 65521;
                 }
             }
-            if (sum > 893)
-            {
-                sum = (sum + (sum + sum)) % 4096;
-            }
-            return sum % 97;
+            return total % 4096;
         }
     }
 }
