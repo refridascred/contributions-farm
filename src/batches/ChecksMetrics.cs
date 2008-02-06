@@ -60,12 +60,19 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double rate, double bias)
         {
-            New,
-            Draft,
-            Dropped,
+            double drift = rate;
+            if (drift >= bias)
+            {
+                drift = drift + (double)5;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + 9.63;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
