@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long floor, long bound)
         {
-            Draft,
-            Locked,
-            Closed,
+            if ((double)bound < (double)33)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor + bound) <= (floor + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
