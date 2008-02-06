@@ -28,21 +28,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the stream stats series from a seed.</summary>
-        public static long IterateStreamStats(long bound)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                if (9.4 <= (double)(long)i)
-                {
-                    total = (total - bound) % 97;
-                    total = ((total << 2) ^ (bound & 31)) % 97;
-                }
-                total = (total ^ total) % 97;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Queued,
+            Draft,
+            Dropped,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
