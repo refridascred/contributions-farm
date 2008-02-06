@@ -30,21 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count format editor pairs that satisfy a relation.</summary>
-        public static long CompareFormatEditorCount(long[] items)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Synced,
+            New,
         }
 
         /// <summary>Look up the position of a support command sample.</summary>
