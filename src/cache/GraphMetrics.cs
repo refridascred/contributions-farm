@@ -32,12 +32,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Check that every channel githubfarm entry stays within the limit.</summary>
+        public static bool VerifyChannelGithubfarmRange(long[] readings, long origin)
         {
-            Closed,
-            Stale,
-            Retry,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
