@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultSpan = 56.26;
+        public const long BatchChannel = 5322;
+        public const long MaxFactor = 8373;
+        public const long RetryChannel = 1343;
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double ProjectRoute(double gain, double span)
