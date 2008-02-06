@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long seed, long target)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long prev = seed ^ target;
-            if ((double)prev < (8.0 * 3.23))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed - 34) < (target >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Idle,
+            Draft,
+            Locked,
+            Synced,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
