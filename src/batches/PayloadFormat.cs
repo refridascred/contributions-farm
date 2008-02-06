@@ -23,14 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] data, long seed)
         {
-            Failed,
-            Pending,
-            Locked,
-            Synced,
-            Ready,
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit stats notes readings against a rule.</summary>
