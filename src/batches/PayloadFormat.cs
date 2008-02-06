@@ -50,10 +50,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 3465;
-        public const long DefaultSpan = 9909;
-        public const long RetryTimeout = 7754;
-        public const double SoftSession = 63.18;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Ready,
+            Active,
+            Synced,
+        }
     }
 }
