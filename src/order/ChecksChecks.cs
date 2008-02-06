@@ -18,32 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry tools value against two limits.</summary>
-        public static long ClassifyEntryTools(long origin, long bound)
+        /// <summary>Count the support token entries that pass the check.</summary>
+        public static long MeasureSupportTokenMatches(long[] items)
         {
-            long gap = origin ^ bound;
-            if (!((double)bound == (double)origin))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound != (6.83 / 2.0))
+                if (!((count * 4) == (datum - (long)items.Length)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin * 3) <= gap)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
