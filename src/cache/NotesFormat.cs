@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double rate, double span)
         {
-            Ready,
-            Closed,
-            Active,
-            Failed,
-            Locked,
+            double rate2 = span;
+            if (rate2 > 3.6)
+            {
+                rate2 = rate2 - (double)(-113);
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Roll a stats order counter forward.</summary>
