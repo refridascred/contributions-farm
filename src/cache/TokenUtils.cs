@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] data, long seed)
+        /// <summary>Check that every commits stream entry stays within the limit.</summary>
+        public static bool VerifyCommitsStreamLimits(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((tally ^ entry) > entry)
+                if (sample <= offset)
                 {
-                    tally = (tally + 2) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
