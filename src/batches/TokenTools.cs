@@ -29,9 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 3647;
-        public const string HardFilter = "local";
-        public const double WindowFilter = 79.35;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
