@@ -1,5 +1,7 @@
 {
-  "stats_interval": [56, 396, 371, 103],
-  "default_depth_s": false,
-  "hard_threshold_pct": ["open", "latest", "latest", "eu-west"]
+  "enabled": "legacy",
+  "batch_threshold_pct": "staging",
+  "cache_timeout": 95.34,
+  "already_capacity": false,
+  "report_depth": 60
 }
