@@ -26,11 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the filter class values.</summary>
