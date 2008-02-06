@@ -1,5 +1,5 @@
 {
-  "warm_ratio_ms": 100,
-  "notes_ttl": ["local", "eu-west", "open"],
-  "strict": 91
+  "dry_run": false,
+  "max_timeout_pct": true,
+  "compress": 22.16
 }
