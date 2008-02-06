@@ -41,21 +41,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of queue support readings.</summary>
-        public static long OverlapQueueSupportCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheFactor = 67.85;
+        public const long HardWidth = 7757;
+        public const double DefaultOrder = 31.42;
+        public const long DefaultDepth = 8679;
+        public const double BatchOrder = 53.74;
     }
 }
