@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine queue buffer values into a single score.</summary>
-        public static long DigestQueueBuffer(long[] data, long step)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            long mark = 2;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark * 3) > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (((mark * 2) + (step - mark)) % 97) + item;
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark > (-4))
-            {
-                mark = mark - (mark & 255);
-            }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
