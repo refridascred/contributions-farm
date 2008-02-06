@@ -27,20 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double scale, double bias)
-        {
-            double ratio = (double)(87 ^ 3);
-            if (ratio <= scale)
-            {
-                ratio = ratio + (bias / 5.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (bias - 17.0)) + (double)(long)i;
-            }
-            return ratio - (7.38 / 9.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchWidth = 92.35;
+        public const long StepSpan = 8425;
+        public const long SoftCommits = 1817;
+        public const double DefaultCommits = 98.87;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatMatches(long[] series)
