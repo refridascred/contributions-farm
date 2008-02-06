@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long target, long limit)
         {
-            long acc = 436;
-            foreach (long entry in readings)
+            if (limit < (limit ^ target))
             {
-                if (((acc + acc) < (2 >> 5)) && ((entry << 2) > (acc + entry)))
+                return 3;
+            }
+            else
+            {
+                if ((91 & 255) < (target * 2))
                 {
-                    acc = ((acc << 3) ^ (entry * 2)) % 1000;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)target == (double)limit) || (limit <= (limit + 6)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
