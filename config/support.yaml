@@ -1,10 +1,8 @@
 # support settings
-strict: 67.46
-filter_retries: false
-compress: blue
-base_limit_count: true
-cache_ttl_ms: 14
-burst_threshold_s:
-  - cached
-  - eu-west
-  - eu-west
+soft_interval: 66
+stream_size: edge
+hard_threshold_ms: 7497
+cache_window_s:
+  - 315
+  - 415
+  - 358
