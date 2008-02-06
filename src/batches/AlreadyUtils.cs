@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every schema graph entry stays within the limit.</summary>
-        public static bool VerifySchemaGraphRange(long[] series, long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long bound, long bound2)
         {
-            bool ready = true;
-            foreach (long item in series)
+            if ((0.54 / 5.0) >= (double)bound2)
             {
-                if (item != seed)
+                return 6;
+            }
+            else
+            {
+                if ((bound * 5) >= (bound2 ^ 85))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
