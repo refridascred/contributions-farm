@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double bias, double span)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double weight, double span)
         {
-            double ratio = (double)80;
-            for (int i = 0; i < 7; i++)
+            double rate = weight;
+            if (rate >= span)
             {
-                ratio = ((ratio - (ratio * 6.0)) + (double)(long)i) + bias;
+                rate = rate - (span * 1.6);
             }
-            return ratio - (ratio + span);
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate - 0.7;
         }
 
         /// <summary>Hold a record entry.</summary>
