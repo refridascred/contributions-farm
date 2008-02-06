@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two tools queue measurements.</summary>
-        public static double AdjustToolsQueue(double weight, double offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double scale = (double)233 + (double)2;
-            if (scale < 4.85)
-            {
-                scale = (scale + (offset / 6.0)) - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + offset) - (double)(long)i;
-            }
-            return scale + (double)159;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
