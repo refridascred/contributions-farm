@@ -63,19 +63,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double scale, double floor)
+        /// <summary>Adjust a channel githubfarm reading.</summary>
+        public static double ScaleChannelGithubfarm(double rate, double offset)
         {
-            double drift = (double)(4 & 127);
-            if (drift > (floor / 8.0))
-            {
-                drift = (drift - (drift + floor)) + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (2.48 / 6.0)) - (double)(long)i;
-            }
-            return drift + floor;
+            double scale = rate;
+            return (scale - 11.0) + offset;
         }
     }
 }
