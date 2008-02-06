@@ -23,19 +23,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every session farm entry stays within the limit.</summary>
-        public static bool GuardSessionFarmLimits(long[] series, long offset)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Paused,
+            Dropped,
+            Locked,
+            Queued,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
