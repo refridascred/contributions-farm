@@ -57,13 +57,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Stale,
-            Ready,
-            Locked,
-            Synced,
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
