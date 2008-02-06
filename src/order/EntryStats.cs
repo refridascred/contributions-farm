@@ -19,11 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitBudget = "alpha";
-        public const long MaxInterval = 2952;
-        public const long StepCount = 5449;
-        public const long HardFormat = 3573;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public long Count { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TallyFarm(long[] readings, long bound)
