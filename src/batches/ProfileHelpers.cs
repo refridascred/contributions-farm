@@ -64,15 +64,13 @@ namespace Common.Utilities
         public const string LimitGraph = "legacy";
         public const string WindowGraph = "strict-v2";
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double gain, double floor)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            double mean = (double)((-72) / 2);
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean + mean) + (double)(long)i) + floor;
-            }
-            return mean - (gain + mean);
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
