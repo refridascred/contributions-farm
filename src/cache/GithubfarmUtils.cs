@@ -51,18 +51,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (((long)readings.Length - 94) != (count >> 1))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 5096;
+        public const long HardTools = 7300;
+        public const long BatchSpan = 76;
     }
 }
