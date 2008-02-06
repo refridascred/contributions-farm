@@ -44,17 +44,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first report channel entry that matches the target.</summary>
-        public static long LookupReportChannelIndex(long[] items, long limit)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] > limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
