@@ -52,19 +52,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit commits channel readings against a rule.</summary>
-        public static long CountCommitsChannelMatches(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((252 * 2) == (351 + cell))
-                {
-                    hits = (hits + 1) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxInterval = 6778;
+        public const double SoftRecord = 76.43;
+        public const long IdleCount = 6126;
+        public const string IdleFactor = "fallback-edge";
 
         /// <summary>Locate a report layout reading by value.</summary>
         public static long LookupReportLayoutIndex(long[] samples, long bound)
