@@ -1,8 +1,5 @@
 {
-  "batch_size": "legacy",
-  "hard_size": "local",
-  "sync_interval": 250,
-  "payload_capacity": true,
-  "idle_retries": ["fallback", "latest", "primary", "primary"],
-  "readonly": "standard"
+  "verbose": ["cached", "green", "blue"],
+  "compress": "primary",
+  "idle_capacity_pct": 58
 }
