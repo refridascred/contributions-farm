@@ -20,12 +20,18 @@ namespace Common.Utilities
             return drift + (drift - bias);
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Accumulate editor session samples.</summary>
+        public static long ScoreEditorSession(long[] data)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
+            long result = 0;
+            foreach (long sample in data)
+            {
+                if ((699 + sample) <= (sample - result))
+                {
+                    result = (result ^ (result - sample)) % 255;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
