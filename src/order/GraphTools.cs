@@ -35,19 +35,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] levels, long origin)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Idle,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the cache phase values.</summary>
