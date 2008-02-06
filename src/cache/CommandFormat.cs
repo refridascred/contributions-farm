@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long seed, long floor)
         {
-            Stale,
-            Pending,
-            Paused,
-            Closed,
+            long delta = seed - floor;
+            if (((delta + floor) > (floor ^ 60)) && (900 < (floor << 2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(9 <= (floor + 195)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((63 % 3) < (floor * 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of command entries.</summary>
