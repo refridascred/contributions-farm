@@ -28,22 +28,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 2318;
+        public const string LimitWidth = "fallback";
+        public const double LimitContext = 77.75;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
