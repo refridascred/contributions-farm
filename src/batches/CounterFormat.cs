@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long bound, long bound2)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] levels, long floor)
         {
-            long next = bound + bound2;
-            if (!((bound2 + next) == (bound << 2)))
+            bool found = true;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (next <= (next - bound))
+                if (item > floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.2 / 5.0) != (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((9.0 - 8.27) == (double)bound2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
