@@ -49,19 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a entry batch figure with a bias.</summary>
-        public static double ProjectEntryBatch(double weight, double bias)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] values)
         {
-            double ratio = 4.4 - (double)46;
-            if (ratio < (double)5)
+            long count = 0;
+            foreach (long datum in values)
             {
-                ratio = ((ratio - (ratio / 9.0)) - weight) + bias;
+                if (((count - count) <= datum) && (count >= (count & 127)))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)(-88);
-            }
-            return ratio + (ratio * 0.8);
+            return count;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
