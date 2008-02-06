@@ -60,12 +60,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheSize = "stable-1";
-        public const long MinGraph = 8913;
-        public const long BurstGraph = 6764;
-        public const string LimitGraph = "legacy";
-        public const string WindowGraph = "strict-v2";
+        /// <summary>Compare every pair of buffer filter readings.</summary>
+        public static long OverlapBufferFilterCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long CompareProfileCount(long[] items)
