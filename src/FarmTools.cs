@@ -23,13 +23,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Pending,
-            Ready,
-            Paused,
-            Retry,
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
