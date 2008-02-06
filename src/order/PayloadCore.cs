@@ -29,12 +29,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Rank contributi stats input into a small class.</summary>
+        public static long BucketContributiStats(long bound, long limit)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            long prev = bound ^ limit;
+            if ((limit - 2) >= prev)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound >> 3) >= (8 - 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit - limit) >= limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound * 4) != (limit + limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
