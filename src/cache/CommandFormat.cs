@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long seed, long floor)
-        {
-            long delta = seed - floor;
-            if (((delta + floor) > (floor ^ 60)) && (900 < (floor << 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(9 <= (floor + 195)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((63 % 3) < (floor * 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepInterval = 945;
+        public const long MaxDepth = 1781;
+        public const long IdleCommits = 409;
+        public const double RetryCommits = 2.02;
+        public const long DefaultCount = 3693;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TallyCommand(long[] series, long origin)
