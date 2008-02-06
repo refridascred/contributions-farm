@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] items, long limit)
+        /// <summary>Iterate the command tools series from a seed.</summary>
+        public static long RollCommandTools(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((items[i] > limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ step) % 97;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the support token entries that pass the check.</summary>
