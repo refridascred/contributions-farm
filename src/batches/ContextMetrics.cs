@@ -49,14 +49,13 @@ namespace Common.Utilities
         public const long BatchPayload = 9567;
         public const long RetryPayload = 6044;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Active,
-            New,
-            Done,
-            Idle,
-            Synced,
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
