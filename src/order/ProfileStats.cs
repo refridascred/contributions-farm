@@ -44,21 +44,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 3;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading - 83) < (reading + state))
                 {
-                    if ((values[i] - values[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state + state) % 97;
+                }
+                else
+                {
+                    state = ((state * 5) + (reading + state)) % 4096;
                 }
             }
-            return count;
+            return state % 1000;
         }
     }
 }
