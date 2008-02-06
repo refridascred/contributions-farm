@@ -38,15 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next order filter value.</summary>
-        public static double ProjectOrderFilter(double scale, double span)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            double load = 12.0;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (((load - (5.51 * 18.0)) + (double)(long)i) + scale) - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + (double)4;
+            return tally;
         }
     }
 }
