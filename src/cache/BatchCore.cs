@@ -27,19 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] items, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long result = 16;
+            foreach (long datum in items)
             {
-                if (cell != seed)
+                if (((5.6 / 5.0) == (double)offset) || ((offset * 4) > (result + datum)))
                 {
-                    found = false;
-                    break;
+                    result = ((result << 3) ^ (datum & 7)) % 101;
                 }
             }
-            return found;
+            if (result > 54)
+            {
+                result = ((result << 2) ^ (result + offset)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Iterate the cluster route series from a seed.</summary>
