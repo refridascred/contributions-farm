@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double rate, double floor)
-        {
-            double ratio = rate;
-            if (ratio <= floor)
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)546) + (double)(long)i;
-            }
-            return ratio + (floor * 3.57);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitBudget = "alpha";
+        public const long MaxInterval = 2952;
+        public const long StepCount = 5449;
+        public const long HardFormat = 3573;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TallyFarm(long[] readings, long bound)
