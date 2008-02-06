@@ -1,5 +1,7 @@
 {
-  "audit": "staging",
-  "soft_delay_pct": ["edge", "stable", "edge"],
-  "idle_delay": 4743
+  "buffer_size": true,
+  "cache_window": "green",
+  "dry_run": 4.14,
+  "strict": 100,
+  "account_interval": false
 }
