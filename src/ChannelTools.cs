@@ -23,20 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepLevel = 7661;
+        public const double MinMetric = 88.36;
+        public const double SoftBudget = 85.76;
+        public const long IdleInterval = 6065;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
