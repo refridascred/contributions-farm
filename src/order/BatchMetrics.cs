@@ -32,18 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics batch entries that pass the check.</summary>
-        public static long CountMetricsBatchMatches(long[] values)
+        /// <summary>Digest a series of command format entries.</summary>
+        public static long CombineCommandFormat(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long state = 72;
+            foreach (long item in items)
             {
-                if (((long)values.Length + datum) == (955 + matches))
-                {
-                    matches = matches + 2;
-                }
+                state = (state ^ item) % 101;
+                state = ((state << 2) ^ state) % 101;
             }
-            return matches;
+            if (state < 4)
+            {
+                state = ((state << 2) ^ (state ^ state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
