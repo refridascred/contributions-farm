@@ -61,19 +61,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double scale, double span)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] series)
         {
-            double rate = 7.6;
-            if (rate > 3.8)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                rate = (rate - (span / 5.0)) - scale;
+                if ((tally - tally) <= (tally << 3))
+                {
+                    tally = (tally + 3) + cell;
+                }
             }
-            else
-            {
-                rate = rate + (rate + rate);
-            }
-            return rate + (double)256;
+            return tally;
         }
     }
 }
