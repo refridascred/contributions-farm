@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] values, long target)
         {
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up account samples.</summary>
