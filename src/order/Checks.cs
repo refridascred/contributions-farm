@@ -20,25 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long floor, long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series, long offset)
         {
-            long delta = floor - limit;
-            if ((delta ^ limit) <= (floor % 5))
+            long state = 23;
+            foreach (long datum in series)
             {
-                return 2;
+                state = ((state ^ (264 + state)) ^ datum) - offset;
             }
-            else
+            if (state > 54)
             {
-                if ((floor + floor) == (delta ^ floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
+                state = (state * 2) + (state >> 5);
             }
+            return state % 1000;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
