@@ -48,18 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] levels)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((seen + 126) < seen)
+                if (sample < seed)
                 {
-                    seen = (seen + 2) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
