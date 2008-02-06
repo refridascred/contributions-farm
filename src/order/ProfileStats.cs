@@ -18,14 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long origin)
         {
-            Synced,
-            Locked,
-            Idle,
-            Queued,
-            Pending,
+            long result = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((long)i + result) < ((long)i / 4))
+                {
+                    result = result ^ ((long)i << 2);
+                    result = ((result * 5) + (27 - 727)) % 1000;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a filter stats.</summary>
