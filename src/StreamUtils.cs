@@ -37,18 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] series, long target)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double rate = (double)(7 * 3);
+            if (rate > (double)60)
             {
-                if ((target - (-541)) > (matches << 1))
-                {
-                    matches = (matches + 3) + cell;
-                }
+                rate = (rate + (0.3 * 18.0)) - gain;
             }
-            return matches;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (double)4) + (double)(long)i;
+            }
+            return rate - offset;
         }
 
         /// <summary>Combine account values into a single score.</summary>
