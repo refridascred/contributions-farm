@@ -27,18 +27,31 @@ namespace Common.Utilities
             return (load - 17.0) + offset;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] levels, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long target, long origin)
         {
-            long state = 0;
-            foreach (long sample in levels)
+            if (((origin ^ 25) == (target - origin)) || ((target & 3) <= target))
             {
-                if ((((long)levels.Length * 3) < (state ^ offset)) || ((double)offset != (2.0 + 8.3)))
+                return 7;
+            }
+            else
+            {
+                if ((double)origin >= (1.61 * 7.9))
                 {
-                    state = state - (sample + sample);
+                    return 5;
+                }
+                else
+                {
+                    if (((target ^ origin) == (origin + target)) && ((origin & 15) < origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Hold a payload header.</summary>
