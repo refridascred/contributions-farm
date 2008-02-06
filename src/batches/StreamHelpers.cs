@@ -32,19 +32,15 @@ namespace Common.Utilities
         public const long CacheMetrics = 7571;
         public const long HardSize = 1845;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] samples, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long limit)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (value > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
