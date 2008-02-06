@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] readings, long bound)
+        /// <summary>Grade a graph queue value against two limits.</summary>
+        public static long RankGraphQueue(long step, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)step != (double)floor)
             {
-                if ((readings[i] > bound) && ((readings[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((596 < step) || ((step + (-7)) >= (step / 3)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((step - step) >= (floor ^ step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step < (611 ^ floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cache status values.</summary>
