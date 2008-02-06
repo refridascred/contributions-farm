@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 1426;
-        public const long BurstCount = 5421;
-        public const string LimitCounter = "alpha";
-        public const long StepLevel = 4926;
-        public const double BaseFactor = 75.69;
+        /// <summary>Roll a token queue counter forward.</summary>
+        public static long IterateTokenQueue(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = acc + seed;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long GradeWindow(long target, long limit)
