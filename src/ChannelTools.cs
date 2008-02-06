@@ -30,18 +30,17 @@ namespace Common.Utilities
         public const double HardRatio = 89.68;
         public const string MaxRoute = "legacy-1";
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] readings)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((91 + item) <= (item << 2))
+                if ((values[i] <= seed) && ((values[i] % 5) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
