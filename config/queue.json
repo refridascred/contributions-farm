@@ -1,8 +1,6 @@
 {
-  "hard_ratio_ms": 3.08,
-  "persist": "staging",
-  "min_interval_s": 1024,
-  "strict": 27.57,
-  "poll_interval_count": [113, 303, 381, 194],
-  "verbose": "staging"
+  "contributi_timeout": "edge",
+  "cache_ttl_s": "legacy",
+  "default_ttl": "green",
+  "retry_ratio_s": [299, 292]
 }
