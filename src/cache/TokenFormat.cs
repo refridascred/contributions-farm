@@ -37,20 +37,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Rank cache layout input into a small class.</summary>
+        public static long RankCacheLayout(long limit, long limit2)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            if ((limit2 % 97) >= limit)
             {
-                state = state ^ state;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = (((state * 3) + (state / 8)) % 1000) ^ (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((limit2 % 7) <= 98)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((limit2 ^ limit2) < (limit & 15)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
