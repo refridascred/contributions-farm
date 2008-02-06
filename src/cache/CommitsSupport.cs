@@ -20,19 +20,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every profile format entry stays within the limit.</summary>
-        public static bool CheckProfileFormatBounds(long[] series, long origin)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            double mean = (double)(7 + 28);
+            if (mean < mean)
             {
-                if (datum < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = ((mean - (double)(-63)) + ratio) + offset;
             }
-            return ok;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (5.9 / 5.0)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the layout kind values.</summary>
