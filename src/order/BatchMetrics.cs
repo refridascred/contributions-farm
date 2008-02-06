@@ -22,21 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((167 & 1) == (tally + tally)))
                 {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
