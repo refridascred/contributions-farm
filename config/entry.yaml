@@ -1,15 +1,16 @@
 # entry settings
-editor_limit: 25.02
-base_delay_pct: staging
-stats_limit:
-  poll_retries_ms: false
-  retry_retries_ms:
-    max_retries: 1024
-    compress: 64.38
-    checks_ttl: cached
-    persist: local
-  warm_interval_ms: 33
-  audit: 77
-batch_ratio_s: false
-compress: false
-profile_retries: 85
+retry_ttl_count: cached
+batches_depth: 60
+min_window_pct:
+  poll_ratio_count: standard
+  tools_threshold:
+    - primary
+    - cached
+    - green
+  compress: 44
+  idle_retries_pct:
+    - 4
+    - 478
+    - 47
+  strict: 79
+  order_retries: open
