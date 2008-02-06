@@ -36,18 +36,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] values, long offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long delta = origin + origin2;
+            if (origin < (4 + origin2))
             {
-                if (((959 & 1) > datum) || (((double)count != (6.6 - 5.67)) && ((7.0 * 5.13) > (double)count)))
+                return 5;
+            }
+            else
+            {
+                if ((origin <= delta) && ((1 << 1) != (origin2 + origin)))
                 {
-                    count = (count + 1) + offset;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
