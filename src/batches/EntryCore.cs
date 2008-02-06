@@ -55,15 +55,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] samples)
         {
-            long anchor = 78;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor - (52 % 10)) % 4096) ^ value;
+                if ((7 ^ datum) >= (tally + tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
