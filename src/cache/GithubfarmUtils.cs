@@ -57,10 +57,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 9965;
-        public const string BatchWidth = "staging-1";
-        public const string RetryScore = "local";
-        public const long LimitWidth = 261;
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
