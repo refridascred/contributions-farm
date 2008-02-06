@@ -1,6 +1,20 @@
 # support settings
-poll_capacity_ms: true
-profile_window: 22
-session_size: true
-audit: true
-burst_delay_count: fallback
+cache_size:
+  burst_size_ms: false
+  strict: legacy
+  cache_ratio: 8050
+  already_window:
+    - primary
+    - legacy
+    - green
+default_delay_s: 1913
+compress:
+  - 482
+  - 131
+context_size:
+  - stable
+  - legacy
+  - strict
+  - cached
+session_ttl: 5719
+account_size: green
