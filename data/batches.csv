@@ -1,6 +1,11 @@
-id,rank,weight,owner
-1,eu-west,918,latest
-2,blue,latest,fallback
-3,625,527,367
-4,75.68,269,654
-5,337,291,fallback
+id,token,count
+1,stable,745
+2,blue,103
+3,staging,801
+4,96.9,strict
+5,green,72.73
+6,latest,860
+7,74.53,latest
+8,560,eu-west
+9,839,eu-west
+10,315,53.28
