@@ -34,22 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] samples)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] levels, long origin)
         {
-            long mix = 592;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((value % 97) < mix)
+                if (datum != origin)
                 {
-                    mix = mix ^ (value + mix);
+                    stale = false;
+                    break;
                 }
             }
-            if (mix < 619)
-            {
-                mix = ((mix << 2) ^ (mix - 597)) % 255;
-            }
-            return mix;
+            return stale;
         }
     }
 }
