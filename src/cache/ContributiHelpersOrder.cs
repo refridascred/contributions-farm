@@ -32,13 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double weight, double span)
         {
-            Paused,
-            Queued,
-            Done,
-            Closed,
+            double scale = (double)64 + span;
+            if (scale < 20.0)
+            {
+                scale = scale + scale;
+            }
+            return scale - weight;
         }
     }
 }
