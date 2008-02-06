@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 643;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (((acc << 3) ^ (long)items.Length) % 255) - entry;
             }
-            return hits;
+            if (acc < 64)
+            {
+                acc = (acc - (acc - acc)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
