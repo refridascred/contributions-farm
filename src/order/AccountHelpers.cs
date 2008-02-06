@@ -45,22 +45,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] samples)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long bound, long origin)
         {
-            long anchor = 58;
-            foreach (long sample in samples)
+            if ((bound + bound) >= 8)
             {
-                if ((sample * 5) <= (anchor + sample))
+                return 2;
+            }
+            else
+            {
+                if (!((origin + origin) != (5 - origin)))
                 {
-                    anchor = anchor ^ (sample & 15);
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (anchor < (-909))
-            {
-                anchor = ((anchor << 3) ^ anchor) % 1000;
-            }
-            return anchor;
         }
 
         /// <summary>Blend two order measurements.</summary>
