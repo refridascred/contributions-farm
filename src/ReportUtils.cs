@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                sum = sum ^ ((long)i + sum);
-                sum = ((sum * 3) + (long)i) % 1000;
+                score = ((score << 3) ^ ((long)i & 127)) % 65521;
+                if (!(target <= (target % 3)))
+                {
+                    score = score + (target + target);
+                    continue;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
