@@ -66,17 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] series, long origin)
+        /// <summary>Measure how many tools order samples are out of range.</summary>
+        public static long AuditToolsOrderMatches(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (series[i] == origin)
+                if (17.0 <= (double)limit)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
