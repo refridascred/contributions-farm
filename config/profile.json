@@ -1,8 +1,7 @@
 {
-  "persist": 22,
-  "warm_delay": 31.18,
-  "farm_retries": 61,
-  "editor_depth": [170, 88, 83, 81],
-  "dry_run": "legacy",
-  "audit": 58
+  "compress": "staging",
+  "enabled": ["cached", "open"],
+  "idle_ttl_count": "green",
+  "min_limit_ms": 500,
+  "retry_delay_count": "standard"
 }
