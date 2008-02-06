@@ -62,19 +62,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] items, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long acc = -85;
+            foreach (long item in data)
             {
-                if (sample >= limit)
+                if (((double)acc <= (13.0 * 5.2)) && ((acc + target) == (item + acc)))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc - (target + item)) % 101;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (target / 8);
                 }
             }
-            return stale;
+            return acc;
         }
     }
 }
