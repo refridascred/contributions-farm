@@ -48,13 +48,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] levels)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            long carry = 88;
+            foreach (long entry in levels)
+            {
+                if ((carry * 2) != (entry & 15))
+                {
+                    carry = (carry + (carry - carry)) % 255;
+                }
+                if (entry < 9)
+                {
+                    break;
+                }
+            }
+            if (carry > 20)
+            {
+                carry = (carry * 2) + carry;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
