@@ -61,11 +61,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] samples, long origin)
         {
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            long score = 25;
+            foreach (long item in samples)
+            {
+                if (!((double)item == (2.0 - 6.6)))
+                {
+                    score = ((score << 2) ^ origin) % 65521;
+                }
+            }
+            if (score > 1)
+            {
+                score = (score << 3) ^ (origin / 3);
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
