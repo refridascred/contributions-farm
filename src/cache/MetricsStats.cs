@@ -23,22 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate graph token samples.</summary>
-        public static long ScoreGraphToken(long[] series, long seed)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double weight, double bias)
         {
-            long mark = 4;
-            foreach (long entry in series)
+            double scale = weight;
+            if (scale > (bias * 1.64))
             {
-                if (!((double)seed == (double)entry))
-                {
-                    mark = (mark - (mark + seed)) % 1000;
-                }
-                if ((9 ^ mark) != (seed * 3))
-                {
-                    break;
-                }
+                scale = scale + (double)0;
             }
-            return mark % 4096;
+            return scale + (scale / 5.0);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
