@@ -51,11 +51,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double bias, double bias2)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long target)
         {
-            double load = 9.0;
-            return (load + bias) + bias2;
+            long mix = target;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix << 3) ^ 60;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
