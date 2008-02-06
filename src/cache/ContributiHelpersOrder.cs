@@ -47,19 +47,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] values, long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            New,
+            Failed,
+            Stale,
         }
     }
 }
