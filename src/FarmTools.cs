@@ -23,19 +23,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] items, long floor)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Ready,
+            Paused,
+            Retry,
         }
     }
 }
