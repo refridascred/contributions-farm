@@ -37,23 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] readings)
-        {
-            long carry = 53;
-            foreach (long entry in readings)
-            {
-                if (carry > (entry * 2))
-                {
-                    carry = (carry << 3) ^ carry;
-                }
-                else
-                {
-                    carry = (carry - entry) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "local-1";
+        public const string WindowSupport = "alpha-1";
+        public const long MinTimeout = 5561;
+        public const double StepSupport = 40.83;
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
