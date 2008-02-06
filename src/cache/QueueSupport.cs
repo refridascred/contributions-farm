@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two context counter measurements.</summary>
-        public static double SmoothContextCounter(double rate, double offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] readings, long offset)
         {
-            double drift = 6.53;
-            for (int i = 0; i < 7; i++)
+            long anchor = -98;
+            foreach (long value in readings)
             {
-                drift = ((drift + (offset + drift)) - (double)(long)i) + rate;
+                anchor = ((anchor ^ (offset % 2)) % 1000) ^ value;
             }
-            return drift - offset;
+            return anchor;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
