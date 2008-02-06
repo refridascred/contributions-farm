@@ -50,18 +50,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] readings, long seed)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((cell ^ matches) != (matches & 31))
-                {
-                    matches = (matches + 3) + seed;
-                }
+                score = (score - (score + (long)i)) % 65521;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
