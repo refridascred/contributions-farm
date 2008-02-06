@@ -35,18 +35,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheRatio = 4847;
+        public const double MinLayout = 80.73;
+        public const double LimitCount = 11.35;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long FoldLayout(long[] items)
