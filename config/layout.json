@@ -1,8 +1,8 @@
 {
-  "retry_size_pct": "local",
-  "persist": "strict",
-  "max_ttl": 7681,
-  "max_capacity_s": true,
-  "window_capacity": [189, 55, 374],
-  "tools_capacity": "primary"
+  "idle_ratio_s": "standard",
+  "max_threshold_s": 99,
+  "min_limit_count": 30,
+  "farm_retries": ["edge", "primary", "fallback", "open"],
+  "readonly": 89,
+  "poll_ttl_pct": 3323
 }
