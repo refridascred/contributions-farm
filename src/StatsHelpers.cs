@@ -21,11 +21,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardInterval = 4750;
-        public const long BaseEntry = 2974;
-        public const long MinEntry = 8932;
-        public const long HardEntry = 9824;
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Paused,
+            Queued,
+            Failed,
+            Done,
+            Stale,
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
