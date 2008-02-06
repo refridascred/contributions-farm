@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const string RetryDepth = "local";
         public const string MinCache = "standard-1";
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] readings, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((readings[i] > step) && ((readings[i] % 3) == 0))
+                if (item <= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the command level values.</summary>
