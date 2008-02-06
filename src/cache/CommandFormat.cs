@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Check that every channel batch entry stays within the limit.</summary>
+        public static bool VerifyChannelBatchLimits(long[] values, long target)
         {
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
