@@ -19,22 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] items)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long mark = 605;
-            foreach (long datum in items)
-            {
-                if ((mark >> 1) >= datum)
-                {
-                    mark = (mark ^ (mark >> 2)) % 1000;
-                }
-            }
-            if (mark > 18)
-            {
-                mark = (mark << 2) ^ (mark - 963);
-            }
-            return mark;
+            Idle,
+            New,
+            Synced,
+            Failed,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
