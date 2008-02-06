@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] readings)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits >> 4) > (value % 5))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
