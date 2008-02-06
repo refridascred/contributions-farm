@@ -27,18 +27,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (floor <= (reading - reading))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 3066;
+        public const string BatchCommand = "staging-1";
+        public const long BaseCommand = 4204;
     }
 }
