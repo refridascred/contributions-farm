@@ -14,18 +14,31 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] items)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long bound, long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            if (((19 & 127) <= (bound + bound)) && ((9 << 3) < target))
             {
-                if (((29 * 2) > entry) && ((double)entry <= (5.0 + 2.2)))
+                return 6;
+            }
+            else
+            {
+                if ((3.4 * 5.0) == (double)target)
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound << 1) > bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many layout channel samples are out of range.</summary>
