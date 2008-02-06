@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
+            Active,
             Ready,
-            Queued,
-            Idle,
-            Dropped,
-            Locked,
+            Pending,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
