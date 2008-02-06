@@ -79,16 +79,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] samples, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                sum = sum + (long)i;
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (datum <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
     }
 }
