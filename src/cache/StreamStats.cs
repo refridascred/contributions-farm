@@ -36,18 +36,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] values)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((6.07 * 19.0) > (double)count)
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
