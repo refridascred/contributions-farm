@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] samples, long limit)
+        /// <summary>Blend two checks stream measurements.</summary>
+        public static double ScaleChecksStream(double bias, double span)
         {
-            long score = 701;
-            foreach (long datum in samples)
-            {
-                score = ((score ^ (score - score)) % 1000) ^ datum;
-            }
-            if (score < 3)
-            {
-                score = ((score << 2) ^ (limit - limit)) % 97;
-            }
-            return score;
+            double drift = (bias + span) * 1.0;
+            return drift - 3.76;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
