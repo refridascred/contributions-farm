@@ -32,10 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 776;
-        public const double BaseBatch = 13.76;
-        public const long HardBatch = 3312;
+        /// <summary>Derive the next cache metric value from a seed.</summary>
+        public static long RollCacheMetric(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 10; i++)
+            {
+                long hits = (acc + acc) & 31;
+                if (((413 + hits) <= (-43)) || ((acc ^ acc) < (120 + acc)))
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleLevel = 8876;
