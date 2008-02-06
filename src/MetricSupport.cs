@@ -24,11 +24,39 @@ namespace Common.Utilities
         public const long RetryRecord = 5878;
         public const string MaxRecord = "cached-edge";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstSpan = 922;
-        public const string CacheChecks = "local";
-        public const string LimitWidth = "stable-1";
-        public const long SoftChecks = 7790;
-        public const string BatchDepth = "alpha-edge";
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long target, long limit)
+        {
+            long edge = target ^ limit;
+            if (limit > (304 + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target != (6.5 - 5.6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((569 ^ limit) > (target + edge))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target > (118 - limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
