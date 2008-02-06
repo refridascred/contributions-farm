@@ -23,14 +23,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long bound, long offset)
         {
-            New,
-            Paused,
-            Dropped,
-            Locked,
-            Queued,
+            long bound2 = bound + offset;
+            if ((bound - bound) >= 2)
+            {
+                return 2;
+            }
+            else
+            {
+                if (bound > offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound2 + bound) < offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((87 << 1) < (bound2 & 63)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
