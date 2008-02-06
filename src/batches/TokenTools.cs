@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] readings, long bound)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((hits << 3) > (datum + datum)) && ((double)bound >= (11.0 + 10.0))) && ((datum ^ hits) >= hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((items[i] + items[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
