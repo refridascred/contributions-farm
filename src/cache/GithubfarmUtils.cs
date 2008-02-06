@@ -18,18 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] items)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = 60;
+            foreach (long sample in data)
             {
-                if ((sample & 63) >= (sample >> 4))
+                if (!((double)result >= (0.6 - 3.24)))
                 {
-                    tally = tally + 3;
+                    result = (result ^ result) % 97;
+                }
+                if ((long)data.Length > (result + 935))
+                {
+                    result = (result - (90 + result)) % 65521;
+                }
+                else
+                {
+                    result = result - (sample - result);
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
