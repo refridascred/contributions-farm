@@ -31,19 +31,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] values, long floor)
+        /// <summary>Combine commits support values into a single score.</summary>
+        public static long WeighCommitsSupport(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long mix = 86;
+            foreach (long entry in levels)
             {
-                if (value > floor)
+                if (!((entry & 3) <= (entry / 3)))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix * 5) + (mix & 1);
+                }
+                if (mix >= (entry + mix))
+                {
+                    mix = (mix ^ (mix - mix)) % 255;
+                }
+                else
+                {
+                    mix = (mix + 4) % 101;
                 }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Describe the stream mode values.</summary>
