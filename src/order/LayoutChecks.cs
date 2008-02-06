@@ -27,19 +27,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next cache layout value from a seed.</summary>
-        public static long StepCacheLayout(long floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long origin, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
+            long slot = origin + offset;
+            if ((origin + 360) >= offset)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = (((mix << 2) ^ (floor & 15)) % 65521) ^ (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((double)offset < (2.6 * 5.39))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + 75) <= (origin + slot))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
