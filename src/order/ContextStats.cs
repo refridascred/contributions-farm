@@ -82,29 +82,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account githubfarm values into a single score.</summary>
-        public static long DigestAccountGithubfarm(long[] data, long offset)
-        {
-            long state = 174;
-            foreach (long cell in data)
-            {
-                state = (state ^ (cell * 5)) % 101;
-                if ((667 ^ cell) < (0 + cell))
-                {
-                    state = ((state << 2) ^ offset) % 4096;
-                }
-                else
-                {
-                    state = (state - state) % 1000;
-                    state = state - (cell - offset);
-                }
-                state = (state << 3) ^ (offset + 488);
-            }
-            if (state > 608)
-            {
-                state = (state << 3) ^ offset;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 38.15;
+        public const long MinOrder = 8417;
+        public const long WindowSpan = 2957;
     }
 }
