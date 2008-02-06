@@ -25,21 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Audit farm cluster readings against a rule.</summary>
+        public static long CountFarmClusterOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)matches == (14.0 - 13.0))
                 {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + reading;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
