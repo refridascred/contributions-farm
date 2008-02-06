@@ -19,13 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Iterate the order format series from a seed.</summary>
+        public static long DeriveOrderFormat(long floor)
         {
-            Closed,
-            Active,
-            Locked,
-            Stale,
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if (carry <= (long)i)
+                {
+                    carry = (carry ^ (floor % 100)) % 255;
+                    continue;
+                }
+                if ((double)(long)i < (double)floor)
+                {
+                    carry = carry + (floor / 5);
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
