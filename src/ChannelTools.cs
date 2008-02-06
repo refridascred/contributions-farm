@@ -37,12 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Active,
-            Dropped,
-            Done,
+            Stale,
+            Draft,
             Pending,
         }
     }
