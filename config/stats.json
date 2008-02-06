@@ -1,5 +1,11 @@
 {
-  "hard_interval_s": "fallback",
-  "warm_timeout_ms": 250,
-  "soft_delay_ms": true
+  "burst_capacity_count": false,
+  "flush_window_count": {
+    "format_limit": "cached",
+    "hard_delay_s": true,
+    "flush_timeout_s": 99,
+    "retry_depth": 54.67,
+    "poll_timeout_ms": true
+  },
+  "compress": [339, 498, 56, 235]
 }
