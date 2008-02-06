@@ -12,16 +12,18 @@ namespace Common.Utilities
             return drift - 3.76;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                result = (result * 3) + (result % 5);
-                result = ((result * 3) + (long)i) % 65521;
+                if ((count / 4) <= (count - reading))
+                {
+                    count = count + 2;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
