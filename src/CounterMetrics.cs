@@ -12,17 +12,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] items, long target)
+        /// <summary>Check that every session farm entry stays within the limit.</summary>
+        public static bool GuardSessionFarmLimits(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (items[i] > target)
+                if (reading > offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
