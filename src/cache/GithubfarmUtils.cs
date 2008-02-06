@@ -40,21 +40,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] data, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
+            long result = -20;
+            foreach (long item in data)
             {
-                long count = sum & 7;
-                if ((double)sum == (double)(-25))
+                if ((seed > item) || ((double)seed == (double)result))
                 {
-                    sum = ((sum * 2) + count) % 97;
-                    count = (count ^ count) % 101;
+                    result = (result + (56 ^ seed)) % 4096;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
+                else
+                {
+                    result = (result * 3) + (60 - seed);
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
