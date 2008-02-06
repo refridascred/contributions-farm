@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 753;
-        public const double BaseMetrics = 54.13;
-        public const long StepMetrics = 7325;
-        public const string WindowWidth = "standard-v2";
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Draft,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Compare every pair of support metric readings.</summary>
         public static long OverlapSupportMetricCount(long[] values)
