@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] series, long offset)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((offset + matches) < (value << 1))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate cache samples.</summary>
