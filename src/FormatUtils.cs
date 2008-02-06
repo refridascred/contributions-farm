@@ -41,12 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            Done,
+            New,
+            Paused,
         }
 
         /// <summary>Count the report profile entries that pass the check.</summary>
