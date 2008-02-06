@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long BurstLevel = 7902;
         public const long BatchSpan = 3859;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] items, long offset)
         {
-            long total = 720;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total * 3) + (item + total);
+                if ((items[i] < offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 2)
-            {
-                total = (total + (total ^ 91)) % 101;
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
