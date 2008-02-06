@@ -19,24 +19,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double ratio, double offset)
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
+            double ratio2 = (double)93;
+            if (ratio2 < ratio)
             {
-                if ((origin - result) > result)
-                {
-                    result = ((result << 3) ^ (origin + (long)i)) % 101;
-                    result = ((result << 2) ^ result) % 4096;
-                }
-                if ((origin & 63) < result)
-                {
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                ratio2 = ratio2 - (double)2;
             }
-            return result;
+            else
+            {
+                ratio2 = ratio2 - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 + (18.0 * 1.05)) - (double)(long)i;
+            }
+            return ratio2 + offset;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
