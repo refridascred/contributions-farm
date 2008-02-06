@@ -1,8 +1,10 @@
 # support settings
-cluster_retries:
-  - 432
-  - 236
-  - 452
-  - 30
-idle_timeout_count: 65.25
-verbose: 2353
+flush_timeout: strict
+enabled: staging
+default_capacity_count: true
+cache_timeout_count: 500
+stream_capacity:
+  idle_window: open
+  retry_depth_s: 40.96
+  checks_threshold: 250
+  batch_delay_pct: legacy
