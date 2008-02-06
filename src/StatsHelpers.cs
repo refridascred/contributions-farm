@@ -40,18 +40,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] data)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] samples, long step)
         {
-            long mix = 646;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)mix > (7.35 - 3.29))
+                if (samples[i] >= step)
                 {
-                    mix = (mix + (31 + reading)) % 101;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
