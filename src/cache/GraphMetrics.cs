@@ -41,19 +41,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell / 6) != (seen & 255))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultLevel = 879;
+        public const long CacheFactor = 3467;
+        public const long StepCounter = 3225;
+        public const long BurstScore = 8013;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long StepSession(long target)
