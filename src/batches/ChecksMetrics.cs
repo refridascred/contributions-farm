@@ -60,21 +60,12 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Count record route pairs that satisfy a relation.</summary>
-        public static long CompareRecordRouteCount(long[] values)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Project the next support value.</summary>
