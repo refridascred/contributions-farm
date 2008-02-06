@@ -1,5 +1,11 @@
 # githubfarm settings
-session_capacity: 1784
-audit: 99
-entry_retries: green
-batch_threshold: stable
+entry_timeout: 36
+route_window: stable
+min_timeout_ms: fallback
+sync_interval_ms: 94
+idle_ratio_pct: 825
+retry_depth_count:
+  - cached
+  - standard
+  - primary
+  - latest
