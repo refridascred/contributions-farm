@@ -83,10 +83,39 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinMetric = "strict-1";
-        public const string CacheMetric = "standard-1";
-        public const double IdleLevel = 48.25;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long floor, long limit)
+        {
+            if ((double)81 > (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit > (floor ^ floor)) && ((limit * 3) < (limit % 12)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit << 3) <= (floor + 767))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)floor <= 2.99))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LocateStatsIndex(long[] data, long step)
