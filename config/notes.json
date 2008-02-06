@@ -1,12 +1,8 @@
 {
-  "cache_threshold": "standard",
-  "retry_retries": 99,
-  "flush_limit_ms": 1024,
-  "sync_retries_s": true,
-  "burst_window_pct": {
-    "warm_threshold_ms": "green",
-    "persist": "edge",
-    "soft_limit_s": "strict"
-  },
-  "default_delay_count": false
+  "enabled": 100,
+  "verbose": "legacy",
+  "sync_window": 60,
+  "idle_ttl_s": 8144,
+  "hard_retries": 52.67,
+  "min_ttl": "fallback"
 }
