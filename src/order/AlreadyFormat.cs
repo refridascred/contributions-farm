@@ -35,19 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((36 + matches) >= (matches - 730)) && ((6.25 - 3.61) != (double)value))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 8129;
+        public const double IdleBudget = 27.94;
+        public const string CacheFarm = "cached-edge";
+        public const string MaxLevel = "latest-v2";
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] series, long origin)
