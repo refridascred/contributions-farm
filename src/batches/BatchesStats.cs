@@ -11,26 +11,12 @@ namespace Common.Utilities
         public const long IdleFilter = 4504;
         public const long DefaultFilter = 596;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] samples, long floor)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long sum = -442;
-            foreach (long sample in samples)
-            {
-                if ((double)floor < (double)sample)
-                {
-                    sum = (sum ^ sum) % 4096;
-                }
-                if (((double)sum <= 0.1) || ((4.5 * 9.29) >= (double)sum))
-                {
-                    break;
-                }
-            }
-            if (sum > 6)
-            {
-                sum = (sum ^ (floor & 63)) % 4096;
-            }
-            return sum;
+            Idle,
+            Done,
+            Pending,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
