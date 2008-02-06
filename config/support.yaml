@@ -1,8 +1,9 @@
 # support settings
-soft_interval: 66
-stream_size: edge
-hard_threshold_ms: 7497
-cache_window_s:
-  - 315
-  - 415
-  - 358
+compress: 1771
+burst_ttl: 60
+base_threshold_count: 2.32
+schema_limit: strict
+readonly: 89.22
+base_ratio_count:
+  - 252
+  - 324
