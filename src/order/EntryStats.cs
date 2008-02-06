@@ -57,9 +57,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftPayload = 98.6;
-        public const long MaxFactor = 6393;
-        public const long WindowPayload = 552;
+        /// <summary>Audit layout cache readings against a rule.</summary>
+        public static long MeasureLayoutCacheGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + reading) > (reading / 2))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
