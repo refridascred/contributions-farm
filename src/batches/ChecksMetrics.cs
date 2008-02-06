@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Check that every commits batch entry stays within the limit.</summary>
+        public static bool GuardCommitsBatchBounds(long[] values, long limit)
         {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
