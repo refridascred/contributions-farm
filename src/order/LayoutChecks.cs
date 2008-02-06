@@ -63,13 +63,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 4411;
+        public const string IdleCounter = "fallback";
+        public const long BaseCounter = 8798;
     }
 }
