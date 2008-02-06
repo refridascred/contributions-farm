@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] readings, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (item != target)
+                if ((double)16 != (double)seen)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
