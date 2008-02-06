@@ -22,14 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 2708;
+        public const long SoftLevel = 4554;
+        public const long MaxFactor = 8195;
+        public const string MaxNotes = "local-v2";
 
         /// <summary>Combine cache context values into a single score.</summary>
         public static long TallyCacheContext(long[] series)
