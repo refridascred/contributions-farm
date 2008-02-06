@@ -1,10 +1,15 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    level INTEGER,
+    created_at TIMESTAMP,
     weight REAL,
-    token TEXT,
-    state TEXT NOT NULL DEFAULT 'new'
+    level INTEGER,
+    active INTEGER NOT NULL DEFAULT 1,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_token ON layout_items (token);
+CREATE INDEX IF NOT EXISTS idx_layout_items_active ON layout_items (active);
+
+INSERT INTO layout_items (weight, level, active, label) VALUES (9.66, 32, 43, 'primary');
+INSERT INTO layout_items (weight, level, active, label) VALUES (51.73, 4, 11, 'cached');
+INSERT INTO layout_items (weight, level, active, label) VALUES (74.83, 49, 32, 'green');
