@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Iterate the record editor series from a seed.</summary>
+        public static long SeriesRecordEditor(long target)
         {
-            long state = -926;
-            foreach (long sample in levels)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((14.0 / 2.0) < (double)state)
-                {
-                    state = ((state - (state / 3)) % 101) + sample;
-                    break;
-                }
-                state = (state ^ state) % 4096;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Describe the context state values.</summary>
