@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long bound)
         {
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = (((acc << 2) ^ (acc + acc)) % 255) ^ (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
