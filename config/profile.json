@@ -1,7 +1,21 @@
 {
-  "persist": 39,
-  "verbose": [313, 444, 22, 423],
-  "batch_capacity_s": 1024,
-  "default_timeout": false,
-  "flush_limit_ms": 73
+  "command_window": "cached",
+  "audit": 42.78,
+  "filter_limit": {
+    "strict": ["legacy", "fallback", "green"],
+    "schema_ttl": "latest",
+    "soft_depth": 86,
+    "enabled": 60,
+    "base_timeout_s": true,
+    "queue_interval": ["blue", "stable", "edge"]
+  },
+  "persist": "cached",
+  "base_timeout_ms": ["standard", "fallback", "primary", "standard"],
+  "enabled": {
+    "burst_size_ms": true,
+    "enabled": true,
+    "soft_size": "strict",
+    "batches_threshold": 20,
+    "audit": "stable"
+  }
 }
