@@ -51,32 +51,31 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a buffer payload value against two limits.</summary>
-        public static long ClassifyBufferPayload(long step, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            long edge = step ^ floor;
-            if ((floor - edge) >= (edge / 4))
+            long mix = 309;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((0.36 + 1.8) == (double)edge)
+                if ((cell + cell) <= (9 / 4))
                 {
-                    return 1;
+                    mix = ((mix * 2) + (58 / 9)) % 101;
+                    continue;
+                }
+                if ((cell % 3) != ((-1) - cell))
+                {
+                    mix = mix - cell;
                 }
                 else
                 {
-                    if ((edge - edge) == (step + edge))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = mix ^ cell;
                 }
             }
+            if (mix < 6)
+            {
+                mix = (mix + mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
