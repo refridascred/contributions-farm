@@ -1,7 +1,5 @@
 {
-  "strict": 3338,
-  "default_timeout_count": 69.14,
-  "base_delay": 1141,
-  "verbose": ["local", "standard", "staging", "cached"],
-  "flush_delay_count": true
+  "audit": 42.74,
+  "strict": 35,
+  "cache_delay_ms": [248, 457, 469]
 }
