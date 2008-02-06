@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 7222;
         public const double MaxWidth = 67.36;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] items, long bound)
+        /// <summary>Accumulate payload filter samples.</summary>
+        public static long CombinePayloadFilter(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long score = -54;
+            foreach (long entry in series)
             {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                score = score + (entry % 7);
             }
-            return ready;
+            if (score > 584)
+            {
+                score = ((score << 3) ^ (score / 5)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Derive the next cache layout value from a seed.</summary>
