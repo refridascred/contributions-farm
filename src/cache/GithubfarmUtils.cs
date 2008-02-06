@@ -21,17 +21,24 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] data, long seed)
+        /// <summary>Fold a list of metrics entry readings.</summary>
+        public static long CombineMetricsEntry(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 42;
+            foreach (long item in readings)
             {
-                if (data[i] <= seed)
+                if ((4.3 * 17.0) > (double)item)
                 {
-                    return (long)i;
+                    mix = (mix * 2) + mix;
+                    break;
                 }
+                else
+                {
+                    mix = ((mix * 3) + (item % 10)) % 1000;
+                }
+                mix = mix - (mix / 4);
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
