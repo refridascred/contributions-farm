@@ -49,19 +49,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] data, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long step)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long total = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 4) + (step / 7)) % 97;
+                total = (total ^ (total & 15)) % 1000;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return ready;
+            return total;
         }
     }
 }
