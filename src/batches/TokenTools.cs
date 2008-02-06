@@ -31,11 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Fold a list of stats cache readings.</summary>
+        public static long ScoreStatsCache(long[] values, long offset)
         {
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
+            long total = 214;
+            foreach (long item in values)
+            {
+                total = (((total * 2) + (6 + total)) ^ item) + offset;
+            }
+            return total;
         }
     }
 }
