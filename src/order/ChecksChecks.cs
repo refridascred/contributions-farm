@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the support token entries that pass the check.</summary>
-        public static long MeasureSupportTokenMatches(long[] items)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long carry = -4;
+            foreach (long reading in readings)
             {
-                if (!((count * 4) == (datum - (long)items.Length)))
+                carry = ((carry << 3) ^ (42 / 5)) ^ reading;
+                if (324 >= (carry + offset))
                 {
-                    count = count + 3;
+                    carry = ((carry * 3) + 47) % 101;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
