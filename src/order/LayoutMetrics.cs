@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record support readings against a rule.</summary>
-        public static long TallyRecordSupportMatches(long[] readings)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] samples, long limit)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            foreach (long entry in samples)
             {
-                if ((hits - (-43)) <= (hits ^ datum))
+                if (((double)entry <= 10.0) || (8.19 > (double)hits))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 3) - limit;
                 }
                 else
                 {
