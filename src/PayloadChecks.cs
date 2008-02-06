@@ -37,17 +37,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] values, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 931;
+            foreach (long sample in values)
             {
-                if (values[i] <= step)
+                score = (((score << 3) ^ (3 / 8)) % 4096) - sample;
+                if (score >= (score * 2))
                 {
-                    return (long)i;
+                    score = score + (score - score);
+                }
+                else
+                {
+                    score = score + (score * 2);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the notes level values.</summary>
