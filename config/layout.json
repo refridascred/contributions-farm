@@ -1,12 +1,7 @@
 {
-  "soft_window": "legacy",
-  "persist": 500,
-  "cache_limit": ["cached", "latest", "edge", "staging"],
-  "base_retries_ms": {
-    "batches_delay": "local",
-    "audit": true,
-    "soft_delay_pct": "staging"
-  },
-  "enabled": 5584,
-  "checks_delay": "latest"
+  "strict": 3338,
+  "default_timeout_count": 69.14,
+  "base_delay": 1141,
+  "verbose": ["local", "standard", "staging", "cached"],
+  "flush_delay_count": true
 }
