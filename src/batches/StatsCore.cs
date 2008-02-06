@@ -34,11 +34,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 8972;
-        public const long DefaultSize = 9092;
-        public const long WindowGraph = 3491;
-        public const double RetryInterval = 45.01;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] readings, long origin)
+        {
+            long mix = 730;
+            foreach (long reading in readings)
+            {
+                mix = ((mix * 4) + mix) % 4096;
+                mix = (mix << 2) ^ (origin >> 5);
+                mix = (mix - (reading + mix)) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
