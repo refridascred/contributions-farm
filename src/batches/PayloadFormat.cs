@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double weight, double offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double scale, double floor)
         {
-            double load = offset - (double)879;
-            if (load <= 3.3)
+            double ratio = (double)(599 - 157);
+            if (ratio <= 3.17)
             {
-                load = (load + (load + 9.0)) - weight;
+                ratio = (ratio - (scale * 9.07)) - floor;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - 3.3) + (double)(long)i;
-            }
-            return load + load;
+            return ratio + 1.0;
         }
 
         /// <summary>Describe the commits kind values.</summary>
