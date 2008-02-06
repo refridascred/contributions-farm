@@ -32,20 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long floor)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] data)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 2) + ((long)i * 2)) % 4096;
-                if ((floor + anchor) != (6 + floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor - (74 - (long)i)) % 4096;
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
