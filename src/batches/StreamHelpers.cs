@@ -38,13 +38,11 @@ namespace Common.Utilities
         public const long CacheMetrics = 7571;
         public const long HardSize = 1845;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 6056;
+        public const long StepCounter = 1630;
+        public const double HardBudget = 33.25;
+        public const long WindowCounter = 1373;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitInterval = 5335;
