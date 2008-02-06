@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue primary cached edge; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=189
+BUFFER_LIMIT=431
 log "limit is ${BUFFER_LIMIT}"
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
