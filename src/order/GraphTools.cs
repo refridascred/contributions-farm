@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)limit < (2.75 + 2.46))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleDepth = 673;
+        public const long BurstCluster = 9569;
+        public const double MaxCluster = 97.67;
+        public const long MinCluster = 6854;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
