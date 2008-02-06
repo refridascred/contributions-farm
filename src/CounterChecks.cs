@@ -42,39 +42,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank already schema input into a small class.</summary>
-        public static long GradeAlreadySchema(long origin, long limit)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            long cur = origin ^ limit;
-            if ((origin / 3) < 2)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit ^ limit) != (cur - 94))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((cur * 4) == (origin + origin)))
+                    if ((readings[i] - readings[j]) < 5)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((66 >> 2) < (limit + cur))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
