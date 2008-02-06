@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict blue; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=332
+COMMAND_LIMIT=417
 log "limit is ${COMMAND_LIMIT}"
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+for item in local standard green stable; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
