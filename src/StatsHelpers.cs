@@ -61,21 +61,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of token githubfarm readings.</summary>
-        public static long MatchTokenGithubfarmCount(long[] values)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell > origin)
                 {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
