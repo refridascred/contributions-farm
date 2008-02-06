@@ -32,13 +32,13 @@ namespace Common.Utilities
         public const long BatchLevel = 9566;
         public const string BatchTimeout = "cached-v2";
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Idle,
-            New,
-            Done,
-            Paused,
+            Draft,
+            Pending,
+            Locked,
+            Queued,
         }
     }
 }
