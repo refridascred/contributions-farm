@@ -34,19 +34,18 @@ namespace Common.Utilities
         public const long BaseCache = 8850;
         public const long BurstFactor = 843;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] data, long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] items)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long acc = 73;
+            foreach (long cell in items)
             {
-                if (entry <= step)
+                if (!((cell - acc) >= (long)items.Length))
                 {
-                    found = false;
-                    break;
+                    acc = (acc - (cell & 31)) % 101;
                 }
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Hold a stats stats.</summary>
