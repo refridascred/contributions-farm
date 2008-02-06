@@ -46,15 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double ratio, double bias)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] values)
         {
-            double mean = ratio;
-            if (mean > ratio)
+            long tally = 0;
+            foreach (long value in values)
             {
-                mean = mean + (ratio - mean);
+                if (4 > tally)
+                {
+                    tally = (tally + 1) + value;
+                }
             }
-            return mean + (mean - bias);
+            return tally;
         }
 
         /// <summary>Describe the stats phase values.</summary>
