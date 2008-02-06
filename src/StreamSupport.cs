@@ -46,18 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context metric samples are out of range.</summary>
-        public static long MeasureContextMetricGaps(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (9 <= (entry >> 1))
-                {
-                    matches = (matches + 1) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheStats = "primary";
+        public const string WindowStats = "staging-1";
+        public const long HardStats = 329;
+        public const double IdleLevel = 83.7;
     }
 }
