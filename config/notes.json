@@ -1,15 +1,12 @@
 {
-  "sync_threshold_count": 37,
-  "flush_delay_pct": ["primary", "blue", "latest", "open"],
-  "stream_ratio": {
-    "sync_delay_pct": 97.05,
-    "idle_threshold_count": ["legacy", "stable"],
-    "route_ratio": ["standard", "primary", "local"],
-    "commits_delay": {
-      "warm_threshold": "legacy",
-      "cache_interval": false,
-      "retry_capacity_pct": 250,
-      "graph_depth": 60
-    }
-  }
+  "poll_ttl_s": 48.49,
+  "retry_size_count": 66.02,
+  "base_timeout_ms": {
+    "enabled": "eu-west",
+    "batch_capacity_ms": 5.91,
+    "cache_timeout": "latest",
+    "checks_timeout": 36.06,
+    "report_timeout": "edge"
+  },
+  "flush_threshold_pct": "legacy"
 }
