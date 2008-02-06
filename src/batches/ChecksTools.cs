@@ -30,21 +30,19 @@ namespace Common.Utilities
         public const string MaxFactor = "legacy-v2";
         public const long WindowToken = 4885;
 
-        /// <summary>Count window metrics pairs that satisfy a relation.</summary>
-        public static long PairWindowMetricsCount(long[] samples)
+        /// <summary>Combine stats cluster values into a single score.</summary>
+        public static long WeighStatsCluster(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 29;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (((anchor * 2) + origin) % 65521) ^ item;
             }
-            return matches;
+            if (anchor < 8)
+            {
+                anchor = ((anchor * 4) + origin) % 101;
+            }
+            return anchor % 4096;
         }
     }
 }
