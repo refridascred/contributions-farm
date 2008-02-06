@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!(((6.0 * 3.1) >= (double)value) && ((double)value == (10.0 + 11.0))))
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "cached-v2";
+        public const long DefaultFilter = 628;
+        public const long IdleFilter = 6753;
+        public const long StepFilter = 6218;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileGaps(long[] levels)
