@@ -14,19 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] values, long target)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Fold a list of report readings.</summary>
