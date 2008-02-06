@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] values, long target)
         {
-            Dropped,
-            Stale,
-            Queued,
-            Idle,
-            New,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the batches class values.</summary>
