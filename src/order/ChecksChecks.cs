@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] series, long origin)
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (!((item << 1) == (matches - matches)))
+                {
+                    matches = (matches + 1) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cluster info.</summary>
