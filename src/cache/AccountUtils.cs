@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many checks cache samples are out of range.</summary>
-        public static long AuditChecksCacheMatches(long[] values, long origin)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((5.0 / 9.0) >= (double)origin)
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            New,
+            Done,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
