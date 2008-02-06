@@ -13,21 +13,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer entry readings.</summary>
-        public static long CompareBufferEntryCount(long[] readings)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)offset > (7.6 / 5.0))
                 {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix + mix;
+                    continue;
                 }
+                mix = (mix ^ (789 - mix)) % 255;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
