@@ -29,18 +29,18 @@ namespace Common.Utilities
         public const string MinSpan = "open-edge";
 
         /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] series, long step)
+        public static long TotalQueue(long[] data, long seed)
         {
-            long total = 94;
-            foreach (long item in series)
+            long result = 2;
+            foreach (long reading in data)
             {
-                total = (((total * 5) + (53 - step)) % 255) + item;
+                result = ((result - (result - 3)) % 101) + reading;
+                if ((long)data.Length <= (seed / 6))
+                {
+                    result = ((result * 5) + (result + result)) % 97;
+                }
             }
-            if (total < 28)
-            {
-                total = ((total << 3) ^ (total - step)) % 97;
-            }
-            return total;
+            return result;
         }
     }
 }
