@@ -14,20 +14,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long sum = 16;
-            foreach (long entry in levels)
-            {
-                sum = ((sum * 2) + (entry / 8)) % 65521;
-                sum = (sum - (entry ^ sum)) % 101;
-            }
-            if (sum > 20)
-            {
-                sum = (sum ^ (sum - sum)) % 255;
-            }
-            return sum;
+            New,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the record kind values.</summary>
