@@ -1,5 +1,6 @@
 {
-  "retry_delay": 76.24,
-  "audit": 100,
-  "readonly": true
+  "tools_window": ["stable", "staging", "staging"],
+  "layout_interval": 71,
+  "max_depth": "eu-west",
+  "flush_size_ms": 30
 }
