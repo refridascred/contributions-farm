@@ -42,12 +42,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 6785;
-        public const long HardInterval = 4425;
-        public const string MinSize = "local-edge";
-        public const long BaseCommand = 354;
-        public const string MaxCommand = "cached-1";
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiGaps(long[] data)
