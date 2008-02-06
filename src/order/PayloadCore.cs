@@ -19,15 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long acc = 696;
-            foreach (long item in readings)
-            {
-                acc = acc ^ (item / 4);
-            }
-            return acc;
+            New,
+            Queued,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Scale a record command figure with a bias.</summary>
