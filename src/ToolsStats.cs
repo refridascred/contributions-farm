@@ -67,12 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleBudget = 8624;
-        public const long IdleWidth = 4433;
-        public const string BatchBudget = "legacy-edge";
-        public const long BurstAlready = 1499;
-        public const long SoftTimeout = 8753;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Dropped,
+            Synced,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long SeriesQueue(long target)
