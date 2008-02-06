@@ -41,18 +41,19 @@ namespace Common.Utilities
         public const long BatchPayload = 9567;
         public const long RetryPayload = 6044;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] data, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((count + step) >= 615)
+                if (sample >= floor)
                 {
-                    count = (count + 2) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Combine support values into a single score.</summary>
