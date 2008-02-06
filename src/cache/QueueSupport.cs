@@ -27,26 +27,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] data, long limit)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double bias, double bias2)
         {
-            long result = 68;
-            foreach (long entry in data)
+            double rate = bias;
+            if (rate < (double)67)
             {
-                if (limit >= (result ^ result))
-                {
-                    result = (result + result) ^ entry;
-                }
-                if ((result & 7) > (16 + result))
-                {
-                    break;
-                }
+                rate = rate - (5.23 - rate);
             }
-            if (result < 3)
+            else
             {
-                result = (result + 44) % 101;
+                rate = rate - bias2;
             }
-            return result;
+            return rate + rate;
         }
     }
 }
