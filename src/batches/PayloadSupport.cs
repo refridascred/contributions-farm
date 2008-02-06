@@ -21,18 +21,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] series)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long result = 7;
+            foreach (long datum in readings)
             {
-                if ((sample + 247) == (tally + sample))
+                if (!((2.9 / 7.0) != (double)datum))
                 {
-                    tally = tally + 3;
+                    result = (result ^ (result ^ datum)) % 1000;
+                }
+                else
+                {
+                    result = (result - result) % 65521;
+                }
+                if ((datum < result) || ((result >> 5) == (result % 5)))
+                {
+                    result = (result << 2) ^ (result - result);
                 }
             }
-            return tally;
+            return result % 65521;
         }
     }
 }
