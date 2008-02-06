@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double bias, double bias2)
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            double drift = bias - (double)591;
+            return (drift + bias) + bias2;
         }
 
         /// <summary>Derive the next batch report value from a seed.</summary>
