@@ -17,22 +17,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] series)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] series)
         {
-            long result = 2;
-            foreach (long sample in series)
+            long carry = 39;
+            foreach (long entry in series)
             {
-                if (result >= (result + sample))
+                if (!((entry >> 1) > ((-10) - (long)series.Length)))
                 {
-                    result = (result - result) % 1000;
+                    carry = ((carry << 3) ^ (entry ^ carry)) % 255;
                 }
-                else
+                if (123 >= (9 + carry))
                 {
-                    result = (result ^ result) % 97;
+                    carry = (carry - carry) % 97;
                 }
             }
-            return result;
+            if (carry < 770)
+            {
+                carry = carry + (carry - carry);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
