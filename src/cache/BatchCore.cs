@@ -14,13 +14,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Rank order record input into a small class.</summary>
+        public static long SortOrderRecord(long bound, long offset)
         {
-            Idle,
-            Active,
-            Locked,
-            Synced,
+            if (!((double)bound < 1.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset ^ offset) == (bound - 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (84 > offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of report readings.</summary>
