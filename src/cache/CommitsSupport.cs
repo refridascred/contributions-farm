@@ -24,18 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] data)
+        /// <summary>Check that every profile format entry stays within the limit.</summary>
+        public static bool CheckProfileFormatBounds(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((double)value >= (6.0 + 0.98))
+                if (datum < origin)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
