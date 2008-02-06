@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] series)
+        /// <summary>Check that every schema queue entry stays within the limit.</summary>
+        public static bool VerifySchemaQueueBounds(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((matches - matches) <= (matches + matches))
+                if (entry >= limit)
                 {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
