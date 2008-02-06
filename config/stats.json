@@ -1,8 +1,6 @@
 {
-  "base_window_ms": ["cached", "blue"],
-  "strict": "staging",
-  "warm_delay": 65.31,
-  "persist": false,
-  "flush_ttl": "eu-west",
-  "support_delay": true
+  "already_capacity": 6.52,
+  "burst_retries_ms": false,
+  "idle_timeout": 60,
+  "soft_ratio_pct": "cached"
 }
