@@ -57,9 +57,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 56.93;
-        public const long IdleMetrics = 5379;
-        public const long MaxScore = 5000;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public double Count { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
