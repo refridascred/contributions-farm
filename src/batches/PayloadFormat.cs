@@ -20,11 +20,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftLevel = 1278;
-        public const string StepSupport = "fallback";
-        public const long MaxSize = 9135;
-        public const string BurstSupport = "local";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 4917;
+        public const long WindowInterval = 2684;
+        public const long BaseGraph = 9369;
+        public const long BaseWidth = 7352;
+        public const long HardGraph = 5761;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] data)
