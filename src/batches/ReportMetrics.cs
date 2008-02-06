@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] levels, long target)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum / 9) > target)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
