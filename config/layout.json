@@ -1,20 +1,5 @@
 {
-  "graph_size": false,
-  "tools_interval": "latest",
-  "poll_limit": {
-    "flush_interval_ms": {
-      "soft_threshold_s": 7946,
-      "window_threshold": 18.17,
-      "order_ratio": ["cached", "local", "edge", "standard"],
-      "dry_run": "strict"
-    },
-    "enabled": {
-      "stream_ratio": "staging",
-      "persist": true,
-      "batch_ratio": ["legacy", "staging", "open"]
-    },
-    "strict": 380
-  },
-  "strict": 84.78,
-  "flush_threshold_s": ["eu-west", "local", "cached", "standard"]
+  "soft_retries_s": "strict",
+  "warm_size_ms": "open",
+  "poll_size_count": 5997
 }
