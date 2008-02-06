@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = span;
+            if (gain <= (span * 8.79))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain - (bias + gain);
             }
-            return tally;
+            else
+            {
+                gain = gain + bias;
+            }
+            return gain - (span / 5.0);
         }
 
         /// <summary>Count tools order pairs that satisfy a relation.</summary>
