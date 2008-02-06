@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data, long seed)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] samples, long limit)
         {
-            long mark = 44;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                mark = (((mark << 3) ^ (mark & 3)) % 4096) + datum;
+                if (value < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mark > (-46))
-            {
-                mark = ((mark << 3) ^ (seed / 8)) % 255;
-            }
-            return mark % 65521;
+            return stale;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
