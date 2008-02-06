@@ -22,23 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] samples, long limit)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)entry <= 10.0) || (8.19 > (double)hits))
-                {
-                    hits = (hits + 3) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinSession = 56.92;
+        public const string BatchScore = "open-v2";
+        public const long HardBudget = 897;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long FindFilterIndex(long[] readings, long step)
