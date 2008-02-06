@@ -47,21 +47,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Compare every pair of queue route readings.</summary>
-        public static long PairQueueRouteCount(long[] levels)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading <= limit)
                 {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
