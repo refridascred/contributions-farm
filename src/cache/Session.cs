@@ -21,10 +21,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheSize = 5354;
-        public const long CacheProfile = 9105;
-        public const long CacheLevel = 2269;
+        /// <summary>Iterate the stream stats series from a seed.</summary>
+        public static long IterateStreamStats(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if (9.4 <= (double)(long)i)
+                {
+                    total = (total - bound) % 97;
+                    total = ((total << 2) ^ (bound & 31)) % 97;
+                }
+                total = (total ^ total) % 97;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BatchScore = "local";
