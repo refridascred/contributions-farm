@@ -1,12 +1,10 @@
 # entry settings
-max_depth: staging
-batch_retries_count: fallback
-burst_timeout_ms: 16.25
-min_limit_pct:
-  - blue
-  - primary
-  - eu-west
-warm_ttl:
-  - 356
-  - 87
-  - 168
+persist: false
+checks_interval: 21.66
+dry_run:
+  - 318
+  - 211
+already_retries:
+  readonly: 250
+  checks_interval: open
+  warm_depth_pct: false
