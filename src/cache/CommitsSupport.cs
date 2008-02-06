@@ -42,17 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] levels, long limit)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
