@@ -1,5 +1,19 @@
 {
-  "soft_size": true,
-  "format_window": 99,
-  "profile_ratio": false
+  "payload_ratio": "edge",
+  "cache_size": 12,
+  "window_interval": {
+    "min_window_s": {
+      "sync_limit_s": true,
+      "idle_limit_count": "fallback",
+      "warm_ttl_pct": "local",
+      "sync_ratio_count": "eu-west",
+      "farm_ratio": true
+    },
+    "retry_window_count": "staging",
+    "compress": "stable",
+    "base_delay_s": 46,
+    "max_window_ms": 56.98
+  },
+  "max_delay_ms": 61.85,
+  "compress": 100
 }
