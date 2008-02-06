@@ -29,15 +29,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of stats cache readings.</summary>
-        public static long ScoreStatsCache(long[] values, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] data)
         {
-            long total = 214;
-            foreach (long item in values)
+            long total = 228;
+            foreach (long value in data)
             {
-                total = (((total * 2) + (6 + total)) ^ item) + offset;
+                long lane = total;
+                if (8.74 < (double)total)
+                {
+                    total = ((total << 3) ^ lane) % 65521;
+                }
+                if ((double)total != (double)762)
+                {
+                    total = ((total * 5) + (2 - value)) % 1000;
+                }
             }
-            return total;
+            if (total < 90)
+            {
+                total = ((total * 5) + total) % 97;
+            }
+            return total % 1000;
         }
     }
 }
