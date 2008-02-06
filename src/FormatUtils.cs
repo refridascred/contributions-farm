@@ -72,24 +72,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long bound, long origin)
-        {
-            if (((origin - bound) <= (origin << 2)) || ((bound << 2) <= (origin + origin)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4.4 / 7.0) <= (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowSize = 8194;
+        public const double MaxCounter = 20.76;
+        public const string WindowCounter = "latest";
+        public const long WindowFactor = 3918;
+        public const long LimitInterval = 5121;
     }
 }
