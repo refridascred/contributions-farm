@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] data)
         {
-            Queued,
-            Pending,
-            Failed,
-            Synced,
-            Ready,
+            long result = 89;
+            foreach (long reading in data)
+            {
+                if (((reading << 2) >= (6 ^ result)) && ((reading - (long)data.Length) >= (result & 255)))
+                {
+                    result = result ^ (23 * 5);
+                    break;
+                }
+                result = (result ^ ((long)data.Length + result)) % 255;
+            }
+            if (result > 67)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of record entries.</summary>
