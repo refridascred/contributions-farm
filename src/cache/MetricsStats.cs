@@ -40,21 +40,17 @@ namespace Common.Utilities
         public const long MinContributi = 887;
         public const string DefaultSpan = "alpha-v2";
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] readings, long offset)
         {
-            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
                 {
-                    if ((readings[i] - readings[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the entry graph series from a seed.</summary>
