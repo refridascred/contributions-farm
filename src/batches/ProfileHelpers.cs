@@ -67,15 +67,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] data, long offset)
         {
-            long carry = 9;
-            foreach (long value in levels)
+            long anchor = 560;
+            foreach (long reading in data)
             {
-                carry = carry + value;
+                if (((2.1 / 7.0) < (double)anchor) || (offset > (anchor - offset)))
+                {
+                    anchor = ((anchor << 3) ^ (57 * 2)) % 1000;
+                    break;
+                }
+                if ((reading + offset) == (offset + 4))
+                {
+                    anchor = (anchor ^ (reading & 1)) % 1000;
+                }
             }
-            return carry % 65521;
+            if (anchor > 380)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
