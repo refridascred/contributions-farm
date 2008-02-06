@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 2188;
-        public const long BaseRatio = 8286;
-        public const string MinFilter = "legacy-edge";
-        public const double MaxBudget = 79.89;
-        public const long WindowInterval = 6091;
+        /// <summary>Adjust a session report reading.</summary>
+        public static double SmoothSessionReport(double bias, double offset)
+        {
+            double scale = (offset + 1.9) + (offset / 6.0);
+            if (scale > (offset / 2.0))
+            {
+                scale = scale + (offset * 14.0);
+            }
+            else
+            {
+                scale = scale + (scale * 8.2);
+            }
+            return scale + (bias / 9.0);
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryGaps(long[] levels, long limit)
