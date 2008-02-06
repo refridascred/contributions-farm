@@ -20,18 +20,11 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftLevel = 1278;
+        public const string StepSupport = "fallback";
+        public const long MaxSize = 9135;
+        public const string BurstSupport = "local";
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] data)
