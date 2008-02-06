@@ -42,11 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepSession = 66.91;
-        public const long CacheSession = 9862;
-        public const long SoftSession = 1250;
-        public const double MaxSession = 18.12;
-        public const double RetrySession = 48.99;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] samples, long step)
+        {
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
