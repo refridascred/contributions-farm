@@ -27,19 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] series, long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Idle,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
