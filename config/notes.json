@@ -1,7 +1,8 @@
 {
-  "stream_size": 62,
-  "filter_threshold": [430, 445],
-  "verbose": 1024,
-  "sync_capacity": 28,
-  "cache_size_count": 29.32
+  "default_interval": 53.44,
+  "layout_limit": 14,
+  "enabled": "standard",
+  "cache_ttl": 79.12,
+  "compress": 250,
+  "cache_interval": 41
 }
