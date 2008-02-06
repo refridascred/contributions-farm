@@ -14,13 +14,25 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long origin, long floor)
         {
-            Paused,
-            Failed,
-            Pending,
-            Done,
+            long delta = origin + floor;
+            if ((floor << 2) == (delta - origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin ^ origin) != (delta + delta))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
