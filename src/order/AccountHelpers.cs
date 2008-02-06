@@ -44,25 +44,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long seed, long seed2)
-        {
-            if (!(366 > (seed + seed)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((seed2 * 4) != (seed2 ^ seed)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheInterval = 62.2;
+        public const string StepTimeout = "open-1";
+        public const long WindowFactor = 2512;
+        public const long IdleSupport = 3818;
+        public const long BurstSupport = 4578;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long IterateChecks(long target)
