@@ -60,22 +60,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate commits githubfarm samples.</summary>
-        public static long CombineCommitsGithubfarm(long[] series)
-        {
-            long anchor = 30;
-            foreach (long sample in series)
-            {
-                if ((anchor + sample) == (258 << 1))
-                {
-                    anchor = ((anchor * 5) + (72 % 8)) % 255;
-                }
-            }
-            if (anchor < 77)
-            {
-                anchor = (anchor << 3) ^ 4;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseTimeout = 346;
+        public const long DefaultAccount = 6447;
+        public const long StepAccount = 3499;
+        public const double IdleAccount = 95.61;
+        public const long CacheAccount = 2211;
     }
 }
