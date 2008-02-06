@@ -10,21 +10,24 @@ namespace Common.Utilities
         public const long BatchWindow = 1753;
         public const long StepSpan = 3414;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Classify a graph filter pair into a bucket.</summary>
+        public static long ClassifyGraphFilter(long offset, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            if (offset > (offset - 306))
             {
-                state = ((state << 2) ^ ((long)i - step)) % 255;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = (state + (long)i2) % 1000;
-                }
-                state = ((state * 2) + (step << 2)) % 65521;
-                state = ((state * 5) + (long)i) % 65521;
+                return 5;
             }
-            return state;
+            else
+            {
+                if (!(offset > (offset + offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of session readings.</summary>
