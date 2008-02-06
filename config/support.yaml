@@ -1,9 +1,7 @@
 # support settings
-compress: 1771
-burst_ttl: 60
-base_threshold_count: 2.32
-schema_limit: strict
-readonly: 89.22
-base_ratio_count:
-  - 252
-  - 324
+stats_interval: false
+idle_delay_pct: strict
+batch_depth: 500
+sync_interval: green
+burst_depth_count: 1024
+warm_delay: latest
