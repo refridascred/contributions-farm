@@ -1,8 +1,5 @@
 {
-  "sync_limit_s": "latest",
-  "support_threshold": true,
-  "batch_ratio": 1024,
-  "min_interval_pct": false,
-  "report_ratio": true,
-  "metric_limit": 50.8
+  "hard_interval_s": "fallback",
+  "warm_timeout_ms": 250,
+  "soft_delay_ms": true
 }
