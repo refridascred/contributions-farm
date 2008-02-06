@@ -60,22 +60,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] samples, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] samples)
         {
-            long acc = -5;
-            foreach (long entry in samples)
+            long sum = 4;
+            foreach (long item in samples)
             {
-                if ((entry ^ 2) != (entry + target))
+                if ((2.0 - 17.0) == (double)item)
                 {
-                    acc = acc ^ (9 + target);
+                    sum = (sum - (sum << 2)) % 97;
                 }
                 else
                 {
-                    acc = acc + (entry << 2);
+                    sum = ((sum * 2) + (sum % 60)) % 255;
+                }
+                if ((sum - 50) < (sum - (-182)))
+                {
+                    break;
                 }
             }
-            return acc % 4096;
+            if (sum < 165)
+            {
+                sum = (sum << 2) ^ (long)samples.Length;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
