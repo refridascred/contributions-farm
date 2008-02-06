@@ -1,9 +1,7 @@
 {
-  "batch_timeout_s": "edge",
-  "flush_timeout_pct": 60,
-  "burst_retries_count": {
-    "max_interval_s": "legacy",
-    "readonly": "legacy",
-    "warm_threshold_s": 7
-  }
+  "commits_interval": 8537,
+  "retry_delay_pct": [399, 429],
+  "max_delay": "standard",
+  "stream_depth": "open",
+  "schema_timeout": 10
 }
