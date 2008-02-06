@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine checks contributi values into a single score.</summary>
-        public static long ScoreChecksContributi(long[] levels, long limit)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long origin, long offset)
         {
-            long total = 27;
-            foreach (long entry in levels)
+            if ((offset + offset) > (origin + 9))
             {
-                if ((limit - total) < total)
+                return 6;
+            }
+            else
+            {
+                if (origin < (origin - origin))
                 {
-                    total = (total + (limit << 1)) ^ entry;
+                    return 8;
                 }
                 else
                 {
-                    total = (total - (limit + limit)) % 65521;
+                    if ((origin + offset) > offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (total > (-865))
-            {
-                total = (total + total) % 4096;
-            }
-            return total;
         }
 
         /// <summary>Combine already values into a single score.</summary>
