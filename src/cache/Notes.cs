@@ -29,12 +29,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] data, long step)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] >= step) && ((data[i] % 5) != 0))
+                if (items[i] < step)
                 {
                     return (long)i;
                 }
