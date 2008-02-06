@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const long StepSpan = 8712;
         public const long HardScore = 8315;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 193;
-        public const long StepFactor = 1192;
-        public const long RetryFactor = 4761;
-        public const long RetryScore = 2126;
+        /// <summary>Fold a list of checks metrics readings.</summary>
+        public static long ScoreChecksMetrics(long[] samples)
+        {
+            long mark = 70;
+            foreach (long datum in samples)
+            {
+                mark = ((mark << 3) ^ (datum << 3)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsHits(long[] values)
