@@ -1,7 +1,7 @@
 {
-  "dry_run": "stable",
-  "min_ratio_s": 32,
-  "strict": ["green", "legacy", "fallback", "blue"],
-  "poll_threshold_count": "legacy",
-  "idle_ttl_count": "fallback"
+  "stats_threshold": false,
+  "format_retries": true,
+  "default_interval": 81.73,
+  "default_capacity_s": 67.6,
+  "max_limit_s": "fallback"
 }
