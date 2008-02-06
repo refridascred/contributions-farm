@@ -48,14 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            Synced,
-            Done,
-            Locked,
-            Active,
-            Idle,
+            long total = 2;
+            foreach (long datum in values)
+            {
+                total = (total ^ (total ^ datum)) % 4096;
+            }
+            if (total < 62)
+            {
+                total = (total + total) % 65521;
+            }
+            return total;
         }
     }
 }
