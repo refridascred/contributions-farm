@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 1492;
-        public const long BatchDepth = 4192;
-        public const long RetryAccount = 327;
-        public const long CacheTimeout = 3854;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCluster = 82.86;
+        public const long MinScore = 8258;
+        public const long CacheScore = 5614;
+        public const double BurstSpan = 74.04;
 
         /// <summary>Count the cluster commits entries that pass the check.</summary>
         public static long AuditClusterCommitsGaps(long[] items)
