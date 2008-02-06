@@ -32,18 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] series, long bound)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((hits << 3) != (bound & 7)))
+                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
                 {
-                    hits = (hits + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
