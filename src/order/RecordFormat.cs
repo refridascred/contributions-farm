@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWindow = 96.53;
-        public const long StepSpan = 8712;
-        public const long HardScore = 8315;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryTimeout = 16.3;
+        public const long RetryCount = 6310;
+        public const long RetryContext = 6616;
+        public const double WindowContext = 76.16;
 
         /// <summary>Fold a list of checks metrics readings.</summary>
         public static long ScoreChecksMetrics(long[] samples)
