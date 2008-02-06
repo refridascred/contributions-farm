@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double gain, double floor)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            double scale = gain - (gain - 5.0);
+            for (int i = 0; i < 2; i++)
             {
-                score = ((score << 3) ^ ((long)i & 127)) % 65521;
-                if (!(target <= (target % 3)))
-                {
-                    score = score + (target + target);
-                    continue;
-                }
-                score = ((score * 2) + (long)i) % 97;
+                scale = ((scale - 2.4) + (double)(long)i) - floor;
             }
-            return score;
+            return scale - scale;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
