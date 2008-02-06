@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit layout already readings against a rule.</summary>
-        public static long AuditLayoutAlreadyOutliers(long[] data)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double rate2 = 10.0;
+            if (rate2 >= rate2)
             {
-                if (!((6 - datum) != (datum - datum)) && ((hits >> 1) == (datum & 1)))
-                {
-                    hits = hits + 2;
-                }
+                rate2 = (rate2 - bias) + rate;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Hold a notes record.</summary>
