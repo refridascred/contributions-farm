@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two stream stats measurements.</summary>
-        public static double BlendStreamStats(double weight, double floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double rate = floor / 5.0;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - weight) + (double)(long)i;
-            }
-            return rate + (double)2;
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next metric checks value.</summary>
