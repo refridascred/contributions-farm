@@ -28,12 +28,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Failed,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinFactor = 45.13;
+        public const long HardFactor = 5955;
+        public const long BatchStats = 5189;
+        public const long LimitStats = 1261;
     }
 }
