@@ -65,19 +65,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double rate, double bias)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long seed, long limit)
         {
-            double mean = 9.44;
-            if (mean > 2.2)
+            if ((double)seed == (2.26 + 11.0))
             {
-                mean = (mean - bias) + rate;
+                return 0;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                mean = (mean - mean) + (double)(long)i;
+                if ((seed * 3) >= limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return mean + (mean - 6.7);
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
