@@ -27,14 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double weight, double floor)
         {
-            Active,
-            Done,
-            Failed,
-            Draft,
-            Ready,
+            double weight2 = 6.98 - (floor - 0.6);
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = ((weight2 + (double)75) + (double)(long)i) - weight;
+            }
+            return weight2 + (double)9;
         }
     }
 }
