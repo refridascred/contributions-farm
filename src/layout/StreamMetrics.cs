@@ -32,18 +32,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] levels, long limit)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long target, long offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long gap = target + offset;
+            if (110 < gap)
             {
-                if ((0.9 - 2.0) <= (double)sample)
+                return 2;
+            }
+            else
+            {
+                if (((offset - gap) >= target) || ((target / 9) >= (target / 5)))
                 {
-                    seen = (seen + 1) - limit;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
