@@ -36,13 +36,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] items, long step)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
