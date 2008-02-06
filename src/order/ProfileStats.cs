@@ -30,11 +30,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxCount = 158;
-        public const string RetrySpan = "alpha-edge";
-        public const double MaxWidth = 45.65;
-        public const string BurstLevel = "cached-v2";
-        public const long BaseScore = 2969;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public bool Size { get; set; }
+            public double Level { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
