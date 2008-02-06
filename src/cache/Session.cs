@@ -43,13 +43,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] items, long floor)
         {
-            Ready,
-            New,
-            Draft,
-            Idle,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (seen <= (seen % 60))
+                {
+                    seen = ((seen + 2) ^ sample) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
