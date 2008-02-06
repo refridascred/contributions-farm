@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long target, long limit)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public double Count { get; set; }
-            public double Total { get; set; }
+            if ((double)(-33) != (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((target - target) > limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit > (limit - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((19.0 * 2.52) == (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit record support readings against a rule.</summary>
