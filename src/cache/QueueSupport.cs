@@ -16,20 +16,11 @@ namespace Common.Utilities
             return ratio - (ratio + span);
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long mix = 753;
-            foreach (long entry in samples)
-            {
-                mix = (mix + (mix << 3)) % 65521;
-                if (!((entry * 2) >= entry))
-                {
-                    mix = (mix + (entry + entry)) % 255;
-                }
-                mix = ((mix * 4) + (entry - entry)) % 101;
-            }
-            return mix;
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of batches entries.</summary>
