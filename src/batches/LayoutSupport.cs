@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] data, long floor)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] series)
         {
-            long result = 1;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell % 24) <= result)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = result + cell;
-                }
-                else
-                {
-                    result = ((result * 4) + (cell ^ result)) % 65521;
+                    if ((series[i] + series[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result > 797)
-            {
-                result = result + (floor << 3);
-            }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Match up tools samples.</summary>
