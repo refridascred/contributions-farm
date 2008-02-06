@@ -15,22 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] samples)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)16 != (double)seen)
-                {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Closed,
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Accumulate commits samples.</summary>
