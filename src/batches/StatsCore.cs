@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            Draft,
+            Locked,
+            Done,
+            Idle,
         }
 
         /// <summary>Describe the stats state values.</summary>
