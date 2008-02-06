@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long offset, long seed)
         {
-            Idle,
-            Synced,
-            Failed,
-            Closed,
-            Done,
+            long delta = offset ^ seed;
+            if ((seed * 2) >= (delta - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((4.77 * 14.0) > (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Match up contributi samples.</summary>
