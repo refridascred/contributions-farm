@@ -37,11 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
+            public double Token { get; set; }
+            public bool Label { get; set; }
+            public double Rank { get; set; }
+            public double Size { get; set; }
         }
     }
 }
