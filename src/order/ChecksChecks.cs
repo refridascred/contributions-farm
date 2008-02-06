@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] readings, long limit)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the profile kind values.</summary>
