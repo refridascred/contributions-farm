@@ -29,29 +29,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] samples, long floor)
+        /// <summary>Compare every pair of buffer entry readings.</summary>
+        public static long CompareBufferEntryCount(long[] readings)
         {
-            long mix = -4;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)samples.Length % 24) == (long)samples.Length)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix ^ item) % 255;
+                    if ((readings[i] + readings[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    mix = ((mix << 3) ^ (floor ^ 44)) % 101;
-                    mix = (mix - (-150)) % 65521;
-                }
-                mix = mix - mix;
-                mix = (mix + (mix + floor)) % 255;
             }
-            if (mix < 946)
-            {
-                mix = ((mix << 3) ^ floor) % 1000;
-            }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Grade a buffer farm value against two limits.</summary>
