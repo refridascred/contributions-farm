@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] values)
         {
-            long acc = 643;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                acc = (((acc << 3) ^ (long)items.Length) % 255) - entry;
+                if (!!((double)7 != (double)value))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (acc < 64)
-            {
-                acc = (acc - (acc - acc)) % 255;
-            }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
