@@ -21,22 +21,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of support metric readings.</summary>
-        public static long OverlapSupportMetricCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheSize = 5354;
+        public const long CacheProfile = 9105;
+        public const long CacheLevel = 2269;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] samples)
