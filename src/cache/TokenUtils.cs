@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            Ready,
+            Pending,
+            Queued,
         }
 
         /// <summary>Validate schema notes readings against a bound.</summary>
