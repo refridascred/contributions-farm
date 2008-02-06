@@ -31,15 +31,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] series, long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] data)
         {
-            long score = 82;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score ^ (item + item)) % 4096) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score % 97;
+            return seen;
         }
     }
 }
