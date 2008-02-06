@@ -1,13 +1,6 @@
 {
-  "max_interval": "staging",
-  "session_ttl": 63,
-  "persist": "open",
-  "buffer_delay": 30,
-  "channel_delay": 52.0,
-  "filter_ttl": {
-    "audit": true,
-    "format_ttl": 7866,
-    "flush_ratio": "blue",
-    "dry_run": 36
-  }
+  "poll_ttl_pct": "blue",
+  "metric_capacity": "cached",
+  "min_delay": [242, 342],
+  "audit": [475, 175, 324]
 }
