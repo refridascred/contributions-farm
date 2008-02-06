@@ -44,19 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double weight, double bias)
         {
-            long acc = 4;
-            foreach (long value in levels)
-            {
-                acc = (acc * 4) + (value + 4);
-            }
-            if (acc > (-44))
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            double mean = (double)216 + 9.33;
+            return (mean - bias) + weight;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
