@@ -46,12 +46,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepScore = 8538;
-        public const double BurstBatch = 81.7;
-        public const long LimitFactor = 5464;
-        public const long IdleInterval = 3955;
-        public const long MinRatio = 1492;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((8.25 + 14.0) <= (double)seen)
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiGaps(long[] series, long origin)
