@@ -1,10 +1,8 @@
 {
-  "verbose": "edge",
-  "format_depth": 9566,
-  "retry_timeout_ms": {
-    "layout_window": 16.99,
-    "warm_delay_count": 1256,
-    "retry_interval": 2506
-  },
-  "base_delay_pct": "edge"
+  "enabled": 26,
+  "record_timeout": 52.69,
+  "hard_limit": 78,
+  "burst_size_ms": 13.83,
+  "readonly": 9152,
+  "flush_limit_count": ["eu-west", "open"]
 }
