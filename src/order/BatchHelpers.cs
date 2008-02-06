@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const double BatchReport = 12.32;
         public const long BaseReport = 1925;
 
-        /// <summary>Count filter farm pairs that satisfy a relation.</summary>
-        public static long CompareFilterFarmCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultFactor = 8015;
+        public const double HardBuffer = 56.1;
+        public const long WindowBuffer = 1442;
+        public const long MaxWidth = 8846;
+        public const string BaseInterval = "latest-v2";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatOutliers(long[] series, long seed)
