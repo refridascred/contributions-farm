@@ -49,19 +49,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate batches tools readings against a bound.</summary>
-        public static bool VerifyBatchesToolsLimits(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 9965;
+        public const string BatchWidth = "staging-1";
+        public const string RetryScore = "local";
+        public const long LimitWidth = 261;
     }
 }
