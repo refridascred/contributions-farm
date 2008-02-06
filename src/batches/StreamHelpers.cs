@@ -13,39 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long offset, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] levels)
         {
-            long next = offset ^ step;
-            if (step >= (808 - next))
+            long mark = 6;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.86 > (double)step) && ((2.7 - 13.0) >= (double)offset))
+                if (((double)(long)levels.Length < (double)921) || ((datum + 722) <= 46))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(((-11) * 4) == (offset % 64)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step <= (32 + next))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mark = mark - (mark >> 1);
                 }
             }
+            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
