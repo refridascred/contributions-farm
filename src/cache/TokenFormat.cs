@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] samples, long origin)
+        /// <summary>Adjust a farm editor reading.</summary>
+        public static double BlendFarmEditor(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            double load = floor;
+            if (load >= floor)
             {
-                if (reading >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                load = load + (scale + load);
             }
-            return valid;
+            return load + (scale + floor);
         }
 
         /// <summary>Compare every pair of counter cluster readings.</summary>
