@@ -36,26 +36,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long origin, long floor)
-        {
-            long delta = origin + floor;
-            if ((floor << 2) == (delta - origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin ^ origin) != (delta + delta))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardInterval = 4750;
+        public const long BaseEntry = 2974;
+        public const long MinEntry = 8932;
+        public const long HardEntry = 9824;
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
