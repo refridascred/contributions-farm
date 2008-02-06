@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double gain, double offset)
+        /// <summary>Match up channel queue samples.</summary>
+        public static long PairChannelQueueCount(long[] levels)
         {
-            double load = gain / 2.0;
-            if (load < offset)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load + load;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (double)878;
-            }
-            return load + (double)56;
+            return count;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
