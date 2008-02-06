@@ -51,24 +51,9 @@ namespace Common.Utilities
             return (load + 6.2) + span;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long offset, long seed)
-        {
-            if ((seed - 307) < offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed % 8) > (seed + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "stable-1";
+        public const string MinBudget = "open-1";
+        public const double BurstLevel = 56.2;
     }
 }
