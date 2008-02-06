@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every schema queue entry stays within the limit.</summary>
-        public static bool VerifySchemaQueueBounds(long[] items, long limit)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= limit)
+                if ((levels[i] < bound) && ((levels[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
