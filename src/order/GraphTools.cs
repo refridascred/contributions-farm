@@ -47,15 +47,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double weight, double floor)
+        /// <summary>Roll a entry session counter forward.</summary>
+        public static long DeriveEntrySession(long bound)
         {
-            double drift = floor / 8.0;
-            for (int i = 0; i < 8; i++)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                drift = (drift + 4.4) + (double)(long)i;
+                acc = (acc - (acc + acc)) % 1000;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return drift + weight;
+            return acc;
         }
 
         /// <summary>Adjust a token commits reading.</summary>
