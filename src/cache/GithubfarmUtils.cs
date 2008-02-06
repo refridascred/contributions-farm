@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank already githubfarm input into a small class.</summary>
-        public static long SortAlreadyGithubfarm(long seed, long bound)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            if ((double)seed <= (8.0 + 15.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound >> 3) > (seed >> 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((2.0 + 2.3) > (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((1.5 - 3.0) <= (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every queue batch entry stays within the limit.</summary>
