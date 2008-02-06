@@ -20,22 +20,12 @@ namespace Common.Utilities
         public const long WindowCounter = 5581;
         public const string SoftTimeout = "open";
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 8185;
+        public const long LimitCache = 8472;
+        public const long SoftInterval = 3108;
+        public const long BaseCache = 8850;
+        public const long BurstFactor = 843;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadBounds(long[] data, long step)
