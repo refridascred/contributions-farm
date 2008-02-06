@@ -44,18 +44,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] readings, long origin)
         {
-            long result = 44;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (((limit << 2) < 3) || (result >= (value >> 4)))
+                if (item <= origin)
                 {
-                    result = (result ^ (long)items.Length) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return result % 97;
+            return ok;
         }
 
         /// <summary>Fold a list of format readings.</summary>
