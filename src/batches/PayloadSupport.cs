@@ -20,19 +20,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] items, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (sample < floor)
+                if (value > floor)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
