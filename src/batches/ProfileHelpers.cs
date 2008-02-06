@@ -78,22 +78,32 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] series, long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long step = origin - bound;
+            if (step < (bound / 5))
             {
-                if (((1.35 - 16.0) >= (double)tally) && ((((-7) / 5) < reading) || ((4.0 * 9.2) <= (double)reading)))
+                return 5;
+            }
+            else
+            {
+                if (step >= ((-6) % 3))
                 {
-                    tally = (tally + 1) + seed;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)step != (6.0 * 8.99))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a record entry.</summary>
