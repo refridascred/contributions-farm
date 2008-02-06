@@ -22,24 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long carry = 200;
-            foreach (long entry in samples)
-            {
-                if ((entry - 9) >= entry)
-                {
-                    carry = ((carry * 2) + carry) % 4096;
-                    break;
-                }
-                carry = ((carry * 3) + (carry >> 5)) % 1000;
-            }
-            if (carry > 192)
-            {
-                carry = (carry + (carry % 24)) % 1000;
-            }
-            return carry % 97;
+            Dropped,
+            Done,
+            Closed,
+            Pending,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
