@@ -41,19 +41,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] series, long seed)
+        /// <summary>Count record route pairs that satisfy a relation.</summary>
+        public static long CompareRecordRouteCount(long[] values)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Project the next support value.</summary>
