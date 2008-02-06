@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long seed, long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double gain, double offset)
         {
-            if ((origin ^ origin) >= (seed - origin))
+            double weight = (double)(2 & 31);
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                weight = (((weight + (double)0) + (double)(long)i) + gain) + offset;
             }
-            else
-            {
-                if (3.9 > (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((7 - 557) <= origin) && ((4.1 - 4.0) < (double)seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return weight - weight;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
