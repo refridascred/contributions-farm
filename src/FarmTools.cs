@@ -23,11 +23,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
+            long total = 231;
+            foreach (long cell in samples)
+            {
+                total = (((total * 2) + (total - 490)) % 4096) + cell;
+            }
+            if (total > 888)
+            {
+                total = (total + (60 * 5)) % 97;
+            }
+            return total;
         }
     }
 }
