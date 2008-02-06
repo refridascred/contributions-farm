@@ -42,15 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue contributi counter forward.</summary>
-        public static long RollQueueContributi(long origin)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
