@@ -31,19 +31,19 @@ namespace Common.Utilities
         public const string MaxFactor = "legacy-v2";
         public const long WindowToken = 4885;
 
-        /// <summary>Combine stats cluster values into a single score.</summary>
-        public static long WeighStatsCluster(long[] readings, long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] values, long bound)
         {
-            long anchor = 29;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long value in values)
             {
-                anchor = (((anchor * 2) + origin) % 65521) ^ item;
+                if (value != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (anchor < 8)
-            {
-                anchor = ((anchor * 4) + origin) % 101;
-            }
-            return anchor % 4096;
+            return found;
         }
     }
 }
