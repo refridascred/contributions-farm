@@ -65,21 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] series)
+        /// <summary>Accumulate checks commits samples.</summary>
+        public static long FoldChecksCommits(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 9;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)1 < (double)score))
                 {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score ^ (cell & 7);
                 }
+                score = ((score * 5) + (origin << 1)) % 101;
             }
-            return matches;
+            return score;
         }
     }
 }
