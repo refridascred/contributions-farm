@@ -1,13 +1,14 @@
 # Command notes
 
-Keep editor and cluster names short and lowercase.
-Run the route check before changing any commits limits.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Defaults for route live in the config folder and can be overridden per environment.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-Use order settings to tune how often record data is refreshed.
+Defaults for editor live in the config folder and can be overridden per environment.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new metric fields
-- Log every checks change
-- Validate cache input early
+- Document new support fields
+- Review account limits each release
+- Validate support input early
