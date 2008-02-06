@@ -37,21 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of counter farm readings.</summary>
-        public static long CompareCounterFarmCount(long[] data)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample > floor)
                 {
-                    if ((data[i] ^ data[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
