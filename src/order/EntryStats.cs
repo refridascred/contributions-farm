@@ -50,13 +50,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Failed,
-            Draft,
-            Queued,
-            Synced,
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a batch stats.</summary>
