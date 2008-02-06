@@ -54,13 +54,19 @@ namespace Common.Utilities
         public const long CacheMetrics = 7571;
         public const long HardSize = 1845;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] samples, long offset)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public double Count { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
