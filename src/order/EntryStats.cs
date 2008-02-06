@@ -41,15 +41,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double bias, double floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] readings)
         {
-            double weight = bias / 4.0;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                weight = (weight - 7.92) + (double)(long)i;
+                if (tally >= sample)
+                {
+                    tally = tally + 2;
+                }
             }
-            return weight + (floor / 4.0);
+            return tally;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
