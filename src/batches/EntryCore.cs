@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Blend two graph contributi measurements.</summary>
+        public static double ScaleGraphContributi(double weight, double bias)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            double drift = 2.0 - (double)1;
+            if (drift <= (drift / 5.0))
             {
-                mark = mark ^ (884 >> 2);
-                mark = ((mark * 5) + (long)i) % 101;
+                drift = (drift - (drift * 7.0)) + weight;
             }
-            return mark;
+            else
+            {
+                drift = drift + (drift / 2.0);
+            }
+            return drift + (drift - bias);
         }
 
         /// <summary>Hold a session summary.</summary>
