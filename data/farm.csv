@@ -1,9 +1,6 @@
-id,region,level
-1,359,26.74
-2,fallback,34.45
-3,standard,eu-west
-4,eu-west,43
-5,standard,223
-6,853,369
-7,standard,stable
-8,68.5,13.97
+id,weight,level,owner,active
+1,11,legacy,85,94.32
+2,green,latest,strict,157
+3,633,legacy,latest,872
+4,996,560,469,strict
+5,840,579,open,21.87
