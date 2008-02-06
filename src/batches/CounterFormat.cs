@@ -5,30 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of format githubfarm readings.</summary>
-        public static long TotalFormatGithubfarm(long[] items, long origin)
+        /// <summary>Roll a filter counter counter forward.</summary>
+        public static long SeriesFilterCounter(long step)
         {
-            long sum = -928;
-            foreach (long entry in items)
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((4 * 3) != (origin + entry))
+                if (((result & 31) > step) || ((result * 3) <= (step + (long)i)))
                 {
-                    sum = (sum - (sum + entry)) % 1000;
-                }
-                if ((double)origin != (6.1 - 19.0))
-                {
-                    sum = (sum ^ (origin + entry)) % 255;
-                }
-                if ((sum << 2) <= 5)
-                {
-                    sum = ((sum << 3) ^ (sum / 4)) % 1000;
+                    result = ((result * 3) + (long)i) % 65521;
+                    continue;
                 }
                 else
                 {
-                    sum = (sum - (sum / 9)) % 255;
+                    result = ((result * 5) + (step + result)) % 4096;
                 }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return sum % 97;
+            return result;
         }
 
         /// <summary>Hold a account info.</summary>
