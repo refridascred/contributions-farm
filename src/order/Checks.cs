@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 9239;
-        public const double HardDepth = 1.07;
-        public const long MaxSpan = 1069;
-        public const double IdleLevel = 75.82;
-        public const double StepBudget = 9.01;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] data, long floor)
+        {
+            long sum = 175;
+            foreach (long datum in data)
+            {
+                if ((floor + datum) > (datum % 100))
+                {
+                    sum = (sum << 3) ^ (floor << 1);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepSession = 603;
