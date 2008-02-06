@@ -28,9 +28,11 @@ namespace Common.Utilities
         public const long DefaultTools = 783;
         public const string MinSpan = "open-edge";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseRatio = 9683;
-        public const long BurstBatch = 4668;
-        public const double StepBatch = 34.3;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseScore = 2970;
+        public const long BatchCounter = 9918;
+        public const string SoftSize = "local-v2";
+        public const long SoftCount = 3940;
+        public const string DefaultInterval = "strict-edge";
     }
 }
