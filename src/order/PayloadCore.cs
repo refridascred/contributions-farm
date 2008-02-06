@@ -43,11 +43,9 @@ namespace Common.Utilities
             return weight - (double)67;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardScore = 8313;
-        public const double CacheDepth = 9.96;
-        public const double BurstGithubfarm = 46.05;
-        public const double HardFactor = 66.74;
-        public const long StepGithubfarm = 9857;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstInterval = 32.93;
+        public const string BurstAlready = "stable-1";
+        public const long BaseRatio = 9272;
     }
 }
