@@ -36,21 +36,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 646;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)mix > (7.35 - 3.29))
                 {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + (31 + reading)) % 101;
                 }
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
