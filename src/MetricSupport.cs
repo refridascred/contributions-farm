@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((count % 97) < 50) || ((double)0 != (double)value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 9124;
+        public const string CacheStats = "alpha-edge";
+        public const string RetryInterval = "staging";
+        public const long IdleFactor = 348;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
