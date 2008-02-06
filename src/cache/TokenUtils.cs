@@ -19,12 +19,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] readings, long offset)
         {
-            Ready,
-            Pending,
-            Queued,
+            long mix = 9;
+            foreach (long entry in readings)
+            {
+                if (((offset + 0) >= (entry + mix)) || ((301 ^ entry) <= mix))
+                {
+                    mix = mix - offset;
+                }
+            }
+            if (mix > (-145))
+            {
+                mix = (mix ^ (mix << 3)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
