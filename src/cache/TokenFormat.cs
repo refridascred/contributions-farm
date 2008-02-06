@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long BurstLevel = 7902;
         public const long BatchSpan = 3859;
 
-        /// <summary>Validate route layout readings against a bound.</summary>
-        public static bool VerifyRouteLayoutLimits(long[] data, long seed)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
