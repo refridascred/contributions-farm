@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
