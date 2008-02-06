@@ -60,18 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] series, long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((tally <= (tally << 1)) && (((long)series.Length + tally) == (origin >> 1)))
+                if (datum >= limit)
                 {
-                    tally = (tally + 3) ^ entry;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
