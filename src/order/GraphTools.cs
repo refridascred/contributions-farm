@@ -59,15 +59,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a token commits reading.</summary>
-        public static double AdjustTokenCommits(double gain, double floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long origin)
         {
-            double drift = floor;
-            if (drift <= (floor - floor))
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                drift = (drift - (double)2) + gain;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return drift + (20.0 * 5.0);
+            return mark;
         }
 
         /// <summary>Iterate the cache commits series from a seed.</summary>
