@@ -50,19 +50,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] samples, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long acc = 851;
+            foreach (long entry in items)
             {
-                if (cell > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 2) + (entry ^ entry)) % 1000;
             }
-            return flag;
+            return acc;
         }
     }
 }
