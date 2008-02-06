@@ -1,14 +1,32 @@
 # entry settings
-max_limit_s: local
-soft_retries_s:
-  - 29
-  - 407
-soft_window: 500
-persist:
-  soft_delay_s: 8976
-  cache_depth_pct: false
-  sync_delay: 5270
-  soft_threshold_pct: 22.14
-  soft_size_pct: 47.02
-enabled: 500
-batch_limit_s: eu-west
+command_ratio:
+  compress:
+    retry_ttl_ms: strict
+    compress:
+      - 79
+      - 416
+      - 294
+    order_retries:
+      - 393
+      - 18
+      - 215
+    base_ratio_ms:
+      - 367
+      - 452
+    hard_interval:
+      - 451
+      - 435
+      - 290
+    base_retries:
+      - open
+      - green
+      - stable
+      - staging
+  warm_depth_pct: 1024
+  base_size_count: open
+  format_interval: strict
+  strict: 70.9
+  sync_ratio: eu-west
+min_delay: 9038
+readonly: true
+queue_delay: 2701
