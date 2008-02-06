@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double scale, double floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] levels)
         {
-            double ratio = (double)(599 - 157);
-            if (ratio <= 3.17)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                ratio = (ratio - (scale * 9.07)) - floor;
+                if ((cell - cell) < (hits % 100))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio + 1.0;
+            return hits;
         }
 
         /// <summary>Describe the commits kind values.</summary>
