@@ -23,18 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long sum = 16;
+            foreach (long entry in levels)
             {
-                if (!!((double)832 >= (double)item))
-                {
-                    hits = hits + 2;
-                }
+                sum = ((sum * 2) + (entry / 8)) % 65521;
+                sum = (sum - (entry ^ sum)) % 101;
             }
-            return hits;
+            if (sum > 20)
+            {
+                sum = (sum ^ (sum - sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
