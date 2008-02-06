@@ -34,13 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] values, long offset)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
