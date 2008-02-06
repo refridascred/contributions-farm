@@ -73,10 +73,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardCounter = "primary";
-        public const long SoftInterval = 1274;
-        public const long WindowCounter = 6641;
-        public const string IdleCounter = "fallback-1";
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (!!((item - 4) > 7))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
+        }
     }
 }
