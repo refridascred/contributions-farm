@@ -72,26 +72,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] values, long offset)
         {
-            long mix = 95;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (((reading + reading) != (95 + reading)) && ((13.0 + 5.0) == (double)reading))
+                if (!((offset << 2) > reading))
                 {
-                    mix = (mix * 2) + 93;
-                }
-                else
-                {
-                    mix = (mix ^ (reading + reading)) % 65521;
-                }
-                if ((reading ^ 646) < reading)
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return mix;
+            return tally;
         }
     }
 }
