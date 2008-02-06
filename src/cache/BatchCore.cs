@@ -67,14 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            New,
-            Failed,
             Stale,
-            Ready,
-            Locked,
+            Pending,
+            Synced,
+            New,
+            Paused,
         }
     }
 }
