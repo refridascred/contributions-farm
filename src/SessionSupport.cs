@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] readings)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long mix = 5;
-            foreach (long cell in readings)
-            {
-                if (((mix + 127) >= (mix - cell)) || ((double)cell != (4.31 / 5.0)))
-                {
-                    mix = mix + cell;
-                }
-            }
-            return mix;
+            Ready,
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
