@@ -19,17 +19,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a notes token reading by value.</summary>
-        public static long SeekNotesTokenIndex(long[] data, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 256;
+            foreach (long reading in samples)
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (reading & 255)) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
