@@ -59,20 +59,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] values, long seed)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            long acc = 111;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc / 7) == (acc + datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc ^ (seed + seed)) % 65521;
-                    acc = (acc + (datum ^ 4)) % 4096;
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = (acc << 2) ^ (acc >> 1);
             }
-            return acc % 1000;
+            return hits;
         }
     }
 }
