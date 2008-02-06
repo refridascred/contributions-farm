@@ -19,11 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double gain, double offset)
         {
-            public double Weight { get; set; }
-            public bool Count { get; set; }
+            double rate = (double)194 * 0.4;
+            if (rate >= (double)(-46))
+            {
+                rate = (rate + 9.4) + offset;
+            }
+            else
+            {
+                rate = rate + gain;
+            }
+            return rate - rate;
         }
 
         /// <summary>Adjust a farm reading.</summary>
