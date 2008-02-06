@@ -1,18 +1,5 @@
 {
-  "batch_window_s": {
-    "persist": 77.26,
-    "batch_delay_pct": "edge",
-    "dry_run": 69.27,
-    "sync_delay_s": 2659,
-    "buffer_window": "eu-west",
-    "sync_depth_pct": "open"
-  },
-  "base_threshold_s": 45,
-  "profile_window": {
-    "max_timeout": 59.43,
-    "dry_run": false,
-    "flush_ratio": 30,
-    "checks_window": true
-  },
-  "soft_retries_ms": "strict"
+  "account_window": 43.4,
+  "soft_capacity_s": 36.88,
+  "flush_capacity": "legacy"
 }
