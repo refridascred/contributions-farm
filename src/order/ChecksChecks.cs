@@ -12,11 +12,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 1317;
-        public const string SoftWidth = "open-edge";
-        public const long RetryDepth = 5288;
-        public const long StepScore = 2738;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long bound)
