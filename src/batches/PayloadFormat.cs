@@ -33,13 +33,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            Paused,
-            Locked,
-            Stale,
-            Idle,
+            long mix = -29;
+            foreach (long datum in data)
+            {
+                if ((datum - 963) < (datum + mix))
+                {
+                    mix = ((mix * 5) + (datum % 16)) % 65521;
+                    mix = (mix << 2) ^ (datum << 2);
+                }
+                else
+                {
+                    mix = ((mix * 5) + 948) % 4096;
+                }
+                mix = mix + mix;
+            }
+            if (mix > 565)
+            {
+                mix = (mix ^ (mix % 7)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
