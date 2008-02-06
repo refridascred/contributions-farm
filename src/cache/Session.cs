@@ -13,25 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long seed, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] levels)
         {
-            long offset = seed + target;
-            if ((target + target) > offset)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target / 7) >= 822) && ((double)seed == (double)offset))
+                if (((777 + cell) > (long)levels.Length) || ((44 + cell) < hits))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the profile status values.</summary>
