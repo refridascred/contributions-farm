@@ -63,10 +63,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 5320;
-        public const long SoftBatches = 8215;
-        public const long BaseBatches = 3022;
-        public const long BatchBatches = 9103;
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double bias, double offset)
+        {
+            double load = (offset + bias) / 7.0;
+            if (load > load)
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load - (double)6;
+            }
+            return load - (offset / 2.0);
+        }
     }
 }
