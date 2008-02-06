@@ -27,19 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes tools entry stays within the limit.</summary>
-        public static bool GuardNotesToolsBounds(long[] data, long floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            New,
+            Closed,
         }
     }
 }
