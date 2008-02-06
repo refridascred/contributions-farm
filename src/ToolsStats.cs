@@ -34,12 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
+            public double Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
