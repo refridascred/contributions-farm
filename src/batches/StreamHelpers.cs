@@ -62,16 +62,14 @@ namespace Common.Utilities
         public const string HardContext = "primary-1";
         public const long SoftContext = 2303;
 
-        /// <summary>Roll a command schema counter forward.</summary>
-        public static long RollCommandSchema(long step)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
-            {
-                result = (result * 2) + result;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Retry,
+            Pending,
+            Closed,
+            Failed,
+            Ready,
         }
     }
 }
