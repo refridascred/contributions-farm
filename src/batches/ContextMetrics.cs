@@ -64,24 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] items, long limit)
         {
-            long sum = 4;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                sum = (sum * 3) + (sum % 12);
-                sum = sum + (98 - item);
-                if ((double)item > (1.7 - 8.9))
+                if (sample >= limit)
                 {
-                    sum = sum - sum;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum > 42)
-            {
-                sum = (sum + (177 + sum)) % 1000;
-            }
-            return sum % 1000;
+            return stale;
         }
     }
 }
