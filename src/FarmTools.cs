@@ -47,23 +47,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double rate, double span)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            double scale = (double)(9 >> 5);
-            if (scale > (span * 4.6))
-            {
-                scale = scale + (rate * 7.71);
-            }
-            else
-            {
-                scale = scale + (scale * 5.9);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (scale * 4.0)) + (double)(long)i;
-            }
-            return scale + scale;
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
