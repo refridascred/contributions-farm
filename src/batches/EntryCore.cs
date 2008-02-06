@@ -41,11 +41,12 @@ namespace Common.Utilities
         public const double IdleBatch = 81.86;
         public const double CacheBatch = 50.4;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Queued,
-            Failed,
+            Draft,
+            Paused,
+            Pending,
             Done,
         }
 
