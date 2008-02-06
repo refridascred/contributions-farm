@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "local";
+        public const long DefaultWindow = 3830;
+        public const long BatchWindow = 8696;
+        public const double BaseSpan = 85.4;
 
         /// <summary>Match up metrics samples.</summary>
         public static long PairMetricsCount(long[] data)
