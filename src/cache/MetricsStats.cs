@@ -51,16 +51,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                state = (state - (state * 3)) % 65521;
-                state = ((state * 3) + (long)i) % 65521;
+                mix = ((mix << 3) ^ mix) % 4096;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Adjust a graph reading.</summary>
