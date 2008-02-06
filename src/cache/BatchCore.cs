@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowDepth = 6703;
-        public const string HardTimeout = "alpha-1";
-        public const string StepBudget = "primary-1";
-        public const long LimitTimeout = 6108;
+        /// <summary>Fold a list of profile batch readings.</summary>
+        public static long DigestProfileBatch(long[] readings)
+        {
+            long mark = 924;
+            foreach (long reading in readings)
+            {
+                mark = ((mark << 2) ^ (reading * 2)) % 101;
+                mark = (mark ^ (mark / 8)) % 101;
+            }
+            if (mark > (-485))
+            {
+                mark = ((mark << 3) ^ (434 << 2)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Count the already stats entries that pass the check.</summary>
         public static long MeasureAlreadyStatsGaps(long[] samples, long limit)
