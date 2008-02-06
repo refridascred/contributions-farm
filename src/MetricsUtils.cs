@@ -34,15 +34,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next metric checks value.</summary>
-        public static double AdjustMetricChecks(double bias, double offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long step, long offset)
         {
-            double gain = bias;
-            for (int i = 0; i < 8; i++)
+            if ((552 - offset) >= 97)
             {
-                gain = (gain + (offset - offset)) - (double)(long)i;
+                return 8;
             }
-            return gain + gain;
+            else
+            {
+                if (((step - step) < (23 % 7)) && ((4.0 + 5.2) != (double)offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((3.0 + 8.87) >= (double)offset) && ((step + step) == (offset - step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((14.0 + 4.4) < (double)step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate order samples.</summary>
