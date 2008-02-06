@@ -54,19 +54,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] readings, long origin)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= origin)
+                if ((values[i] < origin) && ((values[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Match up farm samples.</summary>
