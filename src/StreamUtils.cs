@@ -29,19 +29,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] values, long offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
