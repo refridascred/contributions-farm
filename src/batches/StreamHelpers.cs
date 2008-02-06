@@ -43,20 +43,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = ((result + limit) % 65521) - (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitInterval = 5335;
+        public const double MaxCount = 38.44;
+        public const double BaseInterval = 80.78;
+        public const string HardContext = "primary-1";
+        public const long SoftContext = 2303;
 
         /// <summary>Roll a command schema counter forward.</summary>
         public static long RollCommandSchema(long step)
