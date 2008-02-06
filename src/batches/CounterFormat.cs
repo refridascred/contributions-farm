@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a filter counter counter forward.</summary>
-        public static long SeriesFilterCounter(long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((result & 31) > step) || ((result * 3) <= (step + (long)i)))
-                {
-                    result = ((result * 3) + (long)i) % 65521;
-                    continue;
-                }
-                else
-                {
-                    result = ((result * 5) + (step + result)) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
