@@ -1,11 +1,17 @@
 {
-  "burst_capacity_count": false,
-  "flush_window_count": {
-    "format_limit": "cached",
-    "hard_delay_s": true,
-    "flush_timeout_s": 99,
-    "retry_depth": 54.67,
-    "poll_timeout_ms": true
+  "metric_retries": "edge",
+  "cache_retries_pct": "staging",
+  "window_window": "cached",
+  "retry_ratio": {
+    "order_ttl": 2.56,
+    "flush_depth_ms": {
+      "farm_interval": 30,
+      "soft_ttl": 1024,
+      "flush_interval": 100
+    },
+    "hard_interval": "green",
+    "verbose": [66, 217, 300],
+    "record_limit": 46.36
   },
-  "compress": [339, 498, 56, 235]
+  "soft_threshold_ms": "latest"
 }
