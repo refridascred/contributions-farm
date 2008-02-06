@@ -19,24 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the order format series from a seed.</summary>
-        public static long DeriveOrderFormat(long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long step, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
+            if ((double)seed > 7.0)
             {
-                if (carry <= (long)i)
-                {
-                    carry = (carry ^ (floor % 100)) % 255;
-                    continue;
-                }
-                if ((double)(long)i < (double)floor)
-                {
-                    carry = carry + (floor / 5);
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if (((-30) <= (seed ^ seed)) || ((double)seed > 2.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step > (step >> 2)) || (819 > (seed + step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
