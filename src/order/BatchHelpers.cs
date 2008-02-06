@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const string IdleProfile = "local-v2";
         public const long DefaultProfile = 1624;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Locked,
-            Closed,
-            Draft,
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
