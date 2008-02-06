@@ -20,15 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] series, long limit)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long total = -60;
-            foreach (long cell in series)
-            {
-                total = (((total ^ (total + 184)) % 255) + cell) + limit;
-            }
-            return total % 1000;
+            public string Mode { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
