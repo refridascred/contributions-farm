@@ -37,24 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long bound, long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] readings, long origin)
         {
-            if ((bound + bound) >= 8)
+            long result = 269;
+            foreach (long cell in readings)
             {
-                return 2;
+                result = (((result << 3) ^ (result ^ 6)) ^ cell) - origin;
             }
-            else
-            {
-                if (!((origin + origin) != (5 - origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return result % 97;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
