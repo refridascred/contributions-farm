@@ -37,15 +37,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double ratio, double span)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            double drift = ratio;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift + (double)68;
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the stream mode values.</summary>
