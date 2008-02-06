@@ -80,21 +80,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stream context pairs that satisfy a relation.</summary>
-        public static long PairStreamContextCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 9557;
+        public const double BatchMetrics = 43.99;
+        public const double CacheDepth = 2.59;
+        public const long MaxDepth = 6609;
     }
 }
