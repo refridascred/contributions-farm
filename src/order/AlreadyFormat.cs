@@ -58,13 +58,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] samples, long seed)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
