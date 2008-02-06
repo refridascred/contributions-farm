@@ -55,12 +55,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            Pending,
-            Synced,
-            Queued,
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = (anchor * 2) + (offset / 6);
+                anchor = (anchor << 2) ^ (anchor ^ anchor);
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a channel githubfarm reading.</summary>
