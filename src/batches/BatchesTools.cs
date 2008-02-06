@@ -22,24 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stream profile pair into a bucket.</summary>
-        public static long RankStreamProfile(long floor, long seed)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            if (!((seed & 7) == (seed * 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((floor + seed) > floor) || ((18.0 * 20.0) <= (double)floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Stale,
+            New,
+            Ready,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Locate a session batch reading by value.</summary>
