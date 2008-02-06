@@ -27,24 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a context buffer value against two limits.</summary>
-        public static long GradeContextBuffer(long offset, long floor)
+        /// <summary>Check that every notes tools entry stays within the limit.</summary>
+        public static bool GuardNotesToolsBounds(long[] data, long floor)
         {
-            if (((9 + 31) <= offset) || ((8.59 + 15.0) < (double)offset))
+            bool stale = true;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor <= (offset >> 2))
+                if (value < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
