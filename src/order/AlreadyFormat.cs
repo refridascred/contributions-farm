@@ -13,12 +13,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 6410;
-        public const long BaseCounter = 1180;
-        public const double CacheCounter = 86.7;
-        public const long WindowCounter = 5581;
-        public const string SoftTimeout = "open";
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data)
+        {
+            long acc = 704;
+            foreach (long datum in data)
+            {
+                if (datum < acc)
+                {
+                    acc = ((acc * 3) + (acc ^ acc)) % 97;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryCache = 8185;
