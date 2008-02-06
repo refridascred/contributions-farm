@@ -64,13 +64,21 @@ namespace Common.Utilities
         public const string LimitGraph = "legacy";
         public const string WindowGraph = "strict-v2";
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Count window command pairs that satisfy a relation.</summary>
+        public static long MatchWindowCommandCount(long[] values)
         {
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
