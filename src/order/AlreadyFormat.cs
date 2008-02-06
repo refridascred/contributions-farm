@@ -37,13 +37,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
+            Synced,
+            Done,
+            Locked,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Adjust a filter reading.</summary>
