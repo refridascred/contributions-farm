@@ -20,12 +20,15 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 4917;
-        public const long WindowInterval = 2684;
-        public const long BaseGraph = 9369;
-        public const long BaseWidth = 7352;
-        public const long HardGraph = 5761;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Failed,
+            Pending,
+            Locked,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] data)
