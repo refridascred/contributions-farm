@@ -61,11 +61,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define record limits and defaults.</summary>
-        public const long StepCount = 2811;
-        public const long RetryRecord = 3068;
-        public const long StepRecord = 7692;
-        public const long WindowInterval = 3840;
-        public const string MinSpan = "strict";
+        public const double WindowRecord = 25.52;
+        public const long BatchRecord = 3505;
+        public const double MinRecord = 83.99;
+        public const long DefaultRecord = 2832;
+        public const long IdleInterval = 9860;
 
         /// <summary>Iterate the cluster route series from a seed.</summary>
         public static long RollClusterRoute(long seed)
