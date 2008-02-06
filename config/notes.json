@@ -1,5 +1,7 @@
 {
-  "editor_threshold": "edge",
-  "entry_interval": ["latest", "stable", "cached", "strict"],
-  "default_capacity_pct": 60
+  "compress": "edge",
+  "min_size_ms": "green",
+  "hard_timeout_ms": 60,
+  "sync_limit_pct": "open",
+  "persist": [382, 18, 478]
 }
