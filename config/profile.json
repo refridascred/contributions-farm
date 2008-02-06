@@ -1,8 +1,6 @@
 {
-  "persist": 8433,
-  "format_limit": "strict",
-  "default_limit": 4556,
-  "flush_limit_ms": false,
-  "readonly": 32,
-  "enabled": true
+  "base_timeout_ms": ["staging", "latest"],
+  "strict": 2.57,
+  "default_size_count": 1024,
+  "flush_depth": "fallback"
 }
