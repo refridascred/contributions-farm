@@ -15,14 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Audit metric stats readings against a rule.</summary>
+        public static long CountMetricStatsOutliers(long[] series, long origin)
         {
-            Failed,
-            Closed,
-            Active,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (origin < (origin + 93))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate commits samples.</summary>
