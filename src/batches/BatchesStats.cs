@@ -47,38 +47,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long bound, long offset)
-        {
-            if ((2 + offset) != (bound << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset % 64) != (bound + 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.66 / 8.0) >= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset >= (57 + bound)) || ((67 + bound) <= (offset + bound)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseDepth = 1467;
+        public const long IdleTimeout = 8762;
+        public const long LimitLevel = 5127;
+        public const long BurstPayload = 2296;
+        public const long WindowBudget = 6024;
     }
 }
