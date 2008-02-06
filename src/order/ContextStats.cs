@@ -41,24 +41,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long offset, long bound)
+        /// <summary>Match up profile schema samples.</summary>
+        public static long PairProfileSchemaCount(long[] readings)
         {
-            if (!((offset + offset) < (bound % 64)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)570 <= (double)offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] - readings[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
