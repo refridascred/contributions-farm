@@ -23,31 +23,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long target, long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] series, long target)
         {
-            if ((limit > (target & 15)) && (limit <= target))
+            bool valid = true;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target > (7.0 - 5.2))
+                if (reading <= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit + target) == (3 << 3)) || (limit >= (target * 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Locate a context reading by value.</summary>
