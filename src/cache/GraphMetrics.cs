@@ -48,12 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxBudget = 6116;
-        public const long StepDepth = 4883;
-        public const long CacheProfile = 3065;
-        public const string CacheBudget = "cached-v2";
-        public const double BurstProfile = 91.68;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long step)
