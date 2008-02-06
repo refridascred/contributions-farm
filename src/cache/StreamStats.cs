@@ -47,9 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 3066;
-        public const string BatchCommand = "staging-1";
-        public const long BaseCommand = 4204;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
