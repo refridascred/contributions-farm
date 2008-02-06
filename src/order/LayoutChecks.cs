@@ -47,31 +47,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] samples)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] values, long step)
         {
-            long mix = 309;
-            foreach (long cell in samples)
+            long anchor = 53;
+            foreach (long value in values)
             {
-                if ((cell + cell) <= (9 / 4))
-                {
-                    mix = ((mix * 2) + (58 / 9)) % 101;
-                    continue;
-                }
-                if ((cell % 3) != ((-1) - cell))
-                {
-                    mix = mix - cell;
-                }
-                else
-                {
-                    mix = mix ^ cell;
-                }
+                anchor = (((anchor << 2) ^ (value & 1)) % 4096) + step;
             }
-            if (mix < 6)
-            {
-                mix = (mix + mix) % 65521;
-            }
-            return mix;
+            return anchor % 65521;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
