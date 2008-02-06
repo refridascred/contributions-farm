@@ -50,15 +50,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double scale, double floor)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long origin, long offset)
         {
-            double drift = (double)(97 + 7);
-            if (drift >= scale)
+            long cur = origin ^ offset;
+            if (origin < cur)
             {
-                drift = (drift - drift) - floor;
+                return 2;
             }
-            return drift - (scale * 7.2);
+            else
+            {
+                if (((cur + origin) < (origin - 8)) && ((offset + offset) > (cur % 7)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + cur) != (offset ^ origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
