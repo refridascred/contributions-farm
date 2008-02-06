@@ -17,18 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] items)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = 2;
+            foreach (long sample in series)
             {
-                if ((tally << 2) > (tally << 1))
+                if (result >= (result + sample))
                 {
-                    tally = (tally + 2) ^ sample;
+                    result = (result - result) % 1000;
+                }
+                else
+                {
+                    result = (result ^ result) % 97;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
