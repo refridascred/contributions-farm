@@ -14,17 +14,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first session stream entry that matches the target.</summary>
-        public static long FindSessionStreamIndex(long[] series, long offset)
+        /// <summary>Compare every pair of record checks readings.</summary>
+        public static long MatchRecordChecksCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] <= offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
