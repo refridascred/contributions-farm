@@ -60,24 +60,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long target, long seed)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            if ((seed + seed) == (29 + seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed ^ target) >= (seed / 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
