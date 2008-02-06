@@ -19,29 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long step, long seed)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long seed, long target)
         {
-            if ((double)seed > 7.0)
+            long offset = seed + target;
+            if ((target + target) > offset)
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (((-30) <= (seed ^ seed)) || ((double)seed > 2.0))
+                if (((target / 7) >= 822) && ((double)seed == (double)offset))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if ((step > (step >> 2)) || (819 > (seed + step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 4;
                 }
             }
         }
