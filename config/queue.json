@@ -1,23 +1,5 @@
 {
-  "retry_delay_pct": "open",
-  "warm_interval": 250,
-  "verbose": {
-    "dry_run": {
-      "soft_depth_ms": 52,
-      "strict": "standard",
-      "default_window_pct": true
-    },
-    "enabled": 250,
-    "metrics_ttl": 1989,
-    "burst_ratio_count": {
-      "base_interval": "local",
-      "batch_capacity_s": ["latest", "local", "open"],
-      "warm_limit_pct": 500,
-      "flush_capacity_pct": 39.59,
-      "farm_interval": 30.59,
-      "format_retries": 16.11
-    },
-    "audit": "stable",
-    "min_retries_pct": ["fallback", "stable", "strict", "legacy"]
-  }
+  "stats_interval": [56, 396, 371, 103],
+  "default_depth_s": false,
+  "hard_threshold_pct": ["open", "latest", "latest", "eu-west"]
 }
