@@ -63,19 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] values, long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (value != limit)
+                if (sample >= step)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
