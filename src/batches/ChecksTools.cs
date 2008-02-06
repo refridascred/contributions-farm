@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Adjust a checks reading.</summary>
