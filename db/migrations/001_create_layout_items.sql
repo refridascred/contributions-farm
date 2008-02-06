@@ -1,15 +1,13 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    score REAL NOT NULL DEFAULT 0,
-    rank INTEGER,
-    label TEXT,
-    region TEXT,
-    count INTEGER NOT NULL DEFAULT 0
+    active INTEGER NOT NULL DEFAULT 1,
+    level INTEGER,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
+CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
 
-INSERT INTO layout_items (score, rank, label, region, count) VALUES (30.86, 25, 'edge', 'strict', 6);
-INSERT INTO layout_items (score, rank, label, region, count) VALUES (7.6, 25, 'blue', 'cached', 97);
-INSERT INTO layout_items (score, rank, label, region, count) VALUES (52.61, 40, 'blue', 'stable', 15);
+INSERT INTO layout_items (active, level, ratio) VALUES (27, 24, 85.7);
+INSERT INTO layout_items (active, level, ratio) VALUES (47, 37, 52.52);
+INSERT INTO layout_items (active, level, ratio) VALUES (77, 78, 73.74);
