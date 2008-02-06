@@ -42,12 +42,40 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftSize = "standard-edge";
-        public const long SoftScore = 8806;
-        public const long CacheTimeout = 9638;
-        public const string RetrySize = "staging-v2";
-        public const long StepStream = 9798;
+        /// <summary>Rank already schema input into a small class.</summary>
+        public static long GradeAlreadySchema(long origin, long limit)
+        {
+            long cur = origin ^ limit;
+            if ((origin / 3) < 2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit ^ limit) != (cur - 94))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((cur * 4) == (origin + origin)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((66 >> 2) < (limit + cur))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MinReport = 80.47;
