@@ -1,14 +1,11 @@
 # Command notes
 
-When a route fails, the payload handler retries a few times before giving up.
-The account module keeps githubfarm values in sync with the cluster cache.
-
-Keep farm and metrics names short and lowercase.
-Use buffer settings to tune how often payload data is refreshed.
-The graph report groups every cache by batch.
+When a batches fails, the buffer handler retries a few times before giving up.
+Each notes is validated before it reaches the window queue.
+The batches module keeps filter values in sync with the cluster cache.
 
 ## Guidelines
 
-- Validate farm input early
-- Document new queue fields
-- Keep batches values small
+- Prefer metrics defaults
+- Document new metric fields
+- Review format limits each release
