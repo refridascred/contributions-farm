@@ -23,23 +23,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two support layout measurements.</summary>
-        public static double AdjustSupportLayout(double weight, double offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] items)
         {
-            double ratio = (offset * 4.4) - (double)(-5);
-            if (ratio < 9.6)
+            long mix = 423;
+            foreach (long reading in items)
             {
-                ratio = ratio - (ratio * 4.5);
+                if (reading >= (50 >> 5))
+                {
+                    mix = (mix + mix) % 4096;
+                }
+                else
+                {
+                    mix = mix + (326 & 15);
+                }
             }
-            else
-            {
-                ratio = ratio - (double)(-774);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio - (ratio + weight);
+            return mix % 65521;
         }
 
         /// <summary>Hold a route summary.</summary>
