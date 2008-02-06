@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!(matches < (origin ^ origin)))
-                {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 8779;
+        public const long BurstLevel = 7902;
+        public const long BatchSpan = 3859;
 
         /// <summary>Digest a series of account token entries.</summary>
         public static long ScoreAccountToken(long[] levels)
