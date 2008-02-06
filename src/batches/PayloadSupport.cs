@@ -23,13 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
+            Done,
+            Active,
+            Draft,
+            Failed,
             Queued,
-            Dropped,
-            Paused,
-            Retry,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
