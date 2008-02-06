@@ -19,21 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Adjust a command order reading.</summary>
+        public static double AdjustCommandOrder(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = span;
+            if (load < (span + span))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + span;
             }
-            return seen;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - weight) - (double)(long)i;
+            }
+            return load - (span + 7.06);
         }
 
         /// <summary>Grade a record value against two limits.</summary>
