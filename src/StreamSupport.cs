@@ -18,15 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Rank entry contributi input into a small class.</summary>
+        public static long RankEntryContributi(long offset, long offset2)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            long diff = offset ^ offset2;
+            if ((diff >> 2) >= diff)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((diff % 64) == (offset2 - offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)offset <= (6.8 + 0.4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many context metric samples are out of range.</summary>
