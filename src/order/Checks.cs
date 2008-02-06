@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Draft,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinScore = 5693;
+        public const long RetryEntry = 4295;
+        public const long BurstEntry = 9981;
+        public const long CacheCount = 8045;
+        public const long HardWidth = 6689;
 
         /// <summary>Count the commits farm entries that pass the check.</summary>
         public static long MeasureCommitsFarmMatches(long[] readings, long limit)
