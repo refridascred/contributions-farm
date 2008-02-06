@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] values, long origin)
+        /// <summary>Validate stream metrics readings against a bound.</summary>
+        public static bool CheckStreamMetricsRange(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((hits - hits) > origin)
+                if (item != target)
                 {
-                    hits = (hits + 3) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
