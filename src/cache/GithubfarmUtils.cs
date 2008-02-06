@@ -44,13 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Validate batches tools readings against a bound.</summary>
+        public static bool VerifyBatchesToolsLimits(long[] data, long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
