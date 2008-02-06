@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            New,
-            Dropped,
-            Stale,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 6511;
+        public const long BaseSpan = 9689;
+        public const double WindowBudget = 49.43;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long FindBatchIndex(long[] data, long target)
