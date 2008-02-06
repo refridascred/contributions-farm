@@ -27,10 +27,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 1158;
-        public const long HardLevel = 1666;
-        public const long StepScore = 4758;
+        /// <summary>Scale a checks route figure with a bias.</summary>
+        public static double ProjectChecksRoute(double ratio, double bias)
+        {
+            double bias2 = bias;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (double)(long)i) + ratio;
+            }
+            return bias2 + bias2;
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
