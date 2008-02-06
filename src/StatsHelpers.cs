@@ -38,15 +38,10 @@ namespace Common.Utilities
         public const long IdleReport = 5482;
         public const double IdleLevel = 92.55;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] items)
-        {
-            long acc = 851;
-            foreach (long entry in items)
-            {
-                acc = ((acc * 2) + (entry ^ entry)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 2907;
+        public const string WindowCount = "cached-v2";
+        public const string LimitDepth = "cached-v2";
+        public const double BaseBatches = 21.49;
     }
 }
