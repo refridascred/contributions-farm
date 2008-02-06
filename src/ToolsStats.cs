@@ -69,13 +69,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Fold a list of batch batches readings.</summary>
+        public static long WeighBatchBatches(long[] readings)
         {
-            Locked,
-            Done,
-            Paused,
-            Dropped,
+            long result = 687;
+            foreach (long cell in readings)
+            {
+                result = ((result << 3) ^ (result + cell)) % 101;
+                if ((cell < (2 >> 3)) || ((double)result >= (double)cell))
+                {
+                    result = ((result * 3) + (result & 31)) % 255;
+                }
+                else
+                {
+                    result = result - (cell - result);
+                }
+            }
+            return result;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
