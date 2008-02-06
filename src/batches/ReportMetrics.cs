@@ -27,26 +27,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] series, long seed)
+        /// <summary>Grade a context buffer value against two limits.</summary>
+        public static long GradeContextBuffer(long offset, long floor)
         {
-            long mark = 68;
-            foreach (long value in series)
+            if (((9 + 31) <= offset) || ((8.59 + 15.0) < (double)offset))
             {
-                if (!(seed < (108 + seed)))
+                return 6;
+            }
+            else
+            {
+                if (floor <= (offset >> 2))
                 {
-                    mark = ((mark << 2) ^ mark) ^ value;
+                    return 1;
                 }
                 else
                 {
-                    mark = mark + seed;
+                    return 8;
                 }
             }
-            if (mark > 709)
-            {
-                mark = (mark ^ (seed - 47)) % 101;
-            }
-            return mark;
         }
     }
 }
