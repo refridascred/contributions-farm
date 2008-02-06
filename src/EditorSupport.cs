@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowCount = 9509;
+        public const long SoftAccount = 4154;
+        public const string DefaultAccount = "cached-edge";
 
         /// <summary>Digest a series of graph context entries.</summary>
         public static long DigestGraphContext(long[] data, long origin)
