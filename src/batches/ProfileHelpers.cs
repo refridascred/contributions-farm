@@ -64,21 +64,21 @@ namespace Common.Utilities
         public const string LimitGraph = "legacy";
         public const string WindowGraph = "strict-v2";
 
-        /// <summary>Count window command pairs that satisfy a relation.</summary>
-        public static long MatchWindowCommandCount(long[] values)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) > 19)
+                    if ((items[i] ^ items[j]) != 19)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
