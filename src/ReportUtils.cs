@@ -42,12 +42,14 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            Pending,
+            Stale,
+            Draft,
+            Failed,
+            New,
         }
 
         /// <summary>Project the next account value.</summary>
