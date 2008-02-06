@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] data, long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (cell > offset)
+                if (item < target)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
