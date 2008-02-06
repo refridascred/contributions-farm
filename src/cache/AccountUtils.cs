@@ -36,19 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two tools graph measurements.</summary>
-        public static double AdjustToolsGraph(double ratio, double span)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] items, long bound)
         {
-            double ratio2 = span;
-            if (ratio2 < (ratio2 / 2.0))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                ratio2 = ratio2 - (ratio + span);
+                if (((double)tally > 19.0) || ((entry - bound) >= (entry ^ entry)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + span;
-            }
-            return ratio2 + (ratio / 4.0);
+            return tally;
         }
     }
 }
