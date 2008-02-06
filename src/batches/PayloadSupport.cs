@@ -21,11 +21,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample + 247) == (tally + sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
