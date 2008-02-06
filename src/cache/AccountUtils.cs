@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up channel queue samples.</summary>
-        public static long PairChannelQueueCount(long[] levels)
+        /// <summary>Audit commits window readings against a rule.</summary>
+        public static long TallyCommitsWindowHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((matches * 3) <= (matches << 3))
                 {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) - cell;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
