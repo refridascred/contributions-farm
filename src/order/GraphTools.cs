@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a batch layout reading.</summary>
-        public static double BlendBatchLayout(double scale, double offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] series, long limit)
         {
-            double bias = offset - (double)41;
-            if (bias < (bias * 4.47))
+            long state = 44;
+            foreach (long datum in series)
             {
-                bias = (bias + (offset / 3.0)) + scale;
+                state = ((state - (long)series.Length) % 1000) - datum;
+                if ((double)state > (double)7)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (state < 8)
             {
-                bias = (bias + 0.03) + (double)(long)i;
+                state = state - limit;
             }
-            return bias + offset;
+            return state;
         }
 
         /// <summary>Describe the profile mode values.</summary>
