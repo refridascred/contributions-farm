@@ -19,31 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long offset, long seed)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] readings, long limit)
         {
-            if ((seed >> 3) >= (546 + offset))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset >> 2) > seed)
+                if (readings[i] == limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset * 3) <= (offset - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit farm cluster readings against a rule.</summary>
