@@ -52,15 +52,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryInterval = "standard";
+        public const double SoftCommits = 19.85;
+        public const long DefaultTimeout = 6924;
+        public const long SoftTimeout = 9117;
     }
 }
