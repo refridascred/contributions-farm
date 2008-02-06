@@ -73,12 +73,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
