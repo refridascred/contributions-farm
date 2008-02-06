@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] readings, long offset)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Closed,
+            Failed,
+            New,
         }
 
         /// <summary>Project the next order githubfarm value.</summary>
