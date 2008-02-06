@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] data)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long bound, long bound2)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = bound + bound2;
+            if (!((bound2 + next) == (bound << 2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (next <= (next - bound))
                 {
-                    if ((data[i] ^ data[j]) != 2)
+                    return 3;
+                }
+                else
+                {
+                    if ((3.2 / 5.0) != (double)bound)
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((9.0 - 8.27) == (double)bound2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
