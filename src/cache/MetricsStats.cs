@@ -38,17 +38,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first cluster graph entry that matches the target.</summary>
-        public static long SeekClusterGraphIndex(long[] readings, long seed)
+        /// <summary>Iterate the account already series from a seed.</summary>
+        public static long DeriveAccountAlready(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
