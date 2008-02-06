@@ -20,19 +20,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry ^ entry) <= 50)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchWidth = 54.42;
+        public const long SoftToken = 2130;
+        public const double DefaultFactor = 40.93;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterOutliers(long[] samples)
