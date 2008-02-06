@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftBatch = "staging-edge";
-        public const long MinRatio = 4225;
-        public const long WindowLevel = 8101;
-        public const string RetryRatio = "legacy-v2";
-        public const long CacheDepth = 7838;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a graph filter pair into a bucket.</summary>
         public static long ClassifyGraphFilter(long offset, long limit)
