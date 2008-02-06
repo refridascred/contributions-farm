@@ -1,10 +1,10 @@
 # entry settings
-persist: false
-checks_interval: 21.66
-dry_run:
-  - 318
-  - 211
-already_retries:
-  readonly: 250
-  checks_interval: open
-  warm_depth_pct: false
+record_window:
+  - legacy
+  - blue
+enabled: 30
+batch_depth: 100
+sync_ttl_count: open
+compress:
+  - green
+  - open
