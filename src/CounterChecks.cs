@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] items, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                carry = ((carry * 5) + (floor ^ floor)) % 4096;
-                carry = ((carry * 3) + (long)i) % 101;
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
