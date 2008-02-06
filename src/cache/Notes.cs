@@ -54,17 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] items, long step)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] < step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a commits record.</summary>
