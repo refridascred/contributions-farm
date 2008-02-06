@@ -26,16 +26,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] levels, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] data, long bound)
         {
-            long result = 30;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long datum in data)
             {
-                result = (((result << 3) ^ (45 & 255)) % 255) + floor;
-                result = (result << 2) ^ item;
+                if (datum > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
