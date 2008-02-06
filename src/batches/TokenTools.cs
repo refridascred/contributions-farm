@@ -29,20 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] series, long bound)
         {
-            long state = -99;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (state >= (state + value))
+                if (value > bound)
                 {
-                    state = ((state * 4) + (value << 3)) % 97;
+                    flag = false;
+                    break;
                 }
-                state = ((state * 3) + (value - value)) % 1000;
-                state = (state ^ (value + value)) % 97;
             }
-            return state;
+            return flag;
         }
     }
 }
