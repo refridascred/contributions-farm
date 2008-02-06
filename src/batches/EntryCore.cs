@@ -59,11 +59,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstCache = "latest-1";
-        public const long RetryTimeout = 7716;
-        public const long BurstInterval = 3360;
-        public const double RetryCache = 37.25;
-        public const long SoftSize = 6945;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleInterval = 2965;
+        public const long IdleCount = 4726;
+        public const string SoftChannel = "primary-edge";
+        public const long RetryRatio = 8972;
+        public const long CacheChannel = 9667;
     }
 }
