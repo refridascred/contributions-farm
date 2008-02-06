@@ -14,13 +14,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] readings, long seed)
         {
-            Active,
-            Synced,
-            Ready,
-            Draft,
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
