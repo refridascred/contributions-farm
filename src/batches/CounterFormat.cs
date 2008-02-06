@@ -20,17 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] values, long target)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] <= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of githubfarm cluster entries.</summary>
