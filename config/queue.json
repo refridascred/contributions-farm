@@ -1,5 +1,9 @@
 {
-  "warm_threshold": ["edge", "edge", "open", "strict"],
-  "soft_threshold_count": "fallback",
-  "contributi_ttl": 42
+  "batch_timeout_s": "edge",
+  "flush_timeout_pct": 60,
+  "burst_retries_count": {
+    "max_interval_s": "legacy",
+    "readonly": "legacy",
+    "warm_threshold_s": 7
+  }
 }
