@@ -43,19 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context record value.</summary>
-        public static double BlendContextRecord(double rate, double span)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long limit)
         {
-            double rate2 = span;
-            if (rate2 >= (span - rate))
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                rate2 = rate2 + rate;
+                if (!((limit >> 2) < (limit % 3)))
+                {
+                    score = (score + (6 - limit)) % 101;
+                    score = (score << 3) ^ (score << 2);
+                }
+                score = score ^ (long)i;
+                score = ((score * 2) + (score - (long)i)) % 255;
+                score = ((score * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 - rate2) + (double)(long)i;
-            }
-            return rate2 + 8.0;
+            return score;
         }
     }
 }
