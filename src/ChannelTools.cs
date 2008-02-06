@@ -37,12 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Retry,
-            New,
-            Queued,
+            Active,
+            Dropped,
+            Done,
+            Pending,
         }
     }
 }
