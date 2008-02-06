@@ -1,5 +1,8 @@
 {
-  "account_window": 43.4,
-  "soft_capacity_s": 36.88,
-  "flush_capacity": "legacy"
+  "dry_run": "cached",
+  "queue_interval": "local",
+  "flush_size": 766,
+  "persist": true,
+  "idle_retries_count": 70.22,
+  "support_threshold": 47
 }
