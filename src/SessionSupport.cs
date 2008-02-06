@@ -33,12 +33,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Stale,
-            Paused,
-            Dropped,
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
