@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] values, long target)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxRatio = 2883;
+        public const long BatchWindow = 1753;
+        public const long StepSpan = 3414;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long DeriveWindow(long step)
