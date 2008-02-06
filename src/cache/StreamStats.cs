@@ -23,20 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate channel route readings against a bound.</summary>
-        public static bool GuardChannelRouteLimits(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 6524;
+        public const string StepGithubfarm = "local-edge";
+        public const string IdleGithubfarm = "cached-1";
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
