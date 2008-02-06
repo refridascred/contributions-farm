@@ -14,11 +14,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 2708;
-        public const long SoftLevel = 4554;
-        public const long MaxFactor = 8195;
-        public const string MaxNotes = "local-v2";
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (!((double)offset > (6.0 - 4.9)))
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine cache context values into a single score.</summary>
         public static long TallyCacheContext(long[] series)
