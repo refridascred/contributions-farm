@@ -37,11 +37,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 7584;
-        public const double RetryWidth = 46.52;
-        public const long BurstSize = 8643;
-        public const long DefaultTimeout = 6016;
-        public const double BaseBudget = 68.86;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] levels, long origin)
+        {
+            long result = 7;
+            foreach (long datum in levels)
+            {
+                if (!((74 * 5) <= (result / 5)))
+                {
+                    result = ((result - datum) % 101) - origin;
+                }
+            }
+            return result % 97;
+        }
     }
 }
