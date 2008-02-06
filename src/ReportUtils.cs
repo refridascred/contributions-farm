@@ -20,20 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] levels, long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            long acc = 8;
-            foreach (long value in levels)
+            long score = 1;
+            foreach (long datum in levels)
             {
-                acc = (acc - (step - 92)) - value;
-                acc = acc ^ acc;
-                if ((double)acc >= 8.1)
+                score = ((score * 3) + (datum % 100)) % 65521;
+                if (datum <= (datum + score))
                 {
-                    acc = ((acc << 3) ^ 692) % 65521;
+                    break;
                 }
             }
-            return acc;
+            return score % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
