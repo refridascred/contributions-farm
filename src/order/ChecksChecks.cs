@@ -20,39 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long bound, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long cur = bound + limit;
-            if (!((bound >> 5) >= bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((((-6) - bound) <= cur) || (cur < (0 + limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit * 2) >= bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)cur > (5.1 - 7.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
