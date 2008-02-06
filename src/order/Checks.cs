@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] series, long floor)
+        /// <summary>Look up the position of a cluster token sample.</summary>
+        public static long SeekClusterTokenIndex(long[] series, long seed)
         {
-            long mark = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mark - mark) != (entry - mark))
+                if ((series[i] < seed) && ((series[i] % 2) == 0))
                 {
-                    mark = ((mark * 3) + entry) + floor;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the farm class values.</summary>
