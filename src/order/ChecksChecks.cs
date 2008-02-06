@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] data)
         {
-            Dropped,
-            Pending,
-            Synced,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample * 2) > (count % 8))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
