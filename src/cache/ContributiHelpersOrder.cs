@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Dropped,
-            Done,
             Closed,
-            Pending,
+            Draft,
+            Failed,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
