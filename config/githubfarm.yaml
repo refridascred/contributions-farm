@@ -1,6 +1,15 @@
 # githubfarm settings
-base_interval_pct: 17.82
-audit: 100
-retry_interval_count: false
-flush_timeout_pct: 1948
-channel_limit: strict
+burst_window:
+  payload_size: 55
+  persist: 3.02
+  editor_interval: true
+  verbose:
+    retry_timeout_ms: true
+    commits_timeout: primary
+    poll_capacity_ms: 53
+    context_delay: 96
+    min_threshold_count: 1024
+  max_ratio_count: 86.84
+audit: 31.13
+window_limit: 285
+flush_limit_pct: 4170
