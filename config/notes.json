@@ -1,7 +1,19 @@
 {
-  "compress": "edge",
-  "min_size_ms": "green",
-  "hard_timeout_ms": 60,
-  "sync_limit_pct": "open",
-  "persist": [382, 18, 478]
+  "cache_size": false,
+  "poll_size_pct": 67,
+  "batch_interval": ["fallback", "primary", "eu-west"],
+  "graph_limit": {
+    "flush_limit": [429, 249, 465, 382],
+    "sync_threshold": {
+      "batch_interval_count": false,
+      "githubfarm_threshold": 56,
+      "batch_timeout": true,
+      "batch_window_ms": 5133,
+      "payload_timeout": "open"
+    },
+    "readonly": [5, 294],
+    "schema_ratio": "eu-west",
+    "idle_ttl": 52.91,
+    "sync_delay_s": "primary"
+  }
 }
