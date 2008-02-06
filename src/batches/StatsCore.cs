@@ -34,13 +34,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 8972;
+        public const long DefaultSize = 9092;
+        public const long WindowGraph = 3491;
+        public const double RetryInterval = 45.01;
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
