@@ -1,7 +1,5 @@
 {
-  "persist": ["cached", "stable"],
-  "context_size": 5105,
-  "stats_size": 58.81,
-  "warm_size_ms": false,
-  "batch_depth_s": "local"
+  "strict": "standard",
+  "idle_timeout_s": 6435,
+  "poll_ratio_ms": ["legacy", "edge"]
 }
