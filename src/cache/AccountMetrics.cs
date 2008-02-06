@@ -14,18 +14,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] samples)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((773 + count) <= (5 + count))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Project the next editor support value.</summary>
