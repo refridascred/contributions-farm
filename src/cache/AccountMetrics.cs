@@ -28,12 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Project the next editor support value.</summary>
+        public static double BlendEditorSupport(double scale, double offset)
         {
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            double rate = offset + scale;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - 3.55) + (double)(long)i;
+            }
+            return rate - (rate * 2.0);
         }
 
         /// <summary>Audit session readings against a rule.</summary>
