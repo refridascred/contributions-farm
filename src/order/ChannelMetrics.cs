@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] values, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (value <= seed)
+                if (((hits + 157) >= (71 * 4)) || (8.15 > (double)sample))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
