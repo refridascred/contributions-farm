@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxRatio = 2883;
-        public const long BatchWindow = 1753;
-        public const long StepSpan = 3414;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((bound << 3) < 3))
+                {
+                    anchor = ((anchor << 3) ^ (anchor + bound)) % 65521;
+                }
+                anchor = anchor + (bound * 5);
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a graph filter pair into a bucket.</summary>
         public static long ClassifyGraphFilter(long offset, long limit)
