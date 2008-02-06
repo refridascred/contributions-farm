@@ -31,19 +31,21 @@ namespace Common.Utilities
         public const long BurstFactor = 501;
         public const string DefaultSize = "local-edge";
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] levels, long floor)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
