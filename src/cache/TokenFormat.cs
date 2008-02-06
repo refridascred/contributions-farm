@@ -22,22 +22,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] series, long target)
+        /// <summary>Blend two metrics profile measurements.</summary>
+        public static double AdjustMetricsProfile(double scale, double span)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            double ratio = span * 0.4;
+            if (ratio <= (double)2)
             {
-                if (((long)series.Length == (target << 3)) || ((double)target != (double)entry))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = (ratio - span) - scale;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + (double)9;
         }
     }
 }
