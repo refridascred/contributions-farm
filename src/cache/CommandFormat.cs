@@ -40,24 +40,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long origin, long origin2)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] data, long offset)
         {
-            if (((743 << 2) > (8 + origin)) || ((origin ^ origin) <= (origin & 1)))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((454 % 97) > (origin2 - origin)) || ((origin2 - origin) < (79 + origin2)))
+                if (offset <= (reading + reading))
                 {
-                    return 4;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 7;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
