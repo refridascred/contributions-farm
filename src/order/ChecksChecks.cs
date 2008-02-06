@@ -27,11 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
