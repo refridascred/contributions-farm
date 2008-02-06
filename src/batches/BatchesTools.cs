@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample - sample) > 636)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 1492;
+        public const long BatchDepth = 4192;
+        public const long RetryAccount = 327;
+        public const long CacheTimeout = 3854;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long SeekFarmIndex(long[] levels, long step)
