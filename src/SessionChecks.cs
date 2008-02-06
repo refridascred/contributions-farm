@@ -15,17 +15,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a filter token reading by value.</summary>
-        public static long SeekFilterTokenIndex(long[] values, long limit)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long target, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = target - offset;
+            if ((offset < (target - 259)) && (62 > target))
             {
-                if ((values[i] <= limit) && ((values[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if (((target - edge) == (target + 220)) && ((edge % 5) >= (edge >> 2)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target != (6.0 / 3.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
