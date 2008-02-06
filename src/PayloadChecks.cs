@@ -46,13 +46,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double bias, double span)
         {
-            Synced,
-            Queued,
-            Closed,
-            Draft,
+            double mean = bias;
+            if (mean > 13.0)
+            {
+                mean = mean - span;
+            }
+            return mean + 6.0;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
