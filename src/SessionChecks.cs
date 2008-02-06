@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a order cache pair into a bucket.</summary>
-        public static long SortOrderCache(long target, long floor)
+        /// <summary>Rank schema batch input into a small class.</summary>
+        public static long BucketSchemaBatch(long limit, long bound)
         {
-            if (!((floor << 2) != (target / 9)))
+            long next = limit - bound;
+            if (((bound & 255) > bound) && (next < (limit - next)))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((8 << 2) != (target + 83))
+                if ((2.0 - 1.0) == (double)limit)
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((target / 7) < (54 / 4))
+                    if ((double)next < 7.66)
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        return 2;
+                        return 4;
                     }
                 }
             }
