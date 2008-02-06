@@ -47,22 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric payload readings against a rule.</summary>
-        public static long CountMetricPayloadGaps(long[] samples, long offset)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double drift = gain;
+            if (drift < (gain / 3.0))
             {
-                if ((matches ^ matches) > ((-4) ^ reading))
-                {
-                    matches = (matches + 1) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift + offset;
             }
-            return matches;
+            else
+            {
+                drift = drift + (double)3;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (10.0 * 5.0)) + (double)(long)i;
+            }
+            return drift - (double)9;
         }
     }
 }
