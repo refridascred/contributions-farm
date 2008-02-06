@@ -40,12 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] values)
         {
-            Closed,
-            Synced,
-            Dropped,
+            long carry = 3;
+            foreach (long reading in values)
+            {
+                carry = ((carry * 3) + ((long)values.Length & 7)) % 255;
+                if ((carry + carry) >= 7)
+                {
+                    carry = (carry ^ reading) % 1000;
+                }
+                if (7.0 < (double)carry)
+                {
+                    carry = carry ^ (reading - reading);
+                }
+            }
+            if (carry > 550)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
