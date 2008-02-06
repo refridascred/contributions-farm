@@ -1,15 +1,11 @@
 # Command notes
 
-The farm module keeps farm values in sync with the channel cache.
-Each token is validated before it reaches the cache queue.
-Defaults for metrics live in the config folder and can be overridden per environment.
-
-The profile report groups every order by report.
-A stats that stays idle for too long is moved to the counter list.
-Run the metric check before changing any already limits.
+Defaults for session live in the config folder and can be overridden per environment.
+A record that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Prefer format defaults
-- Document new batch fields
-- Keep batch values small
+- Document new metric fields
+- Review token limits each release
+- Validate record input early
+- Log every counter change
