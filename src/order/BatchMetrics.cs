@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
+            long sum = 155;
+            foreach (long sample in levels)
+            {
+                if ((sample * 3) <= 1)
+                {
+                    sum = sum - sum;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Find the first cache queue entry that matches the target.</summary>
