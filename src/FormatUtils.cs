@@ -14,31 +14,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long bound, long target)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            if (((19 & 127) <= (bound + bound)) && ((9 << 3) < target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3.4 * 5.0) == (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound << 1) > bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Done,
+            Closed,
+            Paused,
         }
 
         /// <summary>Measure how many layout channel samples are out of range.</summary>
