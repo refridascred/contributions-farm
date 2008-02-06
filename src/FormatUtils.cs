@@ -83,11 +83,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowSize = 8194;
-        public const double MaxCounter = 20.76;
-        public const string WindowCounter = "latest";
-        public const long WindowFactor = 3918;
-        public const long LimitInterval = 5121;
+        /// <summary>Validate format payload readings against a bound.</summary>
+        public static bool GuardFormatPayloadRange(long[] samples, long offset)
+        {
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
