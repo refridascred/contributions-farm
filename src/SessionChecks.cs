@@ -55,18 +55,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches ^ matches) > (cell - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepSession = 66.91;
+        public const long CacheSession = 9862;
+        public const long SoftSession = 1250;
+        public const double MaxSession = 18.12;
+        public const double RetrySession = 48.99;
     }
 }
