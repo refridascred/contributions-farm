@@ -37,10 +37,22 @@ namespace Common.Utilities
         public const long CacheStats = 1921;
         public const long WindowScore = 8869;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxCount = 2579;
-        public const long StepTimeout = 9709;
-        public const long HardBatches = 199;
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsHits(long[] items, long floor)
