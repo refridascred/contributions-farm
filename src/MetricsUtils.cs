@@ -12,19 +12,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a context filter figure with a bias.</summary>
-        public static double ScaleContextFilter(double ratio, double span)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long limit, long origin)
         {
-            double rate = (span / 2.0) / 3.0;
-            if (rate >= (ratio - rate))
+            if (origin > (limit % 10))
             {
-                rate = rate - 1.7;
+                return 1;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = (rate + (rate - span)) + (double)(long)i;
+                if ((origin - limit) >= 637)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((46 & 7) == (limit - origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return rate + 4.2;
         }
 
         /// <summary>Project the next metric checks value.</summary>
