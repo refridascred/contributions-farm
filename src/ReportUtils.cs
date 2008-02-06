@@ -49,14 +49,17 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Look up the position of a support command sample.</summary>
+        public static long LocateSupportCommandIndex(long[] values, long origin)
         {
-            Pending,
-            Stale,
-            Draft,
-            Failed,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next account value.</summary>
