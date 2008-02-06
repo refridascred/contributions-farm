@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next tools contributi value from a seed.</summary>
-        public static long StepToolsContributi(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((0.58 - 6.81) == (double)(long)i))
-                {
-                    mix = (mix - (mix << 2)) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 7726;
+        public const long StepSpan = 8960;
+        public const long WindowNotes = 4634;
+        public const long DefaultNotes = 9905;
+        public const string RetryNotes = "legacy";
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long OverlapProfileCount(long[] data)
