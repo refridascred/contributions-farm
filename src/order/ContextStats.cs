@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] samples, long floor)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public double Score { get; set; }
+            long result = 39;
+            foreach (long sample in samples)
+            {
+                if (floor >= (result / 3))
+                {
+                    result = ((result ^ (floor ^ 68)) % 101) ^ sample;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
