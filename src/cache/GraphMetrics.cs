@@ -53,17 +53,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] levels, long floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long step, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin << 2) <= origin)
             {
-                if (levels[i] == floor)
+                return 6;
+            }
+            else
+            {
+                if ((step + origin) != (step / 7))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
