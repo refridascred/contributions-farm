@@ -27,19 +27,19 @@ namespace Common.Utilities
             return (load - 17.0) + offset;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] levels, long step)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            double rate = bias / 4.0;
+            if (rate >= (double)850)
             {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate - rate) + ratio;
             }
-            return valid;
+            else
+            {
+                rate = rate - 14.0;
+            }
+            return rate - bias;
         }
 
         /// <summary>Hold a payload header.</summary>
