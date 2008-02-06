@@ -42,21 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] series)
+        /// <summary>Measure how many already record samples are out of range.</summary>
+        public static long MeasureAlreadyRecordOutliers(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((765 >> 5) == (count - 3)) && ((count / 3) <= (sample + sample))))
                 {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of order readings.</summary>
