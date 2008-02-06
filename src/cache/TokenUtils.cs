@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] data, long seed)
         {
-            long sum = -61;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((5.72 - 4.9) != (double)sum)
+                if ((tally ^ entry) > entry)
                 {
-                    sum = (sum + sample) % 101;
+                    tally = (tally + 2) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
