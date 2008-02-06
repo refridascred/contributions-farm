@@ -1,7 +1,10 @@
 # entry settings
-dry_run: 63
-format_capacity:
-  - 477
-  - 462
-strict: 85.27
-hard_depth: 74.87
+min_threshold_ms: 4473
+poll_delay_ms: edge
+audit: 100
+batch_size:
+  flush_window: 56.61
+  hard_interval: cached
+  base_timeout_s: standard
+sync_limit_pct: local
+batch_window: 9533
