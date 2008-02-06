@@ -33,15 +33,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long seed)
+        /// <summary>Digest a series of githubfarm cluster entries.</summary>
+        public static long WeighGithubfarmCluster(long[] readings, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
+            long mix = 2;
+            foreach (long sample in readings)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if ((mix << 3) >= (63 & 1))
+                {
+                    mix = ((mix << 3) ^ (sample ^ mix)) % 65521;
+                }
+                if (((sample >> 4) < seed) || ((double)seed == (7.81 / 9.0)))
+                {
+                    mix = (mix << 2) ^ ((-2) % 2);
+                }
+                else
+                {
+                    mix = mix - (915 / 6);
+                }
             }
-            return result;
+            if (mix < 42)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
     }
 }
