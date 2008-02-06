@@ -13,15 +13,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] data, long seed)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long score = 98;
-            foreach (long datum in data)
-            {
-                score = ((score * 3) + (7 - seed)) ^ datum;
-            }
-            return score;
+            Closed,
+            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Iterate the stream stats series from a seed.</summary>
