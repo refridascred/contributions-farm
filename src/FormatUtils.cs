@@ -41,19 +41,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many already record samples are out of range.</summary>
-        public static long MeasureAlreadyRecordOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((765 >> 5) == (count - 3)) && ((count / 3) <= (sample + sample))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxBatch = 15.64;
+        public const long RetrySize = 4743;
+        public const long HardFactor = 9316;
+        public const long CacheBatch = 1273;
+        public const string StepBatch = "standard-edge";
 
         /// <summary>Count the report profile entries that pass the check.</summary>
         public static long CountReportProfileGaps(long[] samples)
