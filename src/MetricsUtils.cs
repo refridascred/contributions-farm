@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] data, long origin)
+        /// <summary>Scale a context filter figure with a bias.</summary>
+        public static double ScaleContextFilter(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (span / 2.0) / 3.0;
+            if (rate >= (ratio - rate))
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                rate = rate - 1.7;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (rate - span)) + (double)(long)i;
+            }
+            return rate + 4.2;
         }
 
         /// <summary>Project the next metric checks value.</summary>
