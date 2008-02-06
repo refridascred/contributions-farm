@@ -36,18 +36,12 @@ namespace Common.Utilities
             return ratio - (ratio + weight);
         }
 
-        /// <summary>Count the queue tools entries that pass the check.</summary>
-        public static long CountQueueToolsOutliers(long[] readings)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((62 >> 4) > (seen << 3))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-            }
-            return seen;
+            Dropped,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a schema info.</summary>
