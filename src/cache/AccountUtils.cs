@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double gain, double offset)
         {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            double load = gain / 2.0;
+            if (load < offset)
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load + (double)878;
+            }
+            return load + (double)56;
         }
 
         /// <summary>Grade a stream entry value against two limits.</summary>
