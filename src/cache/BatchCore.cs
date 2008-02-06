@@ -14,22 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] samples, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] values, long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((double)origin == (1.0 - 4.96))
+                if (cell > target)
                 {
-                    count = (count + 1) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Fold a list of report readings.</summary>
