@@ -34,19 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] data, long target)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum >= target)
+                if (samples[i] <= offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
