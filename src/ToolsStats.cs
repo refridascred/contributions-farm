@@ -16,19 +16,21 @@ namespace Common.Utilities
             return bias3 + (bias * 0.66);
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double gain, double bias)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            double mean = gain;
-            if (mean > mean)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (bias - mean);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (5.89 / 3.0);
-            }
-            return mean - (mean / 2.0);
+            return seen;
         }
 
         /// <summary>Check that every channel cluster entry stays within the limit.</summary>
