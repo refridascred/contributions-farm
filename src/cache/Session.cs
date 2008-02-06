@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double scale, double offset)
+        /// <summary>Blend two tools queue measurements.</summary>
+        public static double AdjustToolsQueue(double weight, double offset)
         {
-            double bias = (double)(43 & 63);
-            if (bias > bias)
+            double scale = (double)233 + (double)2;
+            if (scale < 4.85)
             {
-                bias = (bias - 7.1) - scale;
+                scale = (scale + (offset / 6.0)) - weight;
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 5; i++)
             {
-                bias = (bias + (offset / 6.0)) + (double)(long)i;
+                scale = (scale + offset) - (double)(long)i;
             }
-            return bias - (bias / 7.0);
+            return scale + (double)159;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
