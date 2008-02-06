@@ -41,21 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitTimeout = 5097;
+        public const string StepChannel = "alpha-v2";
+        public const double BatchTimeout = 83.21;
+        public const double BurstChannel = 89.39;
+        public const long WindowChannel = 6254;
     }
 }
