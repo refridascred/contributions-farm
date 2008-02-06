@@ -1,8 +1,5 @@
 {
-  "format_depth": true,
-  "min_retries": [130, 105, 217, 486],
-  "verbose": false,
-  "base_window_pct": 57.91,
-  "compress": 7250,
-  "idle_capacity": 95
+  "retry_size_count": "latest",
+  "flush_window_ms": 1071,
+  "dry_run": ["cached", "stable", "fallback", "strict"]
 }
