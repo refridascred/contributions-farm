@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitCache = 97.1;
-        public const long LimitCount = 803;
-        public const long MinBudget = 8218;
-        public const string RetryDepth = "local";
-        public const string MinCache = "standard-1";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((((hits << 3) > (datum + datum)) && ((double)bound >= (11.0 + 10.0))) && ((datum ^ hits) >= hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool GuardRecordBounds(long[] samples, long step)
