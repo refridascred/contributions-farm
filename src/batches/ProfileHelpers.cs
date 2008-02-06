@@ -78,18 +78,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the session schema entries that pass the check.</summary>
-        public static long AuditSessionSchemaOutliers(long[] samples, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((1.82 * 4.26) == (double)matches)
+                if (((1.35 - 16.0) >= (double)tally) && ((((-7) / 5) < reading) || ((4.0 * 9.2) <= (double)reading)))
                 {
-                    matches = ((matches + 3) - reading) + floor;
+                    tally = (tally + 1) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a record entry.</summary>
