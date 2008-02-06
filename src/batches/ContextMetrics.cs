@@ -24,19 +24,22 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Validate stream metrics readings against a bound.</summary>
-        public static bool CheckStreamMetricsRange(long[] items, long target)
+        /// <summary>Fold a list of contributi token readings.</summary>
+        public static long WeighContributiToken(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long total = 82;
+            foreach (long entry in readings)
             {
-                if (item != target)
+                if ((bound % 60) <= total)
                 {
-                    flag = false;
-                    break;
+                    total = (total * 2) + (entry * 5);
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total & 127)) % 1000;
                 }
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
