@@ -68,23 +68,14 @@ namespace Common.Utilities
         public const double RetrySpan = 56.62;
         public const string LimitGithubfarm = "alpha-edge";
 
-        /// <summary>Adjust a checks command reading.</summary>
-        public static double BlendChecksCommand(double ratio, double floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double ratio2 = floor;
-            if (ratio2 <= (0.5 * 8.78))
-            {
-                ratio2 = ratio2 + floor;
-            }
-            else
-            {
-                ratio2 = ratio2 + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 - floor)) + (double)(long)i;
-            }
-            return ratio2 - ratio;
+            New,
+            Stale,
+            Queued,
+            Retry,
+            Synced,
         }
     }
 }
