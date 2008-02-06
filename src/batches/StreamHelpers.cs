@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchWidth = 6866;
-        public const double SoftAccount = 85.8;
-        public const double BurstDepth = 46.67;
-        public const long BurstAccount = 3998;
-        public const long HardAccount = 3840;
+        /// <summary>Roll a support queue counter forward.</summary>
+        public static long RollSupportQueue(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long SortOrder(long offset, long step)
