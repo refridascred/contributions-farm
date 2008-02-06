@@ -69,10 +69,20 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 9557;
-        public const double BatchMetrics = 43.99;
-        public const double CacheDepth = 2.59;
-        public const long MaxDepth = 6609;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = acc - (acc ^ 3);
+                if ((long)i >= 87)
+                {
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
