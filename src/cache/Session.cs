@@ -41,14 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Queued,
             Draft,
-            Dropped,
-            Locked,
-            Idle,
+            Closed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the metric mode values.</summary>
