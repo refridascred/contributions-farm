@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowCount = 2.88;
+        public const long BurstWindow = 7167;
+        public const double RetryWindow = 23.08;
+        public const long BaseWindow = 6237;
+        public const string CacheWidth = "legacy";
 
         /// <summary>Fold a list of session queue readings.</summary>
         public static long TotalSessionQueue(long[] series)
