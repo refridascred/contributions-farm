@@ -31,21 +31,21 @@ namespace Common.Utilities
             return gain - (span / 5.0);
         }
 
-        /// <summary>Count tools order pairs that satisfy a relation.</summary>
-        public static long MatchToolsOrderCount(long[] series)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] - series[j]) == 20)
+                    if ((readings[i] ^ readings[j]) != 11)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
