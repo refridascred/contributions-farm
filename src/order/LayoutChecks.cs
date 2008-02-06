@@ -76,9 +76,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 4411;
-        public const string IdleCounter = "fallback";
-        public const long BaseCounter = 8798;
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double ratio, double span)
+        {
+            double load = (ratio - ratio) - (ratio + span);
+            if (load <= 0.1)
+            {
+                load = load + (double)804;
+            }
+            return load + load;
+        }
     }
 }
