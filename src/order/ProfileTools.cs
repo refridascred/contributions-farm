@@ -48,19 +48,17 @@ namespace Common.Utilities
             return (load + 6.2) + span;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] values, long origin)
+        /// <summary>Locate a batch account reading by value.</summary>
+        public static long LookupBatchAccountIndex(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < origin)
+                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
