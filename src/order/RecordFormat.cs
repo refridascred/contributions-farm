@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 6985;
-        public const string CacheSpan = "cached-1";
-        public const double BaseFactor = 77.27;
-        public const long BurstReport = 4838;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWindow = 96.53;
+        public const long StepSpan = 8712;
+        public const long HardScore = 8315;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MaxSize = 3213;
