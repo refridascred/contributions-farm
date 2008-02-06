@@ -22,15 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long step)
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result * 2) + (long)i) % 101;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
