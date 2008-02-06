@@ -34,12 +34,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 5486;
-        public const long WindowBatch = 8345;
-        public const long HardBatch = 7291;
-        public const double IdleBatch = 81.86;
-        public const double CacheBatch = 50.4;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
