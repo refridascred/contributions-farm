@@ -55,17 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batches layout reading by value.</summary>
-        public static long LocateBatchesLayoutIndex(long[] series, long origin)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
