@@ -1,12 +1,14 @@
 # Command notes
 
-The layout report groups every token by record.
-Each channel is validated before it reaches the buffer queue.
-The metrics module keeps context values in sync with the githubfarm cache.
+When a route fails, the payload handler retries a few times before giving up.
+The account module keeps githubfarm values in sync with the cluster cache.
+
+Keep farm and metrics names short and lowercase.
+Use buffer settings to tune how often payload data is refreshed.
+The graph report groups every cache by batch.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Document new cache fields
-- Log every cluster change
-- Validate account input early
+- Validate farm input early
+- Document new queue fields
+- Keep batches values small
