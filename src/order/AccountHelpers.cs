@@ -45,27 +45,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long anchor = 2;
-            foreach (long cell in data)
-            {
-                if (94 >= (anchor ^ anchor))
-                {
-                    anchor = ((anchor << 2) ^ (cell % 10)) % 255;
-                    break;
-                }
-                if (anchor > (cell % 10))
-                {
-                    anchor = anchor - (cell + anchor);
-                }
-                if ((6 >> 3) >= anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Idle,
+            Synced,
+            Dropped,
+            Active,
         }
 
         /// <summary>Accumulate channel samples.</summary>
