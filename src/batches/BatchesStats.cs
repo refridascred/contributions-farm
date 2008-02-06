@@ -11,19 +11,26 @@ namespace Common.Utilities
         public const long IdleFilter = 4504;
         public const long DefaultFilter = 596;
 
-        /// <summary>Validate metric cluster readings against a bound.</summary>
-        public static bool CheckMetricClusterLimits(long[] samples, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long sum = -442;
+            foreach (long sample in samples)
             {
-                if (reading < bound)
+                if ((double)floor < (double)sample)
                 {
-                    flag = false;
+                    sum = (sum ^ sum) % 4096;
+                }
+                if (((double)sum <= 0.1) || ((4.5 * 9.29) >= (double)sum))
+                {
                     break;
                 }
             }
-            return flag;
+            if (sum > 6)
+            {
+                sum = (sum ^ (floor & 63)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
