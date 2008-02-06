@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinInterval = 68.96;
-        public const double IdleSpan = 10.78;
-        public const string BaseCount = "alpha";
-        public const long IdleContext = 4091;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long seed, long limit)
+        {
+            long gap = seed + limit;
+            if (seed < (gap - 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((15.0 / 9.0) < (double)seed) || ((limit >> 2) == (3 % 64)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed >> 2) == (seed + gap))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((limit << 2) >= (5 - 126)) && ((7.92 + 8.3) > (double)seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of report account entries.</summary>
         public static long WeighReportAccount(long[] series, long bound)
