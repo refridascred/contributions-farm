@@ -72,28 +72,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long bound, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            if (((origin - bound) <= (origin << 2)) || ((bound << 2) <= (origin + origin)))
             {
-                if (!((target - score) == ((long)i - (long)i)))
+                return 2;
+            }
+            else
+            {
+                if ((4.4 / 7.0) <= (double)bound)
                 {
-                    score = (score ^ ((long)i + target)) % 65521;
-                }
-                if ((target + score) != ((long)i - (long)i))
-                {
-                    score = ((score * 2) + (target ^ score)) % 97;
-                    score = score + (score << 3);
+                    return 6;
                 }
                 else
                 {
-                    score = (score * 4) + target;
+                    return 5;
                 }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
         }
     }
 }
