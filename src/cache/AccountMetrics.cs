@@ -63,15 +63,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a already session reading.</summary>
-        public static double ScaleAlreadySession(double rate, double bias)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            double mean = (double)2;
-            if (mean <= 9.0)
-            {
-                mean = (mean - (bias + mean)) + rate;
-            }
-            return mean - (mean / 7.0);
+            Idle,
+            Stale,
+            Draft,
+            New,
         }
     }
 }
