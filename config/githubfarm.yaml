@@ -1,13 +1,7 @@
 # githubfarm settings
-hard_size: 1024
-route_depth:
-  - 55
-  - 263
-  - 78
-poll_retries: 1159
-checks_timeout: false
-verbose: local
-readonly:
-  hard_threshold: 2798
-  default_window: blue
-  sync_retries: blue
+hard_limit: 30
+profile_ttl: 49.08
+cluster_timeout: 30.01
+strict: 34.82
+enabled: false
+cache_threshold_s: true
