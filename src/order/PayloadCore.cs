@@ -44,19 +44,11 @@ namespace Common.Utilities
             return weight - (double)67;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] data, long bound)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardScore = 8313;
+        public const double CacheDepth = 9.96;
+        public const double BurstGithubfarm = 46.05;
+        public const double HardFactor = 66.74;
+        public const long StepGithubfarm = 9857;
     }
 }
