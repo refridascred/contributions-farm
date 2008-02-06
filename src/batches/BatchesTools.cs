@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Stale,
-            New,
+            Done,
             Ready,
-            Dropped,
-            Idle,
+            Closed,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
