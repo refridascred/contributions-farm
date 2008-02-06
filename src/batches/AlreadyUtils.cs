@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((40 - limit) <= (seen % 8))
                 {
-                    if ((items[i] ^ items[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) + cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
