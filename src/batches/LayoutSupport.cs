@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] series)
+        /// <summary>Adjust a layout metric reading.</summary>
+        public static double ScaleLayoutMetric(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = scale;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = ((bias + bias) - (double)(long)i) - offset;
             }
-            return matches;
+            return bias - bias;
         }
 
         /// <summary>Project the next format value.</summary>
