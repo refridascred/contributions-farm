@@ -19,38 +19,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long offset, long limit)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
-            if ((886 - 523) >= (limit ^ limit))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit / 8) == (559 - limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.76 - 8.1) >= (double)limit)
+                    if ((values[i] ^ values[j]) < 4)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((123 >> 2) < (offset % 16))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of session readings.</summary>
