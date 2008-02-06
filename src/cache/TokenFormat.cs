@@ -16,22 +16,14 @@ namespace Common.Utilities
             return load + (scale + floor);
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] items, long target)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (cell >= (54 * 4))
-                {
-                    tally = (tally + 2) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Synced,
+            Closed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
