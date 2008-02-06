@@ -26,19 +26,12 @@ namespace Common.Utilities
             return (mean + 9.61) + span;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] values, long seed)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Active,
+            New,
         }
     }
 }
