@@ -33,15 +33,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long seed, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
+            if (((seed * 3) <= (seed & 31)) && ((seed * 5) != (seed + step)))
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (seed <= (step ^ seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed != (11.0 * 8.48))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(seed > step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
