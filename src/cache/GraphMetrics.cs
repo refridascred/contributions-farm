@@ -51,18 +51,11 @@ namespace Common.Utilities
             return drift + (double)68;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally - (-63)) >= datum)
-                {
-                    tally = (tally + 2) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowMetrics = 16.66;
+        public const long LimitMetrics = 8046;
+        public const string HardMetrics = "local-v2";
+        public const double BaseBudget = 25.17;
+        public const long CacheCount = 4389;
     }
 }
