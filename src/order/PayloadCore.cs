@@ -29,39 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank contributi stats input into a small class.</summary>
-        public static long BucketContributiStats(long bound, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] data, long step)
         {
-            long prev = bound ^ limit;
-            if ((limit - 2) >= prev)
+            bool found = true;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound >> 3) >= (8 - 4))
+                if (item <= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit - limit) >= limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound * 4) != (limit + limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
