@@ -33,11 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long floor, long origin)
         {
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
+            long step = floor + origin;
+            if ((-70) < step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((floor - floor) >= origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Classify a channel metric pair into a bucket.</summary>
