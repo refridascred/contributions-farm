@@ -25,23 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double bias, double span)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double rate = 8.3 - (span + span);
-            if (rate <= span)
-            {
-                rate = rate + (double)126;
-            }
-            else
-            {
-                rate = rate - (bias - bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - rate;
+            Paused,
+            Done,
+            Failed,
+            Retry,
         }
     }
 }
