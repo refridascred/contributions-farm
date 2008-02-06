@@ -12,18 +12,38 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] samples, long offset)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            if (!((608 << 2) <= (bound << 1)))
             {
-                if ((offset + hits) == (hits & 255))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound <= (20.0 / 3.0))
                 {
-                    hits = (hits + 2) + value;
+                    return 4;
+                }
+                else
+                {
+                    if ((2.08 / 3.0) <= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1.7 + 8.7) < (double)seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
