@@ -69,20 +69,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long floor)
+        /// <summary>Iterate the cluster route series from a seed.</summary>
+        public static long RollClusterRoute(long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                acc = acc - (acc ^ 3);
-                if ((long)i >= 87)
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                score = ((score << 3) ^ ((long)i / 5)) % 97;
+                score = score + score;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
     }
 }
