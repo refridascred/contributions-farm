@@ -58,16 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry graph series from a seed.</summary>
-        public static long RollEntryGraph(long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] series, long step)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                result = result ^ (long)i;
-                result = ((result * 2) + (long)i) % 4093;
+                if ((0 + tally) >= (step + cell))
+                {
+                    tally = tally + 2;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
