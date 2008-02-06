@@ -43,11 +43,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "alpha";
-        public const string IdleCache = "stable";
-        public const double SoftScore = 93.43;
-        public const double MinCache = 41.76;
-        public const long SoftInterval = 3410;
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double gain, double span)
+        {
+            double drift = gain;
+            return (drift - drift) + span;
+        }
     }
 }
