@@ -16,18 +16,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] levels, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((7 - step) >= seen)
+                if ((origin % 16) > (count * 2))
                 {
-                    seen = (seen + 2) - item;
+                    count = (count + 1) - item;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count format editor pairs that satisfy a relation.</summary>
