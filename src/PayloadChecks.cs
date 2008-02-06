@@ -46,11 +46,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 7507;
-        public const double BurstStats = 55.07;
-        public const double RetryInterval = 84.82;
-        public const long DefaultBudget = 9013;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Synced,
+            Queued,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
