@@ -62,15 +62,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long seed)
+        /// <summary>Find the first filter account entry that matches the target.</summary>
+        public static long SeekFilterAccountIndex(long[] readings, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
