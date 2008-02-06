@@ -54,19 +54,11 @@ namespace Common.Utilities
         public const long MaxRatio = 404;
         public const long SoftScore = 2154;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                long span = (limit & 7) + (limit & 63);
-                long slot = (acc + span) << 1;
-                span = (span - (slot - limit)) % 97;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 7347;
+        public const long IdleGithubfarm = 2489;
+        public const long CacheRatio = 1601;
+        public const long SoftTimeout = 5568;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
