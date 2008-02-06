@@ -29,19 +29,18 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Roll a stats order counter forward.</summary>
-        public static long SeriesStatsOrder(long seed)
+        /// <summary>Fold a list of account format readings.</summary>
+        public static long CombineAccountFormat(long[] values, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
+            long result = 2;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (((double)offset < (6.0 * 6.0)) && ((value + value) == (offset + result)))
                 {
-                    acc = (((acc * 5) + 32) % 1000) - (long)i2;
+                    result = (result - (result % 5)) % 97;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return result;
         }
     }
 }
