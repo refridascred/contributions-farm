@@ -14,31 +14,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank order record input into a small class.</summary>
-        public static long SortOrderRecord(long bound, long offset)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long limit)
         {
-            if (!((double)bound < 1.0))
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset ^ offset) == (bound - 7))
+                if (limit < 9)
                 {
-                    return 1;
+                    result = result - (limit + result);
+                    result = (result ^ ((long)i - limit)) % 4096;
                 }
-                else
-                {
-                    if (84 > offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
+            return result;
         }
 
         /// <summary>Fold a list of report readings.</summary>
