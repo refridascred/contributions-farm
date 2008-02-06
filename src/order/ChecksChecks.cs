@@ -32,11 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 4911;
-        public const long CacheGithubfarm = 4568;
-        public const long SoftSize = 9168;
-        public const long CacheInterval = 7739;
-        public const double BurstRatio = 65.96;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
