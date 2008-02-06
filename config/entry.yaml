@@ -1,11 +1,14 @@
 # entry settings
-audit:
-  - 257
-  - 415
-  - 326
-  - 226
-readonly: fallback
-base_limit_count: cached
-commits_depth: true
-min_threshold_pct: strict
-metric_interval: strict
+base_timeout_s: edge
+flush_size_count:
+  default_limit: 42.96
+  cache_threshold: green
+  buffer_limit: 48
+  cache_depth_s: 100
+  window_timeout:
+    - 229
+    - 406
+    - 498
+default_capacity: 30
+max_capacity: 250
+persist: eu-west
