@@ -17,26 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Validate metric cluster readings against a bound.</summary>
+        public static bool CheckMetricClusterLimits(long[] samples, long bound)
         {
-            long carry = 39;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (!((entry >> 1) > ((-10) - (long)series.Length)))
+                if (reading < bound)
                 {
-                    carry = ((carry << 3) ^ (entry ^ carry)) % 255;
-                }
-                if (123 >= (9 + carry))
-                {
-                    carry = (carry - carry) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry < 770)
-            {
-                carry = carry + (carry - carry);
-            }
-            return carry % 65521;
+            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
