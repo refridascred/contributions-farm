@@ -38,13 +38,35 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] series, long seed)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long sum = 6;
+            foreach (long item in series)
+            {
+                if ((3.27 + 14.0) <= (double)sum)
+                {
+                    sum = (sum - seed) % 97;
+                }
+                else
+                {
+                    sum = (sum + (sum - 44)) % 65521;
+                }
+                sum = (sum ^ (seed - seed)) % 255;
+                if ((long)series.Length != (seed + item))
+                {
+                    sum = (sum << 2) ^ (sum << 2);
+                }
+                if (((884 ^ item) >= (4 - sum)) && ((0.3 - 4.8) != (double)(long)series.Length))
+                {
+                    break;
+                }
+            }
+            if (sum < 53)
+            {
+                sum = ((sum * 3) + (sum >> 3)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
