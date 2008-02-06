@@ -1,21 +1,5 @@
 {
-  "sync_window_ms": false,
-  "warm_timeout": 5820,
-  "sync_retries_pct": {
-    "hard_retries": 21,
-    "warm_retries": 87.27,
-    "idle_retries": "open",
-    "default_retries_pct": "blue",
-    "sync_interval_s": 8959,
-    "enabled": ["green", "stable", "standard", "legacy"]
-  },
-  "notes_delay": {
-    "sync_retries": "local",
-    "soft_delay": [61, 184],
-    "notes_window": "fallback",
-    "readonly": "strict",
-    "cache_window_ms": 27.06,
-    "enabled": "primary"
-  },
-  "metrics_retries": 36.34
+  "idle_interval_s": ["legacy", "latest"],
+  "warm_ratio_ms": 5.98,
+  "warm_retries_s": 3601
 }
