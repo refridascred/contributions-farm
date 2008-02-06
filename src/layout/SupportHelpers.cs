@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Measure how many session metric samples are out of range.</summary>
-        public static long AuditSessionMetricHits(long[] series, long offset)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample < (3.5 + 11.0))
-                {
-                    seen = (seen + 3) - offset;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Blend two editor entry measurements.</summary>
