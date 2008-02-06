@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count tools token pairs that satisfy a relation.</summary>
-        public static long MatchToolsTokenCount(long[] items)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = score - (score << 1);
+                score = (score + score) % 255;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
