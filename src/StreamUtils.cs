@@ -62,10 +62,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinDepth = 1836;
-        public const string LimitScore = "alpha-v2";
-        public const long LimitFarm = 7450;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Combine metrics schema values into a single score.</summary>
         public static long ScoreMetricsSchema(long[] values, long floor)
