@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] series)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (((4.45 / 3.0) != (double)seen) || ((entry & 7) <= 416))
+                if (cell != origin)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the format mode values.</summary>
