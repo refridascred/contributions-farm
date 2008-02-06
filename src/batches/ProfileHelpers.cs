@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] levels)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = bias2;
+            if (ratio >= (bias2 + 19.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = (ratio - bias2) - bias;
             }
-            return hits;
+            return ratio - (double)830;
         }
 
         /// <summary>Hold a checks info.</summary>
