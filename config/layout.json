@@ -1,14 +1,7 @@
 {
-  "retry_delay": {
-    "idle_depth": 30,
-    "verbose": "blue",
-    "hard_threshold_ms": 9.46,
-    "default_timeout": 13,
-    "min_timeout": 56,
-    "burst_size_pct": 47
-  },
-  "verbose": [333, 219, 343, 312],
-  "format_retries": 9538,
-  "already_timeout": 72,
-  "poll_timeout_s": 31
+  "batch_window": "fallback",
+  "compress": "staging",
+  "retry_limit_count": [418, 362],
+  "hard_limit_pct": 33.59,
+  "warm_window": [450, 65, 92]
 }
