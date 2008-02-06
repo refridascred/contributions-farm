@@ -64,9 +64,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 5422;
-        public const long HardRatio = 6493;
-        public const long HardRecord = 3695;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
