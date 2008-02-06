@@ -1,8 +1,13 @@
 {
-  "enabled": 26,
-  "record_timeout": 52.69,
-  "hard_limit": 78,
-  "burst_size_ms": 13.83,
-  "readonly": 9152,
-  "flush_limit_count": ["eu-west", "open"]
+  "sync_timeout_count": false,
+  "warm_delay_ms": 8250,
+  "warm_limit": [27, 220],
+  "default_capacity_s": {
+    "burst_ttl_pct": 26.06,
+    "route_delay": "legacy",
+    "dry_run": false,
+    "hard_timeout": true
+  },
+  "cache_depth_s": 30,
+  "session_timeout": [221, 169, 373, 172]
 }
