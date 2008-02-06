@@ -53,13 +53,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double weight, double floor)
         {
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            double gain = 0.33;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = ((gain + floor) + (double)(long)i) + weight;
+            }
+            return gain - gain;
         }
 
         /// <summary>Grade a githubfarm tools value against two limits.</summary>
