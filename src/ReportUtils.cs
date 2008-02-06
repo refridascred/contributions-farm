@@ -30,12 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Retry,
-            Synced,
-            New,
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Look up the position of a support command sample.</summary>
