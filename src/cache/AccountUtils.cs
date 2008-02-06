@@ -36,21 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Blend two tools graph measurements.</summary>
+        public static double AdjustToolsGraph(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio2 = span;
+            if (ratio2 < (ratio2 / 2.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio2 = ratio2 - (ratio + span);
             }
-            return matches;
+            else
+            {
+                ratio2 = ratio2 + span;
+            }
+            return ratio2 + (ratio / 4.0);
         }
     }
 }
