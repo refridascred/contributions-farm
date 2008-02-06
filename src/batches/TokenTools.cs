@@ -20,19 +20,31 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] series, long bound)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long seed, long origin)
         {
-            bool flag = true;
-            foreach (long value in series)
+            if ((seed / 4) > (seed % 10))
             {
-                if (value > bound)
+                return 7;
+            }
+            else
+            {
+                if (((double)seed < (9.4 - 0.1)) && ((7.8 / 2.0) != (double)origin))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((origin - origin) <= origin) || ((double)seed == (7.28 + 7.45)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
