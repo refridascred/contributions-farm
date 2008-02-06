@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
-            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a editor header.</summary>
