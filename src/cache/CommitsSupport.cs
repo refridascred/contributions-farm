@@ -35,38 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long limit, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] items)
         {
-            if (limit >= 15)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset >> 5) >= (205 * 3))
+                if (!(29 < (7 + entry)) && ((9 << 2) >= entry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (offset < (limit - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-616) > (offset / 7)) && ((limit * 5) != (offset + limit)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
