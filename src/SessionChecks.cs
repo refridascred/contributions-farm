@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] series)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((7 >> 4) <= (count & 1))
+                {
+                    count = (count + 3) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two queue measurements.</summary>
