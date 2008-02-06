@@ -13,22 +13,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)offset > (7.6 / 5.0))
-                {
-                    mix = mix + mix;
-                    continue;
-                }
-                mix = (mix ^ (789 - mix)) % 255;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 9281;
+        public const double HardWidth = 14.8;
+        public const string BaseRecord = "stable-v2";
+        public const string MaxRatio = "cached";
+        public const double BurstTimeout = 11.14;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TallySchema(long[] items, long limit)
