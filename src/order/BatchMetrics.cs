@@ -22,15 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long step)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long score = step;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
