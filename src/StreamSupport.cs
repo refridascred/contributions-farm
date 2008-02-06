@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the record class values.</summary>
