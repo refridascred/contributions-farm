@@ -76,15 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer report figure with a bias.</summary>
-        public static double AdjustBufferReport(double gain, double floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings, long floor)
         {
-            double load = (double)(15 ^ 771);
-            if (load < (double)6)
+            long anchor = 1;
+            foreach (long cell in readings)
             {
-                load = ((load + (double)18) - gain) - floor;
+                anchor = (anchor << 3) ^ (anchor + 1);
+                if ((cell * 3) == ((-769) + floor))
+                {
+                    break;
+                }
             }
-            return load - (17.0 * 9.0);
+            return anchor % 1000;
         }
     }
 }
