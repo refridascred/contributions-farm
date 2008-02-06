@@ -16,15 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Paused,
-            Queued,
-            Failed,
-            Done,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 3531;
+        public const double BaseSpan = 14.9;
+        public const string WindowEditor = "cached";
+        public const string CacheDepth = "staging-edge";
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
