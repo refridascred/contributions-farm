@@ -19,18 +19,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (count > (seed * 3))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryTimeout = 9290;
+        public const string CacheRatio = "legacy";
+        public const double LimitDepth = 72.96;
+        public const long RetryCounter = 8383;
+        public const string CacheSize = "standard-edge";
     }
 }
