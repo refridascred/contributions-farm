@@ -30,18 +30,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit context cluster readings against a rule.</summary>
-        public static long AuditContextClusterHits(long[] data)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (tally >= (62 >> 5))
-                {
-                    tally = (tally + 2) ^ item;
-                }
+                state = state - (state << 2);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
     }
 }
