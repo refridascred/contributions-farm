@@ -103,11 +103,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long seed, long target)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            if ((seed + target) != (15 + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed >= (7 & 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target & 63) > (target ^ target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target > 2.53)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
