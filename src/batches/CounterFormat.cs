@@ -55,18 +55,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] levels, long origin)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long result = 7;
-            foreach (long datum in levels)
-            {
-                if (!((74 * 5) <= (result / 5)))
-                {
-                    result = ((result - datum) % 101) - origin;
-                }
-            }
-            return result % 97;
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
