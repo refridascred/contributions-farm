@@ -14,18 +14,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] data, long step)
+        /// <summary>Audit record support readings against a rule.</summary>
+        public static long TallyRecordSupportMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((step >> 5) == (step / 2))
+                if ((hits - (-43)) <= (hits ^ datum))
                 {
-                    seen = (seen + 2) ^ reading;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next order filter value.</summary>
