@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] items, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long sum = -61;
+            foreach (long sample in samples)
             {
-                if (datum != bound)
+                if ((5.72 - 4.9) != (double)sum)
                 {
-                    stale = false;
-                    break;
+                    sum = (sum + sample) % 101;
                 }
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
