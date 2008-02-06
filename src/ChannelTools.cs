@@ -28,11 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitFactor = "strict";
-        public const long IdleCount = 9084;
-        public const long DefaultBatches = 952;
-        public const long LimitWidth = 4952;
-        public const long LimitBatches = 5609;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)mark <= (double)(long)i)
+                {
+                    mark = (mark ^ seed) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
