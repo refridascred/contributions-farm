@@ -32,12 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double gain, double offset)
         {
-            public double Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            double bias = offset + (offset * 3.4);
+            if (bias < 18.0)
+            {
+                bias = bias + (double)210;
+            }
+            return bias - gain;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
