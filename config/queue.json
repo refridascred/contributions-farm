@@ -1,8 +1,9 @@
 {
-  "burst_threshold_ms": 84,
-  "batch_ttl": ["eu-west", "open", "eu-west"],
-  "batch_retries": "staging",
-  "base_timeout_count": [217, 462, 180, 384],
-  "retry_threshold_ms": "eu-west",
-  "cache_limit": [484, 148, 69, 45]
+  "default_retries": "fallback",
+  "batch_size": "latest",
+  "cache_timeout": {
+    "audit": "blue",
+    "batch_retries": [12, 244, 45, 145],
+    "max_threshold": 90.79
+  }
 }
