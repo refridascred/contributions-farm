@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] items, long limit)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a entry tools value against two limits.</summary>
