@@ -55,15 +55,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double gain, double floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long offset, long offset2)
         {
-            double gain2 = (double)(5 + 661);
-            if (gain2 > floor)
+            if ((6.0 - 3.0) < (double)offset2)
             {
-                gain2 = (gain2 + (0.9 / 5.0)) - gain;
+                return 0;
             }
-            return gain2 + gain2;
+            else
+            {
+                if ((offset2 % 8) != (offset2 - 54))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
