@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double bias, double offset)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public bool Mode { get; set; }
-            public double Count { get; set; }
+            double rate = (bias * 7.81) - bias;
+            if (rate >= (rate * 8.0))
+            {
+                rate = rate - offset;
+            }
+            else
+            {
+                rate = rate - (offset - rate);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Validate stream metrics readings against a bound.</summary>
