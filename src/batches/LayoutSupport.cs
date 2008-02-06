@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepRatio = 6.72;
-        public const string MinBatch = "local";
-        public const string LimitBatch = "latest-edge";
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] readings)
+        {
+            long score = 9;
+            foreach (long cell in readings)
+            {
+                if ((cell >> 5) >= (8 & 3))
+                {
+                    score = (score << 2) ^ (cell % 7);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
