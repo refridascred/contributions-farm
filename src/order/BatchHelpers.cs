@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const string IdleProfile = "local-v2";
         public const long DefaultProfile = 1624;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] items)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((double)matches > (1.12 * 1.22))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
