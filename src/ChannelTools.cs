@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count the checks session entries that pass the check.</summary>
+        public static long MeasureChecksSessionMatches(long[] values, long step)
         {
-            Queued,
-            Ready,
-            Dropped,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((step & 7) != (6 * 4))
+                {
+                    matches = (matches + 3) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
