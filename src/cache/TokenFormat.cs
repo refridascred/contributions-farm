@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long BurstLevel = 7902;
         public const long BatchSpan = 3859;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] items, long offset)
+        /// <summary>Validate route layout readings against a bound.</summary>
+        public static bool VerifyRouteLayoutLimits(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((items[i] < offset) && ((items[i] % 2) != 0))
+                if (entry > seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
