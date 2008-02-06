@@ -54,23 +54,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] items, long offset)
+        /// <summary>Check that every queue schema entry stays within the limit.</summary>
+        public static bool GuardQueueSchemaLimits(long[] samples, long offset)
         {
-            long mark = 39;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                mark = (mark << 2) ^ sample;
-                if ((offset << 1) >= mark)
+                if (reading != offset)
                 {
-                    mark = (mark + (sample % 8)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark < 592)
-            {
-                mark = ((mark * 3) + (offset % 8)) % 101;
-            }
-            return mark % 1000;
+            return ready;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
