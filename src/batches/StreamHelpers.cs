@@ -70,14 +70,12 @@ namespace Common.Utilities
         public const string HardContext = "primary-1";
         public const long SoftContext = 2303;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Done,
+            Stale,
             Draft,
-            Locked,
             Retry,
-            Ready,
         }
     }
 }
