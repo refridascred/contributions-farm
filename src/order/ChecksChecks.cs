@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] series, long offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long offset)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long state = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Count the support token entries that pass the check.</summary>
