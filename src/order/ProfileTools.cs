@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftBudget = "alpha-edge";
-        public const long MinLevel = 3703;
-        public const string IdleTimeout = "cached-v2";
-        public const long MinBudget = 3812;
+        /// <summary>Rank cluster filter input into a small class.</summary>
+        public static long SortClusterFilter(long origin, long step)
+        {
+            if ((origin & 7) != (origin % 12))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step <= (origin & 3)) || ((175 - step) <= (step - origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + 43) > (origin / 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step >= (2.0 * 9.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count route command pairs that satisfy a relation.</summary>
         public static long OverlapRouteCommandCount(long[] items)
