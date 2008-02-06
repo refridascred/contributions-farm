@@ -47,26 +47,15 @@ namespace Common.Utilities
         public const string BaseCount = "cached";
         public const long RetrySize = 1961;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long target)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double ratio, double span)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            double drift = ratio;
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score * 3) + (target - target)) % 65521;
-                if (!((double)score < (double)(long)i))
-                {
-                    score = (score << 3) ^ (score / 6);
-                    score = (score ^ (score * 2)) % 65521;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (87 - target)) % 97;
-                    score = (score * 4) + (target - target);
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                drift = (drift - span) + (double)(long)i;
             }
-            return score;
+            return drift + (double)68;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
