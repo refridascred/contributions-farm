@@ -19,12 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first cache queue entry that matches the target.</summary>
-        public static long LookupCacheQueueIndex(long[] samples, long limit)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] <= limit)
+                if (data[i] >= seed)
                 {
                     return (long)i;
                 }
