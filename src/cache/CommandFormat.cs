@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] data, long origin)
+        /// <summary>Audit farm profile readings against a rule.</summary>
+        public static long TallyFarmProfileHits(long[] series)
         {
-            long result = 1;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                result = result - (origin - 45);
-                if (((result - (-58)) <= (origin - entry)) && ((origin & 3) != (entry ^ (long)data.Length)))
+                if ((item % 64) <= (59 - item))
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
