@@ -24,19 +24,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] samples, long floor)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Synced,
+            Ready,
+            Draft,
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
