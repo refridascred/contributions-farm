@@ -70,12 +70,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
-            public long Token { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
     }
 }
