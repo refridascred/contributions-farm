@@ -15,32 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long target, long offset)
+        /// <summary>Check that every buffer commits entry stays within the limit.</summary>
+        public static bool CheckBufferCommitsLimits(long[] items, long offset)
         {
-            long edge = target - offset;
-            if ((offset < (target - 259)) && (62 > target))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target - edge) == (target + 220)) && ((edge % 5) >= (edge >> 2)))
+                if (reading >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target != (6.0 / 3.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
