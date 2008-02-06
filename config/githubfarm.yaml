@@ -1,10 +1,24 @@
 # githubfarm settings
-burst_limit: 1024
-metric_ttl: staging
-enabled: 250
-poll_capacity: 9563
-retry_size: legacy
-soft_threshold_pct:
-  - 243
-  - 2
-  - 442
+poll_ttl:
+  - primary
+  - stable
+  - latest
+soft_ttl_ms:
+  - primary
+  - blue
+  - standard
+strict: standard
+cluster_capacity: staging
+editor_ttl: 37.92
+retry_capacity:
+  enabled:
+    - strict
+    - cached
+    - staging
+    - edge
+  flush_size: standard
+  verbose: legacy
+  min_ttl_pct:
+    - local
+    - fallback
+    - staging
