@@ -52,12 +52,10 @@ namespace Common.Utilities
         public const long CacheRatio = 1601;
         public const long SoftTimeout = 5568;
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinMetric = "strict-1";
+        public const string CacheMetric = "standard-1";
+        public const double IdleLevel = 48.25;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LocateStatsIndex(long[] data, long step)
