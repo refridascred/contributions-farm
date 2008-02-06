@@ -31,23 +31,19 @@ namespace Common.Utilities
             return mean - (mean / 2.0);
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Check that every channel cluster entry stays within the limit.</summary>
+        public static bool GuardChannelClusterLimits(long[] values, long bound)
         {
-            long acc = 420;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 6; i++)
+                if (entry != bound)
                 {
-                    acc = (acc - (58 / 9)) + (long)i;
-                }
-                acc = acc - (acc % 7);
-                if (((double)acc < (4.3 + 13.0)) && ((acc + sample) == (acc ^ acc)))
-                {
-                    acc = (acc ^ acc) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
