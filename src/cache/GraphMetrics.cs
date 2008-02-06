@@ -23,20 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the stats channel series from a seed.</summary>
-        public static long DeriveStatsChannel(long seed)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((mix * 3) <= 48)
-                {
-                    mix = (mix ^ seed) % 97;
-                    mix = (mix - seed) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the contributi state values.</summary>
