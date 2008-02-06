@@ -55,20 +55,18 @@ namespace Common.Utilities
         public const long CacheRatio = 1601;
         public const long SoftTimeout = 5568;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                mark = (mark ^ ((long)i >> 2)) % 65521;
-                if ((mark + 754) >= offset)
+                if ((double)value != (double)766)
                 {
-                    mark = (mark + offset) % 65521;
+                    count = count + 2;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a graph info.</summary>
