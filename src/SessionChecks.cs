@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (((count + sample) < count) || ((97 * 3) == (74 + count)))
+                if ((double)target != (double)matches)
                 {
-                    count = count + 3;
+                    matches = (matches + 1) - reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a metrics info.</summary>
