@@ -26,20 +26,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] readings, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] levels, long floor)
         {
-            long mix = 6;
-            foreach (long entry in readings)
+            long result = 30;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    mix = ((((mix * 3) + 62) % 65521) ^ (long)i) + entry;
-                }
-                mix = (mix ^ (bound % 100)) % 101;
-                mix = mix + 5;
+                result = (((result << 3) ^ (45 & 255)) % 255) + floor;
+                result = (result << 2) ^ item;
             }
-            return mix % 97;
+            return result;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
