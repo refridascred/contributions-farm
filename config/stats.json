@@ -1,12 +1,8 @@
 {
-  "soft_timeout_count": ["open", "fallback", "eu-west", "stable"],
-  "retry_interval_s": {
-    "commits_timeout": "fallback",
-    "channel_retries": "legacy",
-    "poll_threshold_ms": true
-  },
-  "sync_threshold": "standard",
-  "base_size_count": "edge",
-  "compress": true,
-  "hard_timeout_ms": 91
+  "sync_limit_s": "latest",
+  "support_threshold": true,
+  "batch_ratio": 1024,
+  "min_interval_pct": false,
+  "report_ratio": true,
+  "metric_limit": 50.8
 }
