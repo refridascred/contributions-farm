@@ -58,38 +58,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] samples)
+        /// <summary>Roll a command schema counter forward.</summary>
+        public static long RollCommandSchema(long step)
         {
-            long sum = 8;
-            foreach (long value in samples)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(value <= (sum * 3)))
-                {
-                    sum = ((sum * 4) + 92) % 101;
-                }
-                else
-                {
-                    sum = sum + (value + value);
-                }
-                if ((9.64 / 2.0) != (double)sum)
-                {
-                    sum = sum - value;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sum & 1)) % 255;
-                }
-                if ((sum / 5) > (value - (-820)))
-                {
-                    sum = ((sum << 3) ^ value) % 255;
-                }
-                else
-                {
-                    sum = sum ^ (sum - 10);
-                }
+                result = (result * 2) + result;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return sum % 1000;
+            return result;
         }
     }
 }
