@@ -35,18 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] items, long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (offset >= (value & 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Paused,
+            Dropped,
         }
     }
 }
