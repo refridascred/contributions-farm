@@ -29,24 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] items)
         {
-            long score = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                score = ((score << 3) ^ (item - item)) % 101;
-                if (3.11 <= (double)item)
+                if (!(3.0 < (double)datum))
                 {
-                    score = (score << 3) ^ (71 & 255);
+                    hits = hits + 1;
                 }
-                else
-                {
-                    score = ((score * 4) + (30 - 702)) % 1000;
-                }
-                score = (score + (488 * 3)) % 4096;
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Hold a token snapshot.</summary>
