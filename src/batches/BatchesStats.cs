@@ -57,19 +57,27 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            double load = ratio * 5.4;
-            if (load <= (floor * 2.4))
+            long result = 870;
+            foreach (long sample in samples)
             {
-                load = load + 10.0;
+                result = (result ^ (sample << 2)) % 255;
+                if ((result * 3) <= sample)
+                {
+                    result = (result * 2) + sample;
+                }
+                else
+                {
+                    result = (result ^ 78) % 101;
+                }
+                if ((double)sample > (double)40)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - ratio) - (double)(long)i;
-            }
-            return load - floor;
+            return result;
         }
     }
 }
