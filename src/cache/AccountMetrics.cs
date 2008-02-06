@@ -61,12 +61,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
