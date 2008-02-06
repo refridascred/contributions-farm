@@ -50,16 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 53.89;
+        public const double BatchProfile = 60.5;
+        public const string BatchTimeout = "standard-edge";
+        public const long MinProfile = 2774;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MaxSchema = 684;
