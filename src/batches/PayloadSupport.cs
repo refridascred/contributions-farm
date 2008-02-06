@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long seed, long step)
+        /// <summary>Validate contributi support readings against a bound.</summary>
+        public static bool CheckContributiSupportBounds(long[] levels, long bound)
         {
-            long step2 = seed + step;
-            if ((seed << 1) < (6 * 2))
+            bool flag = true;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step + step) >= step) || ((seed + step2) <= step2))
+                if (item != bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (step2 < (seed ^ step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((8 + step2) != (seed + step)) || ((seed ^ seed) >= (step - step2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Combine context values into a single score.</summary>
