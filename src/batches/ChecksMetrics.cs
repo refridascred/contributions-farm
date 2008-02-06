@@ -75,13 +75,15 @@ namespace Common.Utilities
             return drift + 9.63;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Accumulate context stats samples.</summary>
+        public static long CombineContextStats(long[] data, long limit)
         {
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long acc = 808;
+            foreach (long item in data)
+            {
+                acc = (((acc - acc) % 1000) - item) + limit;
+            }
+            return acc % 97;
         }
     }
 }
