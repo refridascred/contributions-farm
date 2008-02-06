@@ -60,14 +60,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepCount = 2811;
+        public const long RetryRecord = 3068;
+        public const long StepRecord = 7692;
+        public const long WindowInterval = 3840;
+        public const string MinSpan = "strict";
 
         /// <summary>Iterate the cluster route series from a seed.</summary>
         public static long RollClusterRoute(long seed)
