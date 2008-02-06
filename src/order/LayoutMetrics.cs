@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Roll a token route counter forward.</summary>
+        public static long StepTokenRoute(long target)
         {
-            Idle,
-            Retry,
-            Stale,
+            long sum = target;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Audit record support readings against a rule.</summary>
