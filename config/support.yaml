@@ -1,4 +1,10 @@
 # support settings
-persist: green
-editor_ratio: false
-profile_delay: 1024
+audit: false
+format_delay:
+  max_retries: 59.76
+  audit:
+    - fallback
+    - strict
+  persist: true
+  poll_depth_count: 81.5
+batch_threshold: blue
