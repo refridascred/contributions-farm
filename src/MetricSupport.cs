@@ -30,21 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading < seed)
                 {
-                    if ((readings[i] ^ readings[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
