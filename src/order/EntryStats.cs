@@ -62,19 +62,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] data, long floor)
-        {
-            long score = 38;
-            foreach (long datum in data)
-            {
-                score = ((score + datum) % 97) - floor;
-            }
-            if (score > 775)
-            {
-                score = score + ((-97) << 2);
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftPayload = 98.6;
+        public const long MaxFactor = 6393;
+        public const long WindowPayload = 552;
     }
 }
