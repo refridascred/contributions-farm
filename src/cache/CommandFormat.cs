@@ -31,19 +31,31 @@ namespace Common.Utilities
         public const long HardLevel = 1666;
         public const long StepScore = 4758;
 
-        /// <summary>Validate schema account readings against a bound.</summary>
-        public static bool GuardSchemaAccountLimits(long[] items, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long target, long bound)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            if (bound <= (176 ^ target))
             {
-                if (cell < target)
+                return 7;
+            }
+            else
+            {
+                if ((bound / 4) == (target - 8))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - bound) <= bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
