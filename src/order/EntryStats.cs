@@ -52,17 +52,11 @@ namespace Common.Utilities
             return weight + (floor / 4.0);
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] samples, long bound)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
