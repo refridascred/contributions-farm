@@ -36,12 +36,13 @@ namespace Common.Utilities
             return ratio - (ratio + weight);
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Dropped,
-            Retry,
-            Closed,
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a schema info.</summary>
