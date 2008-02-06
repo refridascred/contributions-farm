@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long SoftAccount = 4154;
         public const string DefaultAccount = "cached-edge";
 
-        /// <summary>Digest a series of graph context entries.</summary>
-        public static long DigestGraphContext(long[] data, long origin)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long acc = 736;
-            foreach (long sample in data)
-            {
-                if ((acc + sample) > (acc - sample))
-                {
-                    acc = ((acc << 2) ^ (origin - (long)data.Length)) % 4096;
-                }
-            }
-            return acc % 65521;
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Blend two support layout measurements.</summary>
