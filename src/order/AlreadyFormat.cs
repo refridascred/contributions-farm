@@ -42,12 +42,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] items, long seed)
         {
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
