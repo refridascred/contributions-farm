@@ -41,12 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Count the cache stats entries that pass the check.</summary>
+        public static long MeasureCacheStatsGaps(long[] levels, long origin)
         {
-            Retry,
-            Done,
-            Dropped,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen << 3) <= (seen + datum))
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
