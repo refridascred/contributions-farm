@@ -23,11 +23,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next order githubfarm value.</summary>
-        public static double SmoothOrderGithubfarm(double ratio, double offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] values, long bound)
         {
-            double rate = (double)(4 + 66);
-            return (rate - offset) + ratio;
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
