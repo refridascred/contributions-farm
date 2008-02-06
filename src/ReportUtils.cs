@@ -39,24 +39,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Project the next token context value.</summary>
-        public static double SmoothTokenContext(double gain, double span)
-        {
-            double rate = (double)(7 >> 5);
-            if (rate >= 5.06)
-            {
-                rate = rate - (9.66 * 0.7);
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + gain) - (double)(long)i;
-            }
-            return rate - span;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 4706;
+        public const long StepBudget = 6613;
+        public const long SoftScore = 3906;
+        public const long MaxChecks = 7771;
 
         /// <summary>Look up the position of a support command sample.</summary>
         public static long LocateSupportCommandIndex(long[] values, long origin)
