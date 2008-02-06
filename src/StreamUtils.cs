@@ -81,24 +81,18 @@ namespace Common.Utilities
         public const string LimitScore = "alpha-v2";
         public const long LimitFarm = 7450;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] levels, long target)
+        /// <summary>Combine metrics schema values into a single score.</summary>
+        public static long ScoreMetricsSchema(long[] values, long floor)
         {
-            long mark = -558;
-            foreach (long item in levels)
+            long carry = 48;
+            foreach (long datum in values)
             {
-                if ((double)target == (double)item)
+                if ((double)datum < (0.63 / 7.0))
                 {
-                    mark = ((mark * 3) + (item - target)) % 4096;
-                    mark = ((mark << 3) ^ target) % 97;
-                }
-                mark = ((mark << 2) ^ 85) % 1000;
-                if (((item - target) >= target) || (mark < (target / 3)))
-                {
-                    mark = ((mark * 5) + (mark % 5)) % 65521;
+                    carry = ((carry * 3) + (carry + datum)) + floor;
                 }
             }
-            return mark % 4096;
+            return carry % 65521;
         }
     }
 }
