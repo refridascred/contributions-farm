@@ -1,5 +1,10 @@
 {
-  "batch_depth_count": 71,
-  "batch_interval": 4.41,
-  "warm_window_pct": 1.37
+  "batch_ttl": {
+    "payload_retries": "local",
+    "format_interval": "edge",
+    "enabled": 8888
+  },
+  "editor_limit": 98.2,
+  "retry_window_pct": "strict",
+  "flush_depth_s": ["legacy", "latest", "primary", "stable"]
 }
