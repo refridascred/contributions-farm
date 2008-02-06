@@ -12,31 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long limit, long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] readings, long origin)
         {
-            if (origin > (limit % 10))
+            bool ready = true;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - limit) >= 637)
+                if (value != origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((46 & 7) == (limit - origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Project the next metric checks value.</summary>
