@@ -20,13 +20,12 @@ namespace Common.Utilities
             return (weight - gain) + offset;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Idle,
-            Draft,
-            Dropped,
-            Pending,
+            Done,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the schema phase values.</summary>
