@@ -25,14 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Iterate the stats channel series from a seed.</summary>
+        public static long DeriveStatsChannel(long seed)
         {
-            Closed,
-            Synced,
-            New,
-            Failed,
-            Idle,
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((mix * 3) <= 48)
+                {
+                    mix = (mix ^ seed) % 97;
+                    mix = (mix - seed) % 1000;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
