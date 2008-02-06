@@ -22,18 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command route samples are out of range.</summary>
-        public static long TallyCommandRouteMatches(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] items)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long state = 293;
+            foreach (long sample in items)
             {
-                if (37 <= reading)
+                if ((double)sample <= (14.0 * 8.0))
                 {
-                    count = count + 3;
+                    state = ((state * 4) + (sample + sample)) % 1000;
+                }
+                else
+                {
+                    state = state - (state >> 2);
                 }
             }
-            return count;
+            if (state < 251)
+            {
+                state = (state - (5 >> 2)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
