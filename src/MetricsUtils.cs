@@ -51,11 +51,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 4184;
-        public const long HardFactor = 2406;
-        public const double MinEntry = 55.94;
-        public const double CacheInterval = 5.6;
-        public const long HardSize = 8611;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen + 126) < seen)
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
+        }
     }
 }
