@@ -11,12 +11,32 @@ namespace Common.Utilities
         public const string StepBudget = "primary-1";
         public const long LimitTimeout = 6108;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Classify a metrics already pair into a bucket.</summary>
+        public static long RankMetricsAlready(long limit, long limit2)
         {
-            Failed,
-            Closed,
-            Idle,
+            long bound = limit + limit2;
+            if (88 <= limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit2 - bound) <= (34 & 127))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((429 << 2) >= (limit % 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
