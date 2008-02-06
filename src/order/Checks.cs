@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] samples, long origin)
         {
-            long state = 23;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                state = ((state ^ (264 + state)) ^ datum) - offset;
+                if (((origin * 5) < 744) || ((count << 3) < count))
+                {
+                    count = (count + 3) + value;
+                }
             }
-            if (state > 54)
-            {
-                state = (state * 2) + (state >> 5);
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
