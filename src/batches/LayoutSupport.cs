@@ -19,13 +19,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            Closed,
-            Active,
-            Paused,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the layout record series from a seed.</summary>
