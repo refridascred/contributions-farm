@@ -1,5 +1,13 @@
 {
-  "verbose": ["cached", "green", "blue"],
-  "compress": "primary",
-  "idle_capacity_pct": 58
+  "flush_window_pct": 100,
+  "default_depth": 1633,
+  "cache_depth_count": {
+    "idle_size_ms": {
+      "batch_capacity_s": "eu-west",
+      "batch_interval_pct": 9344,
+      "sync_capacity_s": 3670
+    },
+    "account_capacity": 30,
+    "sync_timeout_s": "strict"
+  }
 }
