@@ -36,23 +36,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] readings, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] values)
         {
-            long score = -671;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                score = (score + (value / 5)) % 1000;
-                for (int i = 0; i < 11; i++)
+                if ((6.07 * 19.0) > (double)count)
                 {
-                    score = (((score << 2) ^ (step >> 4)) % 1000) - (long)i;
-                }
-                if (((double)step == (8.0 * 5.2)) && ((5 * 3) <= (value ^ score)))
-                {
-                    score = score - step;
+                    count = (count + 2) ^ value;
                 }
             }
-            return score;
+            return count;
         }
     }
 }
