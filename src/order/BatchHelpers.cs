@@ -30,10 +30,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 16.55;
-        public const long CacheRatio = 9298;
-        public const long BaseLayout = 2315;
-        public const double MinSpan = 27.21;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                long slot = mix;
+                mix = ((mix << 3) ^ (slot ^ mix)) % 101;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
