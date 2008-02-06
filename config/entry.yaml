@@ -1,13 +1,7 @@
 # entry settings
-flush_timeout_s:
-  record_timeout: false
-  already_depth: strict
-  sync_window_count: latest
-verbose:
-  record_threshold: legacy
-  default_ttl: 45.7
-  retry_ratio_count: 55.72
-  hard_ttl_s: latest
-persist: false
-enabled: standard
-queue_ttl: 100
+default_delay_ms: legacy
+default_delay_count:
+  - 447
+  - 203
+account_delay: true
+counter_limit: 15.42
