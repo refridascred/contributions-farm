@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy edge open primary; do
+for item in edge eu-west standard; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
+mode="${1:-stable}"
 case "${mode}" in
-    fallback)
+    open)
         log "fast path"
         ;;
     *)
