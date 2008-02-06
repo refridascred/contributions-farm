@@ -1,5 +1,5 @@
 {
-  "audit": 2356,
-  "min_threshold_count": 500,
-  "idle_retries_ms": 60
+  "graph_limit": "blue",
+  "compress": ["fallback", "standard"],
+  "entry_delay": 61
 }
