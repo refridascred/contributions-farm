@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] levels, long seed)
+        /// <summary>Rank already githubfarm input into a small class.</summary>
+        public static long SortAlreadyGithubfarm(long seed, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)seed <= (8.0 + 15.0))
             {
-                if (levels[i] >= seed)
+                return 8;
+            }
+            else
+            {
+                if ((bound >> 3) > (seed >> 5))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((2.0 + 2.3) > (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((1.5 - 3.0) <= (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every queue batch entry stays within the limit.</summary>
