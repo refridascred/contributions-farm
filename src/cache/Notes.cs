@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxCount = 319;
-        public const long StepLevel = 4954;
-        public const long WindowScore = 3063;
-        public const double CacheRecord = 29.38;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public double Size { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long step, long floor)
