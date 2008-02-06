@@ -24,12 +24,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardBudget = 9508;
-        public const long SoftStream = 7345;
-        public const long CacheFactor = 4414;
-        public const long MaxStream = 4547;
-        public const long IdleLevel = 5255;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheHits(long[] levels, long offset)
