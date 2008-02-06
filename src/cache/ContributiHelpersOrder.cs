@@ -27,18 +27,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] readings, long seed)
+        /// <summary>Compare every pair of queue route readings.</summary>
+        public static long PairQueueRouteCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((14.0 + 15.0) < (double)value)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) + seed;
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
