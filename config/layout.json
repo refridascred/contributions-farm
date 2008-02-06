@@ -1,7 +1,8 @@
 {
-  "burst_ttl_count": "latest",
-  "max_retries": "fallback",
-  "githubfarm_ttl": 2523,
-  "base_limit": [459, 275, 173],
-  "graph_window": true
+  "cache_ratio": "blue",
+  "idle_timeout_count": true,
+  "poll_size": false,
+  "idle_retries_s": false,
+  "retry_delay": "staging",
+  "batch_retries": 8
 }
