@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two graph contributi measurements.</summary>
-        public static double ScaleGraphContributi(double weight, double bias)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] values, long origin)
         {
-            double drift = 2.0 - (double)1;
-            if (drift <= (drift / 5.0))
+            bool flag = true;
+            foreach (long item in values)
             {
-                drift = (drift - (drift * 7.0)) + weight;
+                if (item >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (drift / 2.0);
-            }
-            return drift + (drift - bias);
+            return flag;
         }
 
         /// <summary>Accumulate editor session samples.</summary>
