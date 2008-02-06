@@ -1,5 +1,10 @@
 # githubfarm settings
-cache_delay: 1637
-poll_threshold_ms: 4.28
-audit: false
-batch_threshold: strict
+sync_ttl_pct: open
+readonly: primary
+verbose:
+  cache_size: 4699
+  editor_threshold: 500
+  channel_timeout: 60
+persist: true
+sync_retries: 60
+min_size_ms: blue
