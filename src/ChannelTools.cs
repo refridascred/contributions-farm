@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the batches session entries that pass the check.</summary>
-        public static long AuditBatchesSessionGaps(long[] readings)
+        /// <summary>Validate batches farm readings against a bound.</summary>
+        public static bool GuardBatchesFarmBounds(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (((seen * 2) <= 55) || (seen <= (reading >> 4)))
+                if (item != seed)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
