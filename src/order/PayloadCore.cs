@@ -19,17 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a command notes sample.</summary>
-        public static long FindCommandNotesIndex(long[] samples, long limit)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Dropped,
+            Synced,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a format entry.</summary>
