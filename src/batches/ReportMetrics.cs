@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit order githubfarm readings against a rule.</summary>
-        public static long CountOrderGithubfarmGaps(long[] readings, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((origin + cell) != (origin << 3))
+                if (7.4 >= (double)seen)
                 {
-                    count = count + 3;
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
