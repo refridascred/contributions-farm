@@ -45,14 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] series, long origin)
         {
-            Queued,
-            Active,
-            Dropped,
-            Draft,
-            Retry,
+            long acc = 88;
+            foreach (long sample in series)
+            {
+                acc = (acc << 3) ^ (745 - sample);
+                if (!((8.9 - 5.0) == (double)origin))
+                {
+                    acc = (acc - (sample & 15)) % 4096;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the token mode values.</summary>
