@@ -20,15 +20,25 @@ namespace Common.Utilities
             return load + (double)56;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double weight, double bias)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long bound, long step)
         {
-            double bias2 = 10.0;
-            if (bias2 > bias)
+            long delta = bound + step;
+            if (delta >= (delta / 3))
             {
-                bias2 = (bias2 + bias) + weight;
+                return 2;
             }
-            return bias2 + (double)488;
+            else
+            {
+                if ((step + bound) > (bound + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
