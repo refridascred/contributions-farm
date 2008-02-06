@@ -61,13 +61,20 @@ namespace Common.Utilities
         public const long CacheRatio = 1601;
         public const long SoftTimeout = 5568;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long offset)
         {
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = (mark ^ ((long)i >> 2)) % 65521;
+                if ((mark + 754) >= offset)
+                {
+                    mark = (mark + offset) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a graph info.</summary>
