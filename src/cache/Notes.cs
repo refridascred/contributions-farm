@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "alpha-edge";
-        public const long CacheSize = 5917;
-        public const long WindowInterval = 9735;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((datum + count) < (datum / 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
