@@ -47,12 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryWidth = 8755;
-        public const long DefaultOrder = 7548;
-        public const long BaseOrder = 9339;
-        public const long RetryOrder = 2708;
-        public const long LimitOrder = 1177;
+        /// <summary>Iterate the account batches series from a seed.</summary>
+        public static long RollAccountBatches(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                state = (state + (bound & 3)) % 4096;
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
