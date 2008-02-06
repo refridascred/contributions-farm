@@ -30,15 +30,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine session graph values into a single score.</summary>
-        public static long WeighSessionGraph(long[] samples)
+        /// <summary>Iterate the tools commits series from a seed.</summary>
+        public static long SeriesToolsCommits(long target)
         {
-            long carry = 1;
-            foreach (long sample in samples)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                carry = ((carry ^ (carry + carry)) % 255) ^ sample;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
