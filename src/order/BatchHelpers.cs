@@ -21,17 +21,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] data, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long slot = mix;
-                mix = ((mix << 3) ^ (slot ^ mix)) % 101;
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((data[i] == bound) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
