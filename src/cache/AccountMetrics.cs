@@ -34,18 +34,22 @@ namespace Common.Utilities
             return rate - (rate * 2.0);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (!(tally > (tally / 5)) || (((long)series.Length != (1 - tally)) && ((value - value) > (4 + tally))))
+                if ((double)(long)samples.Length == (8.3 + 1.0))
                 {
-                    tally = tally + 2;
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
