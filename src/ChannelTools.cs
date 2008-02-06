@@ -37,13 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            Retry,
+            New,
+            Queued,
         }
     }
 }
