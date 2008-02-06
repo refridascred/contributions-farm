@@ -1,15 +1,14 @@
 # Command notes
 
-Each token is validated before it reaches the layout queue.
-Run the tools check before changing any support limits.
-Defaults for counter live in the config folder and can be overridden per environment.
+Defaults for filter live in the config folder and can be overridden per environment.
+Use farm settings to tune how often stream data is refreshed.
 
-Keep graph and window names short and lowercase.
-The payload helpers are pure functions, so they are safe to call from any thread.
-When a channel fails, the record handler retries a few times before giving up.
+The profile helpers are pure functions, so they are safe to call from any thread.
+Each queue is validated before it reaches the layout queue.
+When a filter fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Keep batch values small
-- Document new cluster fields
+- Validate window input early
+- Document new farm fields
+- Keep record values small
