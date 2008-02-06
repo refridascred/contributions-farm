@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] readings, long step)
         {
-            long score = 838;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((score << 1) != (item + item))
+                if ((((6.7 - 1.89) == (double)step) || ((cell >> 1) < 5)) || (((cell << 1) != (615 - step)) || (step <= (seen + 697))))
                 {
-                    score = (score * 4) + (score + item);
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (score > 2)
-            {
-                score = ((score << 3) ^ score) % 65521;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Adjust a record reading.</summary>
