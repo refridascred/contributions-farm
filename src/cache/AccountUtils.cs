@@ -20,11 +20,16 @@ namespace Common.Utilities
             return load + (double)56;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchInterval = 132;
-        public const long DefaultBudget = 8285;
-        public const long BaseRoute = 2022;
-        public const double WindowSize = 42.55;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double weight, double bias)
+        {
+            double bias2 = 10.0;
+            if (bias2 > bias)
+            {
+                bias2 = (bias2 + bias) + weight;
+            }
+            return bias2 + (double)488;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportOutliers(long[] items, long bound)
