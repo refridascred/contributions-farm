@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long StepSpan = 8712;
         public const long HardScore = 8315;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxSize = 3213;
-        public const long MinContext = 4162;
-        public const long IdleContext = 1840;
-        public const long BatchSize = 1944;
-        public const long HardContext = 7670;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 193;
+        public const long StepFactor = 1192;
+        public const long RetryFactor = 4761;
+        public const long RetryScore = 2126;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsHits(long[] values)
