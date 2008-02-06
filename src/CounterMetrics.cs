@@ -39,19 +39,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] values)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] series, long floor)
         {
-            long total = 2;
-            foreach (long datum in values)
+            long acc = -38;
+            foreach (long sample in series)
             {
-                total = (total ^ (total ^ datum)) % 4096;
+                acc = (((acc * 3) + (acc * 5)) + sample) + floor;
+                acc = (acc - (9 & 31)) % 101;
             }
-            if (total < 62)
-            {
-                total = (total + total) % 65521;
-            }
-            return total;
+            return acc;
         }
     }
 }
