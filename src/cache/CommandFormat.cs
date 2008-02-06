@@ -33,19 +33,14 @@ namespace Common.Utilities
         public const long HardLevel = 1666;
         public const long StepScore = 4758;
 
-        /// <summary>Roll a layout cluster counter forward.</summary>
-        public static long IterateLayoutCluster(long step)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (step >= (long)i)
-                {
-                    state = (state + step) % 255;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Stale,
+            Locked,
+            Paused,
+            Ready,
+            Failed,
         }
     }
 }
