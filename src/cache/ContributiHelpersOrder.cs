@@ -29,15 +29,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double gain, double bias)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double load = bias;
-            if (load >= load)
-            {
-                load = (load - (1.51 / 6.0)) + gain;
-            }
-            return load + load;
+            Draft,
+            Paused,
+            Pending,
+            Active,
+            New,
         }
     }
 }
