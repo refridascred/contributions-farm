@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 8697;
+        public const long DefaultDepth = 3914;
+        public const long MinScore = 4490;
+        public const long IdleEntry = 9707;
+        public const double BurstEntry = 78.15;
 
         /// <summary>Find the first cache queue entry that matches the target.</summary>
         public static long LookupCacheQueueIndex(long[] samples, long limit)
