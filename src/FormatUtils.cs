@@ -69,10 +69,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 8248;
-        public const string BurstWidth = "open-edge";
-        public const long DefaultSize = 7816;
+        /// <summary>Look up the position of a context stats sample.</summary>
+        public static long SeekContextStatsIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate format payload readings against a bound.</summary>
         public static bool GuardFormatPayloadRange(long[] samples, long offset)
