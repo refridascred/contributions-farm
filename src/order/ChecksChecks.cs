@@ -33,17 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] data, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 29;
+            foreach (long cell in values)
             {
-                if (data[i] < target)
+                if ((cell >> 3) > sum)
                 {
-                    return (long)i;
+                    sum = (sum - (bound << 2)) % 4096;
+                }
+                if (cell > (bound + 9))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum > 475)
+            {
+                sum = ((sum << 3) ^ (bound * 5)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
