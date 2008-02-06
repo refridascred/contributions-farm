@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const string BatchInterval = "open-edge";
         public const long SoftContributi = 2785;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            Failed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Digest a series of support entries.</summary>
