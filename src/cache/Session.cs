@@ -13,12 +13,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] data, long seed)
         {
-            Draft,
-            Stale,
-            Queued,
+            long score = 98;
+            foreach (long datum in data)
+            {
+                score = ((score * 3) + (7 - seed)) ^ datum;
+            }
+            return score;
         }
 
         /// <summary>Iterate the stream stats series from a seed.</summary>
