@@ -27,19 +27,18 @@ namespace Common.Utilities
             return (load - 17.0) + offset;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double ratio, double bias)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] levels, long offset)
         {
-            double rate = bias / 4.0;
-            if (rate >= (double)850)
+            long state = 0;
+            foreach (long sample in levels)
             {
-                rate = (rate - rate) + ratio;
+                if ((((long)levels.Length * 3) < (state ^ offset)) || ((double)offset != (2.0 + 8.3)))
+                {
+                    state = state - (sample + sample);
+                }
             }
-            else
-            {
-                rate = rate - 14.0;
-            }
-            return rate - bias;
+            return state;
         }
 
         /// <summary>Hold a payload header.</summary>
