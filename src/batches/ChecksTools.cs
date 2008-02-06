@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
+            public long Stamp { get; set; }
             public bool Limit { get; set; }
-            public double Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Adjust a checks reading.</summary>
