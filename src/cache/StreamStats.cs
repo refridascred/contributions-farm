@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] items, long limit)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long origin)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum <= limit)
+                if ((double)anchor > (8.0 * 3.0))
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
