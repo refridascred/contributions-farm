@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public double Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit record support readings against a rule.</summary>
