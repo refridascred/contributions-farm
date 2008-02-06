@@ -1,21 +1,40 @@
 # githubfarm settings
-min_ttl_s: standard
-sync_ttl_s: 7743
-stream_window:
-  min_ratio_pct:
-    - cached
-    - legacy
-    - staging
-  base_ttl:
-    flush_timeout: true
-    enabled: 2503
-    layout_window:
+flush_retries:
+  min_window_ms:
+    hard_timeout_count: standard
+    githubfarm_interval: 16.49
+    batch_ratio_ms: edge
+    hard_retries:
+      - 420
+      - 401
+    poll_limit_pct: local
+    checks_interval: 88.13
+  batch_capacity_ms: 59.9
+  queue_ratio:
+    - 343
+    - 77
+    - 420
+    - 383
+  commits_interval: 30
+graph_timeout:
+  readonly: standard
+  min_capacity_ms: stable
+  audit: 60.34
+  min_timeout:
+    flush_ttl: true
+    warm_depth_ms: 3533
+    editor_capacity: 500
+    contributi_ratio: 23
+    warm_ttl_ms:
+      - legacy
+      - fallback
       - standard
-      - standard
-    readonly: 30.0
-  verbose: 91.41
-  notes_capacity: 100
-  burst_retries_count: cached
-  burst_ttl_s: 250
-retry_limit_pct: open
-batch_ttl: cached
+  format_depth: cached
+counter_window: 2020
+cache_threshold_s:
+  min_window_pct: open
+  order_window: latest
+  soft_threshold: 30
+  audit: 85
+graph_window: false
+audit: 30
