@@ -47,11 +47,22 @@ namespace Common.Utilities
         public const long MinContributi = 887;
         public const string DefaultSpan = "alpha-v2";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 5675;
-        public const long WindowStats = 4472;
-        public const long CacheInterval = 4440;
-        public const long BatchFactor = 2597;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
