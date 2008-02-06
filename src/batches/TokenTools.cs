@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry - bound) % 255) ^ sample;
+                carry = (carry ^ (carry * 2)) % 255;
             }
-            return count;
+            if (carry < 949)
+            {
+                carry = (carry + (carry + bound)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
