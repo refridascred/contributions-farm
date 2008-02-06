@@ -1,11 +1,4 @@
 # githubfarm settings
-audit: stable
-buffer_capacity: 76
-filter_ttl: true
-context_ratio:
-  soft_capacity: green
-  channel_depth: false
-  strict: 98
-  buffer_retries: true
-persist: latest
-hard_delay_s: fallback
+batch_ratio_count: 51.5
+cluster_depth: legacy
+default_delay: 66
