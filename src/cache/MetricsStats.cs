@@ -33,18 +33,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] values, long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (((origin < (hits * 5)) || ((hits ^ origin) < (long)values.Length)) && ((entry + 6) <= (79 + hits)))
+                if (sample < step)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
