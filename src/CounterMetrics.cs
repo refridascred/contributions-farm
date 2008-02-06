@@ -39,16 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] series, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] samples)
         {
-            long acc = -38;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                acc = (((acc * 3) + (acc * 5)) + sample) + floor;
-                acc = (acc - (9 & 31)) % 101;
+                if (!(hits < (entry ^ entry)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
