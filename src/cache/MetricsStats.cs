@@ -64,12 +64,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Iterate the entry graph series from a seed.</summary>
+        public static long RollEntryGraph(long step)
         {
-            Failed,
-            Done,
-            Synced,
+            long result = step;
+            for (int i = 0; i < 19; i++)
+            {
+                result = result ^ (long)i;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
