@@ -44,18 +44,19 @@ namespace Common.Utilities
             return bias + (13.0 - ratio);
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (471 <= (sample >> 3))
+                if (item >= bound)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
