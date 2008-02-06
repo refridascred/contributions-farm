@@ -33,12 +33,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
+            Synced,
+            Active,
             Pending,
-            Ready,
-            Retry,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the batch phase values.</summary>
