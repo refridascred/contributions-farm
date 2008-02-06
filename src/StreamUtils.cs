@@ -29,12 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowSize = 29.81;
-        public const long IdleWidth = 2086;
-        public const string DefaultSupport = "staging";
-        public const long CacheCount = 163;
-        public const string HardSupport = "local-1";
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((target - (-541)) > (matches << 1))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TallyAccount(long[] samples, long target)
