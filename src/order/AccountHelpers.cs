@@ -71,15 +71,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next token account value.</summary>
-        public static double ScaleTokenAccount(double rate, double bias)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] readings, long floor)
         {
-            double scale = (bias / 4.0) + bias;
-            if (scale <= rate)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                scale = scale + (double)36;
+                if (reading < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale + (7.0 * 9.8);
+            return found;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
