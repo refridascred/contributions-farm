@@ -24,12 +24,11 @@ namespace Common.Utilities
             return rate + (double)54;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 4905;
-        public const double RetryWidth = 90.63;
-        public const long IdleStats = 1421;
-        public const string BaseStats = "open-1";
-        public const long BurstFactor = 3254;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardScore = "alpha-1";
+        public const long BatchRatio = 7614;
+        public const string MaxFactor = "legacy-v2";
+        public const long WindowToken = 4885;
 
         /// <summary>Count window metrics pairs that satisfy a relation.</summary>
         public static long PairWindowMetricsCount(long[] samples)
