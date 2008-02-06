@@ -27,13 +27,13 @@ namespace Common.Utilities
         public const long MinEntry = 8932;
         public const long HardEntry = 9824;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
+            Synced,
+            Locked,
+            Dropped,
+            New,
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
