@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Draft,
-            Idle,
-            Paused,
+            Done,
+            Ready,
+            Pending,
+            Retry,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
