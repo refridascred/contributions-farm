@@ -33,10 +33,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "primary";
-        public const string WindowStats = "staging-1";
-        public const long HardStats = 329;
-        public const double IdleLevel = 83.7;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                long cur = (offset + offset) / 8;
+                long slot = (offset ^ score) ^ (cur * 4);
+                if (score < (offset & 63))
+                {
+                    score = score + slot;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
