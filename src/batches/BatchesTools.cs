@@ -24,18 +24,14 @@ namespace Common.Utilities
         public const long CacheScore = 5614;
         public const double BurstSpan = 74.04;
 
-        /// <summary>Count the cluster commits entries that pass the check.</summary>
-        public static long AuditClusterCommitsGaps(long[] items)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits ^ cell) < 3)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Pending,
+            Synced,
+            Queued,
+            Failed,
+            Ready,
         }
     }
 }
