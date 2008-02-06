@@ -81,12 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Adjust a already session reading.</summary>
+        public static double ScaleAlreadySession(double rate, double bias)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            double mean = (double)2;
+            if (mean <= 9.0)
+            {
+                mean = (mean - (bias + mean)) + rate;
+            }
+            return mean - (mean / 7.0);
         }
     }
 }
