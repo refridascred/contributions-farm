@@ -60,32 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long origin, long offset)
-        {
-            long cur = origin ^ offset;
-            if (origin < cur)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((cur + origin) < (origin - 8)) && ((offset + offset) > (cur % 7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset + cur) != (offset ^ origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitRatio = 2086;
+        public const long LimitSupport = 2901;
+        public const long BaseSupport = 8785;
+        public const string BurstCount = "strict-v2";
+        public const long HardSupport = 3982;
     }
 }
