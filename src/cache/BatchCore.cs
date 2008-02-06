@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of profile batch readings.</summary>
-        public static long DigestProfileBatch(long[] readings)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mark = 924;
-            foreach (long reading in readings)
-            {
-                mark = ((mark << 2) ^ (reading * 2)) % 101;
-                mark = (mark ^ (mark / 8)) % 101;
-            }
-            if (mark > (-485))
-            {
-                mark = ((mark << 3) ^ (434 << 2)) % 101;
-            }
-            return mark;
+            Closed,
+            New,
+            Draft,
         }
 
         /// <summary>Count the already stats entries that pass the check.</summary>
