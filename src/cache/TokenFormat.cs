@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Failed,
-            Locked,
-            Synced,
-            New,
-            Paused,
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a support entry.</summary>
