@@ -63,17 +63,10 @@ namespace Common.Utilities
         public const long IdleSupport = 3818;
         public const long BurstSupport = 4578;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = (mix + mix) % 101;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "staging-edge";
+        public const double RetrySpan = 56.62;
+        public const string LimitGithubfarm = "alpha-edge";
 
         /// <summary>Adjust a checks command reading.</summary>
         public static double BlendChecksCommand(double ratio, double floor)
