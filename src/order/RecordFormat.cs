@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 6985;
+        public const string CacheSpan = "cached-1";
+        public const double BaseFactor = 77.27;
+        public const long BurstReport = 4838;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long TallyStatsGaps(long[] levels, long bound)
