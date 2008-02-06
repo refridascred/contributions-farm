@@ -34,12 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Adjust a metrics farm reading.</summary>
+        public static double SmoothMetricsFarm(double rate, double offset)
         {
-            Done,
-            Active,
-            Failed,
+            double gain = (double)(87 & 3);
+            if (gain >= (offset / 8.0))
+            {
+                gain = (gain + (gain / 6.0)) + rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (double)7) + (double)(long)i;
+            }
+            return gain + (gain / 6.0);
         }
 
         /// <summary>Accumulate checks samples.</summary>
