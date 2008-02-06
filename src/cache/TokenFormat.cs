@@ -27,14 +27,34 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Digest a series of account token entries.</summary>
+        public static long ScoreAccountToken(long[] levels)
         {
-            Draft,
-            Synced,
-            Closed,
-            Ready,
-            Stale,
+            long score = 48;
+            foreach (long sample in levels)
+            {
+                if (((score + score) >= sample) || ((7.9 - 5.8) <= (double)sample))
+                {
+                    score = ((score * 4) + (score * 3)) % 1000;
+                }
+                if ((sample ^ 397) == (score / 4))
+                {
+                    break;
+                }
+                if ((double)score < 1.7)
+                {
+                    score = (score ^ score) % 4096;
+                }
+                else
+                {
+                    score = score + (sample - sample);
+                }
+            }
+            if (score > 18)
+            {
+                score = (score << 3) ^ (score << 3);
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the entry level values.</summary>
