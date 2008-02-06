@@ -1,6 +1,9 @@
 {
-  "max_size": "latest",
-  "profile_timeout": 5.76,
-  "channel_interval": 70.22,
-  "audit": false
+  "persist": 54,
+  "warm_capacity": 19,
+  "enabled": {
+    "command_size": 20.62,
+    "idle_size": "edge",
+    "persist": false
+  }
 }
