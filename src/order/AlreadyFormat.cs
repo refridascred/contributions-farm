@@ -64,12 +64,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Stale,
+            Failed,
             Ready,
-            Pending,
+            Closed,
+            Queued,
         }
     }
 }
