@@ -26,19 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] items, long bound)
+        /// <summary>Look up the position of a filter already sample.</summary>
+        public static long SeekFilterAlreadyIndex(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= bound)
+                if (series[i] >= offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the channel state values.</summary>
