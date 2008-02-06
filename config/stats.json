@@ -1,25 +1,7 @@
 {
-  "burst_size_ms": {
-    "burst_timeout_count": 250,
-    "batches_threshold": false,
-    "cache_limit_s": 88,
-    "soft_window_s": true,
-    "schema_depth": 54,
-    "retry_threshold_s": true
-  },
-  "compress": {
-    "burst_timeout_ms": true,
-    "order_depth": 16.37,
-    "hard_limit_ms": ["cached", "fallback", "legacy"],
-    "context_timeout": 500
-  },
-  "persist": {
-    "warm_window": true,
-    "default_window_s": 9605,
-    "poll_ttl": 136,
-    "default_ttl": "edge"
-  },
-  "default_depth": 5181,
-  "graph_depth": "staging",
-  "cache_ttl": true
+  "compress": 80.36,
+  "verbose": "fallback",
+  "readonly": 1,
+  "channel_delay": true,
+  "hard_threshold_count": "cached"
 }
