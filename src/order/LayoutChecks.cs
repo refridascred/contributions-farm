@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] items, long target)
+        /// <summary>Combine record route values into a single score.</summary>
+        public static long CombineRecordRoute(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 3;
+            foreach (long cell in values)
             {
-                if (items[i] > target)
+                if ((cell & 127) > (result << 1))
                 {
-                    return (long)i;
+                    result = (result << 2) ^ (cell + cell);
                 }
             }
-            return -1;
+            if (result < 1)
+            {
+                result = (result - (result + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
