@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryInterval = 6676;
-        public const string IdleProfile = "local-v2";
-        public const long DefaultProfile = 1624;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((((value + 268) >= value) || (count <= (value + (-607)))) || ((3 + value) != (count + value)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteOutliers(long[] items)
