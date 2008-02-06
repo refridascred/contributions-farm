@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] items, long floor)
         {
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a record record.</summary>
