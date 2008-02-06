@@ -48,39 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long offset, long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] values, long origin)
         {
-            long span = offset - limit;
-            if ((448 << 2) > limit)
+            bool found = true;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset > (6.2 * 8.0))
+                if (cell != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((19 << 1) >= limit) && ((5.5 - 6.06) >= (double)limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((span & 63) == (offset << 3)) && ((9.0 * 9.15) >= (double)span))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Adjust a already session reading.</summary>
