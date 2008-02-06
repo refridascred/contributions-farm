@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double ratio, double span)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            double load = 4.4;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = ((load + ratio) + (double)(long)i) + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load - 12.0;
+            return tally;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
