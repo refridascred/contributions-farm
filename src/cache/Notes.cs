@@ -53,38 +53,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long step, long bound)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] data)
         {
-            if ((double)step <= (10.0 * 1.96))
+            long mix = 95;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((155 << 3) <= (step % 64))
+                if (((reading + reading) != (95 + reading)) && ((13.0 + 5.0) == (double)reading))
                 {
-                    return 7;
+                    mix = (mix * 2) + 93;
                 }
                 else
                 {
-                    if ((double)bound == (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((9.77 - 2.0) != (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = (mix ^ (reading + reading)) % 65521;
+                }
+                if ((reading ^ 646) < reading)
+                {
+                    break;
                 }
             }
+            return mix;
         }
     }
 }
