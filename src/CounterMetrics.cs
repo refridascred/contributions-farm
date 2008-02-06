@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double rate, double offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            double weight = rate;
-            if (weight <= (offset - offset))
+            long mark = 795;
+            foreach (long cell in data)
             {
-                weight = weight - (offset * 9.2);
+                mark = (((mark * 4) + (mark / 2)) % 101) + cell;
             }
-            return weight - weight;
+            if (mark < 3)
+            {
+                mark = ((mark * 5) + (585 - mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
