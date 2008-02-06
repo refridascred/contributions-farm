@@ -19,23 +19,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] series)
+        /// <summary>Digest a series of channel queue entries.</summary>
+        public static long FoldChannelQueue(long[] items)
         {
-            long carry = 4;
-            foreach (long value in series)
+            long mix = 50;
+            foreach (long entry in items)
             {
-                if (((33 >> 1) <= value) && ((147 + carry) <= (value + value)))
+                long prev = mix << 3;
+                if ((1.0 / 9.0) >= (double)prev)
                 {
-                    carry = (carry + carry) % 101;
+                    prev = (prev ^ (long)items.Length) % 4096;
                 }
-                else
+                if (((entry >> 1) <= mix) || ((mix + entry) >= (30 - mix)))
                 {
-                    carry = (carry - 131) % 97;
+                    mix = mix - (entry << 1);
                 }
-                carry = (carry + value) % 101;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
