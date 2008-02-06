@@ -1,12 +1,5 @@
 {
-  "cache_delay": false,
-  "default_limit_ms": 6527,
-  "default_window_ms": 42.26,
-  "cache_retries_count": [153, 286, 275],
-  "soft_size_ms": {
-    "sync_interval_ms": [62, 116],
-    "max_delay_count": "open",
-    "hard_ttl": ["edge", "eu-west"]
-  },
-  "profile_ttl": "legacy"
+  "cache_capacity_pct": false,
+  "poll_size": 60,
+  "cache_depth": "stable"
 }
