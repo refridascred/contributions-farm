@@ -21,26 +21,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)(long)i == (4.55 + 16.0))
-                {
-                    anchor = anchor - (31 >> 4);
-                }
-                else
-                {
-                    anchor = (anchor ^ (long)i) % 65521;
-                    anchor = (anchor ^ target) % 97;
-                }
-                anchor = (anchor + (target << 1)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 5596;
+        public const long BaseFormat = 1739;
+        public const double BaseWidth = 34.38;
+        public const long StepDepth = 8796;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
