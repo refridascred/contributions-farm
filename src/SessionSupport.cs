@@ -19,19 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] data, long seed)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
