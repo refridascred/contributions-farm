@@ -34,17 +34,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] data, long bound)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double scale, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (floor - scale) / 4.0;
+            if (ratio > ratio)
             {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (4.0 * 10.0);
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (ratio + floor);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (scale + ratio)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
