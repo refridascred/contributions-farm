@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long seed, long floor)
-        {
-            long span = seed - floor;
-            if ((double)span >= 1.12)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((floor / 3) > span))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)span < (10.0 - 3.63))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxWidth = 12.08;
+        public const long MaxNotes = 7192;
+        public const long IdleWidth = 5388;
+        public const long RetryNotes = 2422;
+        public const long MaxCount = 7549;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ScaleCounter(double scale, double offset)
