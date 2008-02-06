@@ -25,19 +25,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] items, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (entry < step)
+                if (floor <= (reading - reading))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
