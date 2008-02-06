@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Active,
-            Ready,
-            Pending,
+            Queued,
+            Draft,
+            Done,
+            Failed,
+            Locked,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
