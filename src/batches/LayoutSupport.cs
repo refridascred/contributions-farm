@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a layout metric reading.</summary>
-        public static double ScaleLayoutMetric(double scale, double offset)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            double bias = scale;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = ((bias + bias) - (double)(long)i) - offset;
-            }
-            return bias - bias;
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
