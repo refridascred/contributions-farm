@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] values, long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((long)values.Length & 15) < tally)
-                {
-                    tally = ((tally + 1) + sample) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
