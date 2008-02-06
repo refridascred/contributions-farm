@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] values, long step)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
