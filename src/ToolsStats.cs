@@ -69,13 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
+            Locked,
+            Done,
+            Paused,
             Dropped,
-            Synced,
-            Ready,
-            Failed,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
