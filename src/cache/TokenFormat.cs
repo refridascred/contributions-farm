@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long origin)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((long)i + origin) == (origin - origin))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = anchor ^ (origin - (long)i);
+                }
+                if (!((double)origin > (0.5 - 1.62)))
+                {
+                    anchor = anchor + ((long)i * 4);
+                }
+                else
+                {
+                    anchor = (anchor ^ (origin + anchor)) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a support entry.</summary>
