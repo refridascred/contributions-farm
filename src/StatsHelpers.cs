@@ -22,13 +22,18 @@ namespace Common.Utilities
         public const string WindowEditor = "cached";
         public const string CacheDepth = "staging-edge";
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (7.6 <= (double)datum)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
