@@ -40,11 +40,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            Synced,
+            Done,
+            Locked,
+            Active,
+            Idle,
         }
     }
 }
