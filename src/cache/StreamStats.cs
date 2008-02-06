@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (((2 <= reading) || (reading <= (hits + reading))) || ((787 + hits) >= (55 / 9)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstDepth = "fallback-edge";
+        public const long BurstBatches = 5958;
+        public const double BurstRatio = 2.55;
+        public const long LimitTimeout = 712;
+        public const string WindowBatches = "primary-v2";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxGithubfarm = 6524;
