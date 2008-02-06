@@ -20,31 +20,23 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long seed, long origin)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double bias, double span)
         {
-            if ((seed / 4) > (seed % 10))
+            double rate = 8.3 - (span + span);
+            if (rate <= span)
             {
-                return 7;
+                rate = rate + (double)126;
             }
             else
             {
-                if (((double)seed < (9.4 - 0.1)) && ((7.8 / 2.0) != (double)origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin - origin) <= origin) || ((double)seed == (7.28 + 7.45)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                rate = rate - (bias - bias);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - rate;
         }
     }
 }
