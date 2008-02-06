@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] levels, long limit)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long result = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((40 - limit) <= (seen % 8))
-                {
-                    seen = (seen + 2) + cell;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
