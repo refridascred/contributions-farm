@@ -27,14 +27,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] items, long offset)
         {
-            Done,
-            Closed,
-            Queued,
-            Draft,
-            Ready,
+            long score = 4;
+            foreach (long item in items)
+            {
+                score = score ^ (item - item);
+                if ((score * 5) == (offset + 12))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
     }
 }
