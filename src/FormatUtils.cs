@@ -64,19 +64,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format payload readings against a bound.</summary>
-        public static bool GuardFormatPayloadRange(long[] samples, long offset)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
