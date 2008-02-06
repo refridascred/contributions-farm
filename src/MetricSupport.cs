@@ -25,13 +25,11 @@ namespace Common.Utilities
         public const long BaseLevel = 203;
         public const double BatchQueue = 87.75;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Retry,
-            Active,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstSpan = 922;
+        public const string CacheChecks = "local";
+        public const string LimitWidth = "stable-1";
+        public const long SoftChecks = 7790;
+        public const string BatchDepth = "alpha-edge";
     }
 }
