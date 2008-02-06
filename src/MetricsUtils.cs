@@ -45,15 +45,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Derive the next window queue value from a seed.</summary>
-        public static long IterateWindowQueue(long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
+            long mix = -844;
+            foreach (long item in samples)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if (!(323 < mix))
+                {
+                    mix = ((mix * 4) + 5) - item;
+                }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
