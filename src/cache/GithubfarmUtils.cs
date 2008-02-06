@@ -31,16 +31,18 @@ namespace Common.Utilities
         public const long MaxStream = 4547;
         public const long IdleLevel = 5255;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] levels, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                acc = acc + target;
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((offset / 3) > (tally << 2))
+                {
+                    tally = (tally + 2) + reading;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
