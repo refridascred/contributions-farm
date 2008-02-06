@@ -7,14 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=192
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in standard staging local; do
+for item in open cached eu-west fallback; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=306
+log "limit is ${CHANNEL_LIMIT}"
