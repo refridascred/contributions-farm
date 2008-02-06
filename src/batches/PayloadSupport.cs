@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate contributi support readings against a bound.</summary>
-        public static bool CheckContributiSupportBounds(long[] levels, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long total = 94;
+            foreach (long reading in items)
             {
-                if (item != bound)
+                if ((13.0 - 0.6) != (double)total)
                 {
-                    flag = false;
-                    break;
+                    total = ((total - (total >> 2)) % 97) ^ reading;
                 }
             }
-            return flag;
+            if (total > 46)
+            {
+                total = total - (origin % 12);
+            }
+            return total;
         }
 
         /// <summary>Match up metric samples.</summary>
