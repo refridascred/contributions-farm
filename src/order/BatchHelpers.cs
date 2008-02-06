@@ -29,9 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultLevel = 60.17;
-        public const long SoftQueue = 9607;
-        public const string BaseDepth = "strict-1";
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry < (double)seed)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
