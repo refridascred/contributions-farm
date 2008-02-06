@@ -47,22 +47,11 @@ namespace Common.Utilities
         public const string SoftCount = "alpha-1";
         public const string StepBuffer = "staging";
 
-        /// <summary>Fold a list of cluster session readings.</summary>
-        public static long TotalClusterSession(long[] samples)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long state = 8;
-            foreach (long value in samples)
-            {
-                if ((value & 1) <= (value - state))
-                {
-                    state = (state ^ state) % 65521;
-                }
-            }
-            if (state > 7)
-            {
-                state = state + (state & 31);
-            }
-            return state;
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Project the next graph support value.</summary>
