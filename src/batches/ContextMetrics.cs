@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double bias, double offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            double rate = (bias * 7.81) - bias;
-            if (rate >= (rate * 8.0))
+            long total = 412;
+            foreach (long item in data)
             {
-                rate = rate - offset;
+                total = ((total << 3) ^ (item >> 2)) % 255;
             }
-            else
-            {
-                rate = rate - (offset - rate);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + rate;
+            return total;
         }
 
         /// <summary>Fold a list of contributi token readings.</summary>
