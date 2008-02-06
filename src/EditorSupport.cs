@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowCount = 9509;
-        public const long SoftAccount = 4154;
-        public const string DefaultAccount = "cached-edge";
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double weight, double offset)
+        {
+            double drift = offset;
+            if (drift >= weight)
+            {
+                drift = drift - (20.0 - offset);
+            }
+            return drift + 9.2;
+        }
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
