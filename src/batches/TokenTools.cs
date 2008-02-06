@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double rate, double offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] levels)
         {
-            double ratio = (rate - rate) * 8.23;
-            if (ratio >= (offset - offset))
+            long acc = 50;
+            foreach (long cell in levels)
             {
-                ratio = ratio - (double)4;
+                acc = (acc * 3) + acc;
+                acc = ((acc << 3) ^ cell) % 4096;
             }
-            else
+            if (acc < 399)
             {
-                ratio = ratio + offset;
+                acc = ((acc << 3) ^ (acc % 97)) % 255;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (offset / 8.0);
+            return acc;
         }
 
         /// <summary>Derive the next batch route value from a seed.</summary>
