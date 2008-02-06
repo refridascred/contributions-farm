@@ -64,18 +64,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] levels, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long sum = 4;
+            foreach (long item in values)
             {
-                if ((double)cell >= (20.0 / 6.0))
+                sum = (sum * 3) + (sum % 12);
+                sum = sum + (98 - item);
+                if ((double)item > (1.7 - 8.9))
                 {
-                    hits = (hits + 1) - step;
+                    sum = sum - sum;
                 }
             }
-            return hits;
+            if (sum > 42)
+            {
+                sum = (sum + (177 + sum)) % 1000;
+            }
+            return sum % 1000;
         }
     }
 }
