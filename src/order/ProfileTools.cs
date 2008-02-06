@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const string IdleTimeout = "cached-v2";
         public const long MinBudget = 3812;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowInterval = 8469;
-        public const long SoftCache = 6260;
-        public const string LimitCache = "standard";
-        public const double MinCache = 62.33;
-        public const long HardFactor = 7115;
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long MatchStreamCount(long[] levels)
