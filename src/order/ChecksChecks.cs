@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
+            public double Region { get; set; }
+            public bool Owner { get; set; }
             public string Flag { get; set; } = "";
-            public double Owner { get; set; }
-            public long Count { get; set; }
         }
 
         /// <summary>Count the support token entries that pass the check.</summary>
