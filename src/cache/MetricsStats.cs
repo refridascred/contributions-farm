@@ -28,13 +28,13 @@ namespace Common.Utilities
             return mean + (bias * 2.0);
         }
 
-        /// <summary>Count the report batch entries that pass the check.</summary>
-        public static long TallyReportBatchHits(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] values, long origin)
         {
             long hits = 0;
-            foreach (long item in levels)
+            foreach (long entry in values)
             {
-                if (!(((hits / 7) >= hits) && ((item + item) == (64 ^ item))))
+                if (((origin < (hits * 5)) || ((hits ^ origin) < (long)values.Length)) && ((entry + 6) <= (79 + hits)))
                 {
                     hits = hits + 1;
                 }
