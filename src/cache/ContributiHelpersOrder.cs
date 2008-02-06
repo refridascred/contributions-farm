@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] readings, long floor)
         {
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading * 4) >= (seen + seen))
+                {
+                    seen = (seen + 1) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
