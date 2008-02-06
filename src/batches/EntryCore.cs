@@ -58,22 +58,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits payload samples are out of range.</summary>
-        public static long CountCommitsPayloadMatches(long[] samples, long offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)value > 0.2)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
