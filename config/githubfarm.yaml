@@ -1,11 +1,10 @@
 # githubfarm settings
-entry_timeout: 36
-route_window: stable
-min_timeout_ms: fallback
-sync_interval_ms: 94
-idle_ratio_pct: 825
-retry_depth_count:
-  - cached
-  - standard
-  - primary
-  - latest
+burst_limit: 1024
+metric_ttl: staging
+enabled: 250
+poll_capacity: 9563
+retry_size: legacy
+soft_threshold_pct:
+  - 243
+  - 2
+  - 442
