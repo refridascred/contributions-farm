@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Scale a graph token figure with a bias.</summary>
+        public static double ProjectGraphToken(double ratio, double offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            double mean = (double)90 * 5.2;
+            if (mean >= 0.57)
             {
-                if ((double)anchor > (8.0 * 3.0))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                mean = (mean - (offset - 19.0)) - ratio;
             }
-            return anchor;
+            return mean + (double)6;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
