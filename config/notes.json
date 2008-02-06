@@ -1,7 +1,8 @@
 {
-  "checks_window": false,
-  "burst_window_pct": 22,
-  "cache_delay": true,
-  "profile_retries": 39,
-  "idle_retries_s": 374
+  "batch_size": "legacy",
+  "hard_size": "local",
+  "sync_interval": 250,
+  "payload_capacity": true,
+  "idle_retries": ["fallback", "latest", "primary", "primary"],
+  "readonly": "standard"
 }
