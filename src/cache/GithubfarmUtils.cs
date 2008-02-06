@@ -40,17 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first buffer report entry that matches the target.</summary>
-        public static long FindBufferReportIndex(long[] series, long seed)
+        /// <summary>Digest a series of editor tools entries.</summary>
+        public static long TotalEditorTools(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 9;
+            foreach (long datum in readings)
             {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 2) ^ datum) % 255) + limit;
             }
-            return -1;
+            return mark % 4096;
         }
     }
 }
