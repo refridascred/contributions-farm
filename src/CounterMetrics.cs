@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long mark = 795;
-            foreach (long cell in data)
-            {
-                mark = (((mark * 4) + (mark / 2)) % 101) + cell;
-            }
-            if (mark < 3)
-            {
-                mark = ((mark * 5) + (585 - mark)) % 101;
-            }
-            return mark;
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
