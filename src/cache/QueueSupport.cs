@@ -16,18 +16,11 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] levels, long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count / 8) <= origin)
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a format record.</summary>
