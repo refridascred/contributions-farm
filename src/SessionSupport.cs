@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinInterval = 68.96;
+        public const double IdleSpan = 10.78;
+        public const string BaseCount = "alpha";
+        public const long IdleContext = 4091;
 
         /// <summary>Digest a series of report account entries.</summary>
         public static long WeighReportAccount(long[] series, long bound)
