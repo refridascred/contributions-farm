@@ -47,17 +47,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] items, long step)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double weight, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = floor / 8.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((items[i] < step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + 4.4) + (double)(long)i;
             }
-            return -1;
+            return drift + weight;
         }
 
         /// <summary>Adjust a token commits reading.</summary>
