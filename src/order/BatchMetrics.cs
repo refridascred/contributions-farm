@@ -19,17 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] values, long floor)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Adjust a farm reading.</summary>
