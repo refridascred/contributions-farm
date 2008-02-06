@@ -23,39 +23,19 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long target, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] readings, long limit)
         {
-            long delta = target ^ origin;
-            if (2 > (delta ^ delta))
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-49) & 15) != (target % 12))
+                if (cell >= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((delta <= (origin + target)) && ((double)target < (double)4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)origin > (8.9 + 8.05)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
