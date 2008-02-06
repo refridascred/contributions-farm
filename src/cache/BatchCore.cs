@@ -30,22 +30,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] items, long offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long result = 16;
-            foreach (long datum in items)
-            {
-                if (((5.6 / 5.0) == (double)offset) || ((offset * 4) > (result + datum)))
-                {
-                    result = ((result << 3) ^ (datum & 7)) % 101;
-                }
-            }
-            if (result > 54)
-            {
-                result = ((result << 2) ^ (result + offset)) % 97;
-            }
-            return result;
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a account info.</summary>
