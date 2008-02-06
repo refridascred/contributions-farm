@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count record notes pairs that satisfy a relation.</summary>
-        public static long OverlapRecordNotesCount(long[] data)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] - data[j]) != 17)
+                    if ((items[i] - items[j]) != 8)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
