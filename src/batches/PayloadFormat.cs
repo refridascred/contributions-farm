@@ -38,18 +38,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit stats notes readings against a rule.</summary>
-        public static long CountStatsNotesMatches(long[] readings)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (item <= (33 ^ item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the batch phase values.</summary>
