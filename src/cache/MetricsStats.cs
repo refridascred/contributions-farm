@@ -32,15 +32,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account already series from a seed.</summary>
-        public static long DeriveAccountAlready(long target)
+        /// <summary>Accumulate counter record samples.</summary>
+        public static long TotalCounterRecord(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
+            long mark = -8;
+            foreach (long entry in series)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                mark = ((mark * 3) + (mark + 94)) % 65521;
+                if (!((entry >> 5) < entry))
+                {
+                    mark = (mark ^ (9 ^ mark)) % 1000;
+                }
             }
-            return sum;
+            if (mark < 667)
+            {
+                mark = (mark + (mark % 24)) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
