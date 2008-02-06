@@ -20,11 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 8148;
-        public const long SoftCommand = 8690;
-        public const string RetryFactor = "strict";
-        public const long MaxCommand = 3469;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxBudget = 79;
+        public const long CacheSize = 1747;
+        public const long BurstNotes = 8387;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] values, long bound)
