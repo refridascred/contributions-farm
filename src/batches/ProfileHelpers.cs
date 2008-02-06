@@ -50,18 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support farm entries that pass the check.</summary>
-        public static long TallySupportFarmMatches(long[] readings)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long carry = 9;
+            foreach (long value in levels)
             {
-                if (tally <= (entry >> 1))
-                {
-                    tally = tally + 1;
-                }
+                carry = carry + value;
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Count the session schema entries that pass the check.</summary>
