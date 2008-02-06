@@ -37,13 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public double Token { get; set; }
-            public bool Label { get; set; }
-            public double Rank { get; set; }
-            public double Size { get; set; }
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
