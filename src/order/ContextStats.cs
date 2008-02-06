@@ -36,18 +36,18 @@ namespace Common.Utilities
         public const long SoftCommits = 1817;
         public const double DefaultCommits = 98.87;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] series)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (((2.19 / 3.0) != (double)tally) && (entry >= (entry >> 5)))
+                if (!((item * 4) <= target))
                 {
-                    tally = tally + 2;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
