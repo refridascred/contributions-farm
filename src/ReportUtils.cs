@@ -20,19 +20,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] data, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long acc = 8;
+            foreach (long value in levels)
             {
-                if (cell != limit)
+                acc = (acc - (step - 92)) - value;
+                acc = acc ^ acc;
+                if ((double)acc >= 8.1)
                 {
-                    valid = false;
-                    break;
+                    acc = ((acc << 3) ^ 692) % 65521;
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
