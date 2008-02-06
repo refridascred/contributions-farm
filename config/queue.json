@@ -1,5 +1,6 @@
 {
-  "cache_ttl": 84.11,
-  "commits_depth": "edge",
-  "persist": 6201
+  "flush_timeout_pct": "staging",
+  "hard_size": false,
+  "stats_limit": "standard",
+  "hard_limit_pct": 93.35
 }
