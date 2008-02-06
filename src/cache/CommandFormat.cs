@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepInterval = 945;
-        public const long MaxDepth = 1781;
-        public const long IdleCommits = 409;
-        public const double RetryCommits = 2.02;
-        public const long DefaultCount = 3693;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] data, long origin)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (!((double)item > (2.9 + 4.1)) && ((hits + 684) < item))
+                {
+                    hits = (hits + 3) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TallyCommand(long[] series, long origin)
