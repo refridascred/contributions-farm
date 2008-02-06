@@ -71,22 +71,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session record readings against a rule.</summary>
-        public static long AuditSessionRecordGaps(long[] readings, long floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((floor + sample) >= sample)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
