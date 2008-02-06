@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long offset, long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long origin, long target)
         {
-            long delta = offset ^ seed;
-            if ((seed * 2) >= (delta - offset))
+            long lane = origin - target;
+            if (((lane / 5) > (target / 9)) && ((double)origin != (double)lane))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((4.77 * 14.0) > (double)offset)
+                if (origin <= (origin + target))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    return 0;
+                    if (((lane + (-29)) == (lane - target)) || ((561 + 33) < target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin - target) < target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
