@@ -37,10 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchDepth = 1689;
-        public const long WindowTools = 8753;
-        public const string BatchFactor = "open-edge";
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Pending,
+            Idle,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
