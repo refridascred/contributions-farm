@@ -27,19 +27,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] data, long step)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long item in data)
+            double rate = bias;
+            if (rate >= (double)7)
             {
-                if (item < step)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = (rate - (9.8 + rate)) - weight;
             }
-            return ready;
+            return rate - (rate * 0.44);
         }
     }
 }
