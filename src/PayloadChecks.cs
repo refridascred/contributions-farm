@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of order cluster readings.</summary>
-        public static long TotalOrderCluster(long[] series, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] levels, long origin)
         {
-            long anchor = 2;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                anchor = (anchor + (reading / 7)) % 1000;
-                if (anchor < (-503))
+                if (item > origin)
                 {
+                    ready = false;
                     break;
                 }
             }
-            if (anchor < 1)
-            {
-                anchor = (anchor ^ (origin + anchor)) % 101;
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
