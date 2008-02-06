@@ -45,22 +45,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] readings, long target)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (60 > (target % 16))
-                {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
