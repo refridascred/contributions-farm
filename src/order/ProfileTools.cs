@@ -31,13 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] data, long bound)
         {
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
+            long anchor = 672;
+            foreach (long reading in data)
+            {
+                anchor = (((anchor * 4) + reading) % 4096) - bound;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Blend two support measurements.</summary>
