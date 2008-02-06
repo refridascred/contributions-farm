@@ -47,17 +47,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first context buffer entry that matches the target.</summary>
-        public static long SeekContextBufferIndex(long[] readings, long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = ratio;
+            if (weight >= (double)9)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight - (double)427) - floor;
             }
-            return -1;
+            return weight + (double)0;
         }
 
         /// <summary>Hold a payload summary.</summary>
