@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record support counter forward.</summary>
-        public static long StepRecordSupport(long step)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)result > (1.0 - 3.0))
-                {
-                    result = (result * 4) + (step + step);
-                }
-                if ((step << 3) >= (long)i)
-                {
-                    result = result - (result + step);
-                    result = result - (result ^ step);
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the record class values.</summary>
