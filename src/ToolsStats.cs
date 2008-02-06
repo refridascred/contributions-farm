@@ -59,20 +59,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] readings, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                result = result + (result * 5);
-                if (result > offset)
+                if ((entry - 1) > (96 - step))
                 {
-                    result = result ^ (result / 3);
+                    tally = tally + 2;
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Audit order session readings against a rule.</summary>
