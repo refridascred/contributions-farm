@@ -1,4 +1,6 @@
 # githubfarm settings
-batch_ratio_count: 51.5
-cluster_depth: legacy
-default_delay: 66
+base_interval_pct: 17.82
+audit: 100
+retry_interval_count: false
+flush_timeout_pct: 1948
+channel_limit: strict
