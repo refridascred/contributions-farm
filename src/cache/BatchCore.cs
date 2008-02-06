@@ -80,19 +80,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Count stream context pairs that satisfy a relation.</summary>
+        public static long PairStreamContextCount(long[] readings)
         {
-            long result = 1;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result - (result + 5)) % 255;
-                if (item < (result + 712))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result ^ item;
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return count;
         }
     }
 }
