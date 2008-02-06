@@ -26,32 +26,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long target, long seed)
+        /// <summary>Count the queue account entries that pass the check.</summary>
+        public static long TallyQueueAccountGaps(long[] items)
         {
-            long edge = target ^ seed;
-            if ((target * 4) < (seed ^ seed))
+            long seen = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((96 ^ target) > edge)
+                if (((948 * 3) >= seen) && (((double)seen <= 5.66) || ((sample + 95) > (seen + seen))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target > (target ^ edge)) || ((1.11 - 18.0) > (double)target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate entry window readings against a bound.</summary>
