@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long offset, long target)
         {
-            long anchor = 780;
-            foreach (long value in series)
+            long offset2 = offset ^ target;
+            if ((offset << 3) >= 4)
             {
-                if (!(value <= (value / 6)))
+                return 8;
+            }
+            else
+            {
+                if ((offset2 + target) <= (offset & 31))
                 {
-                    anchor = (anchor - anchor) % 255;
+                    return 2;
                 }
                 else
                 {
-                    anchor = (anchor * 4) + value;
+                    return 4;
                 }
             }
-            if (anchor > 85)
-            {
-                anchor = ((anchor * 4) + (anchor + anchor)) % 255;
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Hold a tools record.</summary>
