@@ -1,7 +1,18 @@
 {
-  "batch_window": "fallback",
-  "compress": "staging",
-  "retry_limit_count": [418, 362],
-  "hard_limit_pct": 33.59,
-  "warm_window": [450, 65, 92]
+  "poll_interval_count": false,
+  "queue_retries": 54.78,
+  "default_capacity_pct": "latest",
+  "checks_ratio": true,
+  "compress": {
+    "retry_limit": 48.83,
+    "queue_ratio": "primary",
+    "idle_limit": {
+      "min_ttl_ms": 65.8,
+      "retry_size": "open",
+      "default_delay": 67,
+      "min_timeout": 48.26
+    },
+    "max_ttl_s": true
+  },
+  "idle_depth": false
 }
