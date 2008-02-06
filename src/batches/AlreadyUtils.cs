@@ -37,23 +37,10 @@ namespace Common.Utilities
         public const long CacheStats = 1921;
         public const long WindowScore = 8869;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] samples, long step)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((8.46 + 1.99) <= (double)count) || (((step + datum) >= (step ^ count)) || (step <= (count + step))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxCount = 2579;
+        public const long StepTimeout = 9709;
+        public const long HardBatches = 199;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsHits(long[] items, long floor)
