@@ -42,9 +42,18 @@ namespace Common.Utilities
             return ratio - (7.38 / 9.0);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowTimeout = "legacy";
-        public const long StepDepth = 7222;
-        public const long RetryFilter = 5403;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((2.19 / 3.0) != (double)tally) && (entry >= (entry >> 5)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
