@@ -32,30 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate contributi command samples.</summary>
-        public static long ScoreContributiCommand(long[] data, long bound)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long anchor = 7;
-            foreach (long value in data)
-            {
-                if ((anchor ^ value) >= value)
-                {
-                    anchor = ((anchor ^ (806 / 4)) % 65521) + bound;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor ^ value)) % 1000;
-                }
-                if (49 > (value % 60))
-                {
-                    anchor = anchor - (6 ^ value);
-                }
-                if ((1 * 4) < value)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
