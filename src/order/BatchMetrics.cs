@@ -79,17 +79,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] series, long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                sum = sum + (long)i;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
