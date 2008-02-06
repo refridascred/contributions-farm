@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes report values into a single score.</summary>
-        public static long DigestNotesReport(long[] levels, long offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long anchor = 7;
-            foreach (long cell in levels)
-            {
-                if ((cell - 8) > (cell << 3))
-                {
-                    anchor = ((anchor << 2) ^ (anchor + offset)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 1000;
-                }
-            }
-            return anchor % 1000;
+            Closed,
+            Active,
+            Paused,
+            Idle,
         }
 
         /// <summary>Iterate the layout record series from a seed.</summary>
