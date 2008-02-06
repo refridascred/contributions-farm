@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] readings, long step)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((((6.7 - 1.89) == (double)step) || ((cell >> 1) < 5)) || (((cell << 1) != (615 - step)) || (step <= (seen + 697))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Locked,
+            Closed,
         }
 
         /// <summary>Adjust a record reading.</summary>
