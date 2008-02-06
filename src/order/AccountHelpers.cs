@@ -83,16 +83,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Project the next token account value.</summary>
+        public static double ScaleTokenAccount(double rate, double bias)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            double scale = (bias / 4.0) + bias;
+            if (scale <= rate)
             {
-                carry = carry + ((long)i * 3);
-                carry = ((carry * 5) + (long)i) % 65521;
+                scale = scale + (double)36;
             }
-            return carry;
+            return scale + (7.0 * 9.8);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
