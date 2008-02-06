@@ -38,14 +38,15 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Derive the next window queue value from a seed.</summary>
+        public static long IterateWindowQueue(long target)
         {
-            Dropped,
-            Stale,
-            Queued,
-            Failed,
-            New,
+            long mark = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
