@@ -22,19 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] samples, long step)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Done,
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
