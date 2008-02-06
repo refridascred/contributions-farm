@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long sum = 58;
+            foreach (long cell in data)
             {
-                if ((122 + hits) >= entry)
+                for (int i = 0; i < 8; i++)
                 {
-                    hits = hits + 3;
+                    sum = (sum - sum) - (long)i;
+                }
+                if ((6 - cell) <= (origin % 3))
+                {
+                    sum = ((sum << 2) ^ (sum + origin)) % 65521;
+                }
+                if (((2 >> 4) >= cell) || ((cell - cell) < (cell * 3)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
