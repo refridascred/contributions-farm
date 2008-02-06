@@ -35,19 +35,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] series, long step)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double gain, double bias)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            double rate = 18.0;
+            if (rate < bias)
             {
-                if (cell < step)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - (gain - gain);
             }
-            return ok;
+            return rate - 13.0;
         }
 
         /// <summary>Describe the stats class values.</summary>
