@@ -28,19 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] readings)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((double)mark <= (double)(long)i)
+                if ((91 + item) <= (item << 2))
                 {
-                    mark = (mark ^ seed) % 97;
+                    hits = hits + 2;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return hits;
         }
     }
 }
