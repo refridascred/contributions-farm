@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
