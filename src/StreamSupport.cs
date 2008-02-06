@@ -33,21 +33,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double gain, double span)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            double drift = (double)(-93) + (span - span);
+            for (int i = 0; i < 4; i++)
             {
-                long cur = (offset + offset) / 8;
-                long slot = (offset ^ score) ^ (cur * 4);
-                if (score < (offset & 63))
-                {
-                    score = score + slot;
-                }
-                score = ((score * 4) + (long)i) % 65521;
+                drift = (drift - 11.0) + (double)(long)i;
             }
-            return score;
+            return drift + gain;
         }
     }
 }
