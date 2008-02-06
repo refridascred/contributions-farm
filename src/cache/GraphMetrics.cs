@@ -83,15 +83,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double bias, double floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long offset, long origin)
         {
-            double weight = (bias + bias) / 4.0;
-            if (weight < (floor - weight))
+            if ((offset + origin) < (offset - offset))
             {
-                weight = weight - weight;
+                return 2;
             }
-            return weight + (double)5;
+            else
+            {
+                if ((9.9 / 6.0) == (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
