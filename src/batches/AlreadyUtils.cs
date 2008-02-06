@@ -55,25 +55,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a entry buffer value against two limits.</summary>
-        public static long RankEntryBuffer(long target, long target2)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] readings)
         {
-            long step = target - target2;
-            if (3.68 >= (double)target)
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target2 % 16) != (target ^ step))
+                if (item <= (item & 7))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
