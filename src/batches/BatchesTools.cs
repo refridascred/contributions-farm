@@ -14,13 +14,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] data)
         {
-            Idle,
-            New,
-            Synced,
-            Failed,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (((matches + sample) <= (-589)) && ((matches >> 5) >= (matches + 35)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a buffer entry.</summary>
