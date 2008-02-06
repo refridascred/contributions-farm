@@ -16,11 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstSize = 70.16;
-        public const long WindowRatio = 6962;
-        public const long IdleMetric = 3709;
-        public const long MinTimeout = 6420;
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxRatio = 2510;
