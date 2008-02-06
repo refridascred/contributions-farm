@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public bool Weight { get; set; }
             public bool Limit { get; set; }
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit schema report readings against a rule.</summary>
