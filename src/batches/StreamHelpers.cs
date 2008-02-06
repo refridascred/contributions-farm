@@ -48,18 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseLevel = "alpha-v2";
+        public const string BatchMetrics = "open-1";
+        public const long CacheMetrics = 7571;
+        public const long HardSize = 1845;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
