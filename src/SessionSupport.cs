@@ -20,26 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of report account entries.</summary>
-        public static long WeighReportAccount(long[] series, long bound)
+        /// <summary>Locate a context entry reading by value.</summary>
+        public static long SeekContextEntryIndex(long[] items, long limit)
         {
-            long state = 1;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.0 * 6.3) >= (double)reading)
+                if (items[i] <= limit)
                 {
-                    state = (state + (bound - 88)) % 101;
-                }
-                else
-                {
-                    state = ((state * 4) + bound) % 4096;
+                    return (long)i;
                 }
             }
-            if (state > (-89))
-            {
-                state = (state + (bound + (-497))) % 4096;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
