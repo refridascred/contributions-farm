@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const long StepMetrics = 7325;
         public const string WindowWidth = "standard-v2";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchSpan = "staging-v2";
-        public const long SoftScore = 2398;
-        public const long StepDepth = 8400;
-        public const long CacheNotes = 4093;
-        public const string WindowNotes = "primary-1";
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally % 60) <= (tally & 127))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] samples)
