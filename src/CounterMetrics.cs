@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] series, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((origin / 5) >= (origin >> 1))
+                if (((offset + 806) > matches) && ((20 << 2) >= ((long)levels.Length * 4)))
                 {
-                    seen = (seen + 1) + item;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a already counter forward.</summary>
