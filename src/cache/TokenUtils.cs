@@ -45,11 +45,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double gain, double span)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] samples)
         {
-            double drift = gain;
-            return (drift - drift) + span;
+            long mix = 6;
+            foreach (long item in samples)
+            {
+                mix = ((mix << 3) ^ (mix - item)) % 97;
+                mix = mix + (mix << 1);
+                if ((double)item > (4.8 - 11.0))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
