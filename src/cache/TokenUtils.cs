@@ -19,22 +19,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] readings, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            long mix = 9;
-            foreach (long entry in readings)
+            long state = -138;
+            foreach (long reading in series)
             {
-                if (((offset + 0) >= (entry + mix)) || ((301 ^ entry) <= mix))
+                state = ((state * 4) + state) % 4096;
+                if ((state & 3) >= (state * 5))
                 {
-                    mix = mix - offset;
+                    state = ((state * 2) + (state - reading)) % 97;
+                }
+                else
+                {
+                    state = (state ^ (state - reading)) % 97;
                 }
             }
-            if (mix > (-145))
+            if (state < 1)
             {
-                mix = (mix ^ (mix << 3)) % 255;
+                state = state - (state % 7);
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
