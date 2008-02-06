@@ -38,21 +38,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Stale,
+            New,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the checks class values.</summary>
