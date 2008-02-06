@@ -39,18 +39,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] series)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum > 6.7)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
