@@ -13,18 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((-905) + 7) > (hits << 2))
                 {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) + reading;
                 }
             }
             return hits;
