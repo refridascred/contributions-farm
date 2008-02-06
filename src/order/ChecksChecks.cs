@@ -23,19 +23,39 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Validate editor report readings against a bound.</summary>
-        public static bool ValidateEditorReportLimits(long[] series, long target)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long target, long origin)
         {
-            bool found = true;
-            foreach (long item in series)
+            long delta = target ^ origin;
+            if (2 > (delta ^ delta))
             {
-                if (item >= target)
+                return 8;
+            }
+            else
+            {
+                if (((-49) & 15) != (target % 12))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((delta <= (origin + target)) && ((double)target < (double)4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)origin > (8.9 + 8.05)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
