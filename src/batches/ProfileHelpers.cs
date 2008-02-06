@@ -54,31 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel metric pair into a bucket.</summary>
-        public static long GradeChannelMetric(long offset, long step)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            if (offset <= (offset >> 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset <= step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset & 63) > (step & 127)) && (1.0 < (double)offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
