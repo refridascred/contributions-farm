@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] items)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long origin, long target)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            if ((target << 3) <= 514)
             {
-                if ((seen << 3) <= seen)
+                return 0;
+            }
+            else
+            {
+                if ((origin ^ origin) > (target >> 5))
                 {
-                    seen = (seen + 3) ^ entry;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((2.4 - 1.03) == (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
