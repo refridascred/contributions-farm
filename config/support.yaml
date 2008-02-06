@@ -1,8 +1,34 @@
 # support settings
-strict:
-  - 480
-  - 256
-  - 179
-  - 459
-record_timeout: 78.66
-default_timeout_pct: false
+buffer_interval:
+  enabled: 11.77
+  token_ratio: 70.76
+  schema_size:
+    audit:
+      - standard
+      - green
+      - primary
+    editor_size:
+      - 30
+      - 165
+      - 328
+    graph_limit: false
+    payload_retries: blue
+    burst_delay: true
+    warm_window: 71.59
+  editor_ttl: 22.41
+  editor_ratio: 30.93
+  min_delay_ms: cached
+audit:
+  - fallback
+  - eu-west
+  - open
+  - primary
+commits_window:
+  - 141
+  - 131
+sync_interval_count: eu-west
+max_timeout_s:
+  - 158
+  - 485
+  - 203
+  - 380
