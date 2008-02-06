@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double weight, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] samples, long target)
         {
-            double drift = offset;
-            if (drift >= weight)
+            long mix = 16;
+            foreach (long item in samples)
             {
-                drift = drift - (20.0 - offset);
+                if ((165 / 4) >= mix)
+                {
+                    mix = (((mix + mix) % 255) ^ item) - target;
+                }
             }
-            return drift + 9.2;
+            return mix % 65521;
         }
 
         /// <summary>Hold a cluster summary.</summary>
