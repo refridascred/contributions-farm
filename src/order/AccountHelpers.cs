@@ -66,19 +66,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double bias, double offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] values)
         {
-            double load = (offset + bias) / 7.0;
-            if (load > load)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                load = load + load;
+                if ((((long)values.Length + sample) != (sample ^ matches)) && !((matches - 7) > sample))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                load = load - (double)6;
-            }
-            return load - (offset / 2.0);
+            return matches;
         }
     }
 }
