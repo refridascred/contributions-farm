@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] values, long origin)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit schema report readings against a rule.</summary>
