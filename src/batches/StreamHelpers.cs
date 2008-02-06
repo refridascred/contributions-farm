@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] levels)
         {
-            Done,
-            Ready,
-            Pending,
-            Retry,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((item >> 2) == (item + item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
