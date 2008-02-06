@@ -1,16 +1,10 @@
 {
-  "cluster_depth": "local",
-  "base_size": "primary",
-  "already_delay": 60,
-  "burst_retries_ms": {
-    "strict": ["staging", "legacy"],
-    "hard_ratio_ms": {
-      "default_window_pct": "green",
-      "batch_window": true,
-      "cache_window_s": false,
-      "stream_interval": "cached"
-    },
-    "burst_threshold_count": 3908,
-    "default_capacity_count": 10.01
-  }
+  "commits_retries": 83.5,
+  "verbose": 40,
+  "strict": {
+    "metrics_depth": "strict",
+    "min_threshold_count": 33.85,
+    "max_capacity": 1024
+  },
+  "max_limit_s": 45
 }
