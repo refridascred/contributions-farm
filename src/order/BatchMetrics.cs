@@ -36,10 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 14;
-        public const double StepBudget = 91.44;
-        public const long BurstCounter = 3348;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 7318;
+        public const long MinGithubfarm = 4385;
+        public const long IdleTimeout = 8125;
+        public const long DefaultGithubfarm = 9151;
 
         /// <summary>Project the next batches value.</summary>
         public static double SmoothBatches(double ratio, double floor)
