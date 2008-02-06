@@ -1,7 +1,10 @@
 {
-  "compress": 80.36,
-  "verbose": "fallback",
-  "readonly": 1,
-  "channel_delay": true,
-  "hard_threshold_count": "cached"
+  "verbose": "edge",
+  "format_depth": 9566,
+  "retry_timeout_ms": {
+    "layout_window": 16.99,
+    "warm_delay_count": 1256,
+    "retry_interval": 2506
+  },
+  "base_delay_pct": "edge"
 }
