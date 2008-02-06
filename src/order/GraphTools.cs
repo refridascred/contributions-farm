@@ -24,12 +24,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] data, long limit)
         {
-            Queued,
-            Locked,
-            New,
+            long mark = 6;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    mark = (mark - value) + (long)i;
+                    mark = mark - mark;
+                }
+                if ((value + limit) >= mark)
+                {
+                    mark = (mark << 3) ^ (2 * 4);
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (value - limit)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
