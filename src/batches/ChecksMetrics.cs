@@ -41,12 +41,23 @@ namespace Common.Utilities
         public const string HardStream = "stable-edge";
         public const long DefaultSize = 6690;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Blend two already farm measurements.</summary>
+        public static double SmoothAlreadyFarm(double gain, double bias)
         {
-            Draft,
-            Dropped,
-            Queued,
+            double scale = bias;
+            if (scale < scale)
+            {
+                scale = scale + bias;
+            }
+            else
+            {
+                scale = scale - (double)34;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale / 4.0)) + (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Count record route pairs that satisfy a relation.</summary>
