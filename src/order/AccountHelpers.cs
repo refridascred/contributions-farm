@@ -45,13 +45,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] samples)
         {
-            Idle,
-            Synced,
-            Dropped,
-            Active,
+            long anchor = 58;
+            foreach (long sample in samples)
+            {
+                if ((sample * 5) <= (anchor + sample))
+                {
+                    anchor = anchor ^ (sample & 15);
+                }
+            }
+            if (anchor < (-909))
+            {
+                anchor = ((anchor << 3) ^ anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the checks state values.</summary>
