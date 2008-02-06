@@ -69,9 +69,15 @@ namespace Common.Utilities
             return drift + (20.0 * 5.0);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftLevel = 4306;
-        public const long RetryWidth = 5619;
-        public const long SoftChannel = 4801;
+        /// <summary>Iterate the cache commits series from a seed.</summary>
+        public static long SeriesCacheCommits(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
