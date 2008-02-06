@@ -28,19 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format filter readings against a bound.</summary>
-        public static bool VerifyFormatFilterRange(long[] series, long origin)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
