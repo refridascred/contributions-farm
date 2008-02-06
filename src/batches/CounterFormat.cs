@@ -37,30 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of githubfarm cluster entries.</summary>
-        public static long WeighGithubfarmCluster(long[] readings, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] levels, long target)
         {
-            long mix = 2;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((mix << 3) >= (63 & 1))
+                if ((((double)target <= 6.74) && (((-3) + hits) == (hits + hits))) || ((double)target < (16.0 / 4.0)))
                 {
-                    mix = ((mix << 3) ^ (sample ^ mix)) % 65521;
-                }
-                if (((sample >> 4) < seed) || ((double)seed == (7.81 / 9.0)))
-                {
-                    mix = (mix << 2) ^ ((-2) % 2);
-                }
-                else
-                {
-                    mix = mix - (915 / 6);
+                    hits = (hits + 3) + datum;
                 }
             }
-            if (mix < 42)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return hits;
         }
     }
 }
