@@ -19,14 +19,19 @@ namespace Common.Utilities
         public const long MaxLevel = 3199;
         public const long MaxMetrics = 232;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] values, long floor)
         {
-            Synced,
-            Done,
-            Locked,
-            Ready,
-            Dropped,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a filter reading.</summary>
