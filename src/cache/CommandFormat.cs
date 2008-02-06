@@ -13,12 +13,16 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long seed)
         {
-            Retry,
-            Stale,
-            Paused,
+            long result = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                result = (result * 3) + (result % 5);
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
