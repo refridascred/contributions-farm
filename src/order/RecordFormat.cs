@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 4;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((result & 63) != (limit << 1)))
                 {
-                    if ((levels[i] ^ levels[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result - (result / 4)) % 65521) ^ value;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count batch counter pairs that satisfy a relation.</summary>
