@@ -1,7 +1,9 @@
 # githubfarm settings
-compress: fallback
-sync_timeout_pct: staging
-checks_limit:
-  - 304
-  - 25
-  - 216
+queue_capacity: 6031
+soft_delay_pct: 65.18
+sync_retries_ms:
+  - 196
+  - 234
+farm_delay: 7260
+batch_window_pct: 73
+hard_timeout_ms: false
