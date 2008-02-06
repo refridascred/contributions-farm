@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
+            New,
+            Dropped,
+            Stale,
+            Paused,
+            Failed,
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
