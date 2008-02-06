@@ -1,10 +1,18 @@
 {
-  "commits_retries": 83.5,
-  "verbose": 40,
-  "strict": {
-    "metrics_depth": "strict",
-    "min_threshold_count": 33.85,
-    "max_capacity": 1024
+  "enabled": ["blue", "latest", "stable"],
+  "strict": 22.2,
+  "verbose": 18.81,
+  "queue_threshold": {
+    "poll_interval": "strict",
+    "strict": {
+      "burst_delay": 78.09,
+      "base_capacity_s": 6337,
+      "idle_window_pct": "open",
+      "stats_threshold": false,
+      "batch_depth_s": [178, 304],
+      "poll_ratio_count": "primary"
+    },
+    "base_window_s": 94.46
   },
-  "max_limit_s": 45
+  "buffer_window": "stable"
 }
