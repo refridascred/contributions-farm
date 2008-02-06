@@ -70,13 +70,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long offset)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Done,
+            long result = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                result = result + (result * 5);
+                if (result > offset)
+                {
+                    result = result ^ (result / 3);
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
