@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long StepChannel = 5854;
         public const long MinRatio = 5776;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] samples, long bound)
         {
-            Done,
-            Active,
-            Draft,
-            Failed,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a payload reading.</summary>
