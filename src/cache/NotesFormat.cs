@@ -20,13 +20,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Combine stream batch values into a single score.</summary>
+        public static long TotalStreamBatch(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            long state = 36;
+            foreach (long datum in values)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if (state < (datum - state))
+                {
+                    state = (state - (datum % 7)) % 4096;
+                }
             }
             return state;
         }
