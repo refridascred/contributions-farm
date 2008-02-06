@@ -56,10 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstRatio = 88.74;
-        public const long MinBatches = 2166;
-        public const long IdleWidth = 4131;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinFactor = 7716;
+        public const long MinGithubfarm = 3440;
+        public const string SoftGithubfarm = "alpha-edge";
+        public const long CacheCount = 7663;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricMatches(long[] readings)
