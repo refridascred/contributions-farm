@@ -19,18 +19,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the window stream entries that pass the check.</summary>
-        public static long MeasureWindowStreamGaps(long[] items, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((-27) >= value)
+                if (value < step)
                 {
-                    hits = (hits + 1) - floor;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Accumulate farm stats samples.</summary>
