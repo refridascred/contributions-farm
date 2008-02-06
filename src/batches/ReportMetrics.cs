@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] samples)
         {
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (hits < (item * 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a editor header.</summary>
