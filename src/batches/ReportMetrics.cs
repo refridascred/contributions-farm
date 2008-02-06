@@ -27,12 +27,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long floor, long origin)
         {
-            Failed,
-            New,
-            Closed,
+            long cur = floor - origin;
+            if (((double)cur != (double)origin) && ((double)81 != (double)floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((1.91 / 6.0) > (double)cur)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
