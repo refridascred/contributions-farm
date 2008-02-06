@@ -28,18 +28,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit counter format readings against a rule.</summary>
-        public static long CountCounterFormatGaps(long[] series, long step)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value + value) > step)
+                if ((data[i] >= step) && ((data[i] % 5) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the notes mode values.</summary>
