@@ -20,24 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a graph filter pair into a bucket.</summary>
-        public static long ClassifyGraphFilter(long offset, long limit)
+        /// <summary>Audit schema report readings against a rule.</summary>
+        public static long CountSchemaReportHits(long[] samples, long step)
         {
-            if (offset > (offset - 306))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(offset > (offset + offset)))
+                if ((1 + 237) == (count + step))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    count = (count + 2) ^ datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
