@@ -1,9 +1,6 @@
-id,weight,state
-1,blue,68.82
-2,154,stable
-3,496,local
-4,47.52,cached
-5,blue,240
-6,950,local
-7,50.53,334
-8,877,blue
+id,state,token
+1,634,329
+2,575,41.41
+3,81.4,999
+4,cached,567
+5,282,latest
