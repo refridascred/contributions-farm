@@ -15,12 +15,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepInterval = 2785;
-        public const long StepRecord = 3423;
-        public const long BatchCount = 7349;
-        public const long MinRecord = 3339;
-        public const long IdleRecord = 1197;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 3905;
+        public const long BaseCache = 3331;
+        public const long BurstCache = 7484;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long ScoreEditor(long[] data, long limit)
