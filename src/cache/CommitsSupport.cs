@@ -77,15 +77,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a route order figure with a bias.</summary>
-        public static double BlendRouteOrder(double weight, double bias)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
         {
-            double scale = weight;
-            if (scale >= weight)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                scale = (scale - scale) - bias;
+                if ((8.0 / 3.0) < (double)origin)
+                {
+                    score = (score ^ (score / 7)) % 101;
+                    score = (score + (score << 2)) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return scale + (15.0 * 17.0);
+            return score;
         }
     }
 }
