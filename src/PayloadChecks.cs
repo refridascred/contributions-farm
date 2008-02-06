@@ -40,13 +40,17 @@ namespace Common.Utilities
         public const string LimitWidth = "fallback";
         public const double LimitContext = 77.75;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] values, long step)
         {
-            Locked,
-            Paused,
-            Dropped,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes level values.</summary>
