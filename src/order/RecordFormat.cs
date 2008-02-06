@@ -52,11 +52,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxInterval = 6778;
-        public const double SoftRecord = 76.43;
-        public const long IdleCount = 6126;
-        public const string IdleFactor = "fallback-edge";
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Locate a report layout reading by value.</summary>
         public static long LookupReportLayoutIndex(long[] samples, long bound)
