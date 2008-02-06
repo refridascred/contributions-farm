@@ -90,32 +90,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long origin, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            long step = origin - bound;
-            if (step < (bound / 5))
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 5;
+                score = score ^ (score ^ 3);
+                score = score - ((long)i + score);
+                score = ((score * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (step >= ((-6) % 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step != (6.0 * 8.99))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Hold a record entry.</summary>
