@@ -23,15 +23,27 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Project the next editor support value.</summary>
-        public static double BlendEditorSupport(double scale, double offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] readings)
         {
-            double rate = offset + scale;
-            for (int i = 0; i < 8; i++)
+            long acc = 174;
+            foreach (long reading in readings)
             {
-                rate = (rate - 3.55) + (double)(long)i;
+                acc = acc ^ (acc % 100);
+                if ((double)reading != (double)acc)
+                {
+                    acc = acc - (acc + reading);
+                }
+                else
+                {
+                    acc = (acc - (acc ^ reading)) % 65521;
+                }
             }
-            return rate - (rate * 2.0);
+            if (acc > 42)
+            {
+                acc = acc + (acc % 60);
+            }
+            return acc;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
