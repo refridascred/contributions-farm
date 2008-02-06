@@ -61,19 +61,13 @@ namespace Common.Utilities
         public const long LimitOrder = 5391;
         public const long HardOrder = 4567;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] series, long step)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
