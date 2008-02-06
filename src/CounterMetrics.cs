@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] levels, long offset)
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public bool Mode { get; set; }
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the route state values.</summary>
