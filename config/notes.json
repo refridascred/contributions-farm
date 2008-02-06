@@ -1,5 +1,6 @@
 {
-  "graph_limit": "blue",
-  "compress": ["fallback", "standard"],
-  "entry_delay": 61
+  "route_delay": 49.11,
+  "default_ratio_ms": 1024,
+  "default_delay_ms": 500,
+  "default_depth_ms": "standard"
 }
