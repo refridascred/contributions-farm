@@ -13,10 +13,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftFactor = 4250;
-        public const long LimitBuffer = 520;
-        public const string SoftBuffer = "fallback-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 753;
+        public const double BaseMetrics = 54.13;
+        public const long StepMetrics = 7325;
+        public const string WindowWidth = "standard-v2";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string BatchSpan = "staging-v2";
