@@ -1,11 +1,13 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-A record that stays idle for too long is moved to the farm list.
+Keep editor and cluster names short and lowercase.
+Run the route check before changing any commits limits.
+
+The cache helpers are pure functions, so they are safe to call from any thread.
+Use order settings to tune how often record data is refreshed.
 
 ## Guidelines
 
 - Document new metric fields
-- Review token limits each release
-- Validate record input early
-- Log every counter change
+- Log every checks change
+- Validate cache input early
