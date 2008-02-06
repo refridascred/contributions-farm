@@ -10,12 +10,26 @@ namespace Common.Utilities
         public const long CacheBatches = 3905;
         public const long BatchBatches = 947;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Digest a series of report account entries.</summary>
+        public static long WeighReportAccount(long[] series, long bound)
         {
-            Dropped,
-            Idle,
-            Locked,
+            long state = 1;
+            foreach (long reading in series)
+            {
+                if ((3.0 * 6.3) >= (double)reading)
+                {
+                    state = (state + (bound - 88)) % 101;
+                }
+                else
+                {
+                    state = ((state * 4) + bound) % 4096;
+                }
+            }
+            if (state > (-89))
+            {
+                state = (state + (bound + (-497))) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
