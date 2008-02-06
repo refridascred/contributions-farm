@@ -39,19 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] data, long target)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a schema info.</summary>
