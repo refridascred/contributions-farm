@@ -61,28 +61,21 @@ namespace Common.Utilities
             return bias2 - (bias - bias);
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Count githubfarm layout pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmLayoutCount(long[] values)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed % 12) >= (seed << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
+                    if ((values[i] + values[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                long bound = mix;
-                if ((4.66 + 1.05) < (double)bound)
-                {
-                    mix = ((mix << 2) ^ (long)i) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (seed % 8)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
     }
 }
