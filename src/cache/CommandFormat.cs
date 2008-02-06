@@ -41,31 +41,24 @@ namespace Common.Utilities
         public const long HardLevel = 1666;
         public const long StepScore = 4758;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long target, long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] values, long bound)
         {
-            if (bound <= (176 ^ target))
+            long total = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound / 4) == (target - 8))
+                if ((total ^ cell) <= (bound & 7))
                 {
-                    return 8;
+                    total = (total * 3) + (total & 15);
                 }
                 else
                 {
-                    if ((bound - bound) <= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    total = (total * 5) + (bound << 3);
                 }
+                total = total ^ (bound << 2);
+                total = (total << 2) ^ cell;
             }
+            return total;
         }
     }
 }
