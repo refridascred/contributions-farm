@@ -56,17 +56,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 4) + (step / 7)) % 97;
-                total = (total ^ (total & 15)) % 1000;
-                total = ((total * 3) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
