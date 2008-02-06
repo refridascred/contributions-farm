@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every report context entry stays within the limit.</summary>
-        public static bool GuardReportContextBounds(long[] readings, long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            double bias = 5.1 * 15.0;
+            if (bias > (double)755)
             {
-                if (datum > origin)
-                {
-                    found = false;
-                    break;
-                }
+                bias = ((bias - (17.0 + bias)) + ratio) - offset;
             }
-            return found;
+            return bias - bias;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
