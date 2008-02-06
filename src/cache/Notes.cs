@@ -19,26 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer checks values into a single score.</summary>
-        public static long TallyBufferChecks(long[] items, long bound)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long step, long floor)
         {
-            long total = 222;
-            foreach (long value in items)
+            long delta = step + floor;
+            if ((floor >> 3) != (floor - 932))
             {
-                if ((340 - total) > (total - (long)items.Length))
+                return 3;
+            }
+            else
+            {
+                if (((delta ^ floor) > (delta + floor)) || ((floor + step) >= step))
                 {
-                    total = ((total - bound) % 4096) ^ value;
+                    return 5;
                 }
                 else
                 {
-                    total = ((total * 2) + (total * 3)) % 1000;
+                    if (4.8 < (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (500 <= floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (total < 8)
-            {
-                total = (total ^ total) % 4096;
-            }
-            return total;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
