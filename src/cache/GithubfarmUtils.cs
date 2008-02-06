@@ -54,22 +54,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] data, long seed)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] data, long seed)
         {
-            long result = -20;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed > item) || ((double)seed == (double)result))
+                if (data[i] <= seed)
                 {
-                    result = (result + (56 ^ seed)) % 4096;
-                }
-                else
-                {
-                    result = (result * 3) + (60 - seed);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
