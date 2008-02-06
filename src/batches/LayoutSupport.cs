@@ -61,15 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] readings)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] items)
         {
             long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item > (double)hits)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] + items[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
