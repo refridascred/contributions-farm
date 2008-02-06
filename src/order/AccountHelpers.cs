@@ -69,24 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long seed, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] levels, long origin)
         {
-            if ((double)seed == (2.26 + 11.0))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed * 3) >= limit)
+                if ((305 & 1) != (76 - origin))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    hits = (hits + 1) + sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
