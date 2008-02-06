@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Retry,
-            Ready,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheCount = 2074;
+        public const long BaseSupport = 905;
+        public const long StepSupport = 1902;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] levels, long origin)
