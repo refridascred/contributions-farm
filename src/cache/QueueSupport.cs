@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] samples, long floor)
+        /// <summary>Measure how many batches buffer samples are out of range.</summary>
+        public static long MeasureBatchesBufferGaps(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
+                if ((double)reading != (4.0 / 9.0))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
