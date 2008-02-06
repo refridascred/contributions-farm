@@ -47,12 +47,25 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long origin, long floor)
         {
-            Ready,
-            Active,
-            Synced,
+            long slot = origin ^ floor;
+            if (((7.82 - 2.7) <= (double)slot) || ((floor + 47) < 8))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor * 2) != (origin & 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
