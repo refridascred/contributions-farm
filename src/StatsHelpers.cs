@@ -16,11 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 3531;
-        public const double BaseSpan = 14.9;
-        public const string WindowEditor = "cached";
-        public const string CacheDepth = "staging-edge";
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
+        {
+            Draft,
+            Retry,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenRange(long[] readings, long bound)
