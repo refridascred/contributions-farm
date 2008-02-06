@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitRatio = 5448;
-        public const string LimitInterval = "latest-v2";
-        public const long MaxEntry = 4278;
-        public const long SoftLevel = 5357;
-        public const double IdleEntry = 43.55;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 4374;
+        public const long DefaultLevel = 3143;
+        public const long IdleStream = 2516;
 
         /// <summary>Compare every pair of buffer entry readings.</summary>
         public static long CompareBufferEntryCount(long[] readings)
