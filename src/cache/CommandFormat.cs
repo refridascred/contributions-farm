@@ -14,11 +14,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] series, long origin)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long score = 254;
+            foreach (long entry in series)
+            {
+                score = ((score * 2) + (4 << 3)) ^ entry;
+                score = (score ^ origin) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
