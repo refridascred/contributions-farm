@@ -32,17 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] levels)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long floor)
         {
-            long mark = 120;
-            foreach (long cell in levels)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark * 3) + mark) % 1000;
-                mark = ((mark << 3) ^ cell) % 4096;
-                mark = ((mark * 4) + mark) % 255;
+                anchor = ((anchor * 2) + ((long)i * 2)) % 4096;
+                if ((floor + anchor) != (6 + floor))
+                {
+                    anchor = (anchor - (74 - (long)i)) % 4096;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return mark % 4096;
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
