@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Audit order githubfarm readings against a rule.</summary>
+        public static long CountOrderGithubfarmGaps(long[] readings, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                score = score - (score << 1);
-                score = (score + score) % 255;
-                score = ((score * 3) + (long)i) % 65521;
+                if ((origin + cell) != (origin << 3))
+                {
+                    count = count + 3;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a session info.</summary>
