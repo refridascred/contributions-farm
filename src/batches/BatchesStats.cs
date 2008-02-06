@@ -33,11 +33,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 3587;
-        public const double LimitRoute = 56.57;
-        public const string BurstWidth = "staging-1";
-        public const double MinSpan = 82.84;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((double)(long)i == (4.55 + 16.0))
+                {
+                    anchor = anchor - (31 >> 4);
+                }
+                else
+                {
+                    anchor = (anchor ^ (long)i) % 65521;
+                    anchor = (anchor ^ target) % 97;
+                }
+                anchor = (anchor + (target << 1)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
