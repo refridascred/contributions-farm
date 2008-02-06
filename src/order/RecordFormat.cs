@@ -20,21 +20,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count tools notes pairs that satisfy a relation.</summary>
-        public static long PairToolsNotesCount(long[] items)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] items, long bound)
         {
-            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] < bound)
                 {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
