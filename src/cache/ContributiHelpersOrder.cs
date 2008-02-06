@@ -28,17 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long score = 7;
-            foreach (long datum in data)
-            {
-                score = (score << 2) ^ score;
-                score = ((score << 3) ^ (datum / 2)) % 97;
-                score = (score * 4) + (datum ^ datum);
-            }
-            return score;
+            Paused,
+            Queued,
+            Done,
+            Closed,
         }
     }
 }
