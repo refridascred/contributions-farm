@@ -69,19 +69,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Project the next metrics context value.</summary>
-        public static double ScaleMetricsContext(double scale, double offset)
+        /// <summary>Count the buffer schema entries that pass the check.</summary>
+        public static long CountBufferSchemaHits(long[] series)
         {
-            double bias = (double)(409 * 4);
-            if (bias < (scale / 4.0))
+            long count = 0;
+            foreach (long cell in series)
             {
-                bias = (bias - (double)(-569)) - offset;
+                if ((double)cell <= (8.36 * 17.0))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - scale;
+            return count;
         }
     }
 }
