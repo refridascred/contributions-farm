@@ -57,13 +57,38 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long bound, long offset)
         {
-            Ready,
-            Active,
-            Idle,
-            New,
+            if ((2 + offset) != (bound << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset % 64) != (bound + 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((4.66 / 8.0) >= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset >= (57 + bound)) || ((67 + bound) <= (offset + bound)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
