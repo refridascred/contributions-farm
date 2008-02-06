@@ -34,38 +34,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long seed, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] readings, long target)
         {
-            if ((bound / 4) > bound)
+            long mix = 201;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) > bound)
+                mix = mix - (mix & 255);
+                if ((2.72 + 10.0) >= (2.4 - 9.6))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed + bound) == (seed ^ 321)) && ((double)bound != (double)7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((bound << 1) > bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = ((mix << 3) ^ (target + cell)) % 4096;
                 }
             }
+            if (mix < 487)
+            {
+                mix = (mix + (target ^ target)) % 65521;
+            }
+            return mix % 65521;
         }
     }
 }
