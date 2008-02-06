@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "local";
-        public const long DefaultWindow = 3830;
-        public const long BatchWindow = 8696;
-        public const double BaseSpan = 85.4;
+        /// <summary>Adjust a entry contributi reading.</summary>
+        public static double SmoothEntryContributi(double scale, double span)
+        {
+            double bias = (double)8 / 9.0;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (double)(long)i) - span;
+            }
+            return bias - (scale / 3.0);
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
