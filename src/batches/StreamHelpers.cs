@@ -39,18 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] data)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long offset, long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            long next = offset ^ step;
+            if (step >= (808 - next))
             {
-                if ((((42 * 3) != (value * 3)) || ((value - 2) == (count >> 5))) && !((value * 4) > ((-27) - (-7))))
+                return 8;
+            }
+            else
+            {
+                if ((2.86 > (double)step) && ((2.7 - 13.0) >= (double)offset))
                 {
-                    count = count + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (!(((-11) * 4) == (offset % 64)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step <= (32 + next))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
