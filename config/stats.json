@@ -1,12 +1,12 @@
 {
-  "profile_threshold": {
-    "hard_limit": "standard",
-    "compress": 42,
-    "base_threshold_pct": 43.9
+  "soft_timeout_count": ["open", "fallback", "eu-west", "stable"],
+  "retry_interval_s": {
+    "commits_timeout": "fallback",
+    "channel_retries": "legacy",
+    "poll_threshold_ms": true
   },
-  "enabled": 500,
-  "queue_ratio": 91,
-  "counter_delay": [95, 361, 441, 219],
-  "compress": "fallback",
-  "batch_delay_pct": ["strict", "strict", "standard"]
+  "sync_threshold": "standard",
+  "base_size_count": "edge",
+  "compress": true,
+  "hard_timeout_ms": 91
 }
