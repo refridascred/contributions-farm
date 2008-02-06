@@ -41,11 +41,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultLevel = 879;
-        public const long CacheFactor = 3467;
-        public const long StepCounter = 3225;
-        public const long BurstScore = 8013;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinFactor = "strict-v2";
+        public const string BatchRecord = "open-1";
+        public const string BaseCount = "cached";
+        public const long RetrySize = 1961;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long StepSession(long target)
