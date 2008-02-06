@@ -37,24 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double gain, double offset)
-        {
-            double rate = (double)(7 * 3);
-            if (rate > (double)60)
-            {
-                rate = (rate + (0.3 * 18.0)) - gain;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (double)4) + (double)(long)i;
-            }
-            return rate - offset;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchDepth = 1689;
+        public const long WindowTools = 8753;
+        public const string BatchFactor = "open-edge";
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
