@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate batches farm readings against a bound.</summary>
-        public static bool GuardBatchesFarmBounds(long[] levels, long seed)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
