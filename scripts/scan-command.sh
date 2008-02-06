@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary fallback; do
+for item in local edge; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
+mode="${1:-strict}"
 case "${mode}" in
-    local)
+    standard)
         log "fast path"
         ;;
     *)
