@@ -1,16 +1,9 @@
 # entry settings
-idle_limit_s:
-  - 29
-  - 124
-default_ttl_s: 37.96
-warm_ratio_s:
-  soft_capacity_pct: 60
-  flush_window_count: 28
-  poll_depth_ms:
-    - staging
-    - eu-west
-  sync_size:
-    - 148
-    - 304
-verbose: blue
-persist: cached
+compress: false
+session_window:
+  githubfarm_threshold: cached
+  dry_run: 60
+  cache_ratio: 250
+  cache_depth: open
+  sync_retries: open
+retry_threshold_pct: 7594
