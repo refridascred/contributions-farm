@@ -31,17 +31,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] levels, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 82;
+            foreach (long item in series)
             {
-                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score ^ (item + item)) % 4096) + floor;
             }
-            return -1;
+            return score % 97;
         }
     }
 }
