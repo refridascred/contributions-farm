@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the command tools series from a seed.</summary>
-        public static long RollCommandTools(long step)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = (carry ^ step) % 97;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the support token entries that pass the check.</summary>
