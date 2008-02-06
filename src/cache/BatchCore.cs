@@ -14,31 +14,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] series, long step)
+        /// <summary>Locate a counter layout reading by value.</summary>
+        public static long LocateCounterLayoutIndex(long[] values, long target)
         {
-            long total = 59;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((total * 3) <= (datum / 3)) && ((double)(long)series.Length == (double)51))
+                if (values[i] <= target)
                 {
-                    total = (total << 3) ^ step;
-                    continue;
-                }
-                if (3.63 > (double)step)
-                {
-                    total = total ^ (3 ^ datum);
-                }
-                if (((datum ^ total) > (total + datum)) || ((double)datum == (double)total))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total > 7)
-            {
-                total = total ^ (step - total);
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
