@@ -52,16 +52,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                score = (score - (score + (long)i)) % 65521;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a route queue value against two limits.</summary>
