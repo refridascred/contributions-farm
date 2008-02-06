@@ -50,20 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next payload metric value from a seed.</summary>
-        public static long SeriesPayloadMetric(long target)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
             {
-                carry = ((carry * 3) + ((long)i + carry)) % 65521;
-                if (((long)i % 64) > (carry >> 1))
-                {
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Describe the window level values.</summary>
