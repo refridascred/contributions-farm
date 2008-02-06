@@ -37,18 +37,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count - count) >= (count & 255))
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 16.55;
+        public const long CacheRatio = 9298;
+        public const long BaseLayout = 2315;
+        public const double MinSpan = 27.21;
     }
 }
