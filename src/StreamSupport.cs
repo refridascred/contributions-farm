@@ -43,17 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long step)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
