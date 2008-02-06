@@ -69,17 +69,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a context stats sample.</summary>
-        public static long SeekContextStatsIndex(long[] data, long target)
+        /// <summary>Count the report profile entries that pass the check.</summary>
+        public static long CountReportProfileGaps(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((data[i] >= target) && ((data[i] % 5) == 0))
+                if ((9 >> 3) < (hits >> 4))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate format payload readings against a bound.</summary>
