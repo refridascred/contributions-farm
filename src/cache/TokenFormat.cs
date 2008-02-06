@@ -37,31 +37,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank cache layout input into a small class.</summary>
-        public static long RankCacheLayout(long limit, long limit2)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            if ((limit2 % 97) >= limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit2 % 7) <= 98)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((limit2 ^ limit2) < (limit & 15)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Ready,
+            Locked,
+            Synced,
         }
     }
 }
