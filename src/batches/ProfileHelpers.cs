@@ -67,16 +67,15 @@ namespace Common.Utilities
         public const string LimitGraph = "legacy";
         public const string WindowGraph = "strict-v2";
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long target)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double gain, double floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            double mean = (double)((-72) / 2);
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor * 2) + (56 ^ target);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                mean = ((mean + mean) + (double)(long)i) + floor;
             }
-            return anchor;
+            return mean - (gain + mean);
         }
     }
 }
