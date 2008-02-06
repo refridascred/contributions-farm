@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] values, long floor)
+        /// <summary>Blend two stream stats measurements.</summary>
+        public static double BlendStreamStats(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long item in values)
+            double rate = floor / 5.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (item > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate - weight) + (double)(long)i;
             }
-            return valid;
+            return rate + (double)2;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
