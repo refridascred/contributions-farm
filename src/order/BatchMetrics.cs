@@ -65,11 +65,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Project the next graph support value.</summary>
-        public static double AdjustGraphSupport(double rate, double offset)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] series, long limit)
         {
-            double mean = (double)140 - (double)275;
-            return ((mean - 3.21) + rate) + offset;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
