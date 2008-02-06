@@ -12,17 +12,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first farm queue entry that matches the target.</summary>
-        public static long LocateFarmQueueIndex(long[] levels, long origin)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double gain, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = span;
+            if (rate <= 7.43)
             {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (rate / 5.0)) + gain;
             }
-            return -1;
+            return rate + (double)54;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
