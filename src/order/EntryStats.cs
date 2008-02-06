@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next contributi commits value from a seed.</summary>
-        public static long DeriveContributiCommits(long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] readings, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor * 5) + (1 + anchor)) % 65521;
-                anchor = anchor ^ (67 * 4);
-                anchor = (anchor ^ anchor) % 255;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (reading <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Hold a commits record.</summary>
