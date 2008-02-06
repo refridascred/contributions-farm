@@ -27,17 +27,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] items, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 68;
+            foreach (long value in series)
             {
-                if ((items[i] < limit) && ((items[i] % 5) != 0))
+                if (!(seed < (108 + seed)))
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ mark) ^ value;
+                }
+                else
+                {
+                    mark = mark + seed;
                 }
             }
-            return -1;
+            if (mark > 709)
+            {
+                mark = (mark ^ (seed - 47)) % 101;
+            }
+            return mark;
         }
     }
 }
