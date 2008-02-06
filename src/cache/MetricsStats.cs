@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheBudget = 1843;
-        public const long BurstFormat = 7341;
-        public const long RetryLevel = 6286;
-        public const double StepRatio = 27.08;
-        public const string LimitFactor = "latest";
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Retry,
+            Ready,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] levels, long origin)
