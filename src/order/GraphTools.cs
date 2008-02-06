@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] samples, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (item > bound)
+                if (carry < (carry >> 3))
                 {
-                    flag = false;
-                    break;
+                    carry = (carry - (offset & 255)) % 65521;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Describe the queue mode values.</summary>
