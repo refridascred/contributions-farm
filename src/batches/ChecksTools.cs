@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] series)
         {
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
+            long state = 1;
+            foreach (long item in series)
+            {
+                if (((double)state == (8.8 + 0.21)) && ((double)item < (double)3))
+                {
+                    state = ((state << 2) ^ (item % 5)) % 4096;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
