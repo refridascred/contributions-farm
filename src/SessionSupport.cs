@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double gain, double bias)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double ratio = gain;
-            if (ratio >= gain)
-            {
-                ratio = (ratio + gain) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - gain) + (double)(long)i;
-            }
-            return ratio - (gain / 2.0);
+            Idle,
+            Draft,
+            Synced,
+            Failed,
         }
 
         /// <summary>Digest a series of report account entries.</summary>
