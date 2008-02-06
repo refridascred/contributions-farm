@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Rank channel notes input into a small class.</summary>
+        public static long BucketChannelNotes(long target, long target2)
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
+            if (((target & 127) <= (target2 * 3)) && ((target + target) > (target << 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target < (double)target2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target2 * 3) < (target << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)target2 != (0.64 - 3.0)) && ((double)target < (8.99 * 19.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
