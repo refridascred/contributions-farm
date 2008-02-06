@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] series, long target)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
