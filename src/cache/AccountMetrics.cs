@@ -61,12 +61,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Ready,
-            New,
-            Retry,
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
