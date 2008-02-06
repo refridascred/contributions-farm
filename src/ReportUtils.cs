@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 7726;
-        public const long StepSpan = 8960;
-        public const long WindowNotes = 4634;
-        public const long DefaultNotes = 9905;
-        public const string RetryNotes = "legacy";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 5455;
+        public const double WindowChecks = 90.21;
+        public const long WindowSize = 7938;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferMatches(long[] levels, long step)
