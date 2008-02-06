@@ -23,18 +23,17 @@ namespace Common.Utilities
         public const long WindowSession = 3314;
         public const double MinSession = 35.25;
 
-        /// <summary>Count the commits farm entries that pass the check.</summary>
-        public static long MeasureCommitsFarmMatches(long[] readings, long limit)
+        /// <summary>Locate a report stats reading by value.</summary>
+        public static long LocateReportStatsIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (5.6 >= (double)limit)
+                if ((values[i] < offset) && ((values[i] % 5) == 0))
                 {
-                    seen = (seen + 3) - cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the editor status values.</summary>
