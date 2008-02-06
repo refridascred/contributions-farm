@@ -1,12 +1,14 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the graph list.
-Keep contributi and farm names short and lowercase.
-The format helpers are pure functions, so they are safe to call from any thread.
+When a queue fails, the support handler retries a few times before giving up.
+Run the metrics check before changing any record limits.
+Run the graph check before changing any channel limits.
+
+A checks that stays idle for too long is moved to the contributi list.
+A stats that stays idle for too long is moved to the payload list.
 
 ## Guidelines
 
-- Validate counter input early
-- Prefer channel defaults
-- Log every notes change
-- Review report limits each release
+- Prefer session defaults
+- Document new record fields
+- Log every profile change
