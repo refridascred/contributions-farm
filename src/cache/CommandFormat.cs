@@ -31,12 +31,19 @@ namespace Common.Utilities
         public const long HardLevel = 1666;
         public const long StepScore = 4758;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Validate schema account readings against a bound.</summary>
+        public static bool GuardSchemaAccountLimits(long[] items, long target)
         {
-            Active,
-            New,
-            Draft,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
