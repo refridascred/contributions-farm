@@ -37,11 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] items, long limit)
         {
-            public double Stamp { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
