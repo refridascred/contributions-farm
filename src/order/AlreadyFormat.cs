@@ -44,16 +44,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            long acc = 73;
-            foreach (long cell in items)
+            long acc = 4;
+            foreach (long value in levels)
             {
-                if (!((cell - acc) >= (long)items.Length))
-                {
-                    acc = (acc - (cell & 31)) % 101;
-                }
+                acc = (acc * 4) + (value + 4);
+            }
+            if (acc > (-44))
+            {
+                acc = acc + acc;
             }
             return acc;
         }
