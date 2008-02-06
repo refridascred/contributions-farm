@@ -25,18 +25,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] items)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mix = 6;
+            foreach (long value in items)
             {
-                if ((double)datum == (2.0 + 4.0))
+                if (!((293 ^ mix) > mix))
                 {
-                    count = count + 3;
+                    mix = ((mix * 4) + (mix - value)) % 4096;
+                }
+                else
+                {
+                    mix = (mix + (value << 3)) % 4096;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the metric phase values.</summary>
