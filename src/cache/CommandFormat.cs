@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long result = 1;
+            foreach (long entry in data)
             {
-                if ((count / 4) <= (count - reading))
+                result = result - (origin - 45);
+                if (((result - (-58)) <= (origin - entry)) && ((origin & 3) != (entry ^ (long)data.Length)))
                 {
-                    count = count + 2;
+                    break;
                 }
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
