@@ -25,17 +25,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] values, long step)
+        /// <summary>Rank batches stream input into a small class.</summary>
+        public static long ClassifyBatchesStream(long limit, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((1.9 + 5.82) != (double)origin)
             {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((4.6 * 9.99) <= (double)limit)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + limit) <= limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
