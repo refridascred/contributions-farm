@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] items)
         {
-            Idle,
-            Draft,
-            Synced,
-            Failed,
+            long score = 7;
+            foreach (long value in items)
+            {
+                score = score + 87;
+                if (((value / 2) > (value << 3)) || ((2 ^ score) < (value ^ (-6))))
+                {
+                    score = (score * 4) + 14;
+                }
+            }
+            return score;
         }
 
         /// <summary>Digest a series of report account entries.</summary>
