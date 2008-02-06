@@ -1,8 +1,12 @@
 {
-  "session_delay": "latest",
-  "min_window": [334, 8, 264],
-  "flush_ttl_pct": true,
-  "warm_interval_pct": 30,
-  "profile_ttl": 1,
-  "warm_timeout": "edge"
+  "cache_threshold": "standard",
+  "retry_retries": 99,
+  "flush_limit_ms": 1024,
+  "sync_retries_s": true,
+  "burst_window_pct": {
+    "warm_threshold_ms": "green",
+    "persist": "edge",
+    "soft_limit_s": "strict"
+  },
+  "default_delay_count": false
 }
