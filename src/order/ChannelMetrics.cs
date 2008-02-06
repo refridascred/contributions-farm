@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const long DefaultTools = 783;
         public const string MinSpan = "open-edge";
 
-        /// <summary>Scale a counter command figure with a bias.</summary>
-        public static double SmoothCounterCommand(double scale, double floor)
+        /// <summary>Blend two record format measurements.</summary>
+        public static double ProjectRecordFormat(double weight, double bias)
         {
-            double bias = (scale + scale) - (scale * 18.0);
-            return (bias + bias) + floor;
+            double mean = (double)(0 ^ 91);
+            if (mean > (double)260)
+            {
+                mean = (mean + mean) - bias;
+            }
+            else
+            {
+                mean = mean + (mean * 1.79);
+            }
+            return mean + (weight * 14.0);
         }
     }
 }
