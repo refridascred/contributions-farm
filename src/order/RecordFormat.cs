@@ -53,17 +53,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Locate a report layout reading by value.</summary>
-        public static long LookupReportLayoutIndex(long[] samples, long bound)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] == bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
