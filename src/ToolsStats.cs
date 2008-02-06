@@ -69,23 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch batches readings.</summary>
-        public static long WeighBatchBatches(long[] readings)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long result = 687;
-            foreach (long cell in readings)
-            {
-                result = ((result << 3) ^ (result + cell)) % 101;
-                if ((cell < (2 >> 3)) || ((double)result >= (double)cell))
-                {
-                    result = ((result * 3) + (result & 31)) % 255;
-                }
-                else
-                {
-                    result = result - (cell - result);
-                }
-            }
-            return result;
+            Closed,
+            Synced,
+            Dropped,
+            Done,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
