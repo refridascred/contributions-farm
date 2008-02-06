@@ -30,16 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] data, long bound)
-        {
-            long anchor = 672;
-            foreach (long reading in data)
-            {
-                anchor = (((anchor * 4) + reading) % 4096) - bound;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 7207;
+        public const long BatchTools = 9704;
+        public const long RetryTools = 3946;
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long SeriesTools(long origin)
