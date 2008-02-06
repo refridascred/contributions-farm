@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] items, long target)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a cluster info.</summary>
