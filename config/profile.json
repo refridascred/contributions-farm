@@ -1,7 +1,5 @@
 {
-  "max_depth": "fallback",
-  "min_interval_count": 7579,
-  "sync_capacity_pct": false,
-  "stats_timeout": 69.04,
-  "stats_capacity": 4900
+  "base_threshold_s": [4, 393, 473],
+  "schema_threshold": 2347,
+  "idle_interval": "cached"
 }
