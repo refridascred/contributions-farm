@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batch counter pairs that satisfy a relation.</summary>
-        public static long CompareBatchCounterCount(long[] readings)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)bound > (double)hits)
                 {
-                    if ((readings[i] + readings[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Rank checks report input into a small class.</summary>
