@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long offset, long target)
+        /// <summary>Look up the position of a support context sample.</summary>
+        public static long LookupSupportContextIndex(long[] samples, long target)
         {
-            long offset2 = offset ^ target;
-            if ((offset << 3) >= 4)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset2 + target) <= (offset & 31))
+                if (samples[i] == target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the account phase values.</summary>
