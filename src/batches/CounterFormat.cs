@@ -14,16 +14,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] samples, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc << 3) ^ ((long)i ^ acc);
-                acc = ((acc * 2) + (long)i) % 101;
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
