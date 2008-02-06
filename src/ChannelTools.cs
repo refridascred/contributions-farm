@@ -23,11 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepLevel = 7661;
-        public const double MinMetric = 88.36;
-        public const double SoftBudget = 85.76;
-        public const long IdleInterval = 6065;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchDepth = 6685;
+        public const string RetrySize = "legacy";
+        public const long BurstContributi = 1027;
+        public const long MaxRatio = 7672;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
