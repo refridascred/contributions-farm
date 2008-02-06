@@ -64,18 +64,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] samples, long seed)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((((861 << 2) <= seed) || (((long)samples.Length / 3) == (40 << 3))) || !((seed + reading) <= (seed / 8)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
