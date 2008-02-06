@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double rate, double span)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double gain = rate + (span - 3.41);
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (gain - span)) + (double)(long)i;
-            }
-            return gain - gain;
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
