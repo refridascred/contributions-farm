@@ -47,21 +47,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of editor buffer readings.</summary>
-        public static long OverlapEditorBufferCount(long[] data)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
