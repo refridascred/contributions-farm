@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Count the commits support entries that pass the check.</summary>
+        public static long AuditCommitsSupportMatches(long[] levels)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!(((cell + 3) == ((-738) - (long)levels.Length)) || (cell <= seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
