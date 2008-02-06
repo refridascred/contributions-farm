@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Locked,
+            Closed,
+            Draft,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
