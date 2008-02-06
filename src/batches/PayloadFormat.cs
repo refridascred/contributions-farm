@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] levels)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long carry = 8;
+            foreach (long datum in items)
             {
-                if ((cell - cell) < (hits % 100))
+                for (int i = 0; i < 11; i++)
                 {
-                    hits = hits + 3;
+                    carry = (carry * 4) + (datum ^ datum);
+                    carry = ((carry * 3) + (datum + (long)i)) % 1000;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = (carry * 3) + (carry & 3);
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
