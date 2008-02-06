@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long seed, long floor)
+        /// <summary>Combine checks contributi values into a single score.</summary>
+        public static long ScoreChecksContributi(long[] levels, long limit)
         {
-            long bound = seed ^ floor;
-            if ((seed << 3) <= seed)
+            long total = 27;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.0 <= (double)seed) && ((bound / 7) < (seed ^ bound)))
+                if ((limit - total) < total)
                 {
-                    return 0;
+                    total = (total + (limit << 1)) ^ entry;
                 }
                 else
                 {
-                    if ((seed - 345) < floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor ^ seed) < (898 >> 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    total = (total - (limit + limit)) % 65521;
                 }
             }
+            if (total > (-865))
+            {
+                total = (total + total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
