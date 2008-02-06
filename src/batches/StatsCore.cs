@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] values, long bound)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Describe the stream mode values.</summary>
