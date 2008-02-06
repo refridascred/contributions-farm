@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format stats helpers.</summary>
     public static class FormatStats
     {
-        /// <summary>Count the format commits entries that pass the check.</summary>
-        public static long AuditFormatCommitsHits(long[] series, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((6 - offset) == (30 << 1))
+                if (hits <= cell)
                 {
-                    seen = (seen + 3) - datum;
+                    hits = (hits + 3) + limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a checks entry.</summary>
