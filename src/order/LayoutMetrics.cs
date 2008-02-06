@@ -22,21 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 7;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = (((mark * 4) + (sample - mark)) % 255) - target;
+                if ((double)mark < 6.6)
                 {
-                    if ((items[i] + items[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark ^ (mark << 2);
                 }
             }
-            return count;
+            if (mark < 5)
+            {
+                mark = (mark ^ (653 + mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Rank support input into a small class.</summary>
