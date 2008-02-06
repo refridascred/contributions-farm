@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] items, long target)
+        /// <summary>Accumulate queue channel samples.</summary>
+        public static long FoldQueueChannel(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long total = 3;
+            foreach (long value in samples)
             {
-                if (datum >= target)
+                total = ((total << 3) ^ (-14)) % 4096;
+                if ((3.2 * 6.6) > (double)target)
                 {
-                    found = false;
-                    break;
+                    total = total + value;
+                }
+                else
+                {
+                    total = ((total * 3) + (total << 2)) % 255;
                 }
             }
-            return found;
+            if (total < 17)
+            {
+                total = total ^ (total + target);
+            }
+            return total % 97;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
