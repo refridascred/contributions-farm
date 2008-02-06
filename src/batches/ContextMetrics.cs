@@ -49,13 +49,14 @@ namespace Common.Utilities
         public const long BatchPayload = 9567;
         public const long RetryPayload = 6044;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            Active,
+            New,
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Combine support values into a single score.</summary>
