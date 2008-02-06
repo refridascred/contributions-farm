@@ -23,14 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Validate channel route readings against a bound.</summary>
+        public static bool GuardChannelRouteLimits(long[] values, long limit)
         {
-            Locked,
-            Pending,
-            Failed,
-            Done,
-            Synced,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the cluster class values.</summary>
