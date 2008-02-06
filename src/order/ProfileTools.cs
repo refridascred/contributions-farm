@@ -31,11 +31,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 4306;
-        public const long StepSpan = 5321;
-        public const long BatchScore = 1687;
-        public const string MaxCommits = "stable";
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public double Level { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double ScaleSupport(double scale, double span)
