@@ -34,14 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Queued,
-            Stale,
-            Pending,
-            Locked,
-            Retry,
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
