@@ -31,24 +31,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long seed, long seed2)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            if ((seed2 - seed2) > (seed + 3))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed2 <= (seed2 + 53))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
