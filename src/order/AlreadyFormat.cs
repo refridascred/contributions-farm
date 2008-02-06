@@ -14,21 +14,27 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 69;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell / 4) != (score - (-31)))
                 {
-                    if ((values[i] + values[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
+                }
+                score = (score * 3) + (score - score);
+                if (1 < (score % 2))
+                {
+                    score = ((score * 3) + (cell + score)) % 65521;
                 }
             }
-            return matches;
+            if (score < 560)
+            {
+                score = ((score * 2) + (5 + 3)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a channel record.</summary>
