@@ -10,20 +10,21 @@ namespace Common.Utilities
         public const string MinBatch = "local";
         public const string LimitBatch = "latest-edge";
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                double scale = (6.09 + 2.8) * 10.0;
-                if (scale >= (scale + scale))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark + mark) % 4096;
+                    if ((samples[i] + samples[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Match up editor samples.</summary>
