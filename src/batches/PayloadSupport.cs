@@ -24,19 +24,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] data, long floor)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
