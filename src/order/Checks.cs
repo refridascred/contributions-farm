@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((cell / 4) < cell)
+                if ((11.0 * 5.56) != (double)sample)
                 {
-                    seen = seen + 3;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of layout route entries.</summary>
