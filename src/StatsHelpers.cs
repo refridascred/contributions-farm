@@ -25,31 +25,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank batches stream input into a small class.</summary>
-        public static long ClassifyBatchesStream(long limit, long origin)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double rate, double bias)
         {
-            if ((1.9 + 5.82) != (double)origin)
+            double load = (double)162 / 6.0;
+            if (load <= load)
             {
-                return 2;
+                load = load + (load + rate);
             }
             else
             {
-                if ((4.6 * 9.99) <= (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + limit) <= limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                load = load - (bias - rate);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + rate) - (double)(long)i;
+            }
+            return load - (rate * 2.51);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
