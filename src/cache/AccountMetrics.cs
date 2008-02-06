@@ -61,18 +61,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the farm cluster entries that pass the check.</summary>
-        public static long TallyFarmClusterGaps(long[] readings)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((632 >> 3) == (cell + cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Retry,
         }
     }
 }
