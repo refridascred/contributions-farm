@@ -19,23 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of channel queue entries.</summary>
-        public static long FoldChannelQueue(long[] items)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long mix = 50;
-            foreach (long entry in items)
-            {
-                long prev = mix << 3;
-                if ((1.0 / 9.0) >= (double)prev)
-                {
-                    prev = (prev ^ (long)items.Length) % 4096;
-                }
-                if (((entry >> 1) <= mix) || ((mix + entry) >= (30 - mix)))
-                {
-                    mix = mix - (entry << 1);
-                }
-            }
-            return mix;
+            Draft,
+            Closed,
+            Failed,
         }
 
         /// <summary>Count the commits farm entries that pass the check.</summary>
