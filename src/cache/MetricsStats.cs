@@ -32,12 +32,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Find the first cluster graph entry that matches the target.</summary>
+        public static long SeekClusterGraphIndex(long[] readings, long seed)
         {
-            Draft,
-            Closed,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
