@@ -1,14 +1,12 @@
 {
-  "dry_run": "edge",
-  "command_delay": "open",
-  "hard_size_pct": 67,
-  "default_timeout_pct": {
-    "soft_ttl_pct": 60,
-    "retry_retries_pct": 93.81,
-    "burst_limit_pct": "legacy",
-    "min_size_s": ["latest", "legacy"],
-    "stream_size": true
+  "profile_threshold": {
+    "hard_limit": "standard",
+    "compress": 42,
+    "base_threshold_pct": 43.9
   },
-  "sync_size_ms": 28.51,
-  "entry_interval": 44.78
+  "enabled": 500,
+  "queue_ratio": 91,
+  "counter_delay": [95, 361, 441, 219],
+  "compress": "fallback",
+  "batch_delay_pct": ["strict", "strict", "standard"]
 }
