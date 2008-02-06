@@ -22,18 +22,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] values)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell >> 2) > (50 + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
