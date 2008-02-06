@@ -55,15 +55,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double weight, double span)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double ratio = (double)(16 % 12);
-            if (ratio < 4.8)
-            {
-                ratio = ratio - (span - weight);
-            }
-            return ratio - span;
+            Stale,
+            Ready,
+            Pending,
         }
     }
 }
