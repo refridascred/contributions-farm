@@ -1,5 +1,5 @@
 {
-  "max_limit_ms": [338, 315, 33],
-  "default_depth": 96.41,
-  "cache_delay_s": "stable"
+  "warm_ratio_ms": 100,
+  "notes_ttl": ["local", "eu-west", "open"],
+  "strict": 91
 }
