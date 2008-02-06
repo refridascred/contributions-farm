@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double bias, double bias2)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long target, long offset)
         {
-            double ratio = bias2;
-            if (ratio >= (bias2 + 19.0))
+            long step = target + offset;
+            if (((target << 1) < target) && ((double)target != (19.0 + 6.6)))
             {
-                ratio = (ratio - bias2) - bias;
+                return 2;
             }
-            return ratio - (double)830;
+            else
+            {
+                if ((offset - step) < 7)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7.0 / 6.0) <= (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks info.</summary>
