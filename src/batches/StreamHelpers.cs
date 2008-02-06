@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Failed,
-            Queued,
-            Done,
+            Draft,
+            Idle,
+            Paused,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
