@@ -28,19 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] items, long seed)
+        /// <summary>Audit counter format readings against a rule.</summary>
+        public static long CountCounterFormatGaps(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (value >= seed)
+                if ((value + value) > step)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the notes mode values.</summary>
