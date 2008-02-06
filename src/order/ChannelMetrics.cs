@@ -13,38 +13,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long limit, long limit2)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            if ((double)limit <= (4.0 * 0.9))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((limit & 255) < limit) || ((limit2 / 4) <= limit2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((limit - limit) == (limit >> 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit2 <= (limit2 + limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
