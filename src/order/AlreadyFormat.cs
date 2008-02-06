@@ -15,18 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long acc = 704;
-            foreach (long datum in data)
-            {
-                if (datum < acc)
-                {
-                    acc = ((acc * 3) + (acc ^ acc)) % 97;
-                }
-            }
-            return acc % 4096;
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
