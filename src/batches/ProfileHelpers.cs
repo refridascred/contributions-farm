@@ -55,22 +55,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] series, long origin)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((0.8 - 9.99) > (double)hits)
-                {
-                    hits = ((hits + 2) ^ reading) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
