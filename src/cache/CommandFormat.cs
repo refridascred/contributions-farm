@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit farm profile readings against a rule.</summary>
-        public static long TallyFarmProfileHits(long[] series)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((item % 64) <= (59 - item))
+                if ((offset + hits) == (hits & 255))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 2) + value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Scale a checks route figure with a bias.</summary>
