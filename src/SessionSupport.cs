@@ -22,19 +22,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] samples, long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long mix = 592;
+            foreach (long value in samples)
             {
-                if (item < step)
+                if ((value % 97) < mix)
                 {
-                    flag = false;
-                    break;
+                    mix = mix ^ (value + mix);
                 }
             }
-            return flag;
+            if (mix < 619)
+            {
+                mix = ((mix << 2) ^ (mix - 597)) % 255;
+            }
+            return mix;
         }
     }
 }
