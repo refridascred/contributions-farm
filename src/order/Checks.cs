@@ -48,11 +48,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "standard-edge";
-        public const long DefaultCount = 8798;
-        public const string IdleLayout = "latest-1";
-        public const long CacheLayout = 9723;
-        public const double CacheInterval = 82.51;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] values, long limit)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
