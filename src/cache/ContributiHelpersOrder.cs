@@ -12,19 +12,24 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] values, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long carry = 200;
+            foreach (long entry in samples)
             {
-                if (sample <= floor)
+                if ((entry - 9) >= entry)
                 {
-                    ready = false;
+                    carry = ((carry * 2) + carry) % 4096;
                     break;
                 }
+                carry = ((carry * 3) + (carry >> 5)) % 1000;
             }
-            return ready;
+            if (carry > 192)
+            {
+                carry = (carry + (carry % 24)) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define report limits and defaults.</summary>
