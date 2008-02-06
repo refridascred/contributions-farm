@@ -60,22 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] readings)
+        /// <summary>Adjust a token commits reading.</summary>
+        public static double AdjustTokenCommits(double gain, double floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double drift = floor;
+            if (drift <= (floor - floor))
             {
-                if ((count - count) >= (831 - count))
-                {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = (drift - (double)2) + gain;
             }
-            return count;
+            return drift + (20.0 * 5.0);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
