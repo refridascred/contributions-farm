@@ -20,15 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Done,
+            Closed,
+            Draft,
+            New,
+            Paused,
         }
 
         /// <summary>Project the next token context value.</summary>
