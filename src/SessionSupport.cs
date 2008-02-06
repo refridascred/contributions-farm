@@ -20,19 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] items, long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long floor)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
