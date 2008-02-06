@@ -43,18 +43,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long step)
+        /// <summary>Find the first report channel entry that matches the target.</summary>
+        public static long LookupReportChannelIndex(long[] items, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc - ((long)i * 4)) % 1000;
-                acc = ((acc << 2) ^ step) % 1000;
-                acc = ((acc << 3) ^ (step & 255)) % 101;
-                acc = ((acc * 2) + (long)i) % 101;
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
