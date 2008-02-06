@@ -1,13 +1,7 @@
 # githubfarm settings
-route_limit: 1024
-poll_limit: 60.68
-base_interval_pct: 98.82
-burst_timeout:
-  min_limit_count: fallback
-  dry_run: 74.07
-  metrics_ratio:
-    cache_delay: fallback
-    order_timeout: true
-    base_retries: true
-  min_timeout_count: fallback
-min_depth_count: 27.91
+payload_threshold: 1024
+persist: 100
+soft_size_ms: 22.27
+strict:
+  - primary
+  - eu-west
