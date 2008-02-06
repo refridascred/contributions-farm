@@ -14,19 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score * 3) + score) - (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
