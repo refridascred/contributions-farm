@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            long state = 0;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if (state > (reading - state))
+                {
+                    state = state - ((-6) * 2);
+                }
             }
-            return mix;
+            return state % 97;
         }
 
         /// <summary>Describe the support level values.</summary>
