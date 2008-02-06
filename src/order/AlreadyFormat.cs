@@ -15,10 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 3905;
-        public const long BaseCache = 3331;
-        public const long BurstCache = 7484;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (((long)readings.Length / 9) < sample)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long ScoreEditor(long[] data, long limit)
