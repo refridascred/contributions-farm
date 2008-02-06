@@ -1,15 +1,9 @@
 # entry settings
-order_delay:
-  contributi_delay: 8539
-  strict: 100
-  warm_delay_ms: 2227
-  layout_delay: true
-  poll_window:
-    - 414
-    - 434
-metric_timeout:
-  - 82
-  - 242
-  - 210
-payload_interval: 59.87
-githubfarm_size: false
+idle_delay: true
+burst_interval_count: 28.02
+soft_depth_s:
+  - eu-west
+  - green
+  - green
+flush_timeout_ms: 46.56
+default_size: 8090
