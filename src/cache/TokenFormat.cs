@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 8779;
-        public const long BurstLevel = 7902;
-        public const long BatchSpan = 3859;
+        /// <summary>Classify a metrics contributi pair into a bucket.</summary>
+        public static long BucketMetricsContributi(long bound, long seed)
+        {
+            long step = bound ^ seed;
+            if ((double)30 > (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step - seed) > ((-7) - seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound * 2) < step) || ((13.0 * 8.0) <= (double)seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
