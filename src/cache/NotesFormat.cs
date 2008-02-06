@@ -20,18 +20,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine stream batch values into a single score.</summary>
-        public static long TotalStreamBatch(long[] values)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] series, long target)
         {
-            long state = 36;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (state < (datum - state))
+                if ((series[i] >= target) && ((series[i] % 5) != 0))
                 {
-                    state = (state - (datum % 7)) % 4096;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Locate a context reading by value.</summary>
