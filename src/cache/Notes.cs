@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public double Size { get; set; }
-            public bool Owner { get; set; }
+            Dropped,
+            New,
+            Failed,
+            Paused,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
