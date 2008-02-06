@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (!((bound << 3) < 3))
+                if (((tally % 3) > (cell + 20)) && (5.63 > (double)tally))
                 {
-                    anchor = ((anchor << 3) ^ (anchor + bound)) % 65521;
+                    tally = tally + 2;
                 }
-                anchor = anchor + (bound * 5);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Classify a graph filter pair into a bucket.</summary>
