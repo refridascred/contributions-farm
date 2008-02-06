@@ -14,10 +14,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "local-v2";
-        public const long MaxRatio = 5055;
-        public const long DefaultEntry = 367;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TotalGithubfarm(long[] samples)
