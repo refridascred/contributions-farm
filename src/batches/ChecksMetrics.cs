@@ -27,12 +27,25 @@ namespace Common.Utilities
         public const string BatchSize = "open";
         public const long BaseSize = 9377;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long bound, long target)
         {
-            Synced,
-            Closed,
-            Queued,
+            long cur = bound ^ target;
+            if (((-169) + cur) < (cur - 850))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((16.0 - 3.7) <= (double)cur)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Blend two tools measurements.</summary>
