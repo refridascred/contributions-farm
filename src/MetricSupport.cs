@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstFactor = 81.97;
-        public const long BaseContributi = 5855;
-        public const long MinBudget = 4530;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Closed,
+            New,
+            Dropped,
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long RollMetrics(long target)
