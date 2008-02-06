@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const double IdleLevel = 75.82;
         public const double StepBudget = 9.01;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinScore = 5693;
-        public const long RetryEntry = 4295;
-        public const long BurstEntry = 9981;
-        public const long CacheCount = 8045;
-        public const long HardWidth = 6689;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 603;
+        public const double BatchSession = 7.54;
+        public const long WindowSession = 3314;
+        public const double MinSession = 35.25;
 
         /// <summary>Count the commits farm entries that pass the check.</summary>
         public static long MeasureCommitsFarmMatches(long[] readings, long limit)
