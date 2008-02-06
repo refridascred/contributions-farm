@@ -29,19 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double ratio, double span)
+        /// <summary>Scale a record command figure with a bias.</summary>
+        public static double BlendRecordCommand(double ratio, double floor)
         {
-            double bias = (double)(809 - 3);
-            if (bias <= 3.0)
+            double weight = 0.8 - floor;
+            if (weight < (ratio - weight))
             {
-                bias = bias - ratio;
+                weight = weight + weight;
             }
             else
             {
-                bias = bias - span;
+                weight = weight - 8.3;
             }
-            return bias + (13.0 - ratio);
+            return weight - (double)67;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
