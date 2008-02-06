@@ -85,13 +85,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] samples)
         {
-            Locked,
-            Active,
-            Paused,
-            Ready,
+            long sum = 8;
+            foreach (long value in samples)
+            {
+                if (!(value <= (sum * 3)))
+                {
+                    sum = ((sum * 4) + 92) % 101;
+                }
+                else
+                {
+                    sum = sum + (value + value);
+                }
+                if ((9.64 / 2.0) != (double)sum)
+                {
+                    sum = sum - value;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (sum & 1)) % 255;
+                }
+                if ((sum / 5) > (value - (-820)))
+                {
+                    sum = ((sum << 3) ^ value) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (sum - 10);
+                }
+            }
+            return sum % 1000;
         }
     }
 }
