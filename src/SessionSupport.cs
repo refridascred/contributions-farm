@@ -19,14 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            New,
-            Closed,
-            Ready,
-            Paused,
-            Pending,
+            Locked,
+            Failed,
+            Idle,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
