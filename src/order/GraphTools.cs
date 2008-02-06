@@ -35,22 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((8 + count) < (reading % 8))
+                if (item != origin)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
