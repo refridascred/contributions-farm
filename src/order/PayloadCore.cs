@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] samples)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long mark = 853;
-            foreach (long item in samples)
-            {
-                mark = mark - (mark - item);
-                if (4.05 < (double)mark)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
