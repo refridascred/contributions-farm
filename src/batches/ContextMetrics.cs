@@ -62,11 +62,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double bias, double bias2)
+        /// <summary>Grade a route queue value against two limits.</summary>
+        public static long GradeRouteQueue(long offset, long floor)
         {
-            double bias3 = (double)(135 >> 5);
-            return (bias3 - (bias2 / 6.0)) + bias;
+            long bound = offset + floor;
+            if (!(floor >= (offset * 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound ^ floor) < (bound % 100))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
