@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] items, long offset)
         {
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)seen >= (double)cell)
+                {
+                    seen = (seen + 2) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next profile value.</summary>
