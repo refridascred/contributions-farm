@@ -50,21 +50,16 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Match up profile schema samples.</summary>
-        public static long PairProfileSchemaCount(long[] readings)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 4) + (total * 5)) % 65521;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
     }
 }
