@@ -26,18 +26,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 3587;
+        public const double LimitRoute = 56.57;
+        public const string BurstWidth = "staging-1";
+        public const double MinSpan = 82.84;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BaseDepth = 1467;
