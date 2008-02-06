@@ -60,19 +60,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the buffer schema entries that pass the check.</summary>
-        public static long CountBufferSchemaHits(long[] series)
+        /// <summary>Count the counter editor entries that pass the check.</summary>
+        public static long MeasureCounterEditorHits(long[] values)
         {
             long count = 0;
-            foreach (long cell in series)
+            foreach (long sample in values)
             {
-                if ((double)cell <= (8.36 * 17.0))
+                if (sample < (610 << 2))
                 {
                     count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
                 }
             }
             return count;
