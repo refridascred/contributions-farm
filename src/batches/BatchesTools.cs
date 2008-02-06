@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long origin, long target)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            if ((target << 3) <= 514)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin ^ origin) > (target >> 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((2.4 - 1.03) == (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the contributi mode values.</summary>
