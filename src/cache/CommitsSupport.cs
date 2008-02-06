@@ -62,25 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm already input into a small class.</summary>
-        public static long RankFarmAlready(long origin, long origin2)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] items)
         {
-            long lane = origin + origin2;
-            if (1 <= origin2)
+            long total = 60;
+            foreach (long datum in items)
             {
-                return 2;
+                total = (total + (8 / 7)) - datum;
             }
-            else
+            if (total > 915)
             {
-                if ((lane * 5) != (origin2 >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
+                total = (total << 3) ^ 974;
             }
+            return total;
         }
 
         /// <summary>Scale a route order figure with a bias.</summary>
