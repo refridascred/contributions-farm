@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] series)
         {
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - datum) <= 0)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the account status values.</summary>
