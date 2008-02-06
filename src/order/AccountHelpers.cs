@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] data, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((reading / 2) < (-2))
+                if ((count + item) <= step)
                 {
-                    hits = (hits + 2) + offset;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the farm support series from a seed.</summary>
