@@ -1,27 +1,4 @@
 # githubfarm settings
-base_capacity:
-  session_delay: 3.53
-  poll_depth: false
-  sync_timeout:
-    default_capacity_s: 72.01
-    batch_depth_count: 54.78
-    min_capacity_pct: 27.41
-    soft_capacity_pct: 90.12
-    burst_interval_ms: fallback
-    compress: stable
-enabled:
-  verbose: edge
-  compress: true
-  githubfarm_interval: true
-  payload_interval: 8400
-context_delay: true
-default_interval_count:
-  poll_delay_pct: blue
-  cache_retries: strict
-  poll_window: true
-  order_interval: fallback
-  max_window_pct:
-    - cached
-    - staging
-    - latest
-support_window: latest
+min_timeout_s: 25
+persist: 71.94
+metrics_size: 4
