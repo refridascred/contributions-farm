@@ -1,6 +1,10 @@
-id,weight,owner
-1,351,78.61
-2,73.4,179
-3,18.93,green
-4,176,legacy
-5,64,746
+id,ratio,weight,rank
+1,44.8,625,942
+2,708,local,26.66
+3,656,621,753
+4,436,cached,76.19
+5,47,134,58.4
+6,open,619,92.37
+7,fallback,295,440
+8,primary,967,944
+9,staging,553,strict
