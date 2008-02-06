@@ -1,28 +1,7 @@
 {
-  "warm_retries_s": ["staging", "strict"],
-  "stats_window": 16.04,
-  "soft_threshold_s": {
-    "warm_threshold_s": "blue",
-    "enabled": {
-      "cache_ttl_pct": [278, 264],
-      "enabled": "eu-west",
-      "metric_ttl": "fallback"
-    },
-    "burst_interval_ms": 22.21,
-    "retry_depth_ms": {
-      "warm_limit": false,
-      "soft_size_count": true,
-      "cache_threshold_pct": 500,
-      "cache_limit_count": true,
-      "stream_depth": "stable",
-      "queue_ttl": false
-    },
-    "cache_depth": {
-      "max_retries": 42.65,
-      "token_limit": 500,
-      "window_delay": ["open", "primary", "green"],
-      "notes_retries": "staging"
-    }
-  },
-  "warm_depth_ms": "strict"
+  "burst_delay_count": [183, 485, 315],
+  "audit": "stable",
+  "soft_depth": 9019,
+  "cache_threshold_s": "edge",
+  "retry_depth_ms": true
 }
