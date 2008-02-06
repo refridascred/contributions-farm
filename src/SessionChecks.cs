@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] values)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long item in values)
+            if ((26 % 10) >= (bound - bound))
             {
-                if (((item << 3) < 82) || (6 >= (hits + 422)))
+                return 6;
+            }
+            else
+            {
+                if (bound < (bound + bound))
                 {
-                    hits = hits + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (seed < 552)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
