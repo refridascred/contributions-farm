@@ -78,21 +78,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double weight, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = 14.0;
+            if (scale >= span)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale + 8.21) + weight;
             }
-            return matches;
+            else
+            {
+                scale = scale - (5.61 + span);
+            }
+            return scale - span;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
