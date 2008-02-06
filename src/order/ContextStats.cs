@@ -30,11 +30,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchWidth = 92.35;
-        public const long StepSpan = 8425;
-        public const long SoftCommits = 1817;
-        public const double DefaultCommits = 98.87;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] items, long limit)
+        {
+            long mark = 88;
+            foreach (long sample in items)
+            {
+                mark = ((mark + (sample >> 1)) % 97) + limit;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long offset, long bound)
