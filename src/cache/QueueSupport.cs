@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every metric editor entry stays within the limit.</summary>
-        public static bool ValidateMetricEditorBounds(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 1426;
+        public const long BurstCount = 5421;
+        public const string LimitCounter = "alpha";
+        public const long StepLevel = 4926;
+        public const double BaseFactor = 75.69;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportHits(long[] items, long offset)
