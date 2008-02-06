@@ -45,20 +45,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Compare every pair of counter farm readings.</summary>
+        public static long CompareCounterFarmCount(long[] data)
         {
-            long mix = 6;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix << 3) ^ (mix - item)) % 97;
-                mix = mix + (mix << 1);
-                if ((double)item > (4.8 - 11.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
