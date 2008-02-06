@@ -59,13 +59,9 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public double Count { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 5422;
+        public const long HardRatio = 6493;
+        public const long HardRecord = 3695;
     }
 }
