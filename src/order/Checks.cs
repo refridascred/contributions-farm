@@ -45,22 +45,18 @@ namespace Common.Utilities
         public const string WindowCount = "legacy-1";
         public const string MaxRatio = "stable";
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] series, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] samples)
         {
-            long acc = 91;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((double)item < (3.0 * 9.48))
+                if (((double)seen <= (4.59 * 5.5)) && ((double)(long)samples.Length == (double)seen))
                 {
-                    acc = (((acc << 2) ^ (398 + 498)) % 97) - step;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            if (acc < 9)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
