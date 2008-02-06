@@ -38,9 +38,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchScore = "local";
-        public const string CacheEditor = "fallback";
-        public const double BurstInterval = 30.81;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Ready,
+            New,
+            Draft,
+            Idle,
+        }
     }
 }
