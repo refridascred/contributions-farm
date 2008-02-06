@@ -20,27 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            long carry = 3;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 3) + ((long)values.Length & 7)) % 255;
-                if ((carry + carry) >= 7)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry ^ reading) % 1000;
-                }
-                if (7.0 < (double)carry)
-                {
-                    carry = carry ^ (reading - reading);
+                    if ((data[i] ^ data[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 550)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
