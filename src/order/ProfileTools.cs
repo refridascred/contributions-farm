@@ -41,11 +41,20 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double scale, double span)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long origin)
         {
-            double load = scale;
-            return (load + 6.2) + span;
+            long state = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state - (origin + origin)) % 4096;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (((state << 2) ^ (origin % 7)) % 101) ^ (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a support record.</summary>
