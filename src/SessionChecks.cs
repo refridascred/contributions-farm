@@ -42,19 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] readings, long origin)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long state = 1;
-            foreach (long entry in readings)
-            {
-                state = ((state + 5) % 4096) - origin;
-                if ((state >= 2) || (4 >= (entry + 83)))
-                {
-                    state = ((state << 3) ^ (state % 5)) % 255;
-                }
-            }
-            return state;
+            Idle,
+            New,
+            Done,
+            Paused,
         }
     }
 }
