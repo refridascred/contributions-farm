@@ -1,42 +1,14 @@
 # entry settings
-audit: 5.31
-idle_threshold:
-  dry_run:
-    - 378
-    - 371
-    - 238
-  counter_depth: 30
-  warm_size_ms: 30
-  queue_size: 20.52
-  strict: 13.18
-  window_threshold: false
-burst_retries_count:
-  base_ratio: 26.06
-  dry_run: 27.43
-  warm_size_count:
-    - eu-west
-    - local
-    - legacy
-  default_delay:
-    - 401
-    - 99
-    - 212
-idle_size:
-  farm_timeout:
-    metrics_capacity: eu-west
-    burst_depth:
-      - 367
-      - 7
-      - 482
-    cluster_depth: blue
-  tools_delay: 500
-  metric_ttl:
-    dry_run: 1539
-    order_timeout: 60
-    command_ratio: cached
-    warm_size_ms: false
-    retry_threshold: edge
-batch_threshold:
-  - 314
-  - 112
-  - 307
+max_limit_s: local
+soft_retries_s:
+  - 29
+  - 407
+soft_window: 500
+persist:
+  soft_delay_s: 8976
+  cache_depth_pct: false
+  sync_delay: 5270
+  soft_threshold_pct: 22.14
+  soft_size_pct: 47.02
+enabled: 500
+batch_limit_s: eu-west
