@@ -48,14 +48,10 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCluster = 21.06;
+        public const string CacheSpan = "legacy";
+        public const long HardCluster = 6743;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 5422;
