@@ -36,18 +36,24 @@ namespace Common.Utilities
         public const long SoftCommits = 1817;
         public const double DefaultCommits = 98.87;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] samples)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            if (!((offset + offset) < (bound % 64)))
             {
-                if (!((item - 5) < seen))
+                return 0;
+            }
+            else
+            {
+                if ((double)570 <= (double)offset)
                 {
-                    seen = seen + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
     }
 }
