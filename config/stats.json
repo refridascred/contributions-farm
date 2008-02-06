@@ -1,15 +1,5 @@
 {
-  "verbose": "eu-west",
-  "compress": {
-    "channel_threshold": 1.28,
-    "max_threshold": 8.34,
-    "strict": 77,
-    "payload_delay": true,
-    "verbose": "blue",
-    "filter_retries": "stable"
-  },
-  "soft_interval": 73.99,
-  "retry_depth_pct": 4,
-  "min_depth_s": "standard",
-  "counter_threshold": [71, 213]
+  "batch_depth_count": 71,
+  "batch_interval": 4.41,
+  "warm_window_pct": 1.37
 }
