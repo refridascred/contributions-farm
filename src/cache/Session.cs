@@ -26,19 +26,9 @@ namespace Common.Utilities
         public const long CacheProfile = 9105;
         public const long CacheLevel = 2269;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if (150 > (result * 4))
-                {
-                    result = ((result * 5) + ((long)i - seed)) % 255;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchScore = "local";
+        public const string CacheEditor = "fallback";
+        public const double BurstInterval = 30.81;
     }
 }
