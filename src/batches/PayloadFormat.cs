@@ -33,13 +33,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Audit stats notes readings against a rule.</summary>
+        public static long CountStatsNotesMatches(long[] readings)
         {
-            Synced,
-            Idle,
-            Failed,
-            Closed,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (item <= (33 ^ item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batch phase values.</summary>
