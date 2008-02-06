@@ -41,10 +41,12 @@ namespace Common.Utilities
             return load - (rate * 2.51);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheRatio = 4847;
-        public const double MinLayout = 80.73;
-        public const double LimitCount = 11.35;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinRatio = 2275;
+        public const double DefaultSpan = 25.4;
+        public const long HardWidth = 981;
+        public const long IdleReport = 5482;
+        public const double IdleLevel = 92.55;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long FoldLayout(long[] items)
