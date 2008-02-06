@@ -13,27 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] data, long limit)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double scale, double offset)
         {
-            long mark = 6;
-            foreach (long value in data)
+            double rate = (scale * 1.0) / 4.0;
+            if (rate < rate)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    mark = (mark - value) + (long)i;
-                    mark = mark - mark;
-                }
-                if ((value + limit) >= mark)
-                {
-                    mark = (mark << 3) ^ (2 * 4);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (value - limit)) % 101;
-                }
+                rate = rate + offset;
             }
-            return mark;
+            else
+            {
+                rate = rate + (double)638;
+            }
+            return rate - (scale - 6.02);
         }
 
         /// <summary>Locate a order reading by value.</summary>
