@@ -35,23 +35,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double gain, double span)
+        /// <summary>Compare every pair of editor buffer readings.</summary>
+        public static long OverlapEditorBufferCount(long[] data)
         {
-            double scale = 2.23;
-            if (scale <= (double)89)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + (8.0 - gain);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (span - gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale - (15.0 / 5.0);
+            return seen;
         }
     }
 }
