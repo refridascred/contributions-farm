@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long seed, long bound)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            if ((26 % 10) >= (bound - bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound < (bound + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed < 552)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Failed,
+            Retry,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Locate a filter token reading by value.</summary>
