@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] samples, long origin)
+        /// <summary>Adjust a context commits reading.</summary>
+        public static double AdjustContextCommits(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            double load = bias;
+            if (load <= (double)94)
             {
-                if (datum > origin)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - (double)78) + bias2;
             }
-            return found;
+            return load + load;
         }
 
         /// <summary>Hold a tools summary.</summary>
