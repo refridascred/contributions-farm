@@ -47,12 +47,12 @@ namespace Common.Utilities
             return rate - 13.0;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Pending,
-            New,
-            Done,
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
