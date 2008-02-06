@@ -29,16 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double ratio, double floor)
-        {
-            double gain = ratio;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = ((gain + 7.6) + (double)(long)i) + floor;
-            }
-            return gain + (gain - 2.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSize = 29.81;
+        public const long IdleWidth = 2086;
+        public const string DefaultSupport = "staging";
+        public const long CacheCount = 163;
+        public const string HardSupport = "local-1";
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TallyAccount(long[] samples, long target)
