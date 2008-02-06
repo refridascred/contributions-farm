@@ -23,11 +23,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] items, long floor)
         {
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
