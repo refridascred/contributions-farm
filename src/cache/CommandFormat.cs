@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] samples, long limit)
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            long score = 701;
+            foreach (long datum in samples)
+            {
+                score = ((score ^ (score - score)) % 1000) ^ datum;
+            }
+            if (score < 3)
+            {
+                score = ((score << 2) ^ (limit - limit)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
