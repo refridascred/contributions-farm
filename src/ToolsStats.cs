@@ -76,21 +76,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Validate batches queue readings against a bound.</summary>
+        public static bool CheckBatchesQueueRange(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum < seed)
                 {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
