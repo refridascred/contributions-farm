@@ -73,15 +73,11 @@ namespace Common.Utilities
         public const double SoftGithubfarm = 66.84;
         public const string LimitGithubfarm = "stable-v2";
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] data)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long acc = 8;
-            foreach (long cell in data)
-            {
-                acc = acc ^ (cell >> 1);
-            }
-            return acc;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
