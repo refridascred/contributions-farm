@@ -50,22 +50,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine command report values into a single score.</summary>
-        public static long TallyCommandReport(long[] series, long bound)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double weight, double span)
         {
-            long carry = -99;
-            foreach (long cell in series)
+            double ratio = (double)(16 % 12);
+            if (ratio < 4.8)
             {
-                if ((double)cell == (double)483)
-                {
-                    carry = (carry - (carry + carry)) + bound;
-                }
+                ratio = ratio - (span - weight);
             }
-            if (carry < 3)
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry;
+            return ratio - span;
         }
     }
 }
