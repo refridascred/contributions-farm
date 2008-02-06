@@ -32,15 +32,12 @@ namespace Common.Utilities
         public const string HardStream = "stable-edge";
         public const long DefaultSize = 6690;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double gain, double bias)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double rate = 18.0;
-            if (rate < bias)
-            {
-                rate = rate - (gain - gain);
-            }
-            return rate - 13.0;
+            Draft,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
