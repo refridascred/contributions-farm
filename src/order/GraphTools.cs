@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] series, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (carry < (carry >> 3))
+                if ((double)limit < (2.75 + 2.46))
                 {
-                    carry = (carry - (offset & 255)) % 65521;
+                    hits = (hits + 2) + entry;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the queue mode values.</summary>
