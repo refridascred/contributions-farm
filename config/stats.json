@@ -1,13 +1,7 @@
 {
-  "sync_timeout_count": false,
-  "warm_delay_ms": 8250,
-  "warm_limit": [27, 220],
-  "default_capacity_s": {
-    "burst_ttl_pct": 26.06,
-    "route_delay": "legacy",
-    "dry_run": false,
-    "hard_timeout": true
-  },
-  "cache_depth_s": 30,
-  "session_timeout": [221, 169, 373, 172]
+  "retry_size_s": 75.98,
+  "base_retries_s": 4355,
+  "soft_window_pct": 60,
+  "compress": "cached",
+  "retry_timeout_ms": ["local", "standard", "eu-west"]
 }
