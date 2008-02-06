@@ -19,15 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Draft,
+            Paused,
+            Done,
+            Idle,
+            Ready,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
