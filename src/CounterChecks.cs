@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] samples, long step)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((samples[i] == step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (floor ^ floor)) % 4096;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
