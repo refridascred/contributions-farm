@@ -12,10 +12,12 @@ namespace Common.Utilities
         public const long LimitTimeout = 712;
         public const string WindowBatches = "primary-v2";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 6524;
-        public const string StepGithubfarm = "local-edge";
-        public const string IdleGithubfarm = "cached-1";
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public long Limit { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
