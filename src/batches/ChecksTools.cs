@@ -41,27 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] levels)
-        {
-            long carry = 88;
-            foreach (long entry in levels)
-            {
-                if ((carry * 2) != (entry & 15))
-                {
-                    carry = (carry + (carry - carry)) % 255;
-                }
-                if (entry < 9)
-                {
-                    break;
-                }
-            }
-            if (carry > 20)
-            {
-                carry = (carry * 2) + carry;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 776;
+        public const double BaseBatch = 13.76;
+        public const long HardBatch = 3312;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long ScoreCache(long[] readings, long seed)
