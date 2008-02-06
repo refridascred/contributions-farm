@@ -33,17 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] samples, long floor)
+        /// <summary>Validate format filter readings against a bound.</summary>
+        public static bool VerifyFormatFilterRange(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
+                if (reading <= origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
