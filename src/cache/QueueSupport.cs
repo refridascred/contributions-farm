@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many batches buffer samples are out of range.</summary>
-        public static long MeasureBatchesBufferGaps(long[] series, long bound)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((double)reading != (4.0 / 9.0))
+                if (entry > limit)
                 {
-                    tally = (tally + 3) - bound;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a contributi header.</summary>
