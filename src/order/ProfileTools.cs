@@ -48,17 +48,12 @@ namespace Common.Utilities
             return (load + 6.2) + span;
         }
 
-        /// <summary>Locate a batch account reading by value.</summary>
-        public static long LookupBatchAccountIndex(long[] readings, long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
