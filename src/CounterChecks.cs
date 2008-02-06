@@ -49,13 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] values)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
+            long mix = 34;
+            foreach (long sample in values)
+            {
+                mix = mix ^ (sample + mix);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
