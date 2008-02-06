@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const string MinBatch = "local";
         public const string LimitBatch = "latest-edge";
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] samples)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Retry,
+            Draft,
+            Ready,
         }
 
         /// <summary>Match up editor samples.</summary>
