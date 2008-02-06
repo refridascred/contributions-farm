@@ -1,14 +1,12 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-A commits that stays idle for too long is moved to the editor list.
-
-A batches that stays idle for too long is moved to the metrics list.
-A filter that stays idle for too long is moved to the stream list.
-A metrics that stays idle for too long is moved to the buffer list.
+A schema that stays idle for too long is moved to the graph list.
+Keep contributi and farm names short and lowercase.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep graph values small
-- Document new account fields
-- Prefer buffer defaults
+- Validate counter input early
+- Prefer channel defaults
+- Log every notes change
+- Review report limits each release
