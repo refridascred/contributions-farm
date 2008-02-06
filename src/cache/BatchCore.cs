@@ -41,17 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the cluster route series from a seed.</summary>
-        public static long RollClusterRoute(long seed)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score << 3) ^ ((long)i / 5)) % 97;
-                score = score + score;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
