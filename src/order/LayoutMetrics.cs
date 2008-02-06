@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a token route counter forward.</summary>
-        public static long StepTokenRoute(long target)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit record support readings against a rule.</summary>
