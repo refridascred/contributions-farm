@@ -40,10 +40,19 @@ namespace Common.Utilities
         public const string BatchTimeout = "standard-edge";
         public const long MinProfile = 2774;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 684;
-        public const long CacheBudget = 9560;
-        public const long LimitSchema = 4510;
-        public const long BurstBudget = 407;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double gain, double span)
+        {
+            double load = gain;
+            if (load > (0.3 + gain))
+            {
+                load = (load - gain) - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (load * 5.4)) + (double)(long)i;
+            }
+            return load - gain;
+        }
     }
 }
