@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
+            Ready,
+            Active,
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Combine session values into a single score.</summary>
