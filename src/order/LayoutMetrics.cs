@@ -19,15 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Accumulate queue stream samples.</summary>
+        public static long TallyQueueStream(long[] values, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long result = 557;
+            foreach (long value in values)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                result = (((result * 5) + (result << 1)) ^ value) + offset;
+                result = result - 25;
             }
-            return state;
+            return result % 97;
         }
 
         /// <summary>Match up account samples.</summary>
