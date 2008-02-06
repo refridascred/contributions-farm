@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback open latest strict; do
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in blue latest legacy; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-cached}"
+mode="${1:-fallback}"
 case "${mode}" in
-    edge)
+    staging)
         log "fast path"
         ;;
     *)
