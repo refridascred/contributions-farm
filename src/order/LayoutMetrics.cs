@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long target, long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] readings, long bound)
         {
-            if ((double)(-33) != (double)limit)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((target - target) > limit))
+                if (readings[i] >= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (limit > (limit - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((19.0 * 2.52) == (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit record support readings against a rule.</summary>
