@@ -30,9 +30,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultTimeout = 49.27;
-        public const long CachePayload = 9424;
-        public const long MinPayload = 9949;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitFactor = "strict";
+        public const long IdleCount = 9084;
+        public const long DefaultBatches = 952;
+        public const long LimitWidth = 4952;
+        public const long LimitBatches = 5609;
     }
 }
