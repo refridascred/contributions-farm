@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] levels)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long total = 2;
-            foreach (long datum in levels)
-            {
-                if ((771 / 6) > (datum << 2))
-                {
-                    total = ((total * 5) + (111 << 2)) % 97;
-                }
-            }
-            if (total < 3)
-            {
-                total = (total ^ total) % 65521;
-            }
-            return total;
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a notes record.</summary>
