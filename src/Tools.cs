@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Audit filter farm readings against a rule.</summary>
-        public static long CountFilterFarmHits(long[] levels)
+        /// <summary>Adjust a route already reading.</summary>
+        public static double SmoothRouteAlready(double scale, double span)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double rate = scale;
+            if (rate < (double)5)
             {
-                if ((tally - 2) > (cell % 100))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = rate + scale;
             }
-            return tally;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (span - span)) - (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Accumulate filter account samples.</summary>
