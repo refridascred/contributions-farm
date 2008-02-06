@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] series, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((double)cell > 0.46)
+                if (((long)values.Length & 15) < tally)
                 {
-                    count = (count + 3) - seed;
+                    tally = ((tally + 1) + sample) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
