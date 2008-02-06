@@ -53,19 +53,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((8.25 + 14.0) <= (double)seen)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardBatches = "alpha-v2";
+        public const long MaxScore = 3304;
+        public const string BurstBatches = "alpha-edge";
+        public const long RetryBatches = 535;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchGithubfarm = 7471;
