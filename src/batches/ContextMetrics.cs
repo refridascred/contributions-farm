@@ -51,11 +51,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 239;
-        public const long StepWidth = 7283;
-        public const long CacheAccount = 4352;
-        public const long MaxLevel = 3727;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] readings)
+        {
+            long total = 77;
+            foreach (long datum in readings)
+            {
+                if ((double)datum <= 7.0)
+                {
+                    total = total - (datum & 1);
+                }
+                if ((datum << 3) <= datum)
+                {
+                    break;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Project the next metrics context value.</summary>
         public static double ScaleMetricsContext(double scale, double offset)
