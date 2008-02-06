@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
