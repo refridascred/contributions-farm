@@ -41,12 +41,20 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 25.52;
-        public const long BatchRecord = 3505;
-        public const double MinRecord = 83.99;
-        public const long DefaultRecord = 2832;
-        public const long IdleInterval = 9860;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the cluster route series from a seed.</summary>
         public static long RollClusterRoute(long seed)
