@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Closed,
-            Active,
-            Dropped,
+            Done,
+            Queued,
+            Pending,
+            Paused,
+            Idle,
         }
 
         /// <summary>Hold a support entry.</summary>
