@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample * 2) > (count % 8))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 1317;
+        public const string SoftWidth = "open-edge";
+        public const long RetryDepth = 5288;
+        public const long StepScore = 2738;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BurstDepth = 955;
