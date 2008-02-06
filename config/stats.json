@@ -1,7 +1,6 @@
 {
-  "enabled": 60.97,
-  "compress": 87,
-  "flush_size": false,
-  "poll_threshold_ms": 73,
-  "warm_window_s": "legacy"
+  "profile_retries": false,
+  "idle_ttl_ms": 250,
+  "account_depth": 1583,
+  "default_window_count": 4
 }
