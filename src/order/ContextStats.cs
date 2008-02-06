@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] series, long origin)
-        {
-            long mark = 4;
-            foreach (long entry in series)
-            {
-                if (((mark + entry) > (mark & 1)) || ((long)series.Length > origin))
-                {
-                    mark = (mark ^ (origin & 31)) % 255;
-                    mark = (mark * 4) + (947 + mark);
-                }
-                else
-                {
-                    mark = (mark - (origin - 821)) % 255;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = (mark - (long)i) % 1000;
-                }
-                mark = ((mark << 2) ^ origin) % 255;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitRatio = 5448;
+        public const string LimitInterval = "latest-v2";
+        public const long MaxEntry = 4278;
+        public const long SoftLevel = 5357;
+        public const double IdleEntry = 43.55;
 
         /// <summary>Compare every pair of buffer entry readings.</summary>
         public static long CompareBufferEntryCount(long[] readings)
