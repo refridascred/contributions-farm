@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in stable legacy blue edge; do
+    log "checking ${item}"
+done
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in blue staging edge; do
-    log "checking ${item}"
-done
