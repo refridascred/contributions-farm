@@ -25,15 +25,11 @@ namespace Common.Utilities
         public const long DefaultTools = 783;
         public const string MinSpan = "open-edge";
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Scale a counter command figure with a bias.</summary>
+        public static double SmoothCounterCommand(double scale, double floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            double bias = (scale + scale) - (scale * 18.0);
+            return (bias + bias) + floor;
         }
     }
 }
