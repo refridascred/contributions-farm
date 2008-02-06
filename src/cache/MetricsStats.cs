@@ -45,17 +45,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] readings, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state - (state * 3)) % 65521;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Adjust a graph reading.</summary>
