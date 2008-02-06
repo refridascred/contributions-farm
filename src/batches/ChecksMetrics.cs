@@ -56,19 +56,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a commits metrics figure with a bias.</summary>
-        public static double ScaleCommitsMetrics(double weight, double bias)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double ratio, double bias)
         {
-            double mean = weight;
-            if (mean < 6.1)
+            double load = ratio;
+            if (load > (double)292)
             {
-                mean = (mean + (mean / 3.0)) + bias;
+                load = load + (3.35 + load);
             }
             for (int i = 0; i < 3; i++)
             {
-                mean = (mean + (mean / 2.0)) - (double)(long)i;
+                load = (load + bias) + (double)(long)i;
             }
-            return mean - (double)5;
+            return load + (ratio / 3.0);
         }
     }
 }
