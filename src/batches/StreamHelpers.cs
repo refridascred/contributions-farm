@@ -13,21 +13,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((42 * 3) != (value * 3)) || ((value - 2) == (count >> 5))) && !((value * 4) > ((-27) - (-7))))
                 {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Match up record samples.</summary>
