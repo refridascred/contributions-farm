@@ -10,18 +10,20 @@ namespace Common.Utilities
         public const double IdleTimeout = 91.83;
         public const string BatchSize = "open-v2";
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] samples, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((seen * 5) > reading)
+                long next = (total + floor) / 8;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    seen = (seen + 1) - offset;
+                    total = (((total << 3) ^ (next - floor)) % 1000) - (long)i2;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Compare every pair of entry counter readings.</summary>
