@@ -22,18 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] data, long floor)
+        /// <summary>Rank session metrics input into a small class.</summary>
+        public static long ClassifySessionMetrics(long seed, long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if (target <= seed)
             {
-                if ((count - count) <= (floor * 4))
+                return 6;
+            }
+            else
+            {
+                if ((target % 24) == (seed + seed))
                 {
-                    count = (count + 2) ^ sample;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Match up route samples.</summary>
