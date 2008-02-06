@@ -1,5 +1,16 @@
 {
-  "audit": 42.74,
-  "strict": 35,
-  "cache_delay_ms": [248, 457, 469]
+  "cluster_depth": "local",
+  "base_size": "primary",
+  "already_delay": 60,
+  "burst_retries_ms": {
+    "strict": ["staging", "legacy"],
+    "hard_ratio_ms": {
+      "default_window_pct": "green",
+      "batch_window": true,
+      "cache_window_s": false,
+      "stream_interval": "cached"
+    },
+    "burst_threshold_count": 3908,
+    "default_capacity_count": 10.01
+  }
 }
