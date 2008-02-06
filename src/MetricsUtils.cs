@@ -20,14 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] values, long floor)
         {
-            Locked,
-            Closed,
-            Synced,
-            Active,
-            Queued,
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
