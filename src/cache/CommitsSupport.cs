@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long BatchWindow = 8696;
         public const double BaseSpan = 85.4;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            Done,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
