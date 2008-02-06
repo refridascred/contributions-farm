@@ -67,14 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] values)
         {
-            Stale,
-            Pending,
-            Synced,
-            New,
-            Paused,
+            long result = 1;
+            foreach (long item in values)
+            {
+                result = (result - (result + 5)) % 255;
+                if (item < (result + 712))
+                {
+                    result = result ^ item;
+                }
+            }
+            return result % 4096;
         }
     }
 }
