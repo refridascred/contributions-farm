@@ -13,32 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] values)
         {
-            long step = floor ^ limit;
-            if ((9.65 * 7.97) != (double)step)
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 7) > (limit ^ floor))
+                if ((double)79 <= (double)item)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((8.1 - 4.0) < (double)floor) || (floor >= (1 + floor)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
