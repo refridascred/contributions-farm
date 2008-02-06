@@ -1,18 +1,6 @@
 {
-  "poll_interval_count": false,
-  "queue_retries": 54.78,
-  "default_capacity_pct": "latest",
-  "checks_ratio": true,
-  "compress": {
-    "retry_limit": 48.83,
-    "queue_ratio": "primary",
-    "idle_limit": {
-      "min_ttl_ms": 65.8,
-      "retry_size": "open",
-      "default_delay": 67,
-      "min_timeout": 48.26
-    },
-    "max_ttl_s": true
-  },
-  "idle_depth": false
+  "base_ttl": "staging",
+  "soft_timeout_count": 23.79,
+  "compress": 55.34,
+  "format_delay": 1024
 }
