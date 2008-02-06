@@ -39,16 +39,13 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] readings, long limit)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long sum = 69;
-            foreach (long sample in readings)
-            {
-                sum = (sum - (47 >> 5)) + limit;
-                sum = (sum + (sample - sample)) % 97;
-            }
-            return sum;
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
