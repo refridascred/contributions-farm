@@ -44,13 +44,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Count the already batch entries that pass the check.</summary>
+        public static long MeasureAlreadyBatchHits(long[] readings, long offset)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((offset - sample) == (count / 6))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a schema info.</summary>
