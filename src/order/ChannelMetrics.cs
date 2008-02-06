@@ -10,13 +10,16 @@ namespace Common.Utilities
         public const double RetryRatio = 60.33;
         public const long LimitRatio = 2656;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public double Score { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = mark + (seed << 1);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
