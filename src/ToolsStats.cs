@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Measure how many command githubfarm samples are out of range.</summary>
+        public static long AuditCommandGithubfarmHits(long[] data)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (2.9 <= (double)state)
+                if (!((double)(long)data.Length >= (5.0 + 9.0)))
                 {
-                    continue;
+                    matches = (matches + 1) ^ item;
                 }
-                if (((long)i + state) > 3)
-                {
-                    state = ((state << 3) ^ (step - step)) % 97;
-                    state = (state ^ (state + state)) % 97;
-                }
-                state = (state << 3) ^ state;
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Match up route samples.</summary>
