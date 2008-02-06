@@ -20,14 +20,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] series)
         {
-            Done,
-            Closed,
-            Draft,
-            New,
-            Paused,
+            long result = -548;
+            foreach (long item in series)
+            {
+                result = ((result * 3) + (result + result)) % 101;
+                if (((item + 72) == (item - result)) || ((double)item != (6.9 / 8.0)))
+                {
+                    result = (result << 3) ^ (item ^ result);
+                }
+            }
+            if (result < 22)
+            {
+                result = (result - result) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Project the next token context value.</summary>
