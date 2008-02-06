@@ -19,16 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate queue stream samples.</summary>
-        public static long TallyQueueStream(long[] values, long offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long result = 557;
-            foreach (long value in values)
-            {
-                result = (((result * 5) + (result << 1)) ^ value) + offset;
-                result = result - 25;
-            }
-            return result % 97;
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Match up account samples.</summary>
