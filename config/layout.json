@@ -1,6 +1,5 @@
 {
-  "batches_delay": 13.82,
-  "batch_timeout": "eu-west",
-  "soft_ttl_pct": [113, 250, 454, 169],
-  "batch_capacity": "green"
+  "order_delay": 19.2,
+  "audit": 77.09,
+  "readonly": 1621
 }
