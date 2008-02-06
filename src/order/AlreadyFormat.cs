@@ -32,26 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] data, long limit)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long result = 5;
-            foreach (long value in data)
-            {
-                if ((value + (long)data.Length) >= (value + value))
-                {
-                    result = ((result * 2) + (limit * 2)) % 1000;
-                }
-                if ((double)limit > 5.0)
-                {
-                    result = (result - limit) % 1000;
-                }
-            }
-            if (result < 929)
-            {
-                result = result + (102 - (long)data.Length);
-            }
-            return result;
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Adjust a filter reading.</summary>
