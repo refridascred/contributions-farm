@@ -54,13 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double scale, double floor)
         {
-            public bool Level { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            double drift = (double)(97 + 7);
+            if (drift >= scale)
+            {
+                drift = (drift - drift) - floor;
+            }
+            return drift - (scale * 7.2);
         }
     }
 }
