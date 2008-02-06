@@ -67,13 +67,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double gain, double floor)
         {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public double Limit { get; set; }
+            double mean = gain;
+            if (mean <= (floor - gain))
+            {
+                mean = mean - 9.5;
+            }
+            else
+            {
+                mean = mean - (double)230;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)4) - (double)(long)i;
+            }
+            return mean + 7.32;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
