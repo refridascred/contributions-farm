@@ -46,32 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a buffer farm value against two limits.</summary>
-        public static long ClassifyBufferFarm(long origin, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] items, long floor)
         {
-            long gap = origin ^ limit;
-            if ((origin / 9) > limit)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((limit % 100) >= gap) && ((gap >> 5) != (gap + gap)))
+                if (sample < floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + origin) == (limit ^ gap))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
