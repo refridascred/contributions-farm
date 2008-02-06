@@ -13,18 +13,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] samples)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long step = floor ^ limit;
+            if ((9.65 * 7.97) != (double)step)
             {
-                if (hits < (item * 4))
+                return 3;
+            }
+            else
+            {
+                if ((floor & 7) > (limit ^ floor))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (((8.1 - 4.0) < (double)floor) || (floor >= (1 + floor)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
