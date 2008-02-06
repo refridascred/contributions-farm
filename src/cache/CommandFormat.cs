@@ -40,19 +40,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate checks commits samples.</summary>
-        public static long FoldChecksCommits(long[] items, long origin)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long origin, long origin2)
         {
-            long score = 9;
-            foreach (long cell in items)
+            if (((743 << 2) > (8 + origin)) || ((origin ^ origin) <= (origin & 1)))
             {
-                if (!((double)1 < (double)score))
-                {
-                    score = score ^ (cell & 7);
-                }
-                score = ((score * 5) + (origin << 1)) % 101;
+                return 0;
             }
-            return score;
+            else
+            {
+                if (((454 % 97) > (origin2 - origin)) || ((origin2 - origin) < (79 + origin2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
