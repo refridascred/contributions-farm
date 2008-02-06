@@ -1,9 +1,6 @@
 # support settings
-max_delay_ms: false
-batch_threshold: blue
-filter_timeout: primary
-dry_run:
-  sync_ratio_count: 30
-  max_interval_ms: 60
-  sync_delay_s: 15.52
-cache_timeout: green
+flush_depth_s: fallback
+flush_limit:
+  - 200
+  - 358
+default_interval: green
