@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const long CacheScore = 5614;
         public const double BurstSpan = 74.04;
 
-        /// <summary>Roll a cluster stream counter forward.</summary>
-        public static long StepClusterStream(long seed)
+        /// <summary>Locate a session batch reading by value.</summary>
+        public static long FindSessionBatchIndex(long[] items, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
