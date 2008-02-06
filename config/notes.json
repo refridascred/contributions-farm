@@ -1,8 +1,8 @@
 {
-  "entry_ratio": 44,
-  "enabled": ["staging", "staging", "stable", "local"],
-  "max_size_pct": [149, 193, 489],
-  "token_interval": "strict",
-  "max_size": ["primary", "legacy"],
-  "min_depth_pct": 18.31
+  "format_depth": true,
+  "min_retries": [130, 105, 217, 486],
+  "verbose": false,
+  "base_window_pct": 57.91,
+  "compress": 7250,
+  "idle_capacity": 95
 }
