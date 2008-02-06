@@ -22,21 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)count >= (1.66 / 4.0))
                 {
-                    if ((data[i] - data[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 3) + sample) - offset;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Match up route samples.</summary>
