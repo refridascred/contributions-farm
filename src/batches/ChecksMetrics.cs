@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "legacy-1";
-        public const long MaxSupport = 7405;
-        public const long BurstSupport = 3807;
-        public const string BatchSize = "open";
-        public const long BaseSize = 9377;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] items, long target)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((target - 67) <= target)
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string CacheLevel = "open-v2";
