@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Dropped,
-            Paused,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCache = 97.1;
+        public const long LimitCount = 803;
+        public const long MinBudget = 8218;
+        public const string RetryDepth = "local";
+        public const string MinCache = "standard-1";
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
