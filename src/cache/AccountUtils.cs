@@ -14,25 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long bound, long step)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long delta = bound + step;
-            if (delta >= (delta / 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step + bound) > (bound + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Idle,
+            Closed,
+            Draft,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
