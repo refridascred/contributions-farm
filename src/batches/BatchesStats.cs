@@ -26,19 +26,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] series, long step)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] items, long floor)
         {
-            long mix = 31;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix - entry) % 255) + step;
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 31)
-            {
-                mix = (mix * 2) + (65 << 3);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
