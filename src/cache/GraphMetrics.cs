@@ -58,11 +58,13 @@ namespace Common.Utilities
             return drift + (double)68;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 16.66;
-        public const long LimitMetrics = 8046;
-        public const string HardMetrics = "local-v2";
-        public const double BaseBudget = 25.17;
-        public const long CacheCount = 4389;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Draft,
+            Failed,
+            Locked,
+            New,
+        }
     }
 }
