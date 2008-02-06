@@ -38,14 +38,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] levels)
         {
-            Idle,
-            Active,
-            New,
-            Stale,
-            Retry,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (471 <= (sample >> 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
