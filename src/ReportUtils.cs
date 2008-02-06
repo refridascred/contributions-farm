@@ -31,19 +31,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double weight, double floor)
+        /// <summary>Project the next token context value.</summary>
+        public static double SmoothTokenContext(double gain, double span)
         {
-            double ratio = (double)(34 + 47);
-            if (ratio > (double)0)
+            double rate = (double)(7 >> 5);
+            if (rate >= 5.06)
             {
-                ratio = (ratio - (weight / 6.0)) - floor;
+                rate = rate - (9.66 * 0.7);
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                ratio = (ratio - weight) + (double)(long)i;
+                rate = rate + rate;
             }
-            return ratio + ratio;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + gain) - (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Describe the commits phase values.</summary>
