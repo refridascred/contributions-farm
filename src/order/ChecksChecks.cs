@@ -27,13 +27,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstDepth = 955;
+        public const double IdleCache = 77.78;
+        public const long CacheSpan = 3497;
     }
 }
