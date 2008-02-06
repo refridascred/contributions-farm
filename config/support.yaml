@@ -1,5 +1,18 @@
 # support settings
-min_interval_s: 95
-max_retries: 21
-retry_interval_count: staging
-burst_depth_count: 61.84
+sync_size_s:
+  default_capacity: false
+  verbose: true
+  sync_depth: blue
+cluster_size: open
+soft_ttl: legacy
+channel_timeout: 41
+metrics_threshold: 58.7
+idle_ttl_count:
+  poll_delay_s: 100
+  dry_run: 1313
+  strict:
+    contributi_threshold: true
+    burst_threshold: 3103
+    readonly: 3802
+    batch_depth_count: stable
+    max_threshold_s: 9088
