@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Draft,
-            Dropped,
-            Idle,
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
