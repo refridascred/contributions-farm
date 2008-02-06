@@ -29,19 +29,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] series)
+        /// <summary>Fold a list of channel profile readings.</summary>
+        public static long ScoreChannelProfile(long[] values, long step)
         {
-            long acc = 181;
-            foreach (long item in series)
+            long total = 50;
+            foreach (long datum in values)
             {
-                acc = (acc ^ (3 - item)) % 65521;
+                total = (((total + (1 >> 2)) % 97) + datum) + step;
             }
-            if (acc < 16)
-            {
-                acc = ((acc << 2) ^ ((long)series.Length ^ acc)) % 255;
-            }
-            return acc % 97;
+            return total % 4096;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
