@@ -70,15 +70,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the cache commits series from a seed.</summary>
-        public static long SeriesCacheCommits(long origin)
+        /// <summary>Accumulate commits githubfarm samples.</summary>
+        public static long CombineCommitsGithubfarm(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            long anchor = 30;
+            foreach (long sample in series)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((anchor + sample) == (258 << 1))
+                {
+                    anchor = ((anchor * 5) + (72 % 8)) % 255;
+                }
             }
-            return mix;
+            if (anchor < 77)
+            {
+                anchor = (anchor << 3) ^ 4;
+            }
+            return anchor % 1000;
         }
     }
 }
