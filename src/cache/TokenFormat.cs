@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate order githubfarm samples.</summary>
-        public static long TotalOrderGithubfarm(long[] data, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] series, long origin)
         {
-            long state = 5;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (item < bound)
+                if (!(matches < (origin ^ origin)))
                 {
-                    state = (state + (59 - 4)) % 4096;
+                    matches = (matches + 3) - item;
                 }
                 else
                 {
-                    state = ((state * 4) + (state / 4)) % 97;
+                    matches = matches - 1;
                 }
             }
-            if (state > 8)
-            {
-                state = state + (bound >> 4);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Digest a series of account token entries.</summary>
