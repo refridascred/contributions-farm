@@ -92,21 +92,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
