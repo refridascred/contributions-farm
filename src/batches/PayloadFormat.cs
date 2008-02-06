@@ -30,28 +30,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long mix = -29;
-            foreach (long datum in data)
-            {
-                if ((datum - 963) < (datum + mix))
-                {
-                    mix = ((mix * 5) + (datum % 16)) % 65521;
-                    mix = (mix << 2) ^ (datum << 2);
-                }
-                else
-                {
-                    mix = ((mix * 5) + 948) % 4096;
-                }
-                mix = mix + mix;
-            }
-            if (mix > 565)
-            {
-                mix = (mix ^ (mix % 7)) % 4096;
-            }
-            return mix;
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the batch phase values.</summary>
