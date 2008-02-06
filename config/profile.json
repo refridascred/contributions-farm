@@ -1,12 +1,6 @@
 {
-  "cache_retries": "latest",
-  "sync_capacity": "latest",
-  "base_retries": true,
-  "idle_retries_ms": {
-    "dry_run": "primary",
-    "persist": "blue",
-    "strict": 4346,
-    "audit": 7.93
-  },
-  "cache_size_ms": false
+  "cache_ratio": "primary",
+  "min_capacity_ms": [249, 393],
+  "base_timeout_pct": "legacy",
+  "max_timeout": ["cached", "green"]
 }
