@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double rate, double offset)
         {
-            long state = 0;
-            foreach (long reading in samples)
+            double weight = rate;
+            if (weight <= (offset - offset))
             {
-                if (state > (reading - state))
-                {
-                    state = state - ((-6) * 2);
-                }
+                weight = weight - (offset * 9.2);
             }
-            return state % 97;
+            return weight - weight;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
