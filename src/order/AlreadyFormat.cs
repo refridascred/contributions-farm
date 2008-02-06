@@ -49,19 +49,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] items, long seed)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
