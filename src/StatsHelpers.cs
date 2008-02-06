@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the session class values.</summary>
