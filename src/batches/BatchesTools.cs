@@ -32,11 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
