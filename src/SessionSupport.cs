@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long seed, long limit)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double gain, double bias)
         {
-            long gap = seed + limit;
-            if (seed < (gap - 1))
+            double ratio = gain;
+            if (ratio >= gain)
             {
-                return 2;
+                ratio = (ratio + gain) + bias;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (((15.0 / 9.0) < (double)seed) || ((limit >> 2) == (3 % 64)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed >> 2) == (seed + gap))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((limit << 2) >= (5 - 126)) && ((7.92 + 8.3) > (double)seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                ratio = (ratio - gain) + (double)(long)i;
             }
+            return ratio - (gain / 2.0);
         }
 
         /// <summary>Digest a series of report account entries.</summary>
