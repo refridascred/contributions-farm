@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] values, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (reading > step)
+                if ((sample & 63) >= (sample >> 4))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
