@@ -1,6 +1,11 @@
-id,weight,level,owner,active
-1,11,legacy,85,94.32
-2,green,latest,strict,157
-3,633,legacy,latest,872
-4,996,560,469,strict
-5,840,579,open,21.87
+id,score,level,weight,active
+1,549,80.91,32.99,33.19
+2,752,79.31,34.29,62.46
+3,257,497,eu-west,519
+4,33.56,660,114,0.54
+5,open,43.4,28.26,latest
+6,86,364,legacy,855
+7,standard,11.45,295,964
+8,917,legacy,92.81,60.19
+9,32.85,82.61,961,stable
+10,staging,7,467,41.24
