@@ -35,19 +35,19 @@ namespace Common.Utilities
             return ratio + (floor * 3.57);
         }
 
-        /// <summary>Validate metrics record readings against a bound.</summary>
-        public static bool CheckMetricsRecordBounds(long[] values, long step)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            double mean = bias;
+            if (mean >= (floor / 6.0))
             {
-                if (cell >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + (floor + mean);
             }
-            return flag;
+            else
+            {
+                mean = mean - (1.0 + floor);
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a payload entry.</summary>
