@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next profile metric value.</summary>
-        public static double BlendProfileMetric(double weight, double floor)
+        /// <summary>Audit contributi route readings against a rule.</summary>
+        public static long AuditContributiRouteHits(long[] items, long limit)
         {
-            double mean = weight;
-            if (mean > (double)(-398))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                mean = mean + (weight * 9.2);
+                if ((cell << 3) < limit)
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean - (floor / 5.0);
+            return seen;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
