@@ -33,11 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSession = 56.17;
-        public const long MaxSize = 325;
-        public const long BurstSession = 5230;
-        public const string CacheLevel = "stable-1";
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Paused,
+            Locked,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string CacheSpan = "legacy";
