@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the token contributi series from a seed.</summary>
-        public static long RollTokenContributi(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc ^ ((-36) & 255)) % 97;
-                acc = (acc * 3) + floor;
-                acc = (acc << 2) ^ (acc & 255);
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultTimeout = 6248;
+        public const double BatchTimeout = 91.41;
+        public const long HardCommand = 848;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool CheckAlreadyRange(long[] readings, long step)
