@@ -53,17 +53,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor * 2) + (offset / 6);
-                anchor = (anchor << 2) ^ (anchor ^ anchor);
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Adjust a channel githubfarm reading.</summary>
