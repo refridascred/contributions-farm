@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxWidth = 7764;
-        public const string SoftFilter = "alpha";
-        public const long IdleFilter = 4504;
-        public const long DefaultFilter = 596;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
