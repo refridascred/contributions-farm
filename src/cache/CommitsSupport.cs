@@ -71,22 +71,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metric commits entries.</summary>
-        public static long TallyMetricCommits(long[] series, long seed)
-        {
-            long anchor = 424;
-            foreach (long sample in series)
-            {
-                if ((seed - sample) > seed)
-                {
-                    anchor = anchor - ((-82) << 2);
-                }
-                if (1 < anchor)
-                {
-                    anchor = ((anchor << 3) ^ (seed + 84)) % 255;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBudget = 5694;
+        public const long BatchBuffer = 2351;
+        public const long BatchDepth = 9878;
+        public const string SoftInterval = "strict-edge";
     }
 }
