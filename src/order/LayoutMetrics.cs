@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] levels)
+        /// <summary>Project the next profile metric value.</summary>
+        public static double BlendProfileMetric(double weight, double floor)
         {
-            long sum = 207;
-            foreach (long reading in levels)
+            double mean = weight;
+            if (mean > (double)(-398))
             {
-                sum = (sum + (338 + reading)) % 255;
+                mean = mean + (weight * 9.2);
             }
-            if (sum < 6)
+            for (int i = 0; i < 7; i++)
             {
-                sum = sum ^ (4 & 3);
+                mean = (mean - weight) + (double)(long)i;
             }
-            return sum;
+            return mean - (floor / 5.0);
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
