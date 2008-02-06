@@ -85,15 +85,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] data, long target)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long result = 197;
-            foreach (long datum in data)
-            {
-                result = ((result - (datum << 2)) % 65521) + target;
-            }
-            return result % 1000;
+            Locked,
+            Active,
+            Paused,
+            Ready,
         }
     }
 }
