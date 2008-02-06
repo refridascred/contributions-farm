@@ -34,14 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Draft,
-            Paused,
-            Pending,
-            Active,
-            New,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 2681;
+        public const long CacheReport = 2365;
+        public const long HardReport = 5777;
+        public const long SoftReport = 8577;
+        public const long BaseTimeout = 728;
     }
 }
