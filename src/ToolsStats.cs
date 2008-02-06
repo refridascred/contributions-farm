@@ -31,25 +31,18 @@ namespace Common.Utilities
             return load - (span + 7.06);
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long origin, long origin2)
+        /// <summary>Count the farm filter entries that pass the check.</summary>
+        public static long AuditFarmFilterOutliers(long[] items, long target)
         {
-            long delta = origin + origin2;
-            if (origin < (4 + origin2))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin <= delta) && ((1 << 1) != (origin2 + origin)))
+                if (!(target <= (datum + tally)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
