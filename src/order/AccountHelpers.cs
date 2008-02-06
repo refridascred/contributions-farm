@@ -58,18 +58,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] values)
+        /// <summary>Adjust a checks command reading.</summary>
+        public static double BlendChecksCommand(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double ratio2 = floor;
+            if (ratio2 <= (0.5 * 8.78))
             {
-                if ((((long)values.Length + sample) != (sample ^ matches)) && !((matches - 7) > sample))
-                {
-                    matches = matches + 1;
-                }
+                ratio2 = ratio2 + floor;
             }
-            return matches;
+            else
+            {
+                ratio2 = ratio2 + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 - floor)) + (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
     }
 }
