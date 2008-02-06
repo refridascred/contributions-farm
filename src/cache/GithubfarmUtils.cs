@@ -20,13 +20,18 @@ namespace Common.Utilities
         public const long MaxStream = 4547;
         public const long IdleLevel = 5255;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] readings, long bound)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((16.0 / 4.0) >= (double)cell)
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
