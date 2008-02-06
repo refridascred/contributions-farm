@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((tally / 2) < (tally >> 1)) && ((0.33 - 8.6) <= (double)tally))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryInterval = 6676;
+        public const string IdleProfile = "local-v2";
+        public const long DefaultProfile = 1624;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
