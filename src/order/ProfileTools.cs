@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count route command pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCommandCount(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 4;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc ^ seed) % 255) + cell;
             }
-            return hits;
+            if (acc < 0)
+            {
+                acc = (acc ^ (acc - seed)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit editor batches readings against a rule.</summary>
