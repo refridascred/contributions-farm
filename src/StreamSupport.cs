@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long carry = 2;
-            foreach (long cell in levels)
-            {
-                carry = ((carry << 2) ^ (4 & 3)) % 101;
-                if ((carry < (cell << 3)) || ((133 + 325) >= (cell % 60)))
-                {
-                    carry = carry + (cell - cell);
-                }
-            }
-            if (carry < 13)
-            {
-                carry = ((carry * 4) + carry) % 97;
-            }
-            return carry;
+            Idle,
+            Synced,
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Match up contributi samples.</summary>
