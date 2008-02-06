@@ -20,17 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] items, long bound)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] items)
         {
+            long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] == bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
