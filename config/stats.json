@@ -1,5 +1,18 @@
 {
-  "schema_capacity": 9395,
-  "idle_window_s": 1024,
-  "burst_ratio_s": 96
+  "hard_interval_ms": "eu-west",
+  "stream_capacity": {
+    "profile_ttl": ["local", "blue", "primary", "fallback"],
+    "flush_timeout_count": "stable",
+    "batch_size": "fallback",
+    "strict": [350, 181],
+    "farm_depth": {
+      "poll_retries_s": 97,
+      "default_timeout": "fallback",
+      "min_timeout_ms": "latest",
+      "editor_delay": 266,
+      "hard_ttl_ms": 60
+    }
+  },
+  "context_ratio": ["fallback", "primary", "legacy", "fallback"],
+  "base_window": 5720
 }
