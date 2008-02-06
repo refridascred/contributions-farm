@@ -43,13 +43,22 @@ namespace Common.Utilities
         public const long MinTimeout = 5561;
         public const double StepSupport = 40.83;
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                long hits = (offset + offset) + (908 + 6);
+                mark = (mark * 2) + (mark + hits);
+                if (((1.4 - 1.3) <= (3.7 + 1.09)) && ((double)hits < (5.9 - 18.0)))
+                {
+                    hits = hits + hits;
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Match up farm samples.</summary>
