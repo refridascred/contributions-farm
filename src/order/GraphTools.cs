@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
+            Stale,
+            Done,
+            Draft,
         }
 
         /// <summary>Accumulate editor samples.</summary>
