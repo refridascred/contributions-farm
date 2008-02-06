@@ -13,19 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)79 <= (double)item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitFactor = 84.72;
+        public const double BatchAccount = 2.91;
+        public const double CacheWidth = 82.25;
+        public const long MinAccount = 2494;
+        public const long BatchSpan = 2612;
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long RankFilter(long floor, long origin)
