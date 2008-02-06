@@ -22,12 +22,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "primary";
-        public const long WindowBudget = 7852;
-        public const long MaxFactor = 2356;
-        public const long LimitCommits = 5930;
-        public const long SoftSize = 5752;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Compare every pair of counter farm readings.</summary>
         public static long CompareCounterFarmCount(long[] data)
