@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many payload metric samples are out of range.</summary>
-        public static long AuditPayloadMetricOutliers(long[] readings)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)value == (5.2 * 0.3)) || ((value >> 3) > (matches << 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
