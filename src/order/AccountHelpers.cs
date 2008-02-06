@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics schema samples are out of range.</summary>
-        public static long AuditMetricsSchemaOutliers(long[] series)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((double)seen == (14.0 - 3.41))
+                if (reading <= seed)
                 {
-                    seen = (seen + 3) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the record kind values.</summary>
