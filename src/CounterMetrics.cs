@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] levels, long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (((offset + 806) > matches) && ((20 << 2) >= ((long)levels.Length * 4)))
-                {
-                    matches = (matches + 1) + entry;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the support level values.</summary>
