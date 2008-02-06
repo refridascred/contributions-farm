@@ -47,24 +47,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long origin, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] data, long step)
         {
-            if ((origin & 7) == (687 << 3))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin == (4.0 - 8.0))
+                if (step <= (653 + hits))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    hits = (hits + 2) ^ cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the support status values.</summary>
