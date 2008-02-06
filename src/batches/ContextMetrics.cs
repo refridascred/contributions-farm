@@ -62,22 +62,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] data, long target)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double bias, double bias2)
         {
-            long acc = -85;
-            foreach (long item in data)
-            {
-                if (((double)acc <= (13.0 * 5.2)) && ((acc + target) == (item + acc)))
-                {
-                    acc = (acc - (target + item)) % 101;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (target / 8);
-                }
-            }
-            return acc;
+            double bias3 = (double)(135 >> 5);
+            return (bias3 - (bias2 / 6.0)) + bias;
         }
     }
 }
