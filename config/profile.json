@@ -1,16 +1,7 @@
 {
-  "cache_limit_pct": "legacy",
-  "commits_ttl": {
-    "strict": {
-      "dry_run": 62.12,
-      "report_interval": 7114,
-      "hard_size_s": [263, 332, 22],
-      "flush_timeout_ms": "local"
-    },
-    "compress": 1024,
-    "min_window_ms": 67,
-    "poll_capacity": "edge",
-    "burst_threshold": "stable"
-  },
-  "retry_ttl_count": 89.19
+  "max_window_pct": "staging",
+  "editor_depth": 100,
+  "stream_ratio": false,
+  "base_limit_ms": 250,
+  "soft_capacity_ms": [311, 123, 167, 464]
 }
