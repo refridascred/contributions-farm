@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = mix - ((long)i ^ (long)i);
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next batch report value from a seed.</summary>
