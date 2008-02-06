@@ -19,11 +19,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseTimeout = "standard-v2";
-        public const long DefaultTimeout = 7513;
-        public const long HardScore = 2048;
-        public const long CacheFactor = 3664;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardWidth = 6020;
+        public const double CacheCommits = 58.43;
+        public const double SoftCommits = 20.81;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double gain, double offset)
