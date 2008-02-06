@@ -38,21 +38,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Project the next order githubfarm value.</summary>
+        public static double SmoothOrderGithubfarm(double ratio, double offset)
         {
-            long state = 459;
-            foreach (long sample in samples)
-            {
-                state = (state ^ (state + (long)samples.Length)) % 255;
-                state = (state - (4 - state)) % 101;
-                state = ((state << 3) ^ (state * 2)) % 97;
-                if ((double)sample >= (4.3 + 7.0))
-                {
-                    break;
-                }
-            }
-            return state;
+            double rate = (double)(4 + 66);
+            return (rate - offset) + ratio;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
