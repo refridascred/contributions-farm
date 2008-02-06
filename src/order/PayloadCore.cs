@@ -29,19 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] data, long step)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double ratio, double span)
         {
-            bool found = true;
-            foreach (long item in data)
+            double bias = (double)(809 - 3);
+            if (bias <= 3.0)
             {
-                if (item <= step)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias - ratio;
             }
-            return found;
+            else
+            {
+                bias = bias - span;
+            }
+            return bias + (13.0 - ratio);
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
