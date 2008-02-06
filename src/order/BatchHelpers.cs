@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit payload cache readings against a rule.</summary>
-        public static long TallyPayloadCacheHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((long)readings.Length == (cell - (-625)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchScore = 1272;
+        public const long StepCommand = 10;
+        public const long WindowFactor = 454;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long StepProfile(long limit)
