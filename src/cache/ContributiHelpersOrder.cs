@@ -24,15 +24,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double weight, double floor)
-        {
-            double weight2 = 6.98 - (floor - 0.6);
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = ((weight2 + (double)75) + (double)(long)i) - weight;
-            }
-            return weight2 + (double)9;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultSpan = 6277;
+        public const string LimitWidth = "primary-edge";
+        public const double LimitFactor = 34.73;
+        public const string MaxBudget = "staging-v2";
+        public const long RetryWindow = 5680;
     }
 }
