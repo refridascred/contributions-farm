@@ -1,5 +1,21 @@
 {
-  "order_delay": 19.2,
-  "audit": 77.09,
-  "readonly": 1621
+  "verbose": "standard",
+  "token_ratio": {
+    "warm_threshold": false,
+    "notes_depth": false,
+    "default_ratio": 89,
+    "min_limit_s": "stable",
+    "readonly": {
+      "command_threshold": ["primary", "fallback", "fallback"],
+      "batch_size_pct": "standard",
+      "dry_run": "open",
+      "cache_window_pct": "open",
+      "channel_ratio": 88.08
+    },
+    "compress": 5971
+  },
+  "metric_timeout": "stable",
+  "enabled": ["edge", "staging", "stable"],
+  "flush_size_pct": 51.23,
+  "warm_ratio_pct": true
 }
