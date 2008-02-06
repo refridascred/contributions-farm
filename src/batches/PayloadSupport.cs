@@ -21,26 +21,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] readings)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double weight, double floor)
         {
-            long result = 7;
-            foreach (long datum in readings)
+            double mean = weight;
+            if (mean < (weight + floor))
             {
-                if (!((2.9 / 7.0) != (double)datum))
-                {
-                    result = (result ^ (result ^ datum)) % 1000;
-                }
-                else
-                {
-                    result = (result - result) % 65521;
-                }
-                if ((datum < result) || ((result >> 5) == (result % 5)))
-                {
-                    result = (result << 2) ^ (result - result);
-                }
+                mean = mean + floor;
             }
-            return result % 65521;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + floor) - (double)(long)i;
+            }
+            return mean - (double)0;
         }
     }
 }
