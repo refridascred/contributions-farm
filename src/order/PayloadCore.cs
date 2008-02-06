@@ -30,22 +30,12 @@ namespace Common.Utilities
             return rate2 + (rate2 / 9.0);
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long mix = 6;
-            foreach (long value in items)
-            {
-                if (!((293 ^ mix) > mix))
-                {
-                    mix = ((mix * 4) + (mix - value)) % 4096;
-                }
-                else
-                {
-                    mix = (mix + (value << 3)) % 4096;
-                }
-            }
-            return mix;
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the metric phase values.</summary>
