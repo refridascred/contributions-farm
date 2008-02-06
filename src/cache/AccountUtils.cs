@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit commits window readings against a rule.</summary>
-        public static long TallyCommitsWindowHits(long[] levels)
+        /// <summary>Measure how many checks cache samples are out of range.</summary>
+        public static long AuditChecksCacheMatches(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((matches * 3) <= (matches << 3))
+                if ((5.0 / 9.0) >= (double)origin)
                 {
-                    matches = (matches + 1) - cell;
+                    hits = (hits + 2) - item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
