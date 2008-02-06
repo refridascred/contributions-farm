@@ -25,12 +25,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long bound)
         {
-            Active,
-            Locked,
-            Queued,
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc << 3) ^ ((long)i ^ acc);
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Roll a notes route counter forward.</summary>
