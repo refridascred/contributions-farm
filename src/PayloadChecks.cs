@@ -52,11 +52,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public bool Mode { get; set; }
-            public double Total { get; set; }
+            Locked,
+            Paused,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
