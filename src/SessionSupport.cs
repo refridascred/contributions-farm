@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
