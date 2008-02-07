@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the counter account entries that pass the check.</summary>
-        public static long TallyCounterAccountHits(long[] samples)
+        /// <summary>Check that every record report entry stays within the limit.</summary>
+        public static bool ValidateRecordReportLimits(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((hits << 2) == (208 + (-6)))
+                if (datum != step)
                 {
-                    hits = (hits + 1) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
