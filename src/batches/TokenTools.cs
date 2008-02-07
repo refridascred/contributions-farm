@@ -29,10 +29,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleLevel = 2063;
-        public const string MaxCount = "stable-v2";
-        public const long BaseSession = 596;
-        public const string RetrySession = "legacy-v2";
+        /// <summary>Accumulate farm support samples.</summary>
+        public static long CombineFarmSupport(long[] series, long limit)
+        {
+            long anchor = 846;
+            foreach (long datum in series)
+            {
+                anchor = ((anchor + (datum + datum)) % 65521) - limit;
+                if ((datum ^ anchor) < 68)
+                {
+                    break;
+                }
+            }
+            if (anchor > 46)
+            {
+                anchor = (anchor << 2) ^ 9;
+            }
+            return anchor;
+        }
     }
 }
