@@ -22,26 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] levels)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] items, long seed)
         {
-            long mark = 951;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((cell + cell) <= (-7))
+                if (entry > seed)
                 {
-                    mark = (mark - (mark + 213)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (cell / 9)) % 255;
-                }
-                if ((mark + mark) < cell)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
