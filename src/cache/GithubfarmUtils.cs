@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] values, long limit)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (values[i] > limit)
+                if (reading < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
