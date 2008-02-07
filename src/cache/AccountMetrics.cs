@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the context cluster entries that pass the check.</summary>
-        public static long CountContextClusterGaps(long[] values, long origin)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((origin >> 1) > matches)
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            New,
+            Pending,
+            Dropped,
+            Done,
+            Locked,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
