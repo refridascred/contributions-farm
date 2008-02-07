@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of notes support readings.</summary>
-        public static long PairNotesSupportCount(long[] data)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of tools counter entries.</summary>
