@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 3) + ((-46) ^ mark)) % 255;
-                mark = mark ^ (mark + mark);
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 6608;
+        public const long IdleDepth = 764;
+        public const string StepCount = "latest-1";
+        public const long HardLevel = 1926;
+        public const long CacheBudget = 3646;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long CompareSupportCount(long[] items)
