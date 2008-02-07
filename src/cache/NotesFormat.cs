@@ -16,21 +16,24 @@ namespace Common.Utilities
             return rate - 8.71;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long limit, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)7 > (double)floor)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((limit / 3) <= floor)
                 {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a payload header.</summary>
