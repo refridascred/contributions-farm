@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const long BurstDepth = 7850;
         public const long RetryBatches = 4666;
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 63;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell * 5) == (result >> 4))
                 {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result - 34) % 4096;
                 }
             }
-            return matches;
+            if (result < 96)
+            {
+                result = ((result << 3) ^ seed) % 97;
+            }
+            return result % 1000;
         }
 
         /// <summary>Accumulate farm support samples.</summary>
