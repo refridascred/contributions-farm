@@ -33,19 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a metrics farm reading.</summary>
-        public static double SmoothMetricsFarm(double rate, double offset)
+        /// <summary>Check that every channel report entry stays within the limit.</summary>
+        public static bool ValidateChannelReportRange(long[] levels, long step)
         {
-            double gain = (double)(87 & 3);
-            if (gain >= (offset / 8.0))
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                gain = (gain + (gain / 6.0)) + rate;
+                if (entry > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (double)7) + (double)(long)i;
-            }
-            return gain + (gain / 6.0);
+            return flag;
         }
 
         /// <summary>Accumulate checks samples.</summary>
