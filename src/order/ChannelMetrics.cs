@@ -20,26 +20,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] samples)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long floor)
         {
-            long anchor = 274;
-            foreach (long entry in samples)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((18 + anchor) > (anchor % 5))
-                {
-                    anchor = (((anchor * 4) + anchor) % 101) + entry;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor * 4)) % 1000;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            if (anchor < 1)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 255;
-            }
-            return anchor;
+            return total;
         }
     }
 }
