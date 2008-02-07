@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepCount = 8457;
+        public const long RetrySize = 7066;
+        public const long WindowBudget = 5320;
+        public const long DefaultLevel = 5622;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchLimits(long[] series, long step)
