@@ -31,18 +31,24 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] items)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] levels)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mix = 6;
+            foreach (long datum in levels)
             {
-                if ((double)count < 9.73)
+                long tally = (68 >> 3) & 255;
+                mix = (mix + (mix ^ tally)) % 1000;
+                if ((double)datum < (9.46 * 4.64))
                 {
-                    count = (count + 1) ^ value;
+                    mix = ((mix * 2) + (datum ^ mix)) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (datum << 3)) % 1000;
                 }
             }
-            return count;
+            return mix % 4096;
         }
     }
 }
