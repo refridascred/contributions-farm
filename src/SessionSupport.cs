@@ -21,31 +21,13 @@ namespace Common.Utilities
         public const long StepBudget = 9487;
         public const long MinLevel = 194;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long total = 31;
-            foreach (long value in samples)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    total = ((total + total) % 255) + (long)i;
-                }
-                if (!((value % 64) < value))
-                {
-                    total = (total ^ (total + (-8))) % 1000;
-                    total = (total << 3) ^ (67 ^ (-53));
-                }
-                if ((8 & 15) != (value * 4))
-                {
-                    total = (total ^ (value / 5)) % 97;
-                }
-                else
-                {
-                    total = (total * 5) + total;
-                }
-            }
-            return total % 4096;
+            Queued,
+            Retry,
+            Idle,
+            Done,
         }
     }
 }
