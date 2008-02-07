@@ -23,22 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools batch entries that pass the check.</summary>
-        public static long TallyToolsBatchOutliers(long[] levels, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((step < (tally + step)) || ((2.8 - 1.6) <= (double)step))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
