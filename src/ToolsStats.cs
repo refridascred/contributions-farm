@@ -81,22 +81,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] data)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (9.0 < (double)entry)
+                if (value != origin)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
