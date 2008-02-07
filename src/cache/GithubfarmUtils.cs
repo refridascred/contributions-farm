@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] series)
         {
-            Dropped,
-            Locked,
-            Stale,
-            Failed,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits & 127) <= 9)
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
