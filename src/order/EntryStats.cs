@@ -27,39 +27,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long origin, long origin2)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long delta = origin ^ origin2;
-            if ((origin + origin2) > (origin2 + origin2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((-5) <= (origin * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin / 5) == (delta - delta))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin == (double)(-864))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
