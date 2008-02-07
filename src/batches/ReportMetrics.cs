@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 2) + ((long)i - offset)) % 65521;
-                carry = (carry - (carry % 60)) % 65521;
-                carry = ((carry * 2) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Blend two entry stream measurements.</summary>
