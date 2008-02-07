@@ -36,32 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer graph readings.</summary>
-        public static long DigestBufferGraph(long[] levels, long floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long acc = 4;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    acc = (((acc << 3) ^ floor) % 101) - (long)i;
-                }
-                if ((sample ^ sample) == (acc + sample))
-                {
-                    acc = ((acc << 2) ^ (acc << 3)) % 4096;
-                    acc = ((acc << 2) ^ (acc + sample)) % 1000;
-                }
-                acc = ((acc << 2) ^ (sample % 60)) % 4096;
-                if ((acc + 71) > (16 + acc))
-                {
-                    break;
-                }
-            }
-            if (acc < 26)
-            {
-                acc = acc + 82;
-            }
-            return acc;
+            Queued,
+            Done,
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a farm info.</summary>
