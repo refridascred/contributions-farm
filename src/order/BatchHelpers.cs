@@ -26,19 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double scale, double offset)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double gain = (double)(2 & 7);
-            if (gain < (scale - scale))
-            {
-                gain = gain - (double)63;
-            }
-            else
-            {
-                gain = gain + offset;
-            }
-            return gain - offset;
+            Retry,
+            Queued,
+            Ready,
         }
     }
 }
