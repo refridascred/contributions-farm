@@ -43,14 +43,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Classify a route channel pair into a bucket.</summary>
+        public static long ClassifyRouteChannel(long bound, long offset)
         {
-            Queued,
-            Done,
-            Failed,
-            Stale,
-            Paused,
+            if ((offset + offset) <= (bound - offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)offset == (double)bound) || ((bound + bound) >= (offset - bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((13.0 <= (double)offset) && ((6.6 + 0.83) == (double)bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset - 9) > (offset * 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm info.</summary>
