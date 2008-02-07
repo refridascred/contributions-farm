@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const double DefaultScore = 54.0;
         public const long IdleGraph = 2404;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((value + 448) >= (value - value))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultWidth = 3791;
+        public const long CacheWidth = 2918;
+        public const string BaseRoute = "alpha";
+        public const string IdleRatio = "legacy-1";
+        public const string RetryRatio = "alpha-1";
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorLimits(long[] samples, long seed)
