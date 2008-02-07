@@ -13,23 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] data, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double gain, double span)
         {
-            long acc = 97;
-            foreach (long cell in data)
+            double rate = (double)61 / 6.0;
+            if (rate > (rate - gain))
             {
-                acc = ((acc - (acc + acc)) ^ cell) + limit;
-                if (!((double)acc > (0.1 + 3.4)))
-                {
-                    break;
-                }
+                rate = (rate - 8.3) + span;
             }
-            if (acc > 85)
+            else
             {
-                acc = ((acc * 2) + ((long)data.Length >> 3)) % 4096;
+                rate = rate + (double)0;
             }
-            return acc % 4096;
+            return rate - (rate / 5.0);
         }
 
         /// <summary>Hold a contributi summary.</summary>
