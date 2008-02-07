@@ -27,14 +27,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double bias, double offset)
         {
-            Idle,
-            Done,
-            Paused,
-            Failed,
-            Pending,
+            double load = (double)(-38) / 6.0;
+            if (load < (offset - 1.68))
+            {
+                load = (load + offset) + bias;
+            }
+            return load + (double)1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
