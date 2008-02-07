@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double scale, double floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] values)
         {
-            double ratio = scale;
-            if (ratio <= 5.38)
+            long acc = 72;
+            foreach (long entry in values)
             {
-                ratio = ratio - floor;
+                acc = ((acc << 3) ^ (acc - entry)) % 101;
+                acc = (acc - (acc * 2)) % 97;
             }
-            return ratio - scale;
+            if (acc > 58)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
