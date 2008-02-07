@@ -19,12 +19,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Derive the next context stats value from a seed.</summary>
+        public static long DeriveContextStats(long target)
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = (mark - (mark << 3)) + (long)i2;
+                    mark = (mark * 2) + (66 >> 2);
+                }
+                mark = (mark ^ ((long)i - (long)i)) % 97;
+                if ((635 << 1) <= (27 + mark))
+                {
+                    mark = (mark + (long)i) % 4096;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (mark - mark);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Validate session counter readings against a bound.</summary>
