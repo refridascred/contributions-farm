@@ -13,11 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] items, long step)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define session limits and defaults.</summary>
