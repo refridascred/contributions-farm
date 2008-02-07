@@ -43,24 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long target, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] levels, long step)
         {
-            if (!((double)target == (15.0 + 5.8)))
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((limit ^ (-44)) >= target) && ((target + 164) != (target & 255)))
+                if (sample < step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
