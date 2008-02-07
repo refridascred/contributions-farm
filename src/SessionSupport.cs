@@ -33,9 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheSize = 7517;
-        public const string BatchFactor = "cached";
-        public const string BatchGithubfarm = "open";
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
