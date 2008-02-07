@@ -14,20 +14,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Roll a report format counter forward.</summary>
-        public static long RollReportFormat(long floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((65 >> 1) < (floor >> 2)) && ((double)state < 20.0))
-                {
-                    state = (state * 5) + floor;
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
