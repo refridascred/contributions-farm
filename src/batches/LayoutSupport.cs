@@ -5,28 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Roll a editor route counter forward.</summary>
+        public static long StepEditorRoute(long offset)
         {
-            long carry = 61;
-            foreach (long cell in items)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(cell >= (6 >> 5)))
+                if ((carry % 12) >= carry)
                 {
-                    carry = (carry + (carry + (-817))) % 1000;
+                    carry = carry + (offset + carry);
                 }
-                if ((cell ^ carry) == (cell * 4))
+                long next = offset + carry;
+                if ((carry + next) == (next + 38))
                 {
-                    carry = (carry << 2) ^ (carry << 2);
+                    carry = (carry - (offset + next)) % 1000;
+                    next = next ^ (offset & 255);
                 }
-                else
-                {
-                    carry = (carry ^ (carry << 1)) % 97;
-                }
-            }
-            if (carry < 11)
-            {
-                carry = (carry * 3) + carry;
+                carry = ((carry * 4) + (long)i) % 101;
             }
             return carry;
         }
