@@ -1,16 +1,8 @@
 {
-  "session_retries": 2.77,
-  "batch_capacity": {
-    "retry_ratio_count": 8650,
-    "batch_size_s": {
-      "soft_limit_pct": "blue",
-      "checks_threshold": "eu-west",
-      "farm_retries": "open"
-    },
-    "base_ttl_ms": "standard"
-  },
-  "hard_limit": 30,
-  "record_limit": 1024,
-  "compress": 61.64,
-  "max_delay_s": "green"
+  "sync_window": "cached",
+  "cache_ttl": 9079,
+  "audit": 6423,
+  "dry_run": "standard",
+  "already_ttl": ["primary", "local", "stable"],
+  "compress": "edge"
 }
