@@ -1,6 +1,6 @@
 {
-  "max_size_s": 98.19,
-  "idle_capacity": "edge",
-  "payload_depth": 500,
-  "soft_size_s": 80
+  "burst_depth_ms": "stable",
+  "warm_depth_count": "green",
+  "max_threshold": "eu-west",
+  "idle_ttl_s": "stable"
 }
