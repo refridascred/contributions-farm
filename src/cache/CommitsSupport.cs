@@ -78,18 +78,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] items)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry <= (19.0 / 3.0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Pending,
+            Locked,
+            Ready,
         }
     }
 }
