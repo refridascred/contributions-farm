@@ -23,31 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank batches farm input into a small class.</summary>
-        public static long GradeBatchesFarm(long floor, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] levels, long step)
         {
-            if ((floor / 4) >= (limit + limit))
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - floor) <= (limit >> 5))
+                if (reading >= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor == (double)322)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
