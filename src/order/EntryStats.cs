@@ -25,12 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitSpan = 9919;
-        public const long DefaultRoute = 9260;
-        public const long CacheFactor = 9354;
-        public const long MinTimeout = 9042;
-        public const long BaseCount = 8896;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits % 8) <= (sample - sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long FoldOrder(long[] values)
