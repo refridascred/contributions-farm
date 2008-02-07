@@ -41,11 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultWidth = 86.61;
-        public const long DefaultMetric = 6476;
-        public const long SoftMetric = 4422;
-        public const double RetryInterval = 19.76;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = (anchor * 4) + (anchor + floor);
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
