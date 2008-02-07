@@ -48,24 +48,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank session commits input into a small class.</summary>
-        public static long BucketSessionCommits(long bound, long bound2)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            if (1.1 > (double)bound2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound2 - 620) <= (bound2 << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Failed,
+            Stale,
+            Ready,
         }
     }
 }
