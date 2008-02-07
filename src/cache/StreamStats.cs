@@ -33,20 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the counter support series from a seed.</summary>
-        public static long DeriveCounterSupport(long origin)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                long gap = mark;
-                if ((gap + mark) > 9)
-                {
-                    mark = (mark << 3) ^ gap;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Paused,
+            Dropped,
+            Draft,
+            Locked,
+            Pending,
         }
 
         /// <summary>Match up githubfarm route samples.</summary>
