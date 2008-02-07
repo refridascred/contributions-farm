@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] samples, long origin)
-        {
-            long anchor = 4;
-            foreach (long datum in samples)
-            {
-                if ((anchor / 9) > (origin - 918))
-                {
-                    anchor = anchor + datum;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleLevel = 2967;
+        public const string MaxContext = "local-edge";
+        public const long BurstContext = 3628;
+        public const double WindowWidth = 29.1;
+        public const double CacheContext = 79.82;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamGaps(long[] readings, long origin)
