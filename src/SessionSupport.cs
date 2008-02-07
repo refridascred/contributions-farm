@@ -16,17 +16,32 @@ namespace Common.Utilities
             return mean + (double)3;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] data, long offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long bound, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long offset2 = bound - offset;
+            if ((offset2 % 100) < (bound % 2))
             {
-                if ((data[i] <= offset) && ((data[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((bound ^ bound) != (bound % 16))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((bound ^ bound) >= (bound << 3)) && ((offset + offset2) > bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a account reading by value.</summary>
