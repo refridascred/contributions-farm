@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 8827;
-        public const long BaseEditor = 4487;
-        public const string DefaultEditor = "legacy";
+        /// <summary>Iterate the checks batch series from a seed.</summary>
+        public static long SeriesChecksBatch(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum << 2) ^ (76 + origin)) % 97;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double DefaultCommand = 97.43;
