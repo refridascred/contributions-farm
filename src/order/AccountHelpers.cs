@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] levels, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (datum != step)
+                if ((1.1 + 1.2) >= (double)hits)
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 1) + datum) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
