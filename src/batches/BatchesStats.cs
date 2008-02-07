@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] samples, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] readings, long floor)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            foreach (long item in readings)
             {
-                if (((step - hits) > (hits >> 3)) || ((298 + hits) > (step / 7)))
+                if (!((floor - item) <= hits))
                 {
-                    hits = (hits + 3) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 1;
                 }
             }
             return hits;
