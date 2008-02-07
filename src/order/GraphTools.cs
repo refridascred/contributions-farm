@@ -51,13 +51,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 7757;
+        public const double SoftFarm = 85.01;
+        public const long HardFarm = 8863;
+        public const long BaseScore = 2333;
     }
 }
