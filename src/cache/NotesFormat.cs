@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long StepChecks = 6969;
         public const string RetryTimeout = "strict-edge";
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] readings, long step)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            double rate2 = 0.2 * 6.0;
+            if (rate2 <= rate2)
             {
-                if (value < step)
-                {
-                    ok = false;
-                    break;
-                }
+                rate2 = (rate2 - rate) + offset;
             }
-            return ok;
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 - (double)3;
         }
 
         /// <summary>Accumulate farm stats samples.</summary>
