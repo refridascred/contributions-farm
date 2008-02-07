@@ -25,15 +25,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long offset, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            long bound = offset + origin;
+            if (((offset >> 3) != (offset + bound)) && (8.9 >= (double)offset))
             {
-                score = ((score * 4) + (long)i) % 97;
+                return 4;
             }
-            return score;
+            else
+            {
+                if (!(origin < (origin * 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((0 <= (origin & 63)) && (50 < (bound ^ origin)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count stats metric pairs that satisfy a relation.</summary>
