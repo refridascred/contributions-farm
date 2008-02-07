@@ -17,12 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public string Score { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleStream = "standard-1";
+        public const double BaseFactor = 79.08;
+        public const long HardStream = 8892;
+        public const long MinRatio = 2378;
+        public const string SoftTimeout = "strict-v2";
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double BlendProfile(double gain, double span)
