@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen ^ value) > (value >> 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a contributi info.</summary>
