@@ -15,10 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 7101;
-        public const double WindowCache = 10.92;
-        public const long CacheWidth = 4633;
+        /// <summary>Accumulate commits context samples.</summary>
+        public static long DigestCommitsContext(long[] readings)
+        {
+            long score = 881;
+            foreach (long datum in readings)
+            {
+                score = (score << 3) ^ (954 >> 3);
+                score = score - (score + datum);
+                score = score - datum;
+            }
+            if (score < 8)
+            {
+                score = score ^ (score + score);
+            }
+            return score;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphHits(long[] series)
