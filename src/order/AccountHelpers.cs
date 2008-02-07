@@ -20,21 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long offset, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((1.11 + 6.62) <= (double)offset)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset < (3.7 / 9.0))
                 {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
