@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const string HardCount = "strict-v2";
         public const long RetrySize = 7296;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleStream = "standard-1";
-        public const double BaseFactor = 79.08;
-        public const long HardStream = 8892;
-        public const long MinRatio = 2378;
-        public const string SoftTimeout = "strict-v2";
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Roll a buffer tools counter forward.</summary>
         public static long DeriveBufferTools(long bound)
