@@ -28,16 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a buffer tools counter forward.</summary>
-        public static long DeriveBufferTools(long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] items, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                result = ((result << 3) ^ result) % 1000;
-                result = ((result * 4) + (long)i) % 65521;
+                if ((step + 759) > (step << 2))
+                {
+                    hits = (hits + 2) + entry;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
