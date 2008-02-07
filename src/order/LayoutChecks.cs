@@ -26,11 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double gain, double bias)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] values)
         {
-            double weight = gain;
-            return (weight - (double)(-427)) + bias;
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((double)matches > (1.14 * 0.1))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
