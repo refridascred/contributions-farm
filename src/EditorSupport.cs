@@ -100,15 +100,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long target, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            long slot = target + bound;
+            if ((slot + slot) > (target ^ target))
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((bound / 9) <= (target + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
