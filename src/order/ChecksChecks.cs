@@ -13,16 +13,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = (acc ^ ((long)i % 100)) % 65521;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Done,
+            Dropped,
+            Stale,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a command summary.</summary>
