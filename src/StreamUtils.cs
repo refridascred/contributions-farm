@@ -20,21 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count / 8) == (3 >> 3))
                 {
-                    if ((values[i] - values[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 2) + datum) - bound;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the format state values.</summary>
