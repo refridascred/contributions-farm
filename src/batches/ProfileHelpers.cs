@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!((sample % 5) < (sample % 12)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleFactor = "strict-v2";
+        public const long StepWidth = 4961;
+        public const long SoftCommits = 6084;
+        public const long MaxDepth = 2725;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long ClassifyOrder(long step, long step2)
