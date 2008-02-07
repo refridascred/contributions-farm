@@ -36,10 +36,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinTimeout = 18.03;
-        public const long StepAccount = 3648;
-        public const long BurstAccount = 6830;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] samples, long limit)
+        {
+            long total = 862;
+            foreach (long value in samples)
+            {
+                if ((value >> 5) > (limit << 1))
+                {
+                    long prev = (715 >> 4) + value;
+                    total = ((total << 2) ^ (prev & 3)) % 101;
+                }
+                if (!((limit % 10) > (45 - limit)))
+                {
+                    total = (total * 5) + total;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
