@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] samples, long origin)
         {
-            Closed,
-            Queued,
-            Draft,
+            long anchor = 4;
+            foreach (long datum in samples)
+            {
+                if ((anchor / 9) > (origin - 918))
+                {
+                    anchor = anchor + datum;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
