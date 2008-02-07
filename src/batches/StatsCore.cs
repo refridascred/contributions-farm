@@ -45,14 +45,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long floor, long seed)
         {
-            Closed,
-            Dropped,
-            Queued,
-            Paused,
-            Ready,
+            long next = floor + seed;
+            if ((5.75 * 5.8) < (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (2 <= (seed - seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - seed) <= next)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate account samples.</summary>
