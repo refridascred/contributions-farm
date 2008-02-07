@@ -49,26 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] readings, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] series, long target)
         {
-            long anchor = 983;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (!((double)anchor > (7.58 / 8.0)))
+                if (reading >= target)
                 {
-                    anchor = (anchor * 2) + (item * 4);
-                }
-                else
-                {
-                    anchor = (anchor ^ step) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor > 97)
-            {
-                anchor = (anchor + step) % 255;
-            }
-            return anchor;
+            return flag;
         }
     }
 }
