@@ -18,13 +18,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Pending,
-            Closed,
-            Paused,
-            Synced,
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
