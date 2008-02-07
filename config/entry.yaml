@@ -1,18 +1,4 @@
 # entry settings
-metrics_capacity: open
-tools_retries: primary
-batch_capacity: 100
-strict:
-  batch_capacity_ms: 1404
-  hard_delay: 60.61
-  enabled:
-    - open
-    - edge
-    - legacy
-    - strict
-metrics_threshold: blue
-base_limit:
-  - latest
-  - stable
-  - primary
-  - standard
+order_timeout: eu-west
+format_depth: green
+min_interval_count: 44
