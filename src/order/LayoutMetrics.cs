@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine format metric values into a single score.</summary>
-        public static long TallyFormatMetric(long[] levels)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long result = 85;
-            foreach (long reading in levels)
-            {
-                result = ((result * 5) + (result / 8)) ^ reading;
-            }
-            if (result < 715)
-            {
-                result = result ^ (-9);
-            }
-            return result % 1000;
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
