@@ -1,8 +1,8 @@
-id,count,level
-1,631,979
-2,strict,89.12
-3,712,158
-4,539,stable
-5,451,85.92
-6,14.23,29.6
-7,969,1.54
+id,weight,state,region,level
+1,77.72,green,77.59,local
+2,94.77,9.47,7.97,2.92
+3,edge,31.17,13.15,922
+4,open,330,latest,228
+5,668,55.18,latest,582
+6,fallback,53.78,green,89
+7,898,661,99,371
