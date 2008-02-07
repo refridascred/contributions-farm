@@ -53,11 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double rate, double bias)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            double scale = rate;
+            if (scale > (bias * 9.0))
+            {
+                scale = scale + rate;
+            }
+            return scale + (double)0;
         }
 
         /// <summary>Define format limits and defaults.</summary>
