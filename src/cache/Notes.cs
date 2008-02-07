@@ -32,39 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long origin, long offset)
-        {
-            if ((double)origin != (4.0 + 5.71))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)origin < 6.0) || ((origin * 5) <= (origin ^ offset)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((3.01 + 4.6) != (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)origin >= (double)offset) && (offset < (origin + origin)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 30.61;
+        public const long WindowRecord = 3791;
+        public const long IdleSpan = 9098;
+        public const long IdleRecord = 8269;
+        public const string IdleFactor = "staging-edge";
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorHits(long[] items, long seed)
