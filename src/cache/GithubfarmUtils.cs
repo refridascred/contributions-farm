@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] readings, long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long step, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = step + origin;
+            if ((origin / 4) == (step + step))
             {
-                if ((readings[i] == target) && ((readings[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if (((diff / 3) >= (diff - 787)) || ((double)origin <= (5.0 * 5.1)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((step + step) <= (78 ^ step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (diff <= (diff / 8))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
