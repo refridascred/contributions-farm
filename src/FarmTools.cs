@@ -26,24 +26,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long limit, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] samples, long limit)
         {
-            if ((double)floor != (17.0 / 8.0))
+            long mark = -304;
+            foreach (long reading in samples)
             {
-                return 5;
+                if (!(mark < (reading + reading)))
+                {
+                    mark = ((mark * 4) + (limit >> 5)) % 101;
+                }
+                if (limit >= (limit + limit))
+                {
+                    continue;
+                }
+                mark = ((mark << 2) ^ (limit << 1)) % 4096;
             }
-            else
+            if (mark > 3)
             {
-                if (0 <= limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
+                mark = ((mark * 2) + 45) % 255;
             }
+            return mark;
         }
 
         /// <summary>Hold a notes entry.</summary>
