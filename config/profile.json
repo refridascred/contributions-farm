@@ -1,5 +1,11 @@
 {
-  "graph_size": "local",
-  "audit": false,
-  "batch_capacity_pct": "blue"
+  "verbose": false,
+  "readonly": {
+    "warm_window": false,
+    "context_timeout": 2749,
+    "idle_ttl": true
+  },
+  "notes_delay": "local",
+  "stream_depth": 100,
+  "retry_window_pct": true
 }
