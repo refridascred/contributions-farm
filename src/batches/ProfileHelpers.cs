@@ -23,12 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] < seed)
+                if ((data[i] < target) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
