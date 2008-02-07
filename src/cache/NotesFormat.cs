@@ -22,18 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] data)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double bias2 = (double)20 + (bias / 3.0);
+            if (bias2 >= (weight + bias))
             {
-                if ((tally << 2) >= (tally + entry))
-                {
-                    tally = tally + 1;
-                }
+                bias2 = bias2 + (6.9 / 4.0);
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 - (weight - bias2);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (3.6 / 3.0)) + (double)(long)i;
+            }
+            return bias2 + (bias + bias);
         }
 
         /// <summary>Hold a payload header.</summary>
