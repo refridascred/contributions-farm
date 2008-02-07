@@ -71,23 +71,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double bias, double bias2)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] values, long bound)
         {
-            double load = bias2;
-            if (load < (double)38)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                load = (load - (double)1) - bias;
+                if ((cell + cell) == (bound - 60))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                load = load - (double)(-353);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (bias2 * 7.9)) + (double)(long)i;
-            }
-            return load - (double)(-384);
+            return hits;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
