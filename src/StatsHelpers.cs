@@ -42,11 +42,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double bias, double offset)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] levels)
         {
-            double mean = bias;
-            return mean + offset;
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
