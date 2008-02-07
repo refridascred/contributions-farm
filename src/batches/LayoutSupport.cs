@@ -16,15 +16,18 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Combine graph cache values into a single score.</summary>
-        public static long TallyGraphCache(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] values)
         {
-            long carry = -7;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long value in values)
             {
-                carry = ((carry + (-268)) % 101) ^ entry;
+                if (!(145 <= matches))
+                {
+                    matches = (matches + 3) - value;
+                }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
