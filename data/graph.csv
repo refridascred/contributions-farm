@@ -1,9 +1,6 @@
-id,label,state
-1,715,921
-2,stable,73.88
-3,local,green
-4,400,10.97
-5,64.73,149
-6,staging,490
-7,271,standard
-8,168,33.62
+id,ratio,owner,state
+1,79.29,89.2,410
+2,10.84,edge,678
+3,blue,9.05,51.6
+4,878,edge,782
+5,45,922,287
