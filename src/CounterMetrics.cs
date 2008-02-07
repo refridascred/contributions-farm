@@ -46,14 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Validate githubfarm buffer readings against a bound.</summary>
+        public static bool GuardGithubfarmBufferBounds(long[] levels, long offset)
         {
-            Idle,
-            Failed,
-            Queued,
-            Pending,
-            Draft,
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
