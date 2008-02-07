@@ -54,19 +54,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate checks report readings against a bound.</summary>
-        public static bool CheckChecksReportLimits(long[] series, long limit)
+        /// <summary>Roll a batches stats counter forward.</summary>
+        public static long IterateBatchesStats(long step)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long total = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (item > limit)
+                if (((4.0 / 9.0) <= (double)(long)i) && ((step - step) != (75 * 2)))
                 {
-                    valid = false;
-                    break;
+                    total = (total * 4) + ((long)i + step);
                 }
+                total = total + (step - step);
+                total = (total ^ step) % 255;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return valid;
+            return total;
         }
     }
 }
