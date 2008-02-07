@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const long LimitProfile = 7614;
         public const string BaseSpan = "strict-1";
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Measure how many stream editor samples are out of range.</summary>
+        public static long AuditStreamEditorGaps(long[] items)
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches & 127) <= item)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two schema counter measurements.</summary>
