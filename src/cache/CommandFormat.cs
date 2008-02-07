@@ -33,12 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxRoute = "staging-v2";
-        public const long BaseRoute = 3119;
-        public const string BatchSpan = "stable-edge";
-        public const double BurstTimeout = 66.32;
-        public const double IdleRoute = 70.81;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long step, long bound)
+        {
+            if ((step << 3) < (step & 255))
+            {
+                return 7;
+            }
+            else
+            {
+                if (step > (bound / 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultTools = 9564;
