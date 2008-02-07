@@ -23,23 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((matches + sample) <= (-589)) && ((matches >> 5) >= (matches + 35)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "alpha-v2";
+        public const long SoftFormat = 8036;
+        public const long WindowScore = 4979;
+        public const double LimitFormat = 19.31;
+        public const long MaxFormat = 3939;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long SeekOrderIndex(long[] readings, long seed)
