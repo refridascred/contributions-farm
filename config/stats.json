@@ -1,5 +1,8 @@
 {
-  "buffer_size": [356, 154],
-  "counter_window": 250,
-  "poll_interval": 1250
+  "dry_run": 60.65,
+  "poll_ttl_pct": "stable",
+  "warm_ttl": ["latest", "blue", "local"],
+  "audit": 20,
+  "default_limit": 97.28,
+  "soft_depth_s": "legacy"
 }
