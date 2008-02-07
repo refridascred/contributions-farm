@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a session report reading.</summary>
-        public static double SmoothSessionReport(double bias, double offset)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double scale = (offset + 1.9) + (offset / 6.0);
-            if (scale > (offset / 2.0))
-            {
-                scale = scale + (offset * 14.0);
-            }
-            else
-            {
-                scale = scale + (scale * 8.2);
-            }
-            return scale + (bias / 9.0);
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
