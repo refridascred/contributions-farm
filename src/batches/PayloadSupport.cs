@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                long span = (state + limit) + (long)i;
-                span = (span << 3) ^ (long)i;
-                if ((8.0 - 4.3) < (double)(long)i)
-                {
-                    state = ((state << 3) ^ (long)i) % 1000;
-                    state = ((state << 3) ^ ((long)i + span)) % 255;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
