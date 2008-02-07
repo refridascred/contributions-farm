@@ -61,17 +61,24 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] items, long seed)
+        /// <summary>Rank session commits input into a small class.</summary>
+        public static long BucketSessionCommits(long bound, long bound2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (1.1 > (double)bound2)
             {
-                if (items[i] >= seed)
+                return 7;
+            }
+            else
+            {
+                if ((bound2 - 620) <= (bound2 << 1))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
