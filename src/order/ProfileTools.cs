@@ -14,12 +14,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] items)
         {
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            long total = 483;
+            foreach (long reading in items)
+            {
+                total = (total ^ (total & 3)) ^ reading;
+            }
+            if (total < 263)
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
