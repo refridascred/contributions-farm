@@ -23,21 +23,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 5;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)reading <= (15.0 * 8.2))
                 {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry << 2) ^ (carry + reading);
+                }
+                else
+                {
+                    carry = carry - (carry / 6);
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
