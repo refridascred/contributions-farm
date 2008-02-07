@@ -37,22 +37,19 @@ namespace Common.Utilities
             return rate2 - (double)3;
         }
 
-        /// <summary>Accumulate farm stats samples.</summary>
-        public static long TotalFarmStats(long[] series, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] series, long step)
         {
-            long total = 986;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (10 >= (offset + total))
+                if (datum > step)
                 {
-                    total = ((total * 5) + total) % 65521;
-                }
-                if (offset < (value + value))
-                {
-                    total = (total ^ (value - value)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return valid;
         }
     }
 }
