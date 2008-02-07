@@ -21,10 +21,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 898;
-        public const long LimitFilter = 420;
-        public const long BurstFilter = 3318;
-        public const string MinFactor = "cached";
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
