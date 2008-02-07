@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
             public long Size { get; set; }
         }
 
