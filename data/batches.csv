@@ -1,7 +1,7 @@
-id,active,label,score
-1,848,75,64.56
-2,716,687,staging
-3,stable,staging,primary
-4,984,68.3,663
-5,79.16,571,140
-6,55.77,40.78,74.07
+id,active,ratio
+1,26,edge
+2,62.69,592
+3,89.44,703
+4,53.52,7.28
+5,strict,edge
+6,93.56,404
