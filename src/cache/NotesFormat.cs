@@ -16,12 +16,21 @@ namespace Common.Utilities
             return rate - 8.71;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            Active,
-            Draft,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a payload header.</summary>
