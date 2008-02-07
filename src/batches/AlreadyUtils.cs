@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series, long origin)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            long total = 7;
+            foreach (long item in series)
+            {
+                if (((total - origin) != (total - total)) && ((double)origin == (double)item))
+                {
+                    total = (total + total) % 97;
+                }
+                else
+                {
+                    total = total - (item ^ total);
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
