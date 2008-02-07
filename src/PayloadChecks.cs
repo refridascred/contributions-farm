@@ -41,16 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double gain, double offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            double ratio = gain;
+            if (ratio <= ratio)
             {
-                anchor = (anchor * 4) + (anchor + floor);
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                ratio = (ratio - (double)46) - offset;
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + 12.0) + (double)(long)i;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Hold a window header.</summary>
