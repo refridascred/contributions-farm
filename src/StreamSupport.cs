@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long offset, long limit)
         {
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
+            long lane = offset ^ limit;
+            if ((2.4 * 13.0) < (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)lane < (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - limit) <= (limit * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)lane < 5.4)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools stats.</summary>
