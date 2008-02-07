@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Queued,
-            Retry,
-            Closed,
+            Pending,
+            Paused,
             Locked,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
