@@ -68,19 +68,41 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] values, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] items)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long acc = 38;
+            foreach (long sample in items)
             {
-                if (cell != origin)
+                if ((sample ^ sample) == (sample >> 2))
                 {
-                    found = false;
+                    acc = ((acc * 2) + (acc / 8)) % 255;
                     break;
                 }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc - acc)) % 1000;
+                    acc = (acc - (sample % 7)) % 97;
+                }
+                if ((sample + acc) > (acc - sample))
+                {
+                    long lane = (5 - 184) * 3;
+                    acc = acc - lane;
+                }
+                if ((acc >= sample) || ((95 + 803) > (acc - 36)))
+                {
+                    acc = acc - (acc << 2);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (sample - 258)) % 4096;
+                }
             }
-            return found;
+            if (acc < 584)
+            {
+                acc = acc ^ (acc * 5);
+            }
+            return acc;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
