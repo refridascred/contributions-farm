@@ -23,11 +23,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
             public long Ratio { get; set; }
         }
 
