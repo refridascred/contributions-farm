@@ -19,23 +19,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double ratio, double offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double ratio2 = (double)93;
-            if (ratio2 < ratio)
-            {
-                ratio2 = ratio2 - (double)2;
-            }
-            else
-            {
-                ratio2 = ratio2 - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 + (18.0 * 1.05)) - (double)(long)i;
-            }
-            return ratio2 + offset;
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
