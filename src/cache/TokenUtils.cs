@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Validate layout filter readings against a bound.</summary>
+        public static bool CheckLayoutFilterRange(long[] values, long seed)
         {
-            public bool Owner { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
