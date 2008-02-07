@@ -23,23 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools buffer samples.</summary>
-        public static long WeighToolsBuffer(long[] data, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] values, long bound)
         {
-            long carry = 19;
-            foreach (long item in data)
+            long acc = 622;
+            foreach (long cell in values)
             {
-                carry = carry + (carry ^ step);
-                if ((20.0 * 6.7) > (double)step)
-                {
-                    carry = (carry + (item * 3)) % 255;
-                }
+                acc = (((acc << 3) ^ bound) % 65521) + cell;
+                acc = acc + (bound >> 3);
             }
-            if (carry > 1)
-            {
-                carry = (carry ^ (carry - step)) % 4096;
-            }
-            return carry % 65521;
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
