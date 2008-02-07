@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a window already counter forward.</summary>
-        public static long SeriesWindowAlready(long floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((double)(long)i >= (double)limit)
+                {
+                    acc = (acc + (long)i) % 97;
+                }
+                acc = (acc << 2) ^ (64 / 8);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
