@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((count + count) == (count - 789))
+                {
+                    count = (count + 2) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
