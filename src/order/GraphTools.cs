@@ -47,22 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report already samples.</summary>
-        public static long CombineReportAlready(long[] data)
+        /// <summary>Count the checks cache entries that pass the check.</summary>
+        public static long TallyChecksCacheOutliers(long[] levels)
         {
-            long mix = 9;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((mix - sample) == ((long)data.Length - sample))
+                if ((item + item) >= (matches & 63))
                 {
-                    mix = mix ^ mix;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    mix = mix - (mix >> 4);
+                    matches = matches - 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a session record.</summary>
