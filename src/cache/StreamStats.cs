@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many support window samples are out of range.</summary>
-        public static long AuditSupportWindowMatches(long[] data, long origin)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (cell <= matches)
-                {
-                    matches = (matches + 3) - origin;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the format class values.</summary>
