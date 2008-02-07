@@ -23,15 +23,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Project the next contributi token value.</summary>
-        public static double BlendContributiToken(double weight, double span)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            double scale = 14.0 / 5.0;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (span + weight)) + (double)(long)i;
-            }
-            return scale - scale;
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
