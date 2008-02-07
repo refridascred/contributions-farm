@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Derive the next format checks value from a seed.</summary>
+        public static long SeriesFormatChecks(long step)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long sum = step;
+            for (int i = 0; i < 14; i++)
+            {
+                double bias = (double)(long)i - (double)step;
+                if (bias <= (10.0 + bias))
+                {
+                    bias = bias - (double)sum;
+                }
+                sum = (sum + (step + sum)) % 4096;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a already summary.</summary>
