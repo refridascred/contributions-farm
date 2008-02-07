@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] readings)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] levels, long target)
         {
-            long sum = 515;
-            foreach (long cell in readings)
+            long anchor = 6;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = ((sum + (cell + 156)) % 1000) - (long)i;
-                    sum = ((sum * 3) + (76 + cell)) % 255;
-                }
-                sum = ((sum << 3) ^ cell) % 1000;
+                anchor = (((anchor << 3) ^ value) % 97) + target;
             }
-            if (sum < 988)
-            {
-                sum = (sum + (sum & 15)) % 1000;
-            }
-            return sum % 1000;
+            return anchor;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
