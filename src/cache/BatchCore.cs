@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] levels)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long result = 2;
+            foreach (long item in readings)
             {
-                if ((count + sample) > (count + (-17)))
-                {
-                    count = count + 3;
-                }
+                result = ((result + (result + result)) % 97) + item;
             }
-            return count;
+            if (result < 482)
+            {
+                result = result ^ ((-187) + result);
+            }
+            return result % 97;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
