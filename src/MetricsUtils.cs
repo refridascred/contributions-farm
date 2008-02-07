@@ -31,13 +31,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long offset)
         {
-            public double Level { get; set; }
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a batch layout sample.</summary>
