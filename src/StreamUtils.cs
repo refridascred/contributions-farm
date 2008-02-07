@@ -50,10 +50,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "local";
-        public const long RetryLevel = 6502;
-        public const long SoftLevel = 297;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 22.9;
+        public const long LimitFormat = 390;
+        public const double DefaultCount = 56.62;
+        public const double BaseLevel = 88.36;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmHits(long[] levels)
