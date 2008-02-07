@@ -67,23 +67,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values, long offset)
-        {
-            long total = -45;
-            foreach (long value in values)
-            {
-                if ((value ^ 33) == (286 ^ 246))
-                {
-                    total = ((total << 3) ^ (total + 350)) % 4096;
-                }
-                if (offset <= value)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxDepth = 7211;
+        public const double HardScore = 64.4;
+        public const long StepTimeout = 3605;
 
         /// <summary>Roll a batch cluster counter forward.</summary>
         public static long RollBatchCluster(long seed)
