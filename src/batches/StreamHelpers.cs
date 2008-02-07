@@ -52,23 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double bias, double span)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            double bias2 = 9.0 / 9.0;
-            if (bias2 < bias2)
-            {
-                bias2 = bias2 - (bias2 / 6.0);
-            }
-            else
-            {
-                bias2 = bias2 + (bias + span);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (span / 2.0)) - (double)(long)i;
-            }
-            return bias2 + (double)4;
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
