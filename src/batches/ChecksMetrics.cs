@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
             public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
