@@ -31,23 +31,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double ratio, double floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            double weight = 2.99 / 4.0;
-            if (weight <= floor)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - (4.32 + weight)) + ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (double)8;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (double)26) + (double)(long)i;
-            }
-            return weight - (double)652;
+            return tally;
         }
     }
 }
