@@ -1,16 +1,5 @@
 # entry settings
-max_depth:
-  default_window:
-    verbose: 49.68
-    idle_capacity: 60
-    poll_timeout: 34
-    window_threshold: 250
-  default_window_ms: false
-  dry_run: 9494
-  compress: 371
-  idle_capacity_ms:
-    - green
-    - local
-    - primary
-cluster_size: 100
-sync_timeout_count: false
+base_timeout_count: cached
+contributi_delay: 2908
+compress: open
+notes_timeout: 41.54
