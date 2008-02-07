@@ -38,12 +38,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            public double Size { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!(mark <= (seed >> 5)))
+                {
+                    mark = (mark - (mark * 3)) % 4096;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
