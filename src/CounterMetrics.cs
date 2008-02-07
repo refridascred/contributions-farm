@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double rate, double floor)
-        {
-            double weight = floor;
-            if (weight > 5.1)
-            {
-                weight = weight + rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (weight + rate)) + (double)(long)i;
-            }
-            return weight - (double)148;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 1643;
+        public const long CacheLevel = 7979;
+        public const string CacheProfile = "local-edge";
+        public const long LimitProfile = 7614;
+        public const string BaseSpan = "strict-1";
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
