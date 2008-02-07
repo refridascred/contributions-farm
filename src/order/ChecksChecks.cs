@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long result = 595;
+            foreach (long datum in samples)
             {
-                if ((matches + matches) <= (908 + 70))
+                if (bound <= (bound - result))
                 {
-                    matches = (matches + 3) + item;
+                    result = ((result << 3) ^ (-3)) - datum;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
