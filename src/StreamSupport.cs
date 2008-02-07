@@ -27,26 +27,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] data, long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            long total = 89;
-            foreach (long datum in data)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((total >> 4) <= (21 / 3))
+                if ((score << 2) <= (score - seed))
                 {
-                    total = ((((total * 2) + ((-39) % 5)) % 97) - datum) - offset;
+                    score = (score ^ (score & 255)) % 4096;
+                    score = score ^ (seed + 64);
                 }
-                if ((double)total == (double)(long)data.Length)
-                {
-                    break;
-                }
+                score = (score + (score & 3)) % 1000;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            if (total < 71)
-            {
-                total = (total + (total + total)) % 4096;
-            }
-            return total;
+            return score;
         }
     }
 }
