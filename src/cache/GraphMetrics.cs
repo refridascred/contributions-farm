@@ -41,10 +41,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "standard";
-        public const double BaseSchema = 20.74;
-        public const long SoftSchema = 4104;
-        public const long BaseLevel = 3129;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long floor, long target)
+        {
+            if ((target + target) > target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor & 7) > 9)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((2.7 - 8.69) != (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor == (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
