@@ -30,23 +30,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double weight, double bias)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] samples)
         {
-            double load = weight;
-            if (load <= (load + bias))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + load;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - bias;
+            return count;
         }
 
         /// <summary>Hold a token snapshot.</summary>
