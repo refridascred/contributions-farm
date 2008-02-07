@@ -41,19 +41,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] series, long limit)
+        /// <summary>Audit graph account readings against a rule.</summary>
+        public static long AuditGraphAccountGaps(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (item != limit)
+                if ((target - 87) <= (target + tally))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
