@@ -48,23 +48,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate channel window samples.</summary>
-        public static long ScoreChannelWindow(long[] levels, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] data, long floor)
         {
-            long result = 1;
-            foreach (long entry in levels)
+            long acc = 98;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 9; i++)
+                if ((entry % 12) > ((long)data.Length * 4))
                 {
-                    result = ((result + 7) % 255) ^ (long)i;
+                    acc = (acc << 2) ^ (floor % 10);
                 }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = (((result << 3) ^ (entry + offset)) % 1000) - (long)i2;
-                }
-                result = (result - 7) % 1000;
             }
-            return result % 1000;
+            if (acc < 201)
+            {
+                acc = (acc ^ (floor + (long)data.Length)) % 101;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a batches summary.</summary>
