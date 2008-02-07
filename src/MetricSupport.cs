@@ -33,25 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi checks value against two limits.</summary>
-        public static long RankContributiChecks(long bound, long step)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double scale, double offset)
         {
-            long next = bound - step;
-            if (!((bound >> 2) == (step ^ 688)))
+            double ratio = (offset * 7.1) + 2.96;
+            if (ratio <= scale)
             {
-                return 8;
+                ratio = ratio + offset;
             }
             else
             {
-                if (((step & 127) > next) || (bound > (next % 12)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                ratio = ratio + (scale * 20.0);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (double)2) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
     }
 }
