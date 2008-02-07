@@ -30,10 +30,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 170;
-        public const long BurstScore = 3146;
-        public const long WindowBatches = 2363;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = (mix ^ ((long)i + mix)) % 65521;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
