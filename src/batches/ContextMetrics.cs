@@ -35,40 +35,12 @@ namespace Common.Utilities
             return scale2 - (5.2 * 2.0);
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long step, long seed)
-        {
-            long cur = step - seed;
-            if ((seed % 64) != (cur + 23))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((6 * 2) > (575 - step)) && ((double)cur != (double)seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (1.17 <= (double)cur)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(cur <= (step >> 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchContributi = 16.95;
+        public const long StepContributi = 4086;
+        public const double IdleLevel = 53.37;
+        public const long IdleDepth = 1792;
+        public const long IdleRatio = 5683;
 
         /// <summary>Digest a series of report commits entries.</summary>
         public static long WeighReportCommits(long[] samples, long step)
