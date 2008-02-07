@@ -60,17 +60,24 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] items, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long bound, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((bound % 8) == (bound & 31))
             {
-                if ((items[i] <= origin) && ((items[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)bound < (3.2 / 8.0))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
