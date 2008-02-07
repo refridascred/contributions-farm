@@ -55,39 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long limit, long step)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] values, long seed)
         {
-            long bound = limit - step;
-            if ((double)step < 4.5)
+            bool stale = true;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)step <= (2.45 - 1.9)))
+                if (item < seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound >= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step >> 3) == (limit ^ bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
