@@ -20,12 +20,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] samples, long limit)
         {
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
