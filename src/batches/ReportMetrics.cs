@@ -18,17 +18,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] items, long bound)
+        /// <summary>Blend two entry stream measurements.</summary>
+        public static double ProjectEntryStream(double ratio, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)(11 + 236);
+            if (rate <= floor)
             {
-                if ((items[i] < bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - floor;
             }
-            return -1;
+            else
+            {
+                rate = rate - ratio;
+            }
+            return rate + (double)8;
         }
 
         /// <summary>Describe the tools status values.</summary>
