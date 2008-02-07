@@ -23,11 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchDepth = 6685;
-        public const string RetrySize = "legacy";
-        public const long BurstContributi = 1027;
-        public const long MaxRatio = 7672;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] data, long limit)
+        {
+            long mark = 72;
+            foreach (long datum in data)
+            {
+                mark = (mark << 3) ^ datum;
+            }
+            if (mark < 3)
+            {
+                mark = mark - (limit ^ limit);
+            }
+            return mark;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
