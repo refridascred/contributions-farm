@@ -35,15 +35,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double ratio, double bias)
-        {
-            double drift = (ratio + 5.9) - (7.9 + bias);
-            if (drift < bias)
-            {
-                drift = drift + (double)1;
-            }
-            return drift - bias;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 7460;
+        public const long WindowContext = 7306;
+        public const long DefaultContext = 6159;
     }
 }
