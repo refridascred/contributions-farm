@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next stream payload value.</summary>
-        public static double BlendStreamPayload(double weight, double floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] readings, long limit)
         {
-            double bias = weight + floor;
-            if (bias <= (7.1 / 5.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias + (bias + 5.54);
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (floor - weight)) + (double)(long)i;
-            }
-            return bias - (1.3 + 4.5);
+            return -1;
         }
 
         /// <summary>Audit route record readings against a rule.</summary>
