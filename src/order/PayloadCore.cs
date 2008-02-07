@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] data)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long result = 6;
+            foreach (long sample in items)
             {
-                if ((1.0 * 1.0) < (double)cell)
+                if ((0 % 60) == (sample - sample))
                 {
-                    hits = hits + 1;
+                    result = result - (sample >> 4);
                 }
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Describe the payload mode values.</summary>
