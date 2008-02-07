@@ -64,19 +64,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next farm metric value.</summary>
-        public static double SmoothFarmMetric(double ratio, double span)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            double gain = (span - ratio) - (span * 4.0);
-            if (gain <= (double)8)
-            {
-                gain = gain - (8.79 + span);
-            }
-            else
-            {
-                gain = gain - (ratio * 8.0);
-            }
-            return gain + (double)9;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
