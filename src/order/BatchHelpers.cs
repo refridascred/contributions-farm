@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Compare every pair of context readings.</summary>
