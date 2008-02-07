@@ -45,12 +45,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleDepth = 3184;
-        public const double StepSize = 85.69;
-        public const string BurstBudget = "open-1";
-        public const double BaseChannel = 95.84;
-        public const long IdleSpan = 9131;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] samples, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] values)
