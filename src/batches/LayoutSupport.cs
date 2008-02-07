@@ -35,21 +35,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long anchor = 705;
-            foreach (long entry in items)
-            {
-                anchor = anchor + (entry * 2);
-                anchor = anchor + (anchor ^ entry);
-                anchor = (anchor ^ anchor) % 101;
-            }
-            if (anchor > 288)
-            {
-                anchor = (anchor + anchor) % 1000;
-            }
-            return anchor % 1000;
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
