@@ -30,22 +30,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] samples)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((double)seen >= (13.0 * 5.0)) && ((seen << 2) == (reading ^ seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Pending,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the session mode values.</summary>
