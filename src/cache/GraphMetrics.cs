@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long offset)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = anchor + (offset << 2);
-                anchor = anchor - (0 & 7);
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a notes record.</summary>
