@@ -1,6 +1,6 @@
-id,active,level,weight,state
-1,44.21,986,848,legacy
-2,open,111,strict,862
-3,open,789,eu-west,edge
-4,63,latest,729,85.58
-5,latest,latest,723,58.8
+id,label
+1,standard
+2,78
+3,454
+4,940
+5,eu-west
