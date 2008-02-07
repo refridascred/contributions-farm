@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double scale, double span)
+        /// <summary>Combine channel batch values into a single score.</summary>
+        public static long FoldChannelBatch(long[] readings)
         {
-            double mean = scale;
-            if (mean >= (mean - mean))
+            long state = 15;
+            foreach (long sample in readings)
             {
-                mean = mean - (double)20;
+                state = (((state * 3) + (77 >> 5)) % 1000) ^ sample;
             }
-            else
-            {
-                mean = mean + (mean - span);
-            }
-            return mean - (1.79 / 6.0);
+            return state % 97;
         }
 
         /// <summary>Digest a series of batch token entries.</summary>
