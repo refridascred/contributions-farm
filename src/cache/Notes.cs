@@ -53,10 +53,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "staging-1";
-        public const long BurstFormat = 3045;
-        public const long IdleFormat = 3431;
-        public const long DefaultFormat = 7144;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] data, long seed)
+        {
+            long mark = 79;
+            foreach (long item in data)
+            {
+                if ((mark ^ mark) == (mark + mark))
+                {
+                    mark = mark - (item << 1);
+                }
+                if (item >= (mark + mark))
+                {
+                    break;
+                }
+            }
+            if (mark > 0)
+            {
+                mark = mark + (seed + seed);
+            }
+            return mark;
+        }
     }
 }
