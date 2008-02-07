@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] data, long limit)
+        /// <summary>Adjust a session githubfarm reading.</summary>
+        public static double ScaleSessionGithubfarm(double weight, double span)
         {
-            bool ready = true;
-            foreach (long value in data)
+            double scale = (double)(180 - 21);
+            if (scale < span)
             {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale + 4.0;
             }
-            return ready;
+            else
+            {
+                scale = scale + (5.9 / 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (double)5) + (double)(long)i;
+            }
+            return scale + (weight / 5.0);
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
