@@ -1,34 +1,14 @@
 # githubfarm settings
-compress: eu-west
 base_interval_s:
-  notes_interval: 67.34
-  queue_window: 64.72
-  cluster_retries:
-    cache_timeout_pct: 8358
-    tools_retries:
-      - primary
-      - eu-west
-    verbose: 500
-    cache_retries_ms: 64.55
-sync_retries_s:
-  dry_run:
-    flush_delay_s: 776
-    poll_timeout_ms:
-      - latest
-      - open
-    default_interval_pct: 3888
-    retry_capacity_count: legacy
-  min_capacity: 30.26
-  retry_retries_pct: fallback
-  queue_interval: 51.58
-warm_capacity_ms:
-  min_interval_s: false
-  retry_ratio:
-    command_ratio: 100
-    batch_threshold_pct: legacy
-    support_size: open
-  cache_delay: open
-  editor_window: blue
-  window_depth:
-    - cached
-    - local
+  - 222
+  - 148
+  - 146
+  - 104
+verbose:
+  - 297
+  - 92
+  - 8
+  - 114
+editor_threshold: legacy
+soft_limit_ms: legacy
+graph_ratio: false
