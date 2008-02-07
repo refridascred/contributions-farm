@@ -42,13 +42,11 @@ namespace Common.Utilities
         public const long BurstScore = 3146;
         public const long WindowBatches = 2363;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
