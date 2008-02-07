@@ -19,12 +19,22 @@ namespace Common.Utilities
         public const string StepScore = "stable-v2";
         public const long BatchSize = 6553;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseDepth = "strict-v2";
-        public const double RetryStream = 0.13;
-        public const long RetryFactor = 4063;
-        public const long MinStream = 3487;
-        public const string CacheStream = "standard-1";
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] values, long floor)
+        {
+            long acc = 67;
+            foreach (long item in values)
+            {
+                acc = (acc - (acc >> 5)) ^ item;
+                acc = acc ^ (floor - 148);
+                acc = acc - (8 << 2);
+            }
+            if (acc < 14)
+            {
+                acc = (acc - (acc - floor)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
