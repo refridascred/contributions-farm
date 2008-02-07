@@ -1,5 +1,6 @@
 # support settings
-stats_ttl: 29.83
-poll_retries_s: 30
-min_threshold_s: 30
-cache_timeout: latest
+batch_delay_count: 19
+audit: 5446
+batch_limit: true
+retry_size_count: true
+retry_depth_ms: cached
