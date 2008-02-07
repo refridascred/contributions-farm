@@ -47,15 +47,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the already batch entries that pass the check.</summary>
-        public static long MeasureAlreadyBatchHits(long[] readings, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] data, long target)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long datum in data)
             {
-                if ((offset - sample) == (count / 6))
+                if ((17.0 * 2.0) > (double)target)
                 {
-                    count = count + 2;
+                    count = (count + 2) + datum;
                 }
                 else
                 {
