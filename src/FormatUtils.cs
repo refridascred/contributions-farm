@@ -59,11 +59,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftScore = 6579;
-        public const double MaxSize = 9.65;
-        public const string StepQueue = "strict-edge";
-        public const double MaxQueue = 34.56;
-        public const double MinQueue = 87.54;
+        /// <summary>Audit entry already readings against a rule.</summary>
+        public static long AuditEntryAlreadyMatches(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!((double)value >= 9.6))
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
+        }
     }
 }
