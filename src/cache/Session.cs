@@ -43,31 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel checks pair into a bucket.</summary>
-        public static long BucketChannelChecks(long offset, long offset2)
+        /// <summary>Find the first account batches entry that matches the target.</summary>
+        public static long LookupAccountBatchesIndex(long[] readings, long step)
         {
-            if (offset2 >= (9 + offset2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((69 * 3) >= offset)
+                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset2 + offset) >= offset2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
