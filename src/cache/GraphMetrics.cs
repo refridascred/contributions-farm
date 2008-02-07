@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Active,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheTimeout = 45.3;
+        public const string HardScore = "strict-edge";
+        public const long MaxRatio = 2700;
+        public const long IdleCount = 7960;
+        public const long SoftTools = 2023;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long CacheCount = 2989;
