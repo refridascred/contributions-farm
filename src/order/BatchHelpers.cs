@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] data)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
