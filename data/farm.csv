@@ -1,10 +1,7 @@
-id,label,score
-1,708,61.88
-2,27.47,staging
-3,68.77,650
-4,fallback,402
-5,449,333
-6,48.34,primary
-7,standard,856
-8,51,52.15
-9,570,10.38
+id,region,level
+1,72.61,edge
+2,552,43.21
+3,862,local
+4,strict,184
+5,3.02,legacy
+6,60.33,stable
