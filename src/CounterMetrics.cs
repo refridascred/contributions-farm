@@ -29,19 +29,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] values, long step)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double weight, double span)
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double scale = (double)(6 & 1);
+            return (scale - weight) + span;
         }
 
         /// <summary>Hold a payload options.</summary>
