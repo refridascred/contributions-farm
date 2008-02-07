@@ -14,13 +14,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Adjust a channel support reading.</summary>
+        public static double SmoothChannelSupport(double scale, double bias)
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            double load = (double)325 / 2.0;
+            if (load <= bias)
+            {
+                load = load - scale;
+            }
+            else
+            {
+                load = load - (load / 5.0);
+            }
+            return load + (double)542;
         }
 
         /// <summary>Describe the record mode values.</summary>
