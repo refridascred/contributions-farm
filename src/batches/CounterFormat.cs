@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long BaseLevel = 7550;
         public const long HardCommand = 2738;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] values)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] series, long bound)
         {
-            long score = 9;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long sample in series)
             {
-                score = ((score + (8 + score)) % 101) ^ datum;
+                if ((sample + sample) != (bound % 7))
+                {
+                    count = count + 3;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
