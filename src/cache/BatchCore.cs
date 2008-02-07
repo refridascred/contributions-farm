@@ -56,17 +56,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] samples, long floor)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (gain - 4.31) / 3.0;
+            return mean - floor;
         }
     }
 }
