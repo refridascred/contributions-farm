@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next stats account value.</summary>
-        public static double ScaleStatsAccount(double gain, double span)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long floor)
         {
-            double scale = (double)(695 << 2);
-            if (scale < 2.7)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                scale = (scale - gain) - span;
+                mark = ((mark * 3) + ((-46) ^ mark)) % 255;
+                mark = mark ^ (mark + mark);
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return scale - scale;
+            return mark;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
