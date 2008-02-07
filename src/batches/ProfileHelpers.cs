@@ -19,23 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] data, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long step, long step2)
         {
-            long carry = 8;
-            foreach (long sample in data)
+            if (((step % 2) == (step2 ^ step2)) && ((step2 - step2) >= (step + step)))
             {
-                carry = (carry - (carry - floor)) % 97;
-                if (((sample & 7) <= (sample << 2)) || ((floor + sample) <= 1))
+                return 0;
+            }
+            else
+            {
+                if ((0.7 - 3.18) >= (double)step2)
                 {
-                    carry = (carry ^ 406) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (carry < 604)
-            {
-                carry = (carry - (floor & 7)) % 4096;
-            }
-            return carry % 97;
         }
 
         /// <summary>Describe the batches status values.</summary>
