@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many notes contributi samples are out of range.</summary>
-        public static long CountNotesContributiOutliers(long[] values, long floor)
+        /// <summary>Find the first cache batch entry that matches the target.</summary>
+        public static long LookupCacheBatchIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((sample << 3) > count) || !((20.0 / 8.0) > (double)sample))
+                if ((values[i] < seed) && ((values[i] % 3) == 0))
                 {
-                    count = (count + 2) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
