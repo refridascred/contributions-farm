@@ -22,24 +22,12 @@ namespace Common.Utilities
         public const long MinTimeout = 9042;
         public const long BaseCount = 8896;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long origin, long offset)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            if ((double)origin < 2.6)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((7 * 4) >= offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
