@@ -64,11 +64,10 @@ namespace Common.Utilities
             return scale + (double)0;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheInterval = 37.8;
-        public const long SoftFormat = 1220;
-        public const double WindowFormat = 26.77;
-        public const long WindowDepth = 6064;
-        public const long CacheTimeout = 4776;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 4458;
+        public const long StepWidth = 6957;
+        public const long CacheLevel = 9014;
+        public const double CacheTimeout = 68.14;
     }
 }
