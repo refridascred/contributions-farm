@@ -57,19 +57,17 @@ namespace Common.Utilities
         public const double StepTools = 9.67;
         public const double IdleBudget = 26.05;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] levels, long origin)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item != origin)
+                if (data[i] < origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
