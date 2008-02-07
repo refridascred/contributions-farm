@@ -38,22 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] levels, long seed)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((cell % 10) <= (hits / 3))
+                if (sample <= origin)
                 {
-                    hits = (hits + 1) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the graph phase values.</summary>
