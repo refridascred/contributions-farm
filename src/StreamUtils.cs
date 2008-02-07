@@ -50,11 +50,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            Active,
+            Closed,
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
