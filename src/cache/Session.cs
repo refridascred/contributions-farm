@@ -44,21 +44,31 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Classify a channel checks pair into a bucket.</summary>
+        public static long BucketChannelChecks(long offset, long offset2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (offset2 >= (9 + offset2))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((69 * 3) >= offset)
                 {
-                    if ((data[i] + data[j]) == 9)
+                    return 2;
+                }
+                else
+                {
+                    if ((offset2 + offset) >= offset2)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
     }
 }
