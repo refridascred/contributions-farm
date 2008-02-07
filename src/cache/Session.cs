@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Paused,
-            Pending,
-            Locked,
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
