@@ -38,9 +38,17 @@ namespace Common.Utilities
         public const string BurstGithubfarm = "strict-v2";
         public const string WindowSpan = "open-edge";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryInterval = 3766;
-        public const string MaxScore = "strict-v2";
-        public const string WindowEditor = "latest-v2";
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
