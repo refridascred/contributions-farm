@@ -22,18 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account profile readings against a rule.</summary>
-        public static long TallyAccountProfileOutliers(long[] series)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((reading - reading) != (54 + reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
