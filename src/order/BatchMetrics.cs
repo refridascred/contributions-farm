@@ -59,18 +59,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((12.0 + 3.9) != (double)hits) || ((hits * 3) >= (89 / 4)))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleLevel = 90.56;
+        public const long MinRatio = 4178;
+        public const long WindowSession = 6400;
+        public const long LimitSession = 2718;
     }
 }
