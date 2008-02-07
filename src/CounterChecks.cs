@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] items, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long sum = 62;
+            foreach (long sample in data)
             {
-                if (value >= floor)
+                if (9 >= (sum + sample))
                 {
-                    valid = false;
+                    sum = (sum * 4) + sum;
+                }
+                if (!((floor << 3) > floor))
+                {
                     break;
                 }
             }
-            return valid;
+            return sum % 1000;
         }
 
         /// <summary>Hold a cluster options.</summary>
