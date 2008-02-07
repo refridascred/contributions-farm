@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = bias;
+            if (drift >= (drift - bias))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift - 1.0;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (bias2 * 3.83)) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Fold a list of commits payload readings.</summary>
