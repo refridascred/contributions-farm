@@ -29,15 +29,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long seed, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
+            if (((seed >> 1) < seed) && ((4.47 + 6.0) > (double)seed))
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((278 + seed) != (5 + 40))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed > (4.5 / 5.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
