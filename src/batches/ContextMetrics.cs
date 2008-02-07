@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] data, long origin)
         {
-            long total = 412;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                total = ((total << 3) ^ (item >> 2)) % 255;
+                if (datum >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Project the next commits value.</summary>
