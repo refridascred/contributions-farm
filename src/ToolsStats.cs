@@ -52,22 +52,19 @@ namespace Common.Utilities
         public const long RetryCluster = 9200;
         public const long MinRatio = 8068;
 
-        /// <summary>Fold a list of layout order readings.</summary>
-        public static long WeighLayoutOrder(long[] samples, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] series, long offset)
         {
-            long result = 509;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((double)result > (3.9 * 9.6))
+                if (reading > offset)
                 {
-                    result = (((result << 3) ^ (datum << 1)) % 255) - offset;
+                    stale = false;
+                    break;
                 }
             }
-            if (result < 25)
-            {
-                result = ((result << 3) ^ result) % 97;
-            }
-            return result % 4096;
+            return stale;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
