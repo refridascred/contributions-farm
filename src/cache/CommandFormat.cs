@@ -33,11 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstDepth = 9102;
-        public const long BurstFarm = 7750;
-        public const long CacheFarm = 7002;
-        public const long LimitFarm = 7064;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxRoute = "staging-v2";
+        public const long BaseRoute = 3119;
+        public const string BatchSpan = "stable-edge";
+        public const double BurstTimeout = 66.32;
+        public const double IdleRoute = 70.81;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long SortEntry(long bound, long offset)
