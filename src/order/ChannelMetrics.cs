@@ -17,18 +17,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            long total = 37;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9.83 / 5.0) < (double)entry)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = total + (total + entry);
+                    if ((samples[i] ^ samples[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
