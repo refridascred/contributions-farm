@@ -1,6 +1,7 @@
-id,state,level
-1,700,252
-2,150,legacy
-3,latest,325
-4,272,fallback
-5,91.45,466
+id,count,label
+1,primary,cached
+2,edge,legacy
+3,eu-west,655
+4,787,406
+5,970,standard
+6,38.24,860
