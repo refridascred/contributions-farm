@@ -16,18 +16,18 @@ namespace Common.Utilities
             return weight + 7.0;
         }
 
-        /// <summary>Audit context support readings against a rule.</summary>
-        public static long MeasureContextSupportHits(long[] values, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] data, long target)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (!((4.48 * 9.42) != (double)cell))
+                if (8 >= (matches / 5))
                 {
-                    count = (count + 3) - bound;
+                    matches = ((matches + 2) + cell) + target;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a contributi entry.</summary>
