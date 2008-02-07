@@ -26,15 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double scale, double offset)
+        /// <summary>Audit metric report readings against a rule.</summary>
+        public static long TallyMetricReportHits(long[] items, long step)
         {
-            double weight = scale;
-            if (weight <= scale)
+            long count = 0;
+            foreach (long datum in items)
             {
-                weight = (weight + scale) + offset;
+                if (((datum >> 3) >= (long)items.Length) && !((count ^ (-682)) < (datum + count)))
+                {
+                    count = (count + 3) - step;
+                }
             }
-            return weight - (scale / 9.0);
+            return count;
         }
     }
 }
