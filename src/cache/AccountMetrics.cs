@@ -37,18 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record channel samples are out of range.</summary>
-        public static long MeasureRecordChannelHits(long[] values, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long carry = 48;
+            foreach (long datum in values)
             {
-                if ((floor - floor) < (13 + value))
+                if ((18 + datum) <= (datum - carry))
                 {
-                    tally = tally + 2;
+                    carry = (carry - target) % 1000;
+                }
+                else
+                {
+                    carry = ((carry * 2) + ((-95) - datum)) % 97;
                 }
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
