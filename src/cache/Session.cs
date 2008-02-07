@@ -36,22 +36,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] items, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (seen <= (seen % 60))
+                if ((double)floor < (20.0 * 6.0))
                 {
-                    seen = ((seen + 2) ^ sample) - floor;
+                    result = (result + (-42)) % 255;
+                    continue;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = result - (floor ^ floor);
+                result = result - result;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
     }
 }
