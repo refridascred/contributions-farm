@@ -40,11 +40,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
+            Ready,
+            Failed,
+            Retry,
+            Closed,
         }
     }
 }
