@@ -80,15 +80,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context stats samples.</summary>
-        public static long CombineContextStats(long[] data, long limit)
-        {
-            long acc = 808;
-            foreach (long item in data)
-            {
-                acc = (((acc - acc) % 1000) - item) + limit;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 7157;
+        public const long SoftScore = 852;
+        public const long LimitBudget = 8521;
+        public const long RetryRatio = 219;
+        public const long HardLevel = 9836;
     }
 }
