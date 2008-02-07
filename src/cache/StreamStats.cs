@@ -13,15 +13,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double weight, double offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double bias = weight;
-            if (bias >= offset)
-            {
-                bias = bias + offset;
-            }
-            return bias - offset;
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
