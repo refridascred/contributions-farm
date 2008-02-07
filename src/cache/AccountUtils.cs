@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] data, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCount = 2479;
+        public const double WindowCluster = 85.89;
+        public const long HardCluster = 3539;
+        public const long DefaultRatio = 8789;
+        public const long BurstCount = 3847;
 
         /// <summary>Count the batches report entries that pass the check.</summary>
         public static long MeasureBatchesReportOutliers(long[] values, long seed)
