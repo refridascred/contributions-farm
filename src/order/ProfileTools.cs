@@ -14,21 +14,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] levels)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 55;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (((mix << 2) ^ 126) % 65521) + reading;
             }
-            return seen;
+            return mix % 65521;
         }
 
         /// <summary>Audit commits command readings against a rule.</summary>
