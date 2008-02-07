@@ -39,18 +39,19 @@ namespace Common.Utilities
         public const long IdleRecord = 8269;
         public const string IdleFactor = "staging-edge";
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] items, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((seed / 9) <= (cell - 8))
+                if (entry > target)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Accumulate channel samples.</summary>
