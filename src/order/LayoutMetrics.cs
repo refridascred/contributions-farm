@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
+            Closed,
             Idle,
-            Dropped,
             Pending,
-            Done,
+            Retry,
         }
 
         /// <summary>Adjust a channel support reading.</summary>
