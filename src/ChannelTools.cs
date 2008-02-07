@@ -11,28 +11,19 @@ namespace Common.Utilities
         public const double DefaultScore = 54.0;
         public const long IdleGraph = 2404;
 
-        /// <summary>Accumulate queue cache samples.</summary>
-        public static long TotalQueueCache(long[] values)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] values, long limit)
         {
-            long result = 5;
+            bool valid = true;
             foreach (long value in values)
             {
-                if ((4.8 / 2.0) < (double)result)
+                if (value <= limit)
                 {
-                    result = (result ^ value) % 97;
+                    valid = false;
                     break;
                 }
-                result = (result ^ (result + result)) % 101;
-                if (!(result > (result + value)))
-                {
-                    result = result - value;
-                }
             }
-            if (result > 178)
-            {
-                result = result ^ (result % 60);
-            }
-            return result % 65521;
+            return valid;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
