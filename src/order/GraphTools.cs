@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleDepth = 673;
-        public const long BurstCluster = 9569;
-        public const double MaxCluster = 97.67;
-        public const long MinCluster = 6854;
+        /// <summary>Measure how many stats farm samples are out of range.</summary>
+        public static long CountStatsFarmMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((seen % 10) != (cell ^ 971)) && ((2 > cell) && (((-123) * 5) < (seen & 1))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
