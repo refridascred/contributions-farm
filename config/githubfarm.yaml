@@ -1,15 +1,10 @@
 # githubfarm settings
-farm_threshold: standard
-order_depth: green
-flush_limit_pct:
-  - legacy
+cache_limit: 80.04
+poll_window_count: 32
+hard_retries_ms:
   - stable
-retry_ttl_pct: true
-route_timeout:
-  - 216
-  - 64
-poll_interval_s:
-  - 379
-  - 49
-  - 320
-  - 91
+  - strict
+  - standard
+retry_window_pct: 8309
+dry_run: local
+poll_capacity: eu-west
