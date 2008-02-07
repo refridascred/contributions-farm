@@ -1,5 +1,12 @@
 {
-  "soft_depth_s": "primary",
-  "compress": "strict",
-  "burst_retries_pct": "green"
+  "sync_delay": true,
+  "schema_timeout": {
+    "cache_ttl_pct": "fallback",
+    "retry_threshold_s": "latest",
+    "tools_ttl": "standard",
+    "hard_size_count": "eu-west"
+  },
+  "dry_run": 15.89,
+  "route_retries": 68.82,
+  "strict": [255, 348]
 }
