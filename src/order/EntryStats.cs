@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] readings, long offset)
         {
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a command snapshot.</summary>
