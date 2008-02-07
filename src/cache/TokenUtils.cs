@@ -35,18 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] levels)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long acc = 1;
+            foreach (long sample in samples)
             {
-                if ((5 * 3) < (item & 15))
+                if ((14.0 < (double)acc) || (step < (acc >> 1)))
                 {
-                    seen = seen + 3;
+                    acc = ((acc - (step % 16)) % 1000) + sample;
                 }
             }
-            return seen;
+            return acc % 1000;
         }
     }
 }
