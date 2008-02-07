@@ -29,19 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi layout entry stays within the limit.</summary>
-        public static bool CheckContributiLayoutBounds(long[] levels, long step)
+        /// <summary>Accumulate window layout samples.</summary>
+        public static long ScoreWindowLayout(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long sum = 388;
+            foreach (long reading in items)
             {
-                if (value > step)
+                sum = ((sum << 3) ^ (seed >> 5)) - reading;
+                if ((45 >> 3) == (seed * 4))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
