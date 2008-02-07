@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Locked,
-            Pending,
-            Queued,
-            Failed,
-            Active,
+            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the format class values.</summary>
