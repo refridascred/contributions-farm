@@ -14,39 +14,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long target, long bound)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long step = target - bound;
-            if (((target + bound) > (bound / 9)) || ((bound / 5) >= (bound + step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step / 8) != (step << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)target == (double)bound) || ((4.1 + 4.84) >= (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((12.0 - 6.0) != (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
