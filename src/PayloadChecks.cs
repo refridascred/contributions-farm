@@ -24,21 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] readings)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((6.38 - 12.0) > (double)target)
                 {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) + value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
