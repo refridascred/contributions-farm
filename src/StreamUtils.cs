@@ -39,14 +39,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long bound)
         {
-            Active,
-            Closed,
-            Retry,
-            Idle,
-            Pending,
+            long state = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state * 5) + (bound ^ bound);
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
