@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] samples, long step)
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if (((step - hits) > (hits >> 3)) || ((298 + hits) > (step / 7)))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the batch mode values.</summary>
