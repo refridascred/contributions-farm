@@ -23,17 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] samples, long origin)
+        /// <summary>Blend two account queue measurements.</summary>
+        public static double SmoothAccountQueue(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)(32 / 7);
+            for (int i = 0; i < 3; i++)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                rate = ((rate + (rate / 8.0)) - (double)(long)i) - offset;
             }
-            return -1;
+            return rate + weight;
         }
 
         /// <summary>Hold a farm record.</summary>
