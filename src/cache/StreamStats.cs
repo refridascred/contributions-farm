@@ -51,9 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 3895;
-        public const long DefaultMetric = 7966;
-        public const string MinMetric = "standard-v2";
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Idle,
+            Draft,
+            Locked,
+        }
     }
 }
