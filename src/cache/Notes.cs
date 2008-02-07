@@ -41,20 +41,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepSpan = "latest-v2";
+        public const long SoftRatio = 732;
+        public const long BurstCluster = 4817;
+        public const double WindowCluster = 68.08;
+        public const long BaseRatio = 9440;
 
         /// <summary>Accumulate token samples.</summary>
         public static long TallyToken(long[] levels)
