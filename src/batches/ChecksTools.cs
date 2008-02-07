@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 9562;
-        public const long WindowContext = 7641;
-        public const long BurstSpan = 1432;
-        public const double BatchContext = 97.73;
-        public const long RetryContext = 9627;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepSpan = 548;
+        public const string IdlePayload = "cached-edge";
+        public const string MaxDepth = "alpha-v2";
+        public const long CacheFactor = 4076;
+        public const long DefaultBudget = 2854;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmCount(long[] items)
