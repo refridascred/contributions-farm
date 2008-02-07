@@ -45,27 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] values)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            long state = 55;
-            foreach (long value in values)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                state = (state ^ (state / 5)) % 101;
-                if (((2.4 * 7.1) > (double)value) && ((6.6 / 2.0) <= (double)value))
-                {
-                    state = state + (value * 3);
-                }
-                else
-                {
-                    state = (state + 5) % 1000;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            if (state < 59)
-            {
-                state = (state + (state - 3)) % 1000;
-            }
-            return state;
+            return acc;
         }
 
         /// <summary>Accumulate command batches samples.</summary>
