@@ -20,19 +20,38 @@ namespace Common.Utilities
         public const long MinRatio = 2378;
         public const string SoftTimeout = "strict-v2";
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double gain, double span)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long target, long bound)
         {
-            double weight = span;
-            if (weight <= weight)
+            if ((double)target >= (double)747)
             {
-                weight = (weight + (span * 17.0)) - gain;
+                return 5;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                weight = (weight + (span / 4.0)) + (double)(long)i;
+                if (((43 >> 5) > (target >> 5)) && ((14 % 100) == (bound + bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((26 & 15) >= bound) && ((bound * 3) > bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target ^ (-36)) == (bound + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return weight + (double)24;
         }
     }
 }
