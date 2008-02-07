@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double gain, double floor)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long limit, long floor)
         {
-            double bias = gain;
-            for (int i = 0; i < 7; i++)
+            if (8.5 > (double)floor)
             {
-                bias = (bias + gain) - (double)(long)i;
+                return 1;
             }
-            return bias - floor;
+            else
+            {
+                if ((2.3 - 9.3) > (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor << 3) != (limit / 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
