@@ -63,39 +63,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long offset, long seed)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long offset2 = offset + seed;
-            if (seed < (offset2 / 9))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((9.2 - 8.85) >= (double)seed) && ((seed ^ offset) == (offset << 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed - 48) > (offset + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset2 % 12) >= offset2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
+            public double Level { get; set; }
         }
     }
 }
