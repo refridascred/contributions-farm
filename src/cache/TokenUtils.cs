@@ -27,24 +27,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long offset, long origin)
+        /// <summary>Roll a session batch counter forward.</summary>
+        public static long RollSessionBatch(long target)
         {
-            if (origin <= (origin >> 5))
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
+                mix = ((mix * 5) + (mix - mix)) % 101;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)offset == (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
