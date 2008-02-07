@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Validate githubfarm entry readings against a bound.</summary>
+        public static bool ValidateGithubfarmEntryRange(long[] readings, long target)
         {
-            Synced,
-            Ready,
-            Dropped,
-            Active,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
