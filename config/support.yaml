@@ -1,6 +1,13 @@
 # support settings
-batch_delay_count: 19
-audit: 5446
-batch_limit: true
-retry_size_count: true
-retry_depth_ms: cached
+cache_threshold_s:
+  - primary
+  - local
+  - blue
+  - stable
+persist: strict
+layout_retries:
+  - 223
+  - 151
+  - 181
+enabled: blue
+soft_timeout_count: 65.62
