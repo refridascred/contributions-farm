@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
+            Pending,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
