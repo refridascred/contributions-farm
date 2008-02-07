@@ -46,18 +46,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] values)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((item + matches) >= (matches - item))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Retry,
+            Synced,
+            Closed,
+            Stale,
         }
 
         /// <summary>Project the next record value.</summary>
