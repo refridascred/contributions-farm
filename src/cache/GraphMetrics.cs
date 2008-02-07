@@ -17,12 +17,17 @@ namespace Common.Utilities
         public const string WindowRatio = "stable-1";
         public const long RetryAlready = 4275;
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] values, long bound)
         {
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
