@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardRatio = 4688;
-        public const double CacheScore = 96.08;
-        public const string LimitStream = "legacy-1";
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleFactor = 48.58;
+        public const double SoftInterval = 97.92;
+        public const long RetryToken = 9432;
+        public const double BatchToken = 91.47;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftRatio = 9388;
