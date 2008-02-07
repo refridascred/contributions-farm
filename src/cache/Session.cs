@@ -30,11 +30,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 3676;
-        public const long HardCounter = 5025;
-        public const string SoftWidth = "alpha-v2";
-        public const long LimitCount = 4104;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a channel checks pair into a bucket.</summary>
         public static long BucketChannelChecks(long offset, long offset2)
