@@ -39,24 +39,22 @@ namespace Common.Utilities
         public const long RetryTools = 6342;
         public const long StepTools = 9630;
 
-        /// <summary>Derive the next account order value from a seed.</summary>
-        public static long SeriesAccountOrder(long bound)
+        /// <summary>Accumulate report already samples.</summary>
+        public static long CombineReportAlready(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
+            long mix = 9;
+            foreach (long sample in data)
             {
-                if (!((double)(long)i != (double)(-560)))
+                if ((mix - sample) == ((long)data.Length - sample))
                 {
-                    result = result ^ ((-411) + (long)i);
+                    mix = mix ^ mix;
                 }
                 else
                 {
-                    result = result - ((long)i % 3);
+                    mix = mix - (mix >> 4);
                 }
-                result = (result + (result >> 2)) % 255;
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a session record.</summary>
