@@ -1,5 +1,5 @@
 {
-  "batches_retries": 9091,
-  "batches_capacity": 60,
-  "window_interval": "cached"
+  "cache_interval": "edge",
+  "schema_capacity": 77,
+  "audit": 22.4
 }
