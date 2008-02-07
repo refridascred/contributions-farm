@@ -12,10 +12,22 @@ namespace Common.Utilities
         public const string CacheSession = "standard-edge";
         public const string SoftSession = "stable-1";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstDepth = 52.28;
-        public const long SoftLevel = 3877;
-        public const double MinBatches = 50.12;
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a editor order counter forward.</summary>
         public static long DeriveEditorOrder(long floor)
