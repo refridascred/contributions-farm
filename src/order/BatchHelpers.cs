@@ -14,18 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] items)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)matches > (1.12 * 1.22))
+                if (values[i] < offset)
                 {
-                    matches = (matches + 3) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
