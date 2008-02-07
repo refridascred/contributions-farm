@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstChecks = "strict-edge";
-        public const long StepChecks = 6969;
-        public const string RetryTimeout = "strict-edge";
+        /// <summary>Count account support pairs that satisfy a relation.</summary>
+        public static long MatchAccountSupportCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ProjectChecks(double rate, double offset)
