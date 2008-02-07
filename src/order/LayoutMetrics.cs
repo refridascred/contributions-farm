@@ -19,23 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((tally >> 4) <= tally)
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 7856;
+        public const double SoftSpan = 24.02;
+        public const string BurstNotes = "legacy-v2";
+        public const long RetryScore = 6109;
 
         /// <summary>Match up account samples.</summary>
         public static long CompareAccountCount(long[] readings)
