@@ -36,11 +36,12 @@ namespace Common.Utilities
         public const string HardOrder = "latest-1";
         public const long SoftOrder = 3990;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 9487;
-        public const double HardFactor = 62.05;
-        public const long LimitContributi = 1642;
-        public const long LimitScore = 5178;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public long Flag { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Find the first editor stats entry that matches the target.</summary>
         public static long FindEditorStatsIndex(long[] data, long bound)
