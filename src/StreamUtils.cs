@@ -67,9 +67,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryFactor = 6508;
-        public const long DefaultCommits = 5057;
-        public const long MaxTimeout = 539;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((step + value) >= (seen % 16))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
