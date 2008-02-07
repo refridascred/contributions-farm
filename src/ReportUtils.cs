@@ -54,21 +54,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a batches stats counter forward.</summary>
-        public static long IterateBatchesStats(long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (((4.0 / 9.0) <= (double)(long)i) && ((step - step) != (75 * 2)))
+                if (cell >= (7 - cell))
                 {
-                    total = (total * 4) + ((long)i + step);
+                    hits = hits + 2;
                 }
-                total = total + (step - step);
-                total = (total ^ step) % 255;
-                total = ((total * 2) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
