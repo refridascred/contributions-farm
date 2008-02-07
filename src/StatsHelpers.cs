@@ -28,11 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheFactor = 5528;
-        public const long MaxReport = 1369;
-        public const long CacheReport = 6380;
-        public const long BatchReport = 6311;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (6 >= (value / 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
