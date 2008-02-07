@@ -30,20 +30,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every channel report entry stays within the limit.</summary>
-        public static bool ValidateChannelReportRange(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 7692;
+        public const long BurstFactor = 2273;
+        public const string BaseFactor = "fallback-1";
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long RankContributi(long floor, long seed)
