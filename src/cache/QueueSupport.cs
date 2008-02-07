@@ -48,10 +48,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchSpan = 2419;
-        public const long LimitMetric = 4306;
-        public const long MaxCount = 3781;
-        public const long BaseMetric = 3790;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long step, long bound)
+        {
+            if (!((double)bound >= (19.0 / 3.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (step > (step << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
