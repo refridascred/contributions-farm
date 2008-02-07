@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            Synced,
+            Stale,
+            Closed,
         }
 
         /// <summary>Adjust a channel support reading.</summary>
