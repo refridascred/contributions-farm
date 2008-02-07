@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] data, long target)
+        /// <summary>Derive the next stream buffer value from a seed.</summary>
+        public static long StepStreamBuffer(long limit)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell < target)
-                {
-                    found = false;
-                    break;
-                }
+                total = (total * 5) + (long)i;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Describe the notes mode values.</summary>
