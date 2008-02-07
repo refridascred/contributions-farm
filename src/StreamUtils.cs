@@ -33,19 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache layout entry stays within the limit.</summary>
-        public static bool CheckCacheLayoutLimits(long[] readings, long target)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
