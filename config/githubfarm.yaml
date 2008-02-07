@@ -1,19 +1,28 @@
 # githubfarm settings
-layout_size: open
-verbose:
-  - primary
-  - fallback
-max_ttl_ms: 23
-persist:
-  max_timeout:
-    - 333
-    - 477
-  queue_delay:
-    - 334
-    - 443
-  max_limit_count: 3960
-  batch_size_s: 97.24
-  filter_window: 250
-  batch_limit_ms:
-    - fallback
-    - green
+idle_window:
+  strict:
+    verbose: 206
+    compress: 1024
+    soft_size_ms: 9753
+  default_ttl: 81.84
+  graph_timeout:
+    enabled:
+      - strict
+      - latest
+    warm_threshold:
+      - staging
+      - staging
+      - standard
+    warm_depth_s: 28.26
+    cache_timeout: 500
+    sync_size_pct: strict
+    farm_ratio: true
+  support_limit: false
+  min_ttl: stable
+  max_depth_ms: 71.13
+base_timeout_ms:
+  - 340
+  - 408
+  - 104
+  - 462
+context_interval: 84.91
