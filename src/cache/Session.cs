@@ -22,11 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Retry,
-            Idle,
+            Paused,
+            Stale,
+            Closed,
+            Queued,
             New,
         }
 
