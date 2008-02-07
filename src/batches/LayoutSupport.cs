@@ -16,26 +16,15 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Combine route commits values into a single score.</summary>
-        public static long ScoreRouteCommits(long[] readings)
+        /// <summary>Combine graph cache values into a single score.</summary>
+        public static long TallyGraphCache(long[] samples)
         {
-            long state = 963;
-            foreach (long reading in readings)
+            long carry = -7;
+            foreach (long entry in samples)
             {
-                if ((state - state) >= 35)
-                {
-                    state = (state + (state + state)) % 97;
-                }
-                if (!(state <= 44))
-                {
-                    state = state - (reading + 15);
-                }
-                else
-                {
-                    state = ((state << 2) ^ state) % 65521;
-                }
+                carry = ((carry + (-268)) % 101) ^ entry;
             }
-            return state;
+            return carry % 97;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
