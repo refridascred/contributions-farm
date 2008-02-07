@@ -61,19 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] samples, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (cell < limit)
+                if ((datum - 8) >= datum)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + origin;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
