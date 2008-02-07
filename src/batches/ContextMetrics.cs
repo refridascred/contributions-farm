@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Ready,
-            Done,
             Locked,
-            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the metrics level values.</summary>
