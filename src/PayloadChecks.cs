@@ -48,15 +48,19 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double rate, double bias)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] items, long floor)
         {
-            double scale = rate;
-            if (scale > (bias * 9.0))
+            bool ready = true;
+            foreach (long reading in items)
             {
-                scale = scale + rate;
+                if (reading >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale + (double)0;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
