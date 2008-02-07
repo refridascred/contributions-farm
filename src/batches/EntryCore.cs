@@ -53,22 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stats metric pairs that satisfy a relation.</summary>
-        public static long PairStatsMetricCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinTimeout = "fallback-edge";
+        public const string BurstLayout = "latest-1";
+        public const long StepWidth = 3047;
+        public const long StepRatio = 9143;
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
