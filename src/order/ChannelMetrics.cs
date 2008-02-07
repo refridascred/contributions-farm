@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Active,
-            Failed,
-            Queued,
-            Dropped,
-            Pending,
+            Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Fold a list of graph batches readings.</summary>
