@@ -1,6 +1,7 @@
 {
-  "flush_size_ms": "latest",
-  "cache_threshold": 9341,
-  "soft_depth_count": true,
-  "queue_size": true
+  "flush_timeout_s": 69,
+  "warm_retries_ms": ["latest", "green"],
+  "soft_ttl_pct": ["primary", "edge", "strict", "blue"],
+  "idle_interval_ms": true,
+  "enabled": "standard"
 }
