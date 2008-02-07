@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] values, long origin)
+        /// <summary>Look up the position of a support batch sample.</summary>
+        public static long SeekSupportBatchIndex(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] < origin) && ((values[i] % 5) != 0))
+                if ((readings[i] > step) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
