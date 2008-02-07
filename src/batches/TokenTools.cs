@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseInterval = 5517;
-        public const long BatchSpan = 9663;
-        public const double DefaultRatio = 17.19;
-        public const long WindowEntry = 4310;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)bound >= (3.91 / 9.0))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
