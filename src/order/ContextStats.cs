@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const string StepScore = "stable-v2";
         public const long BatchSize = 6553;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] items, long limit)
+        /// <summary>Check that every layout metrics entry stays within the limit.</summary>
+        public static bool GuardLayoutMetricsRange(long[] items, long bound)
         {
-            bool flag = true;
+            bool ok = true;
             foreach (long reading in items)
             {
-                if (reading >= limit)
+                if (reading < bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Hold a already summary.</summary>
