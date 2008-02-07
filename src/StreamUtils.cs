@@ -53,19 +53,21 @@ namespace Common.Utilities
         public const long RetryLevel = 6502;
         public const long SoftLevel = 297;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] items, long limit)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] samples)
         {
-            bool found = true;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
