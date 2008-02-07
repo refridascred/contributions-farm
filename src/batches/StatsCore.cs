@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((((datum / 7) == (offset - offset)) || ((datum & 255) < (offset + offset))) || ((double)datum > (5.5 * 2.9)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 2439;
+        public const long BatchStats = 7929;
+        public const long HardScore = 2258;
 
         /// <summary>Combine already layout values into a single score.</summary>
         public static long ScoreAlreadyLayout(long[] items)
