@@ -25,21 +25,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up metrics notes samples.</summary>
-        public static long OverlapMetricsNotesCount(long[] data)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
