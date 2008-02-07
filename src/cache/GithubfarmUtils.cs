@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample == (14.0 + 0.36))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepScore = 90.5;
+        public const long HardFactor = 8108;
+        public const double DefaultRatio = 88.06;
+        public const long StepGithubfarm = 9160;
+        public const long WindowGithubfarm = 4284;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long BucketCommits(long offset, long limit)
