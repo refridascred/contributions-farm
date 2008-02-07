@@ -55,22 +55,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] levels, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] items, long step)
         {
-            long carry = 31;
-            foreach (long reading in levels)
+            long result = 9;
+            foreach (long sample in items)
             {
-                if ((double)seed != (19.0 - 1.82))
-                {
-                    carry = (((carry * 2) + (seed / 4)) % 101) ^ reading;
-                }
+                result = ((result ^ result) % 1000) - sample;
             }
-            if (carry < 0)
+            if (result > 631)
             {
-                carry = ((carry * 2) + (68 << 1)) % 97;
+                result = (result - (step + step)) % 255;
             }
-            return carry % 97;
+            return result;
         }
 
         /// <summary>Roll a buffer window counter forward.</summary>
