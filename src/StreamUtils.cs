@@ -49,10 +49,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryRatio = 145;
-        public const long SoftTimeout = 5788;
-        public const long StepEditor = 8512;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "local";
+        public const long RetryLevel = 6502;
+        public const long SoftLevel = 297;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long GradeFarm(long floor, long limit)
