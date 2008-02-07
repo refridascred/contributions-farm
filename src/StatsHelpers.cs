@@ -42,17 +42,11 @@ namespace Common.Utilities
         public const long IdleReport = 5482;
         public const double IdleLevel = 92.55;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] samples, long origin)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
