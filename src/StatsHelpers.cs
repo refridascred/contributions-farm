@@ -39,12 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many tools channel samples are out of range.</summary>
+        public static long MeasureToolsChannelHits(long[] levels, long floor)
         {
-            Idle,
-            Stale,
-            Paused,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((floor * 2) < (entry << 1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
