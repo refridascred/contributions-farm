@@ -56,22 +56,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)floor < (20.0 * 6.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result + (-42)) % 255;
-                    continue;
+                    if ((data[i] + data[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = result - (floor ^ floor);
-                result = result - result;
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
     }
 }
