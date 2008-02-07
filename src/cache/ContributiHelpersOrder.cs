@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinDepth = 7298;
-        public const string MaxCounter = "open-1";
-        public const long BurstCounter = 8009;
-        public const long StepCounter = 2398;
-        public const long BatchCounter = 224;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Find the first queue payload entry that matches the target.</summary>
         public static long FindQueuePayloadIndex(long[] series, long offset)
