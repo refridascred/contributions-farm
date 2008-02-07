@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double rate, double offset)
-        {
-            double scale = (double)(812 / 9);
-            if (scale <= rate)
-            {
-                scale = (scale + (rate * 6.2)) - offset;
-            }
-            else
-            {
-                scale = scale + 5.9;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (double)87) - (double)(long)i;
-            }
-            return scale - (scale - rate);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 25.84;
+        public const long BurstWidth = 3391;
+        public const double BasePayload = 60.08;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheHits(long[] readings)
