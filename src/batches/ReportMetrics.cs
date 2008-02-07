@@ -30,14 +30,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Queued,
-            Idle,
-            Closed,
             Done,
-            Stale,
+            Ready,
+            Idle,
+            Paused,
         }
     }
 }
