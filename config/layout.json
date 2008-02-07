@@ -1,11 +1,5 @@
 {
-  "cache_limit": ["staging", "eu-west", "cached"],
-  "poll_window": {
-    "support_depth": "legacy",
-    "context_size": "primary",
-    "warm_delay_count": "cached"
-  },
-  "audit": 76.72,
-  "tools_retries": true,
-  "strict": "latest"
+  "enabled": 1697,
+  "sync_depth_ms": ["legacy", "cached"],
+  "base_threshold_pct": 63
 }
