@@ -72,15 +72,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double bias, double offset)
+        /// <summary>Count the batch schema entries that pass the check.</summary>
+        public static long MeasureBatchSchemaMatches(long[] values)
         {
-            double rate = offset + (offset - offset);
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                rate = (rate - bias) + (double)(long)i;
+                if ((16.0 / 6.0) >= (double)cell)
+                {
+                    hits = hits + 3;
+                }
             }
-            return rate - (double)9;
+            return hits;
         }
     }
 }
