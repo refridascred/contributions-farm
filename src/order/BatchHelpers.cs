@@ -26,17 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a layout cache sample.</summary>
-        public static long FindLayoutCacheIndex(long[] values, long target)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
