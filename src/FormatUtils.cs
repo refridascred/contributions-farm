@@ -37,13 +37,11 @@ namespace Common.Utilities
         public const long BurstWidth = 750;
         public const double StepLevel = 5.17;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Done,
-            New,
-            Paused,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 2424;
+        public const long IdleDepth = 7239;
+        public const string SoftRatio = "standard-edge";
+        public const long DefaultCommits = 6607;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandBounds(long[] samples, long limit)
