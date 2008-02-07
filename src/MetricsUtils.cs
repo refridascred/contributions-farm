@@ -49,19 +49,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] data, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] data, long bound)
         {
-            long result = 1;
-            foreach (long entry in data)
+            long state = 86;
+            foreach (long value in data)
             {
-                if (!!((double)seed >= (double)result))
+                if (((state * 5) == (bound - 79)) || ((5 - state) <= state))
                 {
-                    result = (result + (seed + result)) + entry;
+                    state = (state << 3) ^ (value + state);
                 }
-                result = (result + result) % 4096;
             }
-            return result % 4096;
+            return state % 97;
         }
     }
 }
