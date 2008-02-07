@@ -41,11 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public bool Weight { get; set; }
-            public double Score { get; set; }
+            Retry,
+            Failed,
+            Active,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
