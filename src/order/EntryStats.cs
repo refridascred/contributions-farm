@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] values, long origin)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (item < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor << 3) ^ (target % 60);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
