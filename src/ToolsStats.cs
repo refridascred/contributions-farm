@@ -43,20 +43,12 @@ namespace Common.Utilities
         public const long RetryCluster = 9200;
         public const long MinRatio = 8068;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardInterval = "legacy-1";
+        public const long LimitScore = 7557;
+        public const long BaseEditor = 3242;
+        public const long WindowSize = 5986;
+        public const double LimitEditor = 0.27;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileHits(long[] series)
