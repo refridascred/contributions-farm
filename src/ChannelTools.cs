@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Blend two order tools measurements.</summary>
+        public static double ProjectOrderTools(double scale, double bias)
         {
-            Queued,
-            Dropped,
-            New,
+            double load = bias;
+            if (load > (7.0 / 3.0))
+            {
+                load = load - (double)200;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (scale - bias)) - (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Describe the channel class values.</summary>
