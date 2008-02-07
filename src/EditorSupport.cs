@@ -19,22 +19,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of format cache entries.</summary>
-        public static long ScoreFormatCache(long[] data, long seed)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long score = 957;
-            foreach (long sample in data)
-            {
-                if ((score & 63) == (score + (-192)))
-                {
-                    score = ((score << 2) ^ (score ^ sample)) % 65521;
-                }
-            }
-            if (score < (-86))
-            {
-                score = ((score << 2) ^ seed) % 101;
-            }
-            return score;
+            Paused,
+            Synced,
+            Retry,
+            Idle,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
