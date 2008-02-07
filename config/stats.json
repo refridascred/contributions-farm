@@ -1,7 +1,6 @@
 {
-  "base_threshold": "standard",
-  "max_threshold_ms": 5727,
-  "metric_size": "blue",
-  "cache_limit_count": 40.77,
-  "audit": 52.98
+  "retry_size": 3328,
+  "tools_threshold": 67.44,
+  "flush_depth_ms": "staging",
+  "base_timeout_ms": "primary"
 }
