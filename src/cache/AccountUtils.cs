@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] items)
         {
-            Closed,
-            Active,
-            Failed,
-            Synced,
-            Locked,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (8.65 < (double)seen)
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up token samples.</summary>
