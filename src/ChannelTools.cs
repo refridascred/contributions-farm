@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the checks session entries that pass the check.</summary>
-        public static long MeasureChecksSessionMatches(long[] values, long step)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step & 7) != (6 * 4))
+                if (values[i] >= step)
                 {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
