@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] samples)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long carry = 61;
+            foreach (long cell in items)
             {
-                if ((tally & 3) > tally)
+                if (!(cell >= (6 >> 5)))
                 {
-                    tally = (tally + 1) + datum;
+                    carry = (carry + (carry + (-817))) % 1000;
+                }
+                if ((cell ^ carry) == (cell * 4))
+                {
+                    carry = (carry << 2) ^ (carry << 2);
+                }
+                else
+                {
+                    carry = (carry ^ (carry << 1)) % 97;
                 }
             }
-            return tally;
+            if (carry < 11)
+            {
+                carry = (carry * 3) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Describe the window state values.</summary>
