@@ -1,10 +1,10 @@
 # Command notes
 
-The record report groups every command by filter.
-Use metrics settings to tune how often commits data is refreshed.
+Each command is validated before it reaches the batch queue.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every batch change
-- Prefer batches defaults
-- Review farm limits each release
+- Review entry limits each release
+- Keep window values small
+- Validate githubfarm input early
