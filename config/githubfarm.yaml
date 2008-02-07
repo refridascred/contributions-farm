@@ -1,5 +1,22 @@
 # githubfarm settings
-strict: green
-cache_size: legacy
-account_capacity: 4221
-compress: 43.78
+poll_delay: false
+max_timeout: 31.48
+hard_retries:
+  window_delay: strict
+  default_timeout_ms: 5701
+  max_ratio: 100
+  warm_size_pct:
+    - 21
+    - 455
+    - 361
+    - 165
+  warm_delay_ms: 2.63
+  flush_interval_pct:
+    cache_depth_s: staging
+    enabled: false
+    soft_timeout_pct: 41
+    farm_size: 9.54
+cluster_delay:
+  - strict
+  - staging
+  - stable
