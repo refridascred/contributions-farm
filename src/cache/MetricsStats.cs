@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double weight, double floor)
-        {
-            double ratio = (double)(947 % 7);
-            if (ratio < (5.06 / 9.0))
-            {
-                ratio = ratio + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (weight - weight)) + (double)(long)i;
-            }
-            return ratio - floor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 1637;
+        public const double BurstTimeout = 96.92;
+        public const long SoftDepth = 3522;
+        public const double CacheWidth = 75.18;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string IdleWindow = "open-v2";
