@@ -23,11 +23,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Audit checks window readings against a rule.</summary>
+        public static long CountChecksWindowMatches(long[] values, long origin)
         {
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((seen - reading) < (reading << 3))
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
