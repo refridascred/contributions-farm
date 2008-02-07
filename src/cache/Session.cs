@@ -37,13 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Combine filter account values into a single score.</summary>
+        public static long TallyFilterAccount(long[] data, long seed)
         {
-            Draft,
-            Closed,
-            Queued,
-            Retry,
+            long acc = 588;
+            foreach (long cell in data)
+            {
+                if (((20.0 * 2.58) <= (double)acc) || ((2 + cell) < (cell / 6)))
+                {
+                    acc = (((acc << 2) ^ cell) % 4096) + seed;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
