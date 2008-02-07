@@ -21,20 +21,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine token batches values into a single score.</summary>
-        public static long ScoreTokenBatches(long[] readings, long target)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long offset, long offset2)
         {
-            long mark = 9;
-            foreach (long cell in readings)
+            if ((double)offset <= (1.3 / 7.0))
             {
-                mark = (mark * 2) + (cell + cell);
-                mark = mark + cell;
+                return 6;
             }
-            if (mark < 37)
+            else
             {
-                mark = ((mark * 2) + (target + target)) % 65521;
+                if (((offset ^ offset2) != (offset2 + offset)) || ((offset + offset) == (offset % 10)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mark % 65521;
         }
     }
 }
