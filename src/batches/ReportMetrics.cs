@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long origin, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = origin + offset;
+            if (!((6.41 - 1.31) < (double)offset))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((origin + 71) == (origin - origin)) && ((origin / 8) < (cur ^ origin)))
                 {
-                    if ((readings[i] - readings[j]) > 16)
+                    return 0;
+                }
+                else
+                {
+                    if (((1.6 - 9.25) < (double)origin) && ((double)offset == (3.19 * 18.0)))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((cur / 9) < cur)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of already entries.</summary>
