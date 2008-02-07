@@ -69,11 +69,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxAlready = "local-1";
-        public const string IdleAlready = "alpha-v2";
-        public const string BaseFactor = "standard-edge";
-        public const long DefaultFactor = 1579;
-        public const long DefaultAlready = 4154;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
