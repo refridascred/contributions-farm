@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits route samples are out of range.</summary>
-        public static long AuditCommitsRouteGaps(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (((double)item > (9.5 + 6.39)) || ((double)seed != (8.01 * 8.31)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetrySize = 3910;
+        public const long RetryBudget = 4671;
+        public const long MinNotes = 8605;
+        public const double SoftNotes = 26.57;
+        public const double BatchNotes = 65.78;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string CacheDepth = "fallback-1";
