@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            long mix = 982;
+            foreach (long datum in data)
             {
-                if ((double)(long)i >= (double)limit)
-                {
-                    acc = (acc + (long)i) % 97;
-                }
-                acc = (acc << 2) ^ (64 / 8);
-                acc = ((acc * 5) + (long)i) % 1000;
+                mix = (mix ^ (datum + 100)) % 255;
             }
-            return acc;
+            if (mix < 61)
+            {
+                mix = mix ^ (12 + mix);
+            }
+            return mix;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
