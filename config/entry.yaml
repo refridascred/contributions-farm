@@ -1,21 +1,8 @@
 # entry settings
-default_ttl:
-  - 241
-  - 156
-  - 89
-enabled: 12.93
-channel_limit:
-  batch_timeout: local
-  base_size: 6718
-  poll_timeout: blue
-  compress:
-    base_window: strict
-    base_delay_pct: 56.4
-    verbose: 1024
-  window_interval: false
-min_ttl_s: 1024
-verbose: 30
-dry_run:
-  - 119
-  - 45
-  - 196
+poll_retries_ms: 6599
+burst_threshold: 250
+warm_ttl_ms:
+  - legacy
+  - edge
+  - standard
+max_window_ms: true
