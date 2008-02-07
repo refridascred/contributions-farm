@@ -22,15 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Paused,
-            Stale,
-            Closed,
-            Queued,
-            New,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleDepth = 5604;
+        public const double RetryEntry = 76.02;
+        public const long BaseEntry = 4489;
+        public const long IdleEntry = 5781;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LocateBufferIndex(long[] series, long bound)
