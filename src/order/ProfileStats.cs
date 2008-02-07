@@ -35,21 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count token tools pairs that satisfy a relation.</summary>
-        public static long OverlapTokenToolsCount(long[] samples)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)entry == (9.3 - 3.0))
                 {
-                    if ((samples[i] ^ samples[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) + limit;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
