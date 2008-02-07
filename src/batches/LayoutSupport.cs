@@ -37,23 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already session entries.</summary>
-        public static long ScoreAlreadySession(long[] readings)
+        /// <summary>Check that every cache commits entry stays within the limit.</summary>
+        public static bool VerifyCacheCommitsRange(long[] values, long offset)
         {
-            long result = 533;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                result = (result - (result / 9)) % 65521;
-                if ((5.0 * 17.0) > (double)result)
+                if (sample <= offset)
                 {
-                    result = result + (result * 5);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result - cell)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return flag;
         }
 
         /// <summary>Count the commits contributi entries that pass the check.</summary>
