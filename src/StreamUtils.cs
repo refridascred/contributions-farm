@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] samples, long offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long total = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (item > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Project the next payload value.</summary>
