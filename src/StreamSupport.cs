@@ -23,12 +23,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long target, long floor)
         {
-            Locked,
-            Synced,
-            Dropped,
+            long cur = target + floor;
+            if (((target + 84) > (5 - 724)) && ((cur >> 4) > floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target - floor) > (target >> 2)) || ((cur % 10) >= cur))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((cur / 4) <= (floor - target)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of report entries.</summary>
