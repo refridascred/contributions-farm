@@ -37,13 +37,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long origin, long origin2)
         {
-            Closed,
-            Ready,
-            Queued,
-            Paused,
+            long delta = origin ^ origin2;
+            if ((origin + origin2) > (origin2 + origin2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((-5) <= (origin * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin / 5) == (delta - delta))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin == (double)(-864))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
