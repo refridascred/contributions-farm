@@ -27,13 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Idle,
-            Synced,
-            Locked,
-            Done,
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
