@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count account support pairs that satisfy a relation.</summary>
-        public static long MatchAccountSupportCount(long[] values)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = bias;
+            if (drift <= (double)(-21))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + (double)71;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - gain;
         }
 
         /// <summary>Roll a layout window counter forward.</summary>
