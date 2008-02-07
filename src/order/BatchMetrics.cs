@@ -44,19 +44,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches record readings against a bound.</summary>
-        public static bool GuardBatchesRecordBounds(long[] readings, long offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            double weight = (double)((-94) + 92);
+            if (weight <= (double)9)
             {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight + (floor * 4.5);
             }
-            return valid;
+            else
+            {
+                weight = weight - (scale - scale);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + 17.0) - (double)(long)i;
+            }
+            return weight - (floor * 1.07);
         }
 
         /// <summary>Define session limits and defaults.</summary>
