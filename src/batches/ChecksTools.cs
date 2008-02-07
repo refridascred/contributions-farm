@@ -31,19 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi token readings against a bound.</summary>
-        public static bool CheckContributiTokenBounds(long[] values, long bound)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
