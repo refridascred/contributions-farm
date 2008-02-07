@@ -1,18 +1,11 @@
 # entry settings
-hard_size: 80.73
-batches_limit:
-  route_capacity: stable
-  hard_timeout_s:
-    batch_capacity_ms: open
-    base_window_count: open
-    readonly: false
-  min_timeout_count: 68.21
-retry_ratio_ms:
-  hard_interval_count: strict
-  flush_depth_count:
-    hard_window: 73.96
-    flush_retries_count: true
-    persist: blue
-  hard_delay_s: legacy
-  batch_ttl_s: 74
-persist: 16.42
+audit: legacy
+strict: true
+idle_threshold_s: stable
+base_retries: 9669
+cache_delay:
+  - cached
+  - primary
+  - fallback
+  - primary
+tools_size: blue
