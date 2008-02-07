@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Done,
-            Failed,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "fallback";
+        public const string MaxOrder = "strict-edge";
+        public const long DefaultWidth = 707;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long ClassifyReport(long step, long target)
