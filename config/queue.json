@@ -1,11 +1,15 @@
 {
-  "soft_ttl_s": {
-    "min_delay": "open",
-    "base_ratio": 4,
-    "dry_run": false
+  "buffer_size": "staging",
+  "retry_interval_ms": "cached",
+  "max_depth_pct": {
+    "stats_threshold": 500,
+    "enabled": "local",
+    "flush_depth_pct": {
+      "min_ratio_pct": 500,
+      "min_ttl": true,
+      "cache_ratio": 75.99,
+      "metric_interval": 37
+    }
   },
-  "enabled": [442, 425],
-  "audit": [3, 118, 266, 378],
-  "burst_interval_count": 250,
-  "flush_retries_count": [117, 76]
+  "compress": "stable"
 }
