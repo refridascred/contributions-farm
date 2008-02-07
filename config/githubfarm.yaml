@@ -1,5 +1,5 @@
 # githubfarm settings
-enabled: true
-default_delay: 48
-readonly: 83
-flush_limit: true
+dry_run: stable
+default_capacity: 250
+idle_capacity_pct: 100
+warm_timeout: eu-west
