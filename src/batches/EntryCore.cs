@@ -53,22 +53,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] items)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] samples)
         {
-            long state = 44;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (state > (entry - entry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state ^ (state + state)) % 101;
+                    if ((samples[i] + samples[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 316)
-            {
-                state = state - (state * 3);
-            }
-            return state % 1000;
+            return seen;
         }
     }
 }
