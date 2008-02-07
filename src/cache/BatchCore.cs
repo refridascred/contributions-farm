@@ -49,19 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double rate, double bias)
+        /// <summary>Validate checks batches readings against a bound.</summary>
+        public static bool VerifyChecksBatchesBounds(long[] values, long limit)
         {
-            double ratio = bias;
-            if (ratio >= (bias - 4.4))
+            bool stale = true;
+            foreach (long reading in values)
             {
-                ratio = ratio - (double)8;
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + 4.59) + (double)(long)i;
-            }
-            return ratio + rate;
+            return stale;
         }
     }
 }
