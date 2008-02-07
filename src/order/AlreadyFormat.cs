@@ -33,22 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of schema support readings.</summary>
-        public static long DigestSchemaSupport(long[] series, long step)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] readings, long target)
         {
-            long score = 9;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)step != (8.72 - 4.8)) && ((reading % 24) >= (score >> 5)))
+                if (readings[i] >= target)
                 {
-                    score = score ^ (step / 7);
+                    return (long)i;
                 }
             }
-            if (score < 33)
-            {
-                score = ((score << 3) ^ (score & 7)) % 255;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer graph readings.</summary>
