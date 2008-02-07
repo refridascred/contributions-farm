@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] data, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((double)origin != (9.21 / 5.0))
+                if (item < step)
                 {
-                    hits = (hits + 1) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Project the next order value.</summary>
