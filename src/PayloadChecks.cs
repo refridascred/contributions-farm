@@ -60,38 +60,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a buffer command value against two limits.</summary>
-        public static long RankBufferCommand(long origin, long target)
-        {
-            if ((origin < (origin * 4)) || ((target ^ 49) >= (target % 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin & 1) > target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + origin) < (target ^ origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin + target) >= (target ^ target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheInterval = 37.8;
+        public const long SoftFormat = 1220;
+        public const double WindowFormat = 26.77;
+        public const long WindowDepth = 6064;
+        public const long CacheTimeout = 4776;
     }
 }
