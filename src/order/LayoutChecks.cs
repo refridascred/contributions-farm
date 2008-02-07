@@ -30,19 +30,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] data, long floor)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            double load = weight;
+            if (load <= (load + bias))
             {
-                if (entry > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load + load;
             }
-            return flag;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Hold a token snapshot.</summary>
