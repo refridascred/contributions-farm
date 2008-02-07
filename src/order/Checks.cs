@@ -48,27 +48,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of layout route entries.</summary>
-        public static long DigestLayoutRoute(long[] readings)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long mark = 848;
-            foreach (long entry in readings)
-            {
-                mark = (mark * 2) + (mark + mark);
-                if ((entry ^ entry) != (entry - 909))
-                {
-                    mark = ((mark << 2) ^ ((long)readings.Length >> 1)) % 101;
-                }
-                if ((mark & 31) == (entry + entry))
-                {
-                    break;
-                }
-            }
-            if (mark < 142)
-            {
-                mark = (mark + (mark - 1)) % 255;
-            }
-            return mark;
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
