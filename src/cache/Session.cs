@@ -30,12 +30,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] series, long target)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] series, long bound)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] > target)
+                if (series[i] <= bound)
                 {
                     return (long)i;
                 }
