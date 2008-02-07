@@ -20,17 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first commits counter entry that matches the target.</summary>
-        public static long FindCommitsCounterIndex(long[] items, long target)
+        /// <summary>Count the tools batch entries that pass the check.</summary>
+        public static long TallyToolsBatchOutliers(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (items[i] == target)
+                if ((step < (tally + step)) || ((2.8 - 1.6) <= (double)step))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate channel samples.</summary>
