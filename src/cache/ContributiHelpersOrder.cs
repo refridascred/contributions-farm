@@ -22,13 +22,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Synced,
-            Ready,
-            Done,
-            Pending,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryInterval = 3766;
+        public const string MaxScore = "strict-v2";
+        public const string WindowEditor = "latest-v2";
     }
 }
