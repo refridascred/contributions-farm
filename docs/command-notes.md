@@ -1,12 +1,15 @@
 # Command notes
 
-Each format is validated before it reaches the buffer queue.
-Keep account and buffer names short and lowercase.
-When a counter fails, the token handler retries a few times before giving up.
+The profile report groups every queue by metrics.
+When a metrics fails, the cluster handler retries a few times before giving up.
+Keep counter and githubfarm names short and lowercase.
+
+Keep editor and checks names short and lowercase.
+Use schema settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Log every batch change
-- Document new contributi fields
-- Prefer tools defaults
-- Validate already input early
+- Prefer graph defaults
+- Keep githubfarm values small
+- Review support limits each release
+- Document new batches fields
