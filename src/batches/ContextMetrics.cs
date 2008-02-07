@@ -67,18 +67,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many account queue samples are out of range.</summary>
-        public static long TallyAccountQueueHits(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (cell <= (count * 5))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheTimeout = 8185;
+        public const string CacheSize = "strict-1";
+        public const long BatchSize = 9055;
+        public const long MinReport = 7461;
+        public const long LimitReport = 8630;
     }
 }
