@@ -33,18 +33,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] readings)
+        /// <summary>Grade a contributi checks value against two limits.</summary>
+        public static long RankContributiChecks(long bound, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long next = bound - step;
+            if (!((bound >> 2) == (step ^ 688)))
             {
-                if ((6.0 - 4.8) < (double)cell)
+                return 8;
+            }
+            else
+            {
+                if (((step & 127) > next) || (bound > (next % 12)))
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
     }
 }
