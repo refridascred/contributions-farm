@@ -1,6 +1,17 @@
 {
-  "burst_depth_ms": "stable",
-  "warm_depth_count": "green",
-  "max_threshold": "eu-west",
-  "idle_ttl_s": "stable"
+  "verbose": 1775,
+  "graph_threshold": {
+    "audit": 37.66,
+    "idle_limit": 70.16,
+    "min_size_count": "edge",
+    "poll_delay": 30
+  },
+  "retry_retries_count": "latest",
+  "commits_window": {
+    "idle_interval": "fallback",
+    "idle_ratio_pct": true,
+    "min_window": true
+  },
+  "audit": 250,
+  "format_capacity": true
 }
