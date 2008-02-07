@@ -68,38 +68,11 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long seed, long target)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            if ((seed + target) != (15 + target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed >= (7 & 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target & 63) > (target ^ target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target > 2.53)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
