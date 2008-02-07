@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] samples, long seed)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the support mode values.</summary>
