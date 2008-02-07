@@ -27,15 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            New,
-            Pending,
-            Queued,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchGraph = 26.42;
+        public const long HardRatio = 8043;
+        public const double DefaultGraph = 85.58;
+        public const long IdleFactor = 2721;
+        public const string SoftWidth = "standard-1";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BaseEntry = 2227;
