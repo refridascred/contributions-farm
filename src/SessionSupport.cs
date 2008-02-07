@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] items)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (((item ^ item) >= matches) && ((0.25 - 8.13) <= (double)item))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a editor options.</summary>
