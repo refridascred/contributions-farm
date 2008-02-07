@@ -34,10 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 7207;
-        public const long BatchTools = 9704;
-        public const long RetryTools = 3946;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstInterval = "alpha-1";
+        public const double BatchCount = 24.03;
+        public const long WindowWidth = 6283;
+        public const long HardGithubfarm = 4232;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionHits(long[] values)
