@@ -22,19 +22,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit payload record readings against a rule.</summary>
-        public static long TallyPayloadRecordGaps(long[] values, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] items, long floor)
         {
             long hits = 0;
-            foreach (long item in values)
+            foreach (long datum in items)
             {
-                if (((long)values.Length - 632) >= (30 + item))
+                if ((floor < (3 - hits)) || (1.0 <= (double)hits))
                 {
-                    hits = (hits + 2) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 3) + datum;
                 }
             }
             return hits;
