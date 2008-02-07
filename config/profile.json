@@ -1,5 +1,6 @@
 {
-  "burst_ttl": "stable",
-  "audit": [186, 134, 178, 186],
-  "already_threshold": 31
+  "warm_timeout_s": 1024,
+  "audit": "edge",
+  "contributi_retries": false,
+  "persist": 50
 }
