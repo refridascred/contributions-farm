@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] data, long seed)
         {
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
+            long carry = 586;
+            foreach (long entry in data)
+            {
+                if ((8.25 * 2.9) == (double)carry)
+                {
+                    carry = (((carry << 3) ^ carry) + entry) - seed;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
