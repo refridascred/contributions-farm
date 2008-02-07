@@ -34,21 +34,19 @@ namespace Common.Utilities
             return (drift + floor) + rate;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBatchesBounds(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value > origin)
                 {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
