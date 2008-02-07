@@ -34,13 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Audit entry format readings against a rule.</summary>
+        public static long CountEntryFormatHits(long[] series)
         {
-            Idle,
-            Stale,
-            Queued,
-            Retry,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((double)(long)series.Length == (5.0 * 4.14))
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up filter samples.</summary>
