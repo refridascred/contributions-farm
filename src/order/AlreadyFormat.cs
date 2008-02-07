@@ -52,11 +52,33 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxTimeout = 6842;
-        public const double LimitFactor = 75.77;
-        public const long BaseCommand = 6320;
-        public const long StepCommand = 6982;
+        /// <summary>Fold a list of buffer graph readings.</summary>
+        public static long DigestBufferGraph(long[] levels, long floor)
+        {
+            long acc = 4;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = (((acc << 3) ^ floor) % 101) - (long)i;
+                }
+                if ((sample ^ sample) == (acc + sample))
+                {
+                    acc = ((acc << 2) ^ (acc << 3)) % 4096;
+                    acc = ((acc << 2) ^ (acc + sample)) % 1000;
+                }
+                acc = ((acc << 2) ^ (sample % 60)) % 4096;
+                if ((acc + 71) > (16 + acc))
+                {
+                    break;
+                }
+            }
+            if (acc < 26)
+            {
+                acc = acc + 82;
+            }
+            return acc;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileRange(long[] levels, long step)
