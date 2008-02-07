@@ -30,16 +30,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] levels, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                score = ((score * 2) + (target + score)) % 255;
-                score = ((score * 2) + (long)i) % 4093;
+                if ((4.95 + 0.39) > (0.7 - 2.3))
+                {
+                    count = ((count + 3) + cell) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a commits info.</summary>
