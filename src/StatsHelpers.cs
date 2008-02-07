@@ -13,18 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] data)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)data.Length <= (hits / 6))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) ^ cell;
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
