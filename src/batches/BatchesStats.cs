@@ -22,20 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = ((state ^ (seed + (long)i)) % 4096) + (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 3426;
+        public const double HardSize = 20.82;
+        public const long MinSupport = 3317;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool GuardNotesBounds(long[] items, long offset)
