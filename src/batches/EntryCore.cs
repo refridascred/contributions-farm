@@ -53,11 +53,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] items)
         {
-            public double Flag { get; set; }
-            public bool Level { get; set; }
+            long state = 44;
+            foreach (long entry in items)
+            {
+                if (state > (entry - entry))
+                {
+                    state = (state ^ (state + state)) % 101;
+                }
+            }
+            if (state > 316)
+            {
+                state = state - (state * 3);
+            }
+            return state % 1000;
         }
     }
 }
