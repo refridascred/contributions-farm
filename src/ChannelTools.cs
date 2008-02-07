@@ -31,12 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] samples, long seed)
         {
-            Stale,
-            Draft,
-            Pending,
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
