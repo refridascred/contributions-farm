@@ -40,22 +40,13 @@ namespace Common.Utilities
         public const long BurstScore = 3146;
         public const long WindowBatches = 2363;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] samples, long origin)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long score = 25;
-            foreach (long item in samples)
-            {
-                if (!((double)item == (2.0 - 6.6)))
-                {
-                    score = ((score << 2) ^ origin) % 65521;
-                }
-            }
-            if (score > 1)
-            {
-                score = (score << 3) ^ (origin / 3);
-            }
-            return score;
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
