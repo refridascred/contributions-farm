@@ -40,19 +40,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] series)
+        /// <summary>Measure how many cache stream samples are out of range.</summary>
+        public static long TallyCacheStreamGaps(long[] levels, long bound)
         {
             long count = 0;
-            foreach (long sample in series)
+            foreach (long sample in levels)
             {
-                if ((sample & 127) != (282 ^ count))
+                if (!(((count - sample) > (sample * 5)) && ((count + bound) >= (bound % 97))))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 3;
                 }
             }
             return count;
