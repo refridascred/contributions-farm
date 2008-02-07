@@ -26,38 +26,18 @@ namespace Common.Utilities
         public const long WindowRatio = 3530;
         public const double RetryBudget = 83.02;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long step, long offset)
+        /// <summary>Measure how many stream farm samples are out of range.</summary>
+        public static long AuditStreamFarmOutliers(long[] series)
         {
-            if ((552 - offset) >= 97)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step - step) < (23 % 7)) && ((4.0 + 5.2) != (double)offset))
+                if ((hits >> 4) < (5 & 63))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((3.0 + 8.87) >= (double)offset) && ((step + step) == (offset - step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((14.0 + 4.4) < (double)step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 1) + cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate order samples.</summary>
