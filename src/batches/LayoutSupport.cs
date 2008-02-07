@@ -46,11 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleBudget = 1986;
-        public const long BaseDepth = 273;
-        public const string BatchChannel = "legacy-1";
-        public const double RetryChannel = 38.53;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Retry,
+            Stale,
+            Queued,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
