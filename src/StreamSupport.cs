@@ -19,13 +19,16 @@ namespace Common.Utilities
         public const long MinRatio = 2378;
         public const string SoftTimeout = "strict-v2";
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Roll a buffer tools counter forward.</summary>
+        public static long DeriveBufferTools(long bound)
         {
-            Closed,
-            Pending,
-            Failed,
-            Dropped,
+            long result = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result << 3) ^ result) % 1000;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
