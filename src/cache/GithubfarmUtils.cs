@@ -41,19 +41,18 @@ namespace Common.Utilities
             return (drift + floor) + rate;
         }
 
-        /// <summary>Measure how many account counter samples are out of range.</summary>
-        public static long MeasureAccountCounterHits(long[] values, long bound)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
             long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.06 * 13.0) > (double)count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 1) + reading) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
