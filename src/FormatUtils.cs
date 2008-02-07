@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double ratio, double offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] data, long floor)
         {
-            double weight = offset;
-            if (weight >= offset)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                weight = weight + (4.0 + ratio);
+                if ((1.1 * 15.0) >= (double)floor)
+                {
+                    seen = (seen + 3) - entry;
+                }
             }
-            return weight + 7.0;
+            return seen;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
