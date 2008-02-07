@@ -42,21 +42,26 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 3;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((offset / 6) < offset)
                 {
-                    if ((data[i] - data[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 3) + (offset << 1)) % 255;
+                }
+                if ((double)cell == (double)mix)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mix < 3)
+            {
+                mix = mix - (mix / 8);
+            }
+            return mix;
         }
     }
 }
