@@ -13,18 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] series)
+        /// <summary>Check that every tools batches entry stays within the limit.</summary>
+        public static bool VerifyToolsBatchesBounds(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (410 <= (reading >> 5))
+                if (entry != target)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
