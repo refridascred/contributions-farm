@@ -30,16 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Audit already notes readings against a rule.</summary>
+        public static long MeasureAlreadyNotesOutliers(long[] items)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                mix = (mix ^ ((long)i + mix)) % 65521;
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((datum * 3) > (count * 3))
+                {
+                    count = count + 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
