@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const string HardOrder = "latest-1";
         public const long SoftOrder = 3990;
 
-        /// <summary>Measure how many counter profile samples are out of range.</summary>
-        public static long CountCounterProfileHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (!(((60 << 3) >= (item % 97)) || ((16.0 - 4.0) != (double)seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 9487;
+        public const double HardFactor = 62.05;
+        public const long LimitContributi = 1642;
+        public const long LimitScore = 5178;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyLimits(long[] data, long origin)
