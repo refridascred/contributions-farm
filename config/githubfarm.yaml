@@ -1,8 +1,5 @@
 # githubfarm settings
-soft_capacity: open
-poll_ttl_s: 91.72
-poll_delay: false
-idle_retries_ms:
-  - local
-  - latest
-default_size_pct: false
+enabled: true
+default_delay: 48
+readonly: 83
+flush_limit: true
