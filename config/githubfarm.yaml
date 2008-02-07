@@ -1,10 +1,4 @@
 # githubfarm settings
-verbose:
-  batch_capacity_count: false
-  min_ttl: 95.63
-  payload_ratio: legacy
-notes_ratio: strict
-cluster_capacity: eu-west
-base_interval_count: 61.7
-hard_retries_ms: latest
-persist: edge
+strict: fallback
+cache_limit_count: latest
+poll_threshold_ms: cached
