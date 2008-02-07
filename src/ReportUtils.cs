@@ -46,24 +46,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long limit, long offset)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] levels)
         {
-            if ((limit + limit) == (offset + limit))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (4.4 <= (double)limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two channel measurements.</summary>
