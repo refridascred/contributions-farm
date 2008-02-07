@@ -68,15 +68,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] samples, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] items, long offset)
         {
-            long state = 361;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                state = (state << 2) ^ (entry + origin);
+                if (((-59) ^ (-385)) > sample)
+                {
+                    seen = (seen + 1) + offset;
+                }
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Hold a stream stats.</summary>
