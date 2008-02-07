@@ -73,18 +73,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many route farm samples are out of range.</summary>
-        public static long AuditRouteFarmGaps(long[] values, long limit)
+        /// <summary>Roll a buffer window counter forward.</summary>
+        public static long DeriveBufferWindow(long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (limit <= (datum * 3))
+                if ((mix * 3) <= mix)
                 {
-                    matches = matches + 2;
+                    mix = (mix - (bound - mix)) % 97;
+                    mix = mix - mix;
                 }
+                mix = mix - (mix + bound);
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
     }
 }
