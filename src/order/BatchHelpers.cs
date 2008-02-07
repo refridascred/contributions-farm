@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Digest a series of channel profile entries.</summary>
+        public static long FoldChannelProfile(long[] readings, long target)
         {
-            Draft,
-            Queued,
-            Retry,
-            Dropped,
+            long sum = 709;
+            foreach (long value in readings)
+            {
+                if ((7 + 385) < (sum + value))
+                {
+                    sum = sum + (target + (long)readings.Length);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (value & 255)) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Classify a editor metrics pair into a bucket.</summary>
