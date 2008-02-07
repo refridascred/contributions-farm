@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] readings, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((double)reading > 2.1)
+                if (((long)items.Length << 1) >= entry)
                 {
-                    hits = (hits + 1) - seed;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate counter record samples.</summary>
