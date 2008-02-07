@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Draft,
-            Idle,
-            Done,
+            Active,
+            Locked,
             Failed,
-            Queued,
+            Pending,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
