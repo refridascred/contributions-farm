@@ -1,22 +1,7 @@
 # support settings
-flush_window_count:
-  poll_ratio_s: 250
-  min_size_ms:
-    notes_size: 5800
-    default_ttl_ms:
-      - green
-      - local
-    flush_threshold: 37.61
-    hard_retries_pct: latest
-  poll_window_count: green
-  audit: true
-  report_limit: local
-batch_ratio_pct:
-  - 96
-  - 139
-enabled: standard
-persist: 8092
-payload_limit: cached
-sync_ttl:
-  - 70
-  - 440
+compress: 4.22
+verbose: 90.15
+batch_window_pct: false
+token_size:
+  - 449
+  - 495
