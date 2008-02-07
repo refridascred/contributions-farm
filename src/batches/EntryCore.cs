@@ -16,18 +16,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] samples, long step)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long score = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (((step ^ step) > (reading << 2)) && ((double)reading >= (double)tally))
-                {
-                    tally = tally + 2;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
