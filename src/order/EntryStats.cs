@@ -22,11 +22,25 @@ namespace Common.Utilities
         public const long MinTimeout = 9042;
         public const long BaseCount = 8896;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 8994;
-        public const long DefaultTimeout = 9603;
-        public const long MaxAccount = 8171;
-        public const long BaseFactor = 8121;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long origin, long offset)
+        {
+            if ((double)origin < 2.6)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((7 * 4) >= offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] data, long seed)
