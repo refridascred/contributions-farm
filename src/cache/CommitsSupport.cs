@@ -33,13 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            Pending,
-            Ready,
-            Draft,
-            Idle,
+            long result = 84;
+            foreach (long item in readings)
+            {
+                if (result < ((long)readings.Length ^ result))
+                {
+                    result = ((result + (result * 2)) % 65521) + item;
+                }
+            }
+            if (result < (-29))
+            {
+                result = result ^ (result - result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a route stats.</summary>
