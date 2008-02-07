@@ -13,11 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
+            Failed,
+            Locked,
+            Stale,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the format state values.</summary>
