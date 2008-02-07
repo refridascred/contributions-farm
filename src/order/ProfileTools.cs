@@ -20,19 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every record report entry stays within the limit.</summary>
-        public static bool ValidateRecordReportLimits(long[] levels, long step)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Blend two githubfarm layout measurements.</summary>
