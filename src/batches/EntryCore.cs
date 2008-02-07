@@ -28,20 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] data, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] items, long limit)
         {
-            long sum = 570;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (((92 ^ sum) >= (seed + 749)) || ((seed % 5) == (entry ^ 84)))
+                if (value != limit)
                 {
-                    sum = (sum ^ (seed + sum)) % 1000;
-                    sum = sum - seed;
+                    stale = false;
+                    break;
                 }
-                sum = (sum ^ (entry >> 5)) % 4096;
             }
-            return sum % 97;
+            return stale;
         }
 
         /// <summary>Compare every pair of already buffer readings.</summary>
