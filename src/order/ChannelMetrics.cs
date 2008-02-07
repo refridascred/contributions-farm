@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryRatio = 7878;
+        public const double MinScore = 56.54;
+        public const long StepCommand = 3523;
+        public const long RetryWidth = 9150;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
