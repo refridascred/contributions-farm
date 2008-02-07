@@ -20,16 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long step, long step2)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            long span = step ^ step2;
+            if ((span - 5) < step2)
             {
-                carry = (carry * 5) + (origin >> 5);
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((double)span == (4.1 + 14.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the format state values.</summary>
