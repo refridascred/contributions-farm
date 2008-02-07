@@ -28,20 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] items, long limit)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardTimeout = 34.09;
+        public const long IdleChecks = 1872;
+        public const long CacheChecks = 9422;
+        public const long LimitChecks = 4553;
 
         /// <summary>Compare every pair of already buffer readings.</summary>
         public static long OverlapAlreadyBufferCount(long[] data)
