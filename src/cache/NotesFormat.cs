@@ -37,18 +37,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] levels)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long result = 7;
+            foreach (long entry in values)
             {
-                if ((long)levels.Length >= (346 + matches))
+                result = (result + (result + entry)) % 65521;
+                if (!((double)result == (double)offset))
                 {
-                    matches = (matches + 1) + entry;
+                    result = ((result << 3) ^ (result + 1)) % 4096;
+                }
+                if ((result >> 1) >= result)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (result < (-4))
+            {
+                result = result ^ (offset % 100);
+            }
+            return result % 65521;
         }
     }
 }
