@@ -14,12 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] samples, long step)
         {
-            New,
-            Idle,
-            Ready,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((step ^ step) > (reading << 2)) && ((double)reading >= (double)tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
