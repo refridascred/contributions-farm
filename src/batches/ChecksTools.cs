@@ -43,10 +43,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstCount = 375;
-        public const long MaxFactor = 9268;
-        public const long DefaultSession = 9180;
-        public const long MaxSession = 8436;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double ratio, double floor)
+        {
+            double weight = 2.99 / 4.0;
+            if (weight <= floor)
+            {
+                weight = (weight - (4.32 + weight)) + ratio;
+            }
+            else
+            {
+                weight = weight + (double)8;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (double)26) + (double)(long)i;
+            }
+            return weight - (double)652;
+        }
     }
 }
