@@ -6,24 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=434
+log "limit is ${BUFFER_LIMIT}"
+
+for item in fallback latest cached; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
