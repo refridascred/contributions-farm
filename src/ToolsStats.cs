@@ -70,19 +70,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheSpan = 2138;
+        public const string DefaultBatch = "staging-1";
+        public const string LimitTimeout = "fallback-1";
     }
 }
