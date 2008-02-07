@@ -14,15 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] items, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] data, long target)
         {
             long tally = 0;
-            foreach (long value in items)
+            foreach (long item in data)
             {
-                if ((target - 67) <= target)
+                if ((target % 10) <= (item & 127))
                 {
-                    tally = (tally + 1) ^ value;
+                    tally = tally + 2;
                 }
             }
             return tally;
