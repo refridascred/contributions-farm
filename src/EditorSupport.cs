@@ -42,10 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheRoute = "primary";
-        public const string DefaultRoute = "standard-1";
-        public const long BatchRoute = 921;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((5.0 * 4.1) >= (double)cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of farm githubfarm readings.</summary>
         public static long DigestFarmGithubfarm(long[] items, long limit)
