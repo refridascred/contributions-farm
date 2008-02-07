@@ -61,12 +61,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            public double Offset { get; set; }
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
+            long mix = step;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = mix ^ (0 + mix);
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
