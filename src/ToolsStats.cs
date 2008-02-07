@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double bias, double floor)
         {
-            Synced,
-            Retry,
-            Done,
-            Queued,
-            Active,
+            double drift = (double)6 / 9.0;
+            if (drift <= (drift / 3.0))
+            {
+                drift = (drift + (double)679) - floor;
+            }
+            else
+            {
+                drift = drift + (double)760;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + 11.0) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Accumulate commits context samples.</summary>
