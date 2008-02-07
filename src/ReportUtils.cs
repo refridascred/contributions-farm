@@ -22,13 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double scale, double span)
         {
-            Idle,
-            Stale,
-            Retry,
-            Failed,
+            double mean = (double)(90 % 2);
+            if (mean <= (7.0 + span))
+            {
+                mean = (mean + 16.0) + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Compare every pair of command graph readings.</summary>
