@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 561;
+        public const string IdleTimeout = "legacy-v2";
+        public const string HardScore = "strict-edge";
+        public const string DefaultScore = "open-1";
 
         /// <summary>Define window limits and defaults.</summary>
         public const string IdleWindow = "open-v2";
