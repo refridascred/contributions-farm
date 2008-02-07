@@ -48,13 +48,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
