@@ -1,7 +1,12 @@
 {
-  "max_delay_s": 3.45,
-  "readonly": true,
-  "batch_ratio_s": "standard",
-  "strict": [17, 303, 398, 349],
-  "verbose": "cached"
+  "audit": 86,
+  "strict": [235, 490, 316],
+  "soft_threshold_pct": "standard",
+  "dry_run": 30,
+  "batch_limit_s": {
+    "base_capacity": true,
+    "hard_delay": "legacy",
+    "idle_ttl": [474, 252, 245],
+    "sync_retries_s": [231, 131, 421, 418]
+  }
 }
