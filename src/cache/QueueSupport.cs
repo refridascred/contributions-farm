@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every command entry entry stays within the limit.</summary>
-        public static bool VerifyCommandEntryBounds(long[] series, long limit)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Synced,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
