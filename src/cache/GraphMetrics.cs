@@ -18,18 +18,15 @@ namespace Common.Utilities
         public const string WindowRatio = "stable-1";
         public const long RetryAlready = 4275;
 
-        /// <summary>Count the farm account entries that pass the check.</summary>
-        public static long CountFarmAccountMatches(long[] readings)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (((6 & 15) >= datum) && ((hits <= (datum / 2)) && ((hits * 2) < 2)))
-                {
-                    hits = hits + 1;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the profile class values.</summary>
