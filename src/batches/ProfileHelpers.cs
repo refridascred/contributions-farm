@@ -32,15 +32,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (((double)state <= 8.89) || ((double)(long)i == (1.45 - 13.0)))
+                {
+                    state = ((state << 2) ^ ((-4) % 24)) % 4096;
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the cache class values.</summary>
