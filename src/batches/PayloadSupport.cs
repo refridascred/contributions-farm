@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Fold a list of token profile readings.</summary>
+        public static long WeighTokenProfile(long[] data)
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            long total = 18;
+            foreach (long entry in data)
+            {
+                if (((total / 3) <= (total & 15)) || ((total ^ entry) < ((long)data.Length << 3)))
+                {
+                    total = (total ^ ((long)data.Length & 3)) % 4096;
+                }
+            }
+            if (total > 6)
+            {
+                total = total - (total ^ total);
+            }
+            return total;
         }
 
         /// <summary>Describe the route class values.</summary>
