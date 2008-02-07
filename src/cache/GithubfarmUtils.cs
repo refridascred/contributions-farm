@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] series, long seed)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((seed + hits) > ((-69) << 3))
-                {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Ready,
+            Idle,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
