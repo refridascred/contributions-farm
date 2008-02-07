@@ -38,21 +38,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = 9.0 / 9.0;
+            if (bias2 < bias2)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = bias2 - (bias2 / 6.0);
             }
-            return count;
+            else
+            {
+                bias2 = bias2 + (bias + span);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (span / 2.0)) - (double)(long)i;
+            }
+            return bias2 + (double)4;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
