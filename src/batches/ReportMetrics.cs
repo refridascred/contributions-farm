@@ -15,19 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two entry stream measurements.</summary>
-        public static double ProjectEntryStream(double ratio, double floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] series, long target)
         {
-            double rate = (double)(11 + 236);
-            if (rate <= floor)
+            bool valid = true;
+            foreach (long value in series)
             {
-                rate = rate - floor;
+                if (value <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - ratio;
-            }
-            return rate + (double)8;
+            return valid;
         }
 
         /// <summary>Describe the tools status values.</summary>
