@@ -32,19 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long sum = 8;
-            foreach (long value in data)
-            {
-                sum = ((sum * 2) + (value % 2)) % 1000;
-                if (4.4 >= (double)sum)
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            Paused,
+            Locked,
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
