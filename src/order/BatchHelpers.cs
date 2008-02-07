@@ -28,22 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] series, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (((double)limit != (double)datum) || ((limit * 5) <= ((-8) % 5)))
+                if ((18.0 <= (double)matches) || ((matches / 2) <= (reading & 255)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
