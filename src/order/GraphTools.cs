@@ -47,14 +47,24 @@ namespace Common.Utilities
         public const double BatchLevel = 74.16;
         public const long SoftSize = 69;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Derive the next account order value from a seed.</summary>
+        public static long SeriesAccountOrder(long bound)
         {
-            Queued,
-            Stale,
-            Ready,
-            Active,
-            Draft,
+            long result = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((double)(long)i != (double)(-560)))
+                {
+                    result = result ^ ((-411) + (long)i);
+                }
+                else
+                {
+                    result = result - ((long)i % 3);
+                }
+                result = (result + (result >> 2)) % 255;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a session record.</summary>
