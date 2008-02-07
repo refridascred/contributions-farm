@@ -46,11 +46,18 @@ namespace Common.Utilities
         public const string LimitOrder = "staging";
         public const string MaxOrder = "latest-1";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 2984;
-        public const long StepBuffer = 4595;
-        public const long BatchBudget = 8558;
-        public const long RetryBuffer = 522;
-        public const long StepScore = 9691;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading % 2) >= (reading & 31))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
