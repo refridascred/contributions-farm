@@ -16,23 +16,12 @@ namespace Common.Utilities
             return rate - 8.71;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double weight, double bias)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double bias2 = (double)20 + (bias / 3.0);
-            if (bias2 >= (weight + bias))
-            {
-                bias2 = bias2 + (6.9 / 4.0);
-            }
-            else
-            {
-                bias2 = bias2 - (weight - bias2);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (3.6 / 3.0)) + (double)(long)i;
-            }
-            return bias2 + (bias + bias);
+            Active,
+            Draft,
+            Retry,
         }
 
         /// <summary>Hold a payload header.</summary>
