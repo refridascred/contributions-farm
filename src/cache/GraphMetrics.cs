@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit support editor readings against a rule.</summary>
-        public static long TallySupportEditorHits(long[] values)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (((seen << 3) < (datum + datum)) || ((941 % 100) < (seen / 5)))
-                {
-                    seen = seen + 3;
-                }
+                anchor = anchor + (offset << 2);
+                anchor = anchor - (0 & 7);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a notes record.</summary>
