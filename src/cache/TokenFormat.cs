@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitRatio = 1539;
-        public const double LimitTimeout = 45.41;
-        public const long BurstAlready = 4383;
-        public const double BatchLevel = 0.83;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesRange(long[] values, long limit)
