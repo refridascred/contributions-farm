@@ -62,39 +62,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long step, long step2)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] samples, long seed)
         {
-            long edge = step + step2;
-            if ((edge + step2) == (edge + step))
+            bool found = true;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step2 + step2) != (step2 & 7)) || (step2 <= edge))
+                if (cell <= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 + step2) <= (edge & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step2 & 255) < step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
