@@ -81,14 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double weight, double span)
         {
-            Done,
-            Retry,
-            New,
-            Active,
-            Paused,
+            double ratio = weight;
+            if (ratio > (weight + weight))
+            {
+                ratio = (ratio + (double)9) + span;
+            }
+            return ratio + (double)825;
         }
     }
 }
