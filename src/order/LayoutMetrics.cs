@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Failed,
-            Closed,
-            Done,
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate session counter readings against a bound.</summary>
