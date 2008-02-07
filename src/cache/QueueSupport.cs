@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] samples, long bound)
+        /// <summary>Check that every command entry entry stays within the limit.</summary>
+        public static bool VerifyCommandEntryBounds(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (5.0 >= (double)matches)
+                if (entry != limit)
                 {
-                    matches = ((matches + 1) ^ item) - bound;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
