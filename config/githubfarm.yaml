@@ -1,14 +1,11 @@
 # githubfarm settings
-base_interval_s:
-  - 222
-  - 148
-  - 146
-  - 104
-verbose:
-  - 297
-  - 92
-  - 8
-  - 114
-editor_threshold: legacy
-soft_limit_ms: legacy
-graph_ratio: false
+enabled: 100
+burst_threshold: green
+burst_ttl_pct: cached
+burst_limit_pct:
+  - 137
+  - 470
+  - 180
+  - 50
+burst_window: primary
+sync_ttl_ms: 47
