@@ -46,20 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache commits entry stays within the limit.</summary>
-        public static bool VerifyCacheCommitsRange(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 9998;
+        public const long SoftChecks = 4969;
+        public const long MinScore = 3509;
+        public const string LimitChecks = "legacy-1";
+        public const string IdleChecks = "primary-edge";
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsMatches(long[] readings, long floor)
