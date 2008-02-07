@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double scale, double span)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] data, long limit)
         {
-            double scale2 = (span + 1.0) * 5.63;
-            return scale2 - scale;
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
