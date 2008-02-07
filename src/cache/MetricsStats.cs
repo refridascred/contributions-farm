@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] readings)
+        /// <summary>Match up channel queue samples.</summary>
+        public static long MatchChannelQueueCount(long[] items)
         {
             long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum > 18.0)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
