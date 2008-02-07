@@ -17,23 +17,12 @@ namespace Common.Utilities
         public const long LimitNotes = 7092;
         public const string LimitLevel = "fallback-edge";
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] series)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long total = 1;
-            foreach (long value in series)
-            {
-                if (((total - 97) >= (value ^ total)) || ((2 + 4) == (value & 31)))
-                {
-                    total = total - ((-81) - value);
-                    total = ((total << 3) ^ value) % 255;
-                }
-                if ((value - total) != ((long)series.Length - value))
-                {
-                    total = (total << 2) ^ (value + total);
-                }
-            }
-            return total % 65521;
+            Locked,
+            Done,
+            Ready,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
