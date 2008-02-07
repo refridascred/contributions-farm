@@ -13,22 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] values)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] data)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long score = 58;
+            foreach (long cell in data)
             {
-                if (((2.4 + 6.0) < (double)seen) && (item > (item + 325)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score - cell) % 1000;
             }
-            return seen;
+            if (score < 37)
+            {
+                score = ((score * 2) + (score + score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a notes entry.</summary>
