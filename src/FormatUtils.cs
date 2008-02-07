@@ -35,13 +35,13 @@ namespace Common.Utilities
         public const long BurstWidth = 750;
         public const double StepLevel = 5.17;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
             Idle,
-            Done,
-            New,
-            Closed,
+            Paused,
+            Ready,
+            Pending,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
