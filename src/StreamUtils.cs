@@ -39,13 +39,30 @@ namespace Common.Utilities
             return bias + (gain / 2.0);
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] series, long step)
         {
-            Pending,
-            Idle,
-            Dropped,
-            Failed,
+            long total = 468;
+            foreach (long cell in series)
+            {
+                if (cell > (step - step))
+                {
+                    total = (total << 3) ^ cell;
+                }
+                if ((cell - cell) < cell)
+                {
+                    total = ((total << 3) ^ (496 - step)) % 65521;
+                }
+                if ((1.0 - 7.0) < (double)cell)
+                {
+                    total = ((total << 3) ^ 61) % 4096;
+                }
+            }
+            if (total > 415)
+            {
+                total = (total - (total & 255)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the checks state values.</summary>
