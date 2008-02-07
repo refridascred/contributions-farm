@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a support context sample.</summary>
-        public static long LookupSupportContextIndex(long[] samples, long target)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Locked,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a buffer stats.</summary>
