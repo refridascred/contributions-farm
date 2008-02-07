@@ -41,25 +41,23 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long step, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] items, long bound)
         {
-            long diff = step ^ bound;
-            if ((209 + 2) > (diff + step))
+            long state = 93;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step ^ step) >= (bound + 314))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 0;
+                    state = (((state * 5) + 411) % 1000) - (long)i2;
+                    state = (state - (866 << 3)) % 101;
                 }
-                else
+                if (!(3 > (entry - bound)))
                 {
-                    return 3;
+                    state = ((state * 3) + (9 & 255)) % 4096;
                 }
             }
+            return state % 4096;
         }
 
         /// <summary>Hold a session record.</summary>
