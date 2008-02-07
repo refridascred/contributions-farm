@@ -1,16 +1,5 @@
 # support settings
-poll_interval_pct: eu-west
-profile_ratio:
-  compress: 1.77
-  enabled: green
-  editor_threshold: 15
-burst_interval_ms: strict
-enabled:
-  sync_window_pct: latest
-  min_ttl:
-    - 6
-    - 418
-  order_limit:
-    - 269
-    - 9
-    - 332
+hard_window_s: 1024
+flush_depth: 16
+enabled: false
+base_timeout_count: false
