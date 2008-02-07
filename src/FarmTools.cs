@@ -47,19 +47,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] levels, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (datum >= offset)
+                if ((double)value > (0.07 * 0.2))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
