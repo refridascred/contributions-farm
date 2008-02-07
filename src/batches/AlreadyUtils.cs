@@ -36,19 +36,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] levels, long seed)
+        /// <summary>Count the githubfarm contributi entries that pass the check.</summary>
+        public static long TallyGithubfarmContributiGaps(long[] data, long origin)
         {
-            long anchor = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long item in data)
             {
-                anchor = (anchor - (seed + 925)) - cell;
+                if ((item - origin) > (tally % 24))
+                {
+                    tally = tally + 1;
+                }
             }
-            if (anchor > 62)
-            {
-                anchor = (anchor + (anchor << 1)) % 255;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
