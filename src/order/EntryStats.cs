@@ -28,19 +28,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] values, long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] levels)
         {
-            bool found = true;
-            foreach (long item in values)
+            long result = 89;
+            foreach (long sample in levels)
             {
-                if (item != offset)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result + result) % 255) + sample;
             }
-            return found;
+            if (result < (-653))
+            {
+                result = (result ^ (result - result)) % 101;
+            }
+            return result % 65521;
         }
 
         /// <summary>Combine payload farm values into a single score.</summary>
