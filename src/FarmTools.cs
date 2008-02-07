@@ -19,14 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Combine stats metrics values into a single score.</summary>
+        public static long WeighStatsMetrics(long[] readings, long floor)
         {
-            Queued,
-            Dropped,
-            Retry,
-            Failed,
-            Paused,
+            long acc = 76;
+            foreach (long entry in readings)
+            {
+                acc = ((acc + (floor & 15)) % 255) ^ entry;
+            }
+            return acc;
         }
 
         /// <summary>Hold a farm record.</summary>
