@@ -1,5 +1,9 @@
 {
-  "idle_window": false,
-  "idle_ratio_pct": 73.25,
-  "warm_ratio_s": 21.53
+  "warm_window_count": {
+    "hard_window_s": 66.59,
+    "burst_interval_ms": "local",
+    "audit": 979
+  },
+  "cache_retries": 50.02,
+  "cache_threshold": 7540
 }
