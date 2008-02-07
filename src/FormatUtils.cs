@@ -44,19 +44,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] samples, long limit)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Offset { get; set; }
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up editor samples.</summary>
