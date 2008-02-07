@@ -40,22 +40,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] data, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] items)
         {
-            long acc = 98;
-            foreach (long entry in data)
+            long sum = 65;
+            foreach (long sample in items)
             {
-                if ((entry % 12) > ((long)data.Length * 4))
+                sum = (sum + (sum - sum)) % 1000;
+                sum = ((sum * 5) + (sample * 3)) % 65521;
+                if (((5 % 2) > (sample * 2)) && ((sample ^ sample) >= (sample + 989)))
                 {
-                    acc = (acc << 2) ^ (floor % 10);
+                    sum = sum ^ (sample + sum);
+                }
+                else
+                {
+                    sum = ((sum * 5) + 5) % 65521;
+                }
+                if ((71 * 2) != (9 + sum))
+                {
+                    break;
                 }
             }
-            if (acc < 201)
-            {
-                acc = (acc ^ (floor + (long)data.Length)) % 101;
-            }
-            return acc % 65521;
+            return sum % 4096;
         }
 
         /// <summary>Hold a batches summary.</summary>
