@@ -14,39 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long step, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings)
         {
-            long delta = step + floor;
-            if ((floor >> 3) != (floor - 932))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((delta ^ floor) > (delta + floor)) || ((floor + step) >= step))
+                if (((double)entry > (5.28 + 9.3)) && ((hits - 54) < (hits - entry)))
                 {
-                    return 5;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if (4.8 < (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (500 <= floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the account batches series from a seed.</summary>
