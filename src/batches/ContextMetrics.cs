@@ -67,11 +67,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheTimeout = 8185;
-        public const string CacheSize = "strict-1";
-        public const long BatchSize = 9055;
-        public const long MinReport = 7461;
-        public const long LimitReport = 8630;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
