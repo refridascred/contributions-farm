@@ -87,21 +87,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Match up channel route samples.</summary>
+        public static long OverlapChannelRouteCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) < 10)
+                    if ((levels[i] + levels[j]) < 19)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
