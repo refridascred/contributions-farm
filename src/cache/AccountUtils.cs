@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 3463;
+        public const long WindowReport = 1325;
+        public const double BurstSize = 35.28;
+        public const long BurstReport = 7457;
+        public const string CacheDepth = "latest-edge";
 
         /// <summary>Blend two farm measurements.</summary>
         public static double ProjectFarm(double scale, double offset)
