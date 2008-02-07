@@ -1,17 +1,13 @@
 {
-  "batches_interval": {
-    "flush_limit_count": "standard",
-    "poll_retries_count": "stable",
-    "warm_ratio": 5747,
-    "burst_retries_pct": [8, 307]
+  "burst_timeout_s": {
+    "stream_delay": ["green", "cached"],
+    "audit": 95.55,
+    "strict": 100,
+    "enabled": "standard"
   },
-  "sync_retries_count": 50.18,
-  "compress": {
-    "notes_capacity": true,
-    "verbose": false,
-    "default_ratio_count": 71.1,
-    "sync_timeout": "eu-west"
-  },
-  "min_window": 500,
-  "base_limit": 7052
+  "batches_timeout": true,
+  "max_threshold_s": false,
+  "warm_depth": 57.86,
+  "session_delay": 4.36,
+  "base_retries_ms": true
 }
