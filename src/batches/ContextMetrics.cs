@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a payload cache figure with a bias.</summary>
-        public static double BlendPayloadCache(double ratio, double floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long offset, long step)
         {
-            double ratio2 = ratio;
-            if (ratio2 < (double)343)
+            long bound = offset - step;
+            if ((bound % 7) >= bound)
             {
-                ratio2 = ratio2 - (18.0 / 5.0);
+                return 0;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                ratio2 = (ratio2 + ratio2) - (double)(long)i;
+                if ((double)bound == (3.28 * 1.35))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return ratio2 - floor;
         }
 
         /// <summary>Digest a series of window cache entries.</summary>
