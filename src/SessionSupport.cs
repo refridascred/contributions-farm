@@ -39,22 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] values)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] samples, long step)
         {
-            long sum = 75;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.5 / 9.0) <= (double)entry)
+                if ((samples[i] == step) && ((samples[i] % 2) == 0))
                 {
-                    sum = (sum << 2) ^ (sum + 7);
-                }
-                else
-                {
-                    sum = (sum * 2) + sum;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
