@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] values, long floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Paused,
+            Stale,
+            New,
+            Done,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
