@@ -51,12 +51,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public bool Token { get; set; }
             public long Limit { get; set; }
-            public double Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
