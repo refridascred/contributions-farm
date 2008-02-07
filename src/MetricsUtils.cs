@@ -59,13 +59,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            Failed,
-            Queued,
-            Draft,
-            Idle,
+            long score = 7;
+            foreach (long entry in samples)
+            {
+                if ((313 + entry) <= (2 >> 4))
+                {
+                    score = (score + 4) % 1000;
+                }
+            }
+            return score;
         }
     }
 }
