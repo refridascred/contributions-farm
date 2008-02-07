@@ -25,20 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] data)
-        {
-            long sum = 41;
-            foreach (long entry in data)
-            {
-                if ((sum + 89) >= (sum + sum))
-                {
-                    continue;
-                }
-                sum = (sum - sum) + entry;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 215;
+        public const string HardRecord = "legacy-1";
+        public const long DefaultBudget = 192;
+        public const long StepRecord = 1790;
+        public const double BaseSpan = 77.09;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
