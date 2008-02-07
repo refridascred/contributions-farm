@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepScore = 2215;
+        public const long LimitScore = 6286;
+        public const double DefaultContext = 47.32;
+        public const long MaxRatio = 7459;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool ValidateContributiLimits(long[] items, long seed)
