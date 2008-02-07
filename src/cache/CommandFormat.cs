@@ -28,24 +28,14 @@ namespace Common.Utilities
         public const long CacheFarm = 7002;
         public const long LimitFarm = 7064;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long limit, long offset)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            if (!(limit <= 88))
-            {
-                return 7;
-            }
-            else
-            {
-                if (offset <= (87 * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Done,
+            Stale,
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
