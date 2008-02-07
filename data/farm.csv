@@ -1,7 +1,7 @@
-id,token,rank,ratio
-1,533,699,435
-2,72.39,94.09,638
-3,525,77.27,660
-4,fallback,staging,788
-5,stable,eu-west,43.5
-6,primary,320,759
+id,label,count
+1,88.97,403
+2,90.85,950
+3,10.18,staging
+4,984,239
+5,2.12,eu-west
+6,624,311
