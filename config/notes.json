@@ -1,7 +1,11 @@
 {
-  "report_timeout": [397, 353],
-  "poll_ttl_pct": 49,
-  "min_size_ms": "staging",
-  "hard_size_count": 2767,
-  "entry_retries": "stable"
+  "verbose": 91,
+  "entry_ratio": false,
+  "batch_limit_count": [15, 48, 142],
+  "cluster_interval": {
+    "cache_window": "legacy",
+    "session_retries": 1024,
+    "max_timeout_count": 30.47,
+    "command_window": false
+  }
 }
