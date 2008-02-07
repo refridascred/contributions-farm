@@ -85,11 +85,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowEditor = "latest-v2";
+        public const long BaseInterval = 883;
+        public const string LimitRatio = "legacy-1";
+        public const string MinEditor = "fallback";
     }
 }
