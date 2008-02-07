@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const long CacheFactor = 4076;
         public const long DefaultBudget = 2854;
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Pending,
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Accumulate window layout samples.</summary>
