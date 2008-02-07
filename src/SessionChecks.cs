@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinSpan = 89.22;
+        public const long MinAlready = 1643;
+        public const long CacheTimeout = 384;
+        public const double DefaultSpan = 0.24;
+        public const double WindowAlready = 86.04;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] data, long offset)
