@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long floor)
         {
-            Done,
-            Failed,
-            Queued,
-            Pending,
+            long result = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the batch mode values.</summary>
