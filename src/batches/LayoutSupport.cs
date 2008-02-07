@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] readings)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] samples)
         {
-            long score = 9;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((cell >> 5) >= (8 & 3))
+                if ((tally & 3) > tally)
                 {
-                    score = (score << 2) ^ (cell % 7);
+                    tally = (tally + 1) + datum;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the window state values.</summary>
