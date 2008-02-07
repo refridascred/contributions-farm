@@ -22,14 +22,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Audit payload record readings against a rule.</summary>
+        public static long TallyPayloadRecordGaps(long[] values, long offset)
         {
-            Draft,
-            Failed,
-            Closed,
-            Synced,
-            Idle,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((long)values.Length - 632) >= (30 + item))
+                {
+                    hits = (hits + 2) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
