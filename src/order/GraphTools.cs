@@ -41,20 +41,25 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long step, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            long diff = step ^ bound;
+            if ((209 + 2) > (diff + step))
             {
-                double rate = 7.9;
-                if (!(((long)i < limit) || ((rate / 2.0) < rate)))
-                {
-                    sum = (sum - (7 + 21)) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((step ^ step) >= (bound + 314))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a session record.</summary>
