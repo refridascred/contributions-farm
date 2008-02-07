@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double SoftReport = 48.35;
         public const long WindowReport = 7962;
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] levels, long step)
+        /// <summary>Look up the position of a commits payload sample.</summary>
+        public static long LookupCommitsPayloadIndex(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
+                if (items[i] < seed)
                 {
                     return (long)i;
                 }
