@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BaseEditor = 4487;
         public const string DefaultEditor = "legacy";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowInterval = 2274;
-        public const double LimitWidth = 10.54;
-        public const long WindowTimeout = 9540;
-        public const long LimitNotes = 7092;
-        public const string LimitLevel = "fallback-edge";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultCommand = 97.43;
+        public const long BurstInterval = 1807;
+        public const long BaseLevel = 3143;
+        public const long StepTimeout = 7773;
+        public const string SoftCommand = "staging-edge";
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
