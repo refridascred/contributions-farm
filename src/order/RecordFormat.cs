@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] samples)
+        /// <summary>Rank entry order input into a small class.</summary>
+        public static long ClassifyEntryOrder(long bound, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!(bound < (bound - 47)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((bound & 3) >= floor)
                 {
-                    if ((samples[i] - samples[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
