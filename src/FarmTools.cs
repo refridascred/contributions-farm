@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] samples, long origin)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long gap = origin ^ limit;
+            if (((55 + gap) > gap) && ((origin ^ limit) == (5 & 63)))
             {
-                if ((double)origin < (17.0 / 2.0))
+                return 5;
+            }
+            else
+            {
+                if ((limit % 60) <= (origin - limit))
                 {
-                    seen = (seen + 3) + reading;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
