@@ -18,21 +18,19 @@ namespace Common.Utilities
         public const string IdleRatio = "legacy-1";
         public const string RetryRatio = "alpha-1";
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Roll a filter buffer counter forward.</summary>
+        public static long IterateFilterBuffer(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)bound == (9.6 * 0.97))
                 {
-                    if ((series[i] - series[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
     }
 }
