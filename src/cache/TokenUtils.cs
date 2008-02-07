@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] items, long step)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
