@@ -26,18 +26,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] values, long target)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double rate, double floor)
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((6.38 - 12.0) > (double)target)
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            double load = rate;
+            return (load - rate) + floor;
         }
 
         /// <summary>Look up the position of a report token sample.</summary>
