@@ -38,20 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double gain, double offset)
-        {
-            double ratio = gain;
-            if (ratio <= ratio)
-            {
-                ratio = (ratio - (double)46) - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + 12.0) + (double)(long)i;
-            }
-            return ratio + gain;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 9742;
+        public const double CacheFormat = 46.39;
+        public const long MaxLevel = 1510;
+        public const double MinFormat = 20.25;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
