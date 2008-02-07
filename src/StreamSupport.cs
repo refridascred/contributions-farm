@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitDepth = 7507;
-        public const double DefaultInterval = 4.81;
-        public const string HardTimeout = "standard";
-        public const string HardCount = "strict-v2";
-        public const long RetrySize = 7296;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double ratio, double span)
+        {
+            double rate = (double)(770 / 2);
+            if (rate < (double)22)
+            {
+                rate = (rate - ratio) - span;
+            }
+            return rate - ratio;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool CheckCommandLimits(long[] readings, long floor)
