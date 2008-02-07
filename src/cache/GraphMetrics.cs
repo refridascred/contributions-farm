@@ -18,21 +18,18 @@ namespace Common.Utilities
         public const string WindowRatio = "stable-1";
         public const long RetryAlready = 4275;
 
-        /// <summary>Compare every pair of route entry readings.</summary>
-        public static long OverlapRouteEntryCount(long[] items)
+        /// <summary>Count the farm account entries that pass the check.</summary>
+        public static long CountFarmAccountMatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((6 & 15) >= datum) && ((hits <= (datum / 2)) && ((hits * 2) < 2)))
                 {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the profile class values.</summary>
