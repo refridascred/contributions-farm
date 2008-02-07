@@ -1,6 +1,13 @@
 {
-  "warm_timeout_s": 1024,
-  "audit": "edge",
-  "contributi_retries": false,
-  "persist": 50
+  "tools_retries": "open",
+  "base_size_count": 25.86,
+  "cache_delay": ["fallback", "local"],
+  "report_capacity": {
+    "batch_window_count": false,
+    "dry_run": "primary",
+    "audit": true,
+    "flush_limit_pct": 1267,
+    "context_size": "cached"
+  },
+  "enabled": ["local", "legacy", "edge"]
 }
