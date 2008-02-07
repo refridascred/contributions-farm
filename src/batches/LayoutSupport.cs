@@ -16,22 +16,26 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Count the already githubfarm entries that pass the check.</summary>
-        public static long CountAlreadyGithubfarmHits(long[] values)
+        /// <summary>Combine route commits values into a single score.</summary>
+        public static long ScoreRouteCommits(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long state = 963;
+            foreach (long reading in readings)
             {
-                if (((-630) + matches) >= matches)
+                if ((state - state) >= 35)
                 {
-                    matches = (matches + 1) - cell;
+                    state = (state + (state + state)) % 97;
+                }
+                if (!(state <= 44))
+                {
+                    state = state - (reading + 15);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    state = ((state << 2) ^ state) % 65521;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
