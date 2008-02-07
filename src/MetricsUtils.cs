@@ -45,18 +45,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] series, long origin)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (3 >= (sample + 732))
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
+            Locked,
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Accumulate format samples.</summary>
