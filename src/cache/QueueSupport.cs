@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] data, long seed)
         {
-            long score = 216;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long item in data)
             {
-                score = ((score - (score / 4)) % 1000) ^ entry;
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (score > 92)
-            {
-                score = ((score * 2) + (score + score)) % 101;
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Hold a filter record.</summary>
