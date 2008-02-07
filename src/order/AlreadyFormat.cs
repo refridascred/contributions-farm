@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepScore = 2384;
-        public const long WindowMetric = 7134;
-        public const double BatchMetric = 64.41;
+        /// <summary>Count the cache context entries that pass the check.</summary>
+        public static long MeasureCacheContextOutliers(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((origin + 655) > (origin - origin)) || (((8 & 1) == (seen - item)) && ((origin >> 3) <= origin)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long PairPayloadCount(long[] levels)
