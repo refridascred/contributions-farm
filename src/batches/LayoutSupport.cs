@@ -46,12 +46,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 9998;
-        public const long SoftChecks = 4969;
-        public const long MinScore = 3509;
-        public const string LimitChecks = "legacy-1";
-        public const string IdleChecks = "primary-edge";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleBudget = 1986;
+        public const long BaseDepth = 273;
+        public const string BatchChannel = "legacy-1";
+        public const double RetryChannel = 38.53;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
