@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            long state = 98;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((374 % 97) < (entry * 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state + ((-206) / 5)) % 65521;
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Digest a series of already entries.</summary>
