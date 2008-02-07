@@ -37,12 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxInterval = "stable-1";
-        public const long DefaultCount = 3177;
-        public const long SoftEditor = 3308;
-        public const double DefaultEditor = 53.6;
-        public const long StepEditor = 1833;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long GradeWindow(long floor, long target)
