@@ -46,17 +46,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] values)
+        public static long CountReportMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (((count - count) <= datum) && (count >= (count & 127)))
+                if ((seen - sample) == (67 << 1))
                 {
-                    count = count + 3;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
