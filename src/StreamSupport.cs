@@ -34,18 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit cluster layout readings against a rule.</summary>
-        public static long AuditClusterLayoutGaps(long[] values)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (98 >= (item << 1))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
