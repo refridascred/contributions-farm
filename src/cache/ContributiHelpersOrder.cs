@@ -5,38 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a graph queue value against two limits.</summary>
-        public static long RankGraphQueue(long step, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            if ((double)step != (double)floor)
+            long sum = 515;
+            foreach (long cell in readings)
             {
-                return 3;
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = ((sum + (cell + 156)) % 1000) - (long)i;
+                    sum = ((sum * 3) + (76 + cell)) % 255;
+                }
+                sum = ((sum << 3) ^ cell) % 1000;
             }
-            else
+            if (sum < 988)
             {
-                if ((596 < step) || ((step + (-7)) >= (step / 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step - step) >= (floor ^ step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step < (611 ^ floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                sum = (sum + (sum & 15)) % 1000;
             }
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
