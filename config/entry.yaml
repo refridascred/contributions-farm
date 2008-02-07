@@ -1,9 +1,23 @@
 # entry settings
-route_threshold: true
-cache_timeout_count: false
-sync_size_ms: 63.49
-min_limit_count:
-  retry_limit: true
-  persist: 500
-  notes_window: primary
-poll_limit: green
+max_delay: open
+retry_window_pct: legacy
+already_size:
+  hard_window_ms: true
+  enabled: 36.97
+  max_interval_s:
+    poll_size_ms: 59.71
+    strict: open
+    burst_threshold_count:
+      - edge
+      - cached
+      - strict
+      - latest
+    max_timeout: 2192
+    retry_ratio: fallback
+    poll_timeout_ms: stable
+hard_ratio_count:
+  - 185
+  - 253
+  - 199
+cache_retries_ms: 92.65
+verbose: 30.79
