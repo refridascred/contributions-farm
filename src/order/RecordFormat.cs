@@ -41,28 +41,35 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long origin, long limit)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long offset, long offset2)
         {
-            if ((1.7 + 8.5) > (double)limit)
+            if ((offset2 / 3) < 2)
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((76 * 5) == (origin & 15))
+                if (offset2 > (offset << 3))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if ((59 ^ origin) >= origin)
+                    if ((offset & 63) >= (offset2 + offset2))
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        return 5;
+                        if ((8 + offset) > (466 << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
