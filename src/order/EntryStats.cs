@@ -62,22 +62,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] data, long seed)
+        /// <summary>Accumulate command batches samples.</summary>
+        public static long ScoreCommandBatches(long[] data, long origin)
         {
-            long mix = 3;
-            foreach (long datum in data)
+            long mark = 7;
+            foreach (long sample in data)
             {
-                if ((seed & 255) >= (seed >> 4))
-                {
-                    mix = (mix ^ (seed + 13)) ^ datum;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (mix / 5)) % 101;
-                }
+                mark = ((mark + (sample / 8)) % 65521) + origin;
             }
-            return mix;
+            return mark;
         }
     }
 }
