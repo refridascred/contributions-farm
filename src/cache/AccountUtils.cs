@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long bound, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] values, long floor)
         {
-            long cur = bound + limit;
-            if (((cur << 3) < limit) && ((double)cur <= (5.0 * 9.34)))
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit / 6) >= bound)
+                if (sample > floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.0 - 6.4) <= (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((bound + 103) >= (limit * 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a cluster record.</summary>
