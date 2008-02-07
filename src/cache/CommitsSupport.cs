@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long origin)
         {
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
+            long total = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the layout class values.</summary>
