@@ -33,23 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double scale, double floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] readings, long origin)
         {
-            double ratio = (floor - scale) / 4.0;
-            if (ratio > ratio)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                ratio = ratio + (4.0 * 10.0);
+                if ((origin > (sample + sample)) || ((origin ^ 5) < 3))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio + floor);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (scale + ratio)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return matches;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
