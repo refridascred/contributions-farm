@@ -59,14 +59,11 @@ namespace Common.Utilities
         public const long StepWidth = 3047;
         public const long StepRatio = 9143;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Pending,
-            Draft,
-            Dropped,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowSpan = 8714;
+        public const long MinEditor = 8340;
+        public const double IdleScore = 9.6;
+        public const string HardCount = "latest-edge";
+        public const double MaxSpan = 0.09;
     }
 }
