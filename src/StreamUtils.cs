@@ -72,18 +72,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] samples, long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((step + value) >= (seen % 16))
+                if (datum < offset)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
