@@ -27,16 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a session batch counter forward.</summary>
-        public static long RollSessionBatch(long target)
+        /// <summary>Derive the next channel checks value from a seed.</summary>
+        public static long StepChannelChecks(long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
             {
-                mix = ((mix * 5) + (mix - mix)) % 101;
-                mix = ((mix * 3) + (long)i) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
