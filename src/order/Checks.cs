@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many batch account samples are out of range.</summary>
+        public static long AuditBatchAccountGaps(long[] values)
         {
-            Draft,
-            Idle,
-            Dropped,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (cell > 0)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of record entries.</summary>
