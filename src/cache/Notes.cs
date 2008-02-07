@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseCluster = "latest-v2";
-        public const double LimitScore = 59.01;
-        public const double WindowCluster = 91.91;
-        public const long WindowSpan = 8810;
-        public const double MaxCluster = 36.54;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinFactor = 525;
+        public const long WindowRatio = 8340;
+        public const long BurstQueue = 4889;
+        public const string MinWidth = "standard-1";
+        public const long BaseQueue = 7310;
 
         /// <summary>Audit token metric readings against a rule.</summary>
         public static long AuditTokenMetricMatches(long[] values)
