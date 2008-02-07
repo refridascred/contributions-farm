@@ -40,17 +40,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record channel reading by value.</summary>
-        public static long FindRecordChannelIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 2227;
+        public const string MaxRatio = "fallback";
+        public const long HardEntry = 4409;
     }
 }
