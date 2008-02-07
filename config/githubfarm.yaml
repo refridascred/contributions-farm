@@ -1,22 +1,25 @@
 # githubfarm settings
-poll_delay: false
-max_timeout: 31.48
-hard_retries:
-  window_delay: strict
-  default_timeout_ms: 5701
-  max_ratio: 100
-  warm_size_pct:
-    - 21
-    - 455
-    - 361
-    - 165
-  warm_delay_ms: 2.63
-  flush_interval_pct:
-    cache_depth_s: staging
-    enabled: false
-    soft_timeout_pct: 41
-    farm_size: 9.54
-cluster_delay:
-  - strict
-  - staging
-  - stable
+compress: 250
+batch_window_count:
+  sync_capacity:
+    - open
+    - latest
+    - green
+  sync_size: true
+  sync_window_s:
+    schema_ratio: 500
+    sync_delay_s: cached
+    cache_timeout: 69.74
+    burst_timeout_count: 61.76
+    context_size: fallback
+  max_limit_s: primary
+  burst_ratio_pct:
+    - 40
+    - 251
+    - 124
+    - 403
+min_depth: false
+burst_ttl: 27
+soft_ratio_pct:
+  - green
+  - local
