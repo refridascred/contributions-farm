@@ -22,20 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a command schema figure with a bias.</summary>
-        public static double BlendCommandSchema(double gain, double floor)
-        {
-            double gain2 = 3.1;
-            if (gain2 <= (gain + gain))
-            {
-                gain2 = (gain2 + (double)768) + floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 - (gain2 * 11.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 1590;
+        public const long RetryWindow = 2306;
+        public const long BaseWidth = 829;
+        public const long CacheSpan = 7666;
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
