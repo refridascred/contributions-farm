@@ -47,38 +47,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long origin, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] values, long limit)
         {
-            if (((6.29 * 3.62) <= (double)seed) && ((origin << 2) < 85))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + seed) < (seed + 5))
+                if ((seen - seen) <= (item & 31))
                 {
-                    return 2;
+                    seen = (seen + 2) + limit;
                 }
                 else
                 {
-                    if ((seed + seed) >= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((6 - origin) < (seed << 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
