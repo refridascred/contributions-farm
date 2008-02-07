@@ -21,18 +21,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] data, long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long anchor = 274;
+            foreach (long entry in samples)
             {
-                if ((((item >> 3) > matches) || ((232 + offset) == (item & 15))) || (((offset + matches) != (offset - offset)) && (matches < (0 / 4))))
+                if ((18 + anchor) > (anchor % 5))
                 {
-                    matches = matches + 1;
+                    anchor = (((anchor * 4) + anchor) % 101) + entry;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor * 4)) % 1000;
                 }
             }
-            return matches;
+            if (anchor < 1)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 255;
+            }
+            return anchor;
         }
     }
 }
