@@ -52,17 +52,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] levels, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 44;
+            foreach (long value in series)
             {
-                if ((levels[i] == origin) && ((levels[i] % 3) != 0))
+                if ((double)target != (1.9 * 4.71))
                 {
-                    return (long)i;
+                    sum = ((sum - (2 << 1)) % 255) - value;
                 }
             }
-            return -1;
+            if (sum > (-7))
+            {
+                sum = (sum + target) % 65521;
+            }
+            return sum;
         }
     }
 }
