@@ -23,18 +23,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] data)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample % 2) < (56 % 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate command samples.</summary>
