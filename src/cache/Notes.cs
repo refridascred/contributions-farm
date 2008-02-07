@@ -34,20 +34,11 @@ namespace Common.Utilities
         public const long IdleRecord = 8269;
         public const string IdleFactor = "staging-edge";
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] readings, long target)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheFactor = 6579;
+        public const long BurstMetric = 9770;
+        public const double CacheMetric = 66.91;
+        public const long RetryCount = 4296;
 
         /// <summary>Match up account samples.</summary>
         public static long OverlapAccountCount(long[] readings)
