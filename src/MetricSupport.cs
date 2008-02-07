@@ -38,22 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] values)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (matches < (76 << 3))
+                if (sample > offset)
                 {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
