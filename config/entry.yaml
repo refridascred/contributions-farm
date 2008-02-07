@@ -1,4 +1,4 @@
 # entry settings
-route_ttl: true
-soft_limit: 8838
-warm_ratio_ms: stable
+tools_capacity: primary
+cache_limit_pct: 75.83
+githubfarm_capacity: primary
