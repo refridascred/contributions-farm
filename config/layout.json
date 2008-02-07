@@ -1,5 +1,7 @@
 {
-  "verbose": 848,
-  "checks_interval": [7, 44, 132],
-  "enabled": 92.03
+  "compress": "fallback",
+  "batch_limit_count": 3.9,
+  "report_interval": 96.36,
+  "retry_ratio_count": ["local", "fallback", "legacy"],
+  "cache_retries_count": "stable"
 }
