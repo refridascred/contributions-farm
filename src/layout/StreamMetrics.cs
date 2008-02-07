@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] data)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)reading < (2.2 - 3.0))
+                if ((double)floor < (9.83 / 5.0))
                 {
-                    matches = matches + 3;
+                    score = score + ((long)i >> 5);
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
