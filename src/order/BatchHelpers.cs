@@ -26,12 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Look up the position of a layout cache sample.</summary>
+        public static long FindLayoutCacheIndex(long[] values, long target)
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
