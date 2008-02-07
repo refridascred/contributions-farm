@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const long BaseLevel = 7550;
         public const long HardCommand = 2738;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up filter samples.</summary>
