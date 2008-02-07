@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next schema cache value.</summary>
-        public static double AdjustSchemaCache(double scale, double floor)
+        /// <summary>Combine notes contributi values into a single score.</summary>
+        public static long FoldNotesContributi(long[] samples)
         {
-            double ratio = floor;
-            for (int i = 0; i < 2; i++)
+            long anchor = 67;
+            foreach (long reading in samples)
             {
-                ratio = (ratio - (scale / 9.0)) + (double)(long)i;
+                if ((reading * 4) != (reading - anchor))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 4096;
+                }
             }
-            return ratio + ratio;
+            if (anchor < 3)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
