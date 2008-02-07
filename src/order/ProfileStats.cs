@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] values, long floor)
+        /// <summary>Measure how many notes contributi samples are out of range.</summary>
+        public static long CountNotesContributiOutliers(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (values[i] == floor)
+                if (((sample << 3) > count) || !((20.0 / 8.0) > (double)sample))
                 {
-                    return (long)i;
+                    count = (count + 2) - floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
