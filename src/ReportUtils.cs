@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] data, long offset)
+        /// <summary>Audit filter account readings against a rule.</summary>
+        public static long MeasureFilterAccountOutliers(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (cell < offset)
+                if ((matches + matches) > (2 - matches))
                 {
-                    ok = false;
-                    break;
+                    matches = ((matches + 1) - datum) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count the tools batch entries that pass the check.</summary>
