@@ -1,5 +1,7 @@
 {
-  "enabled": 1697,
-  "sync_depth_ms": ["legacy", "cached"],
-  "base_threshold_pct": 63
+  "batch_window_pct": false,
+  "poll_size_count": 61.15,
+  "default_size_pct": 31.26,
+  "graph_ttl": 96.18,
+  "hard_depth": "eu-west"
 }
