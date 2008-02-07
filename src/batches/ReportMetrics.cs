@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            Retry,
+            Failed,
+            Closed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Blend two entry stream measurements.</summary>
