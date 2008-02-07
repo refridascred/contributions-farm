@@ -22,11 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public double Total { get; set; }
-            public long Limit { get; set; }
+            Locked,
+            Active,
+            Idle,
+            Paused,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
