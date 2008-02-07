@@ -1,8 +1,10 @@
 {
-  "retry_retries_ms": "strict",
-  "window_timeout": "strict",
-  "format_retries": true,
-  "retry_ttl": 16.59,
-  "hard_threshold_count": 85.72,
-  "idle_delay": true
+  "checks_limit": {
+    "payload_size": 60,
+    "strict": 4378,
+    "batch_window": 2275
+  },
+  "burst_ttl_ms": "edge",
+  "compress": 51,
+  "max_depth_pct": true
 }
