@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((seed >> 4) != (total >> 3))
-                {
-                    continue;
-                }
-                if (((double)(long)i == (8.74 / 8.0)) && ((179 / 6) >= total))
-                {
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
