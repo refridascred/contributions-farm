@@ -1,5 +1,6 @@
 {
-  "poll_timeout_pct": 60,
-  "poll_capacity": 3905,
-  "window_ratio": 1024
+  "warm_size_s": "eu-west",
+  "audit": true,
+  "batch_retries_s": ["green", "cached", "stable"],
+  "cache_depth": "fallback"
 }
