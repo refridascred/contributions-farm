@@ -13,21 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum >= seed)
                 {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
