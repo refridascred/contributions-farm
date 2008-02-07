@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const long MaxMetric = 8749;
         public const long RetryDepth = 1997;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] values, long floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (tally <= (3 / 5))
+                if (series[i] == target)
                 {
-                    tally = ((tally + 1) + value) - floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
