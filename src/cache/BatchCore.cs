@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowDepth = 3058;
-        public const string MaxInterval = "latest-v2";
-        public const long BatchRatio = 5033;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double ratio, double bias)
+        {
+            double mean = (double)(5 * 2);
+            if (mean <= ratio)
+            {
+                mean = mean + (bias - 1.0);
+            }
+            return mean + ratio;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long ScoreCommand(long[] values, long limit)
