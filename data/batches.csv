@@ -1,10 +1,6 @@
-id,owner,level
-1,latest,14
-2,standard,28.08
-3,95.32,510
-4,fallback,677
-5,edge,88.83
-6,blue,95.76
-7,stable,32.02
-8,42.59,794
-9,open,local
+id,score,rank
+1,29.95,green
+2,63.8,eu-west
+3,green,807
+4,184,659
+5,1.72,19.82
