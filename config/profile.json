@@ -1,5 +1,8 @@
 {
-  "default_window": ["eu-west", "fallback", "legacy"],
-  "verbose": false,
-  "metric_limit": "latest"
+  "batch_limit": 7233,
+  "cache_threshold": 57.45,
+  "warm_limit_count": [357, 94, 33],
+  "cache_retries_ms": "blue",
+  "max_interval": 25.51,
+  "batch_capacity_count": 14
 }
