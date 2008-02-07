@@ -40,18 +40,13 @@ namespace Common.Utilities
         public const long WindowWidth = 6283;
         public const long HardGithubfarm = 4232;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] values)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((double)item != (double)matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a support record.</summary>
