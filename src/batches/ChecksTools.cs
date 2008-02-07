@@ -29,18 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] series)
+        /// <summary>Check that every contributi layout entry stays within the limit.</summary>
+        public static bool CheckContributiLayoutBounds(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (tally > (sample & 15))
+                if (value > step)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
