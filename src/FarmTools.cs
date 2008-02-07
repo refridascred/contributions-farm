@@ -30,18 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token checks entries that pass the check.</summary>
-        public static long CountTokenChecksHits(long[] readings)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (((sample - sample) <= seen) && ((double)sample >= 10.0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
