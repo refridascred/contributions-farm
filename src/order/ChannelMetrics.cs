@@ -21,13 +21,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] data, long offset)
         {
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((((item >> 3) > matches) || ((232 + offset) == (item & 15))) || (((offset + matches) != (offset - offset)) && (matches < (0 / 4))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
