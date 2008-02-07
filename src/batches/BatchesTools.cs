@@ -13,14 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            Locked,
-            Dropped,
-            Active,
-            Paused,
-            New,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a contributi summary.</summary>
