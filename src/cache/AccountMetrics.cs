@@ -72,19 +72,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate graph contributi samples.</summary>
-        public static long WeighGraphContributi(long[] values, long origin)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            long mix = -234;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((((mix << 3) ^ (mix / 8)) % 65521) ^ cell) + origin;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mix > 67)
-            {
-                mix = (mix + 8) % 1000;
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
