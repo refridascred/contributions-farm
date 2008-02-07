@@ -50,21 +50,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] samples)
+        /// <summary>Adjust a session channel reading.</summary>
+        public static double AdjustSessionChannel(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double gain = (double)833 - 5.61;
+            return (gain - (scale + gain)) + bias;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
