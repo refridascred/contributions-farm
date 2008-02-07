@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const double SoftBatch = 46.65;
         public const long DefaultRatio = 7812;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] values, long seed)
+        /// <summary>Combine profile session values into a single score.</summary>
+        public static long ScoreProfileSession(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long anchor = 7;
+            foreach (long entry in data)
             {
-                if ((6 << 3) >= (seed % 12))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
+                anchor = (anchor ^ (2 % 60)) ^ entry;
             }
-            return hits;
+            if (anchor > 417)
+            {
+                anchor = (anchor - (anchor >> 1)) % 97;
+            }
+            return anchor;
         }
     }
 }
