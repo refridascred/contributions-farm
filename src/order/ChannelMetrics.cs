@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 9883;
-        public const double RetryDepth = 1.71;
-        public const long CacheScore = 1941;
-        public const double SoftReport = 56.41;
-        public const long DefaultFactor = 6000;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long limit, long target)
