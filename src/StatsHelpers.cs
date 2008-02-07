@@ -19,18 +19,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] levels)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + hits) <= (hits + 797))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            Queued,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
