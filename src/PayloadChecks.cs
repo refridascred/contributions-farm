@@ -38,11 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 9742;
-        public const double CacheFormat = 46.39;
-        public const long MaxLevel = 1510;
-        public const double MinFormat = 20.25;
+        /// <summary>Look up the position of a report token sample.</summary>
+        public static long LookupReportTokenIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
