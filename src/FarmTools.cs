@@ -49,13 +49,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] data, long origin)
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((count + origin) > (cell + count)) && (origin >= (count >> 2)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
