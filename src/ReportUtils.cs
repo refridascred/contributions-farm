@@ -16,18 +16,13 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] items, long origin)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((origin % 16) > (count * 2))
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
+            Draft,
+            Done,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a queue entry.</summary>
