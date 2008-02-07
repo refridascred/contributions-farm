@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 1262;
-        public const string DefaultNotes = "standard-v2";
-        public const long BatchRatio = 8739;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Active,
+            Failed,
+            Dropped,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] data, long target)
