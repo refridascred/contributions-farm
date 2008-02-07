@@ -1,10 +1,22 @@
 # support settings
-audit: false
-format_delay:
-  max_retries: 59.76
-  audit:
-    - fallback
-    - strict
-  persist: true
-  poll_depth_count: 81.5
-batch_threshold: blue
+flush_window_count:
+  poll_ratio_s: 250
+  min_size_ms:
+    notes_size: 5800
+    default_ttl_ms:
+      - green
+      - local
+    flush_threshold: 37.61
+    hard_retries_pct: latest
+  poll_window_count: green
+  audit: true
+  report_limit: local
+batch_ratio_pct:
+  - 96
+  - 139
+enabled: standard
+persist: 8092
+payload_limit: cached
+sync_ttl:
+  - 70
+  - 440
