@@ -53,18 +53,14 @@ namespace Common.Utilities
         public const string LimitChecks = "legacy-1";
         public const string IdleChecks = "primary-edge";
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] readings, long floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)floor != (18.0 - 9.2))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
+            Pending,
+            Queued,
+            Idle,
+            Locked,
+            Paused,
         }
     }
 }
