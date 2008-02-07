@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long HardRoute = 7259;
         public const long MinBudget = 4813;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] readings)
         {
-            long mix = 153;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (90 >= (7 + mix))
+                if ((matches % 24) <= reading)
                 {
-                    mix = (((mix * 4) + (mix >> 5)) % 65521) + cell;
-                }
-                else
-                {
-                    mix = mix ^ mix;
+                    matches = matches + 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Accumulate format samples.</summary>
