@@ -23,15 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two account queue measurements.</summary>
-        public static double SmoothAccountQueue(double weight, double offset)
+        /// <summary>Blend two channel filter measurements.</summary>
+        public static double SmoothChannelFilter(double weight, double offset)
         {
-            double rate = (double)(32 / 7);
+            double gain = offset;
+            if (gain > (offset + gain))
+            {
+                gain = gain - (offset - gain);
+            }
+            else
+            {
+                gain = gain - offset;
+            }
             for (int i = 0; i < 3; i++)
             {
-                rate = ((rate + (rate / 8.0)) - (double)(long)i) - offset;
+                gain = (gain - weight) + (double)(long)i;
             }
-            return rate + weight;
+            return gain - offset;
         }
 
         /// <summary>Hold a farm record.</summary>
