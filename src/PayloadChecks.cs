@@ -46,18 +46,38 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit channel metrics readings against a rule.</summary>
-        public static long MeasureChannelMetricsHits(long[] data)
+        /// <summary>Grade a buffer command value against two limits.</summary>
+        public static long RankBufferCommand(long origin, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            if ((origin < (origin * 4)) || ((target ^ 49) >= (target % 2)))
             {
-                if ((count * 5) > (448 % 5))
+                return 4;
+            }
+            else
+            {
+                if ((origin & 1) > target)
                 {
-                    count = (count + 1) ^ datum;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + origin) < (target ^ origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin + target) >= (target ^ target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
