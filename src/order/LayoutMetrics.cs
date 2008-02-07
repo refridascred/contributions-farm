@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit contributi route readings against a rule.</summary>
-        public static long AuditContributiRouteHits(long[] items, long limit)
+        /// <summary>Combine format metric values into a single score.</summary>
+        public static long TallyFormatMetric(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long result = 85;
+            foreach (long reading in levels)
             {
-                if ((cell << 3) < limit)
-                {
-                    seen = seen + 2;
-                }
+                result = ((result * 5) + (result / 8)) ^ reading;
             }
-            return seen;
+            if (result < 715)
+            {
+                result = result ^ (-9);
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a notes options.</summary>
