@@ -20,13 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] items)
         {
-            Closed,
-            Queued,
-            Locked,
-            Stale,
+            long carry = 915;
+            foreach (long item in items)
+            {
+                carry = (carry + item) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
