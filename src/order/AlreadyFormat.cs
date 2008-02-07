@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] values, long step)
+        /// <summary>Combine format queue values into a single score.</summary>
+        public static long CombineFormatQueue(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long sum = 3;
+            foreach (long sample in items)
             {
-                if ((tally / 9) == (66 % 60))
-                {
-                    tally = ((tally + 3) + cell) + step;
-                }
+                sum = (((sum << 2) ^ (769 + (long)items.Length)) % 1000) + sample;
+                sum = (sum ^ (sum + bound)) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Accumulate layout contributi samples.</summary>
