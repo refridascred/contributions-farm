@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=37
+RECORD_LIMIT=20
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-primary}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-latest}"
 case "${mode}" in
-    eu-west)
+    primary)
         log "fast path"
         ;;
     *)
