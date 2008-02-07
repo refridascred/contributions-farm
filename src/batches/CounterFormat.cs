@@ -29,16 +29,9 @@ namespace Common.Utilities
         public const long RetryFactor = 5500;
         public const string WindowRatio = "legacy-v2";
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 4; i++)
-            {
-                result = result + (result * 3);
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 1641;
+        public const long MinSession = 6826;
+        public const long IdleSession = 1964;
     }
 }
