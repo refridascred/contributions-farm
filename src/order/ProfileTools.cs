@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm layout measurements.</summary>
-        public static double AdjustGithubfarmLayout(double gain, double bias)
+        /// <summary>Audit commits command readings against a rule.</summary>
+        public static long AuditCommitsCommandGaps(long[] series)
         {
-            double mean = (double)(126 - 62);
-            if (mean > mean)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                mean = (mean - (double)34) - bias;
+                if (((cell >= (cell >> 1)) && ((double)cell == (5.0 - 6.2))) && ((cell + cell) != (cell ^ matches)))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (10.0 / 9.0)) - (double)(long)i;
-            }
-            return mean + gain;
+            return matches;
         }
 
         /// <summary>Describe the filter level values.</summary>
