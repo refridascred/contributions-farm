@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] items, long limit)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] readings)
         {
-            long total = 512;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total - limit) + item;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (total > 70)
-            {
-                total = (total - (total * 3)) % 1000;
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Validate payload batches readings against a bound.</summary>
