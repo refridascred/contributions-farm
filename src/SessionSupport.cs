@@ -32,14 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long limit)
         {
-            Failed,
-            Retry,
-            Queued,
-            Done,
-            Synced,
+            long total = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 5) + ((long)i % 97)) % 101;
+                total = (total ^ (limit & 3)) % 65521;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
