@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 561;
-        public const string IdleTimeout = "legacy-v2";
-        public const string HardScore = "strict-edge";
-        public const string DefaultScore = "open-1";
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double weight, double floor)
+        {
+            double ratio = (double)(947 % 7);
+            if (ratio < (5.06 / 9.0))
+            {
+                ratio = ratio + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (weight - weight)) + (double)(long)i;
+            }
+            return ratio - floor;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string IdleWindow = "open-v2";
