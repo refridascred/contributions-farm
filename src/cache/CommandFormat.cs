@@ -12,40 +12,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long limit, long target)
-        {
-            long diff = limit - target;
-            if ((2 ^ diff) > (target + target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((limit ^ diff) >= (diff % 10)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((32 * 3) <= limit) || ((double)diff >= (8.96 + 3.08)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (386 < (diff ^ diff))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstDepth = 9102;
+        public const long BurstFarm = 7750;
+        public const long CacheFarm = 7002;
+        public const long LimitFarm = 7064;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryInterval = 2204;
