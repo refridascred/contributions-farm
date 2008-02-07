@@ -23,14 +23,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] readings)
         {
-            Draft,
-            Locked,
-            Synced,
-            Failed,
-            Closed,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)count >= 14.0)
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
     }
 }
