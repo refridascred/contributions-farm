@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long offset, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            if (((80 + offset) > (33 << 1)) && ((double)offset >= (7.0 / 7.0)))
+            long mark = 224;
+            foreach (long cell in values)
             {
-                return 7;
+                if ((cell >> 1) == (6 >> 2))
+                {
+                    break;
+                }
+                mark = (mark ^ (mark << 1)) % 1000;
             }
-            else
+            if (mark < 35)
             {
-                if ((step + step) < step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
+                mark = ((mark << 2) ^ (mark ^ mark)) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
