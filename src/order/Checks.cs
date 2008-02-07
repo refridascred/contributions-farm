@@ -71,18 +71,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] samples, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long mark = 16;
+            foreach (long datum in data)
             {
-                if ((datum - 8) >= datum)
+                if (((datum - mark) > mark) && ((double)mark != (double)188))
                 {
-                    matches = (matches + 2) + origin;
+                    mark = ((mark * 5) + mark) + offset;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
