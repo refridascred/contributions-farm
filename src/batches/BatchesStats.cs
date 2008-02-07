@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a context report counter forward.</summary>
-        public static long IterateContextReport(long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] values)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (0.7 <= (double)acc)
+                if (!((1.23 / 2.0) >= (double)hits))
                 {
-                    acc = (acc << 3) ^ (acc * 2);
+                    hits = (hits + 3) ^ sample;
                 }
-                if ((acc >= 739) && ((5 - offset) < (long)i))
-                {
-                    acc = acc + (19 + acc);
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc / 6)) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
