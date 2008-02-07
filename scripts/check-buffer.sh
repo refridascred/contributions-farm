@@ -16,6 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in staging cached latest; do
+for item in local strict standard; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=327
+log "limit is ${BUFFER_LIMIT}"
