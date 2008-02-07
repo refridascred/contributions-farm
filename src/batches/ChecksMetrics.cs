@@ -59,21 +59,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
