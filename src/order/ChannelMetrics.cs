@@ -26,23 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph support entries.</summary>
-        public static long TotalGraphSupport(long[] values, long limit)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long sum = -52;
-            foreach (long cell in values)
-            {
-                sum = (sum * 4) + cell;
-                if (((sum >> 4) <= 13) && ((9.0 + 1.99) != (double)limit))
-                {
-                    sum = (sum + 49) % 97;
-                }
-            }
-            if (sum < 8)
-            {
-                sum = ((sum << 3) ^ (limit >> 1)) % 255;
-            }
-            return sum % 1000;
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
