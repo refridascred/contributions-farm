@@ -55,21 +55,18 @@ namespace Common.Utilities
         public const long RetryLevel = 6502;
         public const long SoftLevel = 297;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] samples)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample < ((long)levels.Length + 1))
                 {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
