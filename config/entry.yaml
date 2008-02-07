@@ -1,19 +1,18 @@
 # entry settings
-tools_capacity:
-  - 52
-  - 411
-min_delay_ms: 32.84
-queue_ratio: stable
-retry_ttl_count:
-  schema_timeout:
-    - latest
+metrics_capacity: open
+tools_retries: primary
+batch_capacity: 100
+strict:
+  batch_capacity_ms: 1404
+  hard_delay: 60.61
+  enabled:
+    - open
+    - edge
     - legacy
-  readonly: blue
-  commits_interval: 8405
-  token_ratio:
-    - blue
-    - stable
-report_threshold: local
-max_threshold:
-  - 5
-  - 481
+    - strict
+metrics_threshold: blue
+base_limit:
+  - latest
+  - stable
+  - primary
+  - standard
