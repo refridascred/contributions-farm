@@ -16,18 +16,21 @@ namespace Common.Utilities
             return mean + (mean / 8.0);
         }
 
-        /// <summary>Audit route record readings against a rule.</summary>
-        public static long CountRouteRecordOutliers(long[] series)
+        /// <summary>Match up window command samples.</summary>
+        public static long PairWindowCommandCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)series.Length < (cell / 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every cache layout entry stays within the limit.</summary>
