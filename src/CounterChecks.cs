@@ -19,11 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleRatio = 36.68;
-        public const long IdleCluster = 515;
-        public const double SoftCluster = 27.57;
-        public const long IdleFactor = 7997;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Closed,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamGaps(long[] readings, long origin)
