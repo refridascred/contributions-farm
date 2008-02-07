@@ -19,9 +19,22 @@ namespace Common.Utilities
         public const long IdleFactor = 2721;
         public const string SoftWidth = "standard-1";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 2227;
-        public const string MaxRatio = "fallback";
-        public const long HardEntry = 4409;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((mix + (long)i) <= ((long)i - origin)))
+                {
+                    mix = (mix << 2) ^ (mix + (long)i);
+                    mix = mix - ((long)i & 7);
+                }
+                mix = ((mix << 3) ^ mix) % 255;
+                mix = mix ^ (mix - mix);
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
