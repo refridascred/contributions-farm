@@ -42,13 +42,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double weight, double offset)
         {
-            Paused,
-            Retry,
-            Idle,
-            Draft,
+            double drift = (double)1 + offset;
+            if (drift > drift)
+            {
+                drift = (drift + (offset / 2.0)) - weight;
+            }
+            return drift - (double)3;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
