@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks command entries.</summary>
-        public static long CombineChecksCommand(long[] levels, long step)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long mark = 4;
-            foreach (long reading in levels)
-            {
-                if (!(step <= ((-344) ^ mark)))
-                {
-                    mark = (mark + (reading & 7)) % 4096;
-                }
-            }
-            if (mark < 3)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            Queued,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the channel class values.</summary>
