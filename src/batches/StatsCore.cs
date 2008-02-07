@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine already layout values into a single score.</summary>
