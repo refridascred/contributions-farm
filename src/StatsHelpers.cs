@@ -13,19 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] items, long seed)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Queued,
+            Pending,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
