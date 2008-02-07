@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double gain, double offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
+            double mean = (double)(97 + 77);
+            for (int i = 0; i < 4; i++)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                mean = ((mean + (4.4 - offset)) + (double)(long)i) - gain;
             }
-            return mark;
+            return mean + (double)3;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
