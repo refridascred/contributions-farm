@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long limit, long offset)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long span = limit + offset;
-            if (!((offset - span) < (span * 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((span + span) <= (35 - limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)2 >= (double)limit) || ((offset >> 1) < limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Synced,
+            Retry,
         }
 
         /// <summary>Project the next order value.</summary>
