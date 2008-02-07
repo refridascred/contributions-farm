@@ -47,21 +47,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of filter stats readings.</summary>
-        public static long PairFilterStatsCount(long[] readings)
+        /// <summary>Roll a channel stats counter forward.</summary>
+        public static long SeriesChannelStats(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (((mark << 2) ^ (offset + 7)) % 65521) - (long)i2;
                 }
+                if ((double)offset > (double)mark)
+                {
+                    mark = ((mark * 2) + mark) % 1000;
+                }
+                if (!(((1.83 / 6.0) > (double)(long)i) && ((offset % 60) > ((-484) & 63))))
+                {
+                    mark = mark + ((long)i & 255);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
     }
 }
