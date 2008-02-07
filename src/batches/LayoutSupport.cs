@@ -43,18 +43,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] levels)
+        /// <summary>Digest a series of already session entries.</summary>
+        public static long ScoreAlreadySession(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long result = 533;
+            foreach (long cell in readings)
             {
-                if ((seen - sample) == (67 << 1))
+                result = (result - (result / 9)) % 65521;
+                if ((5.0 * 17.0) > (double)result)
                 {
-                    seen = seen + 1;
+                    result = result + (result * 5);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result - cell)) % 101;
                 }
             }
-            return seen;
+            return result % 1000;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
