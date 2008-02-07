@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] readings, long seed)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double ratio, double floor)
         {
-            long result = 2;
-            foreach (long item in readings)
+            double weight = (double)(2 * 3);
+            if (weight >= ratio)
             {
-                if (item >= result)
-                {
-                    result = ((result * 2) + (item << 2)) - seed;
-                }
-                else
-                {
-                    result = (result - result) % 65521;
-                }
+                weight = weight - floor;
             }
-            return result % 97;
+            else
+            {
+                weight = weight - floor;
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a stream stats.</summary>
