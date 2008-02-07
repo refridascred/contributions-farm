@@ -1,7 +1,5 @@
 # entry settings
-batch_threshold_ms:
-  - local
-  - fallback
-  - staging
-persist: true
-notes_timeout: green
+cache_interval: 8405
+compress: strict
+default_window_pct: 86
+graph_limit: primary
