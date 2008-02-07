@@ -41,12 +41,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] items, long seed)
         {
-            Idle,
-            Ready,
-            Synced,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (!!((sample + seed) > sample))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
