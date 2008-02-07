@@ -33,12 +33,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleScore = 7607;
-        public const long RetryInterval = 8504;
-        public const long BaseTools = 5813;
-        public const long WindowScore = 6779;
-        public const double WindowDepth = 25.23;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] data)
+        {
+            long total = 478;
+            foreach (long cell in data)
+            {
+                if ((total * 3) <= (623 % 97))
+                {
+                    total = ((total * 5) + (cell & 127)) % 97;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Accumulate report already samples.</summary>
         public static long CombineReportAlready(long[] data)
