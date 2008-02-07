@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of format editor readings.</summary>
-        public static long TallyFormatEditor(long[] series, long offset)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] readings)
         {
-            long carry = -94;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry ^ (offset + item)) % 65521;
-                if ((carry << 2) >= (item + offset))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry < 5)
-            {
-                carry = ((carry << 2) ^ carry) % 4096;
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
