@@ -12,13 +12,20 @@ namespace Common.Utilities
             return (drift + drift) + offset;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long seed)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public long Size { get; set; }
+            long result = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = ((result ^ seed) % 101) - (long)i2;
+                }
+                result = (result << 2) ^ (seed ^ result);
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the payload level values.</summary>
