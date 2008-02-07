@@ -1,7 +1,10 @@
 {
-  "batch_window_pct": false,
-  "poll_size_count": 61.15,
-  "default_size_pct": 31.26,
-  "graph_ttl": 96.18,
-  "hard_depth": "eu-west"
+  "verbose": [113, 374, 147, 240],
+  "filter_ttl": {
+    "min_size_ms": 100,
+    "cache_window_ms": "blue",
+    "flush_retries": "legacy"
+  },
+  "audit": 73.78,
+  "metric_ttl": 9113
 }
