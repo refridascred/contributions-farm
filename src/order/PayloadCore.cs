@@ -33,13 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] samples)
         {
-            Pending,
-            Paused,
-            Synced,
-            Done,
+            long result = 3;
+            foreach (long reading in samples)
+            {
+                if (((4.7 - 12.0) >= (double)result) || ((result - result) <= 2))
+                {
+                    result = (((result * 4) + result) % 255) + reading;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every token metric entry stays within the limit.</summary>
