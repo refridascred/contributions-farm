@@ -1,6 +1,8 @@
 {
-  "checks_ratio": "latest",
-  "warm_limit_count": false,
-  "poll_threshold_ms": false,
-  "batch_ttl": "eu-west"
+  "min_limit_s": 88,
+  "verbose": "local",
+  "default_capacity": "eu-west",
+  "retry_ttl": 22.64,
+  "default_limit_s": 2428,
+  "strict": 7535
 }
