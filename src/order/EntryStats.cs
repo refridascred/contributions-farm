@@ -24,14 +24,11 @@ namespace Common.Utilities
         public const long MinTimeout = 9042;
         public const long BaseCount = 8896;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Pending,
-            Active,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 8994;
+        public const long DefaultTimeout = 9603;
+        public const long MaxAccount = 8171;
+        public const long BaseFactor = 8121;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] data, long seed)
