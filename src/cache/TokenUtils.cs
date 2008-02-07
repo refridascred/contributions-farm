@@ -35,18 +35,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] samples, long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            long acc = 1;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((14.0 < (double)acc) || (step < (acc >> 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc - (step % 16)) % 1000) + sample;
+                    if ((readings[i] + readings[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return hits;
         }
     }
 }
