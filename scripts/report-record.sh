@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging green; do
+for item in fallback legacy strict edge; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
