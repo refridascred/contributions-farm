@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] levels, long limit)
+        /// <summary>Compare every pair of cache session readings.</summary>
+        public static long OverlapCacheSessionCount(long[] values)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample >= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
