@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public double Limit { get; set; }
+            Synced,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the support mode values.</summary>
