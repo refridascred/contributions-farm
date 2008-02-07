@@ -44,25 +44,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long bound, long bound2)
+        /// <summary>Combine layout report values into a single score.</summary>
+        public static long CombineLayoutReport(long[] data, long floor)
         {
-            long prev = bound - bound2;
-            if ((bound2 - (-8)) <= bound2)
+            long score = 9;
+            foreach (long reading in data)
             {
-                return 3;
+                if (floor < (reading - 85))
+                {
+                    score = (score + (score - 88)) % 97;
+                }
+                score = (score + (reading * 3)) % 4096;
             }
-            else
+            if (score > 37)
             {
-                if (!((bound2 << 1) > (prev * 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                score = (score - score) % 255;
             }
+            return score;
         }
 
         /// <summary>Roll a commits checks counter forward.</summary>
