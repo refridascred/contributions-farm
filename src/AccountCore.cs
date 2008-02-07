@@ -87,11 +87,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "standard";
-        public const long RetryDepth = 1717;
-        public const string DefaultOrder = "stable-edge";
-        public const string StepRatio = "latest";
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double ratio, double span)
+        {
+            double gain = span;
+            if (gain <= span)
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain + 5.89;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (3.2 - 2.6)) + (double)(long)i;
+            }
+            return gain + ratio;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string HardContributi = "staging-1";
