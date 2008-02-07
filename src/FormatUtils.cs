@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = offset;
+            if (weight >= offset)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + (4.0 + ratio);
             }
-            return tally;
+            return weight + 7.0;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
