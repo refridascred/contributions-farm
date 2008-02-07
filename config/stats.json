@@ -1,20 +1,7 @@
 {
-  "batches_ratio": ["local", "legacy", "legacy"],
-  "max_delay_count": {
-    "max_capacity_pct": 500,
-    "default_interval_count": "fallback",
-    "batch_window": "local",
-    "base_timeout_pct": {
-      "enabled": "green",
-      "readonly": false,
-      "cache_size_count": true,
-      "min_depth_s": false
-    },
-    "min_delay_pct": 11,
-    "audit": 30
-  },
-  "checks_threshold": ["cached", "cached", "cached"],
-  "default_timeout": 6531,
-  "retry_interval_s": 100,
-  "verbose": 500
+  "sync_delay": 9639,
+  "persist": 30,
+  "warm_limit_s": ["eu-west", "stable", "green", "primary"],
+  "strict": 30,
+  "hard_ratio_pct": 100
 }
