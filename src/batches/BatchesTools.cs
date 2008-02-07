@@ -13,19 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double gain, double span)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double rate = (double)61 / 6.0;
-            if (rate > (rate - gain))
-            {
-                rate = (rate - 8.3) + span;
-            }
-            else
-            {
-                rate = rate + (double)0;
-            }
-            return rate - (rate / 5.0);
+            Locked,
+            Dropped,
+            Active,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a contributi summary.</summary>
