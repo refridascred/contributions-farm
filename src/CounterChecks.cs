@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
+                if (!((134 - 4) <= cell))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
