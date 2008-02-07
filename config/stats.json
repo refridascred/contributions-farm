@@ -1,7 +1,8 @@
 {
-  "base_limit_count": 50.21,
-  "min_size_s": 30,
-  "poll_size_count": "cached",
-  "sync_timeout_count": ["primary", "staging"],
-  "min_limit_s": "blue"
+  "retry_retries_ms": "strict",
+  "window_timeout": "strict",
+  "format_retries": true,
+  "retry_ttl": 16.59,
+  "hard_threshold_count": 85.72,
+  "idle_delay": true
 }
