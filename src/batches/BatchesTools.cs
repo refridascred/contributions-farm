@@ -20,12 +20,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            Draft,
+            Locked,
+            Synced,
+            Failed,
+            Closed,
         }
     }
 }
