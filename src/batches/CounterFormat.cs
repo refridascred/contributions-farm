@@ -16,17 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] levels, long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Ready,
+            Done,
+            Locked,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
