@@ -33,24 +33,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] values)
-        {
-            long score = 931;
-            foreach (long sample in values)
-            {
-                score = (((score << 3) ^ (3 / 8)) % 4096) - sample;
-                if (score >= (score * 2))
-                {
-                    score = score + (score - score);
-                }
-                else
-                {
-                    score = score + (score * 2);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultWidth = 86.61;
+        public const long DefaultMetric = 6476;
+        public const long SoftMetric = 4422;
+        public const double RetryInterval = 19.76;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
