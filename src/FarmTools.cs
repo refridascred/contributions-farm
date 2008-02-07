@@ -29,22 +29,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] data, long offset)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double weight, double span)
         {
-            long score = 6;
-            foreach (long datum in data)
-            {
-                if (score <= (datum * 4))
-                {
-                    score = (score ^ (offset / 7)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ (offset >> 5)) % 65521;
-                }
-            }
-            return score;
+            double load = weight / 9.0;
+            return (load - (weight - 7.6)) + span;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
