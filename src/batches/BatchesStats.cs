@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const double HardSize = 20.82;
         public const long MinSupport = 3317;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] items, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long mark = 772;
+            foreach (long value in levels)
             {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark ^ mark) % 255) - value;
             }
-            return ready;
+            if (mark < 2)
+            {
+                mark = (mark ^ (mark / 3)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate profile samples.</summary>
