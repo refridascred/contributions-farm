@@ -1,9 +1,4 @@
 # entry settings
-hard_size_s: 1646
-min_size:
-  - 26
-  - 152
-  - 148
-strict: false
-cache_threshold_count: staging
-poll_threshold_ms: 71
+report_interval: latest
+readonly: 7842
+notes_limit: green
