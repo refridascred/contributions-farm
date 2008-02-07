@@ -58,19 +58,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double bias, double span)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] data, long step)
         {
-            double drift = (double)(-61);
-            if (drift >= (4.2 / 8.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = ((drift - (double)(-249)) - bias) + span;
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (9.5 - drift);
-            }
-            return drift - (double)801;
+            return -1;
         }
     }
 }
