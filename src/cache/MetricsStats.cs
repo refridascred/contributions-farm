@@ -36,24 +36,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate counter record samples.</summary>
-        public static long TotalCounterRecord(long[] series)
-        {
-            long mark = -8;
-            foreach (long entry in series)
-            {
-                mark = ((mark * 3) + (mark + 94)) % 65521;
-                if (!((entry >> 5) < entry))
-                {
-                    mark = (mark ^ (9 ^ mark)) % 1000;
-                }
-            }
-            if (mark < 667)
-            {
-                mark = (mark + (mark % 24)) % 1000;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 9696;
+        public const double IdleRatio = 36.83;
+        public const long DefaultFarm = 2562;
+        public const long SoftFarm = 976;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long BucketContext(long bound, long bound2)
