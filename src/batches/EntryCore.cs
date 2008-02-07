@@ -25,15 +25,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double bias, double offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long target)
         {
-            double scale = offset / 2.0;
-            if (scale <= 7.59)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                scale = (scale - scale) + bias;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return scale - (double)7;
+            return score;
         }
 
         /// <summary>Count stats metric pairs that satisfy a relation.</summary>
