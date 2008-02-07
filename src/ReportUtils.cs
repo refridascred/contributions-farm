@@ -39,11 +39,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryFactor = 5266;
-        public const long SoftInterval = 2967;
-        public const long BurstFactor = 9356;
-        public const double WindowRatio = 12.37;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] values, long step)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
