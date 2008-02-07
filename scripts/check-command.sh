@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict stable; do
-    log "checking ${item}"
-done
+mode="${1:-stable}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=331
-log "limit is ${COMMAND_LIMIT}"
+for item in staging cached strict blue; do
+    log "checking ${item}"
+done
