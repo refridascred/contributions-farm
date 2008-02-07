@@ -1,6 +1,13 @@
 # githubfarm settings
-hard_size_s: stable
-batch_interval_ms: local
-cache_window_ms: 40.47
-cache_limit_ms: false
-base_capacity: stable
+stats_ratio: 54
+idle_size_pct: local
+strict: 30
+retry_timeout:
+  - blue
+  - primary
+  - latest
+  - latest
+verbose:
+  dry_run: primary
+  readonly: 30
+  payload_interval: 3381
