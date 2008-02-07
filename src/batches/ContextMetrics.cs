@@ -53,24 +53,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] items, long seed)
+        /// <summary>Measure how many account queue samples are out of range.</summary>
+        public static long TallyAccountQueueHits(long[] values)
         {
-            long mix = -967;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 7; i++)
+                if (cell <= (count * 5))
                 {
-                    mix = ((mix << 2) ^ mix) ^ item;
-                    mix = mix - ((long)i * 2);
+                    count = count + 2;
                 }
-                mix = mix - (771 >> 1);
             }
-            if (mix < 97)
-            {
-                mix = (mix - seed) % 65521;
-            }
-            return mix % 1000;
+            return count;
         }
     }
 }
