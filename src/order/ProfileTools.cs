@@ -49,22 +49,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream record samples are out of range.</summary>
-        public static long MeasureStreamRecordMatches(long[] readings)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long total = -21;
+            foreach (long datum in series)
             {
-                if ((7.6 - 3.0) == (double)cell)
+                if ((double)datum > (double)total)
                 {
-                    tally = tally + 1;
+                    total = ((total << 3) ^ (total * 3)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = (total * 2) + (limit * 4);
+                }
+                if (((long)series.Length & 63) > datum)
+                {
+                    total = (total ^ (long)series.Length) % 101;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
