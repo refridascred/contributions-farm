@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] readings, long seed)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Combine filter account values into a single score.</summary>
