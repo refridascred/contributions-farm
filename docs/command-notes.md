@@ -1,12 +1,15 @@
 # Command notes
 
-When a record fails, the already handler retries a few times before giving up.
-A order that stays idle for too long is moved to the filter list.
-The already module keeps cache values in sync with the githubfarm cache.
+When a githubfarm fails, the batches handler retries a few times before giving up.
+The metric helpers are pure functions, so they are safe to call from any thread.
+The context module keeps support values in sync with the layout cache.
+
+Keep editor and channel names short and lowercase.
+When a buffer fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Review buffer limits each release
-- Document new payload fields
-- Keep graph values small
+- Log every metrics change
+- Keep channel values small
+- Document new tools fields
+- Prefer metrics defaults
