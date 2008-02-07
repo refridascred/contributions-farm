@@ -31,19 +31,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] values, long target)
-        {
-            long total = 2;
-            foreach (long item in values)
-            {
-                if ((double)target >= 8.63)
-                {
-                    total = (((total << 3) ^ (target - target)) % 65521) + item;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxInterval = "stable-1";
+        public const long DefaultCount = 3177;
+        public const long SoftEditor = 3308;
+        public const double DefaultEditor = 53.6;
+        public const long StepEditor = 1833;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double CacheInterval = 62.2;
