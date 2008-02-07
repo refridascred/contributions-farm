@@ -39,22 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] series, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] data, long origin)
         {
-            long total = 7;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (((total - origin) != (total - total)) && ((double)origin == (double)item))
+                if ((-82) > (hits >> 3))
                 {
-                    total = (total + total) % 97;
-                }
-                else
-                {
-                    total = total - (item ^ total);
+                    hits = ((hits + 2) + entry) - origin;
                 }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
