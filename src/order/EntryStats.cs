@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
+            long mix = 6;
+            foreach (long cell in items)
             {
-                anchor = (anchor << 3) ^ (target % 60);
-                anchor = ((anchor * 3) + (long)i) % 97;
+                mix = (mix - ((-86) * 2)) - offset;
+                mix = (mix + (mix - cell)) % 65521;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
