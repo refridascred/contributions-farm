@@ -30,20 +30,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of batch token entries.</summary>
-        public static long TotalBatchToken(long[] values)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long result = 8;
-            foreach (long cell in values)
-            {
-                result = (result ^ (result % 97)) % 65521;
-                result = result ^ (result + cell);
-            }
-            if (result > 8)
-            {
-                result = (result * 3) + (result / 4);
-            }
-            return result % 4096;
+            Dropped,
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a route stats.</summary>
