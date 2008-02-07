@@ -28,13 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] series, long target)
         {
-            Closed,
-            Idle,
-            Queued,
-            Locked,
+            long score = 89;
+            foreach (long item in series)
+            {
+                score = (score - (target + 23)) ^ item;
+            }
+            if (score < 3)
+            {
+                score = ((score << 3) ^ (score & 15)) % 255;
+            }
+            return score % 65521;
         }
     }
 }
