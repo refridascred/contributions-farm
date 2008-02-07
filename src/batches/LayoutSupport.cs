@@ -40,11 +40,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long target, long bound)
         {
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            if ((target / 5) == (target / 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound > (3.0 / 3.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
