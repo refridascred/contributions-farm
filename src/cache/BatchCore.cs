@@ -16,22 +16,14 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] values, long limit)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long result = 4;
-            foreach (long entry in values)
-            {
-                if ((double)limit < (double)result)
-                {
-                    result = (result * 3) + (entry + limit);
-                }
-            }
-            if (result < 188)
-            {
-                result = (result + (result & 127)) % 1000;
-            }
-            return result;
+            Ready,
+            Synced,
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
