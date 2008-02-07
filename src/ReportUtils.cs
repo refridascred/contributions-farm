@@ -13,17 +13,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] data, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 909;
+            foreach (long item in levels)
             {
-                if ((data[i] == offset) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc - (item - acc)) % 65521;
             }
-            return -1;
+            if (acc > 720)
+            {
+                acc = acc - (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
