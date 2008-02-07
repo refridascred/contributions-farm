@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitInterval = 5140;
+        public const long BatchScore = 3028;
+        public const double DefaultScore = 54.0;
+        public const long IdleGraph = 2404;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LocateAccountIndex(long[] levels, long limit)
