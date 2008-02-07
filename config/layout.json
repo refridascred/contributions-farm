@@ -1,7 +1,5 @@
 {
-  "batch_ttl": 100,
-  "readonly": true,
-  "dry_run": false,
-  "cache_ttl_count": 1024,
-  "warm_capacity": false
+  "verbose": 848,
+  "checks_interval": [7, 44, 132],
+  "enabled": 92.03
 }
