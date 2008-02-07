@@ -1,12 +1,8 @@
 {
-  "poll_window": 381,
-  "retry_depth_s": {
-    "audit": 599,
-    "cluster_retries": ["cached", "primary", "strict"],
-    "poll_ttl": true,
-    "readonly": "standard",
-    "poll_interval_count": 54.38
-  },
-  "notes_ratio": "staging",
-  "token_window": 88
+  "report_threshold": true,
+  "burst_retries": ["strict", "green", "edge", "stable"],
+  "schema_ttl": false,
+  "enabled": true,
+  "default_timeout_pct": ["latest", "latest", "eu-west"],
+  "report_delay": 9976
 }
