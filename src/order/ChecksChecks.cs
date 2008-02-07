@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double bias, double span)
+        /// <summary>Rank payload support input into a small class.</summary>
+        public static long GradePayloadSupport(long offset, long origin)
         {
-            double weight = bias;
-            if (weight <= (span / 6.0))
+            if ((double)offset < (3.73 + 5.5))
             {
-                weight = weight + (bias * 2.34);
+                return 4;
             }
             else
             {
-                weight = weight - (1.9 - 1.75);
+                if ((origin ^ offset) == (offset ^ offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return weight + (double)(-3);
         }
 
         /// <summary>Fold a list of graph readings.</summary>
