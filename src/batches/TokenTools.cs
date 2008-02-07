@@ -12,22 +12,39 @@ namespace Common.Utilities
         public const long BurstDepth = 7850;
         public const long RetryBatches = 4666;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] data)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long origin, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            long edge = origin + seed;
+            if (((3.0 * 6.45) != (double)seed) && ((double)seed <= 0.9))
             {
-                if (count < (count - count))
+                return 8;
+            }
+            else
+            {
+                if ((origin & 7) == (edge & 3))
                 {
-                    count = (count + 1) + item;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((6.1 * 6.8) >= (double)edge) || ((double)edge > 2.8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((9.43 / 9.0) >= (double)edge)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate farm support samples.</summary>
