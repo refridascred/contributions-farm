@@ -1,18 +1,8 @@
 # entry settings
-filter_ratio:
-  schema_capacity: local
-  compress: 29
-  persist: 250
-  batch_delay_s: stable
-  min_window_ms: 93.34
-  warm_interval: 6357
-sync_limit_count:
-  queue_threshold: legacy
-  cache_depth: open
-  min_interval: cached
-  support_retries:
-    - 355
-    - 14
-  soft_limit_pct: legacy
-poll_timeout_pct: 5404
-stream_window: standard
+payload_timeout:
+  - edge
+  - cached
+  - latest
+  - eu-west
+sync_capacity_ms: 34.65
+max_ttl_pct: 47.75
