@@ -34,13 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Closed,
-            Queued,
-            Failed,
-            Pending,
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
