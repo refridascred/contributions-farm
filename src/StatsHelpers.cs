@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowSpan = 9952;
-        public const string BurstRecord = "alpha-1";
-        public const long WindowRecord = 5558;
-        public const string LimitRecord = "primary-v2";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "primary-edge";
+        public const long BaseInterval = 7099;
+        public const string HardFactor = "staging-1";
+        public const double SoftFactor = 37.33;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
