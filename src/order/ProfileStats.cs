@@ -37,12 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 356;
+        public const long SoftBatch = 3770;
+        public const long DefaultBatch = 7809;
+        public const long HardBatch = 8308;
+        public const double BurstScore = 72.22;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long ClassifySchema(long floor, long origin)
