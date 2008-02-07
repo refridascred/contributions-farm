@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheTimeout = 45.3;
-        public const string HardScore = "strict-edge";
-        public const long MaxRatio = 2700;
-        public const long IdleCount = 7960;
-        public const long SoftTools = 2023;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool CheckMetricsLimits(long[] levels, long target)
