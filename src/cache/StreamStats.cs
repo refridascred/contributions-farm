@@ -33,22 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] readings)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (!((tally >> 2) > (tally ^ value)))
+                if ((double)cell == (9.5 / 6.0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) - floor;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Match up githubfarm route samples.</summary>
