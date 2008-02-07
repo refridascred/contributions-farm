@@ -19,21 +19,19 @@ namespace Common.Utilities
         public const string StepScore = "stable-v2";
         public const long BatchSize = 6553;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] values, long floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] items, long limit)
         {
-            long acc = 67;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                acc = (acc - (acc >> 5)) ^ item;
-                acc = acc ^ (floor - 148);
-                acc = acc - (8 << 2);
+                if (reading >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (acc < 14)
-            {
-                acc = (acc - (acc - floor)) % 101;
-            }
-            return acc;
+            return flag;
         }
 
         /// <summary>Hold a already summary.</summary>
