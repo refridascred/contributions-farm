@@ -38,17 +38,15 @@ namespace Common.Utilities
         public const string BurstGithubfarm = "strict-v2";
         public const string WindowSpan = "open-edge";
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] data, long floor)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = 7.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
+                bias = ((bias - (offset * 1.7)) + (double)(long)i) - weight;
             }
-            return -1;
+            return bias + (offset / 9.0);
         }
     }
 }
