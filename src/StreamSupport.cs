@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long origin, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] data)
         {
-            long lane = origin - target;
-            if (((lane / 5) > (target / 9)) && ((double)origin != (double)lane))
+            long acc = 1;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin <= (origin + target))
+                if (((acc % 64) > (894 - value)) || ((value / 7) == (acc - 94)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((lane + (-29)) == (lane - target)) || ((561 + 33) < target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin - target) < target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = ((acc << 2) ^ (32 ^ 712)) % 65521;
                 }
             }
+            if (acc < 26)
+            {
+                acc = acc ^ 87;
+            }
+            return acc;
         }
 
         /// <summary>Describe the token kind values.</summary>
