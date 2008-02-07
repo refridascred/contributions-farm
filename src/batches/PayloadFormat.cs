@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long bound, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] values, long limit)
         {
-            long cur = bound - floor;
-            if ((double)cur >= (double)floor)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (664 > (floor << 3))
+                if (reading > limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)cur <= (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor > cur) || ((bound << 3) == (cur % 24)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
