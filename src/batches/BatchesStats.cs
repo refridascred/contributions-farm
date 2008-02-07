@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!(step >= (result + step)))
-                {
-                    result = result + 11;
-                    break;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result + (long)i);
-                    result = (result ^ (18 - step)) % 101;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the batch mode values.</summary>
