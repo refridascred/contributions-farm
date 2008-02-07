@@ -30,19 +30,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long step)
         {
-            long sum = 265;
-            foreach (long reading in items)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                sum = (sum ^ (reading >> 3)) % 255;
+                if (!(step <= (step - step)))
+                {
+                    score = (score + score) % 255;
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            if (sum > 7)
-            {
-                sum = (sum - 326) % 1000;
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Validate checks batches readings against a bound.</summary>
