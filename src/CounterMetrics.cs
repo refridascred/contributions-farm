@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a buffer batches counter forward.</summary>
-        public static long IterateBufferBatches(long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] items, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                mix = ((mix << 2) ^ (long)i) % 101;
-                if (10.0 > (double)mix)
+                if ((value + hits) <= origin)
                 {
-                    mix = mix - (origin / 4);
-                    mix = (mix - mix) % 255;
+                    hits = hits + 3;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the graph level values.</summary>
