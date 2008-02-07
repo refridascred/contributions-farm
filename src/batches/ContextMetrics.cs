@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long offset, long step)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long bound = offset - step;
-            if ((bound % 7) >= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound == (3.28 * 1.35))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Digest a series of window cache entries.</summary>
