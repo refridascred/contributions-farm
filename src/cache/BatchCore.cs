@@ -18,26 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] values, long limit)
         {
-            long sum = 75;
-            foreach (long item in series)
+            long result = 4;
+            foreach (long entry in values)
             {
-                if ((double)item <= (double)(-6))
+                if ((double)limit < (double)result)
                 {
-                    sum = sum ^ (0 % 5);
-                }
-                else
-                {
-                    sum = sum + (sum + sum);
-                }
-                if ((item - 478) <= (sum + item))
-                {
-                    sum = (sum - 66) % 97;
+                    result = (result * 3) + (entry + limit);
                 }
             }
-            return sum;
+            if (result < 188)
+            {
+                result = (result + (result & 127)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
