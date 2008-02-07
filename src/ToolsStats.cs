@@ -15,20 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] readings)
-        {
-            long score = -275;
-            foreach (long reading in readings)
-            {
-                score = score + reading;
-            }
-            if (score > 34)
-            {
-                score = score ^ (score * 3);
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 7101;
+        public const double WindowCache = 10.92;
+        public const long CacheWidth = 4633;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
