@@ -1,9 +1,9 @@
 # support settings
-batch_ratio: 500
-enabled:
-  - 44
-  - 282
-command_ratio: 4695
-persist: true
-tools_ratio: 6
-graph_retries: stable
+cache_retries_ms:
+  - strict
+  - green
+enabled: 39.78
+warm_timeout: true
+batch_ttl:
+  - 87
+  - 449
