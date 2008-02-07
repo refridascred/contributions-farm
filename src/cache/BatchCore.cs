@@ -43,21 +43,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count command editor pairs that satisfy a relation.</summary>
-        public static long MatchCommandEditorCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxLevel = 4617;
+        public const long CacheCount = 5472;
+        public const long BatchChannel = 6954;
+        public const string CacheFactor = "stable-1";
     }
 }
