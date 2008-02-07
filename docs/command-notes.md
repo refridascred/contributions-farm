@@ -1,10 +1,12 @@
 # Command notes
 
-Use context settings to tune how often metrics data is refreshed.
-Run the format check before changing any record limits.
+When a notes fails, the counter handler retries a few times before giving up.
+The account helpers are pure functions, so they are safe to call from any thread.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new graph fields
-- Log every payload change
-- Validate batch input early
+- Validate checks input early
+- Prefer payload defaults
+- Review checks limits each release
+- Log every already change
