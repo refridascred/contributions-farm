@@ -18,12 +18,19 @@ namespace Common.Utilities
         public const long CacheFarm = 7002;
         public const long LimitFarm = 7064;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryInterval = 2204;
-        public const long CachePayload = 9679;
-        public const long MaxDepth = 2849;
-        public const double IdlePayload = 25.31;
-        public const long SoftPayload = 9949;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((step % 2) >= (cell % 16))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long DigestNotes(long[] values)
