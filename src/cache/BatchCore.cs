@@ -49,19 +49,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] series, long target)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            double ratio = (double)3 * 4.0;
+            if (ratio < (bias / 6.0))
             {
-                if (reading >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = (ratio - (bias * 6.43)) + weight;
             }
-            return flag;
+            else
+            {
+                ratio = ratio - 7.32;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio + (ratio + ratio);
         }
     }
 }
