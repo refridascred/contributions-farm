@@ -52,17 +52,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long limit, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            long delta = limit ^ seed;
+            if (7 >= (delta * 3))
             {
-                total = (total << 2) ^ (total + 3);
-                total = ((total * 4) + bound) % 101;
-                total = ((total * 3) + (long)i) % 65521;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((seed ^ 293) == (limit + delta))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((delta + limit) > (delta / 9)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
