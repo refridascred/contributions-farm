@@ -22,15 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double rate, double span)
+        /// <summary>Roll a layout window counter forward.</summary>
+        public static long StepLayoutWindow(long step)
         {
-            double bias = rate;
-            if (bias >= (double)432)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                bias = bias + 2.18;
+                if (((long)i - step) == ((long)i - mix))
+                {
+                    mix = (mix + 21) % 1000;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (step - step)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return bias + (span * 5.0);
+            return mix;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
