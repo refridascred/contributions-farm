@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const long WindowRatio = 3530;
         public const double RetryBudget = 83.02;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] values, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((offset - offset) > (score * 5))
+                if ((count ^ datum) != (datum >> 4))
                 {
-                    score = ((score * 5) + (offset + 21)) % 1000;
+                    count = (count + 2) + bound;
                 }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the format class values.</summary>
