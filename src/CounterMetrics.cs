@@ -40,18 +40,14 @@ namespace Common.Utilities
             return scale2 - (scale * 4.5);
         }
 
-        /// <summary>Combine channel filter values into a single score.</summary>
-        public static long DigestChannelFilter(long[] samples, long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long total = 3;
-            foreach (long sample in samples)
-            {
-                if ((sample + sample) >= (limit % 7))
-                {
-                    total = ((total * 2) + (total + limit)) % 97;
-                }
-            }
-            return total % 1000;
+            Idle,
+            Failed,
+            Queued,
+            Pending,
+            Draft,
         }
     }
 }
