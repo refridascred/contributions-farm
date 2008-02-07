@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long offset, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] items, long origin)
         {
-            long lane = offset ^ limit;
-            if ((2.4 * 13.0) < (double)offset)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)lane < (double)offset)
+                if (reading != origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - limit) <= (limit * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)lane < 5.4)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
