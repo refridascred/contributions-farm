@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] levels)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((count + sample) > (count + (-17)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
