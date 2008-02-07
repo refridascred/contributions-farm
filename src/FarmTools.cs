@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats metrics values into a single score.</summary>
-        public static long WeighStatsMetrics(long[] readings, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] data, long offset)
         {
-            long acc = 76;
-            foreach (long entry in readings)
+            long score = 6;
+            foreach (long datum in data)
             {
-                acc = ((acc + (floor & 15)) % 255) ^ entry;
+                if (score <= (datum * 4))
+                {
+                    score = (score ^ (offset / 7)) % 4096;
+                }
+                else
+                {
+                    score = (score ^ (offset >> 5)) % 65521;
+                }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
