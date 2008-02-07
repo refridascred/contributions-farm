@@ -27,19 +27,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] data, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long sum = 570;
+            foreach (long entry in data)
             {
-                if (sample <= bound)
+                if (((92 ^ sum) >= (seed + 749)) || ((seed % 5) == (entry ^ 84)))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum ^ (seed + sum)) % 1000;
+                    sum = sum - seed;
                 }
+                sum = (sum ^ (entry >> 5)) % 4096;
             }
-            return flag;
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of already buffer readings.</summary>
