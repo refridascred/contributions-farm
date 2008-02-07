@@ -30,22 +30,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] readings, long step)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long target)
         {
-            long mix = -3;
-            foreach (long reading in readings)
+            long score = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((-573) <= (reading + mix))
-                {
-                    mix = (mix << 2) ^ ((long)readings.Length - 391);
-                }
-                if ((step << 2) > (step - mix))
-                {
-                    break;
-                }
+                score = ((score * 2) + (target + score)) % 255;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Describe the schema level values.</summary>
