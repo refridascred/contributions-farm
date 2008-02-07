@@ -33,9 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxContributi = 96.43;
-        public const double BurstContributi = 28.62;
-        public const long CacheContributi = 1900;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((5 >> 3) >= (tally - entry)) || (((double)tally >= (double)entry) && ((653 & 127) > (tally + tally))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
