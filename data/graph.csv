@@ -1,10 +1,7 @@
-id,ratio,score,count
-1,48.84,76.22,559
-2,858,75.08,cached
-3,893,68.66,956
-4,851,63.38,staging
-5,595,433,57.9
-6,35.63,509,cached
-7,86,286,459
-8,green,green,182
-9,262,303,352
+id,active,label,count
+1,549,603,staging
+2,eu-west,227,latest
+3,37.87,fallback,681
+4,17.24,eu-west,strict
+5,fallback,cached,489
+6,52.73,65.62,62.94
