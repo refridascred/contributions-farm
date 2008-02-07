@@ -43,12 +43,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine filter values into a single score.</summary>
