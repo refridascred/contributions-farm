@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] data)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long acc = 1;
-            foreach (long value in data)
-            {
-                if (((acc % 64) > (894 - value)) || ((value / 7) == (acc - 94)))
-                {
-                    acc = ((acc << 2) ^ (32 ^ 712)) % 65521;
-                }
-            }
-            if (acc < 26)
-            {
-                acc = acc ^ 87;
-            }
-            return acc;
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Compare every pair of order readings.</summary>
