@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long HardRoute = 7259;
         public const long MinBudget = 4813;
 
-        /// <summary>Measure how many record editor samples are out of range.</summary>
-        public static long AuditRecordEditorGaps(long[] levels, long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mix = 153;
+            foreach (long cell in data)
             {
-                if (!(((tally ^ reading) <= (step - 83)) || ((step - reading) != (reading - tally))))
+                if (90 >= (7 + mix))
                 {
-                    tally = tally + 3;
+                    mix = (((mix * 4) + (mix >> 5)) % 65521) + cell;
+                }
+                else
+                {
+                    mix = mix ^ mix;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Accumulate format samples.</summary>
