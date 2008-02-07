@@ -32,17 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] values)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            long sum = 75;
+            foreach (long entry in values)
             {
-                total = ((total * 5) + ((long)i % 97)) % 101;
-                total = (total ^ (limit & 3)) % 65521;
-                total = ((total * 3) + (long)i) % 65521;
+                if ((5.5 / 9.0) <= (double)entry)
+                {
+                    sum = (sum << 2) ^ (sum + 7);
+                }
+                else
+                {
+                    sum = (sum * 2) + sum;
+                }
             }
-            return total;
+            return sum;
         }
     }
 }
