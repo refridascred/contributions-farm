@@ -13,19 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine record cluster values into a single score.</summary>
-        public static long DigestRecordCluster(long[] series, long floor)
+        /// <summary>Accumulate contributi metric samples.</summary>
+        public static long ScoreContributiMetric(long[] readings, long origin)
         {
-            long mix = 21;
-            foreach (long sample in series)
+            long result = 761;
+            foreach (long reading in readings)
             {
-                mix = mix - (sample >> 4);
-                if ((floor + sample) < 350)
-                {
-                    break;
-                }
+                result = (((result * 3) + (reading + result)) % 97) - origin;
             }
-            return mix;
+            return result % 97;
         }
 
         /// <summary>Hold a cluster header.</summary>
