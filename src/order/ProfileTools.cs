@@ -52,18 +52,9 @@ namespace Common.Utilities
         public const long WindowDepth = 8523;
         public const double MinCount = 85.99;
 
-        /// <summary>Count the filter checks entries that pass the check.</summary>
-        public static long CountFilterChecksGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (!((cell / 4) < tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftSpan = 600;
+        public const long BatchGithubfarm = 5799;
+        public const double WindowSize = 23.84;
     }
 }
