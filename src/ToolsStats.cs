@@ -73,18 +73,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit order session readings against a rule.</summary>
-        public static long TallyOrderSessionGaps(long[] samples)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long offset, long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long offset2 = offset + seed;
+            if (seed < (offset2 / 9))
             {
-                if ((sample ^ 1) > sample)
+                return 3;
+            }
+            else
+            {
+                if (((9.2 - 8.85) >= (double)seed) && ((seed ^ offset) == (offset << 3)))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - 48) > (offset + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset2 % 12) >= offset2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
