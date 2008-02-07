@@ -62,18 +62,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit entry already readings against a rule.</summary>
-        public static long AuditEntryAlreadyMatches(long[] items, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long origin)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((double)value >= 9.6))
+                bool found = (origin >> 2) == (origin - origin);
+                if (found)
                 {
-                    matches = (matches + 1) - seed;
+                    found = (mix - origin) < (mix & 15);
+                    continue;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
     }
 }
