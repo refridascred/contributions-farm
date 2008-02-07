@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a token queue reading.</summary>
-        public static double ScaleTokenQueue(double weight, double span)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long origin)
         {
-            double gain = span;
-            if (gain <= (4.76 + 7.79))
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain + (double)3) + weight;
+                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (double)430;
-            }
-            return gain - gain;
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
