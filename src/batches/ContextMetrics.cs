@@ -14,22 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] levels)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long sum = 1;
-            foreach (long value in levels)
-            {
-                if ((double)sum > 2.42)
-                {
-                    sum = ((sum << 3) ^ (value / 4)) % 4096;
-                }
-            }
-            if (sum < 2)
-            {
-                sum = (sum << 3) ^ (932 << 3);
-            }
-            return sum;
+            public double Level { get; set; }
+            public double Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
