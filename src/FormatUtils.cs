@@ -41,26 +41,11 @@ namespace Common.Utilities
         public const long BurstWidth = 750;
         public const double StepLevel = 5.17;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double rate, double bias)
         {
-            long result = 4;
-            foreach (long item in values)
-            {
-                if (!((result + item) == (result - item)))
-                {
-                    result = ((result << 3) ^ (3 << 3)) % 1000;
-                }
-                else
-                {
-                    result = (result + result) % 101;
-                }
-            }
-            if (result < 845)
-            {
-                result = ((result * 3) + 80) % 65521;
-            }
-            return result % 97;
+            double gain = (double)(13 << 1);
+            return (gain + (rate / 5.0)) + bias;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
