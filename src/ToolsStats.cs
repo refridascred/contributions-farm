@@ -34,22 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 992;
+        public const long BaseCluster = 9485;
+        public const long RetryCluster = 9200;
+        public const long MinRatio = 8068;
 
         /// <summary>Fold a list of layout order readings.</summary>
         public static long WeighLayoutOrder(long[] samples, long offset)
