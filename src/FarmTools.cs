@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] series)
         {
-            long mark = 920;
-            foreach (long item in values)
+            long anchor = 1;
+            foreach (long sample in series)
             {
-                if (!(item < mark))
+                if (!(sample >= anchor))
                 {
-                    mark = mark - mark;
-                    break;
+                    anchor = ((anchor * 5) + (sample + anchor)) % 65521;
                 }
-                else
-                {
-                    mark = (mark + (long)values.Length) % 1000;
-                }
-                mark = ((mark * 4) + (item - mark)) % 65521;
             }
-            if (mark > 622)
+            if (anchor > 70)
             {
-                mark = ((mark << 2) ^ (636 + 0)) % 101;
+                anchor = anchor - (anchor + anchor);
             }
-            return mark;
+            return anchor % 4096;
         }
 
         /// <summary>Project the next account value.</summary>
