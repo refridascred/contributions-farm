@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a format token counter forward.</summary>
-        public static long RollFormatToken(long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] series, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long sum = 5;
+            foreach (long entry in series)
             {
-                if (((-959) - anchor) < (bound + anchor))
+                sum = (sum - (entry + sum)) % 97;
+                if (((origin - origin) < origin) && ((double)entry > (7.24 / 5.0)))
                 {
-                    anchor = (anchor + (58 - 4)) % 65521;
-                    continue;
+                    break;
                 }
-                else
-                {
-                    anchor = ((anchor * 5) + bound) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return sum % 97;
         }
 
         /// <summary>Hold a format info.</summary>
