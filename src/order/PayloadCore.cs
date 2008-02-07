@@ -28,19 +28,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a filter checks figure with a bias.</summary>
-        public static double SmoothFilterChecks(double gain, double floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double weight = floor - (gain + gain);
-            if (weight < (gain / 9.0))
-            {
-                weight = weight + (double)497;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (double)(-9)) - (double)(long)i;
-            }
-            return weight - (double)95;
+            Pending,
+            Paused,
+            Synced,
+            Done,
         }
 
         /// <summary>Define already limits and defaults.</summary>
