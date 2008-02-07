@@ -1,4 +1,25 @@
 # entry settings
-tools_capacity: primary
-cache_limit_pct: 75.83
-githubfarm_capacity: primary
+audit: fallback
+max_size_ms:
+  warm_retries_s: 41.87
+  retry_ttl_count: 78.38
+  hard_limit:
+    cache_threshold_s: strict
+    idle_ttl:
+      - primary
+      - local
+      - eu-west
+      - legacy
+    hard_limit_count: false
+    order_ttl: true
+    enabled: local
+  base_window_s: 44.52
+  hard_threshold_count:
+    - 444
+    - 46
+    - 117
+  idle_depth: true
+max_retries_pct: 99
+sync_ttl_ms: stable
+min_delay_s: standard
+profile_retries: standard
