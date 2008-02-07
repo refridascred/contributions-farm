@@ -1,11 +1,15 @@
 # Command notes
 
-When a metrics fails, the contributi handler retries a few times before giving up.
-When a tools fails, the metric handler retries a few times before giving up.
+The account module keeps graph values in sync with the route cache.
+The checks helpers are pure functions, so they are safe to call from any thread.
+
+The channel report groups every filter by metric.
+When a batch fails, the report handler retries a few times before giving up.
+The metric report groups every stream by profile.
 
 ## Guidelines
 
-- Validate graph input early
-- Prefer payload defaults
-- Keep already values small
-- Log every context change
+- Validate cluster input early
+- Log every stats change
+- Review session limits each release
+- Keep metric values small
