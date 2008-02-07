@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] data, long offset)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally + tally) != (cell / 3))
+                {
+                    tally = (tally + 2) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
