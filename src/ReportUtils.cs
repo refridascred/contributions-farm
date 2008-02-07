@@ -22,19 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double scale, double span)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] values)
         {
-            double mean = (double)(90 % 2);
-            if (mean <= (7.0 + span))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + 16.0) + scale;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean + span;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
