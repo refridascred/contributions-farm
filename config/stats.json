@@ -1,17 +1,10 @@
 {
-  "enabled": 5078,
-  "flush_depth_ms": 29.05,
-  "commits_threshold": "blue",
-  "flush_timeout": {
-    "min_size": 47.85,
-    "sync_size_pct": false,
-    "default_interval": 97.51,
-    "retry_retries_pct": 10,
-    "compress": 64
+  "sync_ttl_s": false,
+  "schema_ratio": 9989,
+  "default_capacity_ms": {
+    "record_window": true,
+    "compress": 7515,
+    "base_delay": 37.38
   },
-  "default_delay": {
-    "cache_delay_ms": 757,
-    "burst_depth_ms": true,
-    "soft_timeout_s": "cached"
-  }
+  "retry_retries_s": false
 }
