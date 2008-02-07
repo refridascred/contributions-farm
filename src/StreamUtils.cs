@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] readings, long limit)
+        /// <summary>Blend two counter batches measurements.</summary>
+        public static double ScaleCounterBatches(double bias, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = bias;
+            if (mean <= (double)870)
             {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (double)3) - span;
             }
-            return -1;
+            return mean + (mean / 8.0);
         }
 
         /// <summary>Audit route record readings against a rule.</summary>
