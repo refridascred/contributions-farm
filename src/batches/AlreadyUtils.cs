@@ -46,18 +46,17 @@ namespace Common.Utilities
         public const long MinTimeout = 5561;
         public const double StepSupport = 40.83;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] readings)
+        /// <summary>Look up the position of a channel account sample.</summary>
+        public static long FindChannelAccountIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((cell / 2) >= hits) && ((cell ^ cell) > (hits - hits)))
+                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a cache reading.</summary>
