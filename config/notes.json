@@ -1,7 +1,5 @@
 {
-  "strict": 1095,
-  "retry_window": 6980,
-  "persist": 20,
-  "batches_threshold": false,
-  "readonly": 6421
+  "soft_depth_s": "primary",
+  "compress": "strict",
+  "burst_retries_pct": "green"
 }
