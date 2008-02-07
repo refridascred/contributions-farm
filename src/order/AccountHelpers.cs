@@ -67,13 +67,19 @@ namespace Common.Utilities
         public const double RetrySpan = 56.62;
         public const string LimitGithubfarm = "alpha-edge";
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] items, long step)
         {
-            Done,
-            Idle,
-            Draft,
-            New,
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
