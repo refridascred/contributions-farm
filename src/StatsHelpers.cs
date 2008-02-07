@@ -39,13 +39,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
+            Retry,
+            Stale,
+            Failed,
+            Paused,
+            Pending,
         }
     }
 }
