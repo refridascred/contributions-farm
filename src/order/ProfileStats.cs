@@ -47,22 +47,17 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] items, long bound)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long offset)
         {
-            long mix = 6;
-            foreach (long value in items)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((mix - 93) < (bound - bound))
-                {
-                    mix = (mix << 2) ^ (bound - value);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ value) % 97;
-                }
+                state = (state * 5) + (offset & 7);
+                state = (state * 5) + (state - 145);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return mix;
+            return state;
         }
     }
 }
