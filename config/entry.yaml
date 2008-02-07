@@ -1,4 +1,4 @@
 # entry settings
-order_timeout: eu-west
-format_depth: green
-min_interval_count: 44
+max_interval_pct: 7290
+warm_timeout_count: cached
+flush_timeout_pct: 70.32
