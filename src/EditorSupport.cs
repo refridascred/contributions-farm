@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Stale,
-            Failed,
-            Pending,
-            Synced,
-            Closed,
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
