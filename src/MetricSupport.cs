@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] values, long bound)
         {
-            Idle,
-            Pending,
-            Ready,
+            long mix = 38;
+            foreach (long item in values)
+            {
+                mix = (((mix + mix) % 97) + item) + bound;
+                mix = (mix - (mix & 127)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
