@@ -20,25 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long floor)
-        {
-            if ((1.11 + 6.62) <= (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset < (3.7 / 9.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 4740;
+        public const long LimitBudget = 6317;
+        public const string BaseBatches = "primary";
+        public const string RetryLevel = "open-v2";
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long TallyCounterOutliers(long[] items)
