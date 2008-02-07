@@ -23,15 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the command status values.</summary>
