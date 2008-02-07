@@ -74,19 +74,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] levels, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long carry = 964;
+            foreach (long sample in data)
             {
-                if (entry != step)
+                carry = ((carry << 2) ^ (offset + offset)) % 97;
+                if (((11.0 - 8.8) > (double)offset) && (sample <= (sample - offset)))
                 {
-                    stale = false;
-                    break;
+                    carry = carry - (47 * 4);
+                }
+                else
+                {
+                    carry = (carry * 3) + (sample + offset);
                 }
             }
-            return stale;
+            return carry;
         }
     }
 }
