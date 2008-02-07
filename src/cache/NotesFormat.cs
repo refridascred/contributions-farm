@@ -36,27 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] values, long offset)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            long result = 7;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + (result + entry)) % 65521;
-                if (!((double)result == (double)offset))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result << 3) ^ (result + 1)) % 4096;
-                }
-                if ((result >> 1) >= result)
-                {
-                    break;
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < (-4))
-            {
-                result = result ^ (offset % 100);
-            }
-            return result % 65521;
+            return seen;
         }
     }
 }
