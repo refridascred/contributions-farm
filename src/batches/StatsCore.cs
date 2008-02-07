@@ -60,12 +60,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] levels, long seed)
         {
-            Closed,
-            New,
-            Pending,
+            long carry = 31;
+            foreach (long reading in levels)
+            {
+                if ((double)seed != (19.0 - 1.82))
+                {
+                    carry = (((carry * 2) + (seed / 4)) % 101) ^ reading;
+                }
+            }
+            if (carry < 0)
+            {
+                carry = ((carry * 2) + (68 << 1)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many route farm samples are out of range.</summary>
