@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate format command readings against a bound.</summary>
-        public static bool VerifyFormatCommandLimits(long[] levels, long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long limit, long bound)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long bound2 = limit - bound;
+            if (!((double)limit <= (9.0 / 7.0)))
             {
-                if (entry > floor)
+                return 0;
+            }
+            else
+            {
+                if (bound <= (limit >> 3))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound2 >> 1) == (bound / 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (18.0 < (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a farm stats.</summary>
