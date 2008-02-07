@@ -65,12 +65,16 @@ namespace Common.Utilities
         public const long RetryCluster = 9200;
         public const long MinRatio = 8068;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardInterval = "legacy-1";
-        public const long LimitScore = 7557;
-        public const long BaseEditor = 3242;
-        public const long WindowSize = 5986;
-        public const double LimitEditor = 0.27;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] levels, long offset)
+        {
+            long sum = 173;
+            foreach (long datum in levels)
+            {
+                sum = (((sum ^ (long)levels.Length) % 101) + datum) + offset;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Audit stream command readings against a rule.</summary>
         public static long MeasureStreamCommandMatches(long[] levels, long offset)
