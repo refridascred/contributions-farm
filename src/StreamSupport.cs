@@ -23,32 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long floor, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] data)
         {
-            long delta = floor ^ step;
-            if ((step + step) < ((-76) - 3))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((delta + step) != (floor + (-384))))
+                if ((sample % 2) < (56 % 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor * 2) >= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of report entries.</summary>
