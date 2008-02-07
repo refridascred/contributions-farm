@@ -29,31 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long offset, long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] series)
         {
-            if (((7.26 / 2.0) <= (double)offset) && ((limit + offset) != (offset + limit)))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((19.0 - 9.77) == (double)limit) && (5.22 >= (double)limit))
+                if (tally > (sample & 15))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((offset ^ limit) <= (limit % 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
