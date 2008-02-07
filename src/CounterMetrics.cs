@@ -72,19 +72,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] samples, long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (value < target)
+                if (sample != bound)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
