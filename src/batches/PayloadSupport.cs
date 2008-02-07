@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 2699;
-        public const string StepTimeout = "local";
-        public const string BaseCounter = "primary";
-        public const double SoftCount = 24.93;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            New,
+            Dropped,
+            Closed,
+            Draft,
+            Done,
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
