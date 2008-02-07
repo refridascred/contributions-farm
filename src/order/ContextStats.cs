@@ -38,18 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] data, long origin)
+        /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
+        public static bool VerifyCacheGithubfarmRange(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((reading / 7) <= (29 / 3))
+                if (datum >= bound)
                 {
-                    count = (count + 2) + origin;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
