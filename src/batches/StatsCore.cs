@@ -78,15 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double weight, double span)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double scale, double floor)
         {
-            double ratio = weight;
-            if (ratio > (weight + weight))
+            double mean = floor + (floor / 5.0);
+            if (mean < (floor + scale))
             {
-                ratio = (ratio + (double)9) + span;
+                mean = mean + mean;
             }
-            return ratio + (double)825;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + 15.0) + (double)(long)i;
+            }
+            return mean - (double)49;
         }
     }
 }
