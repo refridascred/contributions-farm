@@ -21,17 +21,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] levels, long origin)
+        /// <summary>Combine token batches values into a single score.</summary>
+        public static long ScoreTokenBatches(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 9;
+            foreach (long cell in readings)
             {
-                if ((levels[i] < origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark * 2) + (cell + cell);
+                mark = mark + cell;
             }
-            return -1;
+            if (mark < 37)
+            {
+                mark = ((mark * 2) + (target + target)) % 65521;
+            }
+            return mark % 65521;
         }
     }
 }
