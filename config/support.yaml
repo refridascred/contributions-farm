@@ -1,12 +1,7 @@
 # support settings
-format_limit: 69
-flush_ratio_count:
-  min_interval:
-    - local
-    - local
-  verbose: 100
-  audit: fallback
-  enabled:
-    - cached
-    - cached
-retry_interval_count: 9632
+idle_ratio_s: 30
+editor_depth: 500
+min_ttl_count: 500
+metric_ratio: 18
+soft_depth: 7648
+entry_ttl: strict
