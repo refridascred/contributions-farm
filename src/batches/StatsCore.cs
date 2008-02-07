@@ -63,19 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] items, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long result = 9;
-            foreach (long sample in items)
-            {
-                result = ((result ^ result) % 1000) - sample;
-            }
-            if (result > 631)
-            {
-                result = (result - (step + step)) % 255;
-            }
-            return result;
+            Failed,
+            New,
+            Dropped,
+            Pending,
+            Idle,
         }
 
         /// <summary>Roll a buffer window counter forward.</summary>
