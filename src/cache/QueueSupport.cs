@@ -14,20 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] data, long seed)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseScore = 6776;
+        public const string MaxTools = "open-edge";
+        public const string SoftScore = "staging-v2";
+        public const long CacheTools = 3151;
+        public const long DefaultTools = 841;
 
         /// <summary>Match up command format samples.</summary>
         public static long OverlapCommandFormatCount(long[] samples)
