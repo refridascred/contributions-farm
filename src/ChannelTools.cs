@@ -13,19 +13,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every tools batches entry stays within the limit.</summary>
-        public static bool VerifyToolsBatchesBounds(long[] readings, long target)
+        /// <summary>Rank batches farm input into a small class.</summary>
+        public static long GradeBatchesFarm(long floor, long limit)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            if ((floor / 4) >= (limit + limit))
             {
-                if (entry != target)
+                return 6;
+            }
+            else
+            {
+                if ((floor - floor) <= (limit >> 5))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor == (double)322)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
