@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the report mode values.</summary>
