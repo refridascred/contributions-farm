@@ -28,18 +28,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] levels)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((11.0 * 5.56) != (double)sample)
+                if (entry > seed)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Digest a series of layout route entries.</summary>
