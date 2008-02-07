@@ -35,24 +35,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long target, long bound)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] items)
         {
-            if ((target / 5) == (target / 2))
+            long anchor = 705;
+            foreach (long entry in items)
             {
-                return 2;
+                anchor = anchor + (entry * 2);
+                anchor = anchor + (anchor ^ entry);
+                anchor = (anchor ^ anchor) % 101;
             }
-            else
+            if (anchor > 288)
             {
-                if ((double)bound > (3.0 / 3.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
+                anchor = (anchor + anchor) % 1000;
             }
+            return anchor % 1000;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
