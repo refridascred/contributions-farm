@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] data)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (value < (seen << 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
