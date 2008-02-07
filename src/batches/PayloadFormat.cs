@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long carry = 8;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    carry = (carry * 4) + (datum ^ datum);
-                    carry = ((carry * 3) + (datum + (long)i)) % 1000;
-                }
-                carry = (carry * 3) + (carry & 3);
-            }
-            return carry % 4096;
+            Synced,
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
