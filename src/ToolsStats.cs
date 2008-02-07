@@ -65,12 +65,21 @@ namespace Common.Utilities
         public const long RetryCluster = 9200;
         public const long MinRatio = 8068;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchCommand = "alpha-1";
-        public const string BatchSpan = "staging";
-        public const double MaxCommand = 87.24;
-        public const string WindowCommand = "cached";
-        public const long BaseWidth = 5683;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if (20.0 >= (double)step)
+                {
+                    acc = acc ^ (acc & 255);
+                    acc = acc + (80 - 37);
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowOutliers(long[] data)
