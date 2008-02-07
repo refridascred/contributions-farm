@@ -1,7 +1,7 @@
 {
-  "sync_delay": 9639,
-  "persist": 30,
-  "warm_limit_s": ["eu-west", "stable", "green", "primary"],
-  "strict": 30,
-  "hard_ratio_pct": 100
+  "base_threshold": "standard",
+  "max_threshold_ms": 5727,
+  "metric_size": "blue",
+  "cache_limit_count": 40.77,
+  "audit": 52.98
 }
