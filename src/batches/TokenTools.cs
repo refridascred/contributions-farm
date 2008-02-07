@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinTimeout = 76.9;
-        public const double CacheBuffer = 61.86;
-        public const long MinSize = 8054;
-        public const string RetrySpan = "primary-edge";
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Paused,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long RankWindow(long origin, long seed)
