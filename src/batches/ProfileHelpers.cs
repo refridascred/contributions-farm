@@ -31,11 +31,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long offset)
         {
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the cache class values.</summary>
