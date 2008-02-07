@@ -1,10 +1,6 @@
 {
-  "session_interval": "stable",
-  "sync_limit": 87,
-  "strict": {
-    "cache_limit_count": 30,
-    "githubfarm_ttl": "stable",
-    "max_limit_pct": 2.01,
-    "payload_capacity": true
-  }
+  "enabled": "legacy",
+  "retry_ratio_pct": 94.1,
+  "notes_limit": 60,
+  "warm_limit": "eu-west"
 }
