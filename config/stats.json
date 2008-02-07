@@ -1,6 +1,7 @@
 {
-  "retry_size": 3328,
-  "tools_threshold": 67.44,
-  "flush_depth_ms": "staging",
-  "base_timeout_ms": "primary"
+  "commits_window": 60,
+  "dry_run": "strict",
+  "hard_interval_pct": "standard",
+  "enabled": 78,
+  "report_retries": 100
 }
