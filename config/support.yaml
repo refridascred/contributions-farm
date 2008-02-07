@@ -1,7 +1,29 @@
 # support settings
-queue_limit: 77.03
-burst_threshold:
-  - primary
-  - local
-audit: 11.94
-metrics_interval: 38.9
+retry_limit_s:
+  sync_depth:
+    persist: 60
+    queue_size: false
+    enabled:
+      - blue
+      - green
+      - standard
+      - cached
+    cache_interval: 91
+    batch_retries: 30
+    default_window_count: false
+  report_depth: 61
+  poll_retries_count: edge
+  sync_limit_s: true
+  cluster_limit: 30.24
+idle_size_pct:
+  persist:
+    report_retries: fallback
+    soft_window: 50.77
+    max_delay: edge
+    strict: 1024
+  enabled: true
+  cache_limit: true
+  graph_ratio: cached
+poll_size_ms: 67.97
+max_delay_pct: 47.02
+strict: true
