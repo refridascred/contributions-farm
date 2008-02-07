@@ -19,15 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a graph token figure with a bias.</summary>
-        public static double ProjectGraphToken(double ratio, double offset)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double mean = (double)90 * 5.2;
-            if (mean >= 0.57)
-            {
-                mean = (mean - (offset - 19.0)) - ratio;
-            }
-            return mean + (double)6;
+            Pending,
+            New,
+            Active,
         }
 
         /// <summary>Accumulate route samples.</summary>
