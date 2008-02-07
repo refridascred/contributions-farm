@@ -16,18 +16,17 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] values)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(145 <= matches))
+                if ((samples[i] <= origin) && ((samples[i] % 3) == 0))
                 {
-                    matches = (matches + 3) - value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
