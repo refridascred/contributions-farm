@@ -51,16 +51,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix << 3) ^ mix) % 4096;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
