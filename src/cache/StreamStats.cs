@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Rank counter layout input into a small class.</summary>
+        public static long GradeCounterLayout(long limit, long bound)
         {
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            long span = limit + bound;
+            if (span >= (limit + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (span >= (541 & 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit >> 4) != (limit % 100))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the counter support series from a seed.</summary>
