@@ -54,23 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] items)
-        {
-            long mix = 423;
-            foreach (long reading in items)
-            {
-                if (reading >= (50 >> 5))
-                {
-                    mix = (mix + mix) % 4096;
-                }
-                else
-                {
-                    mix = mix + (326 & 15);
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheRoute = "primary";
+        public const string DefaultRoute = "standard-1";
+        public const long BatchRoute = 921;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueOutliers(long[] data, long target)
