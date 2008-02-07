@@ -31,14 +31,17 @@ namespace Common.Utilities
             return scale - (offset / 4.0);
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Accumulate context commits samples.</summary>
+        public static long ScoreContextCommits(long[] series, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            long total = 483;
+            foreach (long cell in series)
             {
-                total = total - (floor - total);
-                total = ((total * 5) + (long)i) % 101;
+                if ((double)cell > (1.0 / 4.0))
+                {
+                    total = ((total << 3) ^ (seed % 3)) % 255;
+                }
+                total = (total - (seed & 7)) % 1000;
             }
             return total;
         }
