@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstLevel = 44.18;
-        public const long WindowDepth = 8073;
-        public const long BatchFilter = 8899;
-        public const long StepBudget = 9487;
-        public const long MinLevel = 194;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
