@@ -19,14 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] levels)
         {
-            Queued,
-            Paused,
-            Active,
-            Failed,
-            Retry,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally >> 4) <= tally)
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up account samples.</summary>
