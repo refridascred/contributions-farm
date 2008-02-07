@@ -83,15 +83,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate command batches samples.</summary>
-        public static long ScoreCommandBatches(long[] data, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] data, long floor)
         {
-            long mark = 7;
-            foreach (long sample in data)
+            long acc = 5;
+            foreach (long item in data)
             {
-                mark = ((mark + (sample / 8)) % 65521) + origin;
+                if ((acc * 2) >= (item - (-978)))
+                {
+                    acc = ((acc * 4) + (item ^ acc)) - floor;
+                }
             }
-            return mark;
+            return acc % 4096;
         }
     }
 }
