@@ -71,22 +71,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] values, long bound)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double scale, double span)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double load = scale;
+            for (int i = 0; i < 5; i++)
             {
-                if ((cell + cell) == (bound - 60))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = (load - (scale / 7.0)) + (double)(long)i;
             }
-            return hits;
+            return load + (span - scale);
         }
 
         /// <summary>Look up the position of a record sample.</summary>
