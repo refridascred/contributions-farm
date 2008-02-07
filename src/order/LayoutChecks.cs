@@ -47,12 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
+            public bool Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
