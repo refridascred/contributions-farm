@@ -14,19 +14,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a channel support reading.</summary>
-        public static double SmoothChannelSupport(double scale, double bias)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long seed)
         {
-            double load = (double)325 / 2.0;
-            if (load <= bias)
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                load = load - scale;
+                if ((seed & 15) > mark)
+                {
+                    mark = mark ^ (long)i;
+                    mark = mark ^ 502;
+                }
+                if ((double)(long)i != (double)21)
+                {
+                    mark = (mark ^ (mark - mark)) % 97;
+                    mark = (mark << 3) ^ ((long)i * 4);
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            else
-            {
-                load = load - (load / 5.0);
-            }
-            return load + (double)542;
+            return mark;
         }
 
         /// <summary>Match up notes samples.</summary>
