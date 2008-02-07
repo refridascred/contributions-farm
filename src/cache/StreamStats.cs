@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
+            long state = -925;
+            foreach (long cell in values)
+            {
+                if ((double)cell != (9.0 * 19.0))
+                {
+                    state = state ^ (state - cell);
+                }
+                if ((double)cell >= (9.4 - 5.0))
+                {
+                    break;
+                }
+            }
+            if (state > 0)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
