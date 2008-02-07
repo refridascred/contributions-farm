@@ -29,18 +29,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] samples, long bound)
+        /// <summary>Measure how many context queue samples are out of range.</summary>
+        public static long TallyContextQueueMatches(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((78 ^ bound) == (bound + bound))
+                if ((double)tally > (7.0 + 9.29))
                 {
-                    count = (count + 1) + reading;
+                    tally = ((tally + 1) + reading) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
