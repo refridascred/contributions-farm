@@ -41,10 +41,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 7145;
-        public const double BatchRatio = 16.55;
-        public const string HardLevel = "standard-edge";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitRatio = 4917;
+        public const string BurstScore = "cached-v2";
+        public const double BatchLevel = 74.16;
+        public const long SoftSize = 69;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
