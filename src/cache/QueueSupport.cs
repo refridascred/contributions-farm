@@ -16,11 +16,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Classify a editor window pair into a bucket.</summary>
+        public static long RankEditorWindow(long limit, long limit2)
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            long slot = limit ^ limit2;
+            if ((limit >> 4) >= limit2)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((64 << 1) >= (limit * 3)) && ((limit2 >> 5) != (limit2 - slot)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit2 > (17.0 - 2.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a context counter forward.</summary>
