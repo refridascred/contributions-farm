@@ -44,13 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] data, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long total = 3;
+            foreach (long item in data)
+            {
+                if ((total << 2) <= (total - total))
+                {
+                    total = ((total + (origin + origin)) % 1000) - item;
+                }
+            }
+            if (total > 262)
+            {
+                total = (total * 4) + (total + origin);
+            }
+            return total;
         }
     }
 }
