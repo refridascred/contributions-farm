@@ -34,39 +34,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long offset, long limit)
-        {
-            if ((offset >> 3) < offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset >= (offset + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((-774) - limit) >= (90 >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit - offset) > (offset & 31))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 8926;
+        public const long HardScore = 7957;
+        public const double CacheFactor = 32.84;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long DigestTools(long[] readings)
