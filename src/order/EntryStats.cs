@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long RetryToken = 9432;
         public const double BatchToken = 91.47;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftRatio = 9388;
-        public const long BatchSpan = 7607;
-        public const string SoftBatches = "stable-edge";
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] data)
+        {
+            long result = 46;
+            foreach (long reading in data)
+            {
+                if ((result + 34) <= ((long)data.Length << 1))
+                {
+                    result = ((result << 2) ^ result) ^ reading;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitSpan = 9919;
