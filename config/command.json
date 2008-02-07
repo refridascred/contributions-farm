@@ -1,5 +1,6 @@
 {
-  "poll_depth": [69, 70, 366],
-  "sync_ttl_pct": "stable",
-  "enabled": 7568
+  "command_limit": 4803,
+  "idle_ttl": "staging",
+  "strict": [346, 481, 29, 396],
+  "poll_delay_count": ["strict", "blue", "local", "green"]
 }
