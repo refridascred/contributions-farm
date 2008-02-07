@@ -28,11 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardTimeout = 34.09;
-        public const long IdleChecks = 1872;
-        public const long CacheChecks = 9422;
-        public const long LimitChecks = 4553;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of already buffer readings.</summary>
         public static long OverlapAlreadyBufferCount(long[] data)
