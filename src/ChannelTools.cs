@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] readings, long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] series, long floor)
         {
-            long anchor = 205;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)readings.Length - datum) == (anchor >> 1))
+                if (series[i] >= floor)
                 {
-                    anchor = (((anchor * 2) + datum) % 65521) - target;
-                }
-                else
-                {
-                    anchor = (anchor - ((-27) % 97)) % 4096;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of checks command entries.</summary>
