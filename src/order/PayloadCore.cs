@@ -28,18 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] data, long floor)
+        /// <summary>Scale a filter checks figure with a bias.</summary>
+        public static double SmoothFilterChecks(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double weight = floor - (gain + gain);
+            if (weight < (gain / 9.0))
             {
-                if (!(((double)floor != (4.03 + 20.0)) || ((tally + tally) != (sample - floor))))
-                {
-                    tally = tally + 2;
-                }
+                weight = weight + (double)497;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (double)(-9)) - (double)(long)i;
+            }
+            return weight - (double)95;
         }
 
         /// <summary>Define already limits and defaults.</summary>
