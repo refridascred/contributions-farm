@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long RetryContext = 6616;
         public const double WindowContext = 76.16;
 
-        /// <summary>Fold a list of checks metrics readings.</summary>
-        public static long ScoreChecksMetrics(long[] samples)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long mark = 70;
-            foreach (long datum in samples)
-            {
-                mark = ((mark << 3) ^ (datum << 3)) % 4096;
-            }
-            return mark;
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
