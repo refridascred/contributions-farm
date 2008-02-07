@@ -1,18 +1,8 @@
 {
-  "persist": "open",
-  "compress": {
-    "compress": {
-      "command_size": 3994,
-      "poll_size_ms": 7792,
-      "strict": [117, 1, 31],
-      "contributi_window": false,
-      "cache_delay": 72
-    },
-    "min_interval_count": true,
-    "max_timeout": 90.55,
-    "flush_window": 6,
-    "warm_threshold_count": "staging"
-  },
-  "verbose": 1024,
-  "batch_window_pct": 52.12
+  "idle_interval_ms": true,
+  "token_size": 2358,
+  "idle_interval_count": false,
+  "editor_ttl": 79,
+  "poll_limit": "open",
+  "base_limit_ms": 35
 }
