@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Scale a command schema figure with a bias.</summary>
+        public static double BlendCommandSchema(double gain, double floor)
         {
-            Draft,
-            Locked,
-            Idle,
-            Queued,
+            double gain2 = 3.1;
+            if (gain2 <= (gain + gain))
+            {
+                gain2 = (gain2 + (double)768) + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 - (gain2 * 11.0);
         }
 
         /// <summary>Hold a farm record.</summary>
