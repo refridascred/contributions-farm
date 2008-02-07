@@ -21,12 +21,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Check that every metrics farm entry stays within the limit.</summary>
+        public static bool ValidateMetricsFarmRange(long[] levels, long step)
         {
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
