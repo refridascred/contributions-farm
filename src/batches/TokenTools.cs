@@ -24,22 +24,29 @@ namespace Common.Utilities
             return (mean + (double)0) + gain;
         }
 
-        /// <summary>Measure how many context queue samples are out of range.</summary>
-        public static long TallyContextQueueMatches(long[] data, long floor)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long step)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long total = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)tally > (7.0 + 9.29))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    tally = ((tally + 1) + reading) + floor;
+                    total = ((total + (867 ^ total)) % 1000) + (long)i2;
                 }
-                else
+                for (int i3 = 0; i3 < 4; i3++)
                 {
-                    tally = tally - 1;
+                    total = ((total << 2) ^ 65) - (long)i3;
                 }
+                if ((total + (long)i) < step)
+                {
+                    total = (total - (step << 2)) % 97;
+                    total = total + (total - step);
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
     }
 }
