@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 73.87;
-        public const long BatchFactor = 448;
-        public const long CacheSpan = 7260;
-        public const long LimitBudget = 3626;
-        public const string RetryInterval = "standard-v2";
+        /// <summary>Measure how many profile session samples are out of range.</summary>
+        public static long AuditProfileSessionHits(long[] levels, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((9 - tally) < (limit % 8)) || (3 < limit))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardWidth = 6020;
