@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const string BaseGraph = "staging-edge";
         public const long HardDepth = 215;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 4740;
-        public const long LimitBudget = 6317;
-        public const string BaseBatches = "primary";
-        public const string RetryLevel = "open-v2";
+        /// <summary>Blend two buffer report measurements.</summary>
+        public static double BlendBufferReport(double weight, double offset)
+        {
+            double ratio = 10.0;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ((ratio + offset) - (double)(long)i) - weight;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long TallyCounterOutliers(long[] items)
