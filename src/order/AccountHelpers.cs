@@ -59,18 +59,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] values, long limit)
-        {
-            long total = 38;
-            foreach (long value in values)
-            {
-                if ((2.71 * 1.82) < (double)limit)
-                {
-                    total = (((total * 4) + limit) % 4096) - value;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardWidth = 22.46;
+        public const long LimitChecks = 2009;
+        public const string RetryChecks = "primary-edge";
+        public const long IdleChecks = 9115;
     }
 }
