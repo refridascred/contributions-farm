@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
