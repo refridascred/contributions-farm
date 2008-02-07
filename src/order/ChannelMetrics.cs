@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long StepCommand = 1616;
         public const long RetryCommand = 6008;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Fold a list of graph batches readings.</summary>
+        public static long FoldGraphBatches(long[] levels)
         {
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
+            long sum = -747;
+            foreach (long value in levels)
+            {
+                sum = (((sum * 3) + (sum << 3)) % 65521) + value;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
