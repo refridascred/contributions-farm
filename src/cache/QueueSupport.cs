@@ -48,24 +48,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long step, long bound)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double rate, double offset)
         {
-            if (!((double)bound >= (19.0 / 3.0)))
+            double load = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
+                load = (load + (rate + rate)) + (double)(long)i;
             }
-            else
-            {
-                if (step > (step << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return load + rate;
         }
     }
 }
