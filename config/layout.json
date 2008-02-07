@@ -1,6 +1,7 @@
 {
-  "enabled": "legacy",
-  "retry_ratio_pct": 94.1,
-  "notes_limit": 60,
-  "warm_limit": "eu-west"
+  "burst_ratio_pct": "legacy",
+  "editor_ttl": 65.08,
+  "audit": "edge",
+  "poll_capacity_pct": true,
+  "default_ratio_count": 9570
 }
