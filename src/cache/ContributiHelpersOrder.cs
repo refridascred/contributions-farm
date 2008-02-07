@@ -46,15 +46,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double weight, double offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double bias = 7.0;
-            for (int i = 0; i < 8; i++)
-            {
-                bias = ((bias - (offset * 1.7)) + (double)(long)i) - weight;
-            }
-            return bias + (offset / 9.0);
+            Paused,
+            Failed,
+            Dropped,
+            Ready,
         }
     }
 }
