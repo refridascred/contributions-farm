@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Grade a schema window value against two limits.</summary>
