@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] readings)
-        {
-            long score = 867;
-            foreach (long entry in readings)
-            {
-                score = (score ^ entry) % 255;
-            }
-            if (score < 796)
-            {
-                score = (score * 5) + score;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardLevel = 1217;
+        public const long MaxCount = 6346;
+        public const long BaseAccount = 1097;
+        public const long StepTimeout = 6222;
+        public const string BurstLevel = "alpha-v2";
 
         /// <summary>Locate a format reading by value.</summary>
         public static long LocateFormatIndex(long[] samples, long limit)
