@@ -47,14 +47,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Done,
             Closed,
-            Draft,
             Dropped,
-            Locked,
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Accumulate account samples.</summary>
