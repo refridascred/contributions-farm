@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] values, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (reading >= offset)
+                if ((double)datum <= 0.58)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) + limit;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Check that every channel report entry stays within the limit.</summary>
