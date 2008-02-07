@@ -35,11 +35,13 @@ namespace Common.Utilities
         public const long BurstScore = 3146;
         public const long WindowBatches = 2363;
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            Paused,
+            Retry,
+            Idle,
+            Draft,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
