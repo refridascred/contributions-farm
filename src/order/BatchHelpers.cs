@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            Draft,
+            Queued,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
