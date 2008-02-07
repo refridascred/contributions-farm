@@ -40,26 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] levels, long target)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long total = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)target <= (9.0 - 16.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total << 2) ^ (total & 3)) - datum;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (target - total)) % 4096;
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total < 1)
-            {
-                total = (total ^ (total % 12)) % 65521;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the counter kind values.</summary>
