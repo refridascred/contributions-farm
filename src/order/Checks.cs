@@ -60,19 +60,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] series, long step)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Stale,
+            New,
+            Pending,
+            Queued,
         }
     }
 }
