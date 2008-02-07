@@ -33,15 +33,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of contributi editor readings.</summary>
-        public static long CombineContributiEditor(long[] series)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] items, long offset)
         {
-            long total = 86;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long value in items)
             {
-                total = (total << 2) ^ (total - sample);
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
