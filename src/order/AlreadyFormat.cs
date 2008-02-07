@@ -23,17 +23,24 @@ namespace Common.Utilities
         public const long DefaultOrder = 9405;
         public const string IdleOrder = "fallback-edge";
 
-        /// <summary>Look up the position of a editor farm sample.</summary>
-        public static long SeekEditorFarmIndex(long[] items, long step)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (items[i] == step)
+                if ((23 ^ target) > (-98))
                 {
-                    return (long)i;
+                    state = (state - target) % 97;
                 }
+                else
+                {
+                    state = ((state * 5) + ((long)i - 908)) % 101;
+                    state = (state + ((long)i - target)) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the window state values.</summary>
