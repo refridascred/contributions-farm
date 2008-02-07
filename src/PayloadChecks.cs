@@ -37,17 +37,15 @@ namespace Common.Utilities
             return (load - rate) + floor;
         }
 
-        /// <summary>Look up the position of a report token sample.</summary>
-        public static long LookupReportTokenIndex(long[] data, long origin)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)((-2) << 3);
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                gain = ((gain + (double)3) + (double)(long)i) - weight;
             }
-            return -1;
+            return gain - bias;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
