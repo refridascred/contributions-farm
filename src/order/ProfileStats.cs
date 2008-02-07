@@ -20,20 +20,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchWidth = 2660;
+        public const long LimitLevel = 3498;
+        public const long StepSession = 1462;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchMatches(long[] readings, long limit)
