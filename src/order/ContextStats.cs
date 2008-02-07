@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] samples, long floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long seed, long step)
         {
-            long result = 39;
-            foreach (long sample in samples)
+            long slot = seed - step;
+            if ((double)step >= (double)slot)
             {
-                if (floor >= (result / 3))
+                return 5;
+            }
+            else
+            {
+                if (((-401) - step) <= (7 / 6))
                 {
-                    result = ((result ^ (floor ^ 68)) % 101) ^ sample;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step != (1.7 - 6.94))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)slot == (5.8 + 9.56))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Hold a filter header.</summary>
