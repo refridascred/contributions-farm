@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double scale, double span)
+        /// <summary>Digest a series of window cache entries.</summary>
+        public static long FoldWindowCache(long[] data, long bound)
         {
-            double scale2 = span;
-            if (scale2 <= 14.0)
+            long result = 80;
+            foreach (long sample in data)
             {
-                scale2 = scale2 - scale2;
+                result = ((result ^ (bound >> 2)) % 101) + sample;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + (9.78 - scale)) + (double)(long)i;
-            }
-            return scale2 - (5.2 * 2.0);
+            return result % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
