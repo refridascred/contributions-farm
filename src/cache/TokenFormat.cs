@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the commits notes entries that pass the check.</summary>
-        public static long CountCommitsNotesHits(long[] levels, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (!(((0.5 * 2.22) < (double)count) && ((395 + count) > (step / 2))))
+                if (!((tally - 300) <= reading) && (((-56) / 4) != (limit << 2)))
                 {
-                    count = (count + 3) ^ value;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Adjust a queue token reading.</summary>
