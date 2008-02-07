@@ -60,16 +60,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                total = (total ^ ((-14) >> 4)) % 1000;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Closed,
+            New,
+            Pending,
         }
 
         /// <summary>Measure how many route farm samples are out of range.</summary>
