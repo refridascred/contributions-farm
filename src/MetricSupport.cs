@@ -39,12 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long target)
         {
-            Retry,
-            New,
-            Stale,
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
