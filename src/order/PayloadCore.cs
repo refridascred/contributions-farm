@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double ratio, double bias)
-        {
-            double drift = (ratio - bias) - (ratio - 2.8);
-            return drift + (double)79;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 78.16;
+        public const long HardRoute = 7259;
+        public const long MinBudget = 4813;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandHits(long[] readings, long bound)
