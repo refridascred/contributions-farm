@@ -47,18 +47,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] levels)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long result = 54;
-            foreach (long item in levels)
-            {
-                if ((result + 36) >= result)
-                {
-                    result = ((result ^ (4 + (-6))) % 65521) - item;
-                }
-            }
-            return result;
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Validate window contributi readings against a bound.</summary>
