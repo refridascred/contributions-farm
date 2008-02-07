@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank counter report input into a small class.</summary>
-        public static long RankCounterReport(long seed, long floor)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            long lane = seed + floor;
-            if ((lane - lane) != (seed - seed))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((lane - seed) >= lane))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
