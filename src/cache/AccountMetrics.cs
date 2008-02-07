@@ -56,22 +56,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((double)(long)samples.Length == (8.3 + 1.0))
+                if (!(item > (hits ^ item)))
                 {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
