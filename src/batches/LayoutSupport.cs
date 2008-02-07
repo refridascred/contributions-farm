@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] items, long step)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long score = 6;
-            foreach (long sample in items)
-            {
-                score = ((score << 2) ^ (sample >> 3)) % 255;
-                score = score - (397 + 32);
-                score = ((score * 3) + (sample ^ step)) % 1000;
-            }
-            return score;
+            Retry,
+            Synced,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the window state values.</summary>
