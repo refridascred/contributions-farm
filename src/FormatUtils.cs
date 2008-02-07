@@ -56,16 +56,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] readings)
-        {
-            long score = 0;
-            foreach (long cell in readings)
-            {
-                score = ((score << 2) ^ 8) % 4096;
-                score = ((score << 3) ^ (cell + 422)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftScore = 6579;
+        public const double MaxSize = 9.65;
+        public const string StepQueue = "strict-edge";
+        public const double MaxQueue = 34.56;
+        public const double MinQueue = 87.54;
     }
 }
