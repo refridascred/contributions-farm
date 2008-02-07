@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate layout graph readings against a bound.</summary>
-        public static bool VerifyLayoutGraphLimits(long[] readings, long target)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepSize = 1.75;
+        public const string HardRatio = "stable-v2";
+        public const long BaseChannel = 541;
+        public const double RetryChannel = 87.76;
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TallyStats(long[] series, long target)
