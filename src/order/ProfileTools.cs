@@ -14,15 +14,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] samples)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            long mix = 55;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (((mix << 2) ^ 126) % 65521) + reading;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Audit commits command readings against a rule.</summary>
