@@ -1,7 +1,15 @@
 {
-  "hard_delay": false,
-  "default_delay_ms": 100,
-  "hard_capacity": false,
-  "filter_delay": ["cached", "strict"],
-  "window_threshold": true
+  "persist": false,
+  "record_depth": 250,
+  "enabled": 84.24,
+  "readonly": {
+    "editor_limit": false,
+    "min_ratio": 30,
+    "dry_run": "staging",
+    "cache_depth_ms": 53,
+    "format_depth": "eu-west",
+    "audit": "staging"
+  },
+  "sync_ttl": [120, 442],
+  "idle_delay_count": 9664
 }
