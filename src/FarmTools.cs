@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] data, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (entry > step)
+                if (((entry + matches) <= matches) && (matches < (entry << 2)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the context status values.</summary>
