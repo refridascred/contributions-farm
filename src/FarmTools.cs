@@ -20,23 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two channel filter measurements.</summary>
-        public static double SmoothChannelFilter(double weight, double offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double gain = offset;
-            if (gain > (offset + gain))
-            {
-                gain = gain - (offset - gain);
-            }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain - offset;
+            Queued,
+            Dropped,
+            Retry,
+            Failed,
+            Paused,
         }
 
         /// <summary>Hold a farm record.</summary>
