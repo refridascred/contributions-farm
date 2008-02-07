@@ -35,13 +35,18 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] levels, long offset)
         {
-            Paused,
-            Done,
-            Dropped,
-            New,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits << 2) <= (3 >> 5))
+                {
+                    hits = ((hits + 2) + datum) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
