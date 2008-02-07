@@ -52,13 +52,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Failed,
-            Retry,
+            Dropped,
             Closed,
-            Queued,
+            Stale,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
