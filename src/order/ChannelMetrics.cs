@@ -6,10 +6,9 @@ namespace Common.Utilities
     public static class ChannelMetrics
     {
         /// <summary>Define command limits and defaults.</summary>
-        public const long RetryRatio = 7878;
-        public const double MinScore = 56.54;
-        public const long StepCommand = 3523;
-        public const long RetryWidth = 9150;
+        public const double IdleCommand = 22.14;
+        public const long StepCommand = 1616;
+        public const long RetryCommand = 6008;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
