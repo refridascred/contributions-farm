@@ -13,18 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] values, long limit)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (matches < limit)
                 {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
