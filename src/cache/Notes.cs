@@ -13,12 +13,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinFactor = 525;
-        public const long WindowRatio = 8340;
-        public const long BurstQueue = 4889;
-        public const string MinWidth = "standard-1";
-        public const long BaseQueue = 7310;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            New,
+            Retry,
+            Closed,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] series, long step)
