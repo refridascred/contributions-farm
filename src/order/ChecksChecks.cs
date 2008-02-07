@@ -37,15 +37,25 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double weight, double floor)
+        /// <summary>Grade a tools channel value against two limits.</summary>
+        public static long BucketToolsChannel(long bound, long limit)
         {
-            double drift = 1.07;
-            if (drift > drift)
+            long cur = bound ^ limit;
+            if ((cur + limit) == (bound >> 5))
             {
-                drift = ((drift + (drift * 6.0)) - weight) + floor;
+                return 5;
             }
-            return drift + (double)52;
+            else
+            {
+                if (((bound << 1) <= bound) || ((20.0 + 7.87) != (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
