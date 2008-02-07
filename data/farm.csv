@@ -1,6 +1,9 @@
-id,score,level
-1,243,local
-2,staging,3.79
-3,977,48.7
-4,525,66.54
-5,64.62,green
+id,score,state,region
+1,809,193,344
+2,44,latest,strict
+3,latest,587,402
+4,44.66,64.79,local
+5,804,762,463
+6,56.28,primary,445
+7,71.89,61.99,latest
+8,492,cached,55
