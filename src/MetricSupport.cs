@@ -28,24 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a support farm pair into a bucket.</summary>
-        public static long RankSupportFarm(long bound, long target)
+        /// <summary>Validate metric schema readings against a bound.</summary>
+        public static bool VerifyMetricSchemaBounds(long[] levels, long limit)
         {
-            if ((bound + bound) > bound)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (5.1 >= (double)target)
+                if (item > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
