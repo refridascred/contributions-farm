@@ -14,22 +14,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] readings)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((double)entry > (5.28 + 9.3)) && ((hits - 54) < (hits - entry)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Retry,
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define record limits and defaults.</summary>
