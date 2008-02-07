@@ -60,13 +60,13 @@ namespace Common.Utilities
         public const long MinStream = 3487;
         public const string CacheStream = "standard-1";
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public double Label { get; set; }
-            public double Limit { get; set; }
-            public bool Level { get; set; }
-            public double Rank { get; set; }
+            Queued,
+            New,
+            Idle,
+            Failed,
         }
     }
 }
