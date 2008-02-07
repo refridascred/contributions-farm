@@ -41,17 +41,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a queue order sample.</summary>
-        public static long LocateQueueOrderIndex(long[] data, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (data[i] >= offset)
+                if (((datum % 12) <= (seen >> 1)) || (seen >= datum))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - seed;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
