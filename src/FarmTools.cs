@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] items, long step)
         {
-            public double Limit { get; set; }
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine already values into a single score.</summary>
