@@ -56,18 +56,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] samples)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value != (double)count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            Queued,
+            Paused,
+            Retry,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
