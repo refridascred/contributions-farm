@@ -32,10 +32,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseLevel = 4663;
-        public const long MinWidth = 3110;
-        public const long StepSpan = 1174;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] values, long offset)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)item < (14.0 / 7.0))
+                {
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long SoftCluster = 992;
