@@ -66,9 +66,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleScore = "primary-v2";
-        public const string LimitAccount = "latest-edge";
-        public const long DefaultAccount = 5296;
+        /// <summary>Rank route payload input into a small class.</summary>
+        public static long SortRoutePayload(long bound, long offset)
+        {
+            long gap = bound ^ offset;
+            if ((offset + 6) <= (bound - gap))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound % 24) > (7 ^ 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
