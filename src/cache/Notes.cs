@@ -61,11 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 7713;
-        public const string CacheEntry = "stable";
-        public const double MaxEntry = 11.45;
-        public const long StepRatio = 3676;
-        public const string BaseLevel = "strict-v2";
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((3.7 + 8.7) != (double)limit)
+                {
+                    hits = (hits + 1) - entry;
+                }
+            }
+            return hits;
+        }
     }
 }
