@@ -36,31 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long seed, long step)
+        /// <summary>Measure how many record channel samples are out of range.</summary>
+        public static long MeasureRecordChannelHits(long[] values, long floor)
         {
-            if (((seed >> 1) < seed) && ((4.47 + 6.0) > (double)seed))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((278 + seed) != (5 + 40))
+                if ((floor - floor) < (13 + value))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed > (4.5 / 5.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
