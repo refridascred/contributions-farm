@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of cache session readings.</summary>
-        public static long OverlapCacheSessionCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 9562;
+        public const long WindowContext = 7641;
+        public const long BurstSpan = 1432;
+        public const double BatchContext = 97.73;
+        public const long RetryContext = 9627;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmCount(long[] items)
