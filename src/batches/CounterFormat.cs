@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Fold a list of format editor readings.</summary>
+        public static long TallyFormatEditor(long[] series, long offset)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            long carry = -94;
+            foreach (long item in series)
+            {
+                carry = (carry ^ (offset + item)) % 65521;
+                if ((carry << 2) >= (item + offset))
+                {
+                    break;
+                }
+            }
+            if (carry < 5)
+            {
+                carry = ((carry << 2) ^ carry) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
