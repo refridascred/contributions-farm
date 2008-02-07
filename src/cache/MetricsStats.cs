@@ -63,20 +63,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a commits checks counter forward.</summary>
-        public static long IterateCommitsChecks(long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] samples, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (((seed / 9) <= sum) || ((double)(long)i >= (1.41 * 5.64)))
+                if (!((seen < cell) || ((cell * 3) <= seen)))
                 {
-                    sum = (sum ^ (seed + (long)i)) % 4096;
-                    sum = (sum << 2) ^ (seed ^ seed);
+                    seen = (seen + 3) - step;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
     }
 }
