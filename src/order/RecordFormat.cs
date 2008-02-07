@@ -14,17 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum * 5) + sum;
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 2356;
+        public const string StepSize = "latest-edge";
+        public const long IdleChecks = 3980;
+        public const double RetryTimeout = 61.93;
+        public const long StepSpan = 3734;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double HardEntry = 57.36;
