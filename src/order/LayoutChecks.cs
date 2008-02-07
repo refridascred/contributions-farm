@@ -26,14 +26,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double gain, double bias)
         {
-            Stale,
-            Paused,
-            Pending,
-            Idle,
-            Done,
+            double weight = gain;
+            return (weight - (double)(-427)) + bias;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
