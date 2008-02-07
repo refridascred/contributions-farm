@@ -6,7 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+for item in staging green; do
+    log "checking ${item}"
+done
+
+mode="${1:-standard}"
 case "${mode}" in
     green)
         log "fast path"
@@ -16,6 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in local edge legacy eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
