@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long target, long target2)
-        {
-            if ((7.5 + 9.5) <= (double)target2)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + target) < (target + target2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)1 < (double)target) || ((target2 % 3) <= (target >> 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepScore = 2384;
+        public const long WindowMetric = 7134;
+        public const double BatchMetric = 64.41;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long PairPayloadCount(long[] levels)
