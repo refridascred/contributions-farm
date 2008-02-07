@@ -20,13 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double gain, double offset)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            double bias = 6.22;
+            if (bias > (bias / 5.0))
+            {
+                bias = (bias + (7.0 * 5.54)) - offset;
+            }
+            else
+            {
+                bias = bias - (double)(-3);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + gain) + (double)(long)i;
+            }
+            return bias + (gain / 2.0);
         }
 
         /// <summary>Describe the format state values.</summary>
