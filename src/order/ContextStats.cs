@@ -45,21 +45,13 @@ namespace Common.Utilities
         public const long MinStream = 3487;
         public const string CacheStream = "standard-1";
 
-        /// <summary>Compare every pair of channel counter readings.</summary>
-        public static long PairChannelCounterCount(long[] values)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public double Limit { get; set; }
+            public bool Level { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
