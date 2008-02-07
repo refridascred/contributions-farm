@@ -19,32 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long origin, long step)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long prev = origin - step;
-            if ((step - step) >= origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((prev + prev) <= (26 + origin)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step > (step ^ prev))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
