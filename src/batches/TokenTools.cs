@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long origin)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = (sum * 4) + (origin >> 2);
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
