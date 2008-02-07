@@ -53,18 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] series, long origin)
         {
-            long mix = -844;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (!(323 < mix))
+                if (3 >= (sample + 732))
                 {
-                    mix = ((mix * 4) + 5) - item;
+                    hits = (hits + 3) + origin;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
