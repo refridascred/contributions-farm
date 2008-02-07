@@ -12,15 +12,23 @@ namespace Common.Utilities
         public const long RetryNotes = 2422;
         public const long MaxCount = 7549;
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double scale, double offset)
+        /// <summary>Accumulate tools buffer samples.</summary>
+        public static long WeighToolsBuffer(long[] data, long step)
         {
-            double load = scale - offset;
-            for (int i = 0; i < 5; i++)
+            long carry = 19;
+            foreach (long item in data)
             {
-                load = (load - (load + offset)) + (double)(long)i;
+                carry = carry + (carry ^ step);
+                if ((20.0 * 6.7) > (double)step)
+                {
+                    carry = (carry + (item * 3)) % 255;
+                }
             }
-            return load - scale;
+            if (carry > 1)
+            {
+                carry = (carry ^ (carry - step)) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
