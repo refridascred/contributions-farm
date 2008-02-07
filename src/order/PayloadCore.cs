@@ -19,13 +19,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] readings, long bound)
         {
-            New,
-            Queued,
-            Retry,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (!(81 < (bound / 9)) && ((bound + 2) > (hits << 3)))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the checks phase values.</summary>
