@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many profile session samples are out of range.</summary>
-        public static long AuditProfileSessionHits(long[] levels, long limit)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((9 - tally) < (limit % 8)) || (3 < limit))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
