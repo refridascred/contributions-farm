@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
-            public double Score { get; set; }
+            long state = 98;
+            foreach (long item in levels)
+            {
+                state = ((state + state) % 65521) + item;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
