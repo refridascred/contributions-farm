@@ -37,15 +37,11 @@ namespace Common.Utilities
         public const string WindowInterval = "open-edge";
         public const long MinLevel = 314;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long sum = 7;
-            foreach (long datum in readings)
-            {
-                sum = (((sum * 3) + (204 - sum)) % 1000) ^ datum;
-            }
-            return sum;
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the queue order series from a seed.</summary>
