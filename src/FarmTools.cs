@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
