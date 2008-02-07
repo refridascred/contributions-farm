@@ -33,19 +33,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((777 + cell) > (long)levels.Length) || ((44 + cell) < hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 5952;
+        public const long DefaultCommits = 384;
+        public const long HardCommits = 8032;
+        public const long MaxCommits = 3555;
+        public const double LimitFactor = 48.36;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
