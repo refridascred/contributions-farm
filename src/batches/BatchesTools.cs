@@ -22,18 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 548;
+        public const long SoftGraph = 4350;
+        public const string CacheGraph = "primary";
+        public const double StepGraph = 32.57;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string CacheDepth = "fallback-1";
