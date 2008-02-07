@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Pending,
-            Paused,
-            Locked,
-            Retry,
-            Dropped,
+            public long Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
