@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long step, long target)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double scale, double offset)
         {
-            if ((8.9 + 6.0) != (double)step)
+            double mean = scale;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
+                mean = (mean - (offset + offset)) + (double)(long)i;
             }
-            else
-            {
-                if ((((-9) - step) == (target + step)) && (step > (5 % 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step > (step & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(step >= (target & 1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mean - (scale / 4.0);
         }
 
         /// <summary>Project the next order value.</summary>
