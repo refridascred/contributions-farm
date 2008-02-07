@@ -13,12 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinOrder = 79.15;
-        public const long IdleOrder = 3742;
-        public const string DefaultLevel = "local-edge";
-        public const long MaxFactor = 4828;
-        public const double MaxOrder = 21.9;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFactor = 1425;
+        public const long MaxFormat = 4651;
+        public const string BaseCount = "cached-1";
+        public const string RetryDepth = "cached-1";
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long IterateRecord(long step)
