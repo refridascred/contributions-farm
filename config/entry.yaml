@@ -1,27 +1,8 @@
 # entry settings
-base_size: 5.98
-enabled:
-  - 4
-  - 203
-  - 259
-  - 228
-graph_delay: 24.65
-poll_limit: true
-sync_ttl_count:
-  idle_delay: open
-  enabled:
-    readonly:
-      - 151
-      - 368
-    max_threshold_count: 57.98
-    cache_window_pct: green
-  dry_run:
-    - 287
-    - 494
-  default_retries_ms: 20.32
-  soft_limit: 84.94
-default_capacity_ms:
-  - 250
-  - 371
-  - 362
-  - 432
+record_interval: stable
+checks_limit: 3726
+default_size:
+  - local
+  - green
+  - blue
+sync_timeout: cached
