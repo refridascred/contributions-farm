@@ -63,19 +63,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] values)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long limit, long offset)
         {
-            long anchor = 92;
-            foreach (long entry in values)
+            if ((limit + limit) == (offset + limit))
             {
-                anchor = ((anchor ^ (anchor + anchor)) % 4096) ^ entry;
+                return 8;
             }
-            if (anchor > (-55))
+            else
             {
-                anchor = (anchor ^ (anchor - anchor)) % 1000;
+                if (4.4 <= (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Blend two channel measurements.</summary>
