@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] levels)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mark = 49;
+            foreach (long value in readings)
             {
-                if ((item >> 2) == (item + item))
+                if (!((value - 93) <= mark))
                 {
-                    hits = hits + 1;
+                    mark = (((mark << 2) ^ mark) % 255) - limit;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
