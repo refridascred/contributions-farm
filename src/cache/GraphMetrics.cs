@@ -18,15 +18,12 @@ namespace Common.Utilities
         public const string WindowRatio = "stable-1";
         public const long RetryAlready = 4275;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
