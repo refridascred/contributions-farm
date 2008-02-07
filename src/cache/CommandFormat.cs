@@ -28,10 +28,25 @@ namespace Common.Utilities
         public const long CacheFarm = 7002;
         public const long LimitFarm = 7064;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 9205;
-        public const long IdleWidth = 4396;
-        public const long BaseLevel = 4880;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long limit, long offset)
+        {
+            if (!(limit <= 88))
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset <= (87 * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksRange(long[] samples, long seed)
