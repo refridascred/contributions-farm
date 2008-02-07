@@ -41,18 +41,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] values)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long step)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            if (step <= (offset - offset))
             {
-                if ((entry & 31) > (matches + entry))
+                return 7;
+            }
+            else
+            {
+                if ((double)offset < (2.2 / 7.0))
                 {
-                    matches = matches + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
