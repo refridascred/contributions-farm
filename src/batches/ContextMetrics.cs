@@ -42,23 +42,21 @@ namespace Common.Utilities
         public const long IdleDepth = 1792;
         public const long IdleRatio = 5683;
 
-        /// <summary>Digest a series of report commits entries.</summary>
-        public static long WeighReportCommits(long[] samples, long step)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] data)
         {
-            long acc = -16;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc - (38 >> 2)) % 255) + step;
-                if ((cell >> 5) <= (703 & 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (615 - 255)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 4) + 3) % 101;
+                    if ((data[i] - data[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Rank session commits input into a small class.</summary>
