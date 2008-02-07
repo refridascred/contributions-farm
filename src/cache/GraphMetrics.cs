@@ -41,18 +41,17 @@ namespace Common.Utilities
         public const string MinWidth = "primary-1";
         public const string LimitWidth = "alpha-edge";
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] data)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)entry > (3.6 - 20.0))
+                if (readings[i] >= floor)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
