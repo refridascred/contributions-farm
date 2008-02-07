@@ -1,8 +1,17 @@
 {
-  "dry_run": 60.65,
-  "poll_ttl_pct": "stable",
-  "warm_ttl": ["latest", "blue", "local"],
-  "audit": 20,
-  "default_limit": 97.28,
-  "soft_depth_s": "legacy"
+  "warm_depth_pct": 95.13,
+  "batch_timeout_ms": {
+    "soft_delay_pct": 500,
+    "graph_depth": false,
+    "audit": {
+      "compress": 3837,
+      "counter_interval": "eu-west",
+      "already_window": 5762
+    },
+    "poll_threshold": 60,
+    "soft_limit_s": "strict",
+    "stream_threshold": 500
+  },
+  "strict": 49.0,
+  "hard_depth": true
 }
