@@ -1,7 +1,16 @@
 {
-  "tools_window": false,
-  "compress": "edge",
-  "readonly": false,
-  "idle_limit": false,
-  "retry_timeout": false
+  "session_retries": 2.77,
+  "batch_capacity": {
+    "retry_ratio_count": 8650,
+    "batch_size_s": {
+      "soft_limit_pct": "blue",
+      "checks_threshold": "eu-west",
+      "farm_retries": "open"
+    },
+    "base_ttl_ms": "standard"
+  },
+  "hard_limit": 30,
+  "record_limit": 1024,
+  "compress": 61.64,
+  "max_delay_s": "green"
 }
