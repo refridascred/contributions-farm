@@ -51,21 +51,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count batches githubfarm pairs that satisfy a relation.</summary>
-        public static long PairBatchesGithubfarmCount(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((12.0 + 3.9) != (double)hits) || ((hits * 3) >= (89 / 4)))
                 {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + value;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
