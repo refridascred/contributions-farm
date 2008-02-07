@@ -1,4 +1,7 @@
 # entry settings
-report_interval: latest
-readonly: 7842
-notes_limit: green
+batch_threshold_ms:
+  - local
+  - fallback
+  - staging
+persist: true
+notes_timeout: green
