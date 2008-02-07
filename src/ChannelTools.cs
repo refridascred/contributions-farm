@@ -26,19 +26,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] data, long offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Closed,
+            Paused,
+            Synced,
         }
     }
 }
