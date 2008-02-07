@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 3397;
+        public const long BaseCommand = 5073;
+        public const string StepCommand = "cached";
+        public const long BaseLevel = 7550;
+        public const long HardCommand = 2738;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] values)
