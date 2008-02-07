@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Synced,
-            Stale,
-            Closed,
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a channel support reading.</summary>
