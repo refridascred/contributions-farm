@@ -16,13 +16,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Grade a schema window value against two limits.</summary>
+        public static long BucketSchemaWindow(long origin, long seed)
         {
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
+            long slot = origin + seed;
+            if (((619 + 30) <= (origin + 32)) && (slot < (seed << 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (598 < (origin % 24))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(slot < (7 + slot)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of route entry readings.</summary>
