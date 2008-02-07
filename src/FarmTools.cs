@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] samples, long floor)
         {
-            long anchor = 1;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!(sample >= anchor))
+                if ((tally + sample) <= (2 + tally))
                 {
-                    anchor = ((anchor * 5) + (sample + anchor)) % 65521;
+                    tally = (tally + 3) - floor;
                 }
             }
-            if (anchor > 70)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
