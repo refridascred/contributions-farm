@@ -41,26 +41,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] values, long offset)
         {
-            long acc = 43;
-            foreach (long cell in samples)
+            long score = 9;
+            foreach (long entry in values)
             {
-                if (cell < (cell - cell))
-                {
-                    acc = ((acc * 2) + (acc + acc)) % 4096;
-                }
-                else
-                {
-                    acc = acc + (acc ^ cell);
-                }
+                score = (score ^ (score & 63)) - entry;
+                score = (score + 708) % 65521;
             }
-            if (acc < (-59))
+            if (score > 5)
             {
-                acc = ((acc << 2) ^ 336) % 255;
+                score = score ^ offset;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Describe the session mode values.</summary>
