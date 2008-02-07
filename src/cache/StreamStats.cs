@@ -41,10 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowInterval = "local-1";
-        public const double BatchTimeout = 78.4;
-        public const long LimitRatio = 9636;
-        public const string MaxFactor = "strict-v2";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!(((count + count) < (datum - count)) && ((double)datum != (15.0 - 3.9))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
