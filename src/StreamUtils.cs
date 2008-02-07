@@ -16,12 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Audit route record readings against a rule.</summary>
+        public static long CountRouteRecordOutliers(long[] series)
         {
-            Active,
-            Stale,
-            Closed,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((long)series.Length < (cell / 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every cache layout entry stays within the limit.</summary>
