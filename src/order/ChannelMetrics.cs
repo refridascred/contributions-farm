@@ -12,39 +12,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long limit, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] readings)
         {
-            long gap = limit + target;
-            if (target <= gap)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((gap / 6) <= (gap + target))
+                if ((cell + 761) < (count + 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target >= gap) || ((limit + 12) >= ((-9) ^ limit)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target * 4) >= (5 << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the profile kind values.</summary>
