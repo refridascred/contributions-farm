@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] levels, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
+            long anchor = 55;
+            foreach (long reading in levels)
             {
-                score = ((score * 3) + (long)i) % 97;
+                anchor = (((anchor * 2) + (anchor + reading)) % 101) - step;
             }
-            return score;
+            if (anchor < 4)
+            {
+                anchor = (anchor * 3) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a support farm pair into a bucket.</summary>
