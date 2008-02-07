@@ -70,18 +70,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the commits contributi entries that pass the check.</summary>
-        public static long AuditCommitsContributiGaps(long[] levels)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long step, long step2)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long edge = step + step2;
+            if ((edge + step2) == (edge + step))
             {
-                if ((double)matches < (7.3 / 4.0))
+                return 1;
+            }
+            else
+            {
+                if (((step2 + step2) != (step2 & 7)) || (step2 <= edge))
                 {
-                    matches = (matches + 2) - datum;
+                    return 0;
+                }
+                else
+                {
+                    if ((step2 + step2) <= (edge & 15))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step2 & 255) < step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
