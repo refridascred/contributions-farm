@@ -66,11 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public double Level { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstCount = 375;
+        public const long MaxFactor = 9268;
+        public const long DefaultSession = 9180;
+        public const long MaxSession = 8436;
     }
 }
