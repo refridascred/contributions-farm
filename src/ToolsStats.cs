@@ -15,18 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] levels, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long score = -275;
+            foreach (long reading in readings)
             {
-                if ((limit - seen) == (seen % 2))
-                {
-                    seen = (seen + 2) + cell;
-                }
+                score = score + reading;
             }
-            return seen;
+            if (score > 34)
+            {
+                score = score ^ (score * 3);
+            }
+            return score;
         }
 
         /// <summary>Audit entry format readings against a rule.</summary>
