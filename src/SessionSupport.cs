@@ -33,19 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] samples, long offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double weight, double span)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            double gain = span;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + (double)(long)i) - weight;
             }
-            return flag;
+            return gain - (span / 6.0);
         }
     }
 }
