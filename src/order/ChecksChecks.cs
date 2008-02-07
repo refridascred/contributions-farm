@@ -35,19 +35,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate filter tools readings against a bound.</summary>
-        public static bool VerifyFilterToolsLimits(long[] levels, long origin)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Failed,
+            Draft,
+            Retry,
         }
     }
 }
