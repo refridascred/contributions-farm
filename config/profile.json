@@ -1,7 +1,8 @@
 {
-  "sync_retries_ms": "cached",
-  "batches_delay": 39.28,
-  "sync_limit": "local",
-  "idle_limit_count": [68, 19],
-  "burst_capacity": 11
+  "poll_limit_s": 55.14,
+  "persist": true,
+  "poll_timeout_ms": [431, 154, 365],
+  "flush_window_pct": ["cached", "local", "strict", "green"],
+  "metrics_threshold": 100,
+  "hard_interval": [446, 401, 56]
 }
