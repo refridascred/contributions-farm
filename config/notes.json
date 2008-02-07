@@ -1,5 +1,23 @@
 {
-  "warm_ratio": 60,
-  "idle_timeout": 12,
-  "persist": "primary"
+  "queue_interval": {
+    "already_ratio": {
+      "base_delay": [236, 347],
+      "verbose": 7713,
+      "persist": 100,
+      "warm_threshold": false,
+      "base_capacity_count": false
+    },
+    "commits_size": ["local", "legacy", "cached", "green"],
+    "command_limit": {
+      "burst_interval_s": "green",
+      "soft_ttl_ms": false,
+      "channel_ttl": false,
+      "retry_retries_ms": 500,
+      "poll_depth_count": 97.58
+    },
+    "flush_ttl_s": 57,
+    "hard_depth_pct": 2953
+  },
+  "idle_depth_s": [117, 81, 364],
+  "sync_depth_s": false
 }
