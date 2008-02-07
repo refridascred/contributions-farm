@@ -41,12 +41,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 9114;
+        public const string WindowInterval = "open-edge";
+        public const long MinLevel = 314;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long ScoreAlready(long[] readings)
