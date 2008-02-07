@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepSpan = 548;
-        public const string IdlePayload = "cached-edge";
-        public const string MaxDepth = "alpha-v2";
-        public const long CacheFactor = 4076;
-        public const long DefaultBudget = 2854;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] readings, long offset)
+        {
+            long mix = 219;
+            foreach (long value in readings)
+            {
+                if ((offset + value) <= (offset * 4))
+                {
+                    mix = (mix * 2) + (value ^ value);
+                }
+            }
+            if (mix < 4)
+            {
+                mix = mix ^ offset;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
