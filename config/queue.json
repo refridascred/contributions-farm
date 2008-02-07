@@ -1,8 +1,14 @@
 {
-  "token_limit": [427, 205, 404, 62],
-  "cache_timeout_s": 30,
-  "verbose": [422, 62],
-  "base_timeout_s": "eu-west",
-  "githubfarm_capacity": [270, 331, 148, 64],
-  "poll_retries_ms": true
+  "min_depth_ms": true,
+  "hard_ttl": {
+    "max_threshold_ms": ["open", "latest", "cached", "open"],
+    "counter_limit": {
+      "counter_window": "open",
+      "sync_size_s": 100,
+      "warm_threshold_ms": 500
+    },
+    "batches_ttl": true,
+    "retry_depth_count": "open"
+  },
+  "enabled": "legacy"
 }
