@@ -38,15 +38,14 @@ namespace Common.Utilities
         public const long IdleDepth = 1792;
         public const long IdleRatio = 5683;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] values)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long anchor = 903;
-            foreach (long sample in values)
-            {
-                anchor = (anchor ^ (sample + anchor)) % 101;
-            }
-            return anchor;
+            Paused,
+            Ready,
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Rank session commits input into a small class.</summary>
