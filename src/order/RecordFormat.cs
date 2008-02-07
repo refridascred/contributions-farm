@@ -43,18 +43,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many already batches samples are out of range.</summary>
-        public static long MeasureAlreadyBatchesOutliers(long[] levels, long offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            if ((1.7 + 8.5) > (double)limit)
             {
-                if (offset > hits)
+                return 7;
+            }
+            else
+            {
+                if ((76 * 5) == (origin & 15))
                 {
-                    hits = (hits + 1) + cell;
+                    return 2;
+                }
+                else
+                {
+                    if ((59 ^ origin) >= origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
