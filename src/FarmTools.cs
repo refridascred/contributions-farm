@@ -26,13 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Count the stream tools entries that pass the check.</summary>
+        public static long MeasureStreamToolsHits(long[] levels)
         {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value == (2.0 / 4.0))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
