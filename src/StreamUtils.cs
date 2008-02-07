@@ -50,12 +50,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Failed,
-            Pending,
-            Idle,
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
