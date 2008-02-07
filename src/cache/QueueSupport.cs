@@ -35,17 +35,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] samples, long limit)
+        /// <summary>Match up command format samples.</summary>
+        public static long OverlapCommandFormatCount(long[] samples)
         {
+            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
