@@ -28,10 +28,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinScore = 1399;
-        public const long IdleCounter = 1004;
-        public const long WindowCounter = 8764;
-        public const double RetryFactor = 3.25;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((5 * 3) < (item & 15))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
