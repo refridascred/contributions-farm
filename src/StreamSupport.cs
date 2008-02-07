@@ -23,29 +23,29 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long target, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long floor, long step)
         {
-            long cur = target + floor;
-            if (((target + 84) > (5 - 724)) && ((cur >> 4) > floor))
+            long delta = floor ^ step;
+            if ((step + step) < ((-76) - 3))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (((target - floor) > (target >> 2)) || ((cur % 10) >= cur))
+                if (!((delta + step) != (floor + (-384))))
                 {
                     return 4;
                 }
                 else
                 {
-                    if (!((cur / 4) <= (floor - target)))
+                    if ((floor * 2) >= step)
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        return 0;
+                        return 1;
                     }
                 }
             }
