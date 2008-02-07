@@ -1,8 +1,7 @@
 {
-  "cache_limit_s": ["cached", "standard", "cached", "staging"],
-  "readonly": 3898,
-  "flush_ttl_s": true,
-  "soft_size_s": ["legacy", "blue", "edge", "green"],
-  "sync_size_s": "primary",
-  "min_size_count": 5372
+  "batch_ttl": 100,
+  "readonly": true,
+  "dry_run": false,
+  "cache_ttl_count": 1024,
+  "warm_capacity": false
 }
