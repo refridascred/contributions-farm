@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Synced,
-            Draft,
+            Paused,
+            Ready,
             Queued,
             Locked,
         }
