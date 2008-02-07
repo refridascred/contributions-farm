@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryEditor = 42.3;
-        public const long CacheScore = 2089;
-        public const long RetryCount = 2328;
-        public const long SoftFactor = 9371;
-        public const string RetryInterval = "local";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftSize = 78.61;
+        public const long WindowCounter = 1653;
+        public const string BatchCounter = "stable-1";
+        public const long IdleCounter = 9405;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long ClassifyReport(long step, long target)
