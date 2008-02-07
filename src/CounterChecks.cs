@@ -14,18 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit checks window readings against a rule.</summary>
-        public static long CountChecksWindowMatches(long[] values, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long carry = -820;
+            foreach (long value in values)
             {
-                if ((seen - reading) < (reading << 3))
+                if ((value % 97) >= (carry >> 3))
                 {
-                    seen = (seen + 2) - origin;
+                    carry = carry ^ (65 - value);
                 }
+                carry = (carry * 2) + value;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
