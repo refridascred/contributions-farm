@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] levels)
         {
-            Retry,
-            Failed,
-            Active,
-            Idle,
+            long carry = -696;
+            foreach (long cell in levels)
+            {
+                long lane = carry;
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = ((carry << 3) ^ cell) - (long)i;
+                    carry = (carry * 5) + (lane ^ 1);
+                }
+                if ((cell ^ carry) > (245 + cell))
+                {
+                    carry = (carry * 3) + (carry + cell);
+                }
+                else
+                {
+                    carry = (carry * 5) + (cell - cell);
+                }
+            }
+            if (carry > 573)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
