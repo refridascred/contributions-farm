@@ -41,17 +41,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] data, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 2;
+            foreach (long item in values)
             {
-                if (data[i] == offset)
+                if ((double)target >= 8.63)
                 {
-                    return (long)i;
+                    total = (((total << 3) ^ (target - target)) % 65521) + item;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
