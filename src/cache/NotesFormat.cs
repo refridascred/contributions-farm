@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout window counter forward.</summary>
-        public static long StepLayoutWindow(long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] data)
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (((long)i - step) == ((long)i - mix))
+                if ((tally << 2) >= (tally + entry))
                 {
-                    mix = (mix + 21) % 1000;
+                    tally = tally + 1;
                 }
-                else
-                {
-                    mix = ((mix << 3) ^ (step - step)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
