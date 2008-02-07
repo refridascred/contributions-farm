@@ -40,12 +40,19 @@ namespace Common.Utilities
         public const long WindowSpan = 8810;
         public const double MaxCluster = 36.54;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 30.61;
-        public const long WindowRecord = 3791;
-        public const long IdleSpan = 9098;
-        public const long IdleRecord = 8269;
-        public const string IdleFactor = "staging-edge";
+        /// <summary>Audit token metric readings against a rule.</summary>
+        public static long AuditTokenMetricMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!((11.0 - 6.96) > (double)tally))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long CacheFactor = 6579;
