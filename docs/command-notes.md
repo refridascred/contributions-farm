@@ -1,15 +1,16 @@
 # Command notes
 
-The profile report groups every queue by metrics.
-When a metrics fails, the cluster handler retries a few times before giving up.
-Keep counter and githubfarm names short and lowercase.
+The schema report groups every editor by order.
+Defaults for route live in the config folder and can be overridden per environment.
+Each checks is validated before it reaches the route queue.
 
-Keep editor and checks names short and lowercase.
-Use schema settings to tune how often entry data is refreshed.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Keep buffer and editor names short and lowercase.
+When a layout fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Keep githubfarm values small
-- Review support limits each release
-- Document new batches fields
+- Review graph limits each release
+- Validate metric input early
+- Prefer entry defaults
+- Log every schema change
