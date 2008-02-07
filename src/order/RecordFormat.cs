@@ -18,12 +18,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "cached-edge";
+        public const double CacheOrder = 96.39;
+        public const long LimitLevel = 8456;
+        public const long HardRatio = 101;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricHits(long[] items)
