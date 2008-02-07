@@ -26,21 +26,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((data[i] == target) && ((data[i] % 5) == 0))
                 {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
