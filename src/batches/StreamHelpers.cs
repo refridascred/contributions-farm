@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const long StepTimeout = 7773;
         public const string SoftCommand = "staging-edge";
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Locked,
-            Done,
-            Ready,
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
