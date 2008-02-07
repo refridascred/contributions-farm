@@ -34,13 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] samples, long target)
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two already farm measurements.</summary>
