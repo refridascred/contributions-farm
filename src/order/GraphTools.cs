@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 4;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)datum > (double)seed)
                 {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor * 3) + seed) % 101;
                 }
             }
-            return seen;
+            if (anchor < 21)
+            {
+                anchor = anchor + ((long)data.Length * 3);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the context class values.</summary>
