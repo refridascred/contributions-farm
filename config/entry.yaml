@@ -1,8 +1,18 @@
 # entry settings
-record_interval: stable
-checks_limit: 3726
-default_size:
-  - local
-  - green
-  - blue
-sync_timeout: cached
+filter_ratio:
+  schema_capacity: local
+  compress: 29
+  persist: 250
+  batch_delay_s: stable
+  min_window_ms: 93.34
+  warm_interval: 6357
+sync_limit_count:
+  queue_threshold: legacy
+  cache_depth: open
+  min_interval: cached
+  support_retries:
+    - 355
+    - 14
+  soft_limit_pct: legacy
+poll_timeout_pct: 5404
+stream_window: standard
