@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long WindowRatio = 3530;
         public const double RetryBudget = 83.02;
 
-        /// <summary>Measure how many stream farm samples are out of range.</summary>
-        public static long AuditStreamFarmOutliers(long[] series)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((hits >> 4) < (5 & 63))
+                if ((item + 55) <= item)
                 {
-                    hits = (hits + 1) + cell;
+                    matches = (matches + 2) + step;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate order samples.</summary>
