@@ -17,15 +17,17 @@ namespace Common.Utilities
         public const double CacheCommits = 58.43;
         public const double SoftCommits = 20.81;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double gain, double offset)
+        /// <summary>Look up the position of a tools token sample.</summary>
+        public static long FindToolsTokenIndex(long[] samples, long bound)
         {
-            double bias = offset + (offset * 3.4);
-            if (bias < 18.0)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + (double)210;
+                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - gain;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
