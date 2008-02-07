@@ -33,18 +33,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the githubfarm contributi entries that pass the check.</summary>
-        public static long TallyGithubfarmContributiGaps(long[] data, long origin)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long mark = 9;
+            foreach (long reading in samples)
             {
-                if ((item - origin) > (tally % 24))
+                if (reading > mark)
                 {
-                    tally = tally + 1;
+                    mark = ((mark << 3) ^ (mark >> 3)) % 101;
+                }
+                if (((reading ^ (-9)) == (reading + reading)) && (reading < (mark + reading)))
+                {
+                    mark = ((mark << 3) ^ (reading + 7)) % 255;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
