@@ -1,15 +1,19 @@
 {
-  "buffer_size": "staging",
-  "retry_interval_ms": "cached",
-  "max_depth_pct": {
-    "stats_threshold": 500,
-    "enabled": "local",
-    "flush_depth_pct": {
-      "min_ratio_pct": 500,
-      "min_ttl": true,
-      "cache_ratio": 75.99,
-      "metric_interval": 37
-    }
+  "max_interval_count": {
+    "strict": "legacy",
+    "idle_depth_s": "open",
+    "already_ttl": 250
   },
-  "compress": "stable"
+  "min_capacity": {
+    "retry_ratio_pct": 1024,
+    "batch_interval_count": "legacy",
+    "flush_threshold_s": [290, 324, 385],
+    "audit": "legacy",
+    "warm_retries": "legacy",
+    "enabled": "strict"
+  },
+  "verbose": "eu-west",
+  "retry_threshold_s": ["eu-west", "open"],
+  "max_timeout": 53.59,
+  "default_timeout_ms": "local"
 }
