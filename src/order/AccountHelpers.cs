@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 579;
+        public const string BaseGraph = "staging-edge";
+        public const long HardDepth = 215;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long RetryBatches = 4740;
