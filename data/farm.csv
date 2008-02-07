@@ -1,7 +1,9 @@
-id,ratio,count
-1,416,60.89
-2,latest,85.28
-3,81.35,eu-west
-4,primary,cached
-5,951,cached
-6,563,50.17
+id,state,owner
+1,16.94,370
+2,stable,804
+3,18.14,382
+4,682,8.86
+5,47.58,35
+6,723,strict
+7,428,447
+8,326,975
