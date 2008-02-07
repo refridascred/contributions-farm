@@ -23,13 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
