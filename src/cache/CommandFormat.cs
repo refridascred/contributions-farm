@@ -53,18 +53,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many counter graph samples are out of range.</summary>
-        public static long MeasureCounterGraphGaps(long[] items)
+        /// <summary>Check that every metric filter entry stays within the limit.</summary>
+        public static bool VerifyMetricFilterRange(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((hits / 5) > (hits + hits))
+                if (entry < bound)
                 {
-                    hits = (hits + 2) + reading;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
