@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double bias, double floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double ratio = floor - (bias / 3.0);
-            if (ratio <= bias)
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio - (floor / 4.0);
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
