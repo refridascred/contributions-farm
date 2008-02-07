@@ -22,13 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] values, long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define report limits and defaults.</summary>
