@@ -66,32 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long limit, long seed)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long delta = limit ^ seed;
-            if (7 >= (delta * 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed ^ 293) == (limit + delta))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((delta + limit) > (delta / 9)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
