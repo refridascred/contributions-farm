@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] readings, long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 216;
+            foreach (long entry in readings)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score - (score / 4)) % 1000) ^ entry;
             }
-            return -1;
+            if (score > 92)
+            {
+                score = ((score * 2) + (score + score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a metrics record.</summary>
