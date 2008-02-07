@@ -63,12 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] samples, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
