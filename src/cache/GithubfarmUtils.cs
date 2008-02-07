@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = (((score << 2) ^ limit) % 65521) - (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Closed,
+            Queued,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
