@@ -30,12 +30,21 @@ namespace Common.Utilities
         public const string MinWidth = "standard-1";
         public const long BaseQueue = 7310;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
