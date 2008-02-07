@@ -38,19 +38,23 @@ namespace Common.Utilities
         public const long BatchPayload = 9567;
         public const long RetryPayload = 6044;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] series, long floor)
+        /// <summary>Digest a series of report commits entries.</summary>
+        public static long WeighReportCommits(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long acc = -16;
+            foreach (long cell in samples)
             {
-                if (sample >= floor)
+                acc = ((acc - (38 >> 2)) % 255) + step;
+                if ((cell >> 5) <= (703 & 1))
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc << 3) ^ (615 - 255)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 4) + 3) % 101;
                 }
             }
-            return ready;
+            return acc % 97;
         }
 
         /// <summary>Measure how many account queue samples are out of range.</summary>
