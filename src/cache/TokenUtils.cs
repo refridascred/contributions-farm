@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] data, long seed)
+        /// <summary>Validate format command readings against a bound.</summary>
+        public static bool VerifyFormatCommandLimits(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((7.6 + 7.38) != (double)seed)
+                if (entry > floor)
                 {
-                    count = (count + 2) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
