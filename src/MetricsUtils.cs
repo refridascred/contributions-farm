@@ -34,12 +34,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Measure how many entry stream samples are out of range.</summary>
+        public static long TallyEntryStreamGaps(long[] values, long floor)
         {
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((cell >> 5) >= cell)
+                {
+                    count = (count + 1) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the format class values.</summary>
