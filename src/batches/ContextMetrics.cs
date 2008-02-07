@@ -36,21 +36,13 @@ namespace Common.Utilities
         public const long IdleDepth = 1792;
         public const long IdleRatio = 5683;
 
-        /// <summary>Count command githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchCommandGithubfarmCount(long[] samples)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Locked,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
