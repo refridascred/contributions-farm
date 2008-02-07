@@ -26,12 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] values, long step)
         {
-            Queued,
-            Ready,
-            Locked,
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
