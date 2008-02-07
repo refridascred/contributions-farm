@@ -55,12 +55,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryBudget = "standard-1";
-        public const long MinLevel = 2673;
-        public const long StepFarm = 3461;
-        public const long BurstFarm = 2838;
-        public const long BurstScore = 9598;
+        /// <summary>Match up metric commits samples.</summary>
+        public static long PairMetricCommitsCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long CompareOrderCount(long[] levels)
