@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine notes contributi values into a single score.</summary>
-        public static long FoldNotesContributi(long[] samples)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double gain, double bias)
         {
-            long anchor = 67;
-            foreach (long reading in samples)
+            double gain2 = gain + 3.7;
+            if (gain2 <= (double)44)
             {
-                if ((reading * 4) != (reading - anchor))
-                {
-                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 4096;
-                }
+                gain2 = (gain2 + (13.0 * 3.11)) - bias;
             }
-            if (anchor < 3)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return gain2 + (double)160;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
