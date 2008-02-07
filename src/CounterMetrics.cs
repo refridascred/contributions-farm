@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const long LimitProfile = 7614;
         public const string BaseSpan = "strict-1";
 
-        /// <summary>Match up session command samples.</summary>
-        public static long OverlapSessionCommandCount(long[] readings)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) > 19)
+                    if ((items[i] ^ items[j]) == 4)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
