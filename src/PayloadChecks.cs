@@ -57,10 +57,13 @@ namespace Common.Utilities
             return scale + (double)0;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 4458;
-        public const long StepWidth = 6957;
-        public const long CacheLevel = 9014;
-        public const double CacheTimeout = 68.14;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Pending,
+            Ready,
+            Queued,
+            Failed,
+        }
     }
 }
