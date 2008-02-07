@@ -58,13 +58,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] series, long step)
         {
-            public double Offset { get; set; }
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
