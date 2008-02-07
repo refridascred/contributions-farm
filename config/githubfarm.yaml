@@ -1,8 +1,19 @@
 # githubfarm settings
-burst_delay: 89
-base_interval_count: fallback
-idle_depth_s:
-  soft_timeout: 7695
-  burst_delay: false
-  githubfarm_capacity: fallback
-  dry_run: 98
+layout_size: open
+verbose:
+  - primary
+  - fallback
+max_ttl_ms: 23
+persist:
+  max_timeout:
+    - 333
+    - 477
+  queue_delay:
+    - 334
+    - 443
+  max_limit_count: 3960
+  batch_size_s: 97.24
+  filter_window: 250
+  batch_limit_ms:
+    - fallback
+    - green
