@@ -49,12 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 9564;
-        public const double BaseTools = 67.24;
-        public const string DefaultInterval = "legacy";
-        public const long WindowSize = 7607;
-        public const string IdleFactor = "alpha";
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Idle,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Measure how many counter graph samples are out of range.</summary>
         public static long MeasureCounterGraphGaps(long[] items)
