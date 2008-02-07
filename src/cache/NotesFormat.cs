@@ -22,11 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepCount = 8457;
-        public const long RetrySize = 7066;
-        public const long WindowBudget = 5320;
-        public const long DefaultLevel = 5622;
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double rate, double span)
+        {
+            double bias = rate;
+            if (bias >= (double)432)
+            {
+                bias = bias + 2.18;
+            }
+            return bias + (span * 5.0);
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchLimits(long[] series, long step)
