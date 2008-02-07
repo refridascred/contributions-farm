@@ -32,12 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] data, long bound)
         {
-            Idle,
-            Locked,
-            Paused,
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
