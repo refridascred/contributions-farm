@@ -41,11 +41,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Measure how many batches format samples are out of range.</summary>
+        public static long MeasureBatchesFormatMatches(long[] data, long offset)
         {
-            public bool Label { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((double)count >= (17.0 + 20.0))
+                {
+                    count = ((count + 1) - sample) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
