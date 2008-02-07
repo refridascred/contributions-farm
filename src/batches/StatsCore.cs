@@ -48,14 +48,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Pending,
+            Failed,
+            Retry,
+            Closed,
             Queued,
-            Paused,
-            New,
-            Done,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
