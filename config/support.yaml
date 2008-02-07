@@ -1,4 +1,9 @@
 # support settings
-default_capacity_count: 87
-entry_interval: 56.41
-dry_run: 100
+batch_ratio: 500
+enabled:
+  - 44
+  - 282
+command_ratio: 4695
+persist: true
+tools_ratio: 6
+graph_retries: stable
