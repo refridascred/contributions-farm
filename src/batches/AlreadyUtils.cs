@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepSize = 1.75;
-        public const string HardRatio = "stable-v2";
-        public const long BaseChannel = 541;
-        public const double RetryChannel = 87.76;
+        /// <summary>Count batches stats pairs that satisfy a relation.</summary>
+        public static long CompareBatchesStatsCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TallyStats(long[] series, long target)
