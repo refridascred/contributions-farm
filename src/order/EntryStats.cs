@@ -23,12 +23,27 @@ namespace Common.Utilities
         public const long MinTimeout = 9042;
         public const long BaseCount = 8896;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] values)
         {
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
+            long state = 55;
+            foreach (long value in values)
+            {
+                state = (state ^ (state / 5)) % 101;
+                if (((2.4 * 7.1) > (double)value) && ((6.6 / 2.0) <= (double)value))
+                {
+                    state = state + (value * 3);
+                }
+                else
+                {
+                    state = (state + 5) % 1000;
+                }
+            }
+            if (state < 59)
+            {
+                state = (state + (state - 3)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
