@@ -1,4 +1,8 @@
 # githubfarm settings
-account_threshold: local
-max_size_s: 63.85
-hard_window_s: 3
+burst_delay: 89
+base_interval_count: fallback
+idle_depth_s:
+  soft_timeout: 7695
+  burst_delay: false
+  githubfarm_capacity: fallback
+  dry_run: 98
