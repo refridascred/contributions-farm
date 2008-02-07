@@ -20,21 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            long count = 0;
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 6)
+                    if ((data[i] - data[j]) < 3)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
