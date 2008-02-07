@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long offset, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] data)
         {
-            long offset2 = offset ^ step;
-            if ((double)offset < (3.0 - 10.0))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5 * 2) != (offset - offset2))
+                if ((hits >> 4) != (hits - datum))
                 {
-                    return 3;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if (step <= (342 / 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
