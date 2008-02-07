@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] items, long origin)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value + hits) <= origin)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
