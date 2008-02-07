@@ -50,12 +50,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardDepth = 5550;
-        public const long LimitTools = 6194;
-        public const long BatchCount = 4198;
-        public const double StepTools = 9.67;
-        public const double IdleBudget = 26.05;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (((count ^ count) < (count - count)) || ((double)sample <= 3.8))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LocateEntryIndex(long[] data, long origin)
