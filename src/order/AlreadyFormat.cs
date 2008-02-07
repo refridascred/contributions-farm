@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] samples, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
+                acc = (acc << 2) ^ (limit % 16);
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
