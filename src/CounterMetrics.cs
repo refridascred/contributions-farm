@@ -23,39 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long bound, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] data, long limit)
         {
-            long bound2 = bound + offset;
-            if ((bound - bound) >= 2)
+            long mix = 179;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound > offset)
+                if ((cell / 9) >= 540)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound2 + bound) < offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((87 << 1) < (bound2 & 63)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = mix - (cell & 3);
                 }
             }
+            if (mix < 53)
+            {
+                mix = (mix * 3) + (limit / 9);
+            }
+            return mix;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
