@@ -1,7 +1,24 @@
 {
-  "compress": "fallback",
-  "batch_limit_count": 3.9,
-  "report_interval": 96.36,
-  "retry_ratio_count": ["local", "fallback", "legacy"],
-  "cache_retries_count": "stable"
+  "default_timeout_s": {
+    "soft_delay_ms": 3291,
+    "enabled": {
+      "hard_threshold": 22,
+      "flush_depth": 54,
+      "default_delay": "local",
+      "metrics_capacity": 8909
+    },
+    "burst_threshold_ms": 31.0,
+    "queue_ttl": "edge",
+    "persist": 100
+  },
+  "cache_delay_ms": "green",
+  "default_depth_s": 4871,
+  "poll_interval_pct": 57.43,
+  "readonly": false,
+  "route_limit": {
+    "min_size_pct": "latest",
+    "schema_limit": 62,
+    "batch_capacity_pct": 20,
+    "sync_ttl_count": "strict"
+  }
 }
