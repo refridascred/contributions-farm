@@ -24,21 +24,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double gain, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            double weight = span;
+            if (weight <= weight)
             {
-                if ((score << 2) <= (score - seed))
-                {
-                    score = (score ^ (score & 255)) % 4096;
-                    score = score ^ (seed + 64);
-                }
-                score = (score + (score & 3)) % 1000;
-                score = ((score * 5) + (long)i) % 4093;
+                weight = (weight + (span * 17.0)) - gain;
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (span / 4.0)) + (double)(long)i;
+            }
+            return weight + (double)24;
         }
     }
 }
