@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] items, long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] values)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long mark = 920;
+            foreach (long item in values)
             {
-                if (datum <= step)
+                if (!(item < mark))
                 {
-                    ready = false;
+                    mark = mark - mark;
                     break;
                 }
+                else
+                {
+                    mark = (mark + (long)values.Length) % 1000;
+                }
+                mark = ((mark * 4) + (item - mark)) % 65521;
             }
-            return ready;
+            if (mark > 622)
+            {
+                mark = ((mark << 2) ^ (636 + 0)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Combine already values into a single score.</summary>
