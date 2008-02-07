@@ -28,15 +28,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            long mark = 94;
-            foreach (long reading in data)
+            long total = 24;
+            foreach (long item in readings)
             {
-                mark = ((mark << 2) ^ (reading % 3)) % 97;
+                total = (total ^ (item + item)) % 4096;
+                total = ((total << 2) ^ (total - 13)) % 65521;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Measure how many tools channel samples are out of range.</summary>
