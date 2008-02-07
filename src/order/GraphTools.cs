@@ -41,11 +41,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitRatio = 4917;
-        public const string BurstScore = "cached-v2";
-        public const double BatchLevel = 74.16;
-        public const long SoftSize = 69;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowRatio = "staging-v2";
+        public const long BurstTools = 9610;
+        public const long LimitTools = 9489;
+        public const long RetryTools = 6342;
+        public const long StepTools = 9630;
 
         /// <summary>Derive the next account order value from a seed.</summary>
         public static long SeriesAccountOrder(long bound)
