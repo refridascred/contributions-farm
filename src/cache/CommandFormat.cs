@@ -28,14 +28,19 @@ namespace Common.Utilities
         public const long CacheFarm = 7002;
         public const long LimitFarm = 7064;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] data, long target)
         {
-            Done,
-            Stale,
-            Idle,
-            Synced,
-            Draft,
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
