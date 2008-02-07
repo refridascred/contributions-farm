@@ -31,12 +31,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Measure how many already batches samples are out of range.</summary>
+        public static long MeasureAlreadyBatchesOutliers(long[] levels, long offset)
         {
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (offset > hits)
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
