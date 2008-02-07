@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] levels, long limit)
         {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of entry metrics readings.</summary>
