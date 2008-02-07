@@ -25,17 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] series, long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long offset, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((origin / 2) < origin)
             {
-                if (series[i] >= step)
+                return 2;
+            }
+            else
+            {
+                if ((origin + offset) >= offset)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset < (2.0 + 4.08))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a token reading.</summary>
