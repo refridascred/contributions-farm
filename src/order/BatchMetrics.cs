@@ -42,22 +42,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the metric format entries that pass the check.</summary>
-        public static long AuditMetricFormatOutliers(long[] series, long seed)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((hits + seed) > (hits + 55)) || (cell > ((-62) + 391))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] - data[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
