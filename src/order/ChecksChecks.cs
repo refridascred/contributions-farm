@@ -16,18 +16,16 @@ namespace Common.Utilities
             return gain2 + (double)160;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] items, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long origin)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (((datum & 31) <= (bound - seen)) || ((double)seen != (17.0 - 6.0)))
-                {
-                    seen = seen + 1;
-                }
+                acc = (acc ^ ((long)i % 100)) % 65521;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Match up metrics notes samples.</summary>
