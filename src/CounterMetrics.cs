@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Locked,
-            Active,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 3774;
+        public const double RetryTimeout = 19.41;
+        public const string HardTimeout = "legacy";
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long ClassifyChecks(long limit, long target)
