@@ -44,10 +44,18 @@ namespace Common.Utilities
         public const long IdleReport = 5482;
         public const double IdleLevel = 92.55;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 2907;
-        public const string WindowCount = "cached-v2";
-        public const string LimitDepth = "cached-v2";
-        public const double BaseBatches = 21.49;
+        /// <summary>Count the window account entries that pass the check.</summary>
+        public static long CountWindowAccountMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((-63) < (count << 2))
+                {
+                    count = (count + 2) - value;
+                }
+            }
+            return count;
+        }
     }
 }
