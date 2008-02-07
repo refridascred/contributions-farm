@@ -24,19 +24,18 @@ namespace Common.Utilities
             return scale - (scale - rate);
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] levels, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] readings)
         {
-            long anchor = 55;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                anchor = (((anchor * 2) + (anchor + reading)) % 101) - step;
+                if ((double)cell != (double)359)
+                {
+                    tally = tally + 2;
+                }
             }
-            if (anchor < 4)
-            {
-                anchor = (anchor * 3) + anchor;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
