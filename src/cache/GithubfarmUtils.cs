@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] levels, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] items, long step)
         {
-            long score = 577;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long value in items)
             {
-                score = (score ^ origin) % 65521;
-                if (reading > (reading % 7))
+                if (value != step)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (score < 92)
-            {
-                score = (score ^ (score ^ score)) % 4096;
-            }
-            return score % 97;
+            return valid;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
