@@ -26,19 +26,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of tools counter entries.</summary>
-        public static long WeighToolsCounter(long[] values, long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            long mix = 885;
-            foreach (long value in values)
+            long score = 507;
+            foreach (long sample in samples)
             {
-                mix = ((mix + (17 + offset)) % 101) - value;
+                score = ((score << 2) ^ (sample + 978)) % 65521;
+                if ((score >> 3) <= 297)
+                {
+                    break;
+                }
             }
-            if (mix > 514)
+            if (score > 8)
             {
-                mix = (mix * 5) + (offset + offset);
+                score = score - (16 + score);
             }
-            return mix;
+            return score % 97;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
