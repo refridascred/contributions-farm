@@ -49,10 +49,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxLevel = 4617;
-        public const long CacheCount = 5472;
-        public const long BatchChannel = 6954;
-        public const string CacheFactor = "stable-1";
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] readings, long step)
+        {
+            long anchor = 983;
+            foreach (long item in readings)
+            {
+                if (!((double)anchor > (7.58 / 8.0)))
+                {
+                    anchor = (anchor * 2) + (item * 4);
+                }
+                else
+                {
+                    anchor = (anchor ^ step) % 4096;
+                }
+            }
+            if (anchor > 97)
+            {
+                anchor = (anchor + step) % 255;
+            }
+            return anchor;
+        }
     }
 }
