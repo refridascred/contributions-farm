@@ -72,19 +72,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double scale, double floor)
+        /// <summary>Measure how many route farm samples are out of range.</summary>
+        public static long AuditRouteFarmGaps(long[] values, long limit)
         {
-            double mean = floor + (floor / 5.0);
-            if (mean < (floor + scale))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                mean = mean + mean;
+                if (limit <= (datum * 3))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + 15.0) + (double)(long)i;
-            }
-            return mean - (double)49;
+            return matches;
         }
     }
 }
