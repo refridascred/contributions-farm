@@ -41,20 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] values, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] samples)
         {
-            long score = 9;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                score = (score ^ (score & 63)) - entry;
-                score = (score + 708) % 65521;
+                if (((double)seen >= (13.0 * 5.0)) && ((seen << 2) == (reading ^ seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (score > 5)
-            {
-                score = score ^ offset;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the session mode values.</summary>
