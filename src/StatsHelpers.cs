@@ -35,12 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinRatio = 2275;
-        public const double DefaultSpan = 25.4;
-        public const long HardWidth = 981;
-        public const long IdleReport = 5482;
-        public const double IdleLevel = 92.55;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double bias, double offset)
+        {
+            double mean = bias;
+            return (mean - (double)56) + offset;
+        }
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
