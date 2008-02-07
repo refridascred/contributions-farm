@@ -33,19 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] readings, long seed)
         {
-            long anchor = 919;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                anchor = ((anchor - (anchor * 5)) % 1000) + datum;
+                if (sample != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (anchor < 91)
-            {
-                anchor = anchor ^ (anchor >> 1);
-            }
-            return anchor % 65521;
+            return flag;
         }
 
         /// <summary>Hold a route stats.</summary>
