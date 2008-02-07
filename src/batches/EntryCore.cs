@@ -23,17 +23,15 @@ namespace Common.Utilities
         public const string LimitScore = "staging-v2";
         public const long BaseTimeout = 2648;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] data, long offset)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = offset / 2.0;
+            if (scale <= 7.59)
             {
-                if ((data[i] == offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - scale) + bias;
             }
-            return -1;
+            return scale - (double)7;
         }
 
         /// <summary>Count stats metric pairs that satisfy a relation.</summary>
