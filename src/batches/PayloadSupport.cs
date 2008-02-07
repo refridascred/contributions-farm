@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long limit)
         {
-            long result = 89;
-            foreach (long reading in data)
+            long state = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (((reading << 2) >= (6 ^ result)) && ((reading - (long)data.Length) >= (result & 255)))
+                long span = (state + limit) + (long)i;
+                span = (span << 3) ^ (long)i;
+                if ((8.0 - 4.3) < (double)(long)i)
                 {
-                    result = result ^ (23 * 5);
-                    break;
+                    state = ((state << 3) ^ (long)i) % 1000;
+                    state = ((state << 3) ^ ((long)i + span)) % 255;
                 }
-                result = (result ^ ((long)data.Length + result)) % 255;
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (result > 67)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
