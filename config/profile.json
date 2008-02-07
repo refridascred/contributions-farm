@@ -1,8 +1,20 @@
 {
-  "token_size": [191, 257, 174, 24],
-  "metrics_retries": 100,
-  "notes_interval": [275, 478],
-  "retry_threshold": "stable",
-  "counter_size": ["cached", "legacy", "blue"],
-  "batch_delay": "edge"
+  "persist": 5389,
+  "dry_run": {
+    "soft_depth_pct": 82.43,
+    "burst_window_pct": {
+      "soft_delay_s": "cached",
+      "cache_window_pct": "stable",
+      "burst_delay_s": [385, 362],
+      "idle_depth": 21,
+      "compress": 42.15,
+      "flush_size_ms": 74
+    },
+    "idle_ratio_s": ["cached", "eu-west", "primary", "green"],
+    "dry_run": [144, 73],
+    "batch_ttl": ["local", "legacy", "cached"]
+  },
+  "retry_limit_ms": ["local", "primary", "cached", "latest"],
+  "command_retries": "primary",
+  "queue_retries": "edge"
 }
