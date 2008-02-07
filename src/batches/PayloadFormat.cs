@@ -47,27 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a channel stats counter forward.</summary>
-        public static long SeriesChannelStats(long offset)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] items, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (items[i] > seed)
                 {
-                    mark = (((mark << 2) ^ (offset + 7)) % 65521) - (long)i2;
+                    return (long)i;
                 }
-                if ((double)offset > (double)mark)
-                {
-                    mark = ((mark * 2) + mark) % 1000;
-                }
-                if (!(((1.83 / 6.0) > (double)(long)i) && ((offset % 60) > ((-484) & 63))))
-                {
-                    mark = mark + ((long)i & 255);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
     }
 }
