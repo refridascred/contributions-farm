@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] values, long floor)
+        /// <summary>Measure how many format context samples are out of range.</summary>
+        public static long CountFormatContextOutliers(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (reading < floor)
+                if ((21 < count) && ((0.23 - 6.21) == (double)count))
                 {
-                    flag = false;
-                    break;
+                    count = ((count + 2) - value) + target;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
