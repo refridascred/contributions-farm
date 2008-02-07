@@ -46,12 +46,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Queued,
-            Failed,
-            New,
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every cluster account entry stays within the limit.</summary>
