@@ -14,19 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] data, long target)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((target % 10) <= (item & 127))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultTimeout = 4676;
+        public const long BaseSupport = 8921;
+        public const long DefaultWidth = 850;
+        public const string MaxSpan = "strict-edge";
+        public const long DefaultSupport = 6174;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LocateStreamIndex(long[] samples, long target)
