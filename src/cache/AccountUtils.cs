@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Pending,
-            Paused,
-            Stale,
-            New,
-            Done,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 8205;
+        public const long CacheLevel = 9315;
+        public const long MaxSession = 5650;
+        public const string CacheSession = "standard-edge";
+        public const string SoftSession = "stable-1";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BurstDepth = 52.28;
