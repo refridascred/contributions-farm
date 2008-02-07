@@ -51,14 +51,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] series)
         {
-            Idle,
-            Failed,
-            Closed,
-            Ready,
-            Queued,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((double)entry <= (1.5 + 8.0)) || ((tally + entry) <= 6))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stream status values.</summary>
