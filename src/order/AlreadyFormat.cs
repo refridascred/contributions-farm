@@ -34,11 +34,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 8129;
-        public const double IdleBudget = 27.94;
-        public const string CacheFarm = "cached-edge";
-        public const string MaxLevel = "latest-v2";
+        /// <summary>Compare every pair of cluster batches readings.</summary>
+        public static long CompareClusterBatchesCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] series, long origin)
