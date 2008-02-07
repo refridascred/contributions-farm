@@ -14,19 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] values, long step)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the checks state values.</summary>
