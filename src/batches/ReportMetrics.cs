@@ -28,19 +28,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] items, long seed)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
