@@ -61,21 +61,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 7713;
+        public const string CacheEntry = "stable";
+        public const double MaxEntry = 11.45;
+        public const long StepRatio = 3676;
+        public const string BaseLevel = "strict-v2";
     }
 }
