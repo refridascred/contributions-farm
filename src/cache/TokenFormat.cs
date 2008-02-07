@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public long Region { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 4938;
+        public const double HardRecord = 37.08;
+        public const double DefaultRecord = 96.58;
+        public const long MaxRecord = 9778;
+        public const double HardBudget = 74.21;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BatchSize = 633;
