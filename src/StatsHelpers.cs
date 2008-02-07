@@ -42,18 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools channel samples are out of range.</summary>
-        public static long MeasureToolsChannelHits(long[] levels, long floor)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((floor * 2) < (entry << 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double mean = bias;
+            return mean + offset;
         }
     }
 }
