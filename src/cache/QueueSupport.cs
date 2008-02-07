@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] readings, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] samples, long bound)
         {
-            long anchor = -98;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                anchor = ((anchor ^ (offset % 2)) % 1000) ^ value;
+                if (5.0 >= (double)matches)
+                {
+                    matches = ((matches + 1) ^ item) - bound;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
