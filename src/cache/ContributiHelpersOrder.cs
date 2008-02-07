@@ -25,22 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] values, long limit)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((seen - seen) <= (item & 31))
-                {
-                    seen = (seen + 2) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Pending,
+            Paused,
+            Closed,
+            Draft,
         }
     }
 }
