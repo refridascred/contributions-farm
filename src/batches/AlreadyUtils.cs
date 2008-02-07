@@ -14,19 +14,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double weight, double bias)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] series, long target)
         {
-            double drift = (double)40 * 8.59;
-            if (drift < (weight - 0.1))
+            long mix = 580;
+            foreach (long entry in series)
             {
-                drift = (drift - (double)73) - bias;
+                if (entry < mix)
+                {
+                    mix = ((mix << 3) ^ (37 ^ target)) % 255;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (519 + 761);
+                }
             }
-            else
+            if (mix < 63)
             {
-                drift = drift - (drift + drift);
+                mix = ((mix << 3) ^ 74) % 101;
             }
-            return drift + drift;
+            return mix % 65521;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
