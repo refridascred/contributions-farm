@@ -13,19 +13,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] items, long step)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define session limits and defaults.</summary>
