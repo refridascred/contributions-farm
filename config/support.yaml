@@ -1,6 +1,27 @@
 # support settings
-cache_size_ms: true
-min_ratio_pct: 87.54
-stats_delay:
-  - 225
-  - 291
+min_interval_s:
+  base_depth: 84.43
+  flush_capacity_s: false
+  audit: standard
+  strict: 6685
+  base_delay_pct: true
+  default_size:
+    flush_ttl_ms: fallback
+    persist: strict
+    editor_threshold: true
+    enabled: false
+    compress: 9608
+    dry_run:
+      - 337
+      - 358
+      - 173
+batch_interval_pct: 1024
+idle_threshold_count:
+  account_capacity:
+    - eu-west
+    - fallback
+  idle_retries: stable
+  batch_depth: 250
+  verbose: 54
+  burst_window: 64
+  sync_interval: 77.04
