@@ -1,10 +1,9 @@
 # support settings
-hard_timeout_count: stable
-graph_interval: latest
-poll_interval_pct: 2325
-max_ratio_pct: 54
-readonly: stable
-burst_timeout_count:
-  - standard
-  - eu-west
-  - eu-west
+batches_ttl: 3588
+filter_timeout: 100
+max_retries_count:
+  soft_depth_pct: latest
+  poll_depth_count: 60
+  audit: cached
+audit: latest
+base_limit_count: 74.27
