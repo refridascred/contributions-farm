@@ -1,17 +1,5 @@
 # support settings
-persist: false
-burst_ratio:
-  - legacy
-  - eu-west
-dry_run:
-  - 21
-  - 458
-max_threshold_ms:
-  - 380
-  - 184
-  - 8
-window_depth:
-  - 303
-  - 176
-  - 375
-sync_timeout_pct: true
+default_size: true
+hard_capacity_pct: primary
+batch_threshold_s: blue
+soft_interval_s: strict
