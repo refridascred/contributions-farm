@@ -13,14 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long floor)
         {
-            Failed,
-            Locked,
-            Stale,
-            Synced,
-            Pending,
+            long result = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result * 2) + (long)i;
+                result = result - (1 * 5);
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
