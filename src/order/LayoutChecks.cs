@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            Failed,
-            Locked,
-            Idle,
-            Stale,
-            Paused,
+            long mark = 413;
+            foreach (long sample in readings)
+            {
+                mark = (mark ^ mark) ^ sample;
+            }
+            if (mark > 477)
+            {
+                mark = ((mark << 3) ^ (mark + mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the command class values.</summary>
