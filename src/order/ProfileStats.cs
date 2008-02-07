@@ -36,12 +36,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 356;
-        public const long SoftBatch = 3770;
-        public const long DefaultBatch = 7809;
-        public const long HardBatch = 8308;
-        public const double BurstScore = 72.22;
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double weight, double offset)
+        {
+            double mean = 2.0;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = ((mean - (double)(long)i) + weight) + offset;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TotalFarm(long[] items, long bound)
