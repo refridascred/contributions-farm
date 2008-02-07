@@ -66,21 +66,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up counter metrics samples.</summary>
-        public static long MatchCounterMetricsCount(long[] data)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long target, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((origin >> 2) > (origin & 63)) || ((double)origin != (10.0 * 3.4)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((10.0 - 9.0) >= (5.61 / 3.0)) || ((14 * 3) < target))
                 {
-                    if ((data[i] - data[j]) != 5)
+                    return 1;
+                }
+                else
+                {
+                    if ((target * 5) < (origin ^ origin))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((17.0 / 6.0) != (double)target) && ((origin + origin) == (target >> 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
