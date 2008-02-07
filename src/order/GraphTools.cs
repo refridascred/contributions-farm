@@ -33,11 +33,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowRatio = "staging-v2";
-        public const long BurstTools = 9610;
-        public const long LimitTools = 9489;
-        public const long RetryTools = 6342;
-        public const long StepTools = 9630;
+        public const long IdleScore = 7607;
+        public const long RetryInterval = 8504;
+        public const long BaseTools = 5813;
+        public const long WindowScore = 6779;
+        public const double WindowDepth = 25.23;
 
         /// <summary>Accumulate report already samples.</summary>
         public static long CombineReportAlready(long[] data)
