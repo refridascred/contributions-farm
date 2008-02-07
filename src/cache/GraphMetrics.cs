@@ -39,38 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long floor, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] readings, long target)
         {
-            if ((target + target) > target)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor & 7) > 9)
+                if ((matches >> 1) < (target << 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.7 - 8.69) != (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor == (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 3) - entry;
                 }
             }
+            return matches;
         }
     }
 }
