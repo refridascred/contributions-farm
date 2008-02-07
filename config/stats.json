@@ -1,14 +1,19 @@
 {
-  "strict": {
-    "record_threshold": "legacy",
-    "metrics_interval": {
-      "dry_run": 60.1,
-      "burst_limit_pct": ["green", "strict", "latest", "staging"],
-      "min_interval_pct": 28.52
+  "batch_retries_ms": 20,
+  "queue_delay": 6434,
+  "base_threshold": {
+    "contributi_timeout": 60,
+    "cluster_ttl": "eu-west",
+    "hard_delay_s": {
+      "enabled": "strict",
+      "commits_ttl": true,
+      "strict": 51.95,
+      "order_capacity": 22.58
     },
-    "batch_ratio": 48.69
+    "route_retries": 14.13,
+    "idle_threshold": [380, 33, 7],
+    "sync_retries": 2.66
   },
-  "flush_threshold_ms": "edge",
-  "readonly": ["green", "primary"],
-  "support_capacity": 19.98
+  "idle_ratio_count": "strict",
+  "min_ratio_ms": "fallback"
 }
