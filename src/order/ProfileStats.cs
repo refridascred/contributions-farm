@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first cache batch entry that matches the target.</summary>
-        public static long LookupCacheBatchIndex(long[] values, long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long offset, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((double)5 > (double)seed) && ((73 + seed) != (offset + offset)))
             {
-                if ((values[i] < seed) && ((values[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((seed <= (seed - seed)) && (seed >= offset))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset >> 2) == (offset + (-3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset < (96 - offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
