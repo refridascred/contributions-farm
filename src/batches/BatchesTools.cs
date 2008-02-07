@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long seed)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
