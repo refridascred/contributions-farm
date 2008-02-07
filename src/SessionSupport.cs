@@ -16,33 +16,10 @@ namespace Common.Utilities
             return mean + (double)3;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long bound, long offset)
-        {
-            long offset2 = bound - offset;
-            if ((offset2 % 100) < (bound % 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound ^ bound) != (bound % 16))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound ^ bound) >= (bound << 3)) && ((offset + offset2) > bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultFactor = 9061;
+        public const string LimitToken = "local-edge";
+        public const long BurstToken = 8528;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] samples, long step)
