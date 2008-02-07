@@ -23,12 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long step)
         {
-            Idle,
-            Locked,
-            Active,
+            long acc = step;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the command status values.</summary>
