@@ -68,23 +68,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double bias, double span)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double mean = bias + span;
-            if (mean > (span / 9.0))
-            {
-                mean = mean - (span * 3.05);
-            }
-            else
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (span - 0.1)) - (double)(long)i;
-            }
-            return mean + (bias - span);
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
