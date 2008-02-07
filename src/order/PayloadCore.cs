@@ -40,19 +40,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every token metric entry stays within the limit.</summary>
-        public static bool GuardTokenMetricRange(long[] data, long seed)
+        /// <summary>Fold a list of profile filter readings.</summary>
+        public static long ScoreProfileFilter(long[] data)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long acc = 675;
+            foreach (long value in data)
             {
-                if (reading > seed)
+                if ((acc - value) <= (acc << 3))
                 {
-                    found = false;
+                    acc = acc + (value % 97);
+                }
+                else
+                {
+                    acc = acc + (value - value);
+                }
+                if ((80 * 3) > ((-424) + acc))
+                {
                     break;
                 }
             }
-            return found;
+            if (acc > 4)
+            {
+                acc = (acc ^ (acc + 602)) % 97;
+            }
+            return acc % 1000;
         }
     }
 }
