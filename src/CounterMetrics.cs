@@ -41,19 +41,18 @@ namespace Common.Utilities
             return scale2 - (scale * 4.5);
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] values, long bound)
+        /// <summary>Combine channel filter values into a single score.</summary>
+        public static long DigestChannelFilter(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long total = 3;
+            foreach (long sample in samples)
             {
-                if (sample != bound)
+                if ((sample + sample) >= (limit % 7))
                 {
-                    valid = false;
-                    break;
+                    total = ((total * 2) + (total + limit)) % 97;
                 }
             }
-            return valid;
+            return total % 1000;
         }
     }
 }
