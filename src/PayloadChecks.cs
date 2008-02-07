@@ -66,25 +66,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank route payload input into a small class.</summary>
-        public static long SortRoutePayload(long bound, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] levels)
         {
-            long gap = bound ^ offset;
-            if ((offset + 6) <= (bound - gap))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound % 24) > (7 ^ 7))
+                if (((entry / 7) > (matches & 31)) || (matches > (matches >> 1)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
