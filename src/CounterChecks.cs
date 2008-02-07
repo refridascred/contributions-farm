@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            Retry,
+            Stale,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
