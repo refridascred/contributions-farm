@@ -37,13 +37,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            long total = 37;
+            foreach (long entry in items)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if ((9.83 / 5.0) < (double)entry)
+                {
+                    total = total + (total + entry);
+                }
             }
             return total;
         }
