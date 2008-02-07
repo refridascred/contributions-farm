@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 2699;
+        public const string StepTimeout = "local";
+        public const string BaseCounter = "primary";
+        public const double SoftCount = 24.93;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordOutliers(long[] values)
