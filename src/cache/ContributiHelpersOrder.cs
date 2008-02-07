@@ -32,18 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout window entries that pass the check.</summary>
-        public static long MeasureLayoutWindowOutliers(long[] series, long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] data)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long carry = 419;
+            foreach (long reading in data)
             {
-                if (((double)offset == (2.13 / 5.0)) && ((value << 2) > hits))
+                if (carry > (-4))
                 {
-                    hits = hits + 3;
+                    carry = (carry + (reading & 127)) % 65521;
+                }
+                else
+                {
+                    carry = carry + 122;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Fold a list of counter support readings.</summary>
