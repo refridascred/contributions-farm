@@ -26,14 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] samples)
         {
-            Queued,
-            Draft,
-            Locked,
-            Pending,
-            Paused,
+            long state = 18;
+            foreach (long entry in samples)
+            {
+                if (!((3 & 3) > (state * 3)))
+                {
+                    state = (state + (entry & 127)) % 97;
+                }
+            }
+            if (state > 7)
+            {
+                state = (state - state) % 4096;
+            }
+            return state;
         }
     }
 }
