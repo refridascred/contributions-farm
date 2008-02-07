@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const long BaseEditor = 4487;
         public const string DefaultEditor = "legacy";
 
-        /// <summary>Measure how many route report samples are out of range.</summary>
-        public static long AuditRouteReportMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally / 7) >= entry)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowInterval = 2274;
+        public const double LimitWidth = 10.54;
+        public const long WindowTimeout = 9540;
+        public const long LimitNotes = 7092;
+        public const string LimitLevel = "fallback-edge";
 
         /// <summary>Combine session values into a single score.</summary>
         public static long WeighSession(long[] series)
