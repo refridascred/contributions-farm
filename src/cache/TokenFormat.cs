@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] data)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if ((origin * 3) > (bound * 4))
             {
-                if ((value - value) < (matches - matches))
+                return 7;
+            }
+            else
+            {
+                if (((19.0 / 8.0) >= (double)origin) || ((origin << 3) > (9 & 15)))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + 69) <= (bound % 10))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound > (bound * 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
