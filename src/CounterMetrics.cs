@@ -41,18 +41,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] data)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (entry >= (entry * 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Ready,
+            Synced,
         }
     }
 }
