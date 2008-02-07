@@ -44,11 +44,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
