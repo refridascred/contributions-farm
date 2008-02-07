@@ -16,22 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of contributi token readings.</summary>
-        public static long WeighContributiToken(long[] readings, long bound)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double scale, double span)
         {
-            long total = 82;
-            foreach (long entry in readings)
+            double scale2 = span;
+            if (scale2 <= 14.0)
             {
-                if ((bound % 60) <= total)
-                {
-                    total = (total * 2) + (entry * 5);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total & 127)) % 1000;
-                }
+                scale2 = scale2 - scale2;
             }
-            return total;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + (9.78 - scale)) + (double)(long)i;
+            }
+            return scale2 - (5.2 * 2.0);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
