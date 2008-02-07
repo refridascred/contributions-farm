@@ -23,39 +23,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a tools window pair into a bucket.</summary>
-        public static long GradeToolsWindow(long target, long step)
-        {
-            long gap = target ^ step;
-            if ((gap + target) <= (gap - step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2.8 * 0.9) == (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((gap + gap) >= (gap - gap))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step >= 17.0)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 898;
+        public const long LimitFilter = 420;
+        public const long BurstFilter = 3318;
+        public const string MinFactor = "cached";
     }
 }
