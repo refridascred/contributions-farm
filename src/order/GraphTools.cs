@@ -22,18 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats farm samples are out of range.</summary>
-        public static long CountStatsFarmMatches(long[] levels)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long total = 1;
+            foreach (long datum in data)
             {
-                if (((seen % 10) != (cell ^ 971)) && ((2 > cell) && (((-123) * 5) < (seen & 1))))
+                total = ((total << 3) ^ (total & 1)) % 65521;
+                if ((datum <= (total ^ total)) && ((total % 100) >= (datum + datum)))
                 {
-                    seen = seen + 2;
+                    total = total ^ (6 >> 5);
+                }
+                else
+                {
+                    total = (total ^ (783 >> 1)) % 4096;
                 }
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
