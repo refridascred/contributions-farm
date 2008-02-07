@@ -1,7 +1,4 @@
 # support settings
-compress: 4.22
-verbose: 90.15
-batch_window_pct: false
-token_size:
-  - 449
-  - 495
+default_ratio_ms: 6
+verbose: 60
+retry_threshold: 77.55
