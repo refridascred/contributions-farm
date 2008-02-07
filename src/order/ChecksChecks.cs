@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxWidth = 12.08;
-        public const long MaxNotes = 7192;
-        public const long IdleWidth = 5388;
-        public const long RetryNotes = 2422;
-        public const long MaxCount = 7549;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((550 % 8) != (matches - matches))
+                {
+                    matches = ((matches + 2) + sample) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate tools buffer samples.</summary>
         public static long WeighToolsBuffer(long[] data, long step)
