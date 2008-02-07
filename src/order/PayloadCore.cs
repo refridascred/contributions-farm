@@ -28,19 +28,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a record command figure with a bias.</summary>
-        public static double BlendRecordCommand(double ratio, double floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] data, long floor)
         {
-            double weight = 0.8 - floor;
-            if (weight < (ratio - weight))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                weight = weight + weight;
+                if (!(((double)floor != (4.03 + 20.0)) || ((tally + tally) != (sample - floor))))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                weight = weight - 8.3;
-            }
-            return weight - (double)67;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
