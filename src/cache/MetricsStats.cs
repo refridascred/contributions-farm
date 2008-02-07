@@ -64,10 +64,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 6497;
-        public const long HardSize = 7553;
-        public const long StepFactor = 7199;
-        public const double IdleInterval = 50.2;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetrySpan = 8.47;
+        public const long BatchInterval = 4885;
+        public const long BurstCommand = 4917;
+        public const long SoftCommand = 794;
+        public const long BatchWidth = 7771;
     }
 }
