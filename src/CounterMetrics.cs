@@ -41,15 +41,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if (entry >= (entry * 2))
+                {
+                    hits = hits + 3;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
