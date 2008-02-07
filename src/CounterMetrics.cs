@@ -41,18 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] samples)
+        /// <summary>Blend two schema counter measurements.</summary>
+        public static double ScaleSchemaCounter(double scale, double floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double scale2 = scale;
+            if (scale2 < scale2)
             {
-                if ((count ^ cell) < 534)
-                {
-                    count = count + 1;
-                }
+                scale2 = (scale2 + (scale * 9.68)) + floor;
             }
-            return count;
+            return scale2 - (scale * 4.5);
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
