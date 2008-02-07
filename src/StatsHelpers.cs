@@ -33,11 +33,13 @@ namespace Common.Utilities
         public const long CacheFarm = 6511;
         public const long LimitFarm = 7949;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public long Total { get; set; }
-            public bool Size { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
