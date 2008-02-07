@@ -23,12 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            New,
-            Synced,
-            Draft,
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
