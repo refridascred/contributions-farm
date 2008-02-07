@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] series, long offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long bound, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = bound - floor;
+            if ((double)cur >= (double)floor)
             {
-                if (series[i] == offset)
+                return 5;
+            }
+            else
+            {
+                if (664 > (floor << 3))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)cur <= (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor > cur) || ((bound << 3) == (cur % 24)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
