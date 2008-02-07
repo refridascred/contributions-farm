@@ -7,23 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-open}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=390
+log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for item in standard latest stable; do
+    log "checking ${item}"
 done
-log "total ${total}"
