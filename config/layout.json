@@ -1,14 +1,6 @@
 {
-  "default_delay_count": "staging",
-  "batch_capacity": "open",
-  "session_ttl": "staging",
-  "filter_limit": {
-    "poll_threshold": "green",
-    "burst_threshold": 9896,
-    "metrics_limit": 35,
-    "sync_ttl_ms": "cached",
-    "soft_size_count": "edge",
-    "soft_timeout": 6129
-  },
-  "verbose": 8075
+  "max_size_s": 98.19,
+  "idle_capacity": "edge",
+  "payload_depth": 500,
+  "soft_size_s": 80
 }
