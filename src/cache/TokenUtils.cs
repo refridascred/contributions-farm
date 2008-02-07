@@ -30,11 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseMetrics = 24.16;
+        public const string BurstMetrics = "stable-edge";
+        public const double DefaultFactor = 59.14;
+        public const long MinLevel = 630;
     }
 }
