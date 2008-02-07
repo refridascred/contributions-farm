@@ -1,6 +1,8 @@
-id,region,label,count,active
-1,453,eu-west,812,594
-2,655,blue,open,268
-3,edge,open,94.75,575
-4,199,89.22,496,primary
-5,81.4,latest,fallback,671
+id,label,state,weight
+1,32,local,429
+2,357,15.97,53.51
+3,894,staging,50.37
+4,51.66,edge,671
+5,30.54,eu-west,84.08
+6,local,strict,821
+7,87.25,13,39.19
