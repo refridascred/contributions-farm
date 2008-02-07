@@ -1,10 +1,11 @@
 {
-  "batch_ttl": {
-    "payload_retries": "local",
-    "format_interval": "edge",
-    "enabled": 8888
+  "base_timeout_s": 41.23,
+  "default_capacity_count": {
+    "readonly": 64.79,
+    "default_ratio_count": [358, 83, 94],
+    "cache_timeout_pct": [404, 165, 393],
+    "batch_retries": "strict"
   },
-  "editor_limit": 98.2,
-  "retry_window_pct": "strict",
-  "flush_depth_s": ["legacy", "latest", "primary", "stable"]
+  "graph_timeout": 2561,
+  "dry_run": 82.63
 }
