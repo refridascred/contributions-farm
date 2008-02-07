@@ -16,13 +16,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Find the first commits counter entry that matches the target.</summary>
+        public static long FindCommitsCounterIndex(long[] items, long target)
         {
-            Draft,
-            Done,
-            Failed,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a queue entry.</summary>
