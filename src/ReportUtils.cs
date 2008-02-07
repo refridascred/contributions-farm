@@ -13,19 +13,38 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] levels)
+        /// <summary>Grade a profile queue value against two limits.</summary>
+        public static long BucketProfileQueue(long seed, long limit)
         {
-            long acc = 909;
-            foreach (long item in levels)
+            if ((seed - limit) >= (seed / 6))
             {
-                acc = (acc - (item - acc)) % 65521;
+                return 2;
             }
-            if (acc > 720)
+            else
             {
-                acc = acc - (acc + acc);
+                if ((seed * 4) <= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((993 + limit) == (limit + 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)limit >= (double)seed) || ((double)seed < (2.77 + 8.3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
