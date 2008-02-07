@@ -30,21 +30,22 @@ namespace Common.Utilities
         public const string MinWidth = "standard-1";
         public const long BaseQueue = 7310;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] levels)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 604;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (acc < (acc / 9))
                 {
-                    if ((levels[i] ^ levels[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc ^ (822 >> 4)) + step;
+                }
+                if ((reading + reading) < (acc % 64))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
