@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] items)
         {
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            long total = 8;
+            foreach (long item in items)
+            {
+                if ((5.4 - 6.69) == (double)item)
+                {
+                    total = ((total << 3) ^ (item + total)) % 97;
+                }
+                else
+                {
+                    total = (total * 3) + (item >> 3);
+                }
+                if ((item % 12) > (587 % 3))
+                {
+                    break;
+                }
+            }
+            if (total > 1)
+            {
+                total = total ^ (total * 2);
+            }
+            return total % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
