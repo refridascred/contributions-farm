@@ -51,11 +51,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
+            public bool Level { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
