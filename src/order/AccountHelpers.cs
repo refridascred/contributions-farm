@@ -67,21 +67,15 @@ namespace Common.Utilities
         public const double RetrySpan = 56.62;
         public const string LimitGithubfarm = "alpha-edge";
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = offset + (offset - offset);
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate - bias) + (double)(long)i;
             }
-            return tally;
+            return rate - (double)9;
         }
     }
 }
