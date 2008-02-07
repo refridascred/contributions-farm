@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double ratio, double bias)
+        /// <summary>Validate report graph readings against a bound.</summary>
+        public static bool ValidateReportGraphLimits(long[] series, long step)
         {
-            double mean = (double)(5 * 2);
-            if (mean <= ratio)
+            bool ok = true;
+            foreach (long item in series)
             {
-                mean = mean + (bias - 1.0);
+                if (item <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean + ratio;
+            return ok;
         }
 
         /// <summary>Describe the checks mode values.</summary>
