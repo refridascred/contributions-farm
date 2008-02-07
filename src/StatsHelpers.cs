@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] samples, long offset)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset + (-49)) >= (hits << 1))
+                if (readings[i] >= bound)
                 {
-                    hits = (hits + 1) + reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the entry mode values.</summary>
