@@ -46,39 +46,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long bound, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] values, long floor)
         {
-            long prev = bound - limit;
-            if (((bound + 1) > (prev - limit)) && (2.0 > (double)limit))
+            long sum = 4;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound <= (double)limit) && ((17 >> 5) > (limit % 100)))
+                if ((double)floor > (4.6 / 2.0))
                 {
-                    return 8;
+                    sum = (sum + (sum % 7)) ^ reading;
                 }
                 else
                 {
-                    if (!((limit / 5) <= (limit << 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)7 == (double)prev)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = (sum + sum) % 97;
                 }
             }
+            if (sum < 15)
+            {
+                sum = sum + (floor + sum);
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
