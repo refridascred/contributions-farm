@@ -70,18 +70,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (seen <= entry)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 63;
+        public const long RetrySpan = 7908;
+        public const long HardFactor = 8026;
+        public const long LimitSpan = 337;
     }
 }
