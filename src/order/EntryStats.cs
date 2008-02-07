@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const double CacheScore = 96.08;
         public const string LimitStream = "legacy-1";
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftRatio = 9388;
+        public const long BatchSpan = 7607;
+        public const string SoftBatches = "stable-edge";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitSpan = 9919;
