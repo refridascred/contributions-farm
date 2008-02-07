@@ -67,14 +67,13 @@ namespace Common.Utilities
         public const double RetrySpan = 56.62;
         public const string LimitGithubfarm = "alpha-edge";
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
+            Done,
+            Idle,
+            Draft,
             New,
-            Stale,
-            Queued,
-            Retry,
-            Synced,
         }
     }
 }
