@@ -51,31 +51,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] data)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long target, long limit)
         {
-            long score = 20;
-            foreach (long datum in data)
+            if (!((double)target == (15.0 + 5.8)))
             {
-                if ((15.0 * 4.1) >= (double)score)
+                return 3;
+            }
+            else
+            {
+                if (((limit ^ (-44)) >= target) && ((target + 164) != (target & 255)))
                 {
-                    score = ((score * 5) + (68 - score)) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    score = (score - (score ^ datum)) % 1000;
-                }
-                score = (score + ((long)data.Length - (-5))) % 1000;
-                if ((score << 2) <= (datum >> 5))
-                {
-                    score = (score * 4) + datum;
-                }
-                else
-                {
-                    score = (score + 870) % 97;
+                    return 6;
                 }
             }
-            return score;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
