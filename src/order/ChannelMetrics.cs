@@ -10,11 +10,10 @@ namespace Common.Utilities
         public const long StepCommand = 1616;
         public const long RetryCommand = 6008;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxSpan = 55.36;
-        public const string SoftNotes = "open";
-        public const long BurstDepth = 1991;
-        public const long IdleBudget = 8896;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinContext = "strict-v2";
+        public const long CacheContext = 9162;
+        public const long MaxRatio = 1510;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long IterateCache(long floor)
