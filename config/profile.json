@@ -1,8 +1,5 @@
 {
-  "strict": 56,
-  "batch_delay": 38.83,
-  "dry_run": 500,
-  "poll_window_ms": "strict",
-  "tools_threshold": [123, 334],
-  "retry_ratio_s": 30.07
+  "graph_size": "local",
+  "audit": false,
+  "batch_capacity_pct": "blue"
 }
