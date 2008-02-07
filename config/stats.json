@@ -1,10 +1,14 @@
 {
-  "dry_run": "eu-west",
-  "payload_capacity": {
-    "support_delay": 4222,
-    "verbose": [269, 78, 276],
-    "commits_depth": "green",
-    "hard_interval": 0.58
+  "strict": {
+    "record_threshold": "legacy",
+    "metrics_interval": {
+      "dry_run": 60.1,
+      "burst_limit_pct": ["green", "strict", "latest", "staging"],
+      "min_interval_pct": 28.52
+    },
+    "batch_ratio": 48.69
   },
-  "command_limit": 100
+  "flush_threshold_ms": "edge",
+  "readonly": ["green", "primary"],
+  "support_capacity": 19.98
 }
