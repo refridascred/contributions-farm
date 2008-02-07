@@ -25,32 +25,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long offset, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            long bound = offset + origin;
-            if (((offset >> 3) != (offset + bound)) && (8.9 >= (double)offset))
+            long result = 95;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(origin < (origin * 3)))
+                if (((result & 31) != (datum * 4)) && ((datum ^ result) == (result - datum)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((0 <= (origin & 63)) && (50 < (bound ^ origin)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    result = (result << 2) ^ datum;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
