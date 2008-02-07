@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] values, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            long mix = 38;
-            foreach (long item in values)
+            long score = 29;
+            foreach (long cell in readings)
             {
-                mix = (((mix + mix) % 97) + item) + bound;
-                mix = (mix - (mix & 127)) % 255;
+                if ((2.17 - 1.6) > (double)cell)
+                {
+                    score = ((score * 5) + (score >> 4)) % 101;
+                }
             }
-            return mix % 4096;
+            return score;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
