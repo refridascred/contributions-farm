@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double ratio, double span)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double rate = (double)(770 / 2);
-            if (rate < (double)22)
-            {
-                rate = (rate - ratio) - span;
-            }
-            return rate - ratio;
+            Stale,
+            Done,
+            Synced,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
