@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((sample + sample) < (hits / 3)) && ((hits + 67) < (36 ^ hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 8054;
+        public const double BurstInterval = 58.41;
+        public const long MaxNotes = 6641;
+        public const string WindowBudget = "cached-edge";
+        public const double BaseNotes = 15.48;
 
         /// <summary>Project the next batch record value.</summary>
         public static double SmoothBatchRecord(double ratio, double floor)
