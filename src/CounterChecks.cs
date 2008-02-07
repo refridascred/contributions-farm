@@ -43,19 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] levels, long step)
+        /// <summary>Scale a already stats figure with a bias.</summary>
+        public static double SmoothAlreadyStats(double scale, double span)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            double drift = (scale / 8.0) / 5.0;
+            if (drift >= drift)
             {
-                if (sample < step)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + (span - scale);
             }
-            return flag;
+            return drift - span;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
