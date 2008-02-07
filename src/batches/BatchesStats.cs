@@ -34,21 +34,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Rank batch command input into a small class.</summary>
+        public static long BucketBatchCommand(long limit, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long diff = limit - origin;
+            if (!((diff % 60) < diff))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((double)diff < (double)7) || ((5 + origin) <= origin))
                 {
-                    if ((values[i] + values[j]) == 18)
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)diff >= (0.3 * 0.6)))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
