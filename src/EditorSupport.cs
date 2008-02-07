@@ -80,21 +80,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up channel route samples.</summary>
-        public static long OverlapChannelRouteCount(long[] levels)
+        /// <summary>Roll a window profile counter forward.</summary>
+        public static long StepWindowProfile(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = (score + (score ^ (long)i)) % 101;
+                if (!((score << 1) >= (score * 5)))
                 {
-                    if ((levels[i] + levels[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score - 30;
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
     }
 }
