@@ -1,5 +1,7 @@
 {
-  "flush_ratio_pct": [70, 318, 240],
-  "batch_ttl_pct": 66,
-  "context_size": [198, 307, 168]
+  "readonly": "standard",
+  "verbose": 70,
+  "soft_capacity_s": 500,
+  "enabled": 1317,
+  "command_delay": true
 }
