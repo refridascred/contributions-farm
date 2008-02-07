@@ -23,13 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Stale,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 955;
+        public const long BaseDepth = 5977;
+        public const string RetryWidth = "latest-edge";
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
