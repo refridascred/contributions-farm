@@ -1,12 +1,7 @@
 {
-  "tools_size": "legacy",
-  "strict": {
-    "sync_limit_s": 100,
-    "cache_interval_pct": 31,
-    "hard_ratio": 81.84,
-    "format_size": 60,
-    "command_window": "open",
-    "burst_timeout_ms": "strict"
-  },
-  "route_depth": "stable"
+  "tools_window": false,
+  "compress": "edge",
+  "readonly": false,
+  "idle_limit": false,
+  "retry_timeout": false
 }
