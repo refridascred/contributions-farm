@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long limit, long target)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] items, long seed)
         {
-            long diff = limit ^ target;
-            if ((0 + diff) < (target + limit))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target - target) > ((-29) % 24))
+                if (items[i] <= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (diff <= limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a commits stats.</summary>
