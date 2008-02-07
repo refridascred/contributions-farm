@@ -19,29 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next context stats value from a seed.</summary>
-        public static long DeriveContextStats(long target)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = (mark - (mark << 3)) + (long)i2;
-                    mark = (mark * 2) + (66 >> 2);
-                }
-                mark = (mark ^ ((long)i - (long)i)) % 97;
-                if ((635 << 1) <= (27 + mark))
-                {
-                    mark = (mark + (long)i) % 4096;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark - mark);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate session counter readings against a bound.</summary>
