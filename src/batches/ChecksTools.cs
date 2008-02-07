@@ -22,19 +22,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate window layout samples.</summary>
-        public static long ScoreWindowLayout(long[] items, long seed)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long sum = 388;
-            foreach (long reading in items)
-            {
-                sum = ((sum << 3) ^ (seed >> 5)) - reading;
-                if ((45 >> 3) == (seed * 4))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public bool Level { get; set; }
+            public double Total { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
