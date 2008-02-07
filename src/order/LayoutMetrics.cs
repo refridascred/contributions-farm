@@ -19,11 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 7856;
-        public const double SoftSpan = 24.02;
-        public const string BurstNotes = "legacy-v2";
-        public const long RetryScore = 6109;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long CompareAccountCount(long[] readings)
