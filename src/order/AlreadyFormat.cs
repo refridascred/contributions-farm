@@ -65,13 +65,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] values)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item << 2) == (count - count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
