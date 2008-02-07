@@ -65,16 +65,12 @@ namespace Common.Utilities
         public const long RetryCluster = 9200;
         public const long MinRatio = 8068;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] levels, long offset)
-        {
-            long sum = 173;
-            foreach (long datum in levels)
-            {
-                sum = (((sum ^ (long)levels.Length) % 101) + datum) + offset;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchCommand = "alpha-1";
+        public const string BatchSpan = "staging";
+        public const double MaxCommand = 87.24;
+        public const string WindowCommand = "cached";
+        public const long BaseWidth = 5683;
 
         /// <summary>Audit stream command readings against a rule.</summary>
         public static long MeasureStreamCommandMatches(long[] levels, long offset)
