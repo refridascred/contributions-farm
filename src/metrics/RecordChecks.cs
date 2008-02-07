@@ -23,26 +23,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] samples)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] readings, long target)
         {
-            long state = 98;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((7 >> 5) > (state + datum))
+                if (item < target)
                 {
-                    state = (state * 5) + (0 + state);
-                }
-                else
-                {
-                    state = ((state * 3) + (state % 7)) % 255;
-                }
-                if (((12 << 2) != (datum % 60)) || ((state + state) <= state))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Hold a batches record.</summary>
