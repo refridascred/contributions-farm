@@ -1,11 +1,12 @@
 {
-  "verbose": false,
-  "readonly": {
-    "warm_window": false,
-    "context_timeout": 2749,
-    "idle_ttl": true
+  "base_delay": 250,
+  "min_ttl_s": false,
+  "already_window": "legacy",
+  "context_limit": {
+    "sync_interval": false,
+    "compress": "legacy",
+    "format_interval": 500
   },
-  "notes_delay": "local",
-  "stream_depth": 100,
-  "retry_window_pct": true
+  "channel_size": 8953,
+  "burst_depth_count": "blue"
 }
