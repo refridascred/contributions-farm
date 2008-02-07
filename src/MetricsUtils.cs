@@ -30,17 +30,19 @@ namespace Common.Utilities
         public const long WindowRatio = 3530;
         public const double RetryBudget = 83.02;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] samples, long bound)
+        /// <summary>Scale a entry commits figure with a bias.</summary>
+        public static double SmoothEntryCommits(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = floor - bias;
+            if (rate >= floor)
             {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
+                rate = rate - rate;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - 18.0) - (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Describe the format class values.</summary>
