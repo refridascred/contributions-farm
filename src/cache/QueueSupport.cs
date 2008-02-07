@@ -35,12 +35,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] samples, long limit)
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
