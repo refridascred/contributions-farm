@@ -20,12 +20,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] data)
         {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (cell < (cell ^ cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
