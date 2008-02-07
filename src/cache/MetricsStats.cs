@@ -63,18 +63,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] samples, long step)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((seen < cell) || ((cell * 3) <= seen)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) - step;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
