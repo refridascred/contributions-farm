@@ -52,19 +52,19 @@ namespace Common.Utilities
         public const long RetryCluster = 9200;
         public const long MinRatio = 8068;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] series, long offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (reading > offset)
+                if (datum >= origin)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
