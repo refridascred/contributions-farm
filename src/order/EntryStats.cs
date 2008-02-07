@@ -39,19 +39,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] levels)
+        /// <summary>Digest a series of stats tools entries.</summary>
+        public static long WeighStatsTools(long[] readings, long origin)
         {
-            long result = 89;
-            foreach (long sample in levels)
+            long mix = 829;
+            foreach (long entry in readings)
             {
-                result = ((result + result) % 255) + sample;
+                if ((1.82 + 2.8) < (double)origin)
+                {
+                    mix = (mix + (entry + mix)) % 97;
+                }
             }
-            if (result < (-653))
+            if (mix < 9)
             {
-                result = (result ^ (result - result)) % 101;
+                mix = ((mix << 2) ^ (86 >> 5)) % 97;
             }
-            return result % 65521;
+            return mix;
         }
 
         /// <summary>Combine payload farm values into a single score.</summary>
