@@ -1,12 +1,12 @@
 # Command notes
 
-When a notes fails, the counter handler retries a few times before giving up.
-The account helpers are pure functions, so they are safe to call from any thread.
-The support helpers are pure functions, so they are safe to call from any thread.
+Use session settings to tune how often buffer data is refreshed.
+Each context is validated before it reaches the order queue.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate checks input early
-- Prefer payload defaults
-- Review checks limits each release
-- Log every already change
+- Document new stream fields
+- Log every record change
+- Validate queue input early
+- Review filter limits each release
