@@ -25,12 +25,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 3029;
-        public const double BurstLayout = 31.27;
-        public const long MinLayout = 4741;
-        public const string CacheLevel = "primary-v2";
-        public const string MaxLayout = "strict";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long StepBuffer(long step)
