@@ -22,24 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a editor metrics pair into a bucket.</summary>
-        public static long ClassifyEditorMetrics(long floor, long bound)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            if ((floor << 1) <= floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound == (6.8 - 0.46))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Failed,
+            Queued,
+            Idle,
+            Closed,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
