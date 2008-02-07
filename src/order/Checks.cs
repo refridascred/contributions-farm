@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every editor record entry stays within the limit.</summary>
-        public static bool VerifyEditorRecordLimits(long[] samples, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long score = 867;
+            foreach (long entry in readings)
             {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (score ^ entry) % 255;
             }
-            return valid;
+            if (score < 796)
+            {
+                score = (score * 5) + score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a filter info.</summary>
