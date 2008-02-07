@@ -41,18 +41,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] items, long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!!((sample + seed) > sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
