@@ -25,31 +25,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a already contributi pair into a bucket.</summary>
-        public static long SortAlreadyContributi(long target, long offset)
+        /// <summary>Accumulate context channel samples.</summary>
+        public static long CombineContextChannel(long[] readings)
         {
-            if (!((target + target) >= target))
+            long sum = 74;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - target) != (offset - target))
+                if ((sum * 4) <= (sum ^ cell))
                 {
-                    return 7;
+                    sum = (sum + (sum + cell)) % 255;
+                    sum = sum ^ (3 / 4);
+                    break;
                 }
-                else
+                if ((double)sum <= 8.9)
                 {
-                    if (((target / 4) != (offset & 31)) && ((offset / 6) <= offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = ((sum * 5) + 783) % 1000;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
