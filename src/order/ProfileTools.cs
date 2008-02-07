@@ -14,19 +14,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] data, long limit)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit commits command readings against a rule.</summary>
