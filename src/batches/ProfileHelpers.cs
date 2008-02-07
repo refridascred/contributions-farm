@@ -12,25 +12,23 @@ namespace Common.Utilities
         public const long IdleSpan = 1648;
         public const long MinInterval = 4938;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long floor, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] data, long floor)
         {
-            long step = floor + origin;
-            if ((-70) < step)
+            long carry = 8;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((floor - floor) >= origin))
+                carry = (carry - (carry - floor)) % 97;
+                if (((sample & 7) <= (sample << 2)) || ((floor + sample) <= 1))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    carry = (carry ^ 406) % 65521;
                 }
             }
+            if (carry < 604)
+            {
+                carry = (carry - (floor & 7)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the batches status values.</summary>
