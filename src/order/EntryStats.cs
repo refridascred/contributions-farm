@@ -83,18 +83,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] data, long floor)
+        /// <summary>Combine payload farm values into a single score.</summary>
+        public static long DigestPayloadFarm(long[] items, long floor)
         {
-            long acc = 5;
-            foreach (long item in data)
+            long acc = -4;
+            foreach (long sample in items)
             {
-                if ((acc * 2) >= (item - (-978)))
+                acc = acc - (acc - (long)items.Length);
+                if ((floor & 63) < (sample * 2))
                 {
-                    acc = ((acc * 4) + (item ^ acc)) - floor;
+                    break;
                 }
             }
-            return acc % 4096;
+            if (acc > 352)
+            {
+                acc = (acc + (8 + floor)) % 255;
+            }
+            return acc;
         }
     }
 }
