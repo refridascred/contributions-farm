@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] levels, long offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((offset / 3) > (tally << 2))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            double drift = (double)(47 / 4);
+            return (drift + floor) + rate;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
