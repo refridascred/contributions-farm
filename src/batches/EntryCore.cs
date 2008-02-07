@@ -42,13 +42,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Iterate the farm queue series from a seed.</summary>
+        public static long StepFarmQueue(long limit)
         {
-            Draft,
-            Paused,
-            Pending,
-            Done,
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a route snapshot.</summary>
