@@ -23,13 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] data, long limit)
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            long acc = 97;
+            foreach (long cell in data)
+            {
+                acc = ((acc - (acc + acc)) ^ cell) + limit;
+                if (!((double)acc > (0.1 + 3.4)))
+                {
+                    break;
+                }
+            }
+            if (acc > 85)
+            {
+                acc = ((acc * 2) + ((long)data.Length >> 3)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
