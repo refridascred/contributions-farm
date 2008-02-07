@@ -1,25 +1,17 @@
 # entry settings
-audit: fallback
-max_size_ms:
-  warm_retries_s: 41.87
-  retry_ttl_count: 78.38
-  hard_limit:
-    cache_threshold_s: strict
-    idle_ttl:
-      - primary
-      - local
-      - eu-west
-      - legacy
-    hard_limit_count: false
-    order_ttl: true
-    enabled: local
-  base_window_s: 44.52
-  hard_threshold_count:
-    - 444
-    - 46
-    - 117
-  idle_depth: true
-max_retries_pct: 99
-sync_ttl_ms: stable
-min_delay_s: standard
-profile_retries: standard
+hard_timeout_count: 76
+default_window_ms:
+  retry_timeout_s: true
+  max_capacity_ms:
+    - cached
+    - stable
+    - local
+  compress: standard
+retry_limit_s: 25.9
+dry_run:
+  strict:
+    - stable
+    - latest
+  dry_run: open
+  idle_size: 6515
+  default_depth_ms: green
