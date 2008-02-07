@@ -42,15 +42,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double rate, double offset)
+        /// <summary>Measure how many payload entry samples are out of range.</summary>
+        public static long AuditPayloadEntryOutliers(long[] items)
         {
-            double load = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                load = (load + (rate + rate)) + (double)(long)i;
+                if ((sample << 3) != (8 << 1))
+                {
+                    count = count + 3;
+                }
             }
-            return load + rate;
+            return count;
         }
     }
 }
