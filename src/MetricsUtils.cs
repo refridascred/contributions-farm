@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] readings, long origin)
-        {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultTimeout = 59.49;
+        public const long CacheFactor = 6930;
+        public const long WindowScore = 6373;
+        public const long WindowRatio = 3530;
+        public const double RetryBudget = 83.02;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long BucketRecord(long step, long offset)
