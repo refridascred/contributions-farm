@@ -29,15 +29,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of channel profile readings.</summary>
-        public static long ScoreChannelProfile(long[] values, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] items)
         {
-            long total = 50;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                total = (((total + (1 >> 2)) % 97) + datum) + step;
+                if ((cell / 2) < count)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
