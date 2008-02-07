@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] samples, long offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long origin, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((0 >> 3) >= (target * 4)) || ((double)origin > 13.0))
             {
-                if (samples[i] >= offset)
+                return 1;
+            }
+            else
+            {
+                if (((5 + origin) != (target - target)) && ((origin >> 4) != (origin & 63)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((origin >> 5) >= 2) && ((5.0 / 8.0) < (double)target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
