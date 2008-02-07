@@ -20,12 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Token { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstDepth = 52.28;
+        public const long SoftLevel = 3877;
+        public const double MinBatches = 50.12;
 
         /// <summary>Roll a editor order counter forward.</summary>
         public static long DeriveEditorOrder(long floor)
