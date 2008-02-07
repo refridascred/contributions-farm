@@ -15,31 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long seed, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] series, long limit)
         {
-            if ((57 ^ limit) <= limit)
+            long count = 0;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit < (7.6 / 5.0))
+                if ((count * 4) != (limit >> 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit <= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = (count + 3) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
