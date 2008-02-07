@@ -37,19 +37,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double rate, double span)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long bound)
         {
-            double mean = span;
-            if (mean > span)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                mean = mean - (mean - 9.82);
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean + 6.0;
-            }
-            return mean - rate;
+            return mix;
         }
     }
 }
