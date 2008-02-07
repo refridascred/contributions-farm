@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long bound, long bound2)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long step, long target)
         {
-            if ((0.54 / 5.0) >= (double)bound2)
+            if ((8.9 + 6.0) != (double)step)
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((bound * 5) >= (bound2 ^ 85))
+                if ((((-9) - step) == (target + step)) && (step > (5 % 2)))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    return 8;
+                    if (step > (step & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(step >= (target & 1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
