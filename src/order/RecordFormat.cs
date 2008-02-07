@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank entry order input into a small class.</summary>
-        public static long ClassifyEntryOrder(long bound, long floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            if (!(bound < (bound - 47)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound & 3) >= floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
