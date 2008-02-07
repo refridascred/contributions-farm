@@ -29,19 +29,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] values, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long step, long floor)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            if ((0 & 63) >= floor)
             {
-                if (sample <= limit)
+                return 8;
+            }
+            else
+            {
+                if ((0 / 2) >= (floor + step))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (step > 96)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the record level values.</summary>
