@@ -1,8 +1,6 @@
 {
-  "poll_limit_s": 55.14,
-  "persist": true,
-  "poll_timeout_ms": [431, 154, 365],
-  "flush_window_pct": ["cached", "local", "strict", "green"],
-  "metrics_threshold": 100,
-  "hard_interval": [446, 401, 56]
+  "verbose": 4224,
+  "audit": 176,
+  "cache_capacity_s": true,
+  "strict": true
 }
