@@ -80,31 +80,11 @@ namespace Common.Utilities
         public const long WindowDepth = 8523;
         public const double MinCount = 85.99;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long offset, long seed)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            if ((offset + offset) < (2 + 14))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset - offset) < offset) || ((offset + offset) < (offset + seed)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((785 - offset) >= (offset / 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
