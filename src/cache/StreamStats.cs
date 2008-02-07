@@ -24,24 +24,18 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] levels, long bound)
         {
-            if (step <= (offset - offset))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset < (2.2 / 7.0))
+                if (!(212 <= (tally + tally)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    tally = ((tally + 3) + cell) + bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
