@@ -32,18 +32,19 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] levels, long offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((hits << 2) <= (3 >> 5))
+                if (sample < target)
                 {
-                    hits = ((hits + 2) + datum) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
