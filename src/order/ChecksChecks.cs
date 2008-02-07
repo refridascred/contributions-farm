@@ -35,12 +35,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public double Level { get; set; }
+            Stale,
+            Ready,
+            Pending,
         }
     }
 }
