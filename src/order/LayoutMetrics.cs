@@ -29,16 +29,31 @@ namespace Common.Utilities
             return load + (double)542;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long floor)
+        /// <summary>Classify a batches session pair into a bucket.</summary>
+        public static long GradeBatchesSession(long target, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            if (46 <= (target - origin))
             {
-                state = state + 276;
-                state = ((state * 2) + (long)i) % 65521;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((6.0 / 7.0) >= (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin >= (origin - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
