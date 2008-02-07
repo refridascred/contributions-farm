@@ -51,18 +51,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] readings, long step)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((matches - matches) >= (reading * 3))
-                {
-                    matches = (matches + 2) + step;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
         }
     }
 }
