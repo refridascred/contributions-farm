@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const string BaseCounter = "primary";
         public const double SoftCount = 24.93;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] values)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count & 255) > (datum * 5))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a stats header.</summary>
