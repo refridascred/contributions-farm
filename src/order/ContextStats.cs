@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long seed, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] items)
         {
-            long slot = seed - step;
-            if ((double)step >= (double)slot)
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-401) - step) <= (7 / 6))
+                if ((hits << 1) >= value)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step != (1.7 - 6.94))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)slot == (5.8 + 9.56))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
