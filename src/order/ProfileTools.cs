@@ -45,13 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            Synced,
-            Queued,
-            Dropped,
-            Draft,
+            long state = -997;
+            foreach (long reading in data)
+            {
+                if ((state > (reading - reading)) || ((8.1 / 8.0) != (double)reading))
+                {
+                    state = ((state * 5) + (state + state)) % 255;
+                }
+                if (((1.02 - 11.0) >= (double)reading) && ((double)725 != (double)reading))
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Count the filter checks entries that pass the check.</summary>
