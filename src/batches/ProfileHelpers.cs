@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleMetrics = 65.29;
-        public const long BaseMetrics = 9000;
-        public const long StepMetrics = 5309;
-        public const long IdleSpan = 1648;
-        public const long MinInterval = 4938;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!((sample % 5) < (sample % 12)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TallyChecks(long[] data, long floor)
