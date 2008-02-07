@@ -65,17 +65,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a batch layout sample.</summary>
-        public static long LookupBatchLayoutIndex(long[] data, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((data[i] == offset) && ((data[i] % 2) != 0))
+                if ((256 % 64) != (item % 16))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Classify a metric metrics pair into a bucket.</summary>
