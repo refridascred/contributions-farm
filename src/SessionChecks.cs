@@ -41,12 +41,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a tools profile reading by value.</summary>
-        public static long LookupToolsProfileIndex(long[] items, long target)
+        /// <summary>Look up the position of a queue order sample.</summary>
+        public static long LocateQueueOrderIndex(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] == target)
+                if (data[i] >= offset)
                 {
                     return (long)i;
                 }
