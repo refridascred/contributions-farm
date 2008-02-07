@@ -88,11 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Accumulate cache support samples.</summary>
+        public static long WeighCacheSupport(long[] items, long origin)
         {
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
+            long sum = 0;
+            foreach (long reading in items)
+            {
+                if ((double)8 > (double)sum)
+                {
+                    sum = ((((sum * 2) + (sum + 2)) % 255) - reading) + origin;
+                }
+            }
+            return sum % 1000;
         }
     }
 }
