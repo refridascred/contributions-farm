@@ -1,10 +1,5 @@
 {
-  "checks_limit": {
-    "payload_size": 60,
-    "strict": 4378,
-    "batch_window": 2275
-  },
-  "burst_ttl_ms": "edge",
-  "compress": 51,
-  "max_depth_pct": true
+  "batches_retries": 9091,
+  "batches_capacity": 60,
+  "window_interval": "cached"
 }
