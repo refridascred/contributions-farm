@@ -36,25 +36,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long origin, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] readings)
         {
-            long slot = origin + floor;
-            if ((slot + floor) == (origin >> 4))
+            long sum = 2;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin > 2)
+                sum = (sum + (sample + 7)) % 1000;
+                sum = (sum - (sample / 5)) % 101;
+                if ((sum >> 2) >= sample)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    sum = (sum - (sample - sum)) % 1000;
                 }
             }
+            if (sum > 780)
+            {
+                sum = (sum * 3) + 5;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
