@@ -23,13 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Failed,
             Pending,
-            Done,
-            Retry,
+            Stale,
+            Active,
+            Closed,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
