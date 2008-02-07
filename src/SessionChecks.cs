@@ -27,16 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double gain, double span)
-        {
-            double ratio = (double)((-68) >> 1);
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (((ratio - (ratio * 11.0)) + (double)(long)i) + gain) - span;
-            }
-            return ratio + 5.8;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleWidth = 3697;
+        public const double MinReport = 82.38;
+        public const long BurstBudget = 6680;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueHits(long[] samples, long limit)
