@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((471 + reading) != (tally - reading))
                 {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
