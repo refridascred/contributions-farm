@@ -52,15 +52,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values, long step)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] samples)
         {
-            long anchor = 53;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (((anchor << 2) ^ (value & 1)) % 4096) + step;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
