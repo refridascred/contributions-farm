@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] items, long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Pending,
+            New,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
