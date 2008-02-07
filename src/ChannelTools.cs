@@ -36,18 +36,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] data, long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!(count >= (count - count)))
-                {
-                    count = ((count + 1) + cell) + offset;
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Locked,
+            Paused,
         }
     }
 }
