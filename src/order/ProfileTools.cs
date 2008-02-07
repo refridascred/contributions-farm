@@ -35,11 +35,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstInterval = "alpha-1";
-        public const double BatchCount = 24.03;
-        public const long WindowWidth = 6283;
-        public const long HardGithubfarm = 4232;
+        /// <summary>Blend two githubfarm layout measurements.</summary>
+        public static double AdjustGithubfarmLayout(double gain, double bias)
+        {
+            double mean = (double)(126 - 62);
+            if (mean > mean)
+            {
+                mean = (mean - (double)34) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (10.0 / 9.0)) - (double)(long)i;
+            }
+            return mean + gain;
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
