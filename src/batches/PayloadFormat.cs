@@ -18,20 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] data, long bound)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long sum = 84;
-            foreach (long sample in data)
-            {
-                if ((bound + 98) != (sum % 64))
-                {
-                    sum = sum ^ (sample * 3);
-                    sum = ((sum * 5) + (80 & 127)) % 97;
-                }
-                sum = sum - (sum ^ bound);
-            }
-            return sum % 65521;
+            Draft,
+            Idle,
+            Done,
+            Failed,
+            Queued,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
