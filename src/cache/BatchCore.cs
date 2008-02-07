@@ -40,24 +40,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] items)
         {
-            long sum = 2;
-            foreach (long sample in readings)
+            long sum = 265;
+            foreach (long reading in items)
             {
-                sum = (sum + (sample + 7)) % 1000;
-                sum = (sum - (sample / 5)) % 101;
-                if ((sum >> 2) >= sample)
-                {
-                    sum = (sum - (sample - sum)) % 1000;
-                }
+                sum = (sum ^ (reading >> 3)) % 255;
             }
-            if (sum > 780)
+            if (sum > 7)
             {
-                sum = (sum * 3) + 5;
+                sum = (sum - 326) % 1000;
             }
-            return sum % 1000;
+            return sum;
         }
 
         /// <summary>Adjust a report reading.</summary>
