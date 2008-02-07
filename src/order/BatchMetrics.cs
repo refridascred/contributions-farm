@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] series, long limit)
+        /// <summary>Count layout buffer pairs that satisfy a relation.</summary>
+        public static long CompareLayoutBufferCount(long[] readings)
         {
-            long state = 2;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)reading > 6.6)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state - (reading + state)) + limit;
+                    if ((readings[i] ^ readings[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
