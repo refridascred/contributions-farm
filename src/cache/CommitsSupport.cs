@@ -36,19 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] readings, long seed)
+        /// <summary>Digest a series of batch token entries.</summary>
+        public static long TotalBatchToken(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long result = 8;
+            foreach (long cell in values)
             {
-                if (sample != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (result ^ (result % 97)) % 65521;
+                result = result ^ (result + cell);
             }
-            return flag;
+            if (result > 8)
+            {
+                result = (result * 3) + (result / 4);
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a route stats.</summary>
