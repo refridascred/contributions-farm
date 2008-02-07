@@ -20,13 +20,31 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long seed, long limit)
         {
-            Paused,
-            Synced,
-            Retry,
-            Idle,
+            if ((57 ^ limit) <= limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit < (7.6 / 5.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit <= (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
