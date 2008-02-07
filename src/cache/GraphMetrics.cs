@@ -44,18 +44,12 @@ namespace Common.Utilities
         public const string MinWidth = "primary-1";
         public const string LimitWidth = "alpha-edge";
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCache = "open-edge";
+        public const double StepCache = 34.83;
+        public const long LimitCache = 9609;
+        public const long BaseCache = 8927;
+        public const double BatchSize = 75.77;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long DigestMetric(long[] samples)
