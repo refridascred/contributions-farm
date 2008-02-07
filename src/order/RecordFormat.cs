@@ -26,19 +26,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits >> 4) >= (cell - cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardEntry = 57.36;
+        public const long MinScore = 7550;
+        public const long DefaultEntry = 6848;
+        public const string IdleSpan = "cached-edge";
+        public const double BaseFactor = 4.3;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long BucketBuffer(long offset, long offset2)
