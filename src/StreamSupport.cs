@@ -34,18 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] items, long step)
+        /// <summary>Audit cluster layout readings against a rule.</summary>
+        public static long AuditClusterLayoutGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((step + 759) > (step << 2))
+                if (98 >= (item << 1))
                 {
-                    hits = (hits + 2) + entry;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
