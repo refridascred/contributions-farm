@@ -1,7 +1,8 @@
-id,active,owner,token
-1,584,local,97.99
-2,12.36,edge,stable
-3,local,76.07,106
-4,latest,87.05,945
-5,3.53,495,36
-6,511,43,standard
+id,count,level
+1,631,979
+2,strict,89.12
+3,712,158
+4,539,stable
+5,451,85.92
+6,14.23,29.6
+7,969,1.54
