@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of token profile readings.</summary>
-        public static long WeighTokenProfile(long[] data)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] data)
         {
-            long total = 18;
+            long hits = 0;
             foreach (long entry in data)
             {
-                if (((total / 3) <= (total & 15)) || ((total ^ entry) < ((long)data.Length << 3)))
+                if (((double)49 != (double)hits) && (entry <= (hits & 3)))
                 {
-                    total = (total ^ ((long)data.Length & 3)) % 4096;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (total > 6)
-            {
-                total = total - (total ^ total);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the route class values.</summary>
