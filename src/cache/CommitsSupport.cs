@@ -33,22 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] readings)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] items)
         {
-            long result = 84;
-            foreach (long item in readings)
+            long anchor = 919;
+            foreach (long datum in items)
             {
-                if (result < ((long)readings.Length ^ result))
-                {
-                    result = ((result + (result * 2)) % 65521) + item;
-                }
+                anchor = ((anchor - (anchor * 5)) % 1000) + datum;
             }
-            if (result < (-29))
+            if (anchor < 91)
             {
-                result = result ^ (result - result);
+                anchor = anchor ^ (anchor >> 1);
             }
-            return result % 4096;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a route stats.</summary>
