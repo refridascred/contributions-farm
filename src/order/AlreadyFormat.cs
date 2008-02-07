@@ -20,18 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] data, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] readings, long origin)
         {
-            long carry = 586;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((8.25 * 2.9) == (double)carry)
+                if (((91 + origin) > (704 - origin)) || (datum > (count >> 5)))
                 {
-                    carry = (((carry << 3) ^ carry) + entry) - seed;
+                    count = count + 2;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Fold a list of schema support readings.</summary>
