@@ -20,10 +20,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleWidth = 3697;
-        public const double MinReport = 82.38;
-        public const long BurstBudget = 6680;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Draft,
+            Failed,
+            Closed,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueHits(long[] samples, long limit)
