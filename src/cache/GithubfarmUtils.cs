@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = mark ^ (mark ^ 304);
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public bool Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the schema state values.</summary>
