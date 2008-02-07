@@ -35,12 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleWindow = "open-v2";
+        public const double BatchWindow = 58.69;
+        public const long BaseFactor = 7154;
+        public const long BurstWindow = 6440;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long ScoreEntry(long[] values, long floor)
