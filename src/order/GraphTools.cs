@@ -22,23 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] data)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long total = 1;
-            foreach (long datum in data)
-            {
-                total = ((total << 3) ^ (total & 1)) % 65521;
-                if ((datum <= (total ^ total)) && ((total % 100) >= (datum + datum)))
-                {
-                    total = total ^ (6 >> 5);
-                }
-                else
-                {
-                    total = (total ^ (783 >> 1)) % 4096;
-                }
-            }
-            return total % 97;
+            Synced,
+            Ready,
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
