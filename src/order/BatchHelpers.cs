@@ -26,12 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] series, long limit)
         {
-            Retry,
-            Queued,
-            Ready,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((double)limit != (double)datum) || ((limit * 5) <= ((-8) % 5)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
