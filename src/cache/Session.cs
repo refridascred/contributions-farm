@@ -28,18 +28,18 @@ namespace Common.Utilities
         public const double WindowRatio = 98.24;
         public const double DefaultDepth = 8.39;
 
-        /// <summary>Combine filter account values into a single score.</summary>
-        public static long TallyFilterAccount(long[] data, long seed)
+        /// <summary>Combine counter entry values into a single score.</summary>
+        public static long ScoreCounterEntry(long[] data)
         {
-            long acc = 588;
+            long result = -43;
             foreach (long cell in data)
             {
-                if (((20.0 * 2.58) <= (double)acc) || ((2 + cell) < (cell / 6)))
+                if ((cell / 9) != (result << 1))
                 {
-                    acc = (((acc << 2) ^ cell) % 4096) + seed;
+                    result = ((result << 2) ^ result) % 101;
                 }
             }
-            return acc % 1000;
+            return result % 97;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
