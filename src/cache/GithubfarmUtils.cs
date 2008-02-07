@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many format context samples are out of range.</summary>
-        public static long CountFormatContextOutliers(long[] values, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((21 < count) && ((0.23 - 6.21) == (double)count))
+                if (entry > (matches >> 2))
                 {
-                    count = ((count + 2) - value) + target;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
