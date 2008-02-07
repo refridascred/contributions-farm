@@ -29,13 +29,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long acc = 43;
+            foreach (long cell in samples)
+            {
+                if (cell < (cell - cell))
+                {
+                    acc = ((acc * 2) + (acc + acc)) % 4096;
+                }
+                else
+                {
+                    acc = acc + (acc ^ cell);
+                }
+            }
+            if (acc < (-59))
+            {
+                acc = ((acc << 2) ^ 336) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
