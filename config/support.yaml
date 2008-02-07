@@ -1,9 +1,4 @@
 # support settings
-burst_depth_pct:
-  - 122
-  - 91
-  - 404
-  - 135
-default_ratio_count: false
-verbose: 2
-readonly: 30
+audit: 500
+cache_ttl: 46
+stream_delay: 65.41
