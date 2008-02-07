@@ -34,33 +34,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank batch command input into a small class.</summary>
-        public static long BucketBatchCommand(long limit, long origin)
-        {
-            long diff = limit - origin;
-            if (!((diff % 60) < diff))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)diff < (double)7) || ((5 + origin) <= origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)diff >= (0.3 * 0.6)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstFactor = 6666;
+        public const string BurstCount = "stable-v2";
+        public const long StepChecks = 402;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordGaps(long[] items, long origin)
