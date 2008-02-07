@@ -41,22 +41,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] values, long offset)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)item < (14.0 / 7.0))
-                {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
