@@ -27,12 +27,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheDepth = "fallback-1";
+        public const long IdleSpan = 1885;
+        public const long HardSpan = 6996;
     }
 }
