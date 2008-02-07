@@ -40,13 +40,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] series)
         {
-            Locked,
-            Done,
-            Retry,
-            New,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((sample & 127) != (282 ^ count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of session readings.</summary>
