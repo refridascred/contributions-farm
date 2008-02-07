@@ -37,19 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] data, long bound)
+        /// <summary>Fold a list of payload route readings.</summary>
+        public static long FoldPayloadRoute(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long carry = 474;
+            foreach (long cell in data)
             {
-                if (entry < bound)
+                if ((double)cell == (double)offset)
                 {
-                    stale = false;
-                    break;
+                    carry = carry - ((long)data.Length % 2);
                 }
             }
-            return stale;
+            return carry % 97;
         }
 
         /// <summary>Rank account input into a small class.</summary>
