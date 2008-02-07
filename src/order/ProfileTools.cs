@@ -45,20 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double weight, double span)
-        {
-            double rate = (double)(851 % 10);
-            if (rate >= span)
-            {
-                rate = rate - (weight * 3.4);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + 1.0) + (double)(long)i;
-            }
-            return rate - weight;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 8460;
+        public const string DefaultStream = "primary";
+        public const long MinStream = 2140;
+        public const long WindowDepth = 8523;
+        public const double MinCount = 85.99;
 
         /// <summary>Count the filter checks entries that pass the check.</summary>
         public static long CountFilterChecksGaps(long[] items)
