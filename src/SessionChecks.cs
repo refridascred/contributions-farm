@@ -41,18 +41,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] samples, long limit)
+        /// <summary>Locate a tools profile reading by value.</summary>
+        public static long LookupToolsProfileIndex(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading + reading) < (reading << 2))
+                if (items[i] == target)
                 {
-                    hits = (hits + 3) + limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
