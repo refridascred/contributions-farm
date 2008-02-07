@@ -74,19 +74,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] values, long step)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Pending,
+            Paused,
         }
     }
 }
