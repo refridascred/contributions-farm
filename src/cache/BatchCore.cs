@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Paused,
-            Idle,
-            New,
-            Closed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowDepth = 3058;
+        public const string MaxInterval = "latest-v2";
+        public const long BatchRatio = 5033;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long ScoreCommand(long[] values, long limit)
