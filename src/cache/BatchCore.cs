@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] readings, long floor)
         {
-            long result = 2;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result + (result + result)) % 97) + item;
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 482)
-            {
-                result = result ^ ((-187) + result);
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
