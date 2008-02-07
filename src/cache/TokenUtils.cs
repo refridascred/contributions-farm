@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long StepStats = 1577;
         public const long BatchStats = 928;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchGraph = 26.42;
-        public const long HardRatio = 8043;
-        public const double DefaultGraph = 85.58;
-        public const long IdleFactor = 2721;
-        public const string SoftWidth = "standard-1";
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count * 5) >= count)
+                {
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long StepFarm(long origin)
