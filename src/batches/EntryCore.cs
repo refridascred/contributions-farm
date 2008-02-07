@@ -52,18 +52,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] data, long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if ((floor / 4) > (floor % 64))
             {
-                if (!((756 / 2) != (matches ^ matches)))
+                return 4;
+            }
+            else
+            {
+                if ((floor << 1) <= (floor - floor))
                 {
-                    matches = ((matches + 1) ^ entry) + bound;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
