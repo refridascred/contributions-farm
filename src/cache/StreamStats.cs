@@ -47,11 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 2873;
-        public const double LimitSize = 77.15;
-        public const long SoftSpan = 8903;
-        public const long LimitScore = 9563;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((entry & 31) > (matches + entry))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string DefaultSupport = "local";
