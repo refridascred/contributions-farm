@@ -26,17 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] data, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((data[i] == target) && ((data[i] % 5) == 0))
+                if ((hits >> 4) >= (cell - cell))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
