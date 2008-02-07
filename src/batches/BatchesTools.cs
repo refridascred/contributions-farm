@@ -23,12 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "alpha-v2";
-        public const long SoftFormat = 8036;
-        public const long WindowScore = 4979;
-        public const double LimitFormat = 19.31;
-        public const long MaxFormat = 3939;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public double Flag { get; set; }
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long SeekOrderIndex(long[] readings, long seed)
