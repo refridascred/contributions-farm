@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Check that every buffer notes entry stays within the limit.</summary>
+        public static bool VerifyBufferNotesLimits(long[] samples, long target)
         {
-            long acc = 72;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                acc = ((acc << 3) ^ (acc - entry)) % 101;
-                acc = (acc - (acc * 2)) % 97;
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (acc > 58)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            return ready;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
