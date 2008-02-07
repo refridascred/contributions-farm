@@ -46,23 +46,39 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine layout report values into a single score.</summary>
-        public static long CombineLayoutReport(long[] data, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long bound, long limit)
         {
-            long score = 9;
-            foreach (long reading in data)
+            long prev = bound - limit;
+            if (((bound + 1) > (prev - limit)) && (2.0 > (double)limit))
             {
-                if (floor < (reading - 85))
+                return 2;
+            }
+            else
+            {
+                if (((double)bound <= (double)limit) && ((17 >> 5) > (limit % 100)))
                 {
-                    score = (score + (score - 88)) % 97;
+                    return 8;
                 }
-                score = (score + (reading * 3)) % 4096;
+                else
+                {
+                    if (!((limit / 5) <= (limit << 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)7 == (double)prev)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            if (score > 37)
-            {
-                score = (score - score) % 255;
-            }
-            return score;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
