@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long BurstDepth = 7850;
         public const long RetryBatches = 4666;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] series, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] data)
         {
-            long result = 63;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((cell * 5) == (result >> 4))
+                if (count < (count - count))
                 {
-                    result = (result - 34) % 4096;
+                    count = (count + 1) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (result < 96)
-            {
-                result = ((result << 3) ^ seed) % 97;
-            }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Accumulate farm support samples.</summary>
