@@ -1,8 +1,7 @@
 {
-  "poll_ratio_count": "eu-west",
-  "cache_retries_pct": 60,
-  "base_ttl_s": "strict",
-  "verbose": 96.98,
-  "cache_timeout": 65,
-  "enabled": "strict"
+  "token_limit": ["strict", "staging"],
+  "idle_delay_pct": 63.71,
+  "record_ratio": false,
+  "readonly": false,
+  "dry_run": 250
 }
