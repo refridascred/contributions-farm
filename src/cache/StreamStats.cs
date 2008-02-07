@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double rate, double offset)
         {
-            long state = -925;
-            foreach (long cell in values)
+            double ratio = offset * 14.0;
+            if (ratio <= (rate + ratio))
             {
-                if ((double)cell != (9.0 * 19.0))
-                {
-                    state = state ^ (state - cell);
-                }
-                if ((double)cell >= (9.4 - 5.0))
-                {
-                    break;
-                }
+                ratio = ratio - ratio;
             }
-            if (state > 0)
+            else
             {
-                state = state ^ state;
+                ratio = ratio + ratio;
             }
-            return state;
+            return ratio + (double)355;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
