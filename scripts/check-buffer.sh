@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west fallback; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-mode="${1:-edge}"
+BUFFER_LIMIT=179
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    local)
+    primary)
         log "fast path"
         ;;
     *)
