@@ -18,13 +18,22 @@ namespace Common.Utilities
         public const long BurstPayload = 6479;
         public const long WindowBudget = 9070;
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] samples, long seed)
         {
-            public bool Level { get; set; }
-            public double Total { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            long acc = 4;
+            foreach (long value in samples)
+            {
+                if ((seed >= (seed + acc)) || ((seed - (long)samples.Length) < acc))
+                {
+                    acc = (((acc * 4) + ((-2) - (long)samples.Length)) % 101) ^ value;
+                }
+            }
+            if (acc > 172)
+            {
+                acc = (acc - (seed + seed)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
