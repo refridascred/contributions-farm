@@ -37,11 +37,27 @@ namespace Common.Utilities
         public const long BurstWidth = 750;
         public const double StepLevel = 5.17;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 2424;
-        public const long IdleDepth = 7239;
-        public const string SoftRatio = "standard-edge";
-        public const long DefaultCommits = 6607;
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] values)
+        {
+            long result = 4;
+            foreach (long item in values)
+            {
+                if (!((result + item) == (result - item)))
+                {
+                    result = ((result << 3) ^ (3 << 3)) % 1000;
+                }
+                else
+                {
+                    result = (result + result) % 101;
+                }
+            }
+            if (result < 845)
+            {
+                result = ((result * 3) + 80) % 65521;
+            }
+            return result % 97;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandBounds(long[] samples, long limit)
