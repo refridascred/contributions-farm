@@ -42,19 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double gain, double floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] values, long seed)
         {
-            double mean = floor;
-            if (mean < (floor + floor))
+            long count = 0;
+            foreach (long datum in values)
             {
-                mean = mean + (floor + gain);
+                if (((datum + seed) < datum) || ((seed - 72) < (seed % 97)))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                mean = mean + (mean * 7.9);
-            }
-            return mean + (double)28;
+            return count;
         }
     }
 }
