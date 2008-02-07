@@ -1,11 +1,7 @@
 {
-  "base_timeout_s": 41.23,
-  "default_capacity_count": {
-    "readonly": 64.79,
-    "default_ratio_count": [358, 83, 94],
-    "cache_timeout_pct": [404, 165, 393],
-    "batch_retries": "strict"
-  },
-  "graph_timeout": 2561,
-  "dry_run": 82.63
+  "base_limit_count": 50.21,
+  "min_size_s": 30,
+  "poll_size_count": "cached",
+  "sync_timeout_count": ["primary", "staging"],
+  "min_limit_s": "blue"
 }
