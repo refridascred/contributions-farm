@@ -30,12 +30,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double gain, double span)
         {
-            Active,
-            Closed,
-            Dropped,
+            double ratio = (double)((-68) >> 1);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (((ratio - (ratio * 11.0)) + (double)(long)i) + gain) - span;
+            }
+            return ratio + 5.8;
         }
 
         /// <summary>Hold a token record.</summary>
