@@ -35,30 +35,19 @@ namespace Common.Utilities
             return bias + (gain / 2.0);
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] series, long step)
+        /// <summary>Check that every cache layout entry stays within the limit.</summary>
+        public static bool CheckCacheLayoutLimits(long[] readings, long target)
         {
-            long total = 468;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (cell > (step - step))
+                if (item <= target)
                 {
-                    total = (total << 3) ^ cell;
-                }
-                if ((cell - cell) < cell)
-                {
-                    total = ((total << 3) ^ (496 - step)) % 65521;
-                }
-                if ((1.0 - 7.0) < (double)cell)
-                {
-                    total = ((total << 3) ^ 61) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (total > 415)
-            {
-                total = (total - (total & 255)) % 97;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Describe the checks state values.</summary>
