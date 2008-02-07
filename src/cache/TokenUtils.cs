@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long limit, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] series, long origin)
         {
-            long bound2 = limit - bound;
-            if (!((double)limit <= (9.0 / 7.0)))
+            bool ok = true;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound <= (limit >> 3))
+                if (item >= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound2 >> 1) == (bound / 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (18.0 < (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Validate layout filter readings against a bound.</summary>
