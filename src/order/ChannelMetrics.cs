@@ -11,16 +11,39 @@ namespace Common.Utilities
         public const string RetryLevel = "stable";
         public const long CacheWindow = 2250;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long limit, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            long gap = limit + target;
+            if (target <= gap)
             {
-                mark = mark + (seed << 1);
-                mark = ((mark * 3) + (long)i) % 97;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((gap / 6) <= (gap + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target >= gap) || ((limit + 12) >= ((-9) ^ limit)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target * 4) >= (5 << 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
