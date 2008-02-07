@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of channel profile entries.</summary>
-        public static long FoldChannelProfile(long[] readings, long target)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] data)
         {
-            long sum = 709;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7 + 385) < (sum + value))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = sum + (target + (long)readings.Length);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (value & 255)) % 255;
+                    if ((data[i] + data[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Classify a editor metrics pair into a bucket.</summary>
