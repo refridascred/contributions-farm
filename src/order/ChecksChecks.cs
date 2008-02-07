@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank payload support input into a small class.</summary>
-        public static long GradePayloadSupport(long offset, long origin)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long seed, long step)
         {
-            if ((double)offset < (3.73 + 5.5))
+            long step2 = seed + step;
+            if ((615 - step2) > (15 << 2))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((origin ^ offset) == (offset ^ offset))
+                if ((3.0 - 6.62) == (double)seed)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    return 1;
+                    return 8;
                 }
             }
         }
