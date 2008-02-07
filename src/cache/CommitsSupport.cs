@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate order already samples.</summary>
-        public static long DigestOrderAlready(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] data)
         {
-            long mark = 881;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((mark ^ mark) != (845 - 44))
+                if ((sample * 5) != (count - 89))
                 {
-                    mark = ((mark << 2) ^ cell) % 65521;
+                    count = count + 2;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
