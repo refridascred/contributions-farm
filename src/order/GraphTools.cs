@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public bool Total { get; set; }
-            public string Size { get; set; } = "";
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstRatio = 4319;
+        public const string BatchWindow = "legacy-v2";
+        public const string IdleWidth = "alpha-edge";
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
