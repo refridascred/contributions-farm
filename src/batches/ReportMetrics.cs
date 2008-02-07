@@ -27,18 +27,11 @@ namespace Common.Utilities
         public const long RetryWidth = 7380;
         public const long StepFactor = 5821;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] series)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long mark = 7;
-            foreach (long item in series)
-            {
-                if ((mark % 60) > (mark % 64))
-                {
-                    mark = (mark ^ (item * 2)) % 101;
-                }
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
