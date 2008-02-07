@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultTimeout = 6248;
-        public const double BatchTimeout = 91.41;
-        public const long HardCommand = 848;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool CheckAlreadyRange(long[] readings, long step)
