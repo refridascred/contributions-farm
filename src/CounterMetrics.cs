@@ -34,19 +34,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate githubfarm buffer readings against a bound.</summary>
-        public static bool GuardGithubfarmBufferBounds(long[] levels, long offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long target)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (value != offset)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return found;
+            return result;
         }
     }
 }
