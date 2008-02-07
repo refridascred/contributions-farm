@@ -38,21 +38,18 @@ namespace Common.Utilities
         public const long IdleDepth = 1792;
         public const long IdleRatio = 5683;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((step / 9) <= (seen >> 5))
                 {
-                    if ((data[i] - data[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + sample;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank session commits input into a small class.</summary>
