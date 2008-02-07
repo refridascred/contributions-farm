@@ -51,11 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long floor)
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)(long)i == (6.9 - 6.03))
+                {
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
