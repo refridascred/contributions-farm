@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] readings, long offset)
         {
-            Dropped,
-            New,
-            Failed,
-            Paused,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the tools phase values.</summary>
