@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] samples, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (((long)i + result) < ((long)i / 4))
+                if ((double)matches > (double)82)
                 {
-                    result = result ^ ((long)i << 2);
-                    result = ((result * 5) + (27 - 727)) % 1000;
+                    matches = ((matches + 2) - reading) - floor;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
