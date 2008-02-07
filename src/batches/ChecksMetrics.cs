@@ -17,17 +17,18 @@ namespace Common.Utilities
         public const string HardOrder = "latest-1";
         public const long SoftOrder = 3990;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] samples, long target)
+        /// <summary>Measure how many counter profile samples are out of range.</summary>
+        public static long CountCounterProfileHits(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (samples[i] >= target)
+                if (!(((60 << 3) >= (item % 97)) || ((16.0 - 4.0) != (double)seen)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
