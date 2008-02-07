@@ -47,15 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((item + matches) >= (matches - item))
+                {
+                    matches = matches + 3;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Project the next record value.</summary>
