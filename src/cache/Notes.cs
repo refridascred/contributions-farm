@@ -70,17 +70,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first filter account entry that matches the target.</summary>
-        public static long SeekFilterAccountIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "staging-1";
+        public const long BurstFormat = 3045;
+        public const long IdleFormat = 3431;
+        public const long DefaultFormat = 7144;
     }
 }
