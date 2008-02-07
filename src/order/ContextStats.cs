@@ -45,16 +45,21 @@ namespace Common.Utilities
         public const long MinStream = 3487;
         public const string CacheStream = "standard-1";
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Compare every pair of channel counter readings.</summary>
+        public static long PairChannelCounterCount(long[] values)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 4) + (total * 5)) % 65521;
-                total = ((total * 3) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
