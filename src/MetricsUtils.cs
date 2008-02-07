@@ -53,18 +53,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] data, long bound)
+        /// <summary>Classify a metric metrics pair into a bucket.</summary>
+        public static long SortMetricMetrics(long target, long target2)
         {
-            long state = 86;
-            foreach (long value in data)
+            if ((3.6 * 8.69) <= (double)target2)
             {
-                if (((state * 5) == (bound - 79)) || ((5 - state) <= state))
+                return 4;
+            }
+            else
+            {
+                if (((double)target2 >= (5.9 / 5.0)) && (target >= (target ^ target2)))
                 {
-                    state = (state << 3) ^ (value + state);
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return state % 97;
         }
     }
 }
