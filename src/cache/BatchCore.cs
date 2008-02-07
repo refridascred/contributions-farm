@@ -20,15 +20,26 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            long sum = 75;
+            foreach (long item in series)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if ((double)item <= (double)(-6))
+                {
+                    sum = sum ^ (0 % 5);
+                }
+                else
+                {
+                    sum = sum + (sum + sum);
+                }
+                if ((item - 478) <= (sum + item))
+                {
+                    sum = (sum - 66) % 97;
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Hold a checks info.</summary>
