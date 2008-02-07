@@ -1,6 +1,8 @@
 {
-  "burst_capacity_ms": 40.36,
-  "dry_run": [241, 62],
-  "max_ratio_pct": "staging",
-  "report_size": 15
+  "min_depth": 62.03,
+  "verbose": 2509,
+  "already_limit": "staging",
+  "persist": 79,
+  "hard_window": 30,
+  "sync_interval_count": 96.15
 }
