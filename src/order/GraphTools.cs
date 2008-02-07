@@ -33,18 +33,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] values, long limit)
         {
-            long total = 478;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((total * 3) <= (623 % 97))
+                if (!((tally + limit) <= (entry - entry)))
                 {
-                    total = ((total * 5) + (cell & 127)) % 97;
+                    tally = tally + 3;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Accumulate report already samples.</summary>
