@@ -20,16 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a route cluster counter forward.</summary>
-        public static long RollRouteCluster(long origin)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor ^ (origin + (long)i)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
