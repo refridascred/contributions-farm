@@ -36,10 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchWidth = 2660;
-        public const long LimitLevel = 3498;
-        public const long StepSession = 1462;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long ClassifySchema(long floor, long origin)
