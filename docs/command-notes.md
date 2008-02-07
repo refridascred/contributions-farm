@@ -1,11 +1,12 @@
 # Command notes
 
-The command report groups every filter by payload.
-The record report groups every support by contributi.
-The queue report groups every commits by contributi.
+Run the graph check before changing any batch limits.
+When a editor fails, the context handler retries a few times before giving up.
+Keep format and notes names short and lowercase.
 
 ## Guidelines
 
-- Keep farm values small
-- Log every account change
-- Validate schema input early
+- Document new editor fields
+- Validate entry input early
+- Keep format values small
+- Review order limits each release
