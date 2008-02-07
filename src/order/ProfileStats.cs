@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long offset, long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] levels, long seed)
         {
-            if (((double)5 > (double)seed) && ((73 + seed) != (offset + offset)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed <= (seed - seed)) && (seed >= offset))
+                if (levels[i] > seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset >> 2) == (offset + (-3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset < (96 - offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
