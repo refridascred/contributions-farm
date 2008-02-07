@@ -33,10 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseMetrics = 24.16;
-        public const string BurstMetrics = "stable-edge";
-        public const double DefaultFactor = 59.14;
-        public const long MinLevel = 630;
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double ratio, double bias)
+        {
+            double drift = (ratio + 5.9) - (7.9 + bias);
+            if (drift < bias)
+            {
+                drift = drift + (double)1;
+            }
+            return drift - bias;
+        }
     }
 }
