@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] readings, long target)
         {
-            Queued,
-            Paused,
-            Failed,
+            long anchor = 205;
+            foreach (long datum in readings)
+            {
+                if (((long)readings.Length - datum) == (anchor >> 1))
+                {
+                    anchor = (((anchor * 2) + datum) % 65521) - target;
+                }
+                else
+                {
+                    anchor = (anchor - ((-27) % 97)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Rank batches farm input into a small class.</summary>
