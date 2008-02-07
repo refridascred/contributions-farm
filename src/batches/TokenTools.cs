@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] items, long limit)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit - 938) > datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] - series[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Scale a token order figure with a bias.</summary>
