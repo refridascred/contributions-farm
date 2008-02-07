@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long IdleCount = 7960;
         public const long SoftTools = 2023;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheCount = 2989;
-        public const string WindowRatio = "stable-1";
-        public const long RetryAlready = 4275;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsLimits(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LocateMetricIndex(long[] values, long bound)
