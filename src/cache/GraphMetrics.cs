@@ -13,33 +13,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Grade a schema window value against two limits.</summary>
-        public static long BucketSchemaWindow(long origin, long seed)
-        {
-            long slot = origin + seed;
-            if (((619 + 30) <= (origin + 32)) && (slot < (seed << 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (598 < (origin % 24))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(slot < (7 + slot)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheCount = 2989;
+        public const string WindowRatio = "stable-1";
+        public const long RetryAlready = 4275;
 
         /// <summary>Compare every pair of route entry readings.</summary>
         public static long OverlapRouteEntryCount(long[] items)
