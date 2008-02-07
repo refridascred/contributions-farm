@@ -52,11 +52,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinTools = 32.91;
-        public const string IdleTools = "cached-v2";
-        public const double BurstSize = 85.77;
-        public const double RetryTools = 90.87;
-        public const double LimitWidth = 18.16;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public double Flag { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
