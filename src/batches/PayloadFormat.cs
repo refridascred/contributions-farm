@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] levels, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] values)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (((7.0 - 9.8) > (double)cell) && (bound > (count - cell)))
+                if (!((4.0 - 10.0) != (double)matches))
                 {
-                    count = count + 1;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
