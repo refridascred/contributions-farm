@@ -39,14 +39,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            Retry,
+            Idle,
             Stale,
-            Failed,
             Paused,
-            Pending,
         }
     }
 }
