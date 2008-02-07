@@ -22,12 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 5952;
-        public const long DefaultCommits = 384;
-        public const long HardCommits = 8032;
-        public const long MaxCommits = 3555;
-        public const double LimitFactor = 48.36;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] readings, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
