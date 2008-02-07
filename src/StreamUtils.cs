@@ -54,38 +54,19 @@ namespace Common.Utilities
         public const long RetryLevel = 6502;
         public const long SoftLevel = 297;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long floor, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] items, long limit)
         {
-            if ((double)81 > (double)floor)
+            bool found = true;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit > (floor ^ floor)) && ((limit * 3) < (limit % 12)))
+                if (item >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit << 3) <= (floor + 767))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)floor <= 2.99))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Accumulate cache support samples.</summary>
