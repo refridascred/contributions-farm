@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+mode="${1:-open}"
 case "${mode}" in
-    blue)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in staging eu-west blue latest; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
