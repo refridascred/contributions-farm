@@ -32,19 +32,9 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "staging";
+        public const double BatchInterval = 94.35;
+        public const long BaseScore = 2497;
     }
 }
