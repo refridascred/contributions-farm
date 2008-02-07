@@ -28,22 +28,13 @@ namespace Common.Utilities
         public const long LimitFactor = 3015;
         public const string WindowScore = "staging-1";
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] items, long offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((double)value > (0.07 * 0.2))
-                {
-                    matches = (matches + 3) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
