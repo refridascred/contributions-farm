@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] data, long limit)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] levels, long limit)
         {
-            long mark = 72;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark << 3) ^ datum;
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 3)
-            {
-                mark = mark - (limit ^ limit);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the format mode values.</summary>
