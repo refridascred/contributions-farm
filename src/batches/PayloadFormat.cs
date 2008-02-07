@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (!((4.0 - 10.0) != (double)matches))
+                if (((double)count <= 11.0) || (((count % 24) > (offset / 9)) && (entry < (entry & 31))))
                 {
-                    matches = (matches + 3) ^ reading;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
