@@ -32,22 +32,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] levels)
+        /// <summary>Digest a series of token githubfarm entries.</summary>
+        public static long WeighTokenGithubfarm(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long total = 5;
+            foreach (long datum in items)
             {
-                if ((seen * 2) > (value >> 1))
+                if (!((step + step) > ((-654) & 15)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = ((total ^ step) % 4096) + datum;
                 }
             }
-            return seen;
+            if (total < (-18))
+            {
+                total = ((total << 3) ^ (759 & 255)) % 101;
+            }
+            return total % 1000;
         }
     }
 }
