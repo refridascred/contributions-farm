@@ -14,18 +14,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate editor session samples.</summary>
-        public static long ScoreEditorSession(long[] data)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] levels, long bound)
         {
-            long result = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((699 + sample) <= (sample - result))
+                if ((bound * 2) >= entry)
                 {
-                    result = (result ^ (result - sample)) % 255;
+                    count = count + 3;
                 }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
