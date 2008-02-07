@@ -23,14 +23,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Synced,
+            Queued,
+            Active,
+            Pending,
+            Done,
             Ready,
-            Locked,
-            Stale,
-            Draft,
         }
 
         /// <summary>Hold a notes header.</summary>
