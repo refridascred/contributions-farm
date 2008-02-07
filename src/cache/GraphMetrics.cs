@@ -29,13 +29,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Done,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 3029;
+        public const double BurstLayout = 31.27;
+        public const long MinLayout = 4741;
+        public const string CacheLevel = "primary-v2";
+        public const string MaxLayout = "strict";
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long SortQueue(long offset, long step)
