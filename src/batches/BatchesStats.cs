@@ -51,12 +51,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Failed,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleFactor = 1321;
+        public const double BaseOrder = 28.77;
+        public const long MaxOrder = 9280;
+        public const double BatchOrder = 38.53;
     }
 }
