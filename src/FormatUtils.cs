@@ -56,21 +56,16 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score << 2) ^ 8) % 4096;
+                score = ((score << 3) ^ (cell + 422)) % 4096;
             }
-            return seen;
+            return score;
         }
     }
 }
