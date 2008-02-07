@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] items, long step)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] == step) && ((items[i] % 3) == 0))
+                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
