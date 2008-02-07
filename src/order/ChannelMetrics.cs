@@ -10,31 +10,11 @@ namespace Common.Utilities
         public const long StepCommand = 1616;
         public const long RetryCommand = 6008;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long limit, long step)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            if ((limit < (step % 64)) && ((limit / 2) != (step / 7)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step << 3) > (limit << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (70 < limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
