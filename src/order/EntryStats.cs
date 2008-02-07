@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardRatio = 4688;
+        public const double CacheScore = 96.08;
+        public const string LimitStream = "legacy-1";
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
