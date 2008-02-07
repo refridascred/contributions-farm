@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
+            long result = target;
+            for (int i = 0; i < 5; i++)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
