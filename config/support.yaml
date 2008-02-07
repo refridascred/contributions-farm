@@ -1,9 +1,4 @@
 # support settings
-batches_ttl: 3588
-filter_timeout: 100
-max_retries_count:
-  soft_depth_pct: latest
-  poll_depth_count: 60
-  audit: cached
-audit: latest
-base_limit_count: 74.27
+cache_depth: 250
+flush_threshold_pct: edge
+farm_timeout: true
