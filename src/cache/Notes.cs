@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] readings, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long offset, long step)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long offset2 = offset ^ step;
+            if ((double)offset < (3.0 - 10.0))
             {
-                if (sample != offset)
+                return 7;
+            }
+            else
+            {
+                if ((5 * 2) != (offset - offset2))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (step <= (342 / 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
