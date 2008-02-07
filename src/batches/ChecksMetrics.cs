@@ -56,14 +56,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long offset, long floor)
         {
-            Idle,
-            Queued,
-            Synced,
-            Dropped,
-            Done,
+            if ((floor >> 4) >= (floor * 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor >= (offset % 24))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor > (offset ^ offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset - 5) <= (floor * 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
