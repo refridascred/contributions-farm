@@ -1,9 +1,7 @@
-id,score,state
-1,standard,383
-2,720,134
-3,standard,12.57
-4,533,latest
-5,139,eu-west
-6,90.61,legacy
-7,41.45,869
-8,84.37,96
+id,region,active
+1,943,54.39
+2,fallback,188
+3,69.24,272
+4,26.63,16.36
+5,179,347
+6,staging,45.79
