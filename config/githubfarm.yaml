@@ -1,8 +1,5 @@
 # githubfarm settings
-poll_timeout_ms: strict
-soft_size_s: 11
-stats_size:
-  - 211
-  - 160
-  - 433
-compress: 9555
+idle_size: eu-west
+retry_limit_pct: 8769
+poll_interval: latest
+hard_window_s: 64.82
