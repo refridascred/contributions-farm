@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((value - value) <= (value & 7))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a already summary.</summary>
