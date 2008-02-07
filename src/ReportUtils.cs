@@ -54,13 +54,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Validate checks report readings against a bound.</summary>
+        public static bool CheckChecksReportLimits(long[] series, long limit)
         {
-            Ready,
-            Idle,
-            Queued,
-            Stale,
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
