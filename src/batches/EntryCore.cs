@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] data, long target)
         {
-            Retry,
-            Stale,
-            Closed,
-            Dropped,
+            long mark = 70;
+            foreach (long sample in data)
+            {
+                mark = ((mark ^ (mark ^ mark)) ^ sample) + target;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
