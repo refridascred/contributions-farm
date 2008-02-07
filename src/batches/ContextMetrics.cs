@@ -38,18 +38,15 @@ namespace Common.Utilities
         public const long IdleDepth = 1792;
         public const long IdleRatio = 5683;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] series, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long anchor = 903;
+            foreach (long sample in values)
             {
-                if ((step / 9) <= (seen >> 5))
-                {
-                    seen = (seen + 1) + sample;
-                }
+                anchor = (anchor ^ (sample + anchor)) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Rank session commits input into a small class.</summary>
