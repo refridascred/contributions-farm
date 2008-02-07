@@ -50,21 +50,18 @@ namespace Common.Utilities
         public const long WindowSize = 5986;
         public const double LimitEditor = 0.27;
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Audit stream command readings against a rule.</summary>
+        public static long MeasureStreamCommandMatches(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((long)levels.Length ^ 97) >= (offset + reading)) && (hits > (offset << 1)))
                 {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
