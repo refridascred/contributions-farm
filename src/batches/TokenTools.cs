@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepLevel = 75.32;
-        public const long MaxScore = 8031;
-        public const long MinRatio = 2060;
-        public const long BurstDepth = 7850;
-        public const long RetryBatches = 4666;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinTimeout = 76.9;
+        public const double CacheBuffer = 61.86;
+        public const long MinSize = 8054;
+        public const string RetrySpan = "primary-edge";
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long RankWindow(long origin, long seed)
