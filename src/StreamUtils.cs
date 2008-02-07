@@ -20,25 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long step, long step2)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long span = step ^ step2;
-            if ((span - 5) < step2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)span == (4.1 + 14.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the format state values.</summary>
