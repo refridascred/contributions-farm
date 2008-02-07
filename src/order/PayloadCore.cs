@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] items)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double ratio, double bias)
         {
-            long result = 6;
-            foreach (long sample in items)
-            {
-                if ((0 % 60) == (sample - sample))
-                {
-                    result = result - (sample >> 4);
-                }
-            }
-            return result % 1000;
+            double drift = (ratio - bias) - (ratio - 2.8);
+            return drift + (double)79;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
