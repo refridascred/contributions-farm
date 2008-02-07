@@ -17,19 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every record tools entry stays within the limit.</summary>
-        public static bool CheckRecordToolsBounds(long[] data, long offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Score { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
