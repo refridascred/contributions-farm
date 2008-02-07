@@ -15,19 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every buffer commits entry stays within the limit.</summary>
-        public static bool CheckBufferCommitsLimits(long[] items, long offset)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Project the next report value.</summary>
