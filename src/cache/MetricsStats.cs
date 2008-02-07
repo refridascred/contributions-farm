@@ -35,38 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank counter payload input into a small class.</summary>
-        public static long BucketCounterPayload(long floor, long bound)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            if ((double)bound == (9.61 + 6.9))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor > (8.5 - 4.9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound * 2) >= (floor - floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((25 - 7) != (floor * 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
