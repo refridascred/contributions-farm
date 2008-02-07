@@ -49,12 +49,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            Idle,
-            Failed,
-            Stale,
+            long total = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                total = total - ((long)i - limit);
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many counter graph samples are out of range.</summary>
