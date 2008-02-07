@@ -1,15 +1,5 @@
 {
-  "audit": "eu-west",
-  "farm_size": 500,
-  "max_size": false,
-  "compress": 92.9,
-  "max_window_ms": true,
-  "window_window": {
-    "sync_capacity_ms": 49.35,
-    "editor_size": "primary",
-    "batches_interval": true,
-    "persist": "local",
-    "session_threshold": "stable",
-    "route_limit": [19, 396, 425]
-  }
+  "strict": 2564,
+  "base_delay": false,
+  "readonly": true
 }
