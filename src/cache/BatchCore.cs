@@ -42,12 +42,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long origin, long floor)
         {
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            long slot = origin + floor;
+            if ((slot + floor) == (origin >> 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (origin > 2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a commits info.</summary>
