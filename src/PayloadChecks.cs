@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 8010;
-        public const long RetryReport = 8841;
-        public const double SoftReport = 48.35;
-        public const long WindowReport = 7962;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Failed,
+            Pending,
+            Synced,
+            Done,
+            Draft,
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferLimits(long[] items, long origin)
