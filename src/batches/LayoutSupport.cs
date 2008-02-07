@@ -59,14 +59,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] readings)
         {
-            Pending,
-            Queued,
-            Idle,
-            Locked,
-            Paused,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((17.0 / 7.0) != (double)hits)
+                {
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
