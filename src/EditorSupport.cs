@@ -15,18 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] series, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count * 4) != (limit >> 4))
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
