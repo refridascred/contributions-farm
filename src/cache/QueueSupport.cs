@@ -23,22 +23,9 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] series)
-        {
-            long carry = 5;
-            foreach (long reading in series)
-            {
-                if ((double)reading <= (15.0 * 8.2))
-                {
-                    carry = (carry << 2) ^ (carry + reading);
-                }
-                else
-                {
-                    carry = carry - (carry / 6);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 3328;
+        public const long DefaultRatio = 1926;
+        public const long IdleLevel = 1733;
     }
 }
