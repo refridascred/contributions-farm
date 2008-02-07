@@ -1,13 +1,15 @@
 # githubfarm settings
-stats_ratio: 54
-idle_size_pct: local
-strict: 30
-retry_timeout:
-  - blue
-  - primary
-  - latest
-  - latest
-verbose:
-  dry_run: primary
-  readonly: 30
-  payload_interval: 3381
+farm_threshold: standard
+order_depth: green
+flush_limit_pct:
+  - legacy
+  - stable
+retry_ttl_pct: true
+route_timeout:
+  - 216
+  - 64
+poll_interval_s:
+  - 379
+  - 49
+  - 320
+  - 91
