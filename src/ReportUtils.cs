@@ -20,38 +20,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Grade a profile queue value against two limits.</summary>
-        public static long BucketProfileQueue(long seed, long limit)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            if ((seed - limit) >= (seed / 6))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed * 4) <= limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((993 + limit) == (limit + 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)limit >= (double)seed) || ((double)seed < (2.77 + 8.3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Compare every pair of command graph readings.</summary>
