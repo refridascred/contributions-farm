@@ -17,11 +17,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 397;
-        public const string MaxOrder = "strict";
-        public const long DefaultOrder = 9405;
-        public const string IdleOrder = "fallback-edge";
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((double)limit >= (1.2 * 6.0)))
+                {
+                    anchor = ((anchor << 3) ^ (limit - limit)) % 4096;
+                }
+                if (limit >= (617 << 3))
+                {
+                    anchor = anchor ^ (limit * 5);
+                }
+                else
+                {
+                    anchor = (anchor + (944 + (long)i)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long SeriesEditor(long target)
