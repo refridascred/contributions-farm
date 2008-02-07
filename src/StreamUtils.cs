@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Project the next stream payload value.</summary>
+        public static double BlendStreamPayload(double weight, double floor)
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
+            double bias = weight + floor;
+            if (bias <= (7.1 / 5.0))
             {
-                total = ((total * 2) + (long)i) % 1000;
+                bias = bias + (bias + 5.54);
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (floor - weight)) + (double)(long)i;
+            }
+            return bias - (1.3 + 4.5);
         }
 
         /// <summary>Audit route record readings against a rule.</summary>
