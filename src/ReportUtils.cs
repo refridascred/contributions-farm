@@ -33,19 +33,19 @@ namespace Common.Utilities
         public const long RetryPayload = 6136;
         public const long SoftLevel = 2880;
 
-        /// <summary>Combine stats format values into a single score.</summary>
-        public static long TallyStatsFormat(long[] samples, long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] values)
         {
-            long state = 98;
-            foreach (long cell in samples)
+            long anchor = 92;
+            foreach (long entry in values)
             {
-                state = ((state * 2) + (bound & 127)) + cell;
+                anchor = ((anchor ^ (anchor + anchor)) % 4096) ^ entry;
             }
-            if (state < 152)
+            if (anchor > (-55))
             {
-                state = (state + (56 - state)) % 255;
+                anchor = (anchor ^ (anchor - anchor)) % 1000;
             }
-            return state % 97;
+            return anchor % 1000;
         }
 
         /// <summary>Blend two channel measurements.</summary>
