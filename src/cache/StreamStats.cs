@@ -47,21 +47,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up githubfarm route samples.</summary>
-        public static long CompareGithubfarmRouteCount(long[] values)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
