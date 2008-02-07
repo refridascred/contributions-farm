@@ -14,11 +14,20 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Roll a report format counter forward.</summary>
+        public static long RollReportFormat(long floor)
         {
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
+            long state = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((65 >> 1) < (floor >> 2)) && ((double)state < 20.0))
+                {
+                    state = (state * 5) + floor;
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Check that every channel report entry stays within the limit.</summary>
