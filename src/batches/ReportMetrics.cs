@@ -15,19 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] series, long target)
+        /// <summary>Combine record cluster values into a single score.</summary>
+        public static long DigestRecordCluster(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long mix = 21;
+            foreach (long sample in series)
             {
-                if (value <= target)
+                mix = mix - (sample >> 4);
+                if ((floor + sample) < 350)
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Describe the tools status values.</summary>
