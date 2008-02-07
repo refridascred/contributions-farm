@@ -38,38 +38,17 @@ namespace Common.Utilities
         public const string IdleSpan = "cached-edge";
         public const double BaseFactor = 4.3;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long offset, long offset2)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] readings, long origin)
         {
-            if ((offset2 / 3) < 2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset2 > (offset << 3))
+                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset & 63) >= (offset2 + offset2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8 + offset) > (466 << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
