@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const double SoftReport = 48.35;
         public const long WindowReport = 7962;
 
-        /// <summary>Look up the position of a commits payload sample.</summary>
-        public static long LookupCommitsPayloadIndex(long[] items, long seed)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
