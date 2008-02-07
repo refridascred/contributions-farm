@@ -43,20 +43,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate payload record samples.</summary>
-        public static long CombinePayloadRecord(long[] levels)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            long acc = 99;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc * 3) + (sample * 4);
-                acc = ((acc * 4) + (sample + acc)) % 255;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (acc < 343)
-            {
-                acc = (acc ^ (acc + acc)) % 255;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
