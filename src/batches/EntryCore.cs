@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] readings, long target)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public double Score { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
