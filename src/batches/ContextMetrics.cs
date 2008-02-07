@@ -31,12 +31,22 @@ namespace Common.Utilities
             return scale2 - (5.2 * 2.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitFactor = 5689;
-        public const string CachePayload = "open-edge";
-        public const string MinPayload = "cached-edge";
-        public const long BatchPayload = 9567;
-        public const long RetryPayload = 6044;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of report commits entries.</summary>
         public static long WeighReportCommits(long[] samples, long step)
