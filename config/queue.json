@@ -1,11 +1,5 @@
 {
-  "notes_limit": "latest",
-  "readonly": "blue",
-  "session_delay": {
-    "cache_ttl_pct": "local",
-    "checks_delay": "staging",
-    "hard_retries": 60
-  },
-  "hard_ttl_pct": 31.18,
-  "flush_ratio_count": true
+  "flush_ratio_pct": [70, 318, 240],
+  "batch_ttl_pct": 66,
+  "context_size": [198, 307, 168]
 }
