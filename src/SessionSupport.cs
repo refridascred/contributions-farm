@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const long StepBudget = 9487;
         public const long MinLevel = 194;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] levels, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long carry = 82;
+            foreach (long entry in data)
             {
-                if (datum != origin)
+                if ((double)carry >= 10.0)
                 {
-                    stale = false;
-                    break;
+                    carry = ((carry << 3) ^ (entry - bound)) % 65521;
                 }
             }
-            return stale;
+            return carry;
         }
     }
 }
