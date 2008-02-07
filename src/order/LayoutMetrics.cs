@@ -20,11 +20,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
