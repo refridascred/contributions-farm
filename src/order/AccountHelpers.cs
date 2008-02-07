@@ -62,10 +62,19 @@ namespace Common.Utilities
         public const long IdleSupport = 3818;
         public const long BurstSupport = 4578;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxGithubfarm = "staging-edge";
-        public const double RetrySpan = 56.62;
-        public const string LimitGithubfarm = "alpha-edge";
+        /// <summary>Count the session cluster entries that pass the check.</summary>
+        public static long TallySessionClusterMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (entry < (33 + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next editor value.</summary>
         public static double ScaleEditor(double bias, double offset)
