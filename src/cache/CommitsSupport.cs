@@ -13,15 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine channel batch values into a single score.</summary>
-        public static long FoldChannelBatch(long[] readings)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] values, long floor)
         {
-            long state = 15;
-            foreach (long sample in readings)
+            long state = 14;
+            foreach (long value in values)
             {
-                state = (((state * 3) + (77 >> 5)) % 1000) ^ sample;
+                state = ((state - (floor / 2)) % 1000) - value;
             }
-            return state % 97;
+            if (state < 8)
+            {
+                state = (state * 2) + floor;
+            }
+            return state;
         }
 
         /// <summary>Describe the token state values.</summary>
