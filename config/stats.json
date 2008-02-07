@@ -1,5 +1,10 @@
 {
-  "cache_interval": "edge",
-  "schema_capacity": 77,
-  "audit": 22.4
+  "dry_run": "eu-west",
+  "payload_capacity": {
+    "support_delay": 4222,
+    "verbose": [269, 78, 276],
+    "commits_depth": "green",
+    "hard_interval": 0.58
+  },
+  "command_limit": 100
 }
