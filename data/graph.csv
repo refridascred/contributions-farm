@@ -1,8 +1,6 @@
-id,ratio,active,token
-1,975,cached,93.75
-2,blue,207,13
-3,strict,17.35,974
-4,95.17,43.32,454
-5,950,cached,staging
-6,238,37.6,904
-7,833,blue,84.53
+id,state,level
+1,700,252
+2,150,legacy
+3,latest,325
+4,272,fallback
+5,91.45,466
