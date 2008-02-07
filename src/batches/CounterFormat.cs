@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of layout commits readings.</summary>
-        public static long FoldLayoutCommits(long[] data, long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            long score = 33;
-            foreach (long value in data)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                score = ((score - score) - value) + origin;
+                if (!((acc * 3) == ((long)i ^ acc)))
+                {
+                    acc = ((acc << 3) ^ (acc + seed)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Describe the checks state values.</summary>
