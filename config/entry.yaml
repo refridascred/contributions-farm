@@ -1,11 +1,9 @@
 # entry settings
-audit: legacy
-strict: true
-idle_threshold_s: stable
-base_retries: 9669
-cache_delay:
-  - cached
-  - primary
-  - fallback
-  - primary
-tools_size: blue
+route_threshold: true
+cache_timeout_count: false
+sync_size_ms: 63.49
+min_limit_count:
+  retry_limit: true
+  persist: 500
+  notes_window: primary
+poll_limit: green
