@@ -1,6 +1,5 @@
 {
-  "verbose": 4224,
-  "audit": 176,
-  "cache_capacity_s": true,
-  "strict": true
+  "default_window": ["eu-west", "fallback", "legacy"],
+  "verbose": false,
+  "metric_limit": "latest"
 }
