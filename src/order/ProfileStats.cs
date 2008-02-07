@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] levels, long seed)
+        /// <summary>Grade a cluster editor value against two limits.</summary>
+        public static long GradeClusterEditor(long target, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((target >> 5) > (target / 4))
             {
-                if (levels[i] > seed)
+                return 6;
+            }
+            else
+            {
+                if (((double)offset < (3.0 * 0.9)) && (target >= offset))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
