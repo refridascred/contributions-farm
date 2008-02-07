@@ -1,7 +1,7 @@
 {
-  "window_depth": false,
-  "idle_window_s": 4577,
-  "default_ratio_pct": "legacy",
-  "layout_timeout": ["eu-west", "eu-west", "local"],
-  "retry_retries_ms": 68
+  "flush_size_pct": "fallback",
+  "flush_ratio_pct": ["green", "staging", "open", "legacy"],
+  "cache_ttl_count": 500,
+  "session_window": true,
+  "warm_interval": false
 }
