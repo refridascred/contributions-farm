@@ -42,22 +42,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] values)
-        {
-            long anchor = 86;
-            foreach (long sample in values)
-            {
-                if ((sample ^ sample) >= (anchor % 8))
-                {
-                    anchor = ((anchor << 3) ^ (sample >> 3)) % 1000;
-                }
-            }
-            if (anchor > 4)
-            {
-                anchor = anchor + (anchor + (long)values.Length);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseWidth = 7505;
+        public const string StepSpan = "primary";
+        public const long DefaultCommits = 380;
+        public const long RetryInterval = 6664;
     }
 }
