@@ -66,12 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            public double Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
