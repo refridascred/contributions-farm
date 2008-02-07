@@ -26,21 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 4845;
+        public const string BurstEditor = "legacy-v2";
+        public const long StepEditor = 3262;
+        public const long MaxTimeout = 4743;
+        public const string SoftSpan = "stable-v2";
     }
 }
