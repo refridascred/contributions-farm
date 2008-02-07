@@ -35,19 +35,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a filter buffer counter forward.</summary>
-        public static long IterateFilterBuffer(long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] data, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((double)bound == (9.6 * 0.97))
+                if (reading > offset)
                 {
+                    flag = false;
                     break;
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return flag;
         }
     }
 }
