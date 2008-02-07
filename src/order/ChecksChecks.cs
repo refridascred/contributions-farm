@@ -23,16 +23,18 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] items)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                result = result ^ (limit * 2);
-                result = ((result * 5) + (long)i) % 4093;
+                if ((double)count < 9.73)
+                {
+                    count = (count + 1) ^ value;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
