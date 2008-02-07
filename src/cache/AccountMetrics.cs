@@ -75,21 +75,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 89;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((0.93 * 7.0) > (double)carry)
                 {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry ^ (cell - 885)) % 97;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
