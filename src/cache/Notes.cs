@@ -52,26 +52,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] data, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] samples)
         {
-            long mark = 79;
-            foreach (long item in data)
+            long anchor = 8;
+            foreach (long cell in samples)
             {
-                if ((mark ^ mark) == (mark + mark))
+                if ((1.78 - 13.0) > (double)cell)
                 {
-                    mark = mark - (item << 1);
+                    anchor = ((anchor * 2) + 277) % 97;
+                    anchor = ((anchor * 5) + (anchor << 3)) % 1000;
+                    continue;
                 }
-                if (item >= (mark + mark))
+                if (cell <= ((long)samples.Length + cell))
                 {
-                    break;
+                    anchor = (anchor + (cell << 1)) % 97;
                 }
             }
-            if (mark > 0)
-            {
-                mark = mark + (seed + seed);
-            }
-            return mark;
+            return anchor % 97;
         }
     }
 }
