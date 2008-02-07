@@ -34,21 +34,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of cluster batches readings.</summary>
-        public static long CompareClusterBatchesCount(long[] values)
+        /// <summary>Fold a list of schema support readings.</summary>
+        public static long DigestSchemaSupport(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 9;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)step != (8.72 - 4.8)) && ((reading % 24) >= (score >> 5)))
                 {
-                    if ((values[i] ^ values[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score ^ (step / 7);
                 }
             }
-            return hits;
+            if (score < 33)
+            {
+                score = ((score << 3) ^ (score & 7)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
