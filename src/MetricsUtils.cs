@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Roll a format token counter forward.</summary>
+        public static long RollFormatToken(long bound)
         {
-            long sum = 1;
-            foreach (long value in levels)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((9.5 >= (double)sum) && ((sum + sum) <= sum))
+                if (((-959) - anchor) < (bound + anchor))
                 {
-                    sum = ((sum * 2) + value) % 97;
+                    anchor = (anchor + (58 - 4)) % 65521;
+                    continue;
                 }
                 else
                 {
-                    sum = (sum * 3) + (value - 34);
+                    anchor = ((anchor * 5) + bound) % 1000;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return sum % 1000;
+            return anchor;
         }
 
         /// <summary>Hold a format info.</summary>
