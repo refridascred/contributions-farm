@@ -52,24 +52,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long floor, long limit)
-        {
-            if ((floor / 4) > (floor % 64))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor << 1) <= (floor - floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinTools = 32.91;
+        public const string IdleTools = "cached-v2";
+        public const double BurstSize = 85.77;
+        public const double RetryTools = 90.87;
+        public const double LimitWidth = 18.16;
     }
 }
