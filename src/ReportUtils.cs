@@ -45,21 +45,11 @@ namespace Common.Utilities
         public const long BurstFactor = 9356;
         public const double WindowRatio = 12.37;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] levels)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Grade a record value against two limits.</summary>
