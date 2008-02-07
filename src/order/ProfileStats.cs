@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] levels, long floor)
         {
-            Locked,
-            Ready,
-            Closed,
-            Stale,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((value * 5) == ((long)levels.Length + count))
+                {
+                    count = (count + 3) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
