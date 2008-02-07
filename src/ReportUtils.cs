@@ -28,12 +28,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 8423;
-        public const long RetrySize = 7483;
-        public const double IdleBudget = 56.93;
-        public const long RetryPayload = 6136;
-        public const long SoftLevel = 2880;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Closed,
+            Active,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TotalStats(long[] values)
