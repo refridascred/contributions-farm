@@ -30,31 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long step, long floor)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            if ((0 & 63) >= floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((0 / 2) >= (floor + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step > 96)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the record level values.</summary>
