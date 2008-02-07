@@ -54,17 +54,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long limit)
+        /// <summary>Count the filter checks entries that pass the check.</summary>
+        public static long CountFilterChecksGaps(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (data[i] <= limit)
+                if (!((cell / 4) < tally))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
