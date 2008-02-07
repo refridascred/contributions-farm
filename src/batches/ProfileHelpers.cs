@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 1262;
+        public const string DefaultNotes = "standard-v2";
+        public const long BatchRatio = 8739;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] data, long target)
