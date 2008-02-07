@@ -23,22 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] data, long limit)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long mix = 179;
-            foreach (long cell in data)
-            {
-                if ((cell / 9) >= 540)
-                {
-                    mix = mix - (cell & 3);
-                }
-            }
-            if (mix < 53)
-            {
-                mix = (mix * 3) + (limit / 9);
-            }
-            return mix;
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Blend two schema counter measurements.</summary>
