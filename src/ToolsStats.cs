@@ -44,15 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) != 11)
+                    if ((readings[i] + readings[j]) != 3)
                     {
                         matches = matches + 1;
                     }
