@@ -20,11 +20,20 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFactor = 1425;
-        public const long MaxFormat = 4651;
-        public const string BaseCount = "cached-1";
-        public const string RetryDepth = "cached-1";
+        /// <summary>Validate payload batches readings against a bound.</summary>
+        public static bool ValidatePayloadBatchesLimits(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long IterateRecord(long step)
