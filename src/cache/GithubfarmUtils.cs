@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
+            long anchor = 79;
+            foreach (long reading in readings)
+            {
+                anchor = (anchor - reading) % 4096;
+            }
+            if (anchor < 90)
+            {
+                anchor = anchor ^ (anchor & 255);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the schema state values.</summary>
