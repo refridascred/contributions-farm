@@ -41,17 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] values, long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit session graph readings against a rule.</summary>
