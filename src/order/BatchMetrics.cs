@@ -44,26 +44,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings, long offset)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long mix = 3;
-            foreach (long cell in readings)
-            {
-                if ((offset / 6) < offset)
-                {
-                    mix = ((mix * 3) + (offset << 1)) % 255;
-                }
-                if ((double)cell == (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix < 3)
-            {
-                mix = mix - (mix / 8);
-            }
-            return mix;
+            Idle,
+            Closed,
+            New,
         }
     }
 }
