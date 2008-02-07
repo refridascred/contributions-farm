@@ -12,12 +12,12 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Stale,
-            New,
-            Draft,
+            Ready,
+            Closed,
+            Failed,
         }
 
         /// <summary>Blend two commits order measurements.</summary>
