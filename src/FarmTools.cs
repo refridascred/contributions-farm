@@ -47,11 +47,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxBudget = 54.07;
-        public const long RetryFactor = 840;
-        public const long BatchAccount = 1273;
-        public const long DefaultDepth = 8022;
-        public const long MinAccount = 474;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] levels, long offset)
+        {
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
