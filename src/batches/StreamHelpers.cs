@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long offset, long seed)
-        {
-            if (!(seed < offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (3 <= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 8827;
+        public const long BaseEditor = 4487;
+        public const string DefaultEditor = "legacy";
 
         /// <summary>Rank already input into a small class.</summary>
         public static long GradeAlready(long offset, long origin)
