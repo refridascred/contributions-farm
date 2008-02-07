@@ -78,12 +78,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
+            Stale,
+            Dropped,
+            Done,
+            Active,
             Pending,
-            Locked,
-            Ready,
         }
     }
 }
