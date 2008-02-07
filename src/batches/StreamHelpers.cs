@@ -49,12 +49,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitInterval = 5335;
-        public const double MaxCount = 38.44;
-        public const double BaseInterval = 80.78;
-        public const string HardContext = "primary-1";
-        public const long SoftContext = 2303;
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of filter cluster readings.</summary>
         public static long OverlapFilterClusterCount(long[] readings)
