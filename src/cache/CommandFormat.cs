@@ -56,19 +56,12 @@ namespace Common.Utilities
         public const long WindowSize = 7607;
         public const string IdleFactor = "alpha";
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] data)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long score = 71;
-            foreach (long sample in data)
-            {
-                score = (score - score) % 101;
-                if ((sample ^ 372) != (score + sample))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            Done,
+            Failed,
+            Stale,
         }
     }
 }
