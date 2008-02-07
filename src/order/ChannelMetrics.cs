@@ -26,13 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
+            Queued,
             Draft,
+            Locked,
             Pending,
-            Active,
-            Ready,
+            Paused,
         }
     }
 }
