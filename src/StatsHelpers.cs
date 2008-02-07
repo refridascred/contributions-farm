@@ -28,18 +28,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] samples)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] data)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mark = 94;
+            foreach (long reading in data)
             {
-                if (6 >= (value / 4))
-                {
-                    matches = matches + 3;
-                }
+                mark = ((mark << 2) ^ (reading % 3)) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
