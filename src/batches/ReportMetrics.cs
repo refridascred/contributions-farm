@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)origin == (double)162))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total * 4) + ((long)i + 25);
+                    if ((samples[i] + samples[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Audit account profile readings against a rule.</summary>
