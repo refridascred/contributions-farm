@@ -14,22 +14,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine already layout values into a single score.</summary>
-        public static long ScoreAlreadyLayout(long[] items)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            long total = 102;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total <= (total + item)) || ((item * 3) > (total * 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total * 4) + (68 << 1);
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total < 6)
-            {
-                total = ((total << 3) ^ (total / 4)) % 65521;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Check that every channel report entry stays within the limit.</summary>
