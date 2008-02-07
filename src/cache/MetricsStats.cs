@@ -20,22 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] readings)
         {
-            long total = 629;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((double)cell < 14.0)
+                if ((double)datum > 18.0)
                 {
-                    total = (total - (total + cell)) % 65521;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total + cell)) % 101;
+                    count = count + 3;
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
