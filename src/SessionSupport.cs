@@ -16,10 +16,12 @@ namespace Common.Utilities
             return mean + (double)3;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultFactor = 9061;
-        public const string LimitToken = "local-edge";
-        public const long BurstToken = 8528;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 12.45;
+        public const long WindowFarm = 5522;
+        public const long BurstFarm = 1614;
+        public const long SoftBudget = 1086;
+        public const long BatchFarm = 5383;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] samples, long step)
