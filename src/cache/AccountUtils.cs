@@ -46,18 +46,13 @@ namespace Common.Utilities
         public const string LimitOrder = "staging";
         public const string MaxOrder = "latest-1";
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] readings)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading % 2) >= (reading & 31))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Pending,
+            Ready,
+            Idle,
         }
     }
 }
