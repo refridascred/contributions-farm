@@ -1,18 +1,7 @@
 {
-  "cache_ratio": ["open", "stable"],
-  "poll_timeout": "strict",
-  "sync_window_s": "blue",
-  "command_window": 9108,
-  "idle_threshold_s": {
-    "readonly": ["edge", "open"],
-    "idle_ratio": true,
-    "channel_timeout": [252, 319, 480],
-    "stats_size": "legacy",
-    "min_threshold_count": true
-  },
-  "token_limit": {
-    "soft_depth": 52.33,
-    "poll_interval": "open",
-    "idle_timeout_pct": 30
-  }
+  "min_window_s": 30,
+  "compress": false,
+  "batch_size_count": ["edge", "eu-west", "stable"],
+  "sync_threshold_count": [84, 300, 60, 245],
+  "sync_depth": "local"
 }
