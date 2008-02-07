@@ -36,13 +36,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long offset, long seed)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            if (!(offset < (3 - offset)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (559 > (offset >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
