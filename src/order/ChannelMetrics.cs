@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 22.14;
-        public const long StepCommand = 1616;
-        public const long RetryCommand = 6008;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Active,
+            Failed,
+            Queued,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Fold a list of graph batches readings.</summary>
         public static long FoldGraphBatches(long[] levels)
