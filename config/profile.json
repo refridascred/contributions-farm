@@ -1,7 +1,8 @@
 {
-  "token_limit": ["strict", "staging"],
-  "idle_delay_pct": 63.71,
-  "record_ratio": false,
-  "readonly": false,
-  "dry_run": 250
+  "notes_depth": "eu-west",
+  "cache_depth": [385, 125, 482, 29],
+  "hard_capacity_s": "legacy",
+  "record_delay": 90.89,
+  "dry_run": true,
+  "format_size": 17
 }
