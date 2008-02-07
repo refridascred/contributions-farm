@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleLevel = 2967;
-        public const string MaxContext = "local-edge";
-        public const long BurstContext = 3628;
-        public const double WindowWidth = 29.1;
-        public const double CacheContext = 79.82;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public long Count { get; set; }
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamGaps(long[] readings, long origin)
