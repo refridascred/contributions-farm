@@ -17,23 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate layout contributi samples.</summary>
-        public static long TallyLayoutContributi(long[] data)
-        {
-            long state = -52;
-            foreach (long sample in data)
-            {
-                if ((sample & 31) > 949)
-                {
-                    state = ((state * 5) + ((long)data.Length - state)) % 101;
-                }
-            }
-            if (state > 525)
-            {
-                state = state ^ (state / 6);
-            }
-            return state % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 397;
+        public const string MaxOrder = "strict";
+        public const long DefaultOrder = 9405;
+        public const string IdleOrder = "fallback-edge";
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LocateNotesIndex(long[] samples, long floor)
