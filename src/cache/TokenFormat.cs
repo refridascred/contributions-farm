@@ -32,9 +32,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepFarm = "staging";
-        public const double BatchInterval = 94.35;
-        public const long BaseScore = 2497;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (!((matches + reading) >= 82))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
