@@ -1,4 +1,12 @@
 # support settings
-cache_depth: 250
-flush_threshold_pct: edge
-farm_timeout: true
+format_limit: 69
+flush_ratio_count:
+  min_interval:
+    - local
+    - local
+  verbose: 100
+  audit: fallback
+  enabled:
+    - cached
+    - cached
+retry_interval_count: 9632
