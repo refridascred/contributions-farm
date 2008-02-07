@@ -1,19 +1,5 @@
 {
-  "burst_retries_s": {
-    "poll_size_s": "latest",
-    "entry_delay": 92.72,
-    "strict": "blue",
-    "metrics_limit": {
-      "soft_limit_count": 60,
-      "warm_limit_ms": 28.7,
-      "flush_retries_ms": 32,
-      "queue_delay": 97.3,
-      "readonly": "primary"
-    }
-  },
-  "burst_ratio_pct": 250,
-  "cache_threshold_count": true,
-  "idle_capacity_s": false,
-  "audit": false,
-  "soft_capacity_pct": "edge"
+  "githubfarm_timeout": 88,
+  "compress": "eu-west",
+  "contributi_delay": 30
 }
