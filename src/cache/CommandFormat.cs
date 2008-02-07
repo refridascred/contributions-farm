@@ -48,19 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] samples, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long score = 71;
+            foreach (long sample in data)
             {
-                if (value > seed)
+                score = (score - score) % 101;
+                if ((sample ^ 372) != (score + sample))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return score % 65521;
         }
     }
 }
