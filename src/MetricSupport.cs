@@ -48,23 +48,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double gain, double offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double drift = gain;
-            if (drift < (gain / 3.0))
-            {
-                drift = drift + offset;
-            }
-            else
-            {
-                drift = drift + (double)3;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (10.0 * 5.0)) + (double)(long)i;
-            }
-            return drift - (double)9;
+            Closed,
+            Idle,
+            Queued,
+            Locked,
         }
     }
 }
