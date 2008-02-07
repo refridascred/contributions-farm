@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long origin, long floor)
+        /// <summary>Project the next schema cache value.</summary>
+        public static double AdjustSchemaCache(double scale, double floor)
         {
-            long edge = origin - floor;
-            if (floor > (origin % 64))
+            double ratio = floor;
+            for (int i = 0; i < 2; i++)
             {
-                return 1;
+                ratio = (ratio - (scale / 9.0)) + (double)(long)i;
             }
-            else
-            {
-                if ((floor + edge) > (edge % 10))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)edge <= (6.2 - 9.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return ratio + ratio;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
