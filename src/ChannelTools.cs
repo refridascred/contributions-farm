@@ -18,19 +18,21 @@ namespace Common.Utilities
         public const string IdleRatio = "legacy-1";
         public const string RetryRatio = "alpha-1";
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] samples, long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
