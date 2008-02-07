@@ -51,18 +51,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] series)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((double)entry <= (1.5 + 8.0)) || ((tally + entry) <= 6))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the stream status values.</summary>
