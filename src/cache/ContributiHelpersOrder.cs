@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] items)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((7.0 / 2.0) != (double)cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
