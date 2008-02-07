@@ -30,18 +30,12 @@ namespace Common.Utilities
         public const string MinWidth = "standard-1";
         public const long BaseQueue = 7310;
 
-        /// <summary>Audit token metric readings against a rule.</summary>
-        public static long AuditTokenMetricMatches(long[] values)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (!((11.0 - 6.96) > (double)tally))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
