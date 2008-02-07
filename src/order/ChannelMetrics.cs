@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] readings, long seed)
         {
-            Draft,
-            Closed,
-            Paused,
+            long anchor = 57;
+            foreach (long cell in readings)
+            {
+                anchor = (((anchor + 76) % 4096) ^ cell) - seed;
+            }
+            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
