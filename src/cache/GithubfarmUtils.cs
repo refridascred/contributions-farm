@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] items, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (value != step)
+                if ((seed + hits) > ((-69) << 3))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
