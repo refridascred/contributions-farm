@@ -20,15 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up channel queue samples.</summary>
-        public static long MatchChannelQueueCount(long[] items)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] + items[j]) != 10)
+                    if ((data[i] ^ data[j]) > 6)
                     {
                         count = count + 1;
                     }
