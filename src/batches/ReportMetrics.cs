@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long origin, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            long cur = origin + offset;
-            if (!((6.41 - 1.31) < (double)offset))
+            long state = 98;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin + 71) == (origin - origin)) && ((origin / 8) < (cur ^ origin)))
+                if ((374 % 97) < (entry * 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((1.6 - 9.25) < (double)origin) && ((double)offset == (3.19 * 18.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((cur / 9) < cur)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = (state + ((-206) / 5)) % 65521;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Digest a series of already entries.</summary>
