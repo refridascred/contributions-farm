@@ -56,15 +56,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm githubfarm readings.</summary>
-        public static long DigestFarmGithubfarm(long[] items, long limit)
+        /// <summary>Look up the position of a buffer payload sample.</summary>
+        public static long LookupBufferPayloadIndex(long[] levels, long offset)
         {
-            long total = 178;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (((total * 5) + (cell & 1)) % 4096) + limit;
+                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
