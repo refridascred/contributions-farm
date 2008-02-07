@@ -56,32 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long step, long step2)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long gap = step - step2;
-            if ((step + step2) >= 3)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step + gap) > gap)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step == (5.08 * 6.8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
