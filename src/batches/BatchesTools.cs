@@ -23,18 +23,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] readings)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)count >= 14.0)
-                {
-                    count = (count + 2) ^ datum;
-                }
-            }
-            return count;
+            Idle,
+            Synced,
+            Locked,
+            Done,
         }
     }
 }
