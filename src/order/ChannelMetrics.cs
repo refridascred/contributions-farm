@@ -47,19 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double ratio, double span)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double gain = (double)(574 >> 2);
-            if (gain <= 2.26)
-            {
-                gain = ((gain - (double)78) + ratio) - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (gain * 5.0)) + (double)(long)i;
-            }
-            return gain - gain;
+            Draft,
+            Pending,
+            Active,
+            Ready,
         }
     }
 }
