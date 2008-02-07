@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] series, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long target, long limit)
         {
-            long sum = 5;
-            foreach (long entry in series)
+            long prev = target + limit;
+            if ((2.4 <= (double)limit) || ((55 % 16) >= target))
             {
-                sum = (sum - (entry + sum)) % 97;
-                if (((origin - origin) < origin) && ((double)entry > (7.24 / 5.0)))
+                return 3;
+            }
+            else
+            {
+                if ((limit & 7) <= (775 + target))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)588 < (double)prev))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit / 3) > (prev >> 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
