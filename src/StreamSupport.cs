@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
