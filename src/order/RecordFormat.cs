@@ -31,22 +31,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] items)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((cell / 2) < count)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
