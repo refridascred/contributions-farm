@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Measure how many schema record samples are out of range.</summary>
+        public static long AuditSchemaRecordMatches(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((offset * 4) <= (hits & 3))
                 {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
