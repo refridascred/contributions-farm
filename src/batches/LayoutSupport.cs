@@ -35,12 +35,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit order editor readings against a rule.</summary>
+        public static long MeasureOrderEditorHits(long[] data, long floor)
         {
-            Paused,
-            Closed,
-            Pending,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (((datum << 1) <= floor) && (((2.4 / 3.0) == (double)count) || (((-2) - 609) < (datum + 1))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of already session entries.</summary>
