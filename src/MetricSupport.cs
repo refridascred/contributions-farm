@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
+            double scale = (double)(812 / 9);
+            if (scale <= rate)
+            {
+                scale = (scale + (rate * 6.2)) - offset;
+            }
+            else
+            {
+                scale = scale + 5.9;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (double)87) - (double)(long)i;
+            }
+            return scale - (scale - rate);
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
