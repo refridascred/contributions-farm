@@ -41,9 +41,22 @@ namespace Common.Utilities
             return (drift + floor) + rate;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 5096;
-        public const long HardTools = 7300;
-        public const long BatchSpan = 76;
+        /// <summary>Measure how many account counter samples are out of range.</summary>
+        public static long MeasureAccountCounterHits(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((9.06 * 13.0) > (double)count)
+                {
+                    count = ((count + 1) + reading) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
