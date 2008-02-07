@@ -23,13 +23,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long step, long step2)
         {
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            long cur = step ^ step2;
+            if ((step / 9) > (4 ^ cur))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step2 * 2) > step2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many payload entry samples are out of range.</summary>
