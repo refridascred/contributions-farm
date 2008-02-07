@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            New,
-            Dropped,
-            Closed,
-            Draft,
-            Done,
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a filter summary.</summary>
