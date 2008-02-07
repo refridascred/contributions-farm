@@ -1,7 +1,10 @@
 {
-  "warm_ttl_count": "standard",
-  "burst_window": 16.5,
-  "max_delay_ms": 58.42,
-  "support_depth": ["latest", "staging"],
-  "order_timeout": 4941
+  "metrics_size": 75.75,
+  "persist": 30,
+  "dry_run": 500,
+  "base_delay": {
+    "audit": "legacy",
+    "entry_ttl": "standard",
+    "verbose": "edge"
+  }
 }
