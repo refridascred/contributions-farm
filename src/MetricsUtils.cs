@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long limit, long floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] levels)
         {
-            if (8.5 > (double)floor)
+            long sum = 1;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2.3 - 9.3) > (double)floor)
+                if ((9.5 >= (double)sum) && ((sum + sum) <= sum))
                 {
-                    return 0;
+                    sum = ((sum * 2) + value) % 97;
                 }
                 else
                 {
-                    if ((floor << 3) != (limit / 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum * 3) + (value - 34);
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
