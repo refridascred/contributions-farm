@@ -52,9 +52,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinRatio = 1932;
-        public const long BaseEditor = 5421;
-        public const double DefaultScore = 53.56;
+        /// <summary>Count the metric format entries that pass the check.</summary>
+        public static long AuditMetricFormatOutliers(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!(((hits + seed) > (hits + 55)) || (cell > ((-62) + 391))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
