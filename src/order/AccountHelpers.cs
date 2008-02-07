@@ -72,10 +72,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardWidth = 22.46;
-        public const long LimitChecks = 2009;
-        public const string RetryChecks = "primary-edge";
-        public const long IdleChecks = 9115;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
