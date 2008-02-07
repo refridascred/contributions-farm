@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine context counter values into a single score.</summary>
-        public static long WeighContextCounter(long[] levels, long limit)
+        /// <summary>Count the context cluster entries that pass the check.</summary>
+        public static long CountContextClusterGaps(long[] values, long origin)
         {
-            long score = 6;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                score = ((score - limit) % 97) ^ value;
+                if ((origin >> 1) > matches)
+                {
+                    matches = (matches + 2) + reading;
+                }
             }
-            if (score > 890)
-            {
-                score = score ^ (973 * 2);
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
