@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] items, long seed)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 1;
+            foreach (long item in series)
             {
-                if (items[i] <= seed)
+                if ((bound + item) >= bound)
                 {
-                    return (long)i;
+                    acc = acc - 16;
                 }
             }
-            return -1;
+            if (acc < 51)
+            {
+                acc = acc - (3 + (-999));
+            }
+            return acc;
         }
 
         /// <summary>Hold a commits stats.</summary>
