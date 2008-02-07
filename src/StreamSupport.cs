@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = mix + (long)i;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Synced,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
