@@ -1,4 +1,10 @@
 # support settings
-default_ratio_ms: 6
-verbose: 60
-retry_threshold: 77.55
+hard_timeout_count: stable
+graph_interval: latest
+poll_interval_pct: 2325
+max_ratio_pct: 54
+readonly: stable
+burst_timeout_count:
+  - standard
+  - eu-west
+  - eu-west
