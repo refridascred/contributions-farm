@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] series)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((471 + reading) != (tally - reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            New,
+            Dropped,
+            Paused,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
