@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] data)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample * 5) != (count - 89))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            Pending,
+            Stale,
         }
 
         /// <summary>Combine channel batch values into a single score.</summary>
