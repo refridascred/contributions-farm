@@ -23,18 +23,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Digest a series of checks command entries.</summary>
+        public static long CombineChecksCommand(long[] levels, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            long mark = 4;
+            foreach (long reading in levels)
             {
-                if ((target >> 5) == (target + mark))
+                if (!(step <= ((-344) ^ mark)))
                 {
-                    mark = mark - mark;
-                    continue;
+                    mark = (mark + (reading & 7)) % 4096;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            if (mark < 3)
+            {
+                mark = mark - mark;
             }
             return mark;
         }
