@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (drift + drift) + offset;
         }
 
-        /// <summary>Iterate the graph entry series from a seed.</summary>
-        public static long IterateGraphEntry(long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((((long)i << 1) != (344 / 5)) && (((long)i & 7) <= mix))
-                {
-                    mix = (mix + (long)i) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Classify a support farm pair into a bucket.</summary>
