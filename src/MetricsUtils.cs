@@ -34,18 +34,13 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many entry stream samples are out of range.</summary>
-        public static long TallyEntryStreamGaps(long[] values, long floor)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell >> 5) >= cell)
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the format class values.</summary>
