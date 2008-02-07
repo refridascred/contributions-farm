@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double gain, double bias)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double gain2 = gain + 3.7;
-            if (gain2 <= (double)44)
-            {
-                gain2 = (gain2 + (13.0 * 3.11)) - bias;
-            }
-            return gain2 + (double)160;
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
