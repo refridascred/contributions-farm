@@ -24,14 +24,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public bool Token { get; set; }
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 8954;
+        public const double DefaultNotes = 80.74;
+        public const long LimitNotes = 4056;
+        public const string LimitFactor = "standard-edge";
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
