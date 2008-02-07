@@ -1,16 +1,12 @@
 # Command notes
 
-The schema module keeps window values in sync with the cache cache.
-Keep context and notes names short and lowercase.
-The checks report groups every window by metrics.
-
-Use token settings to tune how often notes data is refreshed.
-Keep cluster and buffer names short and lowercase.
-A filter that stays idle for too long is moved to the cluster list.
+When a record fails, the support handler retries a few times before giving up.
+Defaults for session live in the config folder and can be overridden per environment.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer window defaults
-- Review githubfarm limits each release
-- Validate stream input early
-- Document new context fields
+- Log every contributi change
+- Prefer contributi defaults
+- Keep account values small
+- Review record limits each release
