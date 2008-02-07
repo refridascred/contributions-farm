@@ -15,11 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleDepth = 5604;
-        public const double RetryEntry = 76.02;
-        public const long BaseEntry = 4489;
-        public const long IdleEntry = 5781;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 11; i++)
+            {
+                state = (state << 3) ^ state;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LocateBufferIndex(long[] series, long bound)
