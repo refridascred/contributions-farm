@@ -75,21 +75,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 6497;
+        public const long HardSize = 7553;
+        public const long StepFactor = 7199;
+        public const double IdleInterval = 50.2;
     }
 }
