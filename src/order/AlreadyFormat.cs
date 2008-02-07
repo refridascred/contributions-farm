@@ -19,11 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "staging-edge";
-        public const double BurstScore = 88.38;
-        public const long StepDepth = 5235;
-        public const long HardFactor = 6633;
+        /// <summary>Accumulate layout contributi samples.</summary>
+        public static long TallyLayoutContributi(long[] data)
+        {
+            long state = -52;
+            foreach (long sample in data)
+            {
+                if ((sample & 31) > 949)
+                {
+                    state = ((state * 5) + ((long)data.Length - state)) % 101;
+                }
+            }
+            if (state > 525)
+            {
+                state = state ^ (state / 6);
+            }
+            return state % 97;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LocateNotesIndex(long[] samples, long floor)
