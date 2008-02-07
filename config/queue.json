@@ -1,5 +1,11 @@
 {
-  "stats_window": "local",
-  "idle_timeout_s": 9618,
-  "enabled": 1882
+  "notes_limit": "latest",
+  "readonly": "blue",
+  "session_delay": {
+    "cache_ttl_pct": "local",
+    "checks_delay": "staging",
+    "hard_retries": 60
+  },
+  "hard_ttl_pct": 31.18,
+  "flush_ratio_count": true
 }
