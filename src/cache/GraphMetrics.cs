@@ -50,13 +50,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long offset, long step)
         {
-            Draft,
-            Failed,
-            Locked,
-            New,
+            if ((double)offset >= (1.8 + 13.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step + 623) < offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (3 <= (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
