@@ -14,15 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] readings, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] values)
         {
-            long carry = 2;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long item in values)
             {
-                carry = (((carry - carry) % 97) ^ sample) - floor;
+                if (((2.4 + 6.0) < (double)seen) && (item > (item + 325)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
