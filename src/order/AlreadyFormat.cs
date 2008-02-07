@@ -57,13 +57,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] levels, long step)
         {
-            Failed,
-            Ready,
-            Closed,
-            Queued,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
