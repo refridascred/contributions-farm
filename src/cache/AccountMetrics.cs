@@ -46,18 +46,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] data, long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long step, long step2)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long gap = step - step2;
+            if ((step + step2) >= 3)
             {
-                if ((6 << 3) == (entry << 2))
+                return 7;
+            }
+            else
+            {
+                if ((step + gap) > gap)
                 {
-                    matches = (matches + 3) - seed;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step == (5.08 * 6.8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
