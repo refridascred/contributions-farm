@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a filter info.</summary>
