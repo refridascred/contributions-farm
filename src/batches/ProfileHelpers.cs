@@ -41,27 +41,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] data, long offset)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long anchor = 560;
-            foreach (long reading in data)
-            {
-                if (((2.1 / 7.0) < (double)anchor) || (offset > (anchor - offset)))
-                {
-                    anchor = ((anchor << 3) ^ (57 * 2)) % 1000;
-                    break;
-                }
-                if ((reading + offset) == (offset + 4))
-                {
-                    anchor = (anchor ^ (reading & 1)) % 1000;
-                }
-            }
-            if (anchor > 380)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 101;
-            }
-            return anchor;
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
