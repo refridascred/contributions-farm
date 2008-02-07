@@ -49,24 +49,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] samples)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] readings)
         {
-            long anchor = 8;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1.78 - 13.0) > (double)cell)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor * 2) + 277) % 97;
-                    anchor = ((anchor * 5) + (anchor << 3)) % 1000;
-                    continue;
-                }
-                if (cell <= ((long)samples.Length + cell))
-                {
-                    anchor = (anchor + (cell << 1)) % 97;
+                    if ((readings[i] + readings[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return matches;
         }
     }
 }
