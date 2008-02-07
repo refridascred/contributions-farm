@@ -38,14 +38,13 @@ namespace Common.Utilities
         public const long IdleDepth = 1792;
         public const long IdleRatio = 5683;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Paused,
-            Ready,
-            Failed,
-            Locked,
-            Active,
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the stats phase values.</summary>
