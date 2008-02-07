@@ -14,12 +14,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultTimeout = 4676;
-        public const long BaseSupport = 8921;
-        public const long DefaultWidth = 850;
-        public const string MaxSpan = "strict-edge";
-        public const long DefaultSupport = 6174;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 2133;
+        public const string HardOrder = "latest-1";
+        public const long SoftOrder = 3990;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LocateStreamIndex(long[] samples, long target)
