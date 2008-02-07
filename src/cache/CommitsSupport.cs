@@ -24,13 +24,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
+            Pending,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a route stats.</summary>
