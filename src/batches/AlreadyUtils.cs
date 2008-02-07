@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] readings, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (sample <= step)
+                if ((origin & 3) > origin)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
