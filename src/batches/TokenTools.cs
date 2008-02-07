@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double scale, double span)
         {
-            Stale,
-            Ready,
-            Queued,
+            double scale2 = (span + 1.0) * 5.63;
+            return scale2 - scale;
         }
 
         /// <summary>Describe the window phase values.</summary>
