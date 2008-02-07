@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            Closed,
+            Idle,
+            New,
+            Retry,
+            Queued,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
