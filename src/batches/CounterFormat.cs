@@ -16,12 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a metric counter sample.</summary>
-        public static long SeekMetricCounterIndex(long[] data, long offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] > offset) && ((data[i] % 5) == 0))
+                if (levels[i] <= step)
                 {
                     return (long)i;
                 }
