@@ -26,10 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxBudget = 243;
-        public const long LimitFactor = 3015;
-        public const string WindowScore = "staging-1";
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long limit, long floor)
+        {
+            if ((double)floor != (17.0 / 8.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (0 <= limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
