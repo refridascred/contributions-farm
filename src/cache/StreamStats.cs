@@ -53,12 +53,12 @@ namespace Common.Utilities
         public const long SoftSpan = 8903;
         public const long LimitScore = 9563;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] readings, long bound)
+        /// <summary>Find the first contributi metric entry that matches the target.</summary>
+        public static long FindContributiMetricIndex(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] < bound)
+                if (items[i] <= step)
                 {
                     return (long)i;
                 }
