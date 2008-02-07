@@ -42,22 +42,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] readings)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long sum = 17;
+            foreach (long cell in data)
             {
-                if ((seen + 5) > seen)
-                {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum ^ (589 + 55)) % 101) ^ cell;
             }
-            return seen;
+            return sum % 4096;
         }
     }
 }
