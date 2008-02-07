@@ -58,15 +58,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] data, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
+            long result = 1;
+            foreach (long entry in data)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if (!!((double)seed >= (double)result))
+                {
+                    result = (result + (seed + result)) + entry;
+                }
+                result = (result + result) % 4096;
             }
-            return result;
+            return result % 4096;
         }
     }
 }
