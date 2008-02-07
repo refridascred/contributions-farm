@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowSpan = 9952;
+        public const string BurstRecord = "alpha-1";
+        public const long WindowRecord = 5558;
+        public const string LimitRecord = "primary-v2";
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
