@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const long BaseLevel = 7550;
         public const long HardCommand = 2738;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] series, long bound)
+        /// <summary>Rank filter window input into a small class.</summary>
+        public static long BucketFilterWindow(long limit, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            if (((932 << 3) > limit) && ((double)seed != (5.9 - 4.91)))
             {
-                if ((sample + sample) != (bound % 7))
+                return 5;
+            }
+            else
+            {
+                if (!(1.87 > (double)seed))
                 {
-                    count = count + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
