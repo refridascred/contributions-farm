@@ -67,21 +67,24 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 6;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((carry - floor) > floor)
                 {
-                    if ((values[i] ^ values[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry ^ (carry * 3);
+                    carry = (carry - (floor + carry)) % 255;
                 }
+                else
+                {
+                    carry = (carry * 3) + (68 + floor);
+                }
+                carry = (carry ^ (cell ^ floor)) % 4096;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
