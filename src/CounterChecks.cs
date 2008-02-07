@@ -90,11 +90,17 @@ namespace Common.Utilities
             return load - (double)(-384);
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] values, long floor)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
