@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Done,
+            Failed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the batch mode values.</summary>
