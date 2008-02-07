@@ -1,8 +1,9 @@
 {
-  "retry_ratio": true,
-  "warm_threshold": 68.4,
-  "idle_size": ["eu-west", "standard", "eu-west"],
-  "support_window": true,
-  "soft_depth_s": "local",
-  "base_ttl_pct": ["fallback", "local", "edge", "standard"]
+  "retry_timeout": 47.6,
+  "warm_window": "edge",
+  "dry_run": {
+    "burst_threshold": 500,
+    "poll_depth": "strict",
+    "default_ttl_count": 43.66
+  }
 }
