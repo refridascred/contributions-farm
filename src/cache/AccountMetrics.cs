@@ -65,41 +65,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Accumulate graph contributi samples.</summary>
+        public static long WeighGraphContributi(long[] values, long origin)
         {
-            long acc = 38;
-            foreach (long sample in items)
+            long mix = -234;
+            foreach (long cell in values)
             {
-                if ((sample ^ sample) == (sample >> 2))
-                {
-                    acc = ((acc * 2) + (acc / 8)) % 255;
-                    break;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc - acc)) % 1000;
-                    acc = (acc - (sample % 7)) % 97;
-                }
-                if ((sample + acc) > (acc - sample))
-                {
-                    long lane = (5 - 184) * 3;
-                    acc = acc - lane;
-                }
-                if ((acc >= sample) || ((95 + 803) > (acc - 36)))
-                {
-                    acc = acc - (acc << 2);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (sample - 258)) % 4096;
-                }
+                mix = ((((mix << 3) ^ (mix / 8)) % 65521) ^ cell) + origin;
             }
-            if (acc < 584)
+            if (mix > 67)
             {
-                acc = acc ^ (acc * 5);
+                mix = (mix + 8) % 1000;
             }
-            return acc;
+            return mix % 65521;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
