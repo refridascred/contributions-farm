@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleFactor = 48.58;
-        public const double SoftInterval = 97.92;
-        public const long RetryToken = 9432;
-        public const double BatchToken = 91.47;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double bias, double floor)
+        {
+            double ratio = floor - (bias / 3.0);
+            if (ratio <= bias)
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio - (floor / 4.0);
+        }
 
         /// <summary>Project the next checks value.</summary>
         public static double ScaleChecks(double scale, double span)
