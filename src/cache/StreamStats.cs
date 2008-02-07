@@ -38,13 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            Closed,
-            Active,
-            Pending,
+            Paused,
+            Done,
             Dropped,
+            New,
         }
     }
 }
