@@ -49,18 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] series, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] levels, long bound)
         {
-            long result = 9;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (value <= (result & 127))
+                if (((7.0 - 9.8) > (double)cell) && (bound > (count - cell)))
                 {
-                    result = (((result * 5) + (result + 68)) % 101) + offset;
+                    count = count + 1;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
