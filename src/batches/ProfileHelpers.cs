@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] readings)
         {
-            long acc = 403;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (acc < (sample - 186))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc * 2) + sample) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (acc + acc)) % 65521;
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
