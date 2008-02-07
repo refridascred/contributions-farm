@@ -42,18 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] data)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double mean = floor;
+            if (mean < (floor + floor))
             {
-                if ((18.0 <= (double)matches) || ((matches / 2) <= (reading & 255)))
-                {
-                    matches = matches + 3;
-                }
+                mean = mean + (floor + gain);
             }
-            return matches;
+            else
+            {
+                mean = mean + (mean * 7.9);
+            }
+            return mean + (double)28;
         }
     }
 }
