@@ -58,18 +58,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] samples)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long total = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(item > (hits ^ item)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    hits = hits + 2;
+                    total = ((total - 396) % 65521) - (long)i2;
                 }
+                total = (total + (total % 60)) % 255;
+                if (((total % 97) >= 0) || ((offset * 3) <= 1))
+                {
+                    total = (total * 5) + (offset ^ offset);
+                    total = (total ^ (offset + offset)) % 4096;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
