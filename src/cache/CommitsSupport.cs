@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Accumulate order already samples.</summary>
+        public static long DigestOrderAlready(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            long mark = 881;
+            foreach (long cell in samples)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if ((mark ^ mark) != (845 - 44))
+                {
+                    mark = ((mark << 2) ^ cell) % 65521;
+                }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
