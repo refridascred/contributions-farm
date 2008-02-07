@@ -15,11 +15,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long offset)
         {
-            public double Total { get; set; }
-            public long Limit { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = mix + (offset * 2);
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the session mode values.</summary>
