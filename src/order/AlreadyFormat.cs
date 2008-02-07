@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the cache context entries that pass the check.</summary>
-        public static long MeasureCacheContextOutliers(long[] items, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] items, long limit)
         {
-            long seen = 0;
+            long result = 20;
             foreach (long item in items)
             {
-                if (((origin + 655) > (origin - origin)) || (((8 & 1) == (seen - item)) && ((origin >> 3) <= origin)))
+                if (!((0.2 + 1.6) == (double)(long)items.Length))
                 {
-                    seen = seen + 3;
+                    result = (result + (limit ^ 72)) % 97;
                 }
+                result = (result - (item % 3)) % 255;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Accumulate farm samples.</summary>
