@@ -35,27 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            long acc = 174;
-            foreach (long reading in readings)
+            long carry = step;
+            for (int i = 0; i < 21; i++)
             {
-                acc = acc ^ (acc % 100);
-                if ((double)reading != (double)acc)
-                {
-                    acc = acc - (acc + reading);
-                }
-                else
-                {
-                    acc = (acc - (acc ^ reading)) % 65521;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            if (acc > 42)
-            {
-                acc = acc + (acc % 60);
-            }
-            return acc;
+            return carry;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
