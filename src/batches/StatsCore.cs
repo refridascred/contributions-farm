@@ -58,24 +58,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long step, long step2)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long offset)
         {
-            if ((13 - 8) < (step2 + step2))
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                total = (total ^ ((-14) >> 4)) % 1000;
+                total = ((total * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (((step ^ step2) > (step2 / 3)) && ((step2 % 10) < step2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return total;
         }
 
         /// <summary>Blend two counter measurements.</summary>
