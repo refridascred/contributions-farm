@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank counter layout input into a small class.</summary>
-        public static long GradeCounterLayout(long limit, long bound)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long span = limit + bound;
-            if (span >= (limit + bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (span >= (541 & 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit >> 4) != (limit % 100))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
