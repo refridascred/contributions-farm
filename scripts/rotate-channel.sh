@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=103
+CHANNEL_LIMIT=311
 log "limit is ${CHANNEL_LIMIT}"
+
+for item in standard local blue cached; do
+    log "checking ${item}"
+done
