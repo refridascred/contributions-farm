@@ -50,18 +50,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardDepth = 5550;
+        public const long LimitTools = 6194;
+        public const long BatchCount = 4198;
+        public const double StepTools = 9.67;
+        public const double IdleBudget = 26.05;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool VerifyClusterBounds(long[] levels, long origin)
