@@ -39,18 +39,19 @@ namespace Common.Utilities
         public const long WindowRatio = 3530;
         public const double RetryBudget = 83.02;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] levels, long step)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long score = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((item + 55) <= item)
+                if ((offset - offset) > (score * 5))
                 {
-                    matches = (matches + 2) + step;
+                    score = ((score * 5) + (offset + 21)) % 1000;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
