@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=118
+CHANNEL_LIMIT=244
 log "limit is ${CHANNEL_LIMIT}"
 
 count=0
