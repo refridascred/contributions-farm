@@ -45,39 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long origin, long target)
+        /// <summary>Compare every pair of filter stats readings.</summary>
+        public static long PairFilterStatsCount(long[] readings)
         {
-            long next = origin ^ target;
-            if ((51 / 6) != (target + next))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin == (double)target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((14.0 + 7.0) > (double)next)
+                    if ((readings[i] ^ readings[j]) == 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin < target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
