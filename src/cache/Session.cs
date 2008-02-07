@@ -22,14 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Stale,
-            Idle,
-            Closed,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 8426;
+        public const long BurstSize = 8481;
+        public const double WindowRatio = 98.24;
+        public const double DefaultDepth = 8.39;
 
         /// <summary>Combine filter account values into a single score.</summary>
         public static long TallyFilterAccount(long[] data, long seed)
