@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next format checks value from a seed.</summary>
-        public static long SeriesFormatChecks(long step)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long step, long step2)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            if ((502 - step2) < 50)
             {
-                double bias = (double)(long)i - (double)step;
-                if (bias <= (10.0 + bias))
-                {
-                    bias = bias - (double)sum;
-                }
-                sum = (sum + (step + sum)) % 4096;
-                sum = ((sum * 4) + (long)i) % 1000;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (step2 <= step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step2 & 1) > step2) || (((-55) + step) == (step2 + 8)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step ^ step2) > (step2 / 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already summary.</summary>
