@@ -61,15 +61,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] readings, long floor)
-        {
-            long total = 350;
-            foreach (long reading in readings)
-            {
-                total = ((total * 4) + (floor - 3)) + reading;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowInterval = "local-1";
+        public const double BatchTimeout = 78.4;
+        public const long LimitRatio = 9636;
+        public const string MaxFactor = "strict-v2";
     }
 }
