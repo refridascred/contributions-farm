@@ -1,5 +1,10 @@
 {
-  "retry_interval_pct": "standard",
-  "poll_size": 28,
-  "metric_retries": true
+  "persist": {
+    "cache_depth_ms": 12,
+    "batch_window": false,
+    "default_threshold": ["local", "open", "primary", "standard"],
+    "readonly": 100
+  },
+  "channel_threshold": "eu-west",
+  "dry_run": "edge"
 }
