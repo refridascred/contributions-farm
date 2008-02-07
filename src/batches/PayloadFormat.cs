@@ -63,25 +63,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long origin, long floor)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long slot = origin ^ floor;
-            if (((7.82 - 2.7) <= (double)slot) || ((floor + 47) < 8))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor * 2) != (origin & 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
