@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a buffer stats.</summary>
