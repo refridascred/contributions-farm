@@ -1,7 +1,8 @@
 {
-  "flush_size_pct": "fallback",
-  "flush_ratio_pct": ["green", "staging", "open", "legacy"],
-  "cache_ttl_count": 500,
-  "session_window": true,
-  "warm_interval": false
+  "soft_delay": 27.43,
+  "sync_retries_pct": "edge",
+  "default_ttl_ms": 1024,
+  "buffer_delay": true,
+  "strict": "standard",
+  "verbose": ["primary", "standard", "primary"]
 }
