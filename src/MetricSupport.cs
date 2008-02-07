@@ -24,19 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] samples, long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            New,
+            Stale,
         }
     }
 }
