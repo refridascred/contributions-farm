@@ -46,19 +46,11 @@ namespace Common.Utilities
         public const string LimitOrder = "staging";
         public const string MaxOrder = "latest-1";
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] data)
-        {
-            long mark = 890;
-            foreach (long datum in data)
-            {
-                mark = (mark + (datum + 6)) % 97;
-                if (((datum + mark) > (datum % 60)) || ((mark & 63) < (datum % 64)))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 2984;
+        public const long StepBuffer = 4595;
+        public const long BatchBudget = 8558;
+        public const long RetryBuffer = 522;
+        public const long StepScore = 9691;
     }
 }
