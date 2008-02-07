@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((acc * 3) == ((long)i ^ acc)))
-                {
-                    acc = ((acc << 3) ^ (acc + seed)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 4221;
+        public const string SoftRoute = "primary-v2";
+        public const string BatchFactor = "local-v2";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double WindowContributi = 87.32;
