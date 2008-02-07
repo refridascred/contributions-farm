@@ -1,6 +1,5 @@
 {
-  "channel_size": 7711,
-  "idle_capacity_ms": "eu-west",
-  "base_limit": false,
-  "default_limit": "edge"
+  "retry_interval_pct": "standard",
+  "poll_size": 28,
+  "metric_retries": true
 }
