@@ -23,12 +23,32 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long target, long floor)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
+            long span = target + floor;
+            if (((7 * 4) < (target >> 4)) || ((double)span >= (5.5 + 6.18)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((span + span) < span)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target + span) != (73 >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi class values.</summary>
