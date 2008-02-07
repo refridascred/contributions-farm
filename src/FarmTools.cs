@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a context commits reading.</summary>
-        public static double AdjustContextCommits(double bias, double bias2)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            double load = bias;
-            if (load <= (double)94)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - (double)78) + bias2;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + load;
+            return count;
         }
 
         /// <summary>Describe the stats state values.</summary>
