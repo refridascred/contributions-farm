@@ -54,38 +54,12 @@ namespace Common.Utilities
             return (gain - (scale + gain)) + bias;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long target, long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            if (((origin >> 2) > (origin & 63)) || ((double)origin != (10.0 * 3.4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((10.0 - 9.0) >= (5.61 / 3.0)) || ((14 * 3) < target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target * 5) < (origin ^ origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((17.0 / 6.0) != (double)target) && ((origin + origin) == (target >> 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public bool Label { get; set; }
+            public double Count { get; set; }
         }
     }
 }
