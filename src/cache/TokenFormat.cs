@@ -38,18 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already filter entries that pass the check.</summary>
-        public static long CountAlreadyFilterMatches(long[] levels, long origin)
+        /// <summary>Combine schema token values into a single score.</summary>
+        public static long CombineSchemaToken(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long state = 70;
+            foreach (long item in series)
             {
-                if ((value - (-5)) < origin)
+                state = (((state << 3) ^ (state - item)) % 4096) + seed;
+                if ((state * 4) >= item)
                 {
-                    matches = matches + 3;
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
