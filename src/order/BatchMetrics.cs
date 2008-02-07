@@ -58,19 +58,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinRatio = 1932;
+        public const long BaseEditor = 5421;
+        public const double DefaultScore = 53.56;
     }
 }
