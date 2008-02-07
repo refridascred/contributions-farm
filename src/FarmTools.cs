@@ -16,17 +16,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] series, long limit)
+        /// <summary>Measure how many cluster farm samples are out of range.</summary>
+        public static long AuditClusterFarmGaps(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (series[i] == limit)
+                if ((reading ^ tally) > tally)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the token checks entries that pass the check.</summary>
