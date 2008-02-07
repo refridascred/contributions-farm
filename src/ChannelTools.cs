@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const double DefaultScore = 54.0;
         public const long IdleGraph = 2404;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] levels, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (levels[i] <= limit)
+                if ((value + 448) >= (value - value))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
