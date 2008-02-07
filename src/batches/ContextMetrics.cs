@@ -14,12 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] values, long origin)
         {
-            public double Level { get; set; }
-            public double Owner { get; set; }
-            public double Count { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
