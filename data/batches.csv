@@ -1,6 +1,9 @@
-id,rank,owner
-1,19.55,3.84
-2,primary,304
-3,green,56.45
-4,768,staging
-5,594,6.51
+id,score,rank,ratio,region
+1,88.6,92,83.66,fallback
+2,17.08,556,6.48,cached
+3,598,open,633,92.38
+4,legacy,35.93,eu-west,44.79
+5,local,legacy,green,439
+6,660,824,123,edge
+7,open,378,green,803
+8,86.92,197,63.88,open
