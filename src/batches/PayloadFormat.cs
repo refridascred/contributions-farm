@@ -49,35 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] series, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            long sum = 6;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3.27 + 14.0) <= (double)sum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum - seed) % 97;
-                }
-                else
-                {
-                    sum = (sum + (sum - 44)) % 65521;
-                }
-                sum = (sum ^ (seed - seed)) % 255;
-                if ((long)series.Length != (seed + item))
-                {
-                    sum = (sum << 2) ^ (sum << 2);
-                }
-                if (((884 ^ item) >= (4 - sum)) && ((0.3 - 4.8) != (double)(long)series.Length))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 53)
-            {
-                sum = ((sum * 3) + (sum >> 3)) % 255;
-            }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
