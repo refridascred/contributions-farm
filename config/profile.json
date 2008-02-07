@@ -1,8 +1,7 @@
 {
-  "token_window": "blue",
-  "base_ratio_count": [65, 337, 289, 91],
-  "dry_run": false,
-  "sync_depth_ms": 3007,
-  "enabled": 1.34,
-  "cache_size_s": 58
+  "warm_ttl_count": "standard",
+  "burst_window": 16.5,
+  "max_delay_ms": 58.42,
+  "support_depth": ["latest", "staging"],
+  "order_timeout": 4941
 }
