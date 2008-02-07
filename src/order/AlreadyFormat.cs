@@ -40,24 +40,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long target)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((23 ^ target) > (-98))
-                {
-                    state = (state - target) % 97;
-                }
-                else
-                {
-                    state = ((state * 5) + ((long)i - 908)) % 101;
-                    state = (state + ((long)i - target)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Pending,
+            Idle,
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Accumulate already samples.</summary>
