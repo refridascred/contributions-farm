@@ -23,11 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] data, long offset)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the commits level values.</summary>
