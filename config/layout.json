@@ -1,17 +1,8 @@
 {
-  "verbose": 1775,
-  "graph_threshold": {
-    "audit": 37.66,
-    "idle_limit": 70.16,
-    "min_size_count": "edge",
-    "poll_delay": 30
-  },
-  "retry_retries_count": "latest",
-  "commits_window": {
-    "idle_interval": "fallback",
-    "idle_ratio_pct": true,
-    "min_window": true
-  },
-  "audit": 250,
-  "format_capacity": true
+  "compress": "fallback",
+  "support_depth": false,
+  "min_retries": "stable",
+  "base_timeout_ms": 77,
+  "contributi_ttl": "standard",
+  "support_ratio": 500
 }
