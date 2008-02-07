@@ -19,21 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up account metrics samples.</summary>
-        public static long CompareAccountMetricsCount(long[] values)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Combine profile session values into a single score.</summary>
