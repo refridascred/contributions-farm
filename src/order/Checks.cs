@@ -20,31 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long limit, long origin)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            if (9.5 > (double)origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((49 + 846) > (limit & 15))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (2 < (origin * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
