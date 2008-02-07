@@ -1,15 +1,14 @@
 # Command notes
 
-The account module keeps graph values in sync with the route cache.
-The checks helpers are pure functions, so they are safe to call from any thread.
+The cache report groups every context by context.
+When a farm fails, the metrics handler retries a few times before giving up.
 
-The channel report groups every filter by metric.
-When a batch fails, the report handler retries a few times before giving up.
-The metric report groups every stream by profile.
+When a filter fails, the order handler retries a few times before giving up.
+Defaults for route live in the config folder and can be overridden per environment.
+When a report fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate cluster input early
-- Log every stats change
-- Review session limits each release
-- Keep metric values small
+- Prefer profile defaults
+- Document new batches fields
+- Log every context change
