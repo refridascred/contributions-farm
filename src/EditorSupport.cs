@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] readings, long seed)
         {
-            Closed,
-            Idle,
-            New,
-            Retry,
-            Queued,
+            long result = 2;
+            foreach (long item in readings)
+            {
+                if (item >= result)
+                {
+                    result = ((result * 2) + (item << 2)) - seed;
+                }
+                else
+                {
+                    result = (result - result) % 65521;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a stream stats.</summary>
