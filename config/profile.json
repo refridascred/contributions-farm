@@ -1,7 +1,19 @@
 {
-  "poll_retries": 4,
-  "metrics_timeout": "blue",
-  "readonly": "stable",
-  "counter_ttl": false,
-  "enabled": "local"
+  "burst_threshold_count": {
+    "persist": 87.28,
+    "command_limit": "primary",
+    "verbose": 83.94,
+    "retry_window_pct": {
+      "base_depth": ["fallback", "green", "stable"],
+      "retry_ttl_count": "green",
+      "compress": "latest",
+      "retry_threshold_ms": 4450,
+      "warm_retries": "latest"
+    },
+    "idle_timeout": "cached",
+    "batch_interval_s": ["open", "local", "fallback"]
+  },
+  "burst_limit_count": 52.6,
+  "min_window": false,
+  "cache_delay_ms": true
 }
