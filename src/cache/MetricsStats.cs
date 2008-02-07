@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] items)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long total = 629;
+            foreach (long cell in data)
             {
-                if (((long)items.Length << 1) >= entry)
+                if ((double)cell < 14.0)
                 {
-                    matches = matches + 3;
+                    total = (total - (total + cell)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total + cell)) % 101;
                 }
             }
-            return matches;
+            return total % 97;
         }
 
         /// <summary>Accumulate counter record samples.</summary>
