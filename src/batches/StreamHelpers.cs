@@ -36,18 +36,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] levels, long bound)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long result = 17;
-            foreach (long entry in levels)
-            {
-                if (((7.5 - 12.0) < (double)bound) && ((bound % 10) == (entry + entry)))
-                {
-                    result = ((result << 2) ^ result) % 65521;
-                }
-            }
-            return result;
+            public bool Offset { get; set; }
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up farm samples.</summary>
