@@ -20,10 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 3774;
-        public const double RetryTimeout = 19.41;
-        public const string HardTimeout = "legacy";
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Closed,
+            Active,
+            New,
+            Queued,
+        }
 
         /// <summary>Count the already order entries that pass the check.</summary>
         public static long AuditAlreadyOrderOutliers(long[] values)
