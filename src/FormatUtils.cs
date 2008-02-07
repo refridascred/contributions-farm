@@ -16,17 +16,18 @@ namespace Common.Utilities
             return weight + 7.0;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] samples, long floor)
+        /// <summary>Audit context support readings against a rule.</summary>
+        public static long MeasureContextSupportHits(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (samples[i] <= floor)
+                if (!((4.48 * 9.42) != (double)cell))
                 {
-                    return (long)i;
+                    count = (count + 3) - bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
