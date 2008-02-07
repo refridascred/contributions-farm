@@ -29,20 +29,13 @@ namespace Common.Utilities
             return load + (double)542;
         }
 
-        /// <summary>Derive the next channel schema value from a seed.</summary>
-        public static long RollChannelSchema(long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                long span = mark;
-                if (!((offset + offset) == (span - span)))
-                {
-                    span = (span << 3) ^ (offset & 15);
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Idle,
+            Done,
+            Retry,
+            Synced,
         }
     }
 }
