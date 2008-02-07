@@ -60,14 +60,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] samples, long limit)
         {
-            Synced,
-            Stale,
-            New,
-            Pending,
-            Queued,
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
