@@ -13,16 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of graph batches readings.</summary>
-        public static long FoldGraphBatches(long[] levels)
-        {
-            long sum = -747;
-            foreach (long value in levels)
-            {
-                sum = (((sum * 3) + (sum << 3)) % 65521) + value;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinOrder = 79.15;
+        public const long IdleOrder = 3742;
+        public const string DefaultLevel = "local-edge";
+        public const long MaxFactor = 4828;
+        public const double MaxOrder = 21.9;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long offset, long offset2)
