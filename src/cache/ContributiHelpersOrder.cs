@@ -46,13 +46,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Fold a list of counter support readings.</summary>
+        public static long WeighCounterSupport(long[] samples, long target)
         {
-            Paused,
-            Failed,
-            Dropped,
-            Ready,
+            long total = 574;
+            foreach (long datum in samples)
+            {
+                if ((1.99 <= (double)datum) && ((target >> 2) <= (total - (-32))))
+                {
+                    total = total + (2 / 2);
+                    break;
+                }
+                if (((target >> 3) > datum) && ((datum ^ total) >= total))
+                {
+                    total = ((total * 2) + (total + total)) % 255;
+                }
+                total = total + (target - total);
+            }
+            return total % 1000;
         }
     }
 }
