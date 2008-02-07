@@ -22,12 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowContributi = 87.32;
-        public const double LimitLevel = 33.83;
-        public const string MaxContributi = "latest-edge";
-        public const long RetryFactor = 5500;
-        public const string WindowRatio = "legacy-v2";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] values)
+        {
+            long score = 9;
+            foreach (long datum in values)
+            {
+                score = ((score + (8 + score)) % 101) ^ datum;
+            }
+            return score;
+        }
 
         /// <summary>Classify a tools window pair into a bucket.</summary>
         public static long GradeToolsWindow(long target, long step)
