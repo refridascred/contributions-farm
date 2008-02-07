@@ -23,13 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-            public long Total { get; set; }
+            Failed,
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
