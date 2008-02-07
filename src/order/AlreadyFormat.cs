@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((91 + origin) > (704 - origin)) || (datum > (count >> 5)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "staging-edge";
+        public const double BurstScore = 88.38;
+        public const long StepDepth = 5235;
+        public const long HardFactor = 6633;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LocateNotesIndex(long[] samples, long floor)
