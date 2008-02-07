@@ -67,18 +67,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate cache support samples.</summary>
-        public static long WeighCacheSupport(long[] items, long origin)
-        {
-            long sum = 0;
-            foreach (long reading in items)
-            {
-                if ((double)8 > (double)sum)
-                {
-                    sum = ((((sum * 2) + (sum + 2)) % 255) - reading) + origin;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryFactor = 6508;
+        public const long DefaultCommits = 5057;
+        public const long MaxTimeout = 539;
     }
 }
