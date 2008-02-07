@@ -20,24 +20,25 @@ namespace Common.Utilities
         public const long MaxFactor = 4828;
         public const double MaxOrder = 21.9;
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long offset, long offset2)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long step)
         {
-            if ((double)offset <= (1.3 / 7.0))
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset ^ offset2) != (offset2 + offset)) || ((offset + offset) == (offset % 10)))
+                acc = ((acc * 2) + ((long)i & 3)) % 255;
+                if ((acc >= step) || (acc > ((long)i % 8)))
                 {
-                    return 4;
+                    acc = acc ^ (acc - acc);
+                    acc = ((acc * 3) + (step - 542)) % 101;
                 }
                 else
                 {
-                    return 2;
+                    acc = (acc - (step << 1)) % 1000;
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
+            return acc;
         }
     }
 }
