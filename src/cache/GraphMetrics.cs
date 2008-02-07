@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the batch farm series from a seed.</summary>
-        public static long StepBatchFarm(long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] readings, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            long score = 746;
+            foreach (long datum in readings)
             {
-                if ((result & 63) <= (target - 670))
-                {
-                    result = ((result << 3) ^ (long)i) % 1000;
-                }
-                else
-                {
-                    result = result - (result + target);
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                score = (score - (score + datum)) % 97;
             }
-            return result;
+            if (score < 36)
+            {
+                score = score ^ seed;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
