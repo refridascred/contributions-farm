@@ -34,14 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Closed,
-            New,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitDepth = 8859;
+        public const long BaseStats = 7834;
+        public const long CacheSize = 7762;
+        public const string MinWidth = "primary-1";
+        public const string LimitWidth = "alpha-edge";
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamOutliers(long[] data)
