@@ -56,11 +56,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
+            Idle,
+            Queued,
+            Synced,
+            Dropped,
+            Done,
         }
 
         /// <summary>Iterate the queue order series from a seed.</summary>
