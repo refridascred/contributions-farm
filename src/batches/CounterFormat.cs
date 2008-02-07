@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Fold a list of layout commits readings.</summary>
+        public static long FoldLayoutCommits(long[] data, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            long score = 33;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = (((acc << 2) ^ (acc + acc)) % 255) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                score = ((score - score) - value) + origin;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Look up the position of a metric counter sample.</summary>
