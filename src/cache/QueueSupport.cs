@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double bias, double offset)
         {
-            Pending,
-            Synced,
-            Paused,
-            Dropped,
+            double ratio = (double)(895 + 199);
+            if (ratio >= 6.91)
+            {
+                ratio = (ratio + ratio) + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (offset * 3.8)) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
