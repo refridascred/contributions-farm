@@ -47,18 +47,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] values)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((0.7 * 18.0) < (double)value) || (((value & 15) >= hits) || ((9.8 / 7.0) >= (double)hits)))
+                if (items[i] > seed)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the cache level values.</summary>
