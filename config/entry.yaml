@@ -1,17 +1,19 @@
 # entry settings
-hard_timeout_count: 76
-default_window_ms:
-  retry_timeout_s: true
-  max_capacity_ms:
-    - cached
-    - stable
-    - local
-  compress: standard
-retry_limit_s: 25.9
-dry_run:
-  strict:
-    - stable
+tools_capacity:
+  - 52
+  - 411
+min_delay_ms: 32.84
+queue_ratio: stable
+retry_ttl_count:
+  schema_timeout:
     - latest
-  dry_run: open
-  idle_size: 6515
-  default_depth_ms: green
+    - legacy
+  readonly: blue
+  commits_interval: 8405
+  token_ratio:
+    - blue
+    - stable
+report_threshold: local
+max_threshold:
+  - 5
+  - 481
