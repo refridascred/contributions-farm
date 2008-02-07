@@ -24,18 +24,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] samples)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] data)
         {
-            long result = 3;
-            foreach (long reading in samples)
+            long sum = 8;
+            foreach (long value in data)
             {
-                if (((4.7 - 12.0) >= (double)result) || ((result - result) <= 2))
+                sum = ((sum * 2) + (value % 2)) % 1000;
+                if (4.4 >= (double)sum)
                 {
-                    result = (((result * 4) + result) % 255) + reading;
+                    break;
                 }
             }
-            return result;
+            return sum % 4096;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
