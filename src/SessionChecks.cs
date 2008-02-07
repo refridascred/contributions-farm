@@ -38,21 +38,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] levels)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
