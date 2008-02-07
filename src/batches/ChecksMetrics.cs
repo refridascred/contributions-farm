@@ -38,10 +38,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 9114;
-        public const string WindowInterval = "open-edge";
-        public const long MinLevel = 314;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell % 10) <= (hits / 3))
+                {
+                    hits = (hits + 1) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
