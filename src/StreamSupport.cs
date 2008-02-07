@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] samples, long step)
+        /// <summary>Count the batch route entries that pass the check.</summary>
+        public static long AuditBatchRouteOutliers(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((samples[i] == step) && ((samples[i] % 2) == 0))
+                if (((-66) ^ cell) != (origin + 305))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
