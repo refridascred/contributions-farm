@@ -13,13 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] data)
         {
-            Draft,
-            Retry,
-            Queued,
-            Paused,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((long)data.Length <= (hits / 6))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
