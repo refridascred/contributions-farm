@@ -26,11 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 4845;
-        public const string BurstEditor = "legacy-v2";
-        public const long StepEditor = 3262;
-        public const long MaxTimeout = 4743;
-        public const string SoftSpan = "stable-v2";
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double scale, double offset)
+        {
+            double gain = (double)(2 & 7);
+            if (gain < (scale - scale))
+            {
+                gain = gain - (double)63;
+            }
+            else
+            {
+                gain = gain + offset;
+            }
+            return gain - offset;
+        }
     }
 }
