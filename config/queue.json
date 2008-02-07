@@ -1,16 +1,8 @@
 {
-  "idle_limit_ms": true,
-  "hard_delay_count": 16,
-  "sync_window_count": "stable",
-  "sync_window": 52,
-  "soft_threshold_s": {
-    "retry_window": "legacy",
-    "route_depth": {
-      "session_size": false,
-      "poll_delay_pct": 77.92,
-      "tools_retries": 40.95,
-      "contributi_ratio": 96
-    },
-    "contributi_capacity": 68.87
-  }
+  "token_limit": [427, 205, 404, 62],
+  "cache_timeout_s": 30,
+  "verbose": [422, 62],
+  "base_timeout_s": "eu-west",
+  "githubfarm_capacity": [270, 331, 148, 64],
+  "poll_retries_ms": true
 }
