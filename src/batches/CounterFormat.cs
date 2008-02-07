@@ -12,24 +12,13 @@ namespace Common.Utilities
         public const long BaseLevel = 7550;
         public const long HardCommand = 2738;
 
-        /// <summary>Rank filter window input into a small class.</summary>
-        public static long BucketFilterWindow(long limit, long seed)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            if (((932 << 3) > limit) && ((double)seed != (5.9 - 4.91)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(1.87 > (double)seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
