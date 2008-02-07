@@ -27,19 +27,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine profile session values into a single score.</summary>
-        public static long ScoreProfileSession(long[] data)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            long anchor = 7;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor ^ (2 % 60)) ^ entry;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (anchor > 417)
-            {
-                anchor = (anchor - (anchor >> 1)) % 97;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
