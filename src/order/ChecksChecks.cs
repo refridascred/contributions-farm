@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] values, long seed)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double bias, double span)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double weight = bias;
+            if (weight <= (span / 6.0))
             {
-                if ((550 % 8) != (matches - matches))
-                {
-                    matches = ((matches + 2) + sample) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = weight + (bias * 2.34);
             }
-            return matches;
+            else
+            {
+                weight = weight - (1.9 - 1.75);
+            }
+            return weight + (double)(-3);
         }
 
         /// <summary>Fold a list of graph readings.</summary>
