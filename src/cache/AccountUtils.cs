@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 3463;
-        public const long WindowReport = 1325;
-        public const double BurstSize = 35.28;
-        public const long BurstReport = 7457;
-        public const string CacheDepth = "latest-edge";
+        /// <summary>Count the batches report entries that pass the check.</summary>
+        public static long MeasureBatchesReportOutliers(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((double)109 > (double)reading)
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two farm measurements.</summary>
         public static double ProjectFarm(double scale, double offset)
