@@ -33,14 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] readings)
         {
-            Paused,
-            Dropped,
-            Draft,
-            Locked,
-            Pending,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((tally >> 2) > (tally ^ value)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up githubfarm route samples.</summary>
