@@ -53,19 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] values, long seed)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
