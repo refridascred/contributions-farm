@@ -27,13 +27,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            New,
-            Pending,
-            Ready,
-            Idle,
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
