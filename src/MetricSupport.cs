@@ -28,19 +28,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] series, long target)
+        /// <summary>Classify a support farm pair into a bucket.</summary>
+        public static long RankSupportFarm(long bound, long target)
         {
-            long score = 89;
-            foreach (long item in series)
+            if ((bound + bound) > bound)
             {
-                score = (score - (target + 23)) ^ item;
+                return 2;
             }
-            if (score < 3)
+            else
             {
-                score = ((score << 3) ^ (score & 15)) % 255;
+                if (5.1 >= (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return score % 65521;
         }
     }
 }
