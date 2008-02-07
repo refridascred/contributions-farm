@@ -28,13 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long seed)
         {
-            Done,
-            Ready,
-            Idle,
-            Paused,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
