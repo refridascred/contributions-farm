@@ -1,14 +1,15 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-Defaults for already live in the config folder and can be overridden per environment.
+Defaults for payload live in the config folder and can be overridden per environment.
+Each metric is validated before it reaches the window queue.
+Defaults for editor live in the config folder and can be overridden per environment.
 
-A command that stays idle for too long is moved to the notes list.
-Each schema is validated before it reaches the commits queue.
+Use graph settings to tune how often batch data is refreshed.
+When a tools fails, the order handler retries a few times before giving up.
+Defaults for batches live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review schema limits each release
-- Document new checks fields
-- Log every notes change
-- Prefer githubfarm defaults
+- Review metric limits each release
+- Log every window change
+- Document new queue fields
