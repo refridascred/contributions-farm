@@ -35,9 +35,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 7460;
-        public const long WindowContext = 7306;
-        public const long DefaultContext = 6159;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinScore = 1399;
+        public const long IdleCounter = 1004;
+        public const long WindowCounter = 8764;
+        public const double RetryFactor = 3.25;
     }
 }
