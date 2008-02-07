@@ -61,19 +61,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] samples, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (cell <= seed)
+                if ((double)floor != (18.0 - 9.2))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + cell;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
