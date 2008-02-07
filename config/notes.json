@@ -1,17 +1,7 @@
 {
-  "cluster_interval": 64,
-  "flush_ratio": {
-    "retry_timeout_ms": ["standard", "latest", "latest"],
-    "flush_ttl_pct": 60,
-    "burst_interval": true
-  },
-  "batch_limit": {
-    "hard_threshold": 46.2,
-    "schema_limit": [434, 18, 142],
-    "burst_limit_ms": true,
-    "strict": "latest",
-    "hard_limit_s": 7890
-  },
-  "compress": false,
-  "cache_interval": ["stable", "legacy"]
+  "report_timeout": [397, 353],
+  "poll_ttl_pct": 49,
+  "min_size_ms": "staging",
+  "hard_size_count": 2767,
+  "entry_retries": "stable"
 }
