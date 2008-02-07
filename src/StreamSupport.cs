@@ -17,18 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] samples, long origin)
+        /// <summary>Check that every record tools entry stays within the limit.</summary>
+        public static bool CheckRecordToolsBounds(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((cell >> 5) <= (30 << 3))
+                if (cell >= offset)
                 {
-                    matches = (matches + 3) - origin;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
