@@ -21,18 +21,21 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] items)
+        /// <summary>Count commits farm pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsFarmCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (16.0 > (double)datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
+                    if ((series[i] + series[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
