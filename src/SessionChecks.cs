@@ -23,12 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Project the next batch record value.</summary>
+        public static double SmoothBatchRecord(double ratio, double floor)
         {
-            Idle,
-            Pending,
-            Stale,
+            double mean = floor + floor;
+            return (mean + 5.0) + ratio;
         }
 
         /// <summary>Describe the command status values.</summary>
