@@ -80,21 +80,21 @@ namespace Common.Utilities
         public const string HardContext = "primary-1";
         public const long SoftContext = 2303;
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Compare every pair of filter cluster readings.</summary>
+        public static long OverlapFilterClusterCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 11)
+                    if ((readings[i] - readings[j]) == 7)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
