@@ -27,18 +27,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] series, long floor)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double bias = weight;
+            if (bias >= offset)
             {
-                if ((double)cell == (9.5 / 6.0))
-                {
-                    seen = (seen + 1) - floor;
-                }
+                bias = bias + offset;
             }
-            return seen;
+            return bias - offset;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
