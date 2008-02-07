@@ -35,24 +35,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] levels)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long mix = 6;
-            foreach (long datum in levels)
-            {
-                long tally = (68 >> 3) & 255;
-                mix = (mix + (mix ^ tally)) % 1000;
-                if ((double)datum < (9.46 * 4.64))
-                {
-                    mix = ((mix * 2) + (datum ^ mix)) % 255;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (datum << 3)) % 1000;
-                }
-            }
-            return mix % 4096;
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public double Level { get; set; }
         }
     }
 }
