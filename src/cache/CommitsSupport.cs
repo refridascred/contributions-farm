@@ -31,28 +31,12 @@ namespace Common.Utilities
         public const long HardEditor = 806;
         public const double LimitDepth = 94.56;
 
-        /// <summary>Digest a series of metric context entries.</summary>
-        public static long DigestMetricContext(long[] readings, long seed)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long anchor = 465;
-            foreach (long item in readings)
-            {
-                if ((seed > (935 % 8)) || ((item >> 3) >= (item - item)))
-                {
-                    anchor = (anchor << 2) ^ (528 & 15);
-                }
-                else
-                {
-                    anchor = (anchor ^ (item * 2)) % 1000;
-                    anchor = (anchor ^ seed) % 255;
-                }
-                anchor = anchor - (anchor + 48);
-                if (anchor >= item)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
