@@ -48,18 +48,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit session graph readings against a rule.</summary>
-        public static long AuditSessionGraphHits(long[] series)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long sum = 7;
+            foreach (long datum in readings)
             {
-                if ((datum ^ matches) < (datum + datum))
-                {
-                    matches = matches + 2;
-                }
+                sum = (((sum * 3) + (204 - sum)) % 1000) ^ datum;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
