@@ -26,22 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up report account samples.</summary>
-        public static long MatchReportAccountCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 8423;
+        public const long RetrySize = 7483;
+        public const double IdleBudget = 56.93;
+        public const long RetryPayload = 6136;
+        public const long SoftLevel = 2880;
 
         /// <summary>Combine stats format values into a single score.</summary>
         public static long TallyStatsFormat(long[] samples, long bound)
