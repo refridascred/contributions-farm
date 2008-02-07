@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long StepCounter = 2398;
         public const long BatchCounter = 224;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] readings, long step)
+        /// <summary>Find the first queue payload entry that matches the target.</summary>
+        public static long FindQueuePayloadIndex(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= step)
+                if (series[i] >= offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
