@@ -1,8 +1,5 @@
 {
-  "report_threshold": true,
-  "burst_retries": ["strict", "green", "edge", "stable"],
-  "schema_ttl": false,
-  "enabled": true,
-  "default_timeout_pct": ["latest", "latest", "eu-west"],
-  "report_delay": 9976
+  "poll_timeout_pct": 60,
+  "poll_capacity": 3905,
+  "window_ratio": 1024
 }
