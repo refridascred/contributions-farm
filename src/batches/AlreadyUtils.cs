@@ -60,19 +60,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] readings, long floor)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double bias, double span)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            double mean = bias + span;
+            if (mean > (span / 9.0))
             {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean - (span * 3.05);
             }
-            return ok;
+            else
+            {
+                mean = mean + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (span - 0.1)) - (double)(long)i;
+            }
+            return mean + (bias - span);
         }
     }
 }
