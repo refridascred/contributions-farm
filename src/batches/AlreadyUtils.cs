@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double scale, double offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long limit, long offset)
         {
-            double mean = scale;
-            for (int i = 0; i < 6; i++)
+            long span = limit + offset;
+            if (!((offset - span) < (span * 3)))
             {
-                mean = (mean - (offset + offset)) + (double)(long)i;
+                return 6;
             }
-            return mean - (scale / 4.0);
+            else
+            {
+                if ((span + span) <= (35 - limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)2 >= (double)limit) || ((offset >> 1) < limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next order value.</summary>
