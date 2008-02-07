@@ -19,12 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 4938;
-        public const double HardRecord = 37.08;
-        public const double DefaultRecord = 96.58;
-        public const long MaxRecord = 9778;
-        public const double HardBudget = 74.21;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long step, long target)
+        {
+            if (!((target % 3) <= target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step - step) <= (target + 83))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target >= (step >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BatchSize = 633;
