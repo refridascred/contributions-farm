@@ -33,25 +33,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a tools channel value against two limits.</summary>
-        public static long BucketToolsChannel(long bound, long limit)
-        {
-            long cur = bound ^ limit;
-            if ((cur + limit) == (bound >> 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((bound << 1) <= bound) || ((20.0 + 7.87) != (double)limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxContributi = 96.43;
+        public const double BurstContributi = 28.62;
+        public const long CacheContributi = 1900;
     }
 }
