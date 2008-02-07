@@ -79,24 +79,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metric metrics pair into a bucket.</summary>
-        public static long SortMetricMetrics(long target, long target2)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            if ((3.6 * 8.69) <= (double)target2)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)target2 >= (5.9 / 5.0)) && (target >= (target ^ target2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Token { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
