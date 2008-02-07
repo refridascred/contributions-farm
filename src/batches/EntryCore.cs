@@ -16,12 +16,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 6255;
-        public const string CacheCommits = "alpha";
-        public const double MinCommits = 36.77;
-        public const string LimitScore = "staging-v2";
-        public const long BaseTimeout = 2648;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Queued,
+            Locked,
+            Retry,
+            Synced,
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double ProjectFormat(double bias, double offset)
