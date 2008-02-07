@@ -78,11 +78,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowLevel = "standard-1";
-        public const string StepLevel = "latest";
-        public const long SoftNotes = 4328;
-        public const long HardWidth = 1113;
-        public const long CacheSpan = 766;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
