@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a editor route counter forward.</summary>
-        public static long StepEditorRoute(long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] items, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long score = 6;
+            foreach (long sample in items)
             {
-                if ((carry % 12) >= carry)
-                {
-                    carry = carry + (offset + carry);
-                }
-                long next = offset + carry;
-                if ((carry + next) == (next + 38))
-                {
-                    carry = (carry - (offset + next)) % 1000;
-                    next = next ^ (offset & 255);
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                score = ((score << 2) ^ (sample >> 3)) % 255;
+                score = score - (397 + 32);
+                score = ((score * 3) + (sample ^ step)) % 1000;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Describe the window state values.</summary>
