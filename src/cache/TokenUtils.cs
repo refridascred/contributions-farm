@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] series, long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long item in series)
+            double scale = offset;
+            if (scale >= 3.45)
             {
-                if (item >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale - offset) + gain;
             }
-            return ok;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - 19.0) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Validate layout filter readings against a bound.</summary>
