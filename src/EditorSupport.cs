@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate format counter samples.</summary>
-        public static long WeighFormatCounter(long[] samples, long step)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long sum = 708;
-            foreach (long value in samples)
-            {
-                if ((step - 641) != (sum - sum))
-                {
-                    sum = ((sum << 2) ^ (30 / 5)) ^ value;
-                }
-                else
-                {
-                    sum = sum + ((-90) & 1);
-                }
-            }
-            if (sum > 23)
-            {
-                sum = (sum << 3) ^ (sum * 4);
-            }
-            return sum % 1000;
+            Stale,
+            Failed,
+            Pending,
+            Synced,
+            Closed,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
