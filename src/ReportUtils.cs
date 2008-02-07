@@ -65,19 +65,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double ratio, double span)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long seed, long bound)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= (17.0 - span))
+            if (24 >= (bound >> 5))
             {
-                ratio2 = ratio2 + ratio;
+                return 5;
             }
             else
             {
-                ratio2 = ratio2 - (ratio2 + ratio);
+                if ((double)seed >= 2.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((15.0 * 9.27) <= (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return ratio2 + ratio2;
         }
     }
 }
