@@ -66,23 +66,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] data, long offset)
-        {
-            long carry = 964;
-            foreach (long sample in data)
-            {
-                carry = ((carry << 2) ^ (offset + offset)) % 97;
-                if (((11.0 - 8.8) > (double)offset) && (sample <= (sample - offset)))
-                {
-                    carry = carry - (47 * 4);
-                }
-                else
-                {
-                    carry = (carry * 3) + (sample + offset);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowLevel = "standard-1";
+        public const string StepLevel = "latest";
+        public const long SoftNotes = 4328;
+        public const long HardWidth = 1113;
+        public const long CacheSpan = 766;
     }
 }
