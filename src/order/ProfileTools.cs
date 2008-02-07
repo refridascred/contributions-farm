@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Grade a order editor value against two limits.</summary>
+        public static long ClassifyOrderEditor(long seed, long target)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            long slot = seed - target;
+            if ((target & 1) > (slot << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((slot % 24) <= (target - slot))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((44 % 12) != (slot / 6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
