@@ -27,11 +27,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double rate, double floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long offset, long limit)
         {
-            double drift = (double)(47 / 4);
-            return (drift + floor) + rate;
+            if ((offset >> 3) < offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset >= (offset + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-774) - limit) >= (90 >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit - offset) > (offset & 31))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
