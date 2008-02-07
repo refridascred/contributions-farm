@@ -1,10 +1,25 @@
 # githubfarm settings
-cache_limit: 80.04
-poll_window_count: 32
-hard_retries_ms:
-  - stable
-  - strict
-  - standard
-retry_window_pct: 8309
-dry_run: local
-poll_capacity: eu-west
+githubfarm_retries: 2852
+min_timeout_pct: 1.59
+soft_limit_ms:
+  min_delay_ms: false
+  command_delay:
+    queue_ttl: 44
+    persist:
+      - blue
+      - fallback
+      - blue
+    warm_capacity_s:
+      - legacy
+      - strict
+    channel_capacity: 96.16
+    cache_timeout_s: true
+  min_ratio_count:
+    - 255
+    - 477
+    - 33
+    - 336
+  soft_ratio: 99
+  buffer_depth: fallback
+dry_run: false
+persist: latest
