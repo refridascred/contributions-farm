@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] readings, long limit)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long offset, long seed)
         {
-            long mark = 49;
-            foreach (long value in readings)
+            if (!(seed < offset))
             {
-                if (!((value - 93) <= mark))
+                return 6;
+            }
+            else
+            {
+                if (3 <= offset)
                 {
-                    mark = (((mark << 2) ^ mark) % 255) - limit;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return mark;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
