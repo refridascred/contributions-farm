@@ -13,17 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long floor)
+        /// <summary>Measure how many commits route samples are out of range.</summary>
+        public static long AuditCommitsRouteGaps(long[] series, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                result = (result * 2) + (long)i;
-                result = result - (1 * 5);
-                result = ((result * 3) + (long)i) % 65521;
+                if (((double)item > (9.5 + 6.39)) || ((double)seed != (8.01 * 8.31)))
+                {
+                    count = count + 2;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
