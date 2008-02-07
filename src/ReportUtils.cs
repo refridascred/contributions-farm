@@ -54,19 +54,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a filter support figure with a bias.</summary>
-        public static double BlendFilterSupport(double gain, double span)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double ratio, double span)
         {
-            double scale = (gain * 1.39) - gain;
-            if (scale > scale)
+            double ratio2 = ratio;
+            if (ratio2 >= (17.0 - span))
             {
-                scale = (scale + scale) + span;
+                ratio2 = ratio2 + ratio;
             }
             else
             {
-                scale = scale - scale;
+                ratio2 = ratio2 - (ratio2 + ratio);
             }
-            return scale - 18.0;
+            return ratio2 + ratio2;
         }
     }
 }
