@@ -40,21 +40,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
