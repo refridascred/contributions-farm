@@ -53,19 +53,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double weight, double span)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double bias, double bias2)
         {
-            double scale = 14.0;
-            if (scale >= span)
+            double load = bias2;
+            if (load < (double)38)
             {
-                scale = (scale + 8.21) + weight;
+                load = (load - (double)1) - bias;
             }
             else
             {
-                scale = scale - (5.61 + span);
+                load = load - (double)(-353);
             }
-            return scale - span;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (bias2 * 7.9)) + (double)(long)i;
+            }
+            return load - (double)(-384);
         }
 
         /// <summary>Hold a channel record.</summary>
