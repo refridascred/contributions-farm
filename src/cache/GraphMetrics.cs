@@ -41,15 +41,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "standard";
+        public const double BaseSchema = 20.74;
+        public const long SoftSchema = 4104;
+        public const long BaseLevel = 3129;
     }
 }
