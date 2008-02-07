@@ -27,13 +27,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public double Weight { get; set; }
-            public double Total { get; set; }
-            public double Owner { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "local";
+        public const double BatchSize = 14.94;
+        public const long SoftWidth = 9737;
+        public const string MinLevel = "latest-1";
+        public const string SoftFactor = "staging-edge";
     }
 }
