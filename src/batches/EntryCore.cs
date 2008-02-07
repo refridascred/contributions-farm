@@ -51,11 +51,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            Pending,
+            Draft,
+            Dropped,
+            Queued,
+            Locked,
         }
     }
 }
