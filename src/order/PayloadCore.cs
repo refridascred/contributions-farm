@@ -42,9 +42,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstInterval = 32.93;
-        public const string BurstAlready = "stable-1";
-        public const long BaseRatio = 9272;
+        /// <summary>Check that every token metric entry stays within the limit.</summary>
+        public static bool GuardTokenMetricRange(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
