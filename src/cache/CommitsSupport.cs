@@ -41,13 +41,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] series, long limit)
         {
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
