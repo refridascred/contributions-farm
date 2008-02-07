@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                acc = acc ^ ((long)i - limit);
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (!((double)origin == (double)162))
+                {
+                    total = (total * 4) + ((long)i + 25);
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Audit account profile readings against a rule.</summary>
