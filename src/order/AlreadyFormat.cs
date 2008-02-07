@@ -51,20 +51,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)(long)i == (6.9 - 6.03))
-                {
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxTimeout = 6842;
+        public const double LimitFactor = 75.77;
+        public const long BaseCommand = 6320;
+        public const long StepCommand = 6982;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileRange(long[] levels, long step)
