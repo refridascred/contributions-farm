@@ -1,8 +1,7 @@
 {
-  "soft_delay": 27.43,
-  "sync_retries_pct": "edge",
-  "default_ttl_ms": 1024,
-  "buffer_delay": true,
-  "strict": "standard",
-  "verbose": ["primary", "standard", "primary"]
+  "hard_delay": false,
+  "default_delay_ms": 100,
+  "hard_capacity": false,
+  "filter_delay": ["cached", "strict"],
+  "window_threshold": true
 }
