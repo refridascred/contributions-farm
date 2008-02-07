@@ -17,11 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] samples, long origin)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell >> 5) <= (30 << 3))
+                {
+                    matches = (matches + 3) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
