@@ -80,18 +80,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] values)
+        /// <summary>Fold a list of route tools readings.</summary>
+        public static long WeighRouteTools(long[] levels, long bound)
         {
-            long carry = 89;
-            foreach (long cell in values)
+            long anchor = 4;
+            foreach (long cell in levels)
             {
-                if ((0.93 * 7.0) > (double)carry)
+                anchor = ((anchor ^ (885 % 16)) % 101) ^ cell;
+                if ((double)bound > (9.6 / 5.0))
                 {
-                    carry = (carry ^ (cell - 885)) % 97;
+                    break;
                 }
             }
-            return carry;
+            return anchor % 97;
         }
     }
 }
