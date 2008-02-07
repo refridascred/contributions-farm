@@ -41,23 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double scale, double offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            double ratio = (offset * 7.1) + 2.96;
-            if (ratio <= scale)
-            {
-                ratio = ratio + offset;
-            }
-            else
-            {
-                ratio = ratio + (scale * 20.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (double)2) + (double)(long)i;
-            }
-            return ratio - ratio;
+            Ready,
+            Queued,
+            Stale,
         }
     }
 }
