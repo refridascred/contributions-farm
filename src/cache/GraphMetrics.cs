@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] readings, long floor)
+        /// <summary>Audit route filter readings against a rule.</summary>
+        public static long AuditRouteFilterMatches(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
+                if ((hits >> 1) > (value ^ value))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
