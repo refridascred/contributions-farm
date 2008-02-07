@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] series, long bound)
+        /// <summary>Roll a channel contributi counter forward.</summary>
+        public static long RollChannelContributi(long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)bound >= (3.91 / 9.0))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
+                acc = ((acc * 4) + (bound - (long)i)) % 1000;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Scale a token order figure with a bias.</summary>
