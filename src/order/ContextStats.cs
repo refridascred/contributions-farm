@@ -34,11 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] data, long origin)
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading / 7) <= (29 / 3))
+                {
+                    count = (count + 2) + origin;
+                }
+            }
+            return count;
         }
     }
 }
