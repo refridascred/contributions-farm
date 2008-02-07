@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryTimeout = 16.3;
-        public const long RetryCount = 6310;
-        public const long RetryContext = 6616;
-        public const double WindowContext = 76.16;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Retry,
+            Paused,
+            Failed,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
