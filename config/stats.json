@@ -1,5 +1,5 @@
 {
-  "report_ratio": 62.36,
-  "default_retries_count": 64,
-  "verbose": 10.85
+  "buffer_size": [356, 154],
+  "counter_window": 250,
+  "poll_interval": 1250
 }
