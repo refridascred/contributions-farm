@@ -39,15 +39,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Pending,
+            Paused,
+            Ready,
+            Done,
         }
     }
 }
