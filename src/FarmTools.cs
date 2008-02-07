@@ -16,18 +16,13 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many cluster farm samples are out of range.</summary>
-        public static long AuditClusterFarmGaps(long[] values)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((reading ^ tally) > tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Locked,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a farm record.</summary>
