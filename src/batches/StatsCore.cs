@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 2439;
-        public const long BatchStats = 7929;
-        public const long HardScore = 2258;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Combine already layout values into a single score.</summary>
         public static long ScoreAlreadyLayout(long[] items)
