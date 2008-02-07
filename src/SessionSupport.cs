@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit githubfarm support readings against a rule.</summary>
-        public static long AuditGithubfarmSupportMatches(long[] levels)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (!((hits << 1) != (922 & 127)) || ((value + value) != (value + hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Idle,
+            Failed,
+            Synced,
+            Closed,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
