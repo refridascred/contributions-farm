@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] data, long seed)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long anchor = 4;
-            foreach (long datum in data)
-            {
-                if ((double)datum > (double)seed)
-                {
-                    anchor = ((anchor * 3) + seed) % 101;
-                }
-            }
-            if (anchor < 21)
-            {
-                anchor = anchor + ((long)data.Length * 3);
-            }
-            return anchor;
+            public bool Total { get; set; }
+            public string Size { get; set; } = "";
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the session level values.</summary>
