@@ -1,6 +1,8 @@
 {
-  "persist": 60.95,
-  "retry_limit_count": 30,
-  "strict": 46,
-  "min_window": "eu-west"
+  "strict": ["primary", "staging"],
+  "entry_delay": "open",
+  "compress": "green",
+  "cache_delay_ms": 63.48,
+  "max_interval": true,
+  "batch_depth_s": ["eu-west", "cached", "blue", "green"]
 }
