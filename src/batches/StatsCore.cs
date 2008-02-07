@@ -48,17 +48,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] readings, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long mix = 730;
-            foreach (long reading in readings)
-            {
-                mix = ((mix * 4) + mix) % 4096;
-                mix = (mix << 2) ^ (origin >> 5);
-                mix = (mix - (reading + mix)) % 4096;
-            }
-            return mix;
+            Pending,
+            Queued,
+            Paused,
+            New,
+            Done,
         }
 
         /// <summary>Rank filter input into a small class.</summary>
