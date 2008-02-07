@@ -41,18 +41,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit record layout readings against a rule.</summary>
-        public static long AuditRecordLayoutGaps(long[] levels, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] levels)
         {
-            long hits = 0;
+            long matches = 0;
             foreach (long entry in levels)
             {
-                if ((42 - entry) == (entry ^ entry))
+                if ((long)levels.Length >= (346 + matches))
                 {
-                    hits = (hits + 1) - target;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
