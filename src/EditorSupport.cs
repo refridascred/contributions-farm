@@ -31,17 +31,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a buffer payload sample.</summary>
-        public static long LookupBufferPayloadIndex(long[] levels, long offset)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Locked,
+            Stale,
+            Ready,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
