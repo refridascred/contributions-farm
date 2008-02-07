@@ -27,15 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next channel checks value from a seed.</summary>
-        public static long StepChannelChecks(long bound)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
