@@ -14,13 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Failed,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheWidth = 3663;
+        public const long MaxBudget = 8674;
+        public const string BurstGithubfarm = "strict-v2";
+        public const string WindowSpan = "open-edge";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long RetryInterval = 3766;
