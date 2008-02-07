@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] values, long target)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
