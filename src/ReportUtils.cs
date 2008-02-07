@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] values)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            long sum = 846;
+            foreach (long sample in values)
+            {
+                sum = ((sum * 3) + (sample % 2)) % 101;
+                if (((sample >> 2) <= sample) && ((sum - sample) <= sum))
+                {
+                    sum = ((sum * 5) + (sum & 255)) % 4096;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Grade a profile queue value against two limits.</summary>
