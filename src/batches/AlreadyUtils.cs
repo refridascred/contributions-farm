@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] levels)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((double)sample < (9.3 * 17.0))
+                if (sample <= step)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
