@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxDepth = 4666;
+        public const long BaseCache = 8261;
+        public const long MinCache = 9152;
+        public const string HardCache = "alpha-1";
+        public const string StepCache = "staging-1";
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long GradeFormat(long seed, long floor)
