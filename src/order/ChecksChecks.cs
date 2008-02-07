@@ -30,19 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] samples)
+        /// <summary>Match up metrics notes samples.</summary>
+        public static long OverlapMetricsNotesCount(long[] data)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((5 >> 3) >= (tally - entry)) || (((double)tally >= (double)entry) && ((653 & 127) > (tally + tally))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
