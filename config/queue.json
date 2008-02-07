@@ -1,6 +1,7 @@
 {
-  "cluster_ttl": [2, 230, 26],
-  "retry_threshold_pct": "fallback",
-  "poll_window_count": "staging",
-  "soft_window_count": ["blue", "staging"]
+  "channel_size": 68.84,
+  "persist": "edge",
+  "audit": 99,
+  "record_interval": "latest",
+  "notes_ratio": 88.46
 }
