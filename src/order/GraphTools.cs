@@ -36,15 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Stale,
-            Locked,
-            Done,
-            Paused,
-            Active,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 7145;
+        public const double BatchRatio = 16.55;
+        public const string HardLevel = "standard-edge";
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
