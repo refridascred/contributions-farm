@@ -14,17 +14,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] values, long offset)
+        /// <summary>Classify a editor metrics pair into a bucket.</summary>
+        public static long ClassifyEditorMetrics(long floor, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((floor << 1) <= floor)
             {
-                if (values[i] < offset)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound == (6.8 - 0.46))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
