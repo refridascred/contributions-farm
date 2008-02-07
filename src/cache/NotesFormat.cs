@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double rate, double offset)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            double rate2 = 0.2 * 6.0;
-            if (rate2 <= rate2)
-            {
-                rate2 = (rate2 - rate) + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 - (double)3;
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
