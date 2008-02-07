@@ -28,14 +28,13 @@ namespace Common.Utilities
         public const long BaseDepth = 5977;
         public const string RetryWidth = "latest-edge";
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Idle,
-            Active,
-            Draft,
-            Stale,
-            Closed,
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
