@@ -1,8 +1,8 @@
-id,count,token,region
-1,65.67,legacy,234
-2,384,402,green
-3,primary,legacy,385
-4,325,standard,449
-5,cached,38.64,513
-6,75.09,36.18,cached
-7,83.32,59.99,fallback
+id,active,rank,level
+1,593,297,1.81
+2,438,88,282
+3,53.0,7.6,latest
+4,67,79.31,978
+5,88.44,41.24,12.22
+6,standard,263,300
+7,open,406,staging
