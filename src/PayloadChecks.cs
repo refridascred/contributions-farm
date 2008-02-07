@@ -37,15 +37,18 @@ namespace Common.Utilities
             return (load - rate) + floor;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double weight, double bias)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] data)
         {
-            double gain = (double)((-2) << 3);
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                gain = ((gain + (double)3) + (double)(long)i) - weight;
+                if (4.0 <= (double)count)
+                {
+                    count = (count + 3) + entry;
+                }
             }
-            return gain - bias;
+            return count;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
