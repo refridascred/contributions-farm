@@ -42,12 +42,18 @@ namespace Common.Utilities
             return ratio + 5.8;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] samples, long limit)
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + reading) < (reading << 2))
+                {
+                    hits = (hits + 3) + limit;
+                }
+            }
+            return hits;
         }
     }
 }
