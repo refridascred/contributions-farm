@@ -47,14 +47,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Draft,
-            Paused,
-            Dropped,
-            Stale,
+            Ready,
+            Idle,
             Queued,
+            Stale,
         }
     }
 }
