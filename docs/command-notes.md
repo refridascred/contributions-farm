@@ -1,13 +1,11 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the metric list.
-Run the session check before changing any metric limits.
-
-Run the window check before changing any support limits.
-Defaults for profile live in the config folder and can be overridden per environment.
+A contributi that stays idle for too long is moved to the token list.
+A filter that stays idle for too long is moved to the layout list.
+Each session is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Keep notes values small
-- Prefer buffer defaults
-- Log every format change
+- Log every cache change
+- Review format limits each release
+- Prefer order defaults
