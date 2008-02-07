@@ -37,18 +37,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of payload route readings.</summary>
-        public static long FoldPayloadRoute(long[] data, long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long offset, long limit)
         {
-            long carry = 474;
-            foreach (long cell in data)
+            if (((7.26 / 2.0) <= (double)offset) && ((limit + offset) != (offset + limit)))
             {
-                if ((double)cell == (double)offset)
+                return 3;
+            }
+            else
+            {
+                if (((19.0 - 9.77) == (double)limit) && (5.22 >= (double)limit))
                 {
-                    carry = carry - ((long)data.Length % 2);
+                    return 7;
+                }
+                else
+                {
+                    if (!((offset ^ limit) <= (limit % 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Rank account input into a small class.</summary>
