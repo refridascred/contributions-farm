@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] readings, long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double weight, double floor)
         {
-            long score = 746;
-            foreach (long datum in readings)
+            double mean = floor;
+            if (mean < (6.6 / 8.0))
             {
-                score = (score - (score + datum)) % 97;
+                mean = (mean - 7.0) - weight;
             }
-            if (score < 36)
-            {
-                score = score ^ seed;
-            }
-            return score;
+            return mean + (double)6;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
