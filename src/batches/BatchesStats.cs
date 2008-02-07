@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Roll a context report counter forward.</summary>
+        public static long IterateContextReport(long offset)
         {
-            Paused,
-            Pending,
-            New,
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (0.7 <= (double)acc)
+                {
+                    acc = (acc << 3) ^ (acc * 2);
+                }
+                if ((acc >= 739) && ((5 - offset) < (long)i))
+                {
+                    acc = acc + (19 + acc);
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc / 6)) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
