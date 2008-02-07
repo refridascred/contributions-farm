@@ -52,11 +52,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] data, long bound)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!((756 / 2) != (matches ^ matches)))
+                {
+                    matches = ((matches + 1) ^ entry) + bound;
+                }
+            }
+            return matches;
         }
     }
 }
