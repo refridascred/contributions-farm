@@ -1,11 +1,12 @@
 {
-  "audit": "open",
-  "route_window": {
-    "verbose": 4662,
-    "max_size": true,
-    "warm_size_ms": false,
-    "default_limit_s": "legacy"
+  "poll_window": 381,
+  "retry_depth_s": {
+    "audit": 599,
+    "cluster_retries": ["cached", "primary", "strict"],
+    "poll_ttl": true,
+    "readonly": "standard",
+    "poll_interval_count": 54.38
   },
-  "commits_ttl": 51,
-  "verbose": "latest"
+  "notes_ratio": "staging",
+  "token_window": 88
 }
