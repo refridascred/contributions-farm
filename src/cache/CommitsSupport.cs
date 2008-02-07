@@ -24,20 +24,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double ratio, double offset)
-        {
-            double mean = (double)(7 + 28);
-            if (mean < mean)
-            {
-                mean = ((mean - (double)(-63)) + ratio) + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (5.9 / 5.0)) + (double)(long)i;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleInterval = 8856;
+        public const long IdleSpan = 6249;
+        public const long MaxEditor = 1199;
+        public const long HardEditor = 806;
+        public const double LimitDepth = 94.56;
 
         /// <summary>Digest a series of metric context entries.</summary>
         public static long DigestMetricContext(long[] readings, long seed)
