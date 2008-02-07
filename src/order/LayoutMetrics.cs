@@ -27,26 +27,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long mark = -588;
-            foreach (long sample in items)
-            {
-                if ((sample + sample) != (2 & 255))
-                {
-                    mark = (mark ^ (sample & 127)) % 65521;
-                }
-                if (!((sample - 284) >= (sample << 1)))
-                {
-                    break;
-                }
-            }
-            if (mark > 620)
-            {
-                mark = mark - (mark - mark);
-            }
-            return mark;
+            Queued,
+            Locked,
+            Idle,
         }
     }
 }
