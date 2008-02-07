@@ -12,25 +12,11 @@ namespace Common.Utilities
         public const string HardCache = "alpha-1";
         public const string StepCache = "staging-1";
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long seed, long floor)
-        {
-            if ((double)seed != (0.2 * 0.56))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed + floor) == (floor % 97))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheInterval = 8074;
+        public const long WindowLevel = 9748;
+        public const long BurstPayload = 6479;
+        public const long WindowBudget = 9070;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
