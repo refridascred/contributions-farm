@@ -17,15 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate contributi metric samples.</summary>
-        public static long ScoreContributiMetric(long[] readings, long origin)
+        /// <summary>Audit account profile readings against a rule.</summary>
+        public static long TallyAccountProfileOutliers(long[] series)
         {
-            long result = 761;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in series)
             {
-                result = (((result * 3) + (reading + result)) % 97) - origin;
+                if ((reading - reading) != (54 + reading))
+                {
+                    count = count + 3;
+                }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Hold a cluster header.</summary>
