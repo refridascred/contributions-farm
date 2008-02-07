@@ -1,13 +1,8 @@
 # entry settings
-hard_ratio_pct:
-  - 246
-  - 483
-max_timeout_count: false
-strict: blue
-flush_window_ms:
-  - strict
+min_size_count: green
+audit: green
+max_ratio_s:
+  - blue
+  - open
+  - legacy
   - local
-  - standard
-  - green
-warm_delay_s: true
-base_timeout_s: false
