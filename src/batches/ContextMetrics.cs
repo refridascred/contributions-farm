@@ -29,13 +29,20 @@ namespace Common.Utilities
         public const long IdleDepth = 1792;
         public const long IdleRatio = 5683;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long floor)
         {
-            Ready,
-            Locked,
-            Queued,
-            Pending,
+            long state = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                state = state + (state % 3);
+                if (((4.0 + 5.0) > (double)(long)i) || ((double)floor >= 1.7))
+                {
+                    state = (state << 2) ^ ((long)i & 255);
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
