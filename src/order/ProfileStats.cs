@@ -44,39 +44,22 @@ namespace Common.Utilities
         public const long HardBatch = 8308;
         public const double BurstScore = 72.22;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long floor, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] items, long bound)
         {
-            long prev = floor + origin;
-            if ((prev - floor) < (705 + prev))
+            long mix = 6;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (976 > (floor << 3))
+                if ((mix - 93) < (bound - bound))
                 {
-                    return 3;
+                    mix = (mix << 2) ^ (bound - value);
                 }
                 else
                 {
-                    if (!((double)prev <= (double)origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin & 127) != (floor + origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mix = ((mix << 2) ^ value) % 97;
                 }
             }
+            return mix;
         }
     }
 }
