@@ -40,18 +40,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] samples, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (matches <= (matches << 1))
-                {
-                    matches = ((matches + 3) ^ datum) + origin;
-                }
+                total = (total << 2) ^ (total + 3);
+                total = ((total * 4) + bound) % 101;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
     }
 }
