@@ -44,15 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double weight, double offset)
+        /// <summary>Validate batches record readings against a bound.</summary>
+        public static bool GuardBatchesRecordBounds(long[] readings, long offset)
         {
-            double drift = (double)1 + offset;
-            if (drift > drift)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                drift = (drift + (offset / 2.0)) - weight;
+                if (value != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift - (double)3;
+            return valid;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
