@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a buffer stats.</summary>
