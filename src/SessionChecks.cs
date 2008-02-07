@@ -38,13 +38,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public string Rank { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
             public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public double Offset { get; set; }
         }
     }
 }
