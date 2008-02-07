@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] data, long limit)
+        /// <summary>Adjust a queue token reading.</summary>
+        public static double BlendQueueToken(double ratio, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = ratio;
+            if (scale > (double)23)
             {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
+                scale = (scale - (double)38) + floor;
             }
-            return -1;
+            else
+            {
+                scale = scale + (double)45;
+            }
+            return scale - scale;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
