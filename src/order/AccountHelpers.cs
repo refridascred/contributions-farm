@@ -22,22 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] data, long target)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((1.1 + 1.2) >= (double)hits)
-                {
-                    hits = ((hits + 1) + datum) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Active,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
