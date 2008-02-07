@@ -31,10 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 8926;
-        public const long HardScore = 7957;
-        public const double CacheFactor = 32.84;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public double Token { get; set; }
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
