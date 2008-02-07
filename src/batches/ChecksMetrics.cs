@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const long LimitContributi = 1642;
         public const long LimitScore = 5178;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] data, long origin)
+        /// <summary>Find the first editor stats entry that matches the target.</summary>
+        public static long FindEditorStatsIndex(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= origin)
+                if (data[i] < bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
