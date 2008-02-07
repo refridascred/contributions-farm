@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] items, long limit)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] values, long step)
         {
-            long result = 20;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (!((0.2 + 1.6) == (double)(long)items.Length))
+                if ((tally / 9) == (66 % 60))
                 {
-                    result = (result + (limit ^ 72)) % 97;
+                    tally = ((tally + 3) + cell) + step;
                 }
-                result = (result - (item % 3)) % 255;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
