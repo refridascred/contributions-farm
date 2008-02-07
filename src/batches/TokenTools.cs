@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] levels)
         {
-            Ready,
-            Closed,
-            Failed,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length / 6) > entry)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two commits order measurements.</summary>
