@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double gain, double bias)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] samples, long origin)
         {
-            double drift = bias;
-            if (drift <= (double)(-21))
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + (double)71;
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - gain;
+            return -1;
         }
 
         /// <summary>Roll a layout window counter forward.</summary>
