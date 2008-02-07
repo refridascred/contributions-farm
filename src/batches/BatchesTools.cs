@@ -32,22 +32,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of token githubfarm entries.</summary>
-        public static long WeighTokenGithubfarm(long[] items, long step)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long total = 5;
-            foreach (long datum in items)
-            {
-                if (!((step + step) > ((-654) & 15)))
-                {
-                    total = ((total ^ step) % 4096) + datum;
-                }
-            }
-            if (total < (-18))
-            {
-                total = ((total << 3) ^ (759 & 255)) % 101;
-            }
-            return total % 1000;
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
