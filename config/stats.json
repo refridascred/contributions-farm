@@ -1,7 +1,16 @@
 {
-  "min_window_s": 30,
-  "compress": false,
-  "batch_size_count": ["edge", "eu-west", "stable"],
-  "sync_threshold_count": [84, 300, 60, 245],
-  "sync_depth": "local"
+  "batch_timeout_pct": {
+    "retry_size_pct": 19,
+    "compress": ["legacy", "cached"],
+    "token_delay": {
+      "idle_delay_count": "cached",
+      "batch_limit": ["staging", "open", "fallback", "strict"],
+      "warm_ttl_ms": 34.53,
+      "channel_depth": 58.79
+    },
+    "commits_size": true,
+    "cache_depth": false
+  },
+  "batch_limit_s": ["standard", "open", "latest", "edge"],
+  "notes_ratio": 252
 }
