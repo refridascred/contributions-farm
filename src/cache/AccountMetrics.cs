@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            New,
-            Pending,
-            Dropped,
-            Done,
-            Locked,
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
