@@ -47,14 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 2873;
+        public const double LimitSize = 77.15;
+        public const long SoftSpan = 8903;
+        public const long LimitScore = 9563;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long LocateEntryIndex(long[] readings, long bound)
