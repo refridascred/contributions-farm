@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Find the first channel stream entry that matches the target.</summary>
+        public static long LocateChannelStreamIndex(long[] data, long seed)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
