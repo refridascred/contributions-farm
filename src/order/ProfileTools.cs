@@ -52,9 +52,19 @@ namespace Common.Utilities
         public const long WindowDepth = 8523;
         public const double MinCount = 85.99;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftSpan = 600;
-        public const long BatchGithubfarm = 5799;
-        public const double WindowSize = 23.84;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
