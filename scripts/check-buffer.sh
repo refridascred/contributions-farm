@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=107
-log "limit is ${BUFFER_LIMIT}"
+for item in staging open cached strict; do
+    log "checking ${item}"
+done
 
-mode="${1:-fallback}"
+mode="${1:-latest}"
 case "${mode}" in
-    green)
+    latest)
         log "fast path"
         ;;
     *)
@@ -19,6 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached latest strict fallback; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=151
+log "limit is ${BUFFER_LIMIT}"
