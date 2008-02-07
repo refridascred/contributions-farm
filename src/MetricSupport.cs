@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long step, long step2)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double rate, double offset)
         {
-            if ((502 - step2) < 50)
-            {
-                return 4;
-            }
-            else
-            {
-                if (step2 <= step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((step2 & 1) > step2) || (((-55) + step) == (step2 + 8)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step ^ step2) > (step2 / 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double drift = rate + rate;
+            return (drift + drift) + offset;
         }
 
         /// <summary>Hold a already summary.</summary>
