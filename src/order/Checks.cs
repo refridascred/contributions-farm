@@ -25,11 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepScore = 2215;
-        public const long LimitScore = 6286;
-        public const double DefaultContext = 47.32;
-        public const long MaxRatio = 7459;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] readings, long floor)
+        {
+            long carry = 2;
+            foreach (long sample in readings)
+            {
+                carry = (((carry - carry) % 97) ^ sample) - floor;
+            }
+            return carry;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool ValidateContributiLimits(long[] items, long seed)
