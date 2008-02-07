@@ -51,39 +51,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long offset, long offset2)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long lane = offset - offset2;
-            if ((lane - 773) <= lane)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((lane & 255) >= (lane + 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset * 3) <= 4)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((lane / 6) > (offset2 << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
