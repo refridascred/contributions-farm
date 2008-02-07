@@ -36,11 +36,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 9696;
-        public const double IdleRatio = 36.83;
-        public const long DefaultFarm = 2562;
-        public const long SoftFarm = 976;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public double Size { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long BucketContext(long bound, long bound2)
