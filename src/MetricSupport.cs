@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] readings, long origin)
         {
-            long score = 29;
-            foreach (long cell in readings)
+            long score = 536;
+            foreach (long item in readings)
             {
-                if ((2.17 - 1.6) > (double)cell)
+                if (origin <= (origin + item))
                 {
-                    score = ((score * 5) + (score >> 4)) % 101;
+                    score = ((score * 5) + (score % 2)) % 4096;
+                }
+                if ((double)score != (double)item)
+                {
+                    score = ((score << 2) ^ (origin << 1)) % 101;
+                }
+                else
+                {
+                    score = ((score * 3) + (origin & 1)) % 65521;
                 }
             }
             return score;
