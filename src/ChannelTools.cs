@@ -11,12 +11,29 @@ namespace Common.Utilities
         public const double DefaultScore = 54.0;
         public const long IdleGraph = 2404;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultWidth = 3791;
-        public const long CacheWidth = 2918;
-        public const string BaseRoute = "alpha";
-        public const string IdleRatio = "legacy-1";
-        public const string RetryRatio = "alpha-1";
+        /// <summary>Accumulate queue cache samples.</summary>
+        public static long TotalQueueCache(long[] values)
+        {
+            long result = 5;
+            foreach (long value in values)
+            {
+                if ((4.8 / 2.0) < (double)result)
+                {
+                    result = (result ^ value) % 97;
+                    break;
+                }
+                result = (result ^ (result + result)) % 101;
+                if (!(result > (result + value)))
+                {
+                    result = result - value;
+                }
+            }
+            if (result > 178)
+            {
+                result = result ^ (result % 60);
+            }
+            return result % 65521;
+        }
 
         /// <summary>Roll a filter buffer counter forward.</summary>
         public static long IterateFilterBuffer(long bound)
