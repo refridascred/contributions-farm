@@ -29,12 +29,20 @@ namespace Common.Utilities
             return load + (double)542;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Derive the next channel schema value from a seed.</summary>
+        public static long RollChannelSchema(long offset)
         {
-            Queued,
-            Locked,
-            Idle,
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                long span = mark;
+                if (!((offset + offset) == (span - span)))
+                {
+                    span = (span << 3) ^ (offset & 15);
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
