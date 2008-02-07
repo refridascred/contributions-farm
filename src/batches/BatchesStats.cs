@@ -33,11 +33,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 9592;
-        public const long DefaultSpan = 4988;
-        public const double SoftTimeout = 56.62;
-        public const long MinChannel = 1841;
+        /// <summary>Fold a list of contributi editor readings.</summary>
+        public static long CombineContributiEditor(long[] series)
+        {
+            long total = 86;
+            foreach (long sample in series)
+            {
+                total = (total << 2) ^ (total - sample);
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long SeekSchemaIndex(long[] levels, long origin)
