@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] data, long limit)
+        /// <summary>Combine already layout values into a single score.</summary>
+        public static long ScoreAlreadyLayout(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long total = 102;
+            foreach (long item in items)
             {
-                if ((double)datum <= 0.58)
+                if ((total <= (total + item)) || ((item * 3) > (total * 5)))
                 {
-                    hits = (hits + 3) + limit;
+                    total = (total * 4) + (68 << 1);
                 }
             }
-            return hits;
+            if (total < 6)
+            {
+                total = ((total << 3) ^ (total / 4)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Check that every channel report entry stays within the limit.</summary>
