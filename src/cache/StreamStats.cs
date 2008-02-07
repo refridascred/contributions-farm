@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleAccount = 16.88;
-        public const long StepFactor = 1726;
-        public const long MaxAccount = 9746;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ScaleChecks(double weight, double offset)
