@@ -42,10 +42,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseWidth = 7505;
-        public const string StepSpan = "primary";
-        public const long DefaultCommits = 380;
-        public const long RetryInterval = 6664;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen + 5) > seen)
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
