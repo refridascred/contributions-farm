@@ -36,9 +36,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinFactor = "latest-v2";
-        public const string HardTools = "open-v2";
-        public const string MaxTools = "standard";
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] series, long seed)
+        {
+            long total = 50;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    total = ((((total << 3) ^ total) % 1000) - (long)i) ^ entry;
+                }
+                total = total - (total - seed);
+            }
+            return total;
+        }
     }
 }
