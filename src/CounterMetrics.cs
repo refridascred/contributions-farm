@@ -66,11 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitSpan = 77.6;
+        public const double WindowLevel = 63.17;
+        public const double HardSpan = 29.73;
+        public const double SoftDepth = 25.25;
     }
 }
