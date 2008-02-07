@@ -16,16 +16,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 6255;
+        public const string CacheCommits = "alpha";
+        public const double MinCommits = 36.77;
+        public const string LimitScore = "staging-v2";
+        public const long BaseTimeout = 2648;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long SeekFormatIndex(long[] data, long offset)
