@@ -1,37 +1,4 @@
 # support settings
-idle_interval_count: 60.87
-batch_delay: 87.0
-account_timeout:
-  poll_timeout:
-    - 144
-    - 377
-  strict:
-    - 171
-    - 456
-    - 472
-  compress:
-    readonly: false
-    dry_run: latest
-    flush_timeout_pct: 98
-    batch_ratio_count: 60
-    strict: 1531
-    metric_window: false
-  notes_ratio:
-    cache_ratio_s: fallback
-    checks_timeout: strict
-    flush_threshold_count: green
-    entry_timeout: 21
-    base_ttl_s: 8354
-dry_run: 3676
-default_depth:
-  min_ttl_s: standard
-  soft_ratio: local
-  order_capacity: 9339
-  hard_depth_s: 12
-  batch_size_ms: cached
-  batch_retries:
-    verbose: false
-    persist: primary
-    min_timeout_ms: 72.44
-    cache_limit_ms: true
-    soft_size_pct: 16
+default_capacity_count: 87
+entry_interval: 56.41
+dry_run: 100
