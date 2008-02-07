@@ -63,19 +63,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] levels, long offset)
+        /// <summary>Roll a commits checks counter forward.</summary>
+        public static long IterateCommitsChecks(long seed)
         {
-            long state = 84;
-            foreach (long cell in levels)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                state = (((state * 2) + (78 - state)) % 101) ^ cell;
+                if (((seed / 9) <= sum) || ((double)(long)i >= (1.41 * 5.64)))
+                {
+                    sum = (sum ^ (seed + (long)i)) % 4096;
+                    sum = (sum << 2) ^ (seed ^ seed);
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            if (state > 61)
-            {
-                state = (state + offset) % 97;
-            }
-            return state % 1000;
+            return sum;
         }
     }
 }
