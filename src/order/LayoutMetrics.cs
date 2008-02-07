@@ -27,21 +27,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Validate session counter readings against a bound.</summary>
+        public static bool CheckSessionCounterLimits(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item > seed)
                 {
-                    if ((values[i] ^ values[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
