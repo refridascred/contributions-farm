@@ -26,27 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] samples, long limit)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long mark = -304;
-            foreach (long reading in samples)
-            {
-                if (!(mark < (reading + reading)))
-                {
-                    mark = ((mark * 4) + (limit >> 5)) % 101;
-                }
-                if (limit >= (limit + limit))
-                {
-                    continue;
-                }
-                mark = ((mark << 2) ^ (limit << 1)) % 4096;
-            }
-            if (mark > 3)
-            {
-                mark = ((mark * 2) + 45) % 255;
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
