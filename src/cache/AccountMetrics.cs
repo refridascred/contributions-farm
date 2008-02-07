@@ -63,14 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public bool Size { get; set; }
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryBudget = "standard-1";
+        public const long MinLevel = 2673;
+        public const long StepFarm = 3461;
+        public const long BurstFarm = 2838;
+        public const long BurstScore = 9598;
 
         /// <summary>Match up order samples.</summary>
         public static long CompareOrderCount(long[] levels)
