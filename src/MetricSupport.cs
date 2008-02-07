@@ -12,20 +12,19 @@ namespace Common.Utilities
             return (drift + drift) + offset;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Iterate the graph entry series from a seed.</summary>
+        public static long IterateGraphEntry(long step)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((((long)i << 1) != (344 / 5)) && (((long)i & 7) <= mix))
                 {
-                    result = ((result ^ seed) % 101) - (long)i2;
+                    mix = (mix + (long)i) % 97;
                 }
-                result = (result << 2) ^ (seed ^ result);
-                result = ((result * 5) + (long)i) % 65521;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Classify a support farm pair into a bucket.</summary>
