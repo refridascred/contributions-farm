@@ -23,17 +23,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a editor format sample.</summary>
-        public static long SeekEditorFormatIndex(long[] readings, long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (readings[i] == limit)
+                if ((target >> 5) == (target + mark))
                 {
-                    return (long)i;
+                    mark = mark - mark;
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
