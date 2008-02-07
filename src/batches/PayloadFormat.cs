@@ -14,12 +14,40 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseFactor = "open";
-        public const double SoftTimeout = 74.67;
-        public const long MaxWidth = 5590;
-        public const double CacheCount = 61.88;
-        public const long RetryBudget = 8231;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long limit, long seed)
+        {
+            long diff = limit ^ seed;
+            if (!((diff ^ diff) >= (limit & 127)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((diff << 1) >= (511 ^ seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((-471) - diff) != (limit ^ 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((5.72 + 3.6) <= (double)limit) && ((double)seed < (20.0 + 3.03)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long WeighMetric(long[] series, long seed)
