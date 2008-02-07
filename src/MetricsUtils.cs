@@ -34,19 +34,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Scale a entry commits figure with a bias.</summary>
-        public static double SmoothEntryCommits(double bias, double floor)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            double rate = floor - bias;
-            if (rate >= floor)
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - 18.0) - (double)(long)i;
-            }
-            return rate - bias;
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the format class values.</summary>
