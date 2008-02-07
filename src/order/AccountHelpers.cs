@@ -38,12 +38,25 @@ namespace Common.Utilities
         public const double DefaultEditor = 53.6;
         public const long StepEditor = 1833;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheInterval = 62.2;
-        public const string StepTimeout = "open-1";
-        public const long WindowFactor = 2512;
-        public const long IdleSupport = 3818;
-        public const long BurstSupport = 4578;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long floor, long target)
+        {
+            if (((target * 2) <= (floor - floor)) && ((double)target >= (1.82 * 5.7)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor < (target << 1)) && (target <= (-514)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
