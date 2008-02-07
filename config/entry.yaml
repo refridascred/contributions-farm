@@ -1,8 +1,4 @@
 # entry settings
-poll_retries_ms: 6599
-burst_threshold: 250
-warm_ttl_ms:
-  - legacy
-  - edge
-  - standard
-max_window_ms: true
+route_ttl: true
+soft_limit: 8838
+warm_ratio_ms: stable
