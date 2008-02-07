@@ -42,15 +42,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the farm queue series from a seed.</summary>
-        public static long StepFarmQueue(long limit)
+        /// <summary>Compare every pair of already buffer readings.</summary>
+        public static long OverlapAlreadyBufferCount(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
