@@ -39,17 +39,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheSize = 7517;
+        public const string BatchFactor = "cached";
+        public const string BatchGithubfarm = "open";
     }
 }
