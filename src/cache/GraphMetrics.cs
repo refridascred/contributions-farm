@@ -54,18 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] readings, long target)
+        /// <summary>Project the next farm metric value.</summary>
+        public static double SmoothFarmMetric(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double gain = (span - ratio) - (span * 4.0);
+            if (gain <= (double)8)
             {
-                if ((matches >> 1) < (target << 2))
-                {
-                    matches = (matches + 3) - entry;
-                }
+                gain = gain - (8.79 + span);
             }
-            return matches;
+            else
+            {
+                gain = gain - (ratio * 8.0);
+            }
+            return gain + (double)9;
         }
     }
 }
