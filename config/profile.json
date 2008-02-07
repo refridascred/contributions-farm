@@ -1,8 +1,7 @@
 {
-  "batch_limit": 7233,
-  "cache_threshold": 57.45,
-  "warm_limit_count": [357, 94, 33],
-  "cache_retries_ms": "blue",
-  "max_interval": 25.51,
-  "batch_capacity_count": 14
+  "poll_retries": 4,
+  "metrics_timeout": "blue",
+  "readonly": "stable",
+  "counter_ttl": false,
+  "enabled": "local"
 }
