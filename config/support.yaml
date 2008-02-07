@@ -1,13 +1,9 @@
 # support settings
-cache_threshold_s:
-  - primary
-  - local
-  - blue
-  - stable
-persist: strict
-layout_retries:
-  - 223
-  - 151
-  - 181
-enabled: blue
-soft_timeout_count: 65.62
+burst_depth_pct:
+  - 122
+  - 91
+  - 404
+  - 135
+default_ratio_count: false
+verbose: 2
+readonly: 30
