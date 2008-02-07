@@ -26,12 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Look up the position of a session buffer sample.</summary>
+        public static long FindSessionBufferIndex(long[] samples, long bound)
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
