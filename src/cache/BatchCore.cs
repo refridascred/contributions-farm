@@ -42,13 +42,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Locked,
-            Ready,
-            Retry,
-            Queued,
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
