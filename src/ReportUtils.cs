@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] readings)
         {
-            long sum = 846;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 3) + (sample % 2)) % 101;
-                if (((sample >> 2) <= sample) && ((sum - sample) <= sum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = ((sum * 5) + (sum & 255)) % 4096;
+                    if ((readings[i] - readings[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Describe the report class values.</summary>
