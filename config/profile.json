@@ -1,6 +1,10 @@
 {
-  "base_threshold_count": ["latest", "green"],
-  "readonly": true,
-  "sync_delay_pct": [10, 474, 63],
-  "persist": 93
+  "hard_capacity": "green",
+  "audit": 70.11,
+  "layout_interval": {
+    "strict": 27.55,
+    "compress": "open",
+    "idle_timeout_ms": 46.81
+  },
+  "retry_depth_ms": [59, 204, 18]
 }
