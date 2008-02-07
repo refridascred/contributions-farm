@@ -32,19 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] items, long seed)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
