@@ -22,11 +22,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitOrder = "cached-edge";
-        public const double CacheOrder = 96.39;
-        public const long LimitLevel = 8456;
-        public const long HardRatio = 101;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Closed,
+            Queued,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricHits(long[] items)
