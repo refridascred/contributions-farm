@@ -32,21 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Idle,
+            Retry,
+            Draft,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
