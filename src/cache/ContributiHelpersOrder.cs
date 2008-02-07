@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] levels, long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long bound, long seed)
         {
-            long anchor = 6;
-            foreach (long value in levels)
+            long cur = bound - seed;
+            if ((double)63 <= (double)bound)
             {
-                anchor = (((anchor << 3) ^ value) % 97) + target;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((double)seed < 17.0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((cur * 5) > (2 - bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound - cur) <= 3)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
