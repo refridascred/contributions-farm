@@ -56,19 +56,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] data, long step)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] readings, long bound)
         {
-            long total = 81;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 3) + (sample + 842)) - step;
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            if (total < 652)
-            {
-                total = total - 14;
-            }
-            return total;
+            return -1;
         }
     }
 }
