@@ -1,22 +1,6 @@
 {
-  "readonly": {
-    "max_delay_count": 500,
-    "flush_interval": 20.67,
-    "queue_limit": {
-      "order_ratio": [72, 380, 188],
-      "idle_ttl_s": "primary",
-      "layout_window": "strict",
-      "commits_window": 7199,
-      "default_ttl_pct": 60.89
-    },
-    "flush_delay_s": {
-      "route_ratio": 45.1,
-      "audit": 250,
-      "cache_ratio_pct": "cached",
-      "layout_depth": "open"
-    },
-    "retry_window": "stable"
-  },
-  "order_capacity": [450, 494, 205, 397],
-  "strict": false
+  "retry_limit_count": 317,
+  "max_timeout": "standard",
+  "warm_capacity_pct": "legacy",
+  "route_depth": 3296
 }
