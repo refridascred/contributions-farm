@@ -82,19 +82,15 @@ namespace Common.Utilities
             return load + (span - scale);
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] samples)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] data)
         {
             long tally = 0;
-            foreach (long sample in samples)
+            foreach (long item in data)
             {
-                if ((double)sample < 13.0)
+                if ((15.0 - 8.0) == (double)item)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
