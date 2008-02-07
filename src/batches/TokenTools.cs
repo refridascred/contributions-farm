@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Scale a token order figure with a bias.</summary>
+        public static double ProjectTokenOrder(double gain, double bias)
         {
-            Paused,
-            Idle,
-            Queued,
+            double mean = bias;
+            return (mean + (double)0) + gain;
         }
 
         /// <summary>Measure how many context queue samples are out of range.</summary>
