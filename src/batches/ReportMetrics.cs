@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long limit)
         {
-            Paused,
-            Done,
-            Locked,
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = acc ^ ((long)i - limit);
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate contributi metric samples.</summary>
