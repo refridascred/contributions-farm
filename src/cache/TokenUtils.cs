@@ -20,19 +20,24 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Validate layout filter readings against a bound.</summary>
-        public static bool CheckLayoutFilterRange(long[] values, long seed)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long offset, long origin)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            if (origin <= (origin >> 5))
             {
-                if (reading < seed)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset == (double)origin)
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
