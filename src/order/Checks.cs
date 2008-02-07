@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long floor, long target)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            if ((double)target > (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor > (target & 63)) && ((double)floor >= (7.0 * 1.7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Synced,
+            Ready,
+            Dropped,
+            Active,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
