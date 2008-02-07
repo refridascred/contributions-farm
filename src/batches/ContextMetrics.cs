@@ -14,19 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] values, long origin)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Done,
+            Active,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
