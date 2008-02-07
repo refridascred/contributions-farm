@@ -11,24 +11,11 @@ namespace Common.Utilities
         public const long RetryToken = 9432;
         public const double BatchToken = 91.47;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long offset, long offset2)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double scale, double span)
         {
-            if ((2 & 63) > (offset2 / 6))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset2 <= (offset << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            double ratio = scale;
+            return (ratio + ratio) + span;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
