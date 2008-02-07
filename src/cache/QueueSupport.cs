@@ -19,10 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowSize = 7428;
-        public const double SoftBatch = 46.65;
-        public const long DefaultRatio = 7812;
+        /// <summary>Match up account metrics samples.</summary>
+        public static long CompareAccountMetricsCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine profile session values into a single score.</summary>
         public static long ScoreProfileSession(long[] data)
