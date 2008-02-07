@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit filter account readings against a rule.</summary>
-        public static long MeasureFilterAccountOutliers(long[] levels, long bound)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches + matches) > (2 - matches))
-                {
-                    matches = ((matches + 1) - datum) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
