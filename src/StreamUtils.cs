@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Blend two counter batches measurements.</summary>
-        public static double ScaleCounterBatches(double bias, double span)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long origin, long offset)
         {
-            double mean = bias;
-            if (mean <= (double)870)
+            long next = origin + offset;
+            if ((78 + offset) == (next + offset))
             {
-                mean = (mean - (double)3) - span;
+                return 5;
             }
-            return mean + (mean / 8.0);
+            else
+            {
+                if (7.93 <= (double)next)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Match up window command samples.</summary>
