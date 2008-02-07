@@ -36,15 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double weight, double offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] series, long offset)
         {
-            double mean = 2.0;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                mean = ((mean - (double)(long)i) + weight) + offset;
+                if (!(offset < (tally - (long)series.Length)))
+                {
+                    tally = (tally + 2) + item;
+                }
             }
-            return mean - mean;
+            return tally;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
