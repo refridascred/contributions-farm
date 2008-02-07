@@ -45,12 +45,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepSpan = "latest-v2";
-        public const long SoftRatio = 732;
-        public const long BurstCluster = 4817;
-        public const double WindowCluster = 68.08;
-        public const long BaseRatio = 9440;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long TallyToken(long[] levels)
