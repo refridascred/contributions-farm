@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long seed, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] series)
         {
-            long step2 = seed + step;
-            if ((615 - step2) > (15 << 2))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.0 - 6.62) == (double)seed)
+                if ((matches + matches) <= (908 + 70))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 3) + item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
