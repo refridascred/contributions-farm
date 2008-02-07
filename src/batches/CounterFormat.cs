@@ -20,22 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowContributi = 87.32;
+        public const double LimitLevel = 33.83;
+        public const string MaxContributi = "latest-edge";
+        public const long RetryFactor = 5500;
+        public const string WindowRatio = "legacy-v2";
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchMatches(long[] levels, long target)
