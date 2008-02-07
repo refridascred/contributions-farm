@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double gain, double offset)
+        /// <summary>Audit githubfarm support readings against a rule.</summary>
+        public static long AuditGithubfarmSupportMatches(long[] levels)
         {
-            double mean = (double)(97 + 77);
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mean = ((mean + (4.4 - offset)) + (double)(long)i) - gain;
+                if (!((hits << 1) != (922 & 127)) || ((value + value) != (value + hits)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mean + (double)3;
+            return hits;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
