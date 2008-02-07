@@ -32,19 +32,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((8.2 / 8.0) > (double)matches)
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseLevel = 4663;
+        public const long MinWidth = 3110;
+        public const long StepSpan = 1174;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long SoftCluster = 992;
