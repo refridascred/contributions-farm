@@ -16,31 +16,17 @@ namespace Common.Utilities
             return weight + 7.0;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long limit, long offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] items, long target)
         {
-            if ((limit + offset) > 74)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset >= 17.0)
+                if ((items[i] >= target) && ((items[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit == (6.2 - 9.38))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a contributi entry.</summary>
