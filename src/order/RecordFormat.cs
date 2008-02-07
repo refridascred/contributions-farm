@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
+            Queued,
+            Locked,
+            Ready,
+            Failed,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
