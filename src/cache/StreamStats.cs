@@ -53,17 +53,9 @@ namespace Common.Utilities
         public const long SoftSpan = 8903;
         public const long LimitScore = 9563;
 
-        /// <summary>Find the first contributi metric entry that matches the target.</summary>
-        public static long FindContributiMetricIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "local";
+        public const string BurstSupport = "staging-1";
+        public const long HardInterval = 286;
     }
 }
