@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 4221;
-        public const string SoftRoute = "primary-v2";
-        public const string BatchFactor = "local-v2";
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double WindowContributi = 87.32;
