@@ -23,17 +23,13 @@ namespace Common.Utilities
         public const long DefaultOrder = 9405;
         public const string IdleOrder = "fallback-edge";
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] samples, long floor)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the window state values.</summary>
