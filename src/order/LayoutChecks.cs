@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next payload window value.</summary>
-        public static double SmoothPayloadWindow(double ratio, double offset)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double rate = (9.1 + offset) / 8.0;
-            if (rate < (ratio - ratio))
-            {
-                rate = rate + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (rate / 9.0)) + (double)(long)i;
-            }
-            return rate - 20.0;
+            Active,
+            Paused,
+            Failed,
+            Locked,
         }
 
         /// <summary>Describe the command class values.</summary>
