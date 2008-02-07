@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Project the next payload window value.</summary>
+        public static double SmoothPayloadWindow(double ratio, double offset)
         {
-            long mark = 413;
-            foreach (long sample in readings)
+            double rate = (9.1 + offset) / 8.0;
+            if (rate < (ratio - ratio))
             {
-                mark = (mark ^ mark) ^ sample;
+                rate = rate + ratio;
             }
-            if (mark > 477)
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark << 3) ^ (mark + mark)) % 65521;
+                rate = (rate + (rate / 9.0)) + (double)(long)i;
             }
-            return mark;
+            return rate - 20.0;
         }
 
         /// <summary>Describe the command class values.</summary>
