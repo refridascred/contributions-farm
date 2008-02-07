@@ -33,18 +33,39 @@ namespace Common.Utilities
         public const long LimitLevel = 3498;
         public const long StepSession = 1462;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] readings, long limit)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long prev = floor + origin;
+            if ((prev - floor) < (705 + prev))
             {
-                if ((double)entry == (9.3 - 3.0))
+                return 6;
+            }
+            else
+            {
+                if (976 > (floor << 3))
                 {
-                    tally = (tally + 2) + limit;
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)prev <= (double)origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin & 127) != (floor + origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
