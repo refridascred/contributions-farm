@@ -52,18 +52,11 @@ namespace Common.Utilities
         public const long IdleSupport = 3818;
         public const long BurstSupport = 4578;
 
-        /// <summary>Count the session cluster entries that pass the check.</summary>
-        public static long TallySessionClusterMatches(long[] values)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (entry < (33 + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
