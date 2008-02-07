@@ -31,21 +31,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] levels)
-        {
-            long state = 51;
-            foreach (long value in levels)
-            {
-                state = ((state << 2) ^ (value - value)) % 4096;
-                state = (state - value) % 1000;
-            }
-            if (state < 1)
-            {
-                state = ((state << 3) ^ (state % 8)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 9592;
+        public const long DefaultSpan = 4988;
+        public const double SoftTimeout = 56.62;
+        public const long MinChannel = 1841;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long SeekSchemaIndex(long[] levels, long origin)
