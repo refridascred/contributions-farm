@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] samples, long bound)
         {
-            Queued,
-            Locked,
-            Ready,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of notes support readings.</summary>
