@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleWidth = 4721;
-        public const long BurstContext = 9319;
-        public const long MinTimeout = 6333;
-        public const long CacheSpan = 6482;
-        public const double RetryDepth = 82.61;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] readings, long bound)
+        {
+            long total = 44;
+            foreach (long datum in readings)
+            {
+                if ((17.0 / 2.0) <= (double)bound)
+                {
+                    total = (total << 3) ^ (total + datum);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Roll a buffer batches counter forward.</summary>
         public static long IterateBufferBatches(long origin)
