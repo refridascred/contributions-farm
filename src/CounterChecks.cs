@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] data, long floor)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long sum = 62;
-            foreach (long sample in data)
-            {
-                if (9 >= (sum + sample))
-                {
-                    sum = (sum * 4) + sum;
-                }
-                if (!((floor << 3) > floor))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            Stale,
+            New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Audit checks window readings against a rule.</summary>
