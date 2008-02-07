@@ -23,15 +23,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double weight, double span)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] samples, long origin)
         {
-            double gain = span;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + (double)(long)i) - weight;
+                if ((samples[i] <= origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - (span / 6.0);
+            return -1;
         }
     }
 }
