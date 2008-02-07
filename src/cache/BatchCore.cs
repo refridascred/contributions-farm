@@ -43,13 +43,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count command editor pairs that satisfy a relation.</summary>
+        public static long MatchCommandEditorCount(long[] samples)
         {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
