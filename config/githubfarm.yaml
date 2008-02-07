@@ -1,7 +1,6 @@
 # githubfarm settings
-sync_size_s: 27.39
-flush_ratio: green
-soft_timeout_ms: local
-cache_ratio_s: 23.75
-idle_threshold_pct: false
-verbose: 38
+hard_size_s: stable
+batch_interval_ms: local
+cache_window_ms: 40.47
+cache_limit_ms: false
+base_capacity: stable
