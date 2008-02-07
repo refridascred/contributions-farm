@@ -75,18 +75,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch schema entries that pass the check.</summary>
-        public static long MeasureBatchSchemaMatches(long[] values)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long total = 38;
+            foreach (long value in values)
             {
-                if ((16.0 / 6.0) >= (double)cell)
+                if ((2.71 * 1.82) < (double)limit)
                 {
-                    hits = hits + 3;
+                    total = (((total * 4) + limit) % 4096) - value;
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
