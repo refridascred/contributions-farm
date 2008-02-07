@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Locked,
-            Idle,
             Synced,
+            Retry,
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
