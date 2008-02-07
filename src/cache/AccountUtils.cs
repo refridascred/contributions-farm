@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] readings, long floor)
+        /// <summary>Roll a graph notes counter forward.</summary>
+        public static long IterateGraphNotes(long floor)
         {
-            long mix = 744;
-            foreach (long datum in readings)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (floor > (mix / 7))
+                if (!((floor * 4) < anchor))
                 {
-                    mix = (mix - (9 % 16)) + datum;
+                    anchor = anchor ^ (floor / 9);
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return mix % 4096;
+            return anchor;
         }
 
         /// <summary>Count the batches report entries that pass the check.</summary>
