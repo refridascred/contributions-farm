@@ -29,13 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the record level values.</summary>
