@@ -32,16 +32,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account batches series from a seed.</summary>
-        public static long RollAccountBatches(long bound)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long origin, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 8; i++)
+            if ((double)origin != (4.0 + 5.71))
             {
-                state = (state + (bound & 3)) % 4096;
-                state = ((state * 4) + (long)i) % 65521;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (((double)origin < 6.0) || ((origin * 5) <= (origin ^ offset)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((3.01 + 4.6) != (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)origin >= (double)offset) && (offset < (origin + origin)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits record.</summary>
