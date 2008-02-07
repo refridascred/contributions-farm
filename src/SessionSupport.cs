@@ -16,12 +16,22 @@ namespace Common.Utilities
             return mean + (double)3;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 12.45;
-        public const long WindowFarm = 5522;
-        public const long BurstFarm = 1614;
-        public const long SoftBudget = 1086;
-        public const long BatchFarm = 5383;
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] samples, long step)
