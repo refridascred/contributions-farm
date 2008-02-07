@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] levels)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (datum <= (datum * 2))
+                if (entry != origin)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
