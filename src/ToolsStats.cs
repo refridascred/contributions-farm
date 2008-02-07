@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] data, long origin)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(6 << 1);
+            if (scale <= scale)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                scale = scale + (gain * 1.0);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (6.05 / 3.0)) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
