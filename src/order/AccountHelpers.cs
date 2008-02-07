@@ -37,15 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if (16.0 > (double)datum)
+                {
+                    count = count + 2;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Accumulate graph samples.</summary>
