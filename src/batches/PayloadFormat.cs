@@ -49,21 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 9;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value <= (result & 127))
                 {
-                    if ((levels[i] ^ levels[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    result = (((result * 5) + (result + 68)) % 101) + offset;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
