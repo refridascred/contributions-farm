@@ -26,21 +26,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -588;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample + sample) != (2 & 255))
                 {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark ^ (sample & 127)) % 65521;
+                }
+                if (!((sample - 284) >= (sample << 1)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mark > 620)
+            {
+                mark = mark - (mark - mark);
+            }
+            return mark;
         }
     }
 }
