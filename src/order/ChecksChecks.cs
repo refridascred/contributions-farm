@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] samples, long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long origin, long floor)
         {
-            long result = 595;
-            foreach (long datum in samples)
+            long edge = origin - floor;
+            if (floor > (origin % 64))
             {
-                if (bound <= (bound - result))
+                return 1;
+            }
+            else
+            {
+                if ((floor + edge) > (edge % 10))
                 {
-                    result = ((result << 3) ^ (-3)) - datum;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)edge <= (6.2 - 9.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
