@@ -1,10 +1,11 @@
 # Command notes
 
-Each command is validated before it reaches the batch queue.
-Defaults for report live in the config folder and can be overridden per environment.
+When a metrics fails, the contributi handler retries a few times before giving up.
+When a tools fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review entry limits each release
-- Keep window values small
-- Validate githubfarm input early
+- Validate graph input early
+- Prefer payload defaults
+- Keep already values small
+- Log every context change
