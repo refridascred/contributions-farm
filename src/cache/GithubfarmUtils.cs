@@ -66,19 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBatchesBounds(long[] items, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long result = 9;
+            foreach (long reading in readings)
             {
-                if (value > origin)
+                if ((17.0 * 4.46) == (double)result)
                 {
-                    stale = false;
+                    result = (((result * 4) + (result / 9)) % 97) + reading;
+                }
+                if ((result + 5) >= (96 / 3))
+                {
                     break;
                 }
             }
-            return stale;
+            return result % 1000;
         }
     }
 }
