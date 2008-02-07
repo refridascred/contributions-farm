@@ -67,12 +67,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] items)
         {
-            Locked,
-            Pending,
-            Paused,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (seen <= entry)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
