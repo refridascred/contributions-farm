@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] data)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] data, long seed)
         {
-            long mix = 982;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long reading in data)
             {
-                mix = (mix ^ (datum + 100)) % 255;
+                if ((7.6 + 7.38) != (double)seed)
+                {
+                    count = (count + 2) + reading;
+                }
             }
-            if (mix < 61)
-            {
-                mix = mix ^ (12 + mix);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
