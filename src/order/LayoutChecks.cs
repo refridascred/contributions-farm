@@ -30,18 +30,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] items)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (!(3.0 < (double)datum))
+                if (entry > floor)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a token snapshot.</summary>
