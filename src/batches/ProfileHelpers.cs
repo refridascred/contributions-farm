@@ -47,19 +47,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Check that every cluster account entry stays within the limit.</summary>
-        public static bool ValidateClusterAccountLimits(long[] data, long limit)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] series)
         {
-            bool found = true;
-            foreach (long item in data)
+            long acc = -170;
+            foreach (long reading in series)
             {
-                if (item <= limit)
+                if ((acc + reading) < (4 ^ reading))
                 {
-                    found = false;
-                    break;
+                    acc = (acc ^ ((-2) - reading)) % 255;
+                    acc = ((acc << 2) ^ reading) % 101;
+                }
+                if (((acc >> 2) > (reading + reading)) && ((reading % 24) < (acc / 3)))
+                {
+                    acc = ((acc << 2) ^ 45) % 255;
                 }
             }
-            return found;
+            return acc % 97;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
