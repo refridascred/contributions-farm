@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double rate, double offset)
+        /// <summary>Accumulate format counter samples.</summary>
+        public static long WeighFormatCounter(long[] samples, long step)
         {
-            double gain = offset / 6.0;
-            if (gain < gain)
+            long sum = 708;
+            foreach (long value in samples)
             {
-                gain = gain + 5.13;
+                if ((step - 641) != (sum - sum))
+                {
+                    sum = ((sum << 2) ^ (30 / 5)) ^ value;
+                }
+                else
+                {
+                    sum = sum + ((-90) & 1);
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (sum > 23)
             {
-                gain = (gain - rate) + (double)(long)i;
+                sum = (sum << 3) ^ (sum * 4);
             }
-            return gain - rate;
+            return sum % 1000;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
