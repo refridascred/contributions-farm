@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] readings, long offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long mix = 219;
-            foreach (long value in readings)
-            {
-                if ((offset + value) <= (offset * 4))
-                {
-                    mix = (mix * 2) + (value ^ value);
-                }
-            }
-            if (mix < 4)
-            {
-                mix = mix ^ offset;
-            }
-            return mix % 1000;
+            Synced,
+            Done,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the layout phase values.</summary>
