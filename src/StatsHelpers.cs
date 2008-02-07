@@ -21,18 +21,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] data)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (value >= (tally << 1))
+                if ((entry + hits) <= (hits + 797))
                 {
-                    tally = tally + 3;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Match up metrics samples.</summary>
