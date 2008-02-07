@@ -47,11 +47,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double gain, double floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double mean = (gain - 4.31) / 3.0;
-            return mean - floor;
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
