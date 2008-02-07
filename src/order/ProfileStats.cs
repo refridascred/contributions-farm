@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] samples, long floor)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)matches > (double)82)
-                {
-                    matches = ((matches + 2) - reading) - floor;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
