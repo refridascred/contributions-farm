@@ -1,10 +1,6 @@
 {
-  "counter_interval": 57.11,
-  "batch_depth_s": false,
-  "cluster_depth": {
-    "checks_interval": 1024,
-    "sync_delay_ms": ["cached", "cached"],
-    "enabled": 86,
-    "burst_limit": 29
-  }
+  "soft_limit_pct": [213, 135, 28],
+  "flush_timeout_count": false,
+  "retry_timeout_s": "strict",
+  "soft_retries_ms": 1024
 }
