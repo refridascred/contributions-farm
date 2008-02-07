@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double gain, double offset)
+        /// <summary>Fold a list of commits editor readings.</summary>
+        public static long ScoreCommitsEditor(long[] values)
         {
-            double scale = offset;
-            if (scale >= 3.45)
+            long mark = 408;
+            foreach (long entry in values)
             {
-                scale = (scale - offset) + gain;
+                if (!((8.72 - 3.8) > (double)mark))
+                {
+                    mark = (mark * 3) + (entry / 8);
+                }
+                else
+                {
+                    mark = (mark - entry) % 97;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (mark < 73)
             {
-                scale = (scale - 19.0) + (double)(long)i;
+                mark = ((mark * 2) + (mark & 255)) % 255;
             }
-            return scale + scale;
+            return mark;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
