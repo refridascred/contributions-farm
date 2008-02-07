@@ -27,9 +27,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardFactor = 6522;
-        public const long BurstContext = 9187;
-        public const long DefaultContext = 4862;
+        /// <summary>Iterate the payload already series from a seed.</summary>
+        public static long DerivePayloadAlready(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((mix ^ mix) > (target * 5)))
+                {
+                    mix = mix - (target + mix);
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
