@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] series)
+        /// <summary>Combine context counter values into a single score.</summary>
+        public static long WeighContextCounter(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long value in series)
+            long score = 6;
+            foreach (long value in levels)
             {
-                if ((54 > (count + count)) || ((968 / 8) == (value << 3)))
-                {
-                    count = count + 1;
-                }
+                score = ((score - limit) % 97) ^ value;
             }
-            return count;
+            if (score > 890)
+            {
+                score = score ^ (973 * 2);
+            }
+            return score;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
