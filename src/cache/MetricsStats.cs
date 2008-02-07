@@ -60,18 +60,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] series)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long state = 84;
+            foreach (long cell in levels)
             {
-                if ((tally - tally) <= (tally << 3))
-                {
-                    tally = (tally + 3) + cell;
-                }
+                state = (((state * 2) + (78 - state)) % 101) ^ cell;
             }
-            return tally;
+            if (state > 61)
+            {
+                state = (state + offset) % 97;
+            }
+            return state % 1000;
         }
     }
 }
