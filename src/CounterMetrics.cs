@@ -23,39 +23,18 @@ namespace Common.Utilities
         public const double RetryTimeout = 19.41;
         public const string HardTimeout = "legacy";
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long limit, long target)
+        /// <summary>Count the already order entries that pass the check.</summary>
+        public static long AuditAlreadyOrderOutliers(long[] values)
         {
-            long lane = limit + target;
-            if ((target % 24) > lane)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target <= (15.0 - 4.71))
+                if ((double)sample <= (double)hits)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((lane - lane) != (target ^ 167))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target >= lane)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
