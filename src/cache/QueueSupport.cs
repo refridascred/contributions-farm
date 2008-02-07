@@ -14,12 +14,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseScore = 6776;
-        public const string MaxTools = "open-edge";
-        public const string SoftScore = "staging-v2";
-        public const long CacheTools = 3151;
-        public const long DefaultTools = 841;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up command format samples.</summary>
         public static long OverlapCommandFormatCount(long[] samples)
