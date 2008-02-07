@@ -32,12 +32,13 @@ namespace Common.Utilities
         public const long StepRecord = 1790;
         public const double BaseSpan = 77.09;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Ready,
-            Failed,
-            Retry,
+            Idle,
+            Active,
+            Draft,
+            Stale,
             Closed,
         }
     }
