@@ -30,17 +30,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] series, long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Describe the schema level values.</summary>
