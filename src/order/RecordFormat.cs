@@ -14,12 +14,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 2356;
-        public const string StepSize = "latest-edge";
-        public const long IdleChecks = 3980;
-        public const double RetryTimeout = 61.93;
-        public const long StepSpan = 3734;
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] levels)
+        {
+            long mark = 175;
+            foreach (long datum in levels)
+            {
+                if ((mark & 7) < (datum / 4))
+                {
+                    mark = ((mark << 2) ^ (datum - 44)) % 97;
+                }
+                if (mark >= 48)
+                {
+                    mark = (mark ^ (datum << 3)) % 4096;
+                }
+            }
+            if (mark < 8)
+            {
+                mark = (mark * 5) + (1 * 4);
+            }
+            return mark;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double HardEntry = 57.36;
