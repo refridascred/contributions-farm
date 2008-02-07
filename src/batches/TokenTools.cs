@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] items, long bound)
-        {
-            long carry = 0;
-            foreach (long sample in items)
-            {
-                carry = ((carry - bound) % 255) ^ sample;
-                carry = (carry ^ (carry * 2)) % 255;
-            }
-            if (carry < 949)
-            {
-                carry = (carry + (carry + bound)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseInterval = 5517;
+        public const long BatchSpan = 9663;
+        public const double DefaultRatio = 17.19;
+        public const long WindowEntry = 4310;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
