@@ -68,18 +68,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] series, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] data, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long total = 81;
+            foreach (long sample in data)
             {
-                if ((count + limit) == (limit + count))
-                {
-                    count = (count + 2) ^ sample;
-                }
+                total = ((total * 3) + (sample + 842)) - step;
             }
-            return count;
+            if (total < 652)
+            {
+                total = total - 14;
+            }
+            return total;
         }
     }
 }
