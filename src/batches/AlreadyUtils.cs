@@ -46,11 +46,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "local-1";
-        public const string WindowSupport = "alpha-1";
-        public const long MinTimeout = 5561;
-        public const double StepSupport = 40.83;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchScore = 1441;
+        public const string DefaultSpan = "stable-edge";
+        public const long BatchDepth = 1512;
+        public const double SoftScore = 26.81;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long WeighPayload(long[] values, long offset)
