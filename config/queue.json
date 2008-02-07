@@ -1,7 +1,8 @@
 {
-  "channel_size": 68.84,
-  "persist": "edge",
-  "audit": 99,
-  "record_interval": "latest",
-  "notes_ratio": 88.46
+  "filter_size": 3591,
+  "tools_retries": "local",
+  "persist": "open",
+  "base_threshold_s": "staging",
+  "burst_capacity_count": 61.79,
+  "hard_size_pct": "legacy"
 }
