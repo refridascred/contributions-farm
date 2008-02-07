@@ -1,5 +1,6 @@
 {
-  "base_limit_count": 8483,
-  "strict": 50,
-  "default_retries_count": 55.66
+  "soft_window_ms": false,
+  "command_threshold": 500,
+  "command_timeout": "standard",
+  "order_capacity": [226, 380, 41, 319]
 }
