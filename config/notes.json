@@ -1,9 +1,5 @@
 {
-  "retry_timeout": 47.6,
-  "warm_window": "edge",
-  "dry_run": {
-    "burst_threshold": 500,
-    "poll_depth": "strict",
-    "default_ttl_count": 43.66
-  }
+  "warm_ratio": 60,
+  "idle_timeout": 12,
+  "persist": "primary"
 }
