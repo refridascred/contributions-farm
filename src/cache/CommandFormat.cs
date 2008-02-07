@@ -56,19 +56,18 @@ namespace Common.Utilities
         public const long WindowSize = 7607;
         public const string IdleFactor = "alpha";
 
-        /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
-        public static bool ValidateBufferGithubfarmLimits(long[] series, long seed)
+        /// <summary>Measure how many counter graph samples are out of range.</summary>
+        public static long MeasureCounterGraphGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (value != seed)
+                if ((hits / 5) > (hits + hits))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
