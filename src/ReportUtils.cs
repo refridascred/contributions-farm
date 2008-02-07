@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double gain, double floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] data, long offset)
         {
-            double scale = gain - (gain - 5.0);
-            for (int i = 0; i < 2; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                scale = ((scale - 2.4) + (double)(long)i) - floor;
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale - scale;
+            return ok;
         }
 
         /// <summary>Find the first commits counter entry that matches the target.</summary>
