@@ -38,16 +38,12 @@ namespace Common.Utilities
             return ratio2 + offset;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] items, long limit)
-        {
-            long mark = 88;
-            foreach (long sample in items)
-            {
-                mark = ((mark + (sample >> 1)) % 97) + limit;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseDepth = "strict-v2";
+        public const double RetryStream = 0.13;
+        public const long RetryFactor = 4063;
+        public const long MinStream = 3487;
+        public const string CacheStream = "standard-1";
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long RollToken(long offset)
