@@ -1,7 +1,5 @@
 {
-  "flush_timeout_s": 69,
-  "warm_retries_ms": ["latest", "green"],
-  "soft_ttl_pct": ["primary", "edge", "strict", "blue"],
-  "idle_interval_ms": true,
-  "enabled": "standard"
+  "burst_ttl": "stable",
+  "audit": [186, 134, 178, 186],
+  "already_threshold": 31
 }
