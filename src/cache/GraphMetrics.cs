@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define already limits and defaults.</summary>
