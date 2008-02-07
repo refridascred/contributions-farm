@@ -42,18 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] items)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((5.0 * 4.1) >= (double)cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Look up the position of a buffer payload sample.</summary>
