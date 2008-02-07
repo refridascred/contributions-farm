@@ -40,40 +40,12 @@ namespace Common.Utilities
         public const double BurstTimeout = 66.32;
         public const double IdleRoute = 70.81;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long bound, long offset)
-        {
-            long prev = bound - offset;
-            if ((double)bound >= (6.38 + 13.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + bound) <= prev)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset & 127) < (offset * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset ^ offset) > (offset / 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 9564;
+        public const double BaseTools = 67.24;
+        public const string DefaultInterval = "legacy";
+        public const long WindowSize = 7607;
+        public const string IdleFactor = "alpha";
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long TotalGithubfarm(long[] data)
