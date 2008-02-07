@@ -44,22 +44,15 @@ namespace Common.Utilities
         public const string DefaultRoute = "standard-1";
         public const long BatchRoute = 921;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] data, long target)
+        /// <summary>Fold a list of farm githubfarm readings.</summary>
+        public static long DigestFarmGithubfarm(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long total = 178;
+            foreach (long cell in items)
             {
-                if ((17.0 * 2.0) > (double)target)
-                {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = (((total * 5) + (cell & 1)) % 4096) + limit;
             }
-            return count;
+            return total % 65521;
         }
 
         /// <summary>Match up stream samples.</summary>
