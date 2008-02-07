@@ -58,18 +58,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!(((count + count) < (datum - count)) && ((double)datum != (15.0 - 3.9))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 3895;
+        public const long DefaultMetric = 7966;
+        public const string MinMetric = "standard-v2";
     }
 }
