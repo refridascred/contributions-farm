@@ -29,17 +29,16 @@ namespace Common.Utilities
         public const long RetryFactor = 5500;
         public const string WindowRatio = "legacy-v2";
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] series, long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                result = result + (result * 3);
+                result = ((result * 2) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
