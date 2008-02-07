@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepLevel = 75.32;
+        public const long MaxScore = 8031;
+        public const long MinRatio = 2060;
+        public const long BurstDepth = 7850;
+        public const long RetryBatches = 4666;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long PairSupportCount(long[] levels)
