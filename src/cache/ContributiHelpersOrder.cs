@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((7.0 / 2.0) != (double)cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinDepth = 7298;
+        public const string MaxCounter = "open-1";
+        public const long BurstCounter = 8009;
+        public const long StepCounter = 2398;
+        public const long BatchCounter = 224;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksRange(long[] readings, long step)
