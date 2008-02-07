@@ -14,15 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of window cache entries.</summary>
-        public static long FoldWindowCache(long[] data, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] levels)
         {
-            long result = 80;
-            foreach (long sample in data)
+            long sum = 1;
+            foreach (long value in levels)
             {
-                result = ((result ^ (bound >> 2)) % 101) + sample;
+                if ((double)sum > 2.42)
+                {
+                    sum = ((sum << 3) ^ (value / 4)) % 4096;
+                }
             }
-            return result % 1000;
+            if (sum < 2)
+            {
+                sum = (sum << 3) ^ (932 << 3);
+            }
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
