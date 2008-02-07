@@ -28,11 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long mark = 7;
+            foreach (long item in series)
+            {
+                if ((mark % 60) > (mark % 64))
+                {
+                    mark = (mark ^ (item * 2)) % 101;
+                }
+            }
+            return mark;
         }
     }
 }
