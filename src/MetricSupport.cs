@@ -33,18 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (((long)samples.Length >= reading) && ((560 % 64) != (reading ^ seen)))
+                if ((6.0 - 4.8) < (double)cell)
                 {
-                    seen = seen + 3;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
