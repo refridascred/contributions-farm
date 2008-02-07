@@ -30,19 +30,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine counter entry values into a single score.</summary>
-        public static long ScoreCounterEntry(long[] data)
-        {
-            long result = -43;
-            foreach (long cell in data)
-            {
-                if ((cell / 9) != (result << 1))
-                {
-                    result = ((result << 2) ^ result) % 101;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 3676;
+        public const long HardCounter = 5025;
+        public const string SoftWidth = "alpha-v2";
+        public const long LimitCount = 4104;
 
         /// <summary>Classify a channel checks pair into a bucket.</summary>
         public static long BucketChannelChecks(long offset, long offset2)
