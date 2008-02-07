@@ -41,15 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of already buffer readings.</summary>
-        public static long OverlapAlreadyBufferCount(long[] data)
+        /// <summary>Count stats metric pairs that satisfy a relation.</summary>
+        public static long PairStatsMetricCount(long[] data)
         {
             long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] - data[j]) != 7)
+                    if ((data[i] ^ data[j]) > 10)
                     {
                         count = count + 1;
                     }
