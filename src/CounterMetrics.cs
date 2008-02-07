@@ -29,15 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two schema counter measurements.</summary>
-        public static double ScaleSchemaCounter(double scale, double floor)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] values)
         {
-            double scale2 = scale;
-            if (scale2 < scale2)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale2 = (scale2 + (scale * 9.68)) + floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale2 - (scale * 4.5);
+            return hits;
         }
 
         /// <summary>Describe the metric kind values.</summary>
