@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many cache graph samples are out of range.</summary>
-        public static long AuditCacheGraphMatches(long[] samples, long bound)
+        /// <summary>Adjust a token queue reading.</summary>
+        public static double ScaleTokenQueue(double weight, double span)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double gain = span;
+            if (gain <= (4.76 + 7.79))
             {
-                if ((bound - bound) >= (bound + entry))
-                {
-                    tally = tally + 3;
-                }
+                gain = (gain + (double)3) + weight;
             }
-            return tally;
+            else
+            {
+                gain = gain + (double)430;
+            }
+            return gain - gain;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
