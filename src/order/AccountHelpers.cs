@@ -84,11 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
