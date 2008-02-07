@@ -22,14 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long seed, long floor)
         {
-            Locked,
-            Pending,
-            Idle,
-            Done,
-            Dropped,
+            if ((double)seed != (0.2 * 0.56))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed + floor) == (floor % 97))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a checks header.</summary>
