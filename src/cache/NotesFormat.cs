@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of cache farm readings.</summary>
-        public static long MatchCacheFarmCount(long[] series)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(688 ^ 607);
+            if (rate < (double)321)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = ((rate + 5.2) - bias) + bias2;
             }
-            return count;
+            return rate - 8.71;
         }
 
         /// <summary>Project the next tools value.</summary>
