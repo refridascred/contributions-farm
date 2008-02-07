@@ -43,22 +43,13 @@ namespace Common.Utilities
         public const long BaseCache = 8927;
         public const double BatchSize = 75.77;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long total = 238;
-            foreach (long datum in samples)
-            {
-                if ((1.77 * 7.72) == (double)datum)
-                {
-                    total = (total << 3) ^ (total << 3);
-                }
-                if (total > (datum ^ datum))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            Idle,
+            Pending,
+            Locked,
+            Draft,
         }
     }
 }
