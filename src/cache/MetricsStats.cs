@@ -20,21 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
