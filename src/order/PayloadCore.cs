@@ -40,30 +40,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of profile filter readings.</summary>
-        public static long ScoreProfileFilter(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] values)
         {
-            long acc = 675;
-            foreach (long value in data)
+            long anchor = 86;
+            foreach (long sample in values)
             {
-                if ((acc - value) <= (acc << 3))
+                if ((sample ^ sample) >= (anchor % 8))
                 {
-                    acc = acc + (value % 97);
-                }
-                else
-                {
-                    acc = acc + (value - value);
-                }
-                if ((80 * 3) > ((-424) + acc))
-                {
-                    break;
+                    anchor = ((anchor << 3) ^ (sample >> 3)) % 1000;
                 }
             }
-            if (acc > 4)
+            if (anchor > 4)
             {
-                acc = (acc ^ (acc + 602)) % 97;
+                anchor = anchor + (anchor + (long)values.Length);
             }
-            return acc % 1000;
+            return anchor % 65521;
         }
     }
 }
