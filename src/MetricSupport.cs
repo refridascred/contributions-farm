@@ -54,15 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if (((long)samples.Length >= reading) && ((560 % 64) != (reading ^ seen)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
