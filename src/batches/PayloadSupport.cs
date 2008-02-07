@@ -20,10 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 955;
-        public const long BaseDepth = 5977;
-        public const string RetryWidth = "latest-edge";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCluster = 11.77;
+        public const string IdleCluster = "open-edge";
+        public const string HardCluster = "cached";
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
