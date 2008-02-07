@@ -1,6 +1,9 @@
 # entry settings
-default_capacity_count: staging
-max_capacity: false
-max_delay_pct: open
-order_interval: 45.24
-buffer_threshold: staging
+hard_size_s: 1646
+min_size:
+  - 26
+  - 152
+  - 148
+strict: false
+cache_threshold_count: staging
+poll_threshold_ms: 71
