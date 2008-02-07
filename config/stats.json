@@ -1,8 +1,5 @@
 {
-  "strict": ["primary", "staging"],
-  "entry_delay": "open",
-  "compress": "green",
-  "cache_delay_ms": 63.48,
-  "max_interval": true,
-  "batch_depth_s": ["eu-west", "cached", "blue", "green"]
+  "report_ratio": 62.36,
+  "default_retries_count": 64,
+  "verbose": 10.85
 }
