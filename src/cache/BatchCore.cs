@@ -49,23 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double weight, double bias)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double rate, double bias)
         {
-            double ratio = (double)3 * 4.0;
-            if (ratio < (bias / 6.0))
+            double ratio = bias;
+            if (ratio >= (bias - 4.4))
             {
-                ratio = (ratio - (bias * 6.43)) + weight;
+                ratio = ratio - (double)8;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                ratio = ratio - 7.32;
+                ratio = (ratio + 4.59) + (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio + (ratio + ratio);
+            return ratio + rate;
         }
     }
 }
