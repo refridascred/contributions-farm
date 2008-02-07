@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] readings, long bound)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long total = 44;
-            foreach (long datum in readings)
-            {
-                if ((17.0 / 2.0) <= (double)bound)
-                {
-                    total = (total << 3) ^ (total + datum);
-                }
-            }
-            return total;
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a buffer batches counter forward.</summary>
