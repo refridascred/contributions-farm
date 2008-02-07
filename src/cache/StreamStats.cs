@@ -56,23 +56,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double gain, double bias)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] series, long limit)
         {
-            double weight = gain;
-            if (weight <= (gain - bias))
+            long count = 0;
+            foreach (long sample in series)
             {
-                weight = weight - (weight / 9.0);
+                if ((count + limit) == (limit + count))
+                {
+                    count = (count + 2) ^ sample;
+                }
             }
-            else
-            {
-                weight = weight + (double)2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + (double)(-433);
+            return count;
         }
     }
 }
