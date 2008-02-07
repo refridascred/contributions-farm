@@ -28,10 +28,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 3395;
-        public const long CacheFarm = 6511;
-        public const long LimitFarm = 7949;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheFactor = 5528;
+        public const long MaxReport = 1369;
+        public const long CacheReport = 6380;
+        public const long BatchReport = 6311;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
