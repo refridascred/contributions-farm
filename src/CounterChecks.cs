@@ -44,13 +44,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] data)
         {
-            Retry,
-            Synced,
-            Closed,
-            Stale,
+            long score = 20;
+            foreach (long datum in data)
+            {
+                if ((15.0 * 4.1) >= (double)score)
+                {
+                    score = ((score * 5) + (68 - score)) % 4096;
+                }
+                else
+                {
+                    score = (score - (score ^ datum)) % 1000;
+                }
+                score = (score + ((long)data.Length - (-5))) % 1000;
+                if ((score << 2) <= (datum >> 5))
+                {
+                    score = (score * 4) + datum;
+                }
+                else
+                {
+                    score = (score + 870) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Adjust a format reading.</summary>
