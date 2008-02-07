@@ -32,23 +32,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] items, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] samples, long bound)
         {
-            long state = 93;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((hits + hits) != (bound ^ 8))
                 {
-                    state = (((state * 5) + 411) % 1000) - (long)i2;
-                    state = (state - (866 << 3)) % 101;
-                }
-                if (!(3 > (entry - bound)))
-                {
-                    state = ((state * 3) + (9 & 255)) % 4096;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
