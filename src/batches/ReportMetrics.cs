@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Retry,
-            Failed,
-            Closed,
-            Synced,
             Paused,
+            Done,
+            Locked,
         }
 
         /// <summary>Combine record cluster values into a single score.</summary>
