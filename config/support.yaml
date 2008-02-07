@@ -1,11 +1,7 @@
 # support settings
-compress: edge
-stream_size: 38
-batch_ttl_s:
-  - legacy
-  - blue
-queue_retries: false
-hard_retries_count: false
-stats_interval:
-  - eu-west
-  - green
+queue_limit: 77.03
+burst_threshold:
+  - primary
+  - local
+audit: 11.94
+metrics_interval: 38.9
