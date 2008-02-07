@@ -42,22 +42,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] data, long origin)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] readings)
         {
-            long total = 3;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((total << 2) <= (total - total))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total + (origin + origin)) % 1000) - item;
+                    if ((readings[i] - readings[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 262)
-            {
-                total = (total * 4) + (total + origin);
-            }
-            return total;
+            return matches;
         }
     }
 }
