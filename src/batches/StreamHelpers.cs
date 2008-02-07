@@ -59,18 +59,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] data)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long result = 17;
+            foreach (long entry in levels)
             {
-                if (((double)tally < 8.6) && ((3.0 * 7.0) < (double)tally))
+                if (((7.5 - 12.0) < (double)bound) && ((bound % 10) == (entry + entry)))
                 {
-                    tally = (tally + 2) + cell;
+                    result = ((result << 2) ^ result) % 65521;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
