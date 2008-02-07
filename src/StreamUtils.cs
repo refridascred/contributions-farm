@@ -20,18 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] items, long bound)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((count / 8) == (3 >> 3))
-                {
-                    count = ((count + 2) + datum) - bound;
-                }
+                carry = (carry * 5) + (origin >> 5);
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the format state values.</summary>
