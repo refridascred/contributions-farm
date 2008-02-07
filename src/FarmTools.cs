@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] items)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (((entry + matches) <= matches) && (matches < (entry << 2)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Combine already values into a single score.</summary>
