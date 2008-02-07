@@ -1,15 +1,12 @@
 # Command notes
 
-Run the payload check before changing any order limits.
-Run the window check before changing any account limits.
-
-When a record fails, the layout handler retries a few times before giving up.
-Each stream is validated before it reaches the metrics queue.
-The contributi module keeps account values in sync with the metrics cache.
+When a record fails, the already handler retries a few times before giving up.
+A order that stays idle for too long is moved to the filter list.
+The already module keeps cache values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Keep profile values small
-- Prefer githubfarm defaults
-- Log every tools change
-- Document new notes fields
+- Prefer commits defaults
+- Review buffer limits each release
+- Document new payload fields
+- Keep graph values small
