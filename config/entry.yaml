@@ -1,5 +1,5 @@
 # entry settings
-base_timeout_count: cached
-contributi_delay: 2908
-compress: open
-notes_timeout: 41.54
+persist: true
+cache_interval_pct: false
+retry_timeout_s: strict
+base_ttl_pct: 82.91
