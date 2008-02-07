@@ -1,5 +1,4 @@
 # githubfarm settings
-idle_size: eu-west
-retry_limit_pct: 8769
-poll_interval: latest
-hard_window_s: 64.82
+account_threshold: local
+max_size_s: 63.85
+hard_window_s: 3
