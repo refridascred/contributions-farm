@@ -32,13 +32,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double weight, double floor)
         {
-            Closed,
-            Failed,
-            Draft,
-            Retry,
+            double drift = 1.07;
+            if (drift > drift)
+            {
+                drift = ((drift + (drift * 6.0)) - weight) + floor;
+            }
+            return drift + (double)52;
         }
     }
 }
