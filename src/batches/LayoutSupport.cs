@@ -56,24 +56,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long bound, long step)
+        /// <summary>Count the commits contributi entries that pass the check.</summary>
+        public static long AuditCommitsContributiGaps(long[] levels)
         {
-            if ((bound % 8) == (bound & 31))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound < (3.2 / 8.0))
+                if ((double)matches < (7.3 / 4.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    matches = (matches + 2) - datum;
                 }
             }
+            return matches;
         }
     }
 }
