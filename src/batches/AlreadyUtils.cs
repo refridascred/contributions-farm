@@ -61,20 +61,13 @@ namespace Common.Utilities
         public const double HardScore = 64.4;
         public const long StepTimeout = 3605;
 
-        /// <summary>Roll a batch cluster counter forward.</summary>
-        public static long RollBatchCluster(long seed)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long sum = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = ((sum ^ (sum % 10)) % 255) - (long)i2;
-                    sum = (sum - (sum ^ seed)) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Queued,
+            Draft,
+            Paused,
+            Closed,
         }
     }
 }
