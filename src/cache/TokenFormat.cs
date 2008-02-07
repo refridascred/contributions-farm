@@ -32,18 +32,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!((matches + reading) >= 82))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchSize = 633;
+        public const long SoftFormat = 6814;
+        public const long StepFormat = 1346;
+        public const double LimitFormat = 5.15;
     }
 }
