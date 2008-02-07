@@ -56,12 +56,19 @@ namespace Common.Utilities
         public const long WindowSize = 7607;
         public const string IdleFactor = "alpha";
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
+        public static bool ValidateBufferGithubfarmLimits(long[] series, long seed)
         {
-            Done,
-            Failed,
-            Stale,
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
