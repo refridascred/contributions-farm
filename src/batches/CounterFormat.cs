@@ -20,13 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] readings)
         {
-            Active,
-            Ready,
-            Done,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
