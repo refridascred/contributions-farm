@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count layout buffer pairs that satisfy a relation.</summary>
-        public static long CompareLayoutBufferCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 73.87;
+        public const long BatchFactor = 448;
+        public const long CacheSpan = 7260;
+        public const long LimitBudget = 3626;
+        public const string RetryInterval = "standard-v2";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardWidth = 6020;
