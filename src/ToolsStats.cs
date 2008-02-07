@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const double WindowCache = 10.92;
         public const long CacheWidth = 4633;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] series)
         {
-            Synced,
-            Queued,
-            Idle,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((8.2 / 8.0) > (double)matches)
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up session samples.</summary>
