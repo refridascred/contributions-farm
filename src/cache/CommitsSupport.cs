@@ -47,22 +47,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit graph account readings against a rule.</summary>
-        public static long AuditGraphAccountGaps(long[] data, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((target - 87) <= (target + tally))
+                if (((0.7 * 18.0) < (double)value) || (((value & 15) >= hits) || ((9.8 / 7.0) >= (double)hits)))
                 {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the cache level values.</summary>
