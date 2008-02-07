@@ -16,18 +16,31 @@ namespace Common.Utilities
             return weight + 7.0;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] data, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            if ((limit + offset) > 74)
             {
-                if (8 >= (matches / 5))
+                return 5;
+            }
+            else
+            {
+                if ((double)offset >= 17.0)
                 {
-                    matches = ((matches + 2) + cell) + target;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit == (6.2 - 9.38))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a contributi entry.</summary>
