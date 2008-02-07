@@ -14,20 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (limit < 9)
-                {
-                    result = result - (limit + result);
-                    result = (result ^ ((long)i - limit)) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Describe the commits level values.</summary>
