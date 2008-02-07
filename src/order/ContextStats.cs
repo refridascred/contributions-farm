@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 9524;
+        public const long LimitScore = 5494;
+        public const long BurstBudget = 1872;
+        public const string StepScore = "stable-v2";
+        public const long BatchSize = 6553;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string BaseDepth = "strict-v2";
