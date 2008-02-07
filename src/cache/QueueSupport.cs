@@ -35,13 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public bool Owner { get; set; }
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
