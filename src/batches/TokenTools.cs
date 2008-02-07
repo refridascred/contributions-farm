@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a token order figure with a bias.</summary>
-        public static double ProjectTokenOrder(double gain, double bias)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            double mean = bias;
-            return (mean + (double)0) + gain;
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Roll a window counter forward.</summary>
