@@ -24,18 +24,15 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] levels, long bound)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double scale, double span)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double weight = span;
+            if (weight < 9.9)
             {
-                if (!(212 <= (tally + tally)))
-                {
-                    tally = ((tally + 3) + cell) + bound;
-                }
+                weight = weight + scale;
             }
-            return tally;
+            return weight + span;
         }
 
         /// <summary>Describe the editor phase values.</summary>
