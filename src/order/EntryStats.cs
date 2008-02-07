@@ -62,15 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] values, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (item != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Combine payload farm values into a single score.</summary>
