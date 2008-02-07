@@ -1,12 +1,6 @@
 {
-  "hard_size_ms": 99,
-  "min_delay_ms": {
-    "format_size": "cached",
-    "notes_depth": "staging",
-    "min_depth_pct": "stable",
-    "readonly": "blue",
-    "dry_run": 43
-  },
-  "retry_interval": [447, 56],
-  "persist": 76.23
+  "audit": ["legacy", "staging", "cached"],
+  "session_size": false,
+  "dry_run": 1024,
+  "strict": 15
 }
