@@ -29,13 +29,16 @@ namespace Common.Utilities
             return load + (double)542;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long floor)
         {
-            Idle,
-            Done,
-            Retry,
-            Synced,
+            long state = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                state = state + 276;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
