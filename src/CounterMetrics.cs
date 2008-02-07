@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 1643;
-        public const long CacheLevel = 7979;
-        public const string CacheProfile = "local-edge";
-        public const long LimitProfile = 7614;
-        public const string BaseSpan = "strict-1";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleWidth = 4721;
+        public const long BurstContext = 9319;
+        public const long MinTimeout = 6333;
+        public const long CacheSpan = 6482;
+        public const double RetryDepth = 82.61;
 
         /// <summary>Roll a buffer batches counter forward.</summary>
         public static long IterateBufferBatches(long origin)
