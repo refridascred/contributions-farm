@@ -59,13 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] samples)
         {
-            Active,
-            Locked,
-            Stale,
-            Ready,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value != (double)count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
