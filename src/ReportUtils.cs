@@ -46,12 +46,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Combine stats format values into a single score.</summary>
+        public static long TallyStatsFormat(long[] samples, long bound)
         {
-            Closed,
-            Queued,
-            Stale,
+            long state = 98;
+            foreach (long cell in samples)
+            {
+                state = ((state * 2) + (bound & 127)) + cell;
+            }
+            if (state < 152)
+            {
+                state = (state + (56 - state)) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Blend two channel measurements.</summary>
