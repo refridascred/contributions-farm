@@ -52,18 +52,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long seed)
         {
-            long score = 7;
-            foreach (long entry in samples)
+            long result = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((313 + entry) <= (2 >> 4))
-                {
-                    score = (score + 4) % 1000;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return score;
+            return result;
         }
     }
 }
