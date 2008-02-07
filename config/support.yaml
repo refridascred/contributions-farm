@@ -1,29 +1,7 @@
 # support settings
-retry_limit_s:
-  sync_depth:
-    persist: 60
-    queue_size: false
-    enabled:
-      - blue
-      - green
-      - standard
-      - cached
-    cache_interval: 91
-    batch_retries: 30
-    default_window_count: false
-  report_depth: 61
-  poll_retries_count: edge
-  sync_limit_s: true
-  cluster_limit: 30.24
-idle_size_pct:
-  persist:
-    report_retries: fallback
-    soft_window: 50.77
-    max_delay: edge
-    strict: 1024
-  enabled: true
-  cache_limit: true
-  graph_ratio: cached
-poll_size_ms: 67.97
-max_delay_pct: 47.02
-strict: true
+flush_ttl_pct: 976
+retry_capacity: 17
+audit: latest
+strict: 9526
+warm_ttl: latest
+retry_retries: true
