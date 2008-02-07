@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
+            Synced,
+            Active,
             Retry,
-            Stale,
-            Draft,
         }
 
         /// <summary>Measure how many commits route samples are out of range.</summary>
