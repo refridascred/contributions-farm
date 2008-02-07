@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long HardRoute = 7259;
         public const long MinBudget = 4813;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] readings, long bound)
+        /// <summary>Measure how many record editor samples are out of range.</summary>
+        public static long AuditRecordEditorGaps(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (!(81 < (bound / 9)) && ((bound + 2) > (hits << 3)))
+                if (!(((tally ^ reading) <= (step - 83)) || ((step - reading) != (reading - tally))))
                 {
-                    hits = (hits + 1) + datum;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate format samples.</summary>
