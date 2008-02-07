@@ -49,22 +49,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long step)
         {
-            long state = 3;
-            foreach (long reading in readings)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading - 83) < (reading + state))
-                {
-                    state = (state + state) % 97;
-                }
-                else
-                {
-                    state = ((state * 5) + (reading + state)) % 4096;
-                }
+                acc = (acc * 5) + (step + acc);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return state % 1000;
+            return acc;
         }
     }
 }
