@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a session githubfarm reading.</summary>
-        public static double ScaleSessionGithubfarm(double weight, double span)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long origin)
         {
-            double scale = (double)(180 - 21);
-            if (scale < span)
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                scale = scale + 4.0;
+                sum = (sum * 4) + (origin >> 2);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale + (5.9 / 9.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (double)5) + (double)(long)i;
-            }
-            return scale + (weight / 5.0);
+            return sum;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
