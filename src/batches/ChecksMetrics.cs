@@ -66,15 +66,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the queue order series from a seed.</summary>
-        public static long IterateQueueOrder(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 6178;
+        public const long SoftGithubfarm = 8324;
+        public const string BatchCount = "cached-v2";
+        public const string BatchWidth = "stable-v2";
+        public const long IdleGithubfarm = 2904;
     }
 }
