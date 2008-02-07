@@ -61,11 +61,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitRatio = 2086;
-        public const long LimitSupport = 2901;
-        public const long BaseSupport = 8785;
-        public const string BurstCount = "strict-v2";
-        public const long HardSupport = 3982;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Synced,
+            Locked,
+            Active,
+            Retry,
+        }
     }
 }
