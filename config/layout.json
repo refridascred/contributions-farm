@@ -1,8 +1,11 @@
 {
-  "default_ratio_count": 7858,
-  "verbose": 26,
-  "retry_timeout": 81.4,
-  "audit": "strict",
-  "persist": [344, 399, 469, 113],
-  "hard_delay": true
+  "cache_limit": ["staging", "eu-west", "cached"],
+  "poll_window": {
+    "support_depth": "legacy",
+    "context_size": "primary",
+    "warm_delay_count": "cached"
+  },
+  "audit": 76.72,
+  "tools_retries": true,
+  "strict": "latest"
 }
