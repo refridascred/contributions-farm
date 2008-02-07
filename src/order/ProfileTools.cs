@@ -49,18 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits command readings against a rule.</summary>
-        public static long AuditCommitsCommandGaps(long[] series)
+        /// <summary>Measure how many stream record samples are out of range.</summary>
+        public static long MeasureStreamRecordMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (((cell >= (cell >> 1)) && ((double)cell == (5.0 - 6.2))) && ((cell + cell) != (cell ^ matches)))
+                if ((7.6 - 3.0) == (double)cell)
                 {
-                    matches = matches + 3;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
