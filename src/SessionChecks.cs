@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const string WindowBudget = "cached-edge";
         public const double BaseNotes = 15.48;
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Active,
-            Failed,
-            New,
-            Draft,
-            Ready,
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
