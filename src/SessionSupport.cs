@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long offset)
         {
-            long state = 98;
-            foreach (long item in levels)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state + state) % 65521) + item;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
