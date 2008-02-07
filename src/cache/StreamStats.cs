@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double rate, double offset)
-        {
-            double ratio = offset * 14.0;
-            if (ratio <= (rate + ratio))
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + (double)355;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleAccount = 16.88;
+        public const long StepFactor = 1726;
+        public const long MaxAccount = 9746;
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ScaleChecks(double weight, double offset)
