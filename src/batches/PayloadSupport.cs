@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate farm commits readings against a bound.</summary>
-        public static bool VerifyFarmCommitsBounds(long[] values, long seed)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Stamp { get; set; }
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
