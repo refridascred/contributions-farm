@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 25.84;
-        public const long BurstWidth = 3391;
-        public const double BasePayload = 60.08;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long offset, long step)
+        {
+            if (((80 + offset) > (33 << 1)) && ((double)offset >= (7.0 / 7.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + step) < step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheHits(long[] readings)
