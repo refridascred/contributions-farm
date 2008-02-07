@@ -74,19 +74,31 @@ namespace Common.Utilities
         public const long WindowDepth = 8523;
         public const double MinCount = 85.99;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] values, long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long offset, long seed)
         {
-            bool ready = true;
-            foreach (long item in values)
+            if ((offset + offset) < (2 + 14))
             {
-                if (item < offset)
+                return 4;
+            }
+            else
+            {
+                if (((offset - offset) < offset) || ((offset + offset) < (offset + seed)))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((785 - offset) >= (offset / 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
