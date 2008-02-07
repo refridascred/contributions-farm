@@ -35,16 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = (acc * 5) + (step + acc);
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Ready,
+            Stale,
+            Closed,
         }
     }
 }
