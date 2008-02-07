@@ -1,10 +1,6 @@
-id,ratio,owner,state
-1,71.28,eu-west,11.56
-2,756,17.68,latest
-3,staging,eu-west,49.94
-4,46.42,528,312
-5,811,eu-west,112
-6,open,legacy,288
-7,97.95,903,356
-8,22.73,974,608
-9,548,eu-west,4.23
+id,token,label,state
+1,868,22.94,66.8
+2,687,63.1,38.67
+3,fallback,local,736
+4,latest,18.54,legacy
+5,912,226,34.5
