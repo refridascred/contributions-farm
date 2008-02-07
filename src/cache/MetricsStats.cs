@@ -55,13 +55,25 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long bound, long bound2)
         {
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long prev = bound - bound2;
+            if ((bound2 - (-8)) <= bound2)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound2 << 1) > (prev * 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Digest a series of context entries.</summary>
