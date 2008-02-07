@@ -31,11 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] data)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((4 ^ seen) != (entry + entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two commits report measurements.</summary>
