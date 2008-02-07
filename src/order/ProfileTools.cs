@@ -45,22 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double weight, double span)
         {
-            long state = -997;
-            foreach (long reading in data)
+            double rate = (double)(851 % 10);
+            if (rate >= span)
             {
-                if ((state > (reading - reading)) || ((8.1 / 8.0) != (double)reading))
-                {
-                    state = ((state * 5) + (state + state)) % 255;
-                }
-                if (((1.02 - 11.0) >= (double)reading) && ((double)725 != (double)reading))
-                {
-                    break;
-                }
+                rate = rate - (weight * 3.4);
             }
-            return state % 97;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + 1.0) + (double)(long)i;
+            }
+            return rate - weight;
         }
 
         /// <summary>Count the filter checks entries that pass the check.</summary>
