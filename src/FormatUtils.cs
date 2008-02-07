@@ -29,11 +29,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleTimeout = 4107;
-        public const string DefaultNotes = "standard";
-        public const long BurstWidth = 750;
-        public const double StepLevel = 5.17;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
