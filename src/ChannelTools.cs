@@ -50,17 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] levels, long bound)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
     }
 }
