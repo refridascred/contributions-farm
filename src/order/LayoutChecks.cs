@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long floor)
+        /// <summary>Validate githubfarm metric readings against a bound.</summary>
+        public static bool ValidateGithubfarmMetricBounds(long[] values, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                long hits = ((long)i + sum) - (358 % 2);
-                if ((hits > (floor % 2)) || ((floor % 24) != (hits ^ floor)))
+                if (datum <= offset)
                 {
-                    sum = (sum << 3) ^ (850 % 8);
+                    found = false;
                     break;
                 }
-                if ((double)sum < (0.97 - 5.4))
-                {
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
