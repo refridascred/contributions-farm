@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Done,
-            Retry,
-            Queued,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseCluster = "latest-v2";
+        public const double LimitScore = 59.01;
+        public const double WindowCluster = 91.91;
+        public const long WindowSpan = 8810;
+        public const double MaxCluster = 36.54;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BaseRecord = 30.61;
