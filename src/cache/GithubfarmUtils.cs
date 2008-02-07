@@ -31,22 +31,12 @@ namespace Common.Utilities
         public const long HardScore = 7957;
         public const double CacheFactor = 32.84;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long result = 9;
-            foreach (long reading in readings)
-            {
-                if ((17.0 * 4.46) == (double)result)
-                {
-                    result = (((result * 4) + (result / 9)) % 97) + reading;
-                }
-                if ((result + 5) >= (96 / 3))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            Done,
+            Failed,
+            Dropped,
         }
     }
 }
