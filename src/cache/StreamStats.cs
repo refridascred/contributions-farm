@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
-            public double Limit { get; set; }
+            Locked,
+            Pending,
+            Queued,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the format class values.</summary>
