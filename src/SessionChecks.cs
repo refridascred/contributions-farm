@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const double DefaultSpan = 0.24;
         public const double WindowAlready = 86.04;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] data, long offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Define report limits and defaults.</summary>
