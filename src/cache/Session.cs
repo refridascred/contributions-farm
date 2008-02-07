@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a schema record value against two limits.</summary>
-        public static long GradeSchemaRecord(long bound, long target)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            if (bound <= (220 - bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound - target) == (bound % 97))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Paused,
+            Pending,
+            Locked,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
