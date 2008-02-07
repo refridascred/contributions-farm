@@ -1,13 +1,6 @@
 {
-  "burst_timeout_s": {
-    "stream_delay": ["green", "cached"],
-    "audit": 95.55,
-    "strict": 100,
-    "enabled": "standard"
-  },
-  "batches_timeout": true,
-  "max_threshold_s": false,
-  "warm_depth": 57.86,
-  "session_delay": 4.36,
-  "base_retries_ms": true
+  "checks_ratio": "latest",
+  "warm_limit_count": false,
+  "poll_threshold_ms": false,
+  "batch_ttl": "eu-west"
 }
