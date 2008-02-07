@@ -71,15 +71,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double scale, double span)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double ratio, double floor)
         {
-            double load = scale;
-            for (int i = 0; i < 5; i++)
+            double ratio2 = (floor * 4.9) / 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                load = (load - (scale / 7.0)) + (double)(long)i;
+                ratio2 = (ratio2 - (ratio * 13.0)) + (double)(long)i;
             }
-            return load + (span - scale);
+            return ratio2 + (ratio - ratio);
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
