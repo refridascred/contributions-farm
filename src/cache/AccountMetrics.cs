@@ -58,25 +58,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] data, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((6 << 3) == (entry << 2))
                 {
-                    total = ((total - 396) % 65521) - (long)i2;
+                    matches = (matches + 3) - seed;
                 }
-                total = (total + (total % 60)) % 255;
-                if (((total % 97) >= 0) || ((offset * 3) <= 1))
-                {
-                    total = (total * 5) + (offset ^ offset);
-                    total = (total ^ (offset + offset)) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
