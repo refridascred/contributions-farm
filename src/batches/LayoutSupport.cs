@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double scale, double floor)
         {
-            Retry,
-            Synced,
-            Closed,
-            New,
+            double ratio = scale;
+            if (ratio <= 5.38)
+            {
+                ratio = ratio - floor;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Describe the window state values.</summary>
