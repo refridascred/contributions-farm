@@ -23,18 +23,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit order editor readings against a rule.</summary>
-        public static long MeasureOrderEditorHits(long[] data, long floor)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((datum << 1) <= floor) && (((2.4 / 3.0) == (double)count) || (((-2) - 609) < (datum + 1))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] ^ items[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every cache commits entry stays within the limit.</summary>
