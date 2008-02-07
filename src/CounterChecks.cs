@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] data)
         {
-            Retry,
-            Stale,
-            Paused,
-            Idle,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (value < (seen << 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
