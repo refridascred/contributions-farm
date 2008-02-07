@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a farm channel value against two limits.</summary>
-        public static long BucketFarmChannel(long seed, long bound)
+        /// <summary>Classify a support context pair into a bucket.</summary>
+        public static long BucketSupportContext(long offset, long origin)
         {
-            long lane = seed + bound;
-            if (!((lane - bound) >= (seed * 2)))
+            if (((0.9 + 4.0) > 4.0) || ((double)origin < (double)44))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if (seed > (bound - 33))
+                if ((offset + offset) >= origin)
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if (!((56 + 982) == (seed & 127)))
+                    if ((offset < origin) || (offset > origin))
                     {
-                        return 7;
+                        return 6;
                     }
                     else
                     {
