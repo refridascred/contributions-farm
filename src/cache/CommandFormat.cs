@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of profile cluster readings.</summary>
-        public static long MatchProfileClusterCount(long[] readings)
+        /// <summary>Grade a farm channel value against two limits.</summary>
+        public static long BucketFarmChannel(long seed, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long lane = seed + bound;
+            if (!((lane - bound) >= (seed * 2)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (seed > (bound - 33))
                 {
-                    if ((readings[i] - readings[j]) < 8)
+                    return 6;
+                }
+                else
+                {
+                    if (!((56 + 982) == (seed & 127)))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
