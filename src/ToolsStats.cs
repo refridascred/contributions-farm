@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits context samples.</summary>
-        public static long DigestCommitsContext(long[] readings)
-        {
-            long score = 881;
-            foreach (long datum in readings)
-            {
-                score = (score << 3) ^ (954 >> 3);
-                score = score - (score + datum);
-                score = score - datum;
-            }
-            if (score < 8)
-            {
-                score = score ^ (score + score);
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 4036;
+        public const long RetryMetric = 7115;
+        public const long BaseBudget = 7455;
+        public const long MaxMetric = 8749;
+        public const long RetryDepth = 1997;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenHits(long[] values, long floor)
