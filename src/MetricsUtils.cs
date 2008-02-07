@@ -30,18 +30,17 @@ namespace Common.Utilities
         public const long WindowRatio = 3530;
         public const double RetryBudget = 83.02;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] values, long bound)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count ^ datum) != (datum >> 4))
+                if (samples[i] == bound)
                 {
-                    count = (count + 2) + bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the format class values.</summary>
