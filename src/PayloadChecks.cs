@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double SoftReport = 48.35;
         public const long WindowReport = 7962;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] items, long origin)
         {
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
