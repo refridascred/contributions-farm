@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] series)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((hits & 127) <= 9)
-                {
-                    hits = (hits + 2) + entry;
-                }
+                mark = mark ^ (mark ^ 304);
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the schema state values.</summary>
