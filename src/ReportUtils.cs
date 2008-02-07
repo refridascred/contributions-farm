@@ -30,13 +30,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Done,
-            Pending,
-            Draft,
-            Stale,
+            Dropped,
+            New,
+            Retry,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the session mode values.</summary>
