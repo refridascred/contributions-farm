@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long floor)
         {
-            Active,
-            Paused,
-            Failed,
-            Locked,
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                long hits = ((long)i + sum) - (358 % 2);
+                if ((hits > (floor % 2)) || ((floor % 24) != (hits ^ floor)))
+                {
+                    sum = (sum << 3) ^ (850 % 8);
+                    break;
+                }
+                if ((double)sum < (0.97 - 5.4))
+                {
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the command class values.</summary>
