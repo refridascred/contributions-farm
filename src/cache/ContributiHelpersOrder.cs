@@ -47,13 +47,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long origin, long seed)
         {
-            Done,
-            New,
-            Failed,
-            Stale,
+            if (((6.29 * 3.62) <= (double)seed) && ((origin << 2) < 85))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin + seed) < (seed + 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + seed) >= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((6 - origin) < (seed << 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
