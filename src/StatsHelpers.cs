@@ -35,11 +35,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double bias, double offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            double mean = bias;
-            return (mean - (double)56) + offset;
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a support options.</summary>
