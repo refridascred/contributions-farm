@@ -17,20 +17,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] data, long bound)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitSpan = 9919;
+        public const long DefaultRoute = 9260;
+        public const long CacheFactor = 9354;
+        public const long MinTimeout = 9042;
+        public const long BaseCount = 8896;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
