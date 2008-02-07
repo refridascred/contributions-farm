@@ -26,18 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] values, long seed)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (((datum + seed) < datum) || ((seed - 72) < (seed % 97)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
