@@ -38,18 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] items, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (5.0 < (double)origin)
+                if (reading >= (seed - reading))
                 {
-                    count = (count + 1) ^ item;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
