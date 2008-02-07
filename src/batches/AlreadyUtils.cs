@@ -51,10 +51,40 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxDepth = 7211;
-        public const double HardScore = 64.4;
-        public const long StepTimeout = 3605;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long offset, long offset2)
+        {
+            long lane = offset - offset2;
+            if ((lane - 773) <= lane)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((lane & 255) >= (lane + 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset * 3) <= 4)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((lane / 6) > (offset2 << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
