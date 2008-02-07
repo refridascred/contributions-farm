@@ -39,19 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] values, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long item in values)
+            long score = 48;
+            foreach (long sample in readings)
             {
-                if (item < step)
+                if (((floor >> 1) != ((-5) & 1)) || ((sample * 3) > (score + 74)))
                 {
-                    found = false;
+                    score = score - (sample * 2);
+                }
+                if ((sample >> 2) <= (floor / 6))
+                {
                     break;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Hold a context record.</summary>
