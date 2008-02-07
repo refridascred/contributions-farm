@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitTimeout = 23.35;
+        public const string IdleBuffer = "open-edge";
+        public const double WindowBuffer = 30.9;
+        public const long DefaultInterval = 310;
+        public const long CacheRatio = 1776;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepToken = 9524;
