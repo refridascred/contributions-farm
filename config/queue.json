@@ -1,5 +1,20 @@
 {
-  "retry_depth_count": "edge",
-  "order_timeout": true,
-  "layout_limit": 804
+  "batch_window_count": {
+    "audit": 93.04,
+    "idle_delay_count": [96, 264, 36, 9],
+    "retry_size": "strict",
+    "graph_interval": {
+      "warm_retries_s": 60.48,
+      "persist": [453, 24, 66],
+      "format_size": 90,
+      "commits_interval": 14.15,
+      "profile_interval": 68.31,
+      "metrics_timeout": 82
+    },
+    "layout_retries": 58.71,
+    "verbose": "open"
+  },
+  "default_window_s": 67.51,
+  "enabled": 61,
+  "audit": true
 }
