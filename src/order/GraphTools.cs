@@ -46,10 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 7757;
-        public const double SoftFarm = 85.01;
-        public const long HardFarm = 8863;
-        public const long BaseScore = 2333;
+        /// <summary>Audit stats contributi readings against a rule.</summary>
+        public static long TallyStatsContributiGaps(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item - limit) >= (seen << 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
