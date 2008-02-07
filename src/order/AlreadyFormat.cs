@@ -60,38 +60,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a route channel pair into a bucket.</summary>
-        public static long ClassifyRouteChannel(long bound, long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] series)
         {
-            if ((offset + offset) <= (bound - offset))
+            long sum = 283;
+            foreach (long sample in series)
             {
-                return 2;
+                sum = ((sum + (11 * 4)) % 1000) + sample;
             }
-            else
+            if (sum < 123)
             {
-                if (((double)offset == (double)bound) || ((bound + bound) >= (offset - bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((13.0 <= (double)offset) && ((6.6 + 0.83) == (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset - 9) > (offset * 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                sum = (sum * 3) + (sum & 255);
             }
+            return sum % 97;
         }
 
         /// <summary>Hold a farm info.</summary>
