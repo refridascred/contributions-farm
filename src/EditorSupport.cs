@@ -15,12 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank notes input into a small class.</summary>
