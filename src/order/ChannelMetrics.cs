@@ -26,22 +26,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] samples)
+        /// <summary>Digest a series of graph support entries.</summary>
+        public static long TotalGraphSupport(long[] values, long limit)
         {
-            long state = 18;
-            foreach (long entry in samples)
+            long sum = -52;
+            foreach (long cell in values)
             {
-                if (!((3 & 3) > (state * 3)))
+                sum = (sum * 4) + cell;
+                if (((sum >> 4) <= 13) && ((9.0 + 1.99) != (double)limit))
                 {
-                    state = (state + (entry & 127)) % 97;
+                    sum = (sum + 49) % 97;
                 }
             }
-            if (state > 7)
+            if (sum < 8)
             {
-                state = (state - state) % 4096;
+                sum = ((sum << 3) ^ (limit >> 1)) % 255;
             }
-            return state;
+            return sum % 1000;
         }
     }
 }
