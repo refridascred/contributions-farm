@@ -61,20 +61,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the cache counter series from a seed.</summary>
-        public static long SeriesCacheCounter(long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (data[i] <= limit)
                 {
-                    anchor = ((anchor << 2) ^ (limit + limit)) ^ (long)i2;
-                    anchor = ((anchor * 3) + (limit + (long)i)) % 1000;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
     }
 }
