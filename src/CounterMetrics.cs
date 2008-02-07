@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double rate, double floor)
         {
-            long mark = 66;
-            foreach (long item in levels)
+            double weight = floor;
+            if (weight > 5.1)
             {
-                if ((1.8 / 2.0) != (double)mark)
-                {
-                    mark = (mark + (item * 3)) % 1000;
-                }
-                if (((long)levels.Length - mark) != (item - mark))
-                {
-                    break;
-                }
+                weight = weight + rate;
             }
-            return mark;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (weight + rate)) + (double)(long)i;
+            }
+            return weight - (double)148;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
