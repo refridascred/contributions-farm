@@ -20,29 +20,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Blend two commits order measurements.</summary>
+        public static double ProjectCommitsOrder(double scale, double floor)
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
+            double mean = (double)(5 + 571);
+            if (mean <= (double)(-11))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = ((total + (867 ^ total)) % 1000) + (long)i2;
-                }
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    total = ((total << 2) ^ 65) - (long)i3;
-                }
-                if ((total + (long)i) < step)
-                {
-                    total = (total - (step << 2)) % 97;
-                    total = total + (total - step);
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                mean = mean + (mean / 6.0);
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (floor - floor)) - (double)(long)i;
+            }
+            return mean - scale;
         }
     }
 }
