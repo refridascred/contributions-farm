@@ -47,12 +47,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Dropped,
+            Done,
             Closed,
-            Stale,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Accumulate account samples.</summary>
