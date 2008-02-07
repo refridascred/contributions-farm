@@ -27,11 +27,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Roll a editor order counter forward.</summary>
+        public static long DeriveEditorOrder(long floor)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
