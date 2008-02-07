@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinSpan = 89.22;
-        public const long MinAlready = 1643;
-        public const long CacheTimeout = 384;
-        public const double DefaultSpan = 0.24;
-        public const double WindowAlready = 86.04;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (((sample + sample) < (hits / 3)) && ((hits + 67) < (36 ^ hits)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
