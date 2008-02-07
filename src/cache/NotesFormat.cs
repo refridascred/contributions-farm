@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "strict-edge";
+        public const long StepChecks = 6969;
+        public const string RetryTimeout = "strict-edge";
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool CheckAlreadyRange(long[] readings, long step)
