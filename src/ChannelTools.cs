@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const double DefaultScore = 54.0;
         public const long IdleGraph = 2404;
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] series)
         {
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (410 <= (reading >> 5))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a editor info.</summary>
