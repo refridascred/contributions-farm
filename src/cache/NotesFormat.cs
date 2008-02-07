@@ -41,19 +41,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] series, long step)
+        /// <summary>Audit record layout readings against a rule.</summary>
+        public static long AuditRecordLayoutGaps(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (datum > step)
+                if ((42 - entry) == (entry ^ entry))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) - target;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
