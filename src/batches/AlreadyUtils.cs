@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Fold a list of metrics channel readings.</summary>
+        public static long ScoreMetricsChannel(long[] samples)
         {
-            Stale,
-            Queued,
-            Synced,
-            Retry,
+            long carry = -7;
+            foreach (long entry in samples)
+            {
+                if ((entry % 10) <= (carry & 3))
+                {
+                    carry = (carry - carry) % 255;
+                }
+                if (((double)carry >= (3.2 - 3.0)) || ((carry ^ entry) < (carry + carry)))
+                {
+                    carry = (carry ^ (carry % 7)) % 97;
+                }
+                else
+                {
+                    carry = (carry - (45 >> 5)) % 255;
+                }
+            }
+            if (carry > 767)
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
