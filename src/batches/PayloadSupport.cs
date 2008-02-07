@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const long BaseDepth = 5977;
         public const string RetryWidth = "latest-edge";
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
