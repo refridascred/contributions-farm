@@ -1,8 +1,7 @@
-id,ratio,owner
-1,68.1,green
-2,16.97,17.38
-3,79,primary
-4,558,886
-5,40.52,staging
-6,latest,60.56
-7,792,172
+id,token,rank,ratio
+1,533,699,435
+2,72.39,94.09,638
+3,525,77.27,660
+4,fallback,staging,788
+5,stable,eu-west,43.5
+6,primary,320,759
