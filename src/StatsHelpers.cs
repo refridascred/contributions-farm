@@ -49,18 +49,17 @@ namespace Common.Utilities
         public const long IdleReport = 5482;
         public const double IdleLevel = 92.55;
 
-        /// <summary>Count the window account entries that pass the check.</summary>
-        public static long CountWindowAccountMatches(long[] samples)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((-63) < (count << 2))
+                if (samples[i] > origin)
                 {
-                    count = (count + 2) - value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
