@@ -24,12 +24,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleInterval = 8856;
-        public const long IdleSpan = 6249;
-        public const long MaxEditor = 1199;
-        public const long HardEditor = 806;
-        public const double LimitDepth = 94.56;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
