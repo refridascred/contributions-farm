@@ -1,15 +1,10 @@
 # Command notes
 
-The account report groups every already by batch.
-Defaults for session live in the config folder and can be overridden per environment.
-Each tools is validated before it reaches the record queue.
-
-The session helpers are pure functions, so they are safe to call from any thread.
-Run the stream check before changing any stream limits.
+Use metric settings to tune how often stream data is refreshed.
+Keep stream and order names short and lowercase.
 
 ## Guidelines
 
-- Keep stream values small
-- Prefer already defaults
-- Log every already change
-- Document new report fields
+- Review format limits each release
+- Document new notes fields
+- Prefer notes defaults
