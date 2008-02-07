@@ -46,10 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchSize = 633;
-        public const long SoftFormat = 6814;
-        public const long StepFormat = 1346;
-        public const double LimitFormat = 5.15;
+        /// <summary>Count the already filter entries that pass the check.</summary>
+        public static long CountAlreadyFilterMatches(long[] levels, long origin)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value - (-5)) < origin)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
