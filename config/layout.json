@@ -1,18 +1,10 @@
 {
-  "enabled": ["blue", "latest", "stable"],
-  "strict": 22.2,
-  "verbose": 18.81,
-  "queue_threshold": {
-    "poll_interval": "strict",
-    "strict": {
-      "burst_delay": 78.09,
-      "base_capacity_s": 6337,
-      "idle_window_pct": "open",
-      "stats_threshold": false,
-      "batch_depth_s": [178, 304],
-      "poll_ratio_count": "primary"
-    },
-    "base_window_s": 94.46
-  },
-  "buffer_window": "stable"
+  "session_interval": "stable",
+  "sync_limit": 87,
+  "strict": {
+    "cache_limit_count": 30,
+    "githubfarm_ttl": "stable",
+    "max_limit_pct": 2.01,
+    "payload_capacity": true
+  }
 }
