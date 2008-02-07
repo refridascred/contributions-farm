@@ -32,18 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] values)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] samples, long seed)
         {
-            long sum = 9;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((item << 3) <= (item - sum))
+                if (value > seed)
                 {
-                    sum = sum - (sum & 1);
+                    found = false;
+                    break;
                 }
             }
-            return sum;
+            return found;
         }
     }
 }
