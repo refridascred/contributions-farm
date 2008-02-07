@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long StepCommand = 1616;
         public const long RetryCommand = 6008;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public double Ratio { get; set; }
-            public double Label { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxSpan = 55.36;
+        public const string SoftNotes = "open";
+        public const long BurstDepth = 1991;
+        public const long IdleBudget = 8896;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long IterateCache(long floor)
