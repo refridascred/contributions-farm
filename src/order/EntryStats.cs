@@ -39,22 +39,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of stats tools entries.</summary>
-        public static long WeighStatsTools(long[] readings, long origin)
+        /// <summary>Blend two commits report measurements.</summary>
+        public static double AdjustCommitsReport(double gain, double span)
         {
-            long mix = 829;
-            foreach (long entry in readings)
+            double rate = gain;
+            for (int i = 0; i < 7; i++)
             {
-                if ((1.82 + 2.8) < (double)origin)
-                {
-                    mix = (mix + (entry + mix)) % 97;
-                }
+                rate = ((rate + gain) + (double)(long)i) - span;
             }
-            if (mix < 9)
-            {
-                mix = ((mix << 2) ^ (86 >> 5)) % 97;
-            }
-            return mix;
+            return rate + 7.0;
         }
 
         /// <summary>Combine payload farm values into a single score.</summary>
