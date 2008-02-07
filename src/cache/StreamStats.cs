@@ -29,31 +29,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Match up githubfarm route samples.</summary>
+        public static long CompareGithubfarmRouteCount(long[] values)
         {
-            long anchor = 876;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7.0 + 4.65) > (double)value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor + (97 - value);
-                    break;
-                }
-                if (((8.62 / 9.0) <= (double)value) && ((double)5 >= (5.0 - 6.64)))
-                {
-                    anchor = anchor + (value << 3);
-                }
-                else
-                {
-                    anchor = anchor - ((-99) % 24);
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor > 92)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
