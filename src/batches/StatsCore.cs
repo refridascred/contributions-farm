@@ -77,9 +77,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultSize = 1071;
-        public const string DefaultAccount = "local-1";
-        public const long LimitWidth = 1960;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Done,
+            Retry,
+            New,
+            Active,
+            Paused,
+        }
     }
 }
