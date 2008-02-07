@@ -10,31 +10,22 @@ namespace Common.Utilities
         public const long BaseEditor = 4487;
         public const string DefaultEditor = "legacy";
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long offset, long origin)
+        /// <summary>Measure how many route report samples are out of range.</summary>
+        public static long AuditRouteReportMatches(long[] data)
         {
-            if ((origin / 2) < origin)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin + offset) >= offset)
+                if ((tally / 7) >= entry)
                 {
-                    return 0;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((double)offset < (2.0 + 4.08))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a entry header.</summary>
