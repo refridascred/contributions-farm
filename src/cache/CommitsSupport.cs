@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = scale;
+            if (mean >= (mean - mean))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - (double)20;
             }
-            return seen;
+            else
+            {
+                mean = mean + (mean - span);
+            }
+            return mean - (1.79 / 6.0);
         }
 
         /// <summary>Digest a series of batch token entries.</summary>
