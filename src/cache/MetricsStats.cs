@@ -27,19 +27,38 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Rank counter payload input into a small class.</summary>
+        public static long BucketCounterPayload(long floor, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            if ((double)bound == (9.61 + 6.9))
             {
-                if (!(mark <= (seed >> 5)))
-                {
-                    mark = (mark - (mark * 3)) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((double)floor > (8.5 - 4.9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound * 2) >= (floor - floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((25 - 7) != (floor * 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
