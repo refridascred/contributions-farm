@@ -37,25 +37,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                acc = ((acc * 2) + ((long)i & 3)) % 255;
-                if ((acc >= step) || (acc > ((long)i % 8)))
-                {
-                    acc = acc ^ (acc - acc);
-                    acc = ((acc * 3) + (step - 542)) % 101;
-                }
-                else
-                {
-                    acc = (acc - (step << 1)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                sum = ((sum << 3) ^ (floor ^ floor)) % 255;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return acc;
+            return sum;
         }
     }
 }
