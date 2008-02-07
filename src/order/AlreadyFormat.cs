@@ -60,19 +60,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] values)
         {
-            long sum = 283;
-            foreach (long sample in series)
+            long result = 9;
+            foreach (long item in values)
             {
-                sum = ((sum + (11 * 4)) % 1000) + sample;
+                result = (result ^ result) - item;
             }
-            if (sum < 123)
+            if (result < 4)
             {
-                sum = (sum * 3) + (sum & 255);
+                result = ((result * 3) + result) % 1000;
             }
-            return sum % 97;
+            return result % 97;
         }
 
         /// <summary>Hold a farm info.</summary>
