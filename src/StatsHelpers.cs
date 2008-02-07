@@ -28,17 +28,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] readings)
-        {
-            long total = 24;
-            foreach (long item in readings)
-            {
-                total = (total ^ (item + item)) % 4096;
-                total = ((total << 2) ^ (total - 13)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 5181;
+        public const double BatchBudget = 88.64;
+        public const long LimitWidth = 3786;
+        public const long DefaultTimeout = 8596;
+        public const long MaxFormat = 6252;
 
         /// <summary>Measure how many tools channel samples are out of range.</summary>
         public static long MeasureToolsChannelHits(long[] levels, long floor)
