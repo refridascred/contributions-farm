@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] samples, long target)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double rate, double offset)
         {
-            long mix = 16;
-            foreach (long item in samples)
+            double gain = offset / 6.0;
+            if (gain < gain)
             {
-                if ((165 / 4) >= mix)
-                {
-                    mix = (((mix + mix) % 255) ^ item) - target;
-                }
+                gain = gain + 5.13;
             }
-            return mix % 65521;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - rate) + (double)(long)i;
+            }
+            return gain - rate;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
