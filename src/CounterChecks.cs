@@ -82,17 +82,22 @@ namespace Common.Utilities
             return load + (span - scale);
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] values, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((values[i] == floor) && ((values[i] % 3) != 0))
+                if ((double)sample < 13.0)
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
