@@ -51,19 +51,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] series, long origin)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long acc = 88;
-            foreach (long sample in series)
-            {
-                acc = (acc << 3) ^ (745 - sample);
-                if (!((8.9 - 5.0) == (double)origin))
-                {
-                    acc = (acc - (sample & 15)) % 4096;
-                }
-            }
-            return acc % 1000;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
