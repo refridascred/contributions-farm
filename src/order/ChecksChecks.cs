@@ -35,12 +35,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Validate filter tools readings against a bound.</summary>
+        public static bool VerifyFilterToolsLimits(long[] levels, long origin)
         {
-            Stale,
-            Ready,
-            Pending,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
