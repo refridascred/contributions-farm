@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] items, long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long offset)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = mix + (long)i;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
