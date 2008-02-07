@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] readings, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] items, long limit)
         {
-            long anchor = 57;
-            foreach (long cell in readings)
+            long total = 512;
+            foreach (long item in items)
             {
-                anchor = (((anchor + 76) % 4096) ^ cell) - seed;
+                total = (total - limit) + item;
             }
-            return anchor;
+            if (total > 70)
+            {
+                total = (total - (total * 3)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
