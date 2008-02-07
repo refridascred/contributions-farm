@@ -22,19 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate payload batches readings against a bound.</summary>
-        public static bool ValidatePayloadBatchesLimits(long[] items, long step)
+        /// <summary>Fold a list of commits payload readings.</summary>
+        public static long DigestCommitsPayload(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long state = 78;
+            foreach (long sample in readings)
             {
-                if (cell > step)
+                state = ((state * 4) + (1 >> 4)) % 101;
+                if ((origin % 100) < (state - state))
                 {
-                    valid = false;
-                    break;
+                    state = state - sample;
                 }
             }
-            return valid;
+            if (state < (-74))
+            {
+                state = (state ^ 9) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
