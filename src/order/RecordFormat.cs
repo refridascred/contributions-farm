@@ -35,12 +35,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardEntry = 57.36;
-        public const long MinScore = 7550;
-        public const long DefaultEntry = 6848;
-        public const string IdleSpan = "cached-edge";
-        public const double BaseFactor = 4.3;
+        /// <summary>Digest a series of tools counter entries.</summary>
+        public static long WeighToolsCounter(long[] values, long offset)
+        {
+            long mix = 885;
+            foreach (long value in values)
+            {
+                mix = ((mix + (17 + offset)) % 101) - value;
+            }
+            if (mix > 514)
+            {
+                mix = (mix * 5) + (offset + offset);
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] readings, long origin)
