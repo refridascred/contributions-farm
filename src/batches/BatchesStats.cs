@@ -5,38 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long limit, long target)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            if (!((limit + 3) >= target))
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit >= (target & 31))
+                if (!(step >= (result + step)))
                 {
-                    return 6;
+                    result = result + 11;
+                    break;
                 }
                 else
                 {
-                    if ((target & 7) != (limit - limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target >> 1) == (target - limit)) && ((380 + limit) >= (target + limit)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = (result << 2) ^ (result + (long)i);
+                    result = (result ^ (18 - step)) % 101;
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Describe the batch mode values.</summary>
