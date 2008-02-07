@@ -20,12 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepScore = 90.5;
-        public const long HardFactor = 8108;
-        public const double DefaultRatio = 88.06;
-        public const long StepGithubfarm = 9160;
-        public const long WindowGithubfarm = 4284;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = (((score << 2) ^ limit) % 65521) - (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long BucketCommits(long offset, long limit)
