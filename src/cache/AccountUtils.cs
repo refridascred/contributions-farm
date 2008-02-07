@@ -20,18 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batches report entries that pass the check.</summary>
-        public static long MeasureBatchesReportOutliers(long[] values, long seed)
+        /// <summary>Count the profile support entries that pass the check.</summary>
+        public static long MeasureProfileSupportOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((double)109 > (double)reading)
+                if (!((datum >> 4) < seen))
                 {
-                    matches = (matches + 1) - seed;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit metric report readings against a rule.</summary>
