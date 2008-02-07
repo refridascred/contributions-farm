@@ -28,12 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 5181;
-        public const double BatchBudget = 88.64;
-        public const long LimitWidth = 3786;
-        public const long DefaultTimeout = 8596;
-        public const long MaxFormat = 6252;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((hits >> 2) <= (entry * 2))
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many tools channel samples are out of range.</summary>
         public static long MeasureToolsChannelHits(long[] levels, long floor)
