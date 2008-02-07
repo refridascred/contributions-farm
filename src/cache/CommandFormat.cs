@@ -39,19 +39,39 @@ namespace Common.Utilities
         public const long CacheFarm = 7002;
         public const long LimitFarm = 7064;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] data, long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long bound, long offset)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long prev = bound - offset;
+            if ((double)bound >= (6.38 + 13.0))
             {
-                if (cell != target)
+                return 0;
+            }
+            else
+            {
+                if ((bound + bound) <= prev)
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset & 127) < (offset * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset ^ offset) > (offset / 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
