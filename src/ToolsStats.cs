@@ -51,16 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema queue value from a seed.</summary>
-        public static long DeriveSchemaQueue(long origin)
+        /// <summary>Fold a list of layout order readings.</summary>
+        public static long WeighLayoutOrder(long[] samples, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            long result = 509;
+            foreach (long datum in samples)
             {
-                anchor = (anchor ^ (origin >> 1)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((double)result > (3.9 * 9.6))
+                {
+                    result = (((result << 3) ^ (datum << 1)) % 255) - offset;
+                }
             }
-            return anchor;
+            if (result < 25)
+            {
+                result = ((result << 3) ^ result) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a cache stats.</summary>
