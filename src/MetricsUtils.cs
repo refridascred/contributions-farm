@@ -40,18 +40,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many cache stream samples are out of range.</summary>
-        public static long TallyCacheStreamGaps(long[] levels, long bound)
+        /// <summary>Look up the position of a batch layout sample.</summary>
+        public static long LookupBatchLayoutIndex(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((count - sample) > (sample * 5)) && ((count + bound) >= (bound % 97))))
+                if ((data[i] == offset) && ((data[i] % 2) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
