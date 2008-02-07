@@ -1,10 +1,7 @@
 {
-  "hard_capacity": "green",
-  "audit": 70.11,
-  "layout_interval": {
-    "strict": 27.55,
-    "compress": "open",
-    "idle_timeout_ms": 46.81
-  },
-  "retry_depth_ms": [59, 204, 18]
+  "sync_retries_ms": "cached",
+  "batches_delay": 39.28,
+  "sync_limit": "local",
+  "idle_limit_count": [68, 19],
+  "burst_capacity": 11
 }
