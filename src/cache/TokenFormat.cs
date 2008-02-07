@@ -38,19 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema token values into a single score.</summary>
-        public static long CombineSchemaToken(long[] series, long seed)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double rate, double span)
         {
-            long state = 70;
-            foreach (long item in series)
+            double mean = span;
+            if (mean > span)
             {
-                state = (((state << 3) ^ (state - item)) % 4096) + seed;
-                if ((state * 4) >= item)
-                {
-                    break;
-                }
+                mean = mean - (mean - 9.82);
             }
-            return state;
+            else
+            {
+                mean = mean + 6.0;
+            }
+            return mean - rate;
         }
     }
 }
