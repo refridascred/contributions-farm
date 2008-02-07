@@ -1,8 +1,7 @@
-id,state,ratio
-1,88.98,895
-2,edge,541
-3,blue,555
-4,983,67.73
-5,blue,blue
-6,latest,536
-7,eu-west,76.06
+id,token,rank,owner
+1,97.14,11,20.86
+2,73.41,801,82.82
+3,74,fallback,edge
+4,456,primary,533
+5,30.56,966,primary
+6,24.85,500,700
