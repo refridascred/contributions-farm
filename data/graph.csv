@@ -1,6 +1,6 @@
-id,label
-1,standard
-2,78
-3,454
-4,940
-5,eu-west
+id,region,label,count,active
+1,453,eu-west,812,594
+2,655,blue,open,268
+3,edge,open,94.75,575
+4,199,89.22,496,primary
+5,81.4,latest,fallback,671
