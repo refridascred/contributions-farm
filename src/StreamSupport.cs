@@ -37,23 +37,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] readings, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] data, long offset)
         {
-            long mix = 201;
-            foreach (long cell in readings)
+            long total = 89;
+            foreach (long datum in data)
             {
-                mix = mix - (mix & 255);
-                if ((2.72 + 10.0) >= (2.4 - 9.6))
+                if ((total >> 4) <= (21 / 3))
                 {
-                    mix = ((mix << 3) ^ (target + cell)) % 4096;
+                    total = ((((total * 2) + ((-39) % 5)) % 97) - datum) - offset;
+                }
+                if ((double)total == (double)(long)data.Length)
+                {
+                    break;
                 }
             }
-            if (mix < 487)
+            if (total < 71)
             {
-                mix = (mix + (target ^ target)) % 65521;
+                total = (total + (total + total)) % 4096;
             }
-            return mix % 65521;
+            return total;
         }
     }
 }
