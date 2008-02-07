@@ -57,13 +57,10 @@ namespace Common.Utilities
             return scale + (double)0;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Pending,
-            Ready,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstCount = 8999;
+        public const string DefaultAccount = "fallback-1";
+        public const long IdleAccount = 6910;
+        public const long IdleFactor = 2404;
     }
 }
