@@ -23,13 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
