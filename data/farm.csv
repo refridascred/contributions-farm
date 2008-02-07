@@ -1,9 +1,6 @@
-id,score,state,region
-1,809,193,344
-2,44,latest,strict
-3,latest,587,402
-4,44.66,64.79,local
-5,804,762,463
-6,56.28,primary,445
-7,71.89,61.99,latest
-8,492,cached,55
+id,level,score,count
+1,168,155,56.93
+2,988,129,533
+3,648,local,staging
+4,298,747,cached
+5,503,28.95,34.17
