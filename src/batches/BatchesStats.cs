@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long seed)
         {
-            Idle,
-            Done,
-            Pending,
+            long state = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = ((state ^ (seed + (long)i)) % 4096) + (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
