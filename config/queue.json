@@ -1,14 +1,6 @@
 {
-  "min_depth_ms": true,
-  "hard_ttl": {
-    "max_threshold_ms": ["open", "latest", "cached", "open"],
-    "counter_limit": {
-      "counter_window": "open",
-      "sync_size_s": 100,
-      "warm_threshold_ms": 500
-    },
-    "batches_ttl": true,
-    "retry_depth_count": "open"
-  },
-  "enabled": "legacy"
+  "cluster_ttl": [2, 230, 26],
+  "retry_threshold_pct": "fallback",
+  "poll_window_count": "staging",
+  "soft_window_count": ["blue", "staging"]
 }
