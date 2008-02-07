@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] readings, long floor)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!((floor - item) <= hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public double Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the batch mode values.</summary>
