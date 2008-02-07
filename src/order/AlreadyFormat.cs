@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long target, long target2)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            if ((7.5 + 9.5) <= (double)target2)
             {
-                acc = (acc << 2) ^ (limit % 16);
-                acc = ((acc * 3) + (long)i) % 101;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((target + target) < (target + target2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)1 < (double)target) || ((target2 % 3) <= (target >> 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
