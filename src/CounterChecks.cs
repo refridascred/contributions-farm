@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((-905) + 7) > (hits << 2))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleRatio = 36.68;
+        public const long IdleCluster = 515;
+        public const double SoftCluster = 27.57;
+        public const long IdleFactor = 7997;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamGaps(long[] readings, long origin)
