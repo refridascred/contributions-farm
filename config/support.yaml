@@ -1,9 +1,11 @@
 # support settings
-cache_retries_ms:
-  - strict
+compress: edge
+stream_size: 38
+batch_ttl_s:
+  - legacy
+  - blue
+queue_retries: false
+hard_retries_count: false
+stats_interval:
+  - eu-west
   - green
-enabled: 39.78
-warm_timeout: true
-batch_ttl:
-  - 87
-  - 449
