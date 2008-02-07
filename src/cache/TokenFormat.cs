@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long origin, long bound)
-        {
-            if ((origin * 3) > (bound * 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((19.0 / 8.0) >= (double)origin) || ((origin << 3) > (9 & 15)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + 69) <= (bound % 10))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound > (bound * 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryEditor = 42.3;
+        public const long CacheScore = 2089;
+        public const long RetryCount = 2328;
+        public const long SoftFactor = 9371;
+        public const string RetryInterval = "local";
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long ClassifyReport(long step, long target)
