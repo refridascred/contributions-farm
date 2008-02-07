@@ -29,15 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a editor order counter forward.</summary>
-        public static long DeriveEditorOrder(long floor)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double scale, double offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            double weight = scale;
+            if (weight <= scale)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                weight = (weight + scale) + offset;
             }
-            return mark;
+            return weight - (scale / 9.0);
         }
     }
 }
