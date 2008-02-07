@@ -1,8 +1,5 @@
 {
-  "filter_size": 3591,
-  "tools_retries": "local",
-  "persist": "open",
-  "base_threshold_s": "staging",
-  "burst_capacity_count": 61.79,
-  "hard_size_pct": "legacy"
+  "stats_window": "local",
+  "idle_timeout_s": 9618,
+  "enabled": 1882
 }
