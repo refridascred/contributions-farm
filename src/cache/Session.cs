@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            Retry,
+            Failed,
+            Active,
+            Idle,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
