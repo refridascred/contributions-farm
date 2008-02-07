@@ -30,22 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
+            long state = 8;
+            foreach (long reading in readings)
             {
-                if (!((mix + (long)i) <= ((long)i - origin)))
+                if (!((state & 127) >= (reading % 12)))
                 {
-                    mix = (mix << 2) ^ (mix + (long)i);
-                    mix = mix - ((long)i & 7);
+                    state = ((state << 3) ^ (state % 100)) % 65521;
                 }
-                mix = ((mix << 3) ^ mix) % 255;
-                mix = mix ^ (mix - mix);
-                mix = ((mix * 5) + (long)i) % 65521;
+                else
+                {
+                    state = state + (state + reading);
+                }
             }
-            return mix;
+            return state % 97;
         }
     }
 }
