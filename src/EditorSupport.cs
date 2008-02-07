@@ -88,20 +88,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a window profile counter forward.</summary>
-        public static long StepWindowProfile(long floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                score = (score + (score ^ (long)i)) % 101;
-                if (!((score << 1) >= (score * 5)))
-                {
-                    score = score - 30;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Dropped,
+            Queued,
+            Stale,
         }
     }
 }
