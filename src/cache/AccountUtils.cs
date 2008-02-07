@@ -40,11 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxSize = 7812;
-        public const long BurstFactor = 4697;
-        public const string LimitOrder = "staging";
-        public const string MaxOrder = "latest-1";
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] levels, long target)
+        {
+            long total = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)target <= (9.0 - 16.0))
+                {
+                    total = ((total << 2) ^ (total & 3)) - datum;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (target - total)) % 4096;
+                }
+            }
+            if (total < 1)
+            {
+                total = (total ^ (total % 12)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
