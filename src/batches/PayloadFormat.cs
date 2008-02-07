@@ -21,20 +21,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] data, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseFactor = "open";
+        public const double SoftTimeout = 74.67;
+        public const long MaxWidth = 5590;
+        public const double CacheCount = 61.88;
+        public const long RetryBudget = 8231;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long WeighMetric(long[] series, long seed)
