@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the commits support entries that pass the check.</summary>
-        public static long AuditCommitsSupportMatches(long[] levels)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double bias = gain;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(((cell + 3) == ((-738) - (long)levels.Length)) || (cell <= seen)))
-                {
-                    seen = seen + 1;
-                }
+                bias = (bias + gain) - (double)(long)i;
             }
-            return seen;
+            return bias - floor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
