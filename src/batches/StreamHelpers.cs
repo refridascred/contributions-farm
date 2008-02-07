@@ -28,11 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
+            Ready,
+            Locked,
+            Closed,
         }
 
         /// <summary>Accumulate batches samples.</summary>
