@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many batch account samples are out of range.</summary>
-        public static long AuditBatchAccountGaps(long[] values)
+        /// <summary>Classify a counter checks pair into a bucket.</summary>
+        public static long ClassifyCounterChecks(long limit, long origin)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long delta = limit + origin;
+            if ((limit ^ limit) == (origin + origin))
             {
-                if (cell > 0)
+                return 2;
+            }
+            else
+            {
+                if ((limit * 3) <= delta)
                 {
-                    count = count + 3;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((limit + 58) >= (8 % 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of record entries.</summary>
