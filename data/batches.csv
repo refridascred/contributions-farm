@@ -1,8 +1,8 @@
-id,weight,count
-1,693,76.81
-2,59.24,green
-3,172,eu-west
-4,45.37,89.32
-5,staging,34
-6,79.58,open
-7,893,455
+id,level,region,owner
+1,294,legacy,81.83
+2,48.56,835,open
+3,cached,88.25,507
+4,851,legacy,19.85
+5,167,blue,latest
+6,38.08,staging,868
+7,edge,98.98,66.47
