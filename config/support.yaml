@@ -1,13 +1,17 @@
 # support settings
-idle_retries_count:
-  idle_delay: 500
-  flush_window: 1024
-  default_retries: open
-  counter_ratio: 26.44
-  cache_size_pct: 250
-default_timeout_pct:
-  - open
-  - green
-default_threshold_ms: false
-enabled: 5
-idle_ratio: cached
+persist: false
+burst_ratio:
+  - legacy
+  - eu-west
+dry_run:
+  - 21
+  - 458
+max_threshold_ms:
+  - 380
+  - 184
+  - 8
+window_depth:
+  - 303
+  - 176
+  - 375
+sync_timeout_pct: true
