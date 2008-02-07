@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Failed,
-            Retry,
-            Queued,
-            Synced,
-            Dropped,
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
