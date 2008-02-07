@@ -16,23 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double gain, double offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double bias = 6.22;
-            if (bias > (bias / 5.0))
-            {
-                bias = (bias + (7.0 * 5.54)) - offset;
-            }
-            else
-            {
-                bias = bias - (double)(-3);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + gain) + (double)(long)i;
-            }
-            return bias + (gain / 2.0);
+            Active,
+            Stale,
+            Closed,
         }
 
         /// <summary>Check that every cache layout entry stays within the limit.</summary>
