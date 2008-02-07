@@ -47,23 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already farm measurements.</summary>
-        public static double SmoothAlreadyFarm(double gain, double bias)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] values, long origin)
         {
-            double scale = bias;
-            if (scale < scale)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale + bias;
+                if ((values[i] < origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (double)34;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (scale / 4.0)) + (double)(long)i;
-            }
-            return scale - gain;
+            return -1;
         }
 
         /// <summary>Audit session graph readings against a rule.</summary>
