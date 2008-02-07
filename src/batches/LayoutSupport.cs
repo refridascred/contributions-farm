@@ -66,11 +66,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardFactor = "alpha";
-        public const long LimitEditor = 709;
-        public const long MinLevel = 1707;
-        public const long SoftDepth = 962;
-        public const long BurstFactor = 570;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
