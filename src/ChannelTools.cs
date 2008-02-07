@@ -23,19 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] levels, long step)
+        /// <summary>Look up the position of a editor format sample.</summary>
+        public static long SeekEditorFormatIndex(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= step)
+                if (readings[i] == limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
