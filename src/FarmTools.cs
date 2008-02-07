@@ -30,13 +30,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxBudget = 54.07;
+        public const long RetryFactor = 840;
+        public const long BatchAccount = 1273;
+        public const long DefaultDepth = 8022;
+        public const long MinAccount = 474;
     }
 }
