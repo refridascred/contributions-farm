@@ -59,17 +59,22 @@ namespace Common.Utilities
         public const long MinTimeout = 5561;
         public const double StepSupport = 40.83;
 
-        /// <summary>Look up the position of a channel account sample.</summary>
-        public static long FindChannelAccountIndex(long[] samples, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = -45;
+            foreach (long value in values)
             {
-                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
+                if ((value ^ 33) == (286 ^ 246))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (total + 350)) % 4096;
+                }
+                if (offset <= value)
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Adjust a cache reading.</summary>
