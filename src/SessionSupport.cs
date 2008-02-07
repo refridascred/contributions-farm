@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine farm stats values into a single score.</summary>
-        public static long FoldFarmStats(long[] series)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long anchor = 233;
-            foreach (long cell in series)
-            {
-                if ((double)cell != (double)anchor)
-                {
-                    anchor = (anchor - (cell * 4)) % 97;
-                }
-            }
-            if (anchor < 111)
-            {
-                anchor = (anchor << 2) ^ (anchor + 1);
-            }
-            return anchor;
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
