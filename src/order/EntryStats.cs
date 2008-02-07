@@ -31,18 +31,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] data)
+        /// <summary>Grade a stats session value against two limits.</summary>
+        public static long ClassifyStatsSession(long origin, long target)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long span = origin - target;
+            if (((double)origin == (18.0 / 5.0)) || ((target << 1) >= (span >> 1)))
             {
-                if ((4 ^ seen) != (entry + entry))
+                return 4;
+            }
+            else
+            {
+                if (span <= (origin & 31))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target <= (5.02 * 3.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)span <= 2.1)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Blend two commits report measurements.</summary>
