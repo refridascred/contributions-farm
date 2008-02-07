@@ -65,13 +65,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Synced,
-            Locked,
-            Active,
-            Retry,
+            Draft,
+            Paused,
+            Dropped,
+            Stale,
+            Queued,
         }
     }
 }
