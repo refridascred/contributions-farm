@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long offset, long floor)
+        /// <summary>Measure how many cache graph samples are out of range.</summary>
+        public static long AuditCacheGraphMatches(long[] samples, long bound)
         {
-            if ((floor - offset) != (floor & 127))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor << 2) <= (floor * 5))
+                if ((bound - bound) >= (bound + entry))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor >> 2) != (floor - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
