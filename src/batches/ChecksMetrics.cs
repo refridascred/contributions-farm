@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every commits batch entry stays within the limit.</summary>
-        public static bool GuardCommitsBatchBounds(long[] values, long limit)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Done,
+            Idle,
+            Draft,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
