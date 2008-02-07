@@ -1,13 +1,8 @@
 {
-  "default_delay_ms": "legacy",
-  "report_interval": false,
-  "strict": 4279,
-  "contributi_ratio": {
-    "editor_depth": "primary",
-    "readonly": 98.44,
-    "idle_retries_count": 14,
-    "session_capacity": [266, 430, 451]
-  },
-  "flush_ttl_s": "eu-west",
-  "cache_depth_ms": 72
+  "strict": 56,
+  "batch_delay": 38.83,
+  "dry_run": 500,
+  "poll_window_ms": "strict",
+  "tools_threshold": [123, 334],
+  "retry_ratio_s": 30.07
 }
