@@ -66,19 +66,18 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double rate, double bias)
+        /// <summary>Audit session graph readings against a rule.</summary>
+        public static long AuditSessionGraphHits(long[] series)
         {
-            double drift = rate;
-            if (drift >= bias)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                drift = drift + (double)5;
+                if ((datum ^ matches) < (datum + datum))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + 9.63;
+            return matches;
         }
 
         /// <summary>Accumulate context stats samples.</summary>
