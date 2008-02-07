@@ -36,13 +36,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinTimeout = 18.03;
+        public const long StepAccount = 3648;
+        public const long BurstAccount = 6830;
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
