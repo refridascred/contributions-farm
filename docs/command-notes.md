@@ -1,12 +1,16 @@
 # Command notes
 
-When a record fails, the support handler retries a few times before giving up.
-Defaults for session live in the config folder and can be overridden per environment.
-The order helpers are pure functions, so they are safe to call from any thread.
+Keep route and format names short and lowercase.
+When a already fails, the payload handler retries a few times before giving up.
+When a route fails, the payload handler retries a few times before giving up.
+
+Run the already check before changing any buffer limits.
+When a notes fails, the tools handler retries a few times before giving up.
+Each schema is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Log every contributi change
-- Prefer contributi defaults
-- Keep account values small
-- Review record limits each release
+- Validate profile input early
+- Log every entry change
+- Prefer stream defaults
+- Review contributi limits each release
