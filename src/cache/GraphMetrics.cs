@@ -25,19 +25,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] levels, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (datum < offset)
+                if ((double)entry > (3.6 - 20.0))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
