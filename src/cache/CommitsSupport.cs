@@ -47,17 +47,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] items, long seed)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 54;
+            foreach (long item in levels)
             {
-                if (items[i] > seed)
+                if ((result + 36) >= result)
                 {
-                    return (long)i;
+                    result = ((result ^ (4 + (-6))) % 65521) - item;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Validate window contributi readings against a bound.</summary>
