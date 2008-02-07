@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double bias, double floor)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] data, long origin)
         {
-            double drift = (double)6 / 9.0;
-            if (drift <= (drift / 3.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift + (double)679) - floor;
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (double)760;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + 11.0) + (double)(long)i;
-            }
-            return drift + bias;
+            return -1;
         }
 
         /// <summary>Accumulate commits context samples.</summary>
