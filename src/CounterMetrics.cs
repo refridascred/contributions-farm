@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const long LimitProfile = 7614;
         public const string BaseSpan = "strict-1";
 
-        /// <summary>Measure how many stream editor samples are out of range.</summary>
-        public static long AuditStreamEditorGaps(long[] items)
+        /// <summary>Match up session command samples.</summary>
+        public static long OverlapSessionCommandCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches & 127) <= item)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Blend two schema counter measurements.</summary>
