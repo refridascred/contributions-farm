@@ -16,13 +16,22 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Count the already githubfarm entries that pass the check.</summary>
+        public static long CountAlreadyGithubfarmHits(long[] values)
         {
-            Paused,
-            Retry,
-            Draft,
-            Ready,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (((-630) + matches) >= matches)
+                {
+                    matches = (matches + 1) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
