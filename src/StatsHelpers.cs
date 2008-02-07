@@ -28,19 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] values, long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (reading > limit)
+                if (value >= (tally << 1))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
