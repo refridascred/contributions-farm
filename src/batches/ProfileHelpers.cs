@@ -47,17 +47,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Check that every cluster account entry stays within the limit.</summary>
+        public static bool ValidateClusterAccountLimits(long[] data, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                score = score ^ (score ^ 3);
-                score = score - ((long)i + score);
-                score = ((score * 2) + (long)i) % 1000;
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
