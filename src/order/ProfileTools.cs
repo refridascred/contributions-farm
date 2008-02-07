@@ -14,19 +14,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] levels, long target)
         {
-            long total = 483;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                total = (total ^ (total & 3)) ^ reading;
+                if ((double)target != (20.0 / 7.0))
+                {
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (total < 263)
-            {
-                total = total - total;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
