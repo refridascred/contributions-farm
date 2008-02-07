@@ -1,6 +1,9 @@
-id,state,level,label
-1,fallback,358,86
-2,85.58,393,853
-3,16.12,74.99,859
-4,82.66,887,783
-5,eu-west,21.12,985
+id,weight,label,region,owner
+1,537,standard,655,blue
+2,65.76,245,189,eu-west
+3,79.4,50,86.4,blue
+4,11.2,fallback,90.31,local
+5,77.66,85,9,83.58
+6,legacy,924,42.24,green
+7,green,34.29,43,eu-west
+8,staging,696,50,latest
