@@ -23,12 +23,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultTimeout = 59.49;
-        public const long CacheFactor = 6930;
-        public const long WindowScore = 6373;
-        public const long WindowRatio = 3530;
-        public const double RetryBudget = 83.02;
+        /// <summary>Project the next contributi token value.</summary>
+        public static double BlendContributiToken(double weight, double span)
+        {
+            double scale = 14.0 / 5.0;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (span + weight)) + (double)(long)i;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Scale a entry commits figure with a bias.</summary>
         public static double SmoothEntryCommits(double bias, double floor)
