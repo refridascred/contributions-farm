@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] readings, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
+                if (reading > seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Accumulate entry samples.</summary>
