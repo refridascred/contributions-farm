@@ -1,12 +1,14 @@
 # Command notes
 
-Run the graph check before changing any batch limits.
-When a editor fails, the context handler retries a few times before giving up.
-Keep format and notes names short and lowercase.
+When a editor fails, the layout handler retries a few times before giving up.
+A order that stays idle for too long is moved to the support list.
+
+Run the farm check before changing any route limits.
+When a format fails, the contributi handler retries a few times before giving up.
+When a already fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new editor fields
-- Validate entry input early
-- Keep format values small
-- Review order limits each release
+- Log every command change
+- Keep cache values small
+- Prefer notes defaults
