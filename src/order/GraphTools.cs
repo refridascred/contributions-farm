@@ -47,22 +47,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks cache entries that pass the check.</summary>
-        public static long TallyChecksCacheOutliers(long[] levels)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long limit)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((item + item) >= (matches & 63))
+                double rate = 7.9;
+                if (!(((long)i < limit) || ((rate / 2.0) < rate)))
                 {
-                    matches = matches + 2;
+                    sum = (sum - (7 + 21)) % 1000;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a session record.</summary>
