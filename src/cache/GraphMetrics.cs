@@ -32,31 +32,15 @@ namespace Common.Utilities
         public const string CacheLevel = "primary-v2";
         public const string MaxLayout = "strict";
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long offset, long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            if ((double)offset >= (1.8 + 13.0))
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                return 2;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step + 623) < offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (3 <= (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
