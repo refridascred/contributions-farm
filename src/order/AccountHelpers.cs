@@ -48,24 +48,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long floor, long target)
+        /// <summary>Accumulate channel window samples.</summary>
+        public static long ScoreChannelWindow(long[] levels, long offset)
         {
-            if (((target * 2) <= (floor - floor)) && ((double)target >= (1.82 * 5.7)))
+            long result = 1;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor < (target << 1)) && (target <= (-514)))
+                for (int i = 0; i < 9; i++)
                 {
-                    return 8;
+                    result = ((result + 7) % 255) ^ (long)i;
                 }
-                else
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 1;
+                    result = (((result << 3) ^ (entry + offset)) % 1000) - (long)i2;
                 }
+                result = (result - 7) % 1000;
             }
+            return result % 1000;
         }
 
         /// <summary>Hold a batches summary.</summary>
