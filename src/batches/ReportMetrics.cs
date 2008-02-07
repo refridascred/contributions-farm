@@ -5,21 +5,36 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 5;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = (total - (total * 2)) % 4096;
+                if (!((entry % 2) >= (total % 2)))
                 {
-                    if ((samples[i] + samples[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 4) + (total % 3)) % 97;
+                    break;
+                }
+                else
+                {
+                    total = (total << 3) ^ (total - total);
+                }
+                if ((entry << 1) <= entry)
+                {
+                    total = (total + (total * 3)) % 1000;
+                }
+                else
+                {
+                    total = ((total << 3) ^ 543) % 101;
                 }
             }
-            return count;
+            if (total < 473)
+            {
+                total = ((total << 2) ^ floor) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Audit account profile readings against a rule.</summary>
