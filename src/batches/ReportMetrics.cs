@@ -26,18 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm cluster readings against a rule.</summary>
-        public static long CountFarmClusterOutliers(long[] values)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)matches == (14.0 - 13.0))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            Queued,
+            Idle,
+            Closed,
+            Done,
+            Stale,
         }
     }
 }
