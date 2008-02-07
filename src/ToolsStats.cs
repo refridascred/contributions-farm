@@ -30,18 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit entry format readings against a rule.</summary>
-        public static long CountEntryFormatHits(long[] series)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((double)(long)series.Length == (5.0 * 4.14))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Idle,
         }
 
         /// <summary>Match up session samples.</summary>
