@@ -46,11 +46,20 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchScore = 1441;
-        public const string DefaultSpan = "stable-edge";
-        public const long BatchDepth = 1512;
-        public const double SoftScore = 26.81;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] levels, long seed)
+        {
+            long anchor = 0;
+            foreach (long cell in levels)
+            {
+                anchor = (anchor - (seed + 925)) - cell;
+            }
+            if (anchor > 62)
+            {
+                anchor = (anchor + (anchor << 1)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long WeighPayload(long[] values, long offset)
