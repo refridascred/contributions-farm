@@ -22,11 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 8426;
-        public const long BurstSize = 8481;
-        public const double WindowRatio = 98.24;
-        public const double DefaultDepth = 8.39;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Retry,
+            Idle,
+            New,
+        }
 
         /// <summary>Combine counter entry values into a single score.</summary>
         public static long ScoreCounterEntry(long[] data)
