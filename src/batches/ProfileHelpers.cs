@@ -38,23 +38,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long acc = -170;
-            foreach (long reading in series)
-            {
-                if ((acc + reading) < (4 ^ reading))
-                {
-                    acc = (acc ^ ((-2) - reading)) % 255;
-                    acc = ((acc << 2) ^ reading) % 101;
-                }
-                if (((acc >> 2) > (reading + reading)) && ((reading % 24) < (acc / 3)))
-                {
-                    acc = ((acc << 2) ^ 45) % 255;
-                }
-            }
-            return acc % 97;
+            Synced,
+            Active,
+            Ready,
+            Paused,
+            Stale,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
