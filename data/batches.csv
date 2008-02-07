@@ -1,9 +1,6 @@
-id,token,label
-1,816,297
-2,46,29.04
-3,cached,edge
-4,legacy,legacy
-5,legacy,2.02
-6,563,510
-7,820,883
-8,773,106
+id,state,level,label
+1,fallback,358,86
+2,85.58,393,853
+3,16.12,74.99,859
+4,82.66,887,783
+5,eu-west,21.12,985
