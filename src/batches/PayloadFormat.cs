@@ -42,21 +42,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long origin, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = origin ^ target;
+            if ((51 / 6) != (target + next))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin == (double)target)
                 {
-                    if ((readings[i] - readings[j]) < 18)
+                    return 5;
+                }
+                else
+                {
+                    if ((14.0 + 7.0) > (double)next)
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin < target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
