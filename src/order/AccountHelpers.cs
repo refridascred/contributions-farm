@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound = target - limit;
+            if (!((bound + (-112)) > bound))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((bound * 2) < bound) && ((396 & 15) < limit))
                 {
-                    if ((data[i] + data[j]) == 8)
+                    return 5;
+                }
+                else
+                {
+                    if (((double)bound > (2.6 / 2.0)) || ((limit + target) <= (limit / 4)))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (target < (bound % 10))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
