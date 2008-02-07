@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const long RetryToken = 9432;
         public const double BatchToken = 91.47;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long offset, long offset2)
         {
-            long result = 46;
-            foreach (long reading in data)
+            if ((2 & 63) > (offset2 / 6))
             {
-                if ((result + 34) <= ((long)data.Length << 1))
+                return 1;
+            }
+            else
+            {
+                if (offset2 <= (offset << 3))
                 {
-                    result = ((result << 2) ^ result) ^ reading;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return result;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
