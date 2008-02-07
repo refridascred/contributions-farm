@@ -36,24 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long offset, long seed)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            if (!(offset < (3 - offset)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (559 > (offset >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
