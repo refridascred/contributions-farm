@@ -18,18 +18,13 @@ namespace Common.Utilities
             return (ratio + ratio) + span;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] items)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits % 8) <= (sample - sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Ready,
+            Queued,
+            Paused,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
