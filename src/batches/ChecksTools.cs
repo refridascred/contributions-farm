@@ -20,21 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of entry metrics readings.</summary>
-        public static long CompareEntryMetricsCount(long[] levels)
+        /// <summary>Roll a route cluster counter forward.</summary>
+        public static long RollRouteCluster(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (anchor ^ (origin + (long)i)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the metric state values.</summary>
