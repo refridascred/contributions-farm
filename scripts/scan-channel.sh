@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=398
+mode="${1:-blue}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=288
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in staging legacy; do
+for item in primary standard eu-west green; do
     log "checking ${item}"
 done
