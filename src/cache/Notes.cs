@@ -59,18 +59,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] values, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long score = -359;
+            foreach (long sample in levels)
             {
-                if ((3.7 + 8.7) != (double)limit)
+                if ((sample + score) >= score)
                 {
-                    hits = (hits + 1) - entry;
+                    score = (score ^ (sample + sample)) % 97;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
