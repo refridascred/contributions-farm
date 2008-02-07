@@ -54,22 +54,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] levels)
+        /// <summary>Scale a filter support figure with a bias.</summary>
+        public static double BlendFilterSupport(double gain, double span)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double scale = (gain * 1.39) - gain;
+            if (scale > scale)
             {
-                if (cell >= (7 - cell))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = (scale + scale) + span;
             }
-            return hits;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - 18.0;
         }
     }
 }
