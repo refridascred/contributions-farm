@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] samples, long offset)
         {
-            Locked,
-            Dropped,
-            Active,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((offset + (-49)) >= (hits << 1))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the entry mode values.</summary>
