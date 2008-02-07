@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitTimeout = 23.35;
-        public const string IdleBuffer = "open-edge";
-        public const double WindowBuffer = 30.9;
-        public const long DefaultInterval = 310;
-        public const long CacheRatio = 1776;
+        /// <summary>Fold a list of githubfarm cache readings.</summary>
+        public static long TotalGithubfarmCache(long[] samples)
+        {
+            long mark = 97;
+            foreach (long item in samples)
+            {
+                mark = (mark - (mark / 4)) - item;
+            }
+            return mark;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepToken = 9524;
