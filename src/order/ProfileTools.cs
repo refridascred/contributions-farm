@@ -14,13 +14,39 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long target, long bound)
         {
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public bool Size { get; set; }
+            long step = target - bound;
+            if (((target + bound) > (bound / 9)) || ((bound / 5) >= (bound + step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step / 8) != (step << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)target == (double)bound) || ((4.1 + 4.84) >= (double)bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((12.0 - 6.0) != (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit commits command readings against a rule.</summary>
