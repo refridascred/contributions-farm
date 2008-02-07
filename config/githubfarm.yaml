@@ -1,5 +1,6 @@
 # githubfarm settings
-dry_run: stable
-default_capacity: 250
-idle_capacity_pct: 100
-warm_timeout: eu-west
+already_capacity: cached
+window_limit: 3142
+base_retries_count: 100
+persist: 61.99
+tools_limit: legacy
