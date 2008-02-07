@@ -14,26 +14,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Compare every pair of notes support readings.</summary>
+        public static long PairNotesSupportCount(long[] data)
         {
-            long mark = 175;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark & 7) < (datum / 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark << 2) ^ (datum - 44)) % 97;
-                }
-                if (mark >= 48)
-                {
-                    mark = (mark ^ (datum << 3)) % 4096;
+                    if ((data[i] + data[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark < 8)
-            {
-                mark = (mark * 5) + (1 * 4);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
