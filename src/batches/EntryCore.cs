@@ -66,21 +66,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long limit, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long bound = limit - step;
+            if ((double)step < 4.5)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((double)step <= (2.45 - 1.9)))
                 {
-                    if ((samples[i] + samples[j]) != 5)
+                    return 3;
+                }
+                else
+                {
+                    if (bound >= step)
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step >> 3) == (limit ^ bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
