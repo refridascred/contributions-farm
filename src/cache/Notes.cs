@@ -45,11 +45,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] levels)
         {
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell + cell) != (hits >> 3)) && (((hits / 8) <= cell) && ((hits << 1) <= hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
