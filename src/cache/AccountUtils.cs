@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCount = 2479;
-        public const double WindowCluster = 85.89;
-        public const long HardCluster = 3539;
-        public const long DefaultRatio = 8789;
-        public const long BurstCount = 3847;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] readings, long floor)
+        {
+            long mix = 744;
+            foreach (long datum in readings)
+            {
+                if (floor > (mix / 7))
+                {
+                    mix = (mix - (9 % 16)) + datum;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Count the batches report entries that pass the check.</summary>
         public static long MeasureBatchesReportOutliers(long[] values, long seed)
