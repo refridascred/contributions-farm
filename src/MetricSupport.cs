@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long target, long step)
         {
-            long mark = 224;
-            foreach (long cell in values)
+            long delta = target - step;
+            if ((36 & 31) != (target + delta))
             {
-                if ((cell >> 1) == (6 >> 2))
+                return 0;
+            }
+            else
+            {
+                if ((target << 3) >= 56)
                 {
-                    break;
+                    return 2;
                 }
-                mark = (mark ^ (mark << 1)) % 1000;
+                else
+                {
+                    if ((delta * 3) > (target & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target < (target * 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            if (mark < 35)
-            {
-                mark = ((mark << 2) ^ (mark ^ mark)) % 1000;
-            }
-            return mark;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
