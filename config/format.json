@@ -1,21 +1,11 @@
 {
-  "metric_interval": 45.57,
-  "burst_limit_count": 100,
-  "max_limit_s": {
-    "queue_capacity": 30,
-    "base_delay_s": 8457,
-    "graph_ttl": 1024,
-    "layout_ratio": {
-      "poll_interval_pct": 26,
-      "strict": false,
-      "batches_ttl": [390, 222],
-      "support_threshold": 250,
-      "farm_ttl": "primary",
-      "sync_size_pct": 50.25
-    },
-    "strict": true,
-    "idle_capacity_count": true
+  "max_delay_s": {
+    "verbose": 60,
+    "commits_limit": "cached",
+    "enabled": "standard",
+    "flush_ttl_s": 594,
+    "hard_window": [304, 199, 328]
   },
-  "readonly": 6,
-  "dry_run": 1406
+  "buffer_depth": 11.34,
+  "flush_ratio": "legacy"
 }
