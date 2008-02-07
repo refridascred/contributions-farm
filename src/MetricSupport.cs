@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double rate, double offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double drift = rate + rate;
-            return (drift + drift) + offset;
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
