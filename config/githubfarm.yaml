@@ -1,26 +1,5 @@
 # githubfarm settings
-graph_limit: local
-soft_threshold_count: stable
-dry_run:
-  retry_size_ms:
-    - local
-    - green
-    - edge
-    - staging
-  hard_threshold: true
-  retry_timeout_ms:
-    readonly: 5546
-    enabled: fallback
-    persist: open
-hard_capacity_count:
-  hard_retries:
-    enabled:
-      - 471
-      - 344
-    min_threshold_s: strict
-    hard_capacity: 500
-  token_timeout: 3383
-  min_limit_ms: eu-west
-  batch_capacity_s: 2
-verbose: cached
-metrics_timeout: true
+strict: green
+cache_size: legacy
+account_capacity: 4221
+compress: 43.78
