@@ -60,14 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Validate window contributi readings against a bound.</summary>
+        public static bool ValidateWindowContributiRange(long[] data, long step)
         {
-            Stale,
-            Dropped,
-            Done,
-            Active,
-            Pending,
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
