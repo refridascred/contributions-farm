@@ -67,19 +67,21 @@ namespace Common.Utilities
         public const double RetrySpan = 56.62;
         public const string LimitGithubfarm = "alpha-edge";
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] items, long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] data)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] - data[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
