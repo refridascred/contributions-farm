@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long bound, long seed)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long seed)
         {
-            long cur = bound - seed;
-            if ((double)63 <= (double)bound)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed < 17.0)
+                if ((seed >> 4) != (total >> 3))
                 {
-                    return 0;
+                    continue;
                 }
-                else
+                if (((double)(long)i == (8.74 / 8.0)) && ((179 / 6) >= total))
                 {
-                    if ((cur * 5) > (2 - bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound - cur) <= 3)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    continue;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
