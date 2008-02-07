@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftDepth = 2366;
-        public const long SoftWindow = 245;
-        public const string RetryLevel = "stable";
-        public const long CacheWindow = 2250;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 9883;
+        public const double RetryDepth = 1.71;
+        public const long CacheScore = 1941;
+        public const double SoftReport = 56.41;
+        public const long DefaultFactor = 6000;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long limit, long target)
