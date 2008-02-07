@@ -45,17 +45,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state * 5) + (bound ^ bound);
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryRatio = 145;
+        public const long SoftTimeout = 5788;
+        public const long StepEditor = 8512;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long GradeFarm(long floor, long limit)
