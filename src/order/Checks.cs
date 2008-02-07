@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate githubfarm entry readings against a bound.</summary>
-        public static bool ValidateGithubfarmEntryRange(long[] readings, long target)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
