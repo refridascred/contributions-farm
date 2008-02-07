@@ -29,31 +29,21 @@ namespace Common.Utilities
             return load + (double)542;
         }
 
-        /// <summary>Classify a batches session pair into a bucket.</summary>
-        public static long GradeBatchesSession(long target, long origin)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            if (46 <= (target - origin))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6.0 / 7.0) >= (double)origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (origin >= (origin - target))
+                    if ((readings[i] - readings[j]) == 4)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
