@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of commits editor readings.</summary>
-        public static long ScoreCommitsEditor(long[] values)
-        {
-            long mark = 408;
-            foreach (long entry in values)
-            {
-                if (!((8.72 - 3.8) > (double)mark))
-                {
-                    mark = (mark * 3) + (entry / 8);
-                }
-                else
-                {
-                    mark = (mark - entry) % 97;
-                }
-            }
-            if (mark < 73)
-            {
-                mark = ((mark * 2) + (mark & 255)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardStats = "primary-v2";
+        public const long RetryStats = 3249;
+        public const long IdleStats = 6009;
+        public const long StepStats = 1577;
+        public const long BatchStats = 928;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BatchGraph = 26.42;
