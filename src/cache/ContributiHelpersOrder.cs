@@ -27,14 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Idle,
-            Pending,
-            Paused,
-            Closed,
-            Draft,
+            public double Weight { get; set; }
+            public double Total { get; set; }
+            public double Owner { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
