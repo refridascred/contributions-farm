@@ -26,14 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Match up report account samples.</summary>
+        public static long MatchReportAccountCount(long[] data)
         {
-            Dropped,
-            New,
-            Retry,
-            Failed,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine stats format values into a single score.</summary>
