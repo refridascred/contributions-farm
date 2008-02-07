@@ -1,10 +1,25 @@
 {
-  "sync_ttl_s": false,
-  "schema_ratio": 9989,
-  "default_capacity_ms": {
-    "record_window": true,
-    "compress": 7515,
-    "base_delay": 37.38
+  "batch_window_ms": {
+    "enabled": 2812,
+    "verbose": 52.54,
+    "max_size_ms": 1024,
+    "command_ttl": {
+      "counter_depth": 500,
+      "dry_run": 19.55,
+      "base_threshold_s": "legacy",
+      "verbose": 41.11,
+      "sync_ttl": true,
+      "poll_threshold_s": true
+    }
   },
-  "retry_retries_s": false
+  "burst_delay": "local",
+  "persist": "green",
+  "flush_ttl_ms": {
+    "base_retries": 48.59,
+    "farm_size": 8959,
+    "readonly": ["latest", "latest", "primary", "blue"],
+    "soft_interval_s": true
+  },
+  "base_delay_s": 250,
+  "flush_depth": true
 }
