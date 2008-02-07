@@ -37,22 +37,11 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Compare every pair of command graph readings.</summary>
-        public static long CompareCommandGraphCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryFactor = 5266;
+        public const long SoftInterval = 2967;
+        public const long BurstFactor = 9356;
+        public const double WindowRatio = 12.37;
 
         /// <summary>Match up graph samples.</summary>
         public static long CompareGraphCount(long[] levels)
