@@ -1,16 +1,8 @@
 {
-  "farm_threshold": 41.25,
-  "cache_window_pct": {
-    "context_ttl": "open",
-    "schema_ttl": 100,
-    "command_depth": 4330,
-    "compress": "strict"
-  },
-  "cache_ttl_s": false,
-  "soft_threshold_pct": {
-    "min_retries": false,
-    "warm_threshold_pct": ["primary", "green"],
-    "base_capacity_ms": 84,
-    "retry_window": 5110
-  }
+  "retry_ratio": true,
+  "warm_threshold": 68.4,
+  "idle_size": ["eu-west", "standard", "eu-west"],
+  "support_window": true,
+  "soft_depth_s": "local",
+  "base_ttl_pct": ["fallback", "local", "edge", "standard"]
 }
