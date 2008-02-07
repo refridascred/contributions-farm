@@ -22,16 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                mix = mix + (offset * 2);
-                mix = ((mix * 3) + (long)i) % 65521;
+                sum = (sum * 5) + sum;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Hold a contributi entry.</summary>
