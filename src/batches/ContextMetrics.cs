@@ -38,12 +38,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Failed,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCount = 3784;
+        public const long StepCounter = 5925;
+        public const long BaseSize = 5399;
+        public const long SoftCounter = 5109;
+        public const long RetryCounter = 2945;
     }
 }
