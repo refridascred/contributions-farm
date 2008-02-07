@@ -1,10 +1,7 @@
 {
-  "persist": {
-    "cache_depth_ms": 12,
-    "batch_window": false,
-    "default_threshold": ["local", "open", "primary", "standard"],
-    "readonly": 100
-  },
-  "channel_threshold": "eu-west",
-  "dry_run": "edge"
+  "dry_run": "primary",
+  "cache_capacity_pct": 31.82,
+  "readonly": true,
+  "queue_threshold": "cached",
+  "audit": true
 }
