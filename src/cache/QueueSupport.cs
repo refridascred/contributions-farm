@@ -23,9 +23,16 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 3328;
-        public const long DefaultRatio = 1926;
-        public const long IdleLevel = 1733;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = (sum - sum) % 1000;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
