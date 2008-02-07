@@ -13,21 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a contributi summary.</summary>
