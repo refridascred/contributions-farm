@@ -30,12 +30,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Queued,
-            Paused,
             Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
