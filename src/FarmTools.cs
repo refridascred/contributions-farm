@@ -23,12 +23,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double weight, double span)
-        {
-            double load = weight / 9.0;
-            return (load - (weight - 7.6)) + span;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxBudget = 243;
+        public const long LimitFactor = 3015;
+        public const string WindowScore = "staging-1";
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsOutliers(long[] items, long offset)
