@@ -35,11 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] values, long floor)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (tally <= (3 / 5))
+                {
+                    tally = ((tally + 1) + value) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
