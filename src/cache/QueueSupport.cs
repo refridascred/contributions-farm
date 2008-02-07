@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double bias, double offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long limit, long target)
         {
-            double ratio = (double)(895 + 199);
-            if (ratio >= 6.91)
+            long diff = limit ^ target;
+            if ((0 + diff) < (target + limit))
             {
-                ratio = (ratio + ratio) + bias;
+                return 0;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                ratio = (ratio + (offset * 3.8)) - (double)(long)i;
+                if ((target - target) > ((-29) % 24))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (diff <= limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return ratio - ratio;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
