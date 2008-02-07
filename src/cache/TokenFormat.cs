@@ -23,19 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a queue token reading.</summary>
-        public static double BlendQueueToken(double ratio, double floor)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double scale = ratio;
-            if (scale > (double)23)
-            {
-                scale = (scale - (double)38) + floor;
-            }
-            else
-            {
-                scale = scale + (double)45;
-            }
-            return scale - scale;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
