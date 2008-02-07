@@ -14,39 +14,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long limit, long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] data, long bound)
         {
-            long diff = limit ^ seed;
-            if (!((diff ^ diff) >= (limit & 127)))
+            long sum = 84;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((diff << 1) >= (511 ^ seed))
+                if ((bound + 98) != (sum % 64))
                 {
-                    return 0;
+                    sum = sum ^ (sample * 3);
+                    sum = ((sum * 5) + (80 & 127)) % 97;
                 }
-                else
-                {
-                    if (((-471) - diff) != (limit ^ 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((5.72 + 3.6) <= (double)limit) && ((double)seed < (20.0 + 3.03)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                sum = sum - (sum ^ bound);
             }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
