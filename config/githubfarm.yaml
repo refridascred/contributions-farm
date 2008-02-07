@@ -1,15 +1,8 @@
 # githubfarm settings
-compress: 100
-batch_size: false
-persist: 63.79
-checks_size: 250
-soft_threshold: 542
-retry_delay_count:
-  idle_size_pct: green
-  warm_delay: 63
-  poll_delay_ms: false
-  filter_size:
-    filter_ratio: 75.76
-    channel_limit: stable
-    retry_ratio_s: false
-    soft_ratio_s: 89.25
+poll_timeout_ms: strict
+soft_size_s: 11
+stats_size:
+  - 211
+  - 160
+  - 433
+compress: 9555
