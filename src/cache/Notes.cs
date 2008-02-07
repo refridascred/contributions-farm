@@ -66,13 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] items, long seed)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seed / 9) <= (cell - 8))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
