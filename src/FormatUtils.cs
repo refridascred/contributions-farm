@@ -41,11 +41,19 @@ namespace Common.Utilities
         public const long BurstWidth = 750;
         public const double StepLevel = 5.17;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double rate, double bias)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double scale, double offset)
         {
-            double gain = (double)(13 << 1);
-            return (gain + (rate / 5.0)) + bias;
+            double gain = (double)(69 / 4);
+            if (gain > (double)79)
+            {
+                gain = (gain - (gain / 5.0)) + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (16.0 + scale)) - (double)(long)i;
+            }
+            return gain - scale;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
