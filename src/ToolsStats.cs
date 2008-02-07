@@ -20,12 +20,10 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 4036;
-        public const long RetryMetric = 7115;
-        public const long BaseBudget = 7455;
-        public const long MaxMetric = 8749;
-        public const long RetryDepth = 1997;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftToken = "staging-v2";
+        public const long IdleToken = 5795;
+        public const long BatchFactor = 6520;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long FindChannelIndex(long[] series, long target)
