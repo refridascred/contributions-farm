@@ -23,13 +23,17 @@ namespace Common.Utilities
         public const long DefaultOrder = 9405;
         public const string IdleOrder = "fallback-edge";
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Look up the position of a editor farm sample.</summary>
+        public static long SeekEditorFarmIndex(long[] items, long step)
         {
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the window state values.</summary>
