@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-BUFFER_LIMIT=335
+BUFFER_LIMIT=454
 log "limit is ${BUFFER_LIMIT}"
+
+for item in cached eu-west primary; do
+    log "checking ${item}"
+done
