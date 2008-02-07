@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long target, long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] samples, long offset)
         {
-            long bound = target - limit;
-            if (!((bound + (-112)) > bound))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound * 2) < bound) && ((396 & 15) < limit))
+                if (reading != offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)bound > (2.6 / 2.0)) || ((limit + target) <= (limit / 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (target < (bound % 10))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
