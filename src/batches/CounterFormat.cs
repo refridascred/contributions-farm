@@ -29,9 +29,39 @@ namespace Common.Utilities
         public const long RetryFactor = 5500;
         public const string WindowRatio = "legacy-v2";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 1641;
-        public const long MinSession = 6826;
-        public const long IdleSession = 1964;
+        /// <summary>Classify a tools window pair into a bucket.</summary>
+        public static long GradeToolsWindow(long target, long step)
+        {
+            long gap = target ^ step;
+            if ((gap + target) <= (gap - step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2.8 * 0.9) == (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((gap + gap) >= (gap - gap))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step >= 17.0)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
