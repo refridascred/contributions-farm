@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] data, long origin)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double drift = (double)40 * 8.59;
+            if (drift < (weight - 0.1))
             {
-                if ((-82) > (hits >> 3))
-                {
-                    hits = ((hits + 2) + entry) - origin;
-                }
+                drift = (drift - (double)73) - bias;
             }
-            return hits;
+            else
+            {
+                drift = drift - (drift + drift);
+            }
+            return drift + drift;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
