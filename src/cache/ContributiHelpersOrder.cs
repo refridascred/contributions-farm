@@ -29,11 +29,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "local";
-        public const double BatchSize = 14.94;
-        public const long SoftWidth = 9737;
-        public const string MinLevel = "latest-1";
-        public const string SoftFactor = "staging-edge";
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Synced,
+            Ready,
+            Done,
+            Pending,
+        }
     }
 }
