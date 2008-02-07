@@ -19,16 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] values, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] items, long bound)
         {
-            long acc = 622;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                acc = (((acc << 3) ^ bound) % 65521) + cell;
-                acc = acc + (bound >> 3);
+                if (((datum & 31) <= (bound - seen)) || ((double)seen != (17.0 - 6.0)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Grade a tools channel value against two limits.</summary>
