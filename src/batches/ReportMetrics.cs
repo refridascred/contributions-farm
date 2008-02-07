@@ -22,10 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitStream = "strict-1";
-        public const long RetryWidth = 7380;
-        public const long StepFactor = 5821;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] levels)
+        {
+            long mark = 951;
+            foreach (long cell in levels)
+            {
+                if ((cell + cell) <= (-7))
+                {
+                    mark = (mark - (mark + 213)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (cell / 9)) % 255;
+                }
+                if ((mark + mark) < cell)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
