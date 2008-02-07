@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const string WindowBudget = "cached-edge";
         public const double BaseNotes = 15.48;
 
-        /// <summary>Project the next batch record value.</summary>
-        public static double SmoothBatchRecord(double ratio, double floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            double mean = floor + floor;
-            return (mean + 5.0) + ratio;
+            Active,
+            Failed,
+            New,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the command status values.</summary>
