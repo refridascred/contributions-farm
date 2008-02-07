@@ -24,13 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
