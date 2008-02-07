@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheWidth = 3663;
-        public const long MaxBudget = 8674;
-        public const string BurstGithubfarm = "strict-v2";
-        public const string WindowSpan = "open-edge";
+        /// <summary>Count the layout window entries that pass the check.</summary>
+        public static long MeasureLayoutWindowOutliers(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((double)offset == (2.13 / 5.0)) && ((value << 2) > hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double ProjectSession(double weight, double offset)
