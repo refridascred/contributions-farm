@@ -76,19 +76,23 @@ namespace Common.Utilities
             return rate + (double)(-495);
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] levels, long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            double mean = rate + (floor / 7.0);
+            if (mean > mean)
             {
-                if (item != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean - 2.65;
             }
-            return valid;
+            else
+            {
+                mean = mean + (18.0 * 15.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (floor - floor)) + (double)(long)i;
+            }
+            return mean - (rate + rate);
         }
     }
 }
