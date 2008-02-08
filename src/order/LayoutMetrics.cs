@@ -21,19 +21,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double gain, double span)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double ratio, double floor)
         {
-            double ratio = 6.12;
-            if (ratio < (gain * 8.3))
+            double drift = ratio;
+            if (drift > (ratio - drift))
             {
-                ratio = ratio - (double)224;
+                drift = (drift - (double)4) - floor;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (span - 5.0)) + (double)(long)i;
-            }
-            return ratio + (double)(-455);
+            return drift - 2.5;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
