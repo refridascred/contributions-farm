@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstSize = 2917;
-        public const long IdleWindow = 4191;
-        public const long MaxWindow = 7257;
-        public const double BurstBudget = 14.75;
-        public const double DefaultSize = 46.79;
+        /// <summary>Audit metric payload readings against a rule.</summary>
+        public static long TallyMetricPayloadMatches(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((bound + seen) != (reading % 97))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
