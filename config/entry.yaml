@@ -1,9 +1,9 @@
 # entry settings
-max_window_s: 66.97
-filter_threshold: false
-max_retries_pct: 67
-default_ttl: true
-audit: green
-githubfarm_capacity:
-  - cached
-  - eu-west
+farm_size: legacy
+counter_ttl: 903
+warm_limit_s:
+  - 131
+  - 88
+  - 467
+persist: 250
+burst_ratio_ms: 44.77
