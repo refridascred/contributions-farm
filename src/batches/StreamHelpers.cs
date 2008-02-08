@@ -30,15 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double weight, double floor)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double scale = weight;
-            if (scale <= (double)(-96))
-            {
-                scale = (scale - (double)5) - floor;
-            }
-            return scale + 19.0;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate farm metrics samples.</summary>
