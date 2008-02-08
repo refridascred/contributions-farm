@@ -7,10 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=362
+COMMAND_LIMIT=173
 log "limit is ${COMMAND_LIMIT}"
+
+for item in local strict blue latest; do
+    log "checking ${item}"
+done
