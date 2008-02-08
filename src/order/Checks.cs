@@ -56,18 +56,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many report cache samples are out of range.</summary>
-        public static long TallyReportCacheGaps(long[] items, long seed)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item <= (matches + 8)) && ((item % 12) <= matches))
+                if ((series[i] > limit) && ((series[i] % 5) != 0))
                 {
-                    matches = (matches + 1) - seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
