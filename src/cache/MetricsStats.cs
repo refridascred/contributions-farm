@@ -60,17 +60,25 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] items, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long seed, long seed2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = seed - seed2;
+            if (((5 - seed2) > (-21)) || ((1 + 1) == (seed2 ^ 2)))
             {
-                if (items[i] < step)
+                return 5;
+            }
+            else
+            {
+                if ((cur ^ seed2) <= (seed - cur))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metric mode values.</summary>
