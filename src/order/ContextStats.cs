@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of githubfarm cache readings.</summary>
-        public static long TotalGithubfarmCache(long[] samples)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] values, long bound)
         {
-            long mark = 97;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark - (mark / 4)) - item;
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
