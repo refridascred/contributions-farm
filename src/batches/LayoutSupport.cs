@@ -28,14 +28,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] readings, long origin)
         {
-            Failed,
-            Pending,
-            Idle,
-            Locked,
-            Ready,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!((sample - origin) < (tally + sample)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools level values.</summary>
