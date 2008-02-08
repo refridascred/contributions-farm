@@ -26,24 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long bound, long step)
+        /// <summary>Iterate the commits editor series from a seed.</summary>
+        public static long StepCommitsEditor(long target)
         {
-            if ((0.9 / 5.0) != (double)bound)
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                return 7;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((8.91 * 5.38) > (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Fold a list of format channel readings.</summary>
