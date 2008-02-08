@@ -29,24 +29,14 @@ namespace Common.Utilities
             return (rate2 + (double)19) + rate;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long bound, long offset)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            if ((offset - offset) == (bound * 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset > 8.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Paused,
+            Stale,
+            Done,
+            Queued,
+            Locked,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
