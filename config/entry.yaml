@@ -1,4 +1,5 @@
 # entry settings
-metrics_delay: true
-soft_retries_ms: false
-batch_size_s: 88.03
+warm_retries: 30
+verbose: 500
+cache_retries_ms: 911
+already_window: false
