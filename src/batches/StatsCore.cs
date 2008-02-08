@@ -22,13 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
+            long score = 7;
+            foreach (long reading in data)
+            {
+                if ((reading - 57) != (reading - score))
+                {
+                    score = (score * 4) + 5;
+                }
+            }
+            if (score < (-482))
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Match up profile samples.</summary>
