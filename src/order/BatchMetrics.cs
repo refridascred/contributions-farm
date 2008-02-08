@@ -59,18 +59,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] readings, long step)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + seen) < (step << 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
