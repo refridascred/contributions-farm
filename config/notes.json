@@ -1,6 +1,5 @@
 {
-  "window_capacity": false,
-  "compress": true,
-  "burst_timeout_pct": "local",
-  "batch_depth": 80.89
+  "flush_interval_s": 73.43,
+  "min_ratio_count": 74.32,
+  "audit": "green"
 }
