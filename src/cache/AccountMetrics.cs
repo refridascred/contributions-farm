@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "staging";
-        public const long SoftNotes = 7253;
-        public const long IdleWidth = 7141;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Stale,
+            Ready,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long CompareSupportCount(long[] items)
