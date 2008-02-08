@@ -1,7 +1,12 @@
 {
-  "soft_delay_ms": false,
-  "burst_timeout": 30,
-  "min_ratio_s": 1024,
-  "poll_delay_pct": [282, 160],
-  "filter_depth": 6.72
+  "min_capacity": [362, 86],
+  "audit": 24,
+  "dry_run": "fallback",
+  "channel_interval": {
+    "metric_ttl": 10,
+    "order_capacity": 6675,
+    "persist": [444, 100],
+    "poll_window_s": false,
+    "verbose": "edge"
+  }
 }
