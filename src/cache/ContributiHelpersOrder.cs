@@ -12,15 +12,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] items)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double scale, double floor)
         {
-            long state = 2;
-            foreach (long sample in items)
+            double mean = floor / 3.0;
+            if (mean <= (scale * 9.9))
             {
-                state = ((state * 4) + state) - sample;
+                mean = mean - (double)2;
             }
-            return state;
+            else
+            {
+                mean = mean - (floor - floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (scale - scale)) + (double)(long)i;
+            }
+            return mean - scale;
         }
 
         /// <summary>Hold a session header.</summary>
