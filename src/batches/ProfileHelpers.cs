@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const string BurstDepth = "stable-v2";
         public const long BatchSize = 9592;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long floor)
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            long result = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
