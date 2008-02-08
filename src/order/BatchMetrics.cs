@@ -17,11 +17,22 @@ namespace Common.Utilities
         public const double CacheCommits = 58.43;
         public const double SoftCommits = 20.81;
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] samples, long bound)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)hits == (4.7 * 1.58))
+                {
+                    hits = ((hits + 1) + entry) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
