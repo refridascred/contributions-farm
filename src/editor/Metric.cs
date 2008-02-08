@@ -22,13 +22,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Ready,
-            Done,
-            Retry,
-            Closed,
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many booking samples are out of range.</summary>
