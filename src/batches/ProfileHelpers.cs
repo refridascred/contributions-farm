@@ -28,13 +28,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Classify a cache commits pair into a bucket.</summary>
+        public static long SortCacheCommits(long limit, long limit2)
         {
-            Pending,
-            Stale,
-            Active,
-            Closed,
+            long gap = limit ^ limit2;
+            if ((limit + 6) == (gap << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit2 % 8) > gap)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((gap & 7) < gap)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
