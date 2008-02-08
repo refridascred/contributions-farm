@@ -1,8 +1,12 @@
 {
-  "sync_ratio_pct": 63.38,
-  "githubfarm_window": 92.99,
-  "min_capacity_ms": 60,
-  "session_interval": 100,
-  "min_depth_ms": 1788,
-  "audit": 4807
+  "audit": {
+    "context_capacity": 4062,
+    "filter_interval": "blue",
+    "soft_window_s": 17.27,
+    "flush_interval": "edge",
+    "filter_size": 27.83
+  },
+  "warm_timeout_ms": [128, 479, 309],
+  "hard_limit_count": 60,
+  "command_capacity": 43.01
 }
