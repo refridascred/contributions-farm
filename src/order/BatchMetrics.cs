@@ -17,22 +17,11 @@ namespace Common.Utilities
         public const double CacheCommits = 58.43;
         public const double SoftCommits = 20.81;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 9931;
+        public const double HardProfile = 14.97;
+        public const long DefaultProfile = 5987;
+        public const long BatchSize = 541;
 
         /// <summary>Scale a schema route figure with a bias.</summary>
         public static double BlendSchemaRoute(double bias, double offset)
