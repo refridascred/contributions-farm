@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] levels, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (levels[i] >= limit)
+                if ((value * 2) < value)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the format class values.</summary>
