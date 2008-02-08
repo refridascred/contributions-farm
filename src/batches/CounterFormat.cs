@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const double CacheDepth = 1.48;
         public const long LimitBatches = 8381;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] values)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] items, long floor)
         {
-            long carry = 62;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry * 2) + (datum & 31);
+                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 96)
-            {
-                carry = (carry << 2) ^ (carry - carry);
-            }
-            return carry % 65521;
+            return -1;
         }
     }
 }
