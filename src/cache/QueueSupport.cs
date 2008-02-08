@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long BurstInterval = 8170;
         public const double BatchMetric = 80.3;
 
-        /// <summary>Validate metric queue readings against a bound.</summary>
-        public static bool CheckMetricQueueRange(long[] samples, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (reading < step)
+                if ((item << 3) >= (43 ^ matches))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Match up support samples.</summary>
