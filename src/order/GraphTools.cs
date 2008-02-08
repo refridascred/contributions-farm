@@ -32,38 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long floor, long target)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            if ((1.83 * 0.8) > (double)floor)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((143 & 255) <= (target + target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target >= (8.4 + 5.51))
+                    if ((series[i] - series[j]) > 8)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target > (6.0 + 8.27))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a farm batches figure with a bias.</summary>
