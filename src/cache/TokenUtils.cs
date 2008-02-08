@@ -23,16 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stream schema series from a seed.</summary>
-        public static long StepStreamSchema(long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc * 3) + seed) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Closed,
+            Retry,
+            Paused,
+            Done,
         }
 
         /// <summary>Iterate the checks filter series from a seed.</summary>
