@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Ready,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchScore = 6071;
+        public const string LimitCache = "stable-1";
+        public const long BurstCache = 3426;
+        public const long DefaultFactor = 8351;
+        public const long HardScore = 1343;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
