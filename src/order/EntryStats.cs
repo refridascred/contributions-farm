@@ -67,17 +67,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] values, long floor)
+        public static long MeasureToolsGaps(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (((sample >> 3) > (sample & 127)) && ((733 - floor) <= sample))
+                if ((tally / 2) > (129 << 2))
                 {
-                    hits = hits + 1;
+                    tally = ((tally + 3) + datum) - floor;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
