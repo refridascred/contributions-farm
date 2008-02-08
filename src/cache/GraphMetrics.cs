@@ -34,18 +34,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate report schema samples.</summary>
-        public static long DigestReportSchema(long[] levels, long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long score = 4;
-            foreach (long value in levels)
-            {
-                if ((double)value >= (14.0 * 9.95))
-                {
-                    score = ((score - ((long)levels.Length / 6)) % 4096) + origin;
-                }
-            }
-            return score % 1000;
+            Locked,
+            Draft,
+            New,
+            Failed,
+            Active,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
