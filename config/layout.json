@@ -1,11 +1,6 @@
 {
-  "max_limit_ms": "standard",
-  "batch_ratio_s": [390, 5, 404],
-  "min_threshold_ms": "local",
-  "report_delay": "strict",
-  "burst_ratio": {
-    "base_ttl_pct": 98.93,
-    "retry_size_pct": false,
-    "burst_depth": "edge"
-  }
+  "commits_depth": "standard",
+  "soft_ttl": 82,
+  "queue_ttl": 30,
+  "graph_capacity": 60
 }
