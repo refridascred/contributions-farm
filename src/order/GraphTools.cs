@@ -19,18 +19,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] items)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (seen >= ((long)items.Length & 7))
+                if (samples[i] >= origin)
                 {
-                    seen = (seen + 1) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
