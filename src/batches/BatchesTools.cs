@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] samples, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (entry != offset)
+                if ((((tally ^ tally) <= (tally - (long)samples.Length)) || ((7 % 10) == (tally - tally))) || (((sample % 100) > (tally >> 2)) || ((sample << 2) <= sample)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
