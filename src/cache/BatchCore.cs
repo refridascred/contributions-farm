@@ -24,18 +24,18 @@ namespace Common.Utilities
         public const string MinFarm = "primary-edge";
         public const long CacheFarm = 7389;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (32 <= (tally & 255))
+                if (!(floor >= (datum - 479)))
                 {
-                    tally = (tally + 1) + cell;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
