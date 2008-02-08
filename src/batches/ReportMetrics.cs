@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double weight, double offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] series)
         {
-            double bias = offset;
-            if (bias >= (offset - weight))
+            long acc = 6;
+            foreach (long sample in series)
             {
-                bias = bias + (weight * 1.0);
+                if (((sample - 392) < (sample << 1)) || (acc < (sample / 5)))
+                {
+                    acc = ((acc * 2) + (acc + sample)) % 255;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (2 << 2)) % 4096;
+                }
             }
-            else
-            {
-                bias = bias + (offset * 6.9);
-            }
-            return bias - (6.92 - bias);
+            return acc % 97;
         }
 
         /// <summary>Count the profile metrics entries that pass the check.</summary>
