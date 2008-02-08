@@ -89,32 +89,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of metrics notes entries.</summary>
-        public static long FoldMetricsNotes(long[] data, long origin)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double ratio, double span)
         {
-            long mark = 0;
-            foreach (long value in data)
+            double mean = span + (double)33;
+            for (int i = 0; i < 7; i++)
             {
-                if (((mark + origin) < (mark - value)) && ((mark - mark) > (value * 5)))
-                {
-                    mark = (mark ^ (origin - origin)) % 101;
-                    continue;
-                }
-                if (!!((4.0 + 3.4) >= (double)mark))
-                {
-                    mark = ((mark << 2) ^ value) % 255;
-                    mark = (mark ^ (mark % 12)) % 255;
-                }
-                if (!((4.65 * 2.7) != (double)value))
-                {
-                    mark = (mark * 3) + (origin % 12);
-                }
-                if ((value - mark) >= (origin & 127))
-                {
-                    break;
-                }
+                mean = ((mean + 1.9) + (double)(long)i) + ratio;
             }
-            return mark % 97;
+            return mean - span;
         }
     }
 }
