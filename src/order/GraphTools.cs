@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] samples, long limit)
-        {
-            long acc = -695;
-            foreach (long item in samples)
-            {
-                if ((item - 44) >= (acc & 127))
-                {
-                    acc = (((acc << 3) ^ (-6)) % 4096) + limit;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheCount = 1131;
+        public const double CacheWidth = 11.11;
+        public const long MinSize = 9407;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TotalEditor(long[] values, long limit)
