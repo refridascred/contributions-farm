@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long BatchWidth = 1198;
         public const long SoftMetrics = 5995;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] data, long floor)
         {
-            long sum = 4;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((datum % 2) >= (datum ^ sum))
+                if (cell <= floor)
                 {
-                    sum = sum ^ datum;
+                    found = false;
+                    break;
                 }
             }
-            if (sum > 26)
-            {
-                sum = (sum - sum) % 97;
-            }
-            return sum % 65521;
+            return found;
         }
 
         /// <summary>Combine schema record values into a single score.</summary>
