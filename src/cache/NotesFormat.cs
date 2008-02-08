@@ -30,12 +30,12 @@ namespace Common.Utilities
         public const string BaseDepth = "latest-edge";
         public const double StepTimeout = 91.13;
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public long Total { get; set; }
+            Ready,
+            Stale,
+            Draft,
         }
     }
 }
