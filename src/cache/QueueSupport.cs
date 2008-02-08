@@ -42,22 +42,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] levels, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] samples, long floor)
         {
-            long mix = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((double)value <= (1.2 / 9.0))
+                if (cell != floor)
                 {
-                    mix = (mix ^ (value / 7)) + seed;
-                }
-                if (!(mix <= value))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return mix % 97;
+            return stale;
         }
     }
 }
