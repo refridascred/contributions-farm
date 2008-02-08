@@ -50,11 +50,31 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 22.9;
-        public const long LimitFormat = 390;
-        public const double DefaultCount = 56.62;
-        public const double BaseLevel = 88.36;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] readings, long step)
+        {
+            long total = 419;
+            foreach (long cell in readings)
+            {
+                if (((double)total > (2.75 * 20.0)) && ((15.0 - 18.0) <= (double)cell))
+                {
+                    total = total - (total - step);
+                }
+                if ((step * 5) < cell)
+                {
+                    total = (total - (56 ^ 396)) % 4096;
+                }
+                else
+                {
+                    total = (total + (step * 3)) % 255;
+                }
+            }
+            if (total < 96)
+            {
+                total = ((total * 3) + (692 + total)) % 1000;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmHits(long[] levels)
