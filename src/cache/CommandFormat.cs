@@ -28,20 +28,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] data)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long score = 9;
-            foreach (long cell in data)
-            {
-                score = ((score * 3) + (score - cell)) % 4096;
-                if ((double)score >= (double)cell)
-                {
-                    score = score - (cell + cell);
-                }
-                score = score ^ (score - score);
-            }
-            return score;
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a cache summary.</summary>
