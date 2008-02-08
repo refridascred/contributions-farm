@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long LimitNotes = 5684;
         public const string DefaultNotes = "standard-1";
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] data, long offset)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Locked,
+            New,
         }
 
         /// <summary>Accumulate commits samples.</summary>
