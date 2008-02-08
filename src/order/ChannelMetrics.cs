@@ -36,18 +36,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum < 1.0)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstScore = 8095;
+        public const double CacheReport = 19.61;
+        public const string BaseReport = "cached-v2";
+        public const string WindowReport = "strict-1";
+        public const long SoftScore = 926;
     }
 }
