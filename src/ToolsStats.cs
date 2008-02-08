@@ -45,12 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long origin)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] items, long limit)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] <= origin) && ((items[i] % 3) != 0))
+                if (items[i] > limit)
                 {
                     return (long)i;
                 }
