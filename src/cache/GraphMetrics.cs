@@ -55,19 +55,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double weight, double span)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double mean = span;
-            if (mean < span)
-            {
-                mean = mean - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean + 17.0;
+            Closed,
+            New,
+            Dropped,
+            Synced,
+            Paused,
         }
     }
 }
