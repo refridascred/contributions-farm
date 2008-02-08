@@ -1,10 +1,7 @@
-id,score,state,active,count
-1,650,63.85,23.6,legacy
-2,103,250,15.87,open
-3,35.88,851,staging,54.65
-4,442,60.5,cached,stable
-5,687,cached,edge,74.89
-6,441,59,88.19,58
-7,318,legacy,393,42.26
-8,edge,945,412,444
-9,139,86.2,651,47.24
+id,count,weight,score,rank
+1,23.47,primary,5.93,872
+2,196,open,66.03,76.15
+3,740,stable,latest,764
+4,94.65,standard,83.11,blue
+5,845,7.68,1.91,861
+6,874,eu-west,656,478
