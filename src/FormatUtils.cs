@@ -27,15 +27,26 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] samples, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series)
         {
-            long score = 6;
-            foreach (long sample in samples)
+            long acc = -985;
+            foreach (long cell in series)
             {
-                score = ((((score << 3) ^ score) % 255) + sample) + origin;
+                if ((acc + acc) < (3 << 1))
+                {
+                    acc = acc + (cell & 1);
+                }
+                else
+                {
+                    acc = acc ^ (cell & 7);
+                }
             }
-            return score;
+            if (acc < 982)
+            {
+                acc = (acc + (acc - acc)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
