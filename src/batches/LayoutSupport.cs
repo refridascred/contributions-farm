@@ -13,12 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Find the first metric batches entry that matches the target.</summary>
+        public static long LocateMetricBatchesIndex(long[] items, long floor)
         {
-            New,
-            Retry,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the already support entries that pass the check.</summary>
