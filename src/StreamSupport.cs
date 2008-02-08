@@ -37,21 +37,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowSpan = 7023;
+        public const string StepAccount = "local-1";
+        public const long IdleBudget = 741;
+        public const long BaseScore = 6551;
+        public const long WindowAccount = 2460;
     }
 }
