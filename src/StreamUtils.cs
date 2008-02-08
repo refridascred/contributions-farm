@@ -28,18 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer record samples are out of range.</summary>
-        public static long TallyBufferRecordHits(long[] items)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally << 1) < (tally >> 4))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count farm command pairs that satisfy a relation.</summary>
