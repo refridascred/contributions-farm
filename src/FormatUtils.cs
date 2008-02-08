@@ -43,23 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] values, long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((7.3 / 9.0) >= (double)mix) || ((double)target == (4.0 / 8.0)))
+                if ((values[i] < origin) && ((values[i] % 5) != 0))
                 {
-                    mix = (mix - (long)i) % 255;
+                    return (long)i;
                 }
-                if (target <= (target / 2))
-                {
-                    mix = ((mix << 3) ^ ((long)i & 31)) % 101;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Classify a stats context pair into a bucket.</summary>
