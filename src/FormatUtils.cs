@@ -77,17 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] values, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((values[i] > floor) && ((values[i] % 2) != 0))
+                if (datum >= origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Adjust a counter reading.</summary>
