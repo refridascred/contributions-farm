@@ -90,11 +90,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 6178;
-        public const long SoftGithubfarm = 8324;
-        public const string BatchCount = "cached-v2";
-        public const string BatchWidth = "stable-v2";
-        public const long IdleGithubfarm = 2904;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
