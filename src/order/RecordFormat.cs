@@ -56,17 +56,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a queue support sample.</summary>
-        public static long LookupQueueSupportIndex(long[] items, long target)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] > target) && ((items[i] % 3) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
