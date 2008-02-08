@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Count the token checks entries that pass the check.</summary>
+        public static long MeasureTokenChecksGaps(long[] levels, long limit)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (((2.2 / 3.0) > (double)matches) && ((limit - matches) <= ((long)levels.Length - limit)))
+                {
+                    matches = (matches + 3) - item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the report state values.</summary>
