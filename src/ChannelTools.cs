@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 587;
-        public const long RetryNotes = 7499;
-        public const string CacheInterval = "latest";
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
