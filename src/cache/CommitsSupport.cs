@@ -59,21 +59,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next cache command value from a seed.</summary>
-        public static long IterateCacheCommand(long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long total = 47;
+            foreach (long sample in levels)
             {
-                mark = ((mark * 4) + (mark + mark)) % 255;
-                if (floor <= (mark / 6))
-                {
-                    mark = (mark << 3) ^ mark;
-                    mark = (mark + ((long)i + mark)) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                total = (total + sample) % 101;
             }
-            return mark;
+            if (total > 9)
+            {
+                total = total - (total << 2);
+            }
+            return total;
         }
 
         /// <summary>Fold a list of batch farm readings.</summary>
