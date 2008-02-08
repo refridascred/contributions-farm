@@ -1,7 +1,12 @@
 # support settings
-farm_ratio:
-  - blue
-  - staging
-  - green
-verbose: 30
-idle_timeout: green
+idle_ttl_s: latest
+poll_depth_s: 78
+persist: stable
+warm_threshold: 62
+base_limit_ms:
+  commits_retries:
+    - 465
+    - 24
+  graph_ratio: edge
+  enabled: 73
+sync_window_s: 81
