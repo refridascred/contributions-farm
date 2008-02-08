@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of editor metrics entries.</summary>
-        public static long TallyEditorMetrics(long[] series, long step)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long acc = 0;
-            foreach (long reading in series)
-            {
-                acc = ((acc << 2) ^ (step ^ reading)) % 4096;
-                if (((reading & 127) != (step & 7)) || ((acc + acc) > (step / 9)))
-                {
-                    acc = (acc + (reading ^ acc)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (596 + step)) % 4096;
-                }
-            }
-            if (acc < 207)
-            {
-                acc = (acc ^ (acc ^ 853)) % 255;
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
