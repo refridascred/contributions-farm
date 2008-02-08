@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] series, long seed)
         {
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
+            long mark = 958;
+            foreach (long entry in series)
+            {
+                if (!((double)mark > (5.1 / 3.0)))
+                {
+                    mark = ((mark - seed) % 255) + entry;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a filter info.</summary>
