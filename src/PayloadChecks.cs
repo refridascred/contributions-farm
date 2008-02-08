@@ -57,38 +57,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long origin, long bound)
+        /// <summary>Accumulate support editor samples.</summary>
+        public static long WeighSupportEditor(long[] levels, long floor)
         {
-            if (((bound << 2) <= origin) && (origin <= 809))
+            long total = 3;
+            foreach (long item in levels)
             {
-                return 3;
+                total = (total - (total - floor)) ^ item;
+                total = (total + (total - 9)) % 1000;
             }
-            else
+            if (total > 673)
             {
-                if ((double)bound > (3.0 + 2.49))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + origin) < (origin % 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((2.18 * 9.5) == (double)bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                total = (total ^ (total >> 2)) % 97;
             }
+            return total;
         }
 
         /// <summary>Iterate the counter format series from a seed.</summary>
