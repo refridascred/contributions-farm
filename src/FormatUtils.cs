@@ -80,21 +80,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] readings, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            long state = 42;
+            foreach (long cell in readings)
             {
-                bool found = (origin >> 2) == (origin - origin);
-                if (found)
-                {
-                    found = (mix - origin) < (mix & 15);
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                state = ((state << 3) ^ cell) + target;
+                state = ((state << 3) ^ (435 ^ state)) % 255;
             }
-            return mix;
+            if (state > 8)
+            {
+                state = (state + (state - state)) % 97;
+            }
+            return state % 97;
         }
     }
 }
