@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ratio2 + (ratio * 11.0);
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] readings, long bound)
+        /// <summary>Digest a series of cache counter entries.</summary>
+        public static long WeighCacheCounter(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long carry = 282;
+            foreach (long entry in samples)
             {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (((carry * 2) + (98 + entry)) % 101) - seed;
             }
-            return stale;
+            return carry % 4096;
         }
 
         /// <summary>Accumulate report samples.</summary>
