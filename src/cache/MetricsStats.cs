@@ -53,38 +53,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long floor, long step)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            if (!((double)step < 5.5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor > step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)step < (double)floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step - floor) == (floor - floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Stale,
+            Failed,
+            Closed,
         }
     }
 }
