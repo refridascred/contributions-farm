@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] series, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long seed, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long diff = seed - target;
+            if ((diff + seed) >= (target * 4))
             {
-                if (datum >= (859 - seen))
+                return 0;
+            }
+            else
+            {
+                if ((double)target < 7.35)
                 {
-                    seen = (seen + 1) + seed;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed << 3) < (target + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a tools entry.</summary>
