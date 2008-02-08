@@ -30,11 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] values)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((count << 2) > (count - count))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate farm metrics samples.</summary>
