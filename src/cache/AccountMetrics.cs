@@ -46,15 +46,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double rate, double span)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long seed)
         {
-            double drift = (double)9 + (rate - 4.0);
-            if (drift > (rate / 8.0))
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                drift = (drift + rate) - span;
+                mix = (mix ^ seed) % 97;
+                mix = ((mix << 3) ^ (mix + mix)) % 97;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = ((mix - (mix << 1)) % 255) ^ (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return drift + drift;
+            return mix;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
