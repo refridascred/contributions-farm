@@ -54,18 +54,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] values)
+        /// <summary>Accumulate farm metrics samples.</summary>
+        public static long ScoreFarmMetrics(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long acc = -2;
+            foreach (long reading in values)
             {
-                if (value > (416 - value))
+                if (((18.0 + 5.0) <= (double)origin) && ((9.4 * 10.0) != (double)origin))
                 {
-                    seen = seen + 2;
+                    acc = (acc ^ (119 + origin)) ^ reading;
                 }
             }
-            return seen;
+            if (acc > (-216))
+            {
+                acc = (acc ^ (acc + origin)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Blend two queue measurements.</summary>
