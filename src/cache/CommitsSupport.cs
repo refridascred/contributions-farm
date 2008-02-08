@@ -64,12 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseSize = "alpha-v2";
-        public const double MinAlready = 66.12;
-        public const long IdleFactor = 887;
-        public const double BaseAlready = 86.03;
-        public const long BaseSpan = 4839;
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate window contributi readings against a bound.</summary>
         public static bool ValidateWindowContributiRange(long[] data, long step)
