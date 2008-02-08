@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] items, long offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Level { get; set; }
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count buffer command pairs that satisfy a relation.</summary>
