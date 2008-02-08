@@ -1,5 +1,11 @@
 # githubfarm settings
-retry_threshold_ms: 71.24
-sync_capacity_count: true
-min_window_s: 37.9
-enabled: standard
+default_retries_pct:
+  - 210
+  - 148
+  - 85
+warm_window_count: 27
+max_interval_ms:
+  - blue
+  - green
+  - blue
+readonly: latest
