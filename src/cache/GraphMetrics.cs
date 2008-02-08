@@ -40,12 +40,19 @@ namespace Common.Utilities
         public const string MinWidth = "primary-1";
         public const string LimitWidth = "alpha-edge";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCache = "open-edge";
-        public const double StepCache = 34.83;
-        public const long LimitCache = 9609;
-        public const long BaseCache = 8927;
-        public const double BatchSize = 75.77;
+        /// <summary>Audit cache queue readings against a rule.</summary>
+        public static long AuditCacheQueueHits(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (entry > 9)
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long ScoreStream(long[] series)
