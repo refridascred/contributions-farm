@@ -40,12 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseInterval = 30.6;
-        public const double BaseCounter = 67.13;
-        public const long DefaultRatio = 4086;
-        public const long BaseCount = 3701;
-        public const long BurstCounter = 3270;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] levels)
+        {
+            long anchor = 5;
+            foreach (long datum in levels)
+            {
+                anchor = ((anchor + (anchor + 6)) % 101) - datum;
+                anchor = ((anchor << 2) ^ (anchor % 64)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long BucketChecks(long offset, long target)
