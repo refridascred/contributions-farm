@@ -39,10 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 4410;
-        public const long SoftAlready = 3478;
-        public const double WindowAlready = 76.13;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Draft,
+            Retry,
+            Done,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Locate a schema tools reading by value.</summary>
         public static long LookupSchemaToolsIndex(long[] data, long seed)
