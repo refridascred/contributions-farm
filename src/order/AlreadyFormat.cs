@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a notes profile reading.</summary>
-        public static double AdjustNotesProfile(double rate, double offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] data, long origin)
         {
-            double load = 17.0 * 3.0;
-            if (load < (offset / 8.0))
+            long score = 5;
+            foreach (long sample in data)
             {
-                load = load - rate;
+                if ((origin >> 2) >= ((-2) + sample))
+                {
+                    score = (score + (547 >> 4)) % 97;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (1.39 / 2.0)) - (double)(long)i;
-            }
-            return load - (load - 18.0);
+            return score % 65521;
         }
 
         /// <summary>Derive the next metric commits value from a seed.</summary>
