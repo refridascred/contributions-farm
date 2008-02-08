@@ -35,19 +35,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit cache queue readings against a rule.</summary>
-        public static long AuditCacheQueueHits(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (entry > 9)
-                {
-                    seen = (seen + 1) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseLevel = 3618;
+        public const long BaseTimeout = 8187;
+        public const long CacheWidth = 8663;
+        public const long RetryTimeout = 6282;
+        public const long MaxFactor = 8477;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
