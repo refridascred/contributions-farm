@@ -13,22 +13,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] values, long floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)values.Length + 293) != (entry << 3))
+                if (data[i] <= offset)
                 {
-                    tally = (tally + 2) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a already window pair into a bucket.</summary>
