@@ -19,20 +19,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Fold a list of batch entry readings.</summary>
+        public static long TotalBatchEntry(long[] data)
         {
-            long score = 7;
-            foreach (long reading in data)
+            long score = 391;
+            foreach (long sample in data)
             {
-                if ((reading - 57) != (reading - score))
+                if (!(((score << 1) <= (score % 97)) || ((score % 64) < (score >> 1))))
                 {
-                    score = (score * 4) + 5;
+                    score = (score - (score * 4)) % 101;
+                    score = (score ^ (score + score)) % 255;
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    score = (((score * 3) + 390) % 101) ^ (long)i;
+                }
+                if ((723 ^ sample) > (sample << 1))
+                {
+                    score = score - sample;
                 }
             }
-            if (score < (-482))
+            if (score > 71)
             {
-                score = score + score;
+                score = (score + (832 * 2)) % 1000;
             }
             return score;
         }
