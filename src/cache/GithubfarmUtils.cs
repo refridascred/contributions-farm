@@ -39,11 +39,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
             Done,
-            Failed,
+            Queued,
+            Synced,
+            Draft,
             Dropped,
         }
     }
