@@ -25,23 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph counter figure with a bias.</summary>
-        public static double AdjustGraphCounter(double rate, double floor)
+        /// <summary>Accumulate tools layout samples.</summary>
+        public static long CombineToolsLayout(long[] values, long bound)
         {
-            double rate2 = floor;
-            if (rate2 < floor)
+            long score = 9;
+            foreach (long entry in values)
             {
-                rate2 = rate2 - (rate * 19.0);
+                score = (score ^ (score + 9)) ^ entry;
             }
-            else
+            if (score < 39)
             {
-                rate2 = rate2 + (double)865;
+                score = (score ^ (bound - bound)) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + 10.0) - (double)(long)i;
-            }
-            return rate2 + 8.4;
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
