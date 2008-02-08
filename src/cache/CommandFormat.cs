@@ -45,16 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                total = total - ((long)i - limit);
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
