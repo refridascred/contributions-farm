@@ -41,12 +41,12 @@ namespace Common.Utilities
         public const long LimitNotes = 4056;
         public const string LimitFactor = "standard-edge";
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Retry,
-            Failed,
-            Active,
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a session channel reading.</summary>
