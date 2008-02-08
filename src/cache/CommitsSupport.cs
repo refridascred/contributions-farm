@@ -43,24 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((carry % 5) > ((long)i & 3))
-                {
-                    carry = (carry - (carry << 1)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (bound % 8)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxFactor = 3336;
+        public const double BurstFactor = 8.64;
+        public const string BatchRecord = "primary-1";
+        public const long LimitTimeout = 3454;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long RetryWidth = 9007;
