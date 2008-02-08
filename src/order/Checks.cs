@@ -57,18 +57,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many batches format samples are out of range.</summary>
-        public static long MeasureBatchesFormatMatches(long[] data, long offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((double)count >= (17.0 + 20.0))
-                {
-                    count = ((count + 1) - sample) + offset;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
