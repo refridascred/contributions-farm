@@ -1,12 +1,18 @@
 # support settings
-idle_ttl_s: latest
-poll_depth_s: 78
-persist: stable
-warm_threshold: 62
-base_limit_ms:
-  commits_retries:
-    - 465
-    - 24
-  graph_ratio: edge
-  enabled: 73
-sync_window_s: 81
+contributi_delay:
+  warm_size_pct:
+    - 303
+    - 152
+    - 154
+  min_ttl_count: stable
+  max_depth_s: standard
+  readonly: 30.04
+retry_timeout: 1024
+route_delay: strict
+soft_ttl:
+  - green
+  - legacy
+  - standard
+  - legacy
+hard_delay: 92.76
+batch_depth_ms: local
