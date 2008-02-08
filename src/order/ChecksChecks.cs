@@ -35,15 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream channel figure with a bias.</summary>
-        public static double BlendStreamChannel(double scale, double floor)
+        /// <summary>Find the first command contributi entry that matches the target.</summary>
+        public static long SeekCommandContributiIndex(long[] values, long limit)
         {
-            double gain = scale * 20.0;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain + (gain + scale)) + (double)(long)i;
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (floor / 4.0);
+            return -1;
         }
     }
 }
