@@ -55,12 +55,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] data, long offset)
         {
-            New,
-            Pending,
-            Queued,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((offset - hits) > (offset - item)) || ((hits & 15) == (item ^ hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
