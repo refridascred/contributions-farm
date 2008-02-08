@@ -31,12 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] items, long bound)
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the tools level values.</summary>
