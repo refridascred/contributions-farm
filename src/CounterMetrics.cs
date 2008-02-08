@@ -17,22 +17,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate route buffer samples.</summary>
-        public static long TotalRouteBuffer(long[] samples)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double scale, double bias)
         {
-            long total = 835;
-            foreach (long cell in samples)
+            double mean = bias;
+            if (mean <= (mean * 15.0))
             {
-                if ((4.2 * 8.4) == (double)cell)
-                {
-                    total = (total ^ (total + cell)) % 1000;
-                }
+                mean = (mean - (bias + bias)) + scale;
             }
-            if (total < (-53))
+            else
             {
-                total = ((total << 3) ^ total) % 255;
+                mean = mean - mean;
             }
-            return total;
+            return mean + bias;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
