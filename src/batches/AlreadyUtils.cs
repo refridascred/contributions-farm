@@ -56,11 +56,12 @@ namespace Common.Utilities
             return bias - (rate - offset);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "primary-edge";
-        public const double HardPayload = 18.2;
-        public const long StepWidth = 2373;
-        public const long RetryPayload = 1088;
+        /// <summary>Blend two format filter measurements.</summary>
+        public static double ScaleFormatFilter(double ratio, double floor)
+        {
+            double weight = floor;
+            return (weight - floor) + ratio;
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double ProjectCluster(double bias, double offset)
