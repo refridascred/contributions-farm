@@ -49,20 +49,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Compare every pair of githubfarm metrics readings.</summary>
+        public static long OverlapGithubfarmMetricsCount(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (20.0 >= (double)step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = acc ^ (acc & 255);
-                    acc = acc + (80 - 37);
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
