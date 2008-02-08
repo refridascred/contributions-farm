@@ -66,9 +66,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultBudget = 1079;
-        public const double HardSession = 17.33;
-        public const string DefaultSize = "primary-v2";
+        /// <summary>Rank layout metric input into a small class.</summary>
+        public static long RankLayoutMetric(long floor, long limit)
+        {
+            long prev = floor - limit;
+            if ((floor * 5) > prev)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((prev / 4) != (prev - 94))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
