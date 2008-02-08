@@ -28,18 +28,13 @@ namespace Common.Utilities
             return weight + 7.91;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] values)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((9.2 - 11.0) < (double)seen)
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
