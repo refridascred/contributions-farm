@@ -68,11 +68,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinTimeout = "fallback-edge";
-        public const string BurstLayout = "latest-1";
-        public const long StepWidth = 3047;
-        public const long StepRatio = 9143;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleDepth = 5.05;
+        public const long MinBatch = 6149;
+        public const double StepBatch = 9.07;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long WindowSpan = 8714;
