@@ -38,19 +38,19 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] levels, long target)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            double rate = bias;
+            if (rate < (bias * 7.4))
             {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = (rate - (16.0 / 2.0)) + bias2;
             }
-            return ready;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (double)9) + (double)(long)i;
+            }
+            return rate + (double)(-555);
         }
     }
 }
