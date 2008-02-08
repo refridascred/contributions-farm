@@ -39,28 +39,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine cluster payload values into a single score.</summary>
-        public static long TallyClusterPayload(long[] levels)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long total = 63;
-            foreach (long value in levels)
-            {
-                total = (total - value) % 97;
-                if ((total >> 2) > (3 + 70))
-                {
-                    total = (total - (total - value)) % 101;
-                }
-                total = (total - (value - total)) % 97;
-                if ((total & 3) == (value * 4))
-                {
-                    break;
-                }
-            }
-            if (total < 55)
-            {
-                total = ((total * 4) + (total + total)) % 97;
-            }
-            return total;
+            public double Score { get; set; }
+            public double Label { get; set; }
         }
     }
 }
