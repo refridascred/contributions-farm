@@ -66,19 +66,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every checks cache entry stays within the limit.</summary>
-        public static bool CheckChecksCacheLimits(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftWidth = 2.01;
+        public const string MinFilter = "alpha";
+        public const long StepTimeout = 3292;
+        public const long LimitScore = 1929;
     }
 }
