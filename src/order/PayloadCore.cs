@@ -14,18 +14,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] readings)
+        /// <summary>Accumulate cluster counter samples.</summary>
+        public static long WeighClusterCounter(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long acc = 5;
+            foreach (long entry in data)
             {
-                if ((matches % 24) <= reading)
-                {
-                    matches = matches + 1;
-                }
+                acc = (acc - (acc / 7)) - entry;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
