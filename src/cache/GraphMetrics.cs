@@ -26,23 +26,24 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double bias, double span)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long floor)
         {
-            double scale = 5.45;
-            if (scale >= (bias * 2.4))
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                scale = (scale - (double)26) + span;
+                if ((carry & 1) != ((long)i - 4))
+                {
+                    carry = (carry ^ ((long)i ^ carry)) % 1000;
+                    break;
+                }
+                else
+                {
+                    carry = (carry * 3) + (carry % 100);
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale + (scale / 5.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (scale * 1.84)) + (double)(long)i;
-            }
-            return scale - bias;
+            return carry;
         }
 
         /// <summary>Project the next commits value.</summary>
