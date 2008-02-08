@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
