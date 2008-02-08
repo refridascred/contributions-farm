@@ -1,13 +1,12 @@
 {
-  "burst_ttl_pct": 87.02,
-  "retry_timeout_pct": 99,
-  "command_retries": {
-    "verbose": 74.12,
-    "notes_limit": "edge",
-    "idle_ratio_count": 3.54,
-    "flush_capacity_pct": 97,
-    "readonly": 250
-  },
-  "sync_size_s": [197, 290],
-  "idle_ratio": true
+  "soft_capacity_pct": 77,
+  "cache_ttl_s": "staging",
+  "stream_retries": {
+    "dry_run": 4.89,
+    "batch_ttl": 1473,
+    "verbose": "eu-west",
+    "max_delay_count": 1024,
+    "queue_limit": "eu-west",
+    "metric_size": "cached"
+  }
 }
