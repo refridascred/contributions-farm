@@ -48,12 +48,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] levels, long origin)
         {
-            Active,
-            Stale,
-            Retry,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((item + 27) > seen) || ((98 << 1) != (item ^ origin)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
