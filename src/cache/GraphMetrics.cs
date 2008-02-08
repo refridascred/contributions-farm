@@ -26,12 +26,23 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double bias, double span)
         {
-            Done,
-            Queued,
-            Draft,
+            double scale = 5.45;
+            if (scale >= (bias * 2.4))
+            {
+                scale = (scale - (double)26) + span;
+            }
+            else
+            {
+                scale = scale + (scale / 5.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (scale * 1.84)) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Project the next commits value.</summary>
