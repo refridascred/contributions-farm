@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate notes metric readings against a bound.</summary>
-        public static bool ValidateNotesMetricBounds(long[] readings, long bound)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
