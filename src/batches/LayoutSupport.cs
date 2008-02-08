@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double scale, double span)
         {
-            Pending,
-            Active,
-            Retry,
+            double load = (13.0 / 4.0) + (scale + scale);
+            if (load > span)
+            {
+                load = load - scale;
+            }
+            else
+            {
+                load = load - (load - load);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (double)637) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
