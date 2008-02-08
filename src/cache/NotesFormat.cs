@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] samples)
         {
-            long sum = 5;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                sum = ((sum * 2) + (long)data.Length) % 1000;
-                if ((double)475 <= (double)sample)
+                if (!(696 <= (item * 5)))
                 {
-                    sum = sum + sum;
-                    sum = ((sum << 2) ^ ((-4) << 1)) % 65521;
-                }
-                if ((sum + 58) < (sample >> 3))
-                {
-                    sum = (sum ^ (84 * 2)) % 65521;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    sum = sum ^ 2;
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
