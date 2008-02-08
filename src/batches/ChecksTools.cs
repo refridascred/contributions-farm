@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const double HardLevel = 50.67;
         public const long BurstFactor = 1361;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
+            long sum = 4;
+            foreach (long datum in values)
             {
-                if ((double)step <= (16.0 + 4.0))
+                if ((datum % 2) >= (datum ^ sum))
                 {
-                    state = ((state << 3) ^ ((long)i >> 1)) % 101;
+                    sum = sum ^ datum;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            if (sum > 26)
+            {
+                sum = (sum - sum) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Combine schema record values into a single score.</summary>
