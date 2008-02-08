@@ -47,19 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] samples, long step)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public bool Level { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
