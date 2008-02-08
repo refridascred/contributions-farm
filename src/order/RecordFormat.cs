@@ -62,14 +62,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Locked,
-            Idle,
-            Dropped,
-            Paused,
             Failed,
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Digest a series of record entries.</summary>
