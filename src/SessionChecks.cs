@@ -20,22 +20,29 @@ namespace Common.Utilities
             return gain + 12.0;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long bound, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long step, long offset)
         {
-            if ((origin > (origin - origin)) || ((double)bound == (8.42 - 1.2)))
+            if ((step << 3) == (step / 5))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if (((5 + 9) != (origin + origin)) || ((origin + origin) <= (bound + origin)))
+                if ((-870) >= offset)
                 {
                     return 8;
                 }
                 else
                 {
-                    return 6;
+                    if (((offset & 31) < (step - step)) || ((step / 6) != (offset - step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
