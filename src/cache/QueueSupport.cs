@@ -19,14 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double ratio, double bias)
         {
-            Stale,
-            New,
-            Locked,
-            Retry,
-            Ready,
+            double ratio2 = (ratio / 9.0) / 8.0;
+            if (ratio2 < (ratio / 9.0))
+            {
+                ratio2 = ratio2 + (double)0;
+            }
+            else
+            {
+                ratio2 = ratio2 - (bias - ratio2);
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Adjust a graph reading.</summary>
