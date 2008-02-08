@@ -43,15 +43,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double rate, double bias)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            double rate2 = (double)(-544) - bias;
-            for (int i = 0; i < 6; i++)
+            long sum = 875;
+            foreach (long reading in readings)
             {
-                rate2 = ((rate2 + 2.0) + (double)(long)i) - rate;
+                sum = (sum ^ (sum >> 3)) - reading;
             }
-            return rate2 - (bias / 2.0);
+            return sum;
         }
     }
 }
