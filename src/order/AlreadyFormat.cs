@@ -36,18 +36,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit notes stats readings against a rule.</summary>
-        public static long TallyNotesStatsOutliers(long[] samples, long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample + 0) == (sample + offset))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Queued,
+            Pending,
+            Retry,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the payload mode values.</summary>
