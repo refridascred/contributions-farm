@@ -21,18 +21,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] levels, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((7.74 / 5.0) == (double)seen)
+                if ((double)reading < (double)reading)
                 {
-                    seen = ((seen + 2) + entry) - target;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
