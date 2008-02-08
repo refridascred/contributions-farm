@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a support batch sample.</summary>
-        public static long SeekSupportBatchIndex(long[] readings, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((readings[i] > step) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = anchor + (floor - (-6));
+                anchor = (anchor ^ ((long)i - (long)i)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
