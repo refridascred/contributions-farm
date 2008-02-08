@@ -26,22 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream tools entries that pass the check.</summary>
-        public static long MeasureStreamToolsHits(long[] levels)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)value == (2.0 / 4.0))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
