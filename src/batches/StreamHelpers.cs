@@ -56,13 +56,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double bias, double bias2)
         {
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Label { get; set; }
-            public double Token { get; set; }
+            double scale = bias2;
+            if (scale > bias2)
+            {
+                scale = scale + 0.52;
+            }
+            else
+            {
+                scale = scale + (double)27;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (bias * 14.0)) - (double)(long)i;
+            }
+            return scale + (bias / 2.0);
         }
 
         /// <summary>Describe the commits kind values.</summary>
