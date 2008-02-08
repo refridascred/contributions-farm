@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary legacy; do
+COMMAND_LIMIT=253
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-edge}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in blue strict primary; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
