@@ -22,10 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 8591;
-        public const string MinFarm = "primary-edge";
-        public const long CacheFarm = 7389;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "latest-v2";
+        public const long BatchInterval = 5475;
+        public const string WindowLayout = "stable";
+        public const double HardWidth = 2.68;
+        public const double BaseLayout = 3.55;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountOutliers(long[] levels, long floor)
