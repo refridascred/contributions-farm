@@ -29,18 +29,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] items)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9.5 * 2.18) < (6.78 + 6.12))
+                if ((series[i] > offset) && ((series[i] % 3) != 0))
                 {
-                    tally = (tally + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine stats githubfarm values into a single score.</summary>
