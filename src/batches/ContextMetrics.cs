@@ -28,12 +28,22 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchContributi = 16.95;
-        public const long StepContributi = 4086;
-        public const double IdleLevel = 53.37;
-        public const long IdleDepth = 1792;
-        public const long IdleRatio = 5683;
+        /// <summary>Compare every pair of payload stream readings.</summary>
+        public static long OverlapPayloadStreamCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TotalEntry(long[] values)
