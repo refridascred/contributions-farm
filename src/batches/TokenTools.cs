@@ -30,23 +30,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double gain, double offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double ratio = (double)(189 - (-54));
-            if (ratio <= offset)
-            {
-                ratio = ratio + (gain - 8.2);
-            }
-            else
-            {
-                ratio = ratio - (8.79 / 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + 12.0) + (double)(long)i;
-            }
-            return ratio + gain;
+            Dropped,
+            Done,
+            Active,
         }
     }
 }
