@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] values, long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] <= bound)
+                if (items[i] > floor)
                 {
                     return (long)i;
                 }
