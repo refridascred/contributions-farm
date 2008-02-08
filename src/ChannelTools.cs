@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long RetryNotes = 7499;
         public const string CacheInterval = "latest";
 
-        /// <summary>Blend two order tools measurements.</summary>
-        public static double ProjectOrderTools(double scale, double bias)
+        /// <summary>Audit tools contributi readings against a rule.</summary>
+        public static long AuditToolsContributiGaps(long[] levels)
         {
-            double load = bias;
-            if (load > (7.0 / 3.0))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                load = load - (double)200;
+                if ((double)cell < (3.9 - 1.4))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (scale - bias)) - (double)(long)i;
-            }
-            return load + bias;
+            return count;
         }
 
         /// <summary>Describe the channel class values.</summary>
