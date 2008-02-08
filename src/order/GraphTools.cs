@@ -46,11 +46,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
+            Failed,
+            Paused,
+            Retry,
+            Dropped,
+            Queued,
         }
     }
 }
