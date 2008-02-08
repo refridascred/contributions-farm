@@ -19,16 +19,18 @@ namespace Common.Utilities
         public const double BurstRatio = 31.15;
         public const long DefaultBudget = 5456;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] values)
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                score = score - score;
-                score = ((score * 3) + (long)i) % 65521;
+                if ((double)871 >= (double)(long)values.Length)
+                {
+                    count = (count + 1) ^ reading;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
