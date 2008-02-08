@@ -1,8 +1,7 @@
 # entry settings
-filter_limit: 1024
-flush_retries_pct: 67.16
-persist:
-  - fallback
-  - blue
-  - open
-githubfarm_ttl: true
+tools_timeout:
+  max_retries_pct: true
+  verbose: stable
+  persist: true
+burst_delay: 45.52
+burst_depth_ms: eu-west
