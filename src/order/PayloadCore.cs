@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long offset, long target)
-        {
-            long bound = offset + target;
-            if (((bound % 64) == (target + 6)) || ((bound + bound) != (offset * 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)bound <= (6.75 - 4.0)) || ((751 + offset) <= bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 9771;
+        public const double BurstCount = 59.84;
+        public const long SoftCounter = 7190;
+        public const long WindowSpan = 1242;
+        public const string HardRatio = "alpha";
 
         /// <summary>Blend two queue measurements.</summary>
         public static double AdjustQueue(double gain, double span)
