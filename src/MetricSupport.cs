@@ -42,18 +42,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] series, long offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] items, long offset)
         {
-            long acc = 5;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.09 / 2.0) > (double)offset)
+                if ((items[i] <= offset) && ((items[i] % 3) == 0))
                 {
-                    acc = ((acc ^ offset) % 255) - reading;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
