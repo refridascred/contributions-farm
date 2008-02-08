@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] levels)
         {
-            Paused,
-            Closed,
-            Ready,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((hits >> 3) < (246 & 63)) || !(286 < (hits + hits)))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the profile phase values.</summary>
