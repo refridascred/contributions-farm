@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxInterval = 57.56;
-        public const double IdleBudget = 59.95;
-        public const string BatchWidth = "primary-v2";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 1278;
+        public const long BurstCommits = 6088;
+        public const string WindowRatio = "staging";
+        public const long MaxCommits = 3448;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double IdleBatches = 66.13;
