@@ -1,7 +1,6 @@
 {
-  "graph_delay": 2619,
-  "cluster_delay": ["eu-west", "latest", "standard"],
-  "contributi_limit": 59.3,
-  "record_delay": ["primary", "stable"],
-  "channel_depth": "eu-west"
+  "flush_timeout_pct": "cached",
+  "soft_depth": "primary",
+  "batch_size_pct": "green",
+  "batch_timeout": false
 }
