@@ -25,11 +25,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Blend two counter layout measurements.</summary>
-        public static double AdjustCounterLayout(double scale, double offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] values, long bound)
         {
-            double rate = scale;
-            return (rate - (double)434) + offset;
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
