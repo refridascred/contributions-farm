@@ -49,19 +49,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultBudget = 1079;
+        public const double HardSession = 17.33;
+        public const string DefaultSize = "primary-v2";
     }
 }
