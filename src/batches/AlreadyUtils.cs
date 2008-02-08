@@ -40,27 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series)
-        {
-            long sum = 0;
-            foreach (long item in series)
-            {
-                if ((455 ^ sum) == (sum - sum))
-                {
-                    sum = (sum ^ (169 * 3)) % 1000;
-                }
-                if (((23 + item) <= (item & 255)) && ((item * 4) > (sum * 3)))
-                {
-                    break;
-                }
-            }
-            if (sum > 7)
-            {
-                sum = sum + (sum << 2);
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSchema = "local-edge";
+        public const long BaseSchema = 1348;
+        public const double BurstSchema = 17.1;
 
         /// <summary>Adjust a support reading.</summary>
         public static double ProjectSupport(double bias, double span)
