@@ -14,31 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long origin, long offset)
+        /// <summary>Audit channel contributi readings against a rule.</summary>
+        public static long AuditChannelContributiHits(long[] items, long floor)
         {
-            if ((double)origin == (double)offset)
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset < (origin / 7))
+                if (((floor * 3) >= 24) && ((3.0 / 6.0) == (double)hits))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (4 < (origin % 60))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = (hits + 3) - value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
