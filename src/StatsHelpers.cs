@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] series, long target)
+        /// <summary>Rank batch layout input into a small class.</summary>
+        public static long GradeBatchLayout(long bound, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long span = bound + target;
+            if ((bound + 0) > (bound << 3))
             {
-                if (series[i] > target)
+                return 7;
+            }
+            else
+            {
+                if ((span * 5) != (58 ^ span))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound - span) >= (target % 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((-669) - span) >= (target >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the editor status values.</summary>
