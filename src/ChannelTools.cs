@@ -11,16 +11,17 @@ namespace Common.Utilities
         public const long LimitNotes = 5684;
         public const string DefaultNotes = "standard-1";
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] data, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark ^ ((long)i + 56);
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Accumulate commits samples.</summary>
