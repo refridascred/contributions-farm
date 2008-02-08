@@ -34,16 +34,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] readings, long origin)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long limit, long bound)
         {
-            long acc = 24;
-            foreach (long cell in readings)
+            if ((bound << 3) < (bound - bound))
             {
-                acc = (acc ^ cell) % 101;
-                acc = ((acc * 5) + (origin / 7)) % 65521;
+                return 1;
             }
-            return acc % 4096;
+            else
+            {
+                if ((limit / 8) > (339 & 31))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
