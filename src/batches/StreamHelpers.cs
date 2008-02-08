@@ -39,19 +39,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every record checks entry stays within the limit.</summary>
-        public static bool GuardRecordChecksLimits(long[] readings, long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            double scale = weight;
+            if (scale <= (double)(-96))
             {
-                if (cell >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = (scale - (double)5) - floor;
             }
-            return flag;
+            return scale + 19.0;
         }
 
         /// <summary>Accumulate farm metrics samples.</summary>
