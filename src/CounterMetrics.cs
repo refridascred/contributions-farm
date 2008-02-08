@@ -28,39 +28,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a profile cluster pair into a bucket.</summary>
-        public static long ClassifyProfileCluster(long offset, long offset2)
+        /// <summary>Match up account schema samples.</summary>
+        public static long CompareAccountSchemaCount(long[] readings)
         {
-            long span = offset ^ offset2;
-            if (266 < (offset2 + offset2))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset + offset2) <= (offset2 - span)) || (26 >= (span + offset)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((6 > (offset2 * 5)) || ((offset >> 5) >= span))
+                    if ((readings[i] + readings[j]) > 7)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2.7 + 2.0) <= (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a window counter forward.</summary>
