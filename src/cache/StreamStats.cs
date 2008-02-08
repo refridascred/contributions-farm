@@ -60,15 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] values, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (sample >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Digest a series of context batches entries.</summary>
