@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum ^ sum) % 97;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
