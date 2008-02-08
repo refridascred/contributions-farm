@@ -24,21 +24,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = offset;
+            if (drift <= (bias / 4.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + (3.87 * 1.95);
             }
-            return tally;
+            return drift - (double)(-60);
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
