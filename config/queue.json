@@ -1,7 +1,7 @@
 {
-  "default_timeout": 71.2,
-  "retry_capacity_count": "strict",
-  "compress": "cached",
-  "cluster_limit": false,
-  "notes_threshold": 65.28
+  "cache_window_ms": "stable",
+  "account_capacity": "green",
+  "default_limit_pct": 250,
+  "idle_ratio_s": false,
+  "min_limit_s": "cached"
 }
