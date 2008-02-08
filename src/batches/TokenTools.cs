@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double weight, double span)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items, long offset)
         {
-            double ratio = span;
-            if (ratio >= (6.14 + 3.0))
+            long score = 92;
+            foreach (long entry in items)
             {
-                ratio = ratio - (span + 8.36);
+                score = ((score * 4) + (offset + 9)) ^ entry;
+                if ((2.0 - 5.95) > (double)offset)
+                {
+                    break;
+                }
             }
-            return ratio - (weight - 2.78);
+            if (score > 573)
+            {
+                score = (score << 3) ^ offset;
+            }
+            return score;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
