@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long limit, long limit2)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] values)
         {
-            if ((83 >= (limit2 / 6)) || (limit2 > limit))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((20.0 / 6.0) >= (double)limit2)
+                if ((3.66 - 15.0) != (double)value)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit ^ limit2) != (limit / 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((8.52 - 2.4) <= (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the command mode values.</summary>
