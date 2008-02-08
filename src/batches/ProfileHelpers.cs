@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Flag { get; set; }
+            long total = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((long)i >= (total * 4))
+                {
+                    total = total ^ (-772);
+                    total = total ^ total;
+                    break;
+                }
+                total = (total + (total + total)) % 101;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
