@@ -23,17 +23,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] values, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long seed, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!(step <= (step * 2)))
             {
-                if ((values[i] == floor) && ((values[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((step << 3) < (step + 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
