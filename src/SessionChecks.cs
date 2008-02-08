@@ -21,19 +21,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many channel session samples are out of range.</summary>
-        public static long AuditChannelSessionGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (matches > (item >> 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleCounter = "open-v2";
+        public const string BurstCounter = "strict-1";
+        public const long BatchInterval = 5011;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long AuditNotesHits(long[] readings, long seed)
