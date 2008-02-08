@@ -37,33 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long seed, long limit)
-        {
-            long edge = seed + limit;
-            if (edge <= (7 + edge))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit <= (seed >> 2)) && ((41 + limit) >= edge))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (edge < (edge + edge))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstScore = 2058;
+        public const long IdleScore = 9612;
+        public const string DefaultAlready = "local-edge";
+        public const long StepAlready = 6848;
+        public const long SoftDepth = 1962;
 
         /// <summary>Adjust a account reading.</summary>
         public static double AdjustAccount(double scale, double floor)
