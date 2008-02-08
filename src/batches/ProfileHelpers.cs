@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const string BurstDepth = "stable-v2";
         public const long BatchSize = 9592;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] data, long target)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a cache options.</summary>
