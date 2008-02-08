@@ -1,6 +1,13 @@
 {
-  "soft_depth_s": "blue",
-  "filter_limit": 1417,
-  "flush_limit_pct": 1244,
-  "default_size_pct": "primary"
+  "compress": 59.54,
+  "flush_depth": {
+    "default_ttl": "fallback",
+    "strict": "latest",
+    "warm_delay": 2905,
+    "retry_threshold": "cached",
+    "record_size": "staging",
+    "poll_depth_s": [106, 254, 170]
+  },
+  "dry_run": [245, 405, 341],
+  "verbose": 10.7
 }
