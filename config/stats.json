@@ -1,7 +1,11 @@
 {
-  "commits_window": 60,
-  "dry_run": "strict",
-  "hard_interval_pct": "standard",
-  "enabled": 78,
-  "report_retries": 100
+  "default_interval_ms": 30,
+  "max_timeout_pct": {
+    "metrics_timeout": 100,
+    "format_limit": "blue",
+    "min_ttl": 97,
+    "default_threshold": 32.98
+  },
+  "flush_timeout_count": ["strict", "strict", "legacy", "legacy"],
+  "channel_window": "blue"
 }
