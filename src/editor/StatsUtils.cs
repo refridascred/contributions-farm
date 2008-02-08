@@ -37,13 +37,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Failed,
-            New,
-            Locked,
-            Paused,
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a channel record.</summary>
