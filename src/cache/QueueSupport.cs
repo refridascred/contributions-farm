@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] series, long bound)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long acc = 1;
-            foreach (long item in series)
-            {
-                if ((bound + item) >= bound)
-                {
-                    acc = acc - 16;
-                }
-            }
-            if (acc < 51)
-            {
-                acc = acc - (3 + (-999));
-            }
-            return acc;
+            Paused,
+            Done,
+            Failed,
+            Queued,
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
