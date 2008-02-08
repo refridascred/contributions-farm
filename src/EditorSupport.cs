@@ -33,32 +33,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long target, long floor)
+        /// <summary>Blend two entry support measurements.</summary>
+        public static double BlendEntrySupport(double weight, double floor)
         {
-            long span = target + floor;
-            if (((7 * 4) < (target >> 4)) || ((double)span >= (5.5 + 6.18)))
+            double mean = 1.8;
+            if (mean > (double)784)
             {
-                return 1;
+                mean = mean + floor;
             }
             else
             {
-                if ((span + span) < span)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + span) != (73 >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mean = mean - mean;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (weight * 1.14)) - (double)(long)i;
+            }
+            return mean - weight;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
