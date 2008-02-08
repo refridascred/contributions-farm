@@ -1,32 +1,12 @@
 {
-  "audit": {
-    "graph_retries": 3614,
-    "default_retries_count": "eu-west",
-    "schema_capacity": ["eu-west", "open"]
+  "idle_timeout": 71.83,
+  "hard_limit_pct": {
+    "flush_limit_ms": 67.16,
+    "burst_limit_count": 9833,
+    "readonly": 250,
+    "default_capacity": false,
+    "idle_ratio_s": [144, 373]
   },
-  "min_interval": {
-    "default_window": {
-      "retry_limit_count": "edge",
-      "flush_ratio": 100,
-      "sync_window": "latest",
-      "flush_limit_count": "cached",
-      "format_interval": 60,
-      "stream_threshold": "stable"
-    },
-    "warm_timeout_pct": 1024,
-    "poll_depth_pct": {
-      "sync_interval_s": false,
-      "strict": "cached",
-      "profile_delay": "blue",
-      "entry_capacity": [415, 147]
-    },
-    "persist": 87.08
-  },
-  "sync_window_count": 78,
-  "persist": {
-    "idle_retries_ms": true,
-    "flush_interval": 43,
-    "readonly": "fallback",
-    "soft_ratio_s": 18
-  }
+  "default_limit": "open",
+  "stream_window": 22
 }
