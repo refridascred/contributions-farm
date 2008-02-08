@@ -22,13 +22,32 @@ namespace Common.Utilities
         public const long BurstCount = 8461;
         public const long CacheChannel = 8327;
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long seed, long limit)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long edge = seed + limit;
+            if (edge <= (7 + edge))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit <= (seed >> 2)) && ((41 + limit) >= edge))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (edge < (edge + edge))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a account reading.</summary>
