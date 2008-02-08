@@ -19,10 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "alpha";
-        public const double BurstRatio = 31.15;
-        public const long DefaultBudget = 5456;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Stale,
+            New,
+            Locked,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long WindowTools = 3988;
