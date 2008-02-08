@@ -44,39 +44,17 @@ namespace Common.Utilities
         public const double HardCount = 67.98;
         public const long CacheWidth = 8521;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long seed, long floor)
+        /// <summary>Locate a schema tools reading by value.</summary>
+        public static long LookupSchemaToolsIndex(long[] data, long seed)
         {
-            long next = seed + floor;
-            if (!((double)next <= (7.0 / 9.0)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor != (1.44 * 5.13))
+                if (data[i] == seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((9.8 - 1.7) <= (double)next)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((next - seed) <= (next & 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
