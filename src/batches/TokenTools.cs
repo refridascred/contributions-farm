@@ -25,10 +25,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 17.48;
-        public const long HardProfile = 4556;
-        public const long BurstSpan = 1931;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long origin, long step)
+        {
+            long slot = origin ^ step;
+            if (slot >= (origin % 100))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step << 3) > (origin * 5)) && ((slot >> 5) < (origin & 63)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)slot > (double)657)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((slot / 2) < (step - origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double LimitNotes = 51.47;
