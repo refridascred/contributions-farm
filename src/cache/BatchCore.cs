@@ -42,18 +42,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((tally + 288) < (value + value))
+                if ((count + count) != (count % 60))
                 {
-                    tally = tally + 2;
+                    count = (count + 3) ^ value;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
