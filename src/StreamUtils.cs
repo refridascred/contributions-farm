@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] values)
         {
-            Ready,
-            Synced,
-            Closed,
-            Failed,
-            Pending,
+            long anchor = 901;
+            foreach (long sample in values)
+            {
+                if (anchor > (anchor << 3))
+                {
+                    anchor = ((anchor + anchor) % 97) + sample;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Locate a route reading by value.</summary>
