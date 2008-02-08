@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "staging";
+        public const long SoftNotes = 7253;
+        public const long IdleWidth = 7141;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long CompareSupportCount(long[] items)
