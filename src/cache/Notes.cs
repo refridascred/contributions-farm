@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state - ((long)i - state)) % 255;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Validate payload schema readings against a bound.</summary>
