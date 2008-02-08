@@ -16,17 +16,12 @@ namespace Common.Utilities
             return ratio2 - bias;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] levels, long origin)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Validate stream already readings against a bound.</summary>
