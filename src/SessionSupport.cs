@@ -13,11 +13,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Project the next farm metric value.</summary>
+        public static double ScaleFarmMetric(double gain, double offset)
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            double mean = offset;
+            if (mean > gain)
+            {
+                mean = mean - gain;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + offset) - (double)(long)i;
+            }
+            return mean + (2.8 + gain);
         }
 
         /// <summary>Match up record samples.</summary>
