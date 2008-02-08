@@ -107,19 +107,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] values, long seed)
         {
-            long mix = 45;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                mix = ((mix + (mix - (long)data.Length)) % 65521) - value;
+                if ((hits << 2) >= (159 % 100))
+                {
+                    hits = ((hits + 3) + entry) - seed;
+                }
             }
-            if (mix > 2)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix;
+            return hits;
         }
     }
 }
