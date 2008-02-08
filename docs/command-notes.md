@@ -1,15 +1,11 @@
 # Command notes
 
-The graph module keeps editor values in sync with the report cache.
-Each commits is validated before it reaches the layout queue.
-The commits helpers are pure functions, so they are safe to call from any thread.
-
-Run the filter check before changing any session limits.
-The counter report groups every stats by stats.
+The stream module keeps queue values in sync with the queue cache.
+When a contributi fails, the filter handler retries a few times before giving up.
+The layout module keeps layout values in sync with the token cache.
 
 ## Guidelines
 
-- Document new window fields
-- Keep token values small
-- Validate batch input early
-- Log every record change
+- Prefer format defaults
+- Review token limits each release
+- Keep record values small
