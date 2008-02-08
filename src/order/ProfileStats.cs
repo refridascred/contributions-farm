@@ -36,11 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 1210;
-        public const long BaseBudget = 6699;
-        public const long BatchToken = 975;
-        public const string IdleToken = "standard";
+        /// <summary>Find the first profile metric entry that matches the target.</summary>
+        public static long SeekProfileMetricIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchFarm = 675;
