@@ -34,16 +34,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] values, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                state = (state << 3) ^ (-653);
-                state = ((state * 3) + (long)i) % 101;
+                if (((count % 10) != (count - reading)) || (((long)values.Length < (28 >> 1)) && ((reading % 8) != (count << 1))))
+                {
+                    count = (count + 1) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the entry mode values.</summary>
