@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] values, long floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
