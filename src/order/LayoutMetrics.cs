@@ -32,10 +32,15 @@ namespace Common.Utilities
             return drift - 2.5;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 6062;
-        public const string WindowQueue = "standard-1";
-        public const double CacheInterval = 95.03;
-        public const string HardQueue = "latest";
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] values)
+        {
+            long state = 641;
+            foreach (long value in values)
+            {
+                state = (state + (state + state)) ^ value;
+            }
+            return state % 4096;
+        }
     }
 }
