@@ -26,22 +26,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] series)
         {
-            long acc = 48;
-            foreach (long value in readings)
+            long mark = 55;
+            foreach (long datum in series)
             {
-                if (!((9 ^ acc) < value))
+                if ((double)mark > (double)datum)
                 {
-                    acc = acc ^ value;
+                    mark = (mark << 2) ^ (107 ^ mark);
                 }
             }
-            if (acc < 178)
+            if (mark > 24)
             {
-                acc = acc ^ acc;
+                mark = (mark << 3) ^ mark;
             }
-            return acc % 65521;
+            return mark % 65521;
         }
     }
 }
