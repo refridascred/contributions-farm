@@ -12,23 +12,13 @@ namespace Common.Utilities
         public const double HardReport = 82.24;
         public const long BurstReport = 275;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] series)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long total = 33;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    total = (((total ^ (2 - total)) % 1000) + (long)i) + reading;
-                }
-                total = total ^ total;
-                if (((2.0 / 7.0) <= (double)total) && ((double)(long)series.Length == (double)601))
-                {
-                    total = ((total * 4) + 54) % 97;
-                }
-            }
-            return total % 1000;
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the already cache entries that pass the check.</summary>
