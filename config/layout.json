@@ -1,5 +1,8 @@
 {
-  "profile_ttl": [317, 423, 136, 459],
-  "idle_depth_ms": "local",
-  "poll_ttl_ms": "fallback"
+  "batch_retries": false,
+  "sync_ttl_count": 250,
+  "checks_timeout": 7,
+  "min_threshold_pct": "legacy",
+  "audit": "primary",
+  "batch_limit_s": 16
 }
