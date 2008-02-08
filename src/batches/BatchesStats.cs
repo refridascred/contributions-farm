@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] samples)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum * 2) < (datum / 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
