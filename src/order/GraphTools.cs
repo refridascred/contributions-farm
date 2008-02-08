@@ -63,15 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a farm batches figure with a bias.</summary>
-        public static double AdjustFarmBatches(double weight, double offset)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double ratio = 2.5;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (weight - offset)) + (double)(long)i;
-            }
-            return ratio - offset;
+            Queued,
+            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Define record limits and defaults.</summary>
