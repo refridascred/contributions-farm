@@ -27,12 +27,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchTimeout = "staging";
+        public const long WindowNotes = 1663;
+        public const long StepNotes = 6233;
 
         /// <summary>Find the first editor stats entry that matches the target.</summary>
         public static long FindEditorStatsIndex(long[] data, long bound)
