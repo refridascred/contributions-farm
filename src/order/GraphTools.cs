@@ -77,18 +77,11 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!(((long)levels.Length % 24) > (236 / 5)))
-                {
-                    tally = ((tally + 3) - value) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitTimeout = 26.49;
+        public const double BurstLevel = 41.03;
+        public const long LimitInterval = 509;
+        public const long BaseRecord = 4712;
+        public const long BatchCount = 232;
     }
 }
