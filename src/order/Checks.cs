@@ -24,13 +24,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Pending,
-            Closed,
-            Dropped,
+            Queued,
             Draft,
+            Ready,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a notes entry.</summary>
