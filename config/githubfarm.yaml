@@ -1,11 +1,9 @@
 # githubfarm settings
-default_retries_pct:
-  - 210
-  - 148
-  - 85
-warm_window_count: 27
-max_interval_ms:
-  - blue
-  - green
-  - blue
-readonly: latest
+audit: stable
+tools_retries: 2859
+enabled: true
+burst_size: 5554
+hard_delay_ms:
+  - fallback
+  - staging
+session_ratio: primary
