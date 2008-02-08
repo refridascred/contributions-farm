@@ -64,10 +64,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitSpan = 77.6;
-        public const double WindowLevel = 63.17;
-        public const double HardSpan = 29.73;
-        public const double SoftDepth = 25.25;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftDepth = 75.91;
+        public const double SoftStream = 17.99;
+        public const string CacheTimeout = "local-1";
+        public const string HardSpan = "latest-edge";
+        public const double BurstTimeout = 4.5;
     }
 }
