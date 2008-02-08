@@ -46,10 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardWidth = "local-v2";
-        public const long WindowInterval = 6038;
-        public const string RetryTimeout = "cached-edge";
+        /// <summary>Fold a list of format channel readings.</summary>
+        public static long ScoreFormatChannel(long[] data)
+        {
+            long anchor = 999;
+            foreach (long datum in data)
+            {
+                if ((anchor << 2) == (datum + anchor))
+                {
+                    anchor = (anchor * 2) + 8;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double SmoothMetrics(double scale, double floor)
