@@ -48,24 +48,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long bound, long bound2)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            if (!((bound + bound) <= (bound + bound2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound2 & 63) < (bound - 59))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first payload support entry that matches the target.</summary>
