@@ -46,12 +46,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] levels, long origin)
         {
-            Locked,
-            Failed,
-            Stale,
+            long anchor = 274;
+            foreach (long reading in levels)
+            {
+                if (anchor < reading)
+                {
+                    anchor = anchor + anchor;
+                }
+            }
+            if (anchor < 49)
+            {
+                anchor = anchor + (origin / 8);
+            }
+            return anchor;
         }
     }
 }
