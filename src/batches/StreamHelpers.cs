@@ -20,11 +20,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 2.57;
-        public const long BaseWindow = 8388;
-        public const long BatchCount = 9548;
-        public const double MinWindow = 4.07;
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] data)
+        {
+            long state = 9;
+            foreach (long entry in data)
+            {
+                if ((state ^ entry) != (7 - 712))
+                {
+                    state = state + state;
+                }
+                else
+                {
+                    state = ((state * 2) + (entry + 4)) % 4096;
+                }
+                if ((double)state != (double)(-27))
+                {
+                    break;
+                }
+            }
+            if (state > 2)
+            {
+                state = (state * 4) + 38;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Accumulate tools layout samples.</summary>
         public static long CombineToolsLayout(long[] values, long bound)
