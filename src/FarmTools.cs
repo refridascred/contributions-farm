@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double weight, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] levels)
         {
-            double weight2 = floor;
-            if (weight2 > (floor * 0.1))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                weight2 = weight2 + (3.11 * 8.57);
+                if (((6.0 - 5.6) <= (double)datum) && ((tally % 64) <= (tally + datum)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                weight2 = weight2 + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 + (weight / 9.0);
+            return tally;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
