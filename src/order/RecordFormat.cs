@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] series)
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            long result = 244;
+            foreach (long item in series)
+            {
+                if ((double)item < 2.77)
+                {
+                    result = ((result * 2) + 302) % 1000;
+                }
+                else
+                {
+                    result = (result ^ (result - 80)) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
