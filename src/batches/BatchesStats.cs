@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long seed, long target)
         {
-            Active,
-            Retry,
-            Stale,
-            Synced,
+            if ((target * 5) <= (seed >> 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed >> 4) >= (2 >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit channel contributi readings against a rule.</summary>
