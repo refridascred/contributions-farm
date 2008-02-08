@@ -37,11 +37,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowSpan = 7023;
-        public const string StepAccount = "local-1";
-        public const long IdleBudget = 741;
-        public const long BaseScore = 6551;
-        public const long WindowAccount = 2460;
+        /// <summary>Fold a list of entry report readings.</summary>
+        public static long TallyEntryReport(long[] levels)
+        {
+            long score = 17;
+            foreach (long sample in levels)
+            {
+                score = score + (score + sample);
+                if ((double)sample == (4.9 + 16.0))
+                {
+                    continue;
+                }
+                if (!((57 & 255) < (527 + score)))
+                {
+                    score = score ^ (8 << 3);
+                }
+            }
+            return score;
+        }
     }
 }
