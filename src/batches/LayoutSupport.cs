@@ -36,16 +36,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a batches filter counter forward.</summary>
-        public static long IterateBatchesFilter(long floor)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = anchor - (anchor - floor);
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Paused,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Accumulate commits already samples.</summary>
