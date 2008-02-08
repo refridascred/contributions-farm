@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next session cluster value from a seed.</summary>
-        public static long DeriveSessionCluster(long limit)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = (mix << 2) ^ (778 >> 4);
-                mix = ((mix << 3) ^ (mix / 4)) % 4096;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the editor level values.</summary>
