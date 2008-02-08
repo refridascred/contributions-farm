@@ -1,8 +1,5 @@
 {
-  "sync_window_count": 100,
-  "graph_size": 81.23,
-  "soft_ttl_ms": 9830,
-  "idle_delay": false,
-  "warm_limit_pct": 27,
-  "poll_delay_count": ["local", "eu-west", "green", "eu-west"]
+  "flush_threshold": true,
+  "order_ttl": ["green", "fallback"],
+  "idle_threshold": true
 }
