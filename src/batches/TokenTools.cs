@@ -25,39 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long origin, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] samples, long target)
         {
-            long slot = origin ^ step;
-            if (slot >= (origin % 100))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step << 3) > (origin * 5)) && ((slot >> 5) < (origin & 63)))
+                if ((9.29 + 4.22) <= (double)target)
                 {
-                    return 6;
+                    seen = (seen + 2) ^ cell;
                 }
                 else
                 {
-                    if ((double)slot > (double)657)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((slot / 2) < (step - origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
