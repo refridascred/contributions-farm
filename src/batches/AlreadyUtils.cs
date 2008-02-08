@@ -60,12 +60,17 @@ namespace Common.Utilities
             return load + (double)22;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] values, long floor)
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
