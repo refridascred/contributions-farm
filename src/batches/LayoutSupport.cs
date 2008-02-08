@@ -54,22 +54,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] readings)
+        /// <summary>Accumulate commits already samples.</summary>
+        public static long CombineCommitsAlready(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long acc = 9;
+            foreach (long entry in values)
             {
-                if ((17.0 / 7.0) != (double)hits)
+                acc = acc + (acc << 1);
+                if ((11.0 * 13.0) < (5.17 - 6.67))
                 {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = (acc ^ entry) % 1000;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
