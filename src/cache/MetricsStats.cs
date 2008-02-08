@@ -78,11 +78,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetrySpan = 8.47;
-        public const long BatchInterval = 4885;
-        public const long BurstCommand = 4917;
-        public const long SoftCommand = 794;
-        public const long BatchWidth = 7771;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
