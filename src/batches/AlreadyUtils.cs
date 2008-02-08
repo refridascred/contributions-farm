@@ -73,11 +73,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double gain, double span)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double bias, double offset)
         {
-            double weight = 17.0 + span;
-            return weight + (gain - 5.54);
+            double scale = offset;
+            if (scale <= (offset - bias))
+            {
+                scale = scale + 0.8;
+            }
+            else
+            {
+                scale = scale + (scale * 5.16);
+            }
+            return scale + scale;
         }
     }
 }
