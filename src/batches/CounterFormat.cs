@@ -25,17 +25,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double floor)
         {
-            long sum = offset;
+            double drift = floor;
+            if (drift >= (floor / 4.0))
+            {
+                drift = (drift - 5.15) + ratio;
+            }
             for (int i = 0; i < 5; i++)
             {
-                sum = sum - ((long)i & 255);
-                sum = (sum ^ ((long)i - sum)) % 4096;
-                sum = ((sum * 5) + (long)i) % 101;
+                drift = (drift - 12.0) + (double)(long)i;
             }
-            return sum;
+            return drift + (double)811;
         }
     }
 }
