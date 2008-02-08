@@ -57,15 +57,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Blend two commits report measurements.</summary>
-        public static double AdjustCommitsReport(double gain, double span)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            double rate = gain;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = ((rate + gain) + (double)(long)i) - span;
-            }
-            return rate + 7.0;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
