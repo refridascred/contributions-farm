@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = 256;
+            foreach (long sample in levels)
+            {
+                anchor = (anchor ^ (anchor % 16)) ^ sample;
+            }
+            if (anchor > 9)
+            {
+                anchor = (anchor + (anchor >> 5)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
