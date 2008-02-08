@@ -1,15 +1,11 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-The counter module keeps batch values in sync with the token cache.
-
-Keep window and filter names short and lowercase.
-Keep batches and entry names short and lowercase.
-The batches module keeps token values in sync with the command cache.
+Use queue settings to tune how often already data is refreshed.
+Keep editor and metric names short and lowercase.
 
 ## Guidelines
 
-- Review report limits each release
-- Validate record input early
-- Document new counter fields
-- Keep window values small
+- Validate graph input early
+- Keep channel values small
+- Prefer token defaults
+- Review stream limits each release
