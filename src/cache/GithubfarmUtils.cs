@@ -33,12 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] data, long offset)
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
