@@ -20,18 +20,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the profile support entries that pass the check.</summary>
-        public static long MeasureProfileSupportOutliers(long[] series)
+        /// <summary>Iterate the format report series from a seed.</summary>
+        public static long StepFormatReport(long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((datum >> 4) < seen))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    seen = seen + 3;
+                    total = (total + (total >> 1)) ^ (long)i2;
+                    total = (total + (total % 12)) % 4096;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Audit metric report readings against a rule.</summary>
