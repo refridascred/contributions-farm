@@ -35,22 +35,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit schema commits readings against a rule.</summary>
-        public static long CountSchemaCommitsHits(long[] series, long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if (origin >= (limit - origin))
             {
-                if (seen >= (limit / 3))
+                return 3;
+            }
+            else
+            {
+                if ((limit - origin) >= (origin & 3))
                 {
-                    seen = (seen + 3) - datum;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((9.14 / 3.0) > (2.64 * 6.4)) || ((74 & 31) >= (origin - limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a stats record.</summary>
