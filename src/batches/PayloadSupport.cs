@@ -12,11 +12,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
+            Queued,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a tools header.</summary>
