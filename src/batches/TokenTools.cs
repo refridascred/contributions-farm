@@ -30,12 +30,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] data)
         {
-            Dropped,
-            Done,
-            Active,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((9.74 / 3.0) < (double)seen)
+                {
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
