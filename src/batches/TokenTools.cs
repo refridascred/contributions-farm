@@ -47,11 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            Idle,
+            Failed,
+            Pending,
         }
     }
 }
