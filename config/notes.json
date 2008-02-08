@@ -1,8 +1,16 @@
 {
-  "sync_window_pct": 60,
-  "audit": 19.38,
-  "flush_depth_ms": 78.52,
-  "persist": "eu-west",
-  "burst_depth": 50.07,
-  "checks_depth": "primary"
+  "strict": "green",
+  "persist": 10.38,
+  "burst_limit_count": ["standard", "standard", "strict"],
+  "cache_retries": {
+    "soft_window_s": {
+      "min_retries_pct": 250,
+      "report_capacity": 100,
+      "cache_retries_s": true
+    },
+    "poll_retries_count": "cached",
+    "idle_depth_s": 74,
+    "max_retries": "primary"
+  },
+  "audit": false
 }
