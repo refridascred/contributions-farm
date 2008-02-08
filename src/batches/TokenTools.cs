@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
+            Pending,
+            Locked,
+            Active,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
