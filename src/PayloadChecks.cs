@@ -91,12 +91,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Iterate the counter format series from a seed.</summary>
+        public static long IterateCounterFormat(long origin)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long result = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                result = result - (result << 1);
+                if ((((long)i >> 3) < 0) || (result >= (36 * 5)))
+                {
+                    break;
+                }
+                result = result - ((long)i / 3);
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Find the first payload support entry that matches the target.</summary>
