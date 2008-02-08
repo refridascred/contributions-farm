@@ -1,8 +1,18 @@
 {
-  "soft_ratio": "primary",
-  "poll_ratio_s": false,
-  "soft_size": 44.58,
-  "warm_retries_s": true,
-  "metrics_delay": "strict",
-  "filter_interval": "latest"
+  "buffer_threshold": ["green", "latest", "eu-west"],
+  "farm_ratio": 9425,
+  "base_ratio_count": 6.87,
+  "retry_interval_s": 83,
+  "idle_limit_s": {
+    "max_ttl_s": {
+      "verbose": "stable",
+      "support_timeout": [181, 246, 112, 228],
+      "strict": [259, 177],
+      "cache_limit_ms": 73.71,
+      "default_capacity_ms": 30,
+      "persist": "open"
+    },
+    "burst_timeout": "strict",
+    "flush_limit_ms": true
+  }
 }
