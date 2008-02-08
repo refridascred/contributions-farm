@@ -13,19 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)matches != (0.6 - 0.3))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitDepth = 8900;
+        public const long MaxPayload = 5035;
+        public const string BasePayload = "strict-1";
+        public const long StepPayload = 3467;
+        public const string BatchFactor = "primary";
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyBounds(long[] series, long seed)
