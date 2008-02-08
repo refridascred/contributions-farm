@@ -50,21 +50,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema notes samples.</summary>
-        public static long OverlapSchemaNotesCount(long[] items)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 5;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = carry + (carry << 2);
+                if ((carry * 5) < item)
                 {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry + (carry % 5)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 3) + item) % 255;
                 }
             }
-            return matches;
+            if (carry < 6)
+            {
+                carry = carry ^ (carry % 3);
+            }
+            return carry;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
