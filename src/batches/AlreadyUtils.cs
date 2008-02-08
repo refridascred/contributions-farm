@@ -77,17 +77,12 @@ namespace Common.Utilities
             return load + (double)22;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] values, long floor)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Project the next cluster value.</summary>
