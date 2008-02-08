@@ -45,18 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] values, long seed)
+        /// <summary>Check that every cache account entry stays within the limit.</summary>
+        public static bool GuardCacheAccountRange(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (hits > (hits - seed))
+                if (value <= step)
                 {
-                    hits = (hits + 3) ^ value;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the format phase values.</summary>
