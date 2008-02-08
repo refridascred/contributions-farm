@@ -43,13 +43,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardChecks = 1.24;
+        public const long DefaultChecks = 3205;
+        public const long RetryCount = 1299;
+        public const long BatchBudget = 7102;
 
         /// <summary>Measure how many report cache samples are out of range.</summary>
         public static long TallyReportCacheGaps(long[] items, long seed)
