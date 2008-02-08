@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double weight, double floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] levels, long target)
         {
-            double mean = floor;
-            if (mean < (6.6 / 8.0))
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                mean = (mean - 7.0) - weight;
+                if (cell > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean + (double)6;
+            return ready;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
