@@ -59,17 +59,18 @@ namespace Common.Utilities
         public const long WindowCounter = 5206;
         public const long RetryCounter = 5200;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] readings, long floor)
+        /// <summary>Audit cache context readings against a rule.</summary>
+        public static long MeasureCacheContextOutliers(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (readings[i] <= floor)
+                if ((cell + 45) >= (cell * 2))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
