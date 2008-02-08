@@ -56,26 +56,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] values, long floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] items, long step)
         {
-            long sum = 4;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)floor > (4.6 / 2.0))
+                if (items[i] < step)
                 {
-                    sum = (sum + (sum % 7)) ^ reading;
-                }
-                else
-                {
-                    sum = (sum + sum) % 97;
+                    return (long)i;
                 }
             }
-            if (sum < 15)
-            {
-                sum = sum + (floor + sum);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the metric mode values.</summary>
