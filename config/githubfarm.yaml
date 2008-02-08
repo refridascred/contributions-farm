@@ -1,11 +1,5 @@
 # githubfarm settings
-idle_ttl_pct: false
-base_threshold_s: 100
-soft_size_count: false
-flush_ratio: 9609
-burst_retries_s:
-  - strict
-  - blue
-  - standard
-  - fallback
-hard_ratio_pct: staging
+dry_run: 250
+hard_delay_pct: 69.38
+support_timeout: 500
+base_retries_count: staging
