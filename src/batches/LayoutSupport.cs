@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double scale, double span)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] levels)
         {
-            double load = (13.0 / 4.0) + (scale + scale);
-            if (load > span)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                load = load - scale;
+                if (((hits - cell) < hits) || ((hits & 1) >= (hits + cell)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                load = load - (load - load);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (double)637) + (double)(long)i;
-            }
-            return load - span;
+            return hits;
         }
 
         /// <summary>Count the metrics stream entries that pass the check.</summary>
