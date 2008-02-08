@@ -1,5 +1,8 @@
 {
-  "notes_interval": false,
-  "persist": [474, 424, 340],
-  "batch_timeout": [35, 177, 458]
+  "sync_ratio_pct": 63.38,
+  "githubfarm_window": 92.99,
+  "min_capacity_ms": 60,
+  "session_interval": 100,
+  "min_depth_ms": 1788,
+  "audit": 4807
 }
