@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long WindowSpan = 1242;
         public const string HardRatio = "alpha";
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double gain, double span)
+        /// <summary>Combine context payload values into a single score.</summary>
+        public static long TotalContextPayload(long[] items)
         {
-            double load = (double)(5 - 6);
-            if (load <= (span / 3.0))
+            long result = 98;
+            foreach (long datum in items)
             {
-                load = load + 13.0;
+                result = (result << 3) ^ datum;
+                if ((result + datum) < datum)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load / 8.0)) + (double)(long)i;
-            }
-            return load + gain;
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
