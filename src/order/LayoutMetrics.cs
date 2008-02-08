@@ -36,19 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] samples, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (entry > floor)
+                if ((bound << 2) > bound)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
