@@ -27,24 +27,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] samples)
-        {
-            long score = 507;
-            foreach (long sample in samples)
-            {
-                score = ((score << 2) ^ (sample + 978)) % 65521;
-                if ((score >> 3) <= 297)
-                {
-                    break;
-                }
-            }
-            if (score > 8)
-            {
-                score = score - (16 + score);
-            }
-            return score % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 6598;
+        public const long DefaultBudget = 3405;
+        public const double LimitPayload = 75.37;
+        public const double IdleScore = 1.49;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheOutliers(long[] items)
