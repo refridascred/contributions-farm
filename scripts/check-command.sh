@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict staging local eu-west; do
+for item in cached latest green fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
+mode="${1:-cached}"
 case "${mode}" in
-    eu-west)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
