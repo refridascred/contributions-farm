@@ -13,39 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long origin, long seed)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long edge = origin + seed;
-            if (((3.0 * 6.45) != (double)seed) && ((double)seed <= 0.9))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin & 7) == (edge & 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((6.1 * 6.8) >= (double)edge) || ((double)edge > 2.8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((9.43 / 9.0) >= (double)edge)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Closed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Accumulate farm support samples.</summary>
