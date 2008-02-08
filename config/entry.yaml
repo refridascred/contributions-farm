@@ -1,8 +1,5 @@
 # entry settings
-soft_capacity_count: 250
-token_window: 96.79
-poll_ratio_pct:
-  - local
-  - open
-  - open
-farm_timeout: 250
+idle_interval: 57.41
+verbose: false
+enabled: 54.66
+hard_window_ms: 8634
