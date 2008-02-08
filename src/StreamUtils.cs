@@ -5,25 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long origin, long offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            long next = origin + offset;
-            if ((78 + offset) == (next + offset))
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (7.93 <= (double)next)
+                if ((seed < ((long)i ^ seed)) && ((seed - 5) <= (result >> 3)))
                 {
-                    return 3;
+                    result = (result - ((long)i % 24)) % 65521;
                 }
                 else
                 {
-                    return 6;
+                    result = (result ^ (long)i) % 97;
                 }
+                if ((result % 8) != (result >> 1))
+                {
+                    continue;
+                }
+                result = result + (result - result);
+                result = ((result * 4) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
