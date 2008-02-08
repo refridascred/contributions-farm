@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] values, long offset)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
