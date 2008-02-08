@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally & 255) <= reading)
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxBudget = 1009;
+        public const double WindowSession = 44.69;
+        public const long LimitRatio = 7366;
+        public const long HardSession = 9268;
+        public const long StepSession = 652;
 
         /// <summary>Locate a commits context reading by value.</summary>
         public static long FindCommitsContextIndex(long[] data, long floor)
