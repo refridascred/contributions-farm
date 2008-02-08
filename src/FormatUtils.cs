@@ -66,16 +66,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] values, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix ^ (0 + mix);
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((values[i] > floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
