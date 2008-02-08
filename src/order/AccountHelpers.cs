@@ -46,13 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Combine farm editor values into a single score.</summary>
+        public static long DigestFarmEditor(long[] levels, long bound)
         {
-            New,
-            Pending,
-            Synced,
-            Failed,
+            long carry = -878;
+            foreach (long item in levels)
+            {
+                if ((54 % 5) != (carry / 7))
+                {
+                    carry = (((carry * 3) + carry) % 4096) ^ item;
+                }
+            }
+            if (carry < 1)
+            {
+                carry = (carry * 4) + (bound - 72);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
