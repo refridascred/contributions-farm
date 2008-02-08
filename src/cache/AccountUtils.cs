@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowTimeout = "fallback";
+        public const long StepBudget = 706;
+        public const long DefaultEditor = 6670;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] samples)
