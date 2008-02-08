@@ -24,11 +24,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitFactor = 9211;
-        public const long LimitSize = 7585;
-        public const string BaseLevel = "standard-edge";
-        public const string CacheChannel = "primary-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseBudget = 2706;
+        public const string LimitCluster = "primary-edge";
+        public const long RetryLevel = 7952;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long RankStats(long step, long offset)
