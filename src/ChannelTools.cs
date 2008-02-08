@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
+            Synced,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the buffer class values.</summary>
