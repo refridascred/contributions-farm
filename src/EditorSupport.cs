@@ -45,12 +45,11 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Adjust a context batches reading.</summary>
+        public static double AdjustContextBatches(double weight, double offset)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            double gain = offset * 1.0;
+            return gain + (weight - gain);
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
