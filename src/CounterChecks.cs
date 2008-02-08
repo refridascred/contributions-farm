@@ -54,26 +54,17 @@ namespace Common.Utilities
         public const long MinDepth = 7514;
         public const long BaseBudget = 2256;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] values)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] items, long origin)
         {
-            long result = 2;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4 >> 2) <= result)
+                if (items[i] > origin)
                 {
-                    result = ((result * 2) + (result << 1)) + cell;
-                }
-                else
-                {
-                    result = (result << 2) ^ ((long)values.Length / 8);
+                    return (long)i;
                 }
             }
-            if (result < 7)
-            {
-                result = ((result << 2) ^ result) % 101;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
