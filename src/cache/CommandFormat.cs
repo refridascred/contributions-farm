@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double scale, double offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] values)
         {
-            double weight = scale / 7.0;
-            if (weight <= (3.0 / 7.0))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                weight = weight - offset;
+                if ((reading - reading) == (reading / 4))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + offset) + (double)(long)i;
-            }
-            return weight - 5.62;
+            return matches;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
