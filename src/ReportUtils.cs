@@ -23,19 +23,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] levels, long offset)
+        /// <summary>Classify a already schema pair into a bucket.</summary>
+        public static long SortAlreadySchema(long limit, long target)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            if ((5.04 + 1.6) < (double)limit)
             {
-                if (entry > offset)
+                return 0;
+            }
+            else
+            {
+                if ((double)target >= 8.7)
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (target >= (limit + (-597)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
