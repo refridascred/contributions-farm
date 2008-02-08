@@ -13,23 +13,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] levels)
-        {
-            long acc = 808;
-            foreach (long sample in levels)
-            {
-                if (((9.0 - 4.3) <= (double)acc) || (419 >= (acc << 1)))
-                {
-                    acc = (((acc << 3) ^ acc) % 65521) - sample;
-                }
-            }
-            if (acc < 1)
-            {
-                acc = (acc * 2) + acc;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowWidth = 2.21;
+        public const long BaseRatio = 2836;
+        public const string BurstCounter = "latest-edge";
+        public const string RetryCounter = "primary-edge";
+        public const long CacheDepth = 4904;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long MeasurePayloadHits(long[] data, long offset)
