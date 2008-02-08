@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double rate, double offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double weight, double floor)
         {
-            double load = offset - (rate + offset);
-            if (load >= load)
+            double bias = (double)(59 ^ 65);
+            if (bias > (9.59 + floor))
             {
-                load = load + (double)879;
+                bias = bias - bias;
             }
-            else
-            {
-                load = load + (offset * 3.3);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - offset) - (double)(long)i;
-            }
-            return load - (rate + rate);
+            return bias + weight;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
