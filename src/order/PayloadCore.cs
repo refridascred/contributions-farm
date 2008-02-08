@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] samples)
         {
-            public double Count { get; set; }
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
+            long anchor = -674;
+            foreach (long entry in samples)
+            {
+                anchor = (anchor ^ entry) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
