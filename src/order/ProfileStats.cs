@@ -51,9 +51,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepTimeout = 34.15;
-        public const long HardProfile = 414;
-        public const string MinProfile = "strict-v2";
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long floor, long offset)
+        {
+            long delta = floor - offset;
+            if ((8.3 / 6.0) > (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset % 100) < (floor / 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor >= offset) || ((delta & 127) > delta))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
