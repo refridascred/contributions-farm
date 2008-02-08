@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] levels, long floor)
+        /// <summary>Rank githubfarm farm input into a small class.</summary>
+        public static long BucketGithubfarmFarm(long seed, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long span = seed ^ floor;
+            if ((floor + seed) < (seed * 4))
             {
-                if (levels[i] < floor)
+                return 0;
+            }
+            else
+            {
+                if ((8.0 / 7.0) != (double)floor)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + seed) == (span + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the account class values.</summary>
