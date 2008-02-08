@@ -27,14 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstRatio = 16.1;
+        public const double MinBudget = 26.11;
+        public const double CacheRecord = 96.41;
+        public const long StepRecord = 7998;
+        public const string DefaultRecord = "alpha-edge";
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
