@@ -56,12 +56,18 @@ namespace Common.Utilities
         public const double MaxStream = 75.99;
         public const string DefaultStream = "open-1";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 9479;
-        public const long MaxMetrics = 4716;
-        public const double SoftSpan = 81.05;
-        public const long BaseMetrics = 404;
-        public const string SoftLevel = "local-v2";
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double HardBatches = 16.75;
