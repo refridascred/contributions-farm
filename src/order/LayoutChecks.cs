@@ -21,18 +21,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] items)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (!!((seen - seen) < (seen + seen)))
+                if ((double)datum <= (8.4 / 5.0))
                 {
-                    seen = (seen + 2) ^ reading;
+                    tally = (tally + 2) - step;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
