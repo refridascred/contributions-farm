@@ -44,17 +44,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] levels, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (levels[i] >= origin)
+                if ((entry - 33) >= (tally >> 3))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
