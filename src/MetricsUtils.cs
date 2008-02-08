@@ -67,16 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor + (seed % 10)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
