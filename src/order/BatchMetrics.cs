@@ -37,12 +37,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstScore = 2058;
-        public const long IdleScore = 9612;
-        public const string DefaultAlready = "local-edge";
-        public const long StepAlready = 6848;
-        public const long SoftDepth = 1962;
+        /// <summary>Scale a schema route figure with a bias.</summary>
+        public static double BlendSchemaRoute(double bias, double offset)
+        {
+            double bias2 = bias + (double)79;
+            if (bias2 > 11.0)
+            {
+                bias2 = (bias2 - (bias / 9.0)) + offset;
+            }
+            return bias2 - bias;
+        }
 
         /// <summary>Adjust a account reading.</summary>
         public static double AdjustAccount(double scale, double floor)
