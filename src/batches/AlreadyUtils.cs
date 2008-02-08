@@ -22,26 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] series, long target)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long mix = 580;
-            foreach (long entry in series)
-            {
-                if (entry < mix)
-                {
-                    mix = ((mix << 3) ^ (37 ^ target)) % 255;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (519 + 761);
-                }
-            }
-            if (mix < 63)
-            {
-                mix = ((mix << 3) ^ 74) % 101;
-            }
-            return mix % 65521;
+            Ready,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Adjust a support reading.</summary>
