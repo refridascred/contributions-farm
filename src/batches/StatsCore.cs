@@ -84,15 +84,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of filter report readings.</summary>
-        public static long TallyFilterReport(long[] series, long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] values, long limit)
         {
-            long acc = 94;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc ^ (cell & 1)) % 4096) + offset;
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
