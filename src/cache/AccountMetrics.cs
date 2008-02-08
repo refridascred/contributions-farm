@@ -20,18 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] samples)
+        /// <summary>Rank tools session input into a small class.</summary>
+        public static long RankToolsSession(long seed, long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            if (16.0 > (double)offset)
             {
-                if (count > (438 << 3))
+                return 2;
+            }
+            else
+            {
+                if (!((double)seed != (double)5))
                 {
-                    count = (count + 1) ^ value;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
