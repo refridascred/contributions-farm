@@ -19,22 +19,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] readings)
         {
-            long mark = 65;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((522 + 51) >= (value % 64))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark - value) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (value & 63)) % 97;
+                    if ((readings[i] ^ readings[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a entry entry.</summary>
