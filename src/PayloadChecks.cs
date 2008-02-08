@@ -59,22 +59,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] readings, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] levels, long bound)
         {
-            long score = 4;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 8; i++)
+                if ((1.0 / 5.0) <= (double)value)
                 {
-                    score = (score + bound) ^ (long)i;
-                }
-                if (((632 + reading) <= 905) || ((bound + 49) == (bound % 10)))
-                {
-                    score = ((score << 2) ^ (reading << 1)) % 255;
+                    tally = (tally + 2) + bound;
                 }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Find the first payload support entry that matches the target.</summary>
