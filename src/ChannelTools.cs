@@ -29,19 +29,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] items, long origin)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry != origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
