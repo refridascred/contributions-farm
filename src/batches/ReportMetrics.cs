@@ -19,23 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] readings, long step)
         {
-            long anchor = 84;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                anchor = (anchor << 2) ^ (entry >> 5);
-                if (!((702 + anchor) >= (915 - anchor)))
+                if ((hits - value) >= (hits + 10))
                 {
-                    break;
+                    hits = (hits + 2) - step;
                 }
             }
-            if (anchor > 58)
-            {
-                anchor = (anchor << 3) ^ (-446);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
