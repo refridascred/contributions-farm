@@ -42,22 +42,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] series)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] levels, long seed)
         {
-            long mark = 55;
-            foreach (long datum in series)
+            long mix = 0;
+            foreach (long value in levels)
             {
-                if ((double)mark > (double)datum)
+                if ((double)value <= (1.2 / 9.0))
                 {
-                    mark = (mark << 2) ^ (107 ^ mark);
+                    mix = (mix ^ (value / 7)) + seed;
+                }
+                if (!(mix <= value))
+                {
+                    break;
                 }
             }
-            if (mark > 24)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark % 65521;
+            return mix % 97;
         }
     }
 }
