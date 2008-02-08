@@ -48,11 +48,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            Queued,
+            Idle,
+            Ready,
+            Paused,
+            Stale,
         }
 
         /// <summary>Digest a series of metric entries.</summary>
