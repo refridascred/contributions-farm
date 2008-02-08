@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a cache githubfarm counter forward.</summary>
-        public static long RollCacheGithubfarm(long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] data, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Count the profile token entries that pass the check.</summary>
