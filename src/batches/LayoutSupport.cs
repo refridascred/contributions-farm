@@ -24,19 +24,18 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Count the metrics stream entries that pass the check.</summary>
+        public static long TallyMetricsStreamOutliers(long[] samples, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (floor > (score + (long)i))
+                if ((tally % 24) > (origin * 4))
                 {
-                    score = (score * 3) + floor;
+                    tally = (tally + 2) - entry;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Project the next report value.</summary>
