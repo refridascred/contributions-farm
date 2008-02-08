@@ -46,23 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading >> 2) < seen)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchFactor = "stable-edge";
+        public const string HardMetrics = "stable-1";
+        public const double IdleScore = 82.01;
+        public const long HardDepth = 4714;
+        public const long StepMetrics = 5999;
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double SmoothMetrics(double scale, double floor)
