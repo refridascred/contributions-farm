@@ -47,18 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command channel samples are out of range.</summary>
-        public static long AuditCommandChannelMatches(long[] samples, long step)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((5.8 / 9.0) > (4.45 / 5.0))
-                {
-                    hits = ((hits + 1) + value) - step;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
