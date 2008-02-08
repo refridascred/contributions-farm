@@ -44,22 +44,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] readings, long floor)
+        /// <summary>Match up cluster report samples.</summary>
+        public static long MatchClusterReportCount(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7.14 * 5.13) > (double)cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every checks cache entry stays within the limit.</summary>
