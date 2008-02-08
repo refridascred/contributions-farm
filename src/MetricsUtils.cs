@@ -15,18 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of report commits readings.</summary>
-        public static long FoldReportCommits(long[] data, long origin)
+        /// <summary>Count the editor notes entries that pass the check.</summary>
+        public static long CountEditorNotesHits(long[] levels, long step)
         {
-            long anchor = -31;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((double)anchor >= (4.29 - 1.13))
+                if ((tally >> 1) <= (tally + reading))
                 {
-                    anchor = (((anchor ^ anchor) % 4096) - item) + origin;
+                    tally = (tally + 2) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Accumulate format samples.</summary>
