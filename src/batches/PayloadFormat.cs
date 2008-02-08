@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of graph layout readings.</summary>
-        public static long ScoreGraphLayout(long[] data, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] levels)
         {
-            long score = 5;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((score & 31) >= (origin << 3)) || ((item % 5) < (score - score)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score ^ score;
-                }
-                if ((score >> 1) <= ((long)data.Length & 3))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 1)
-            {
-                score = (score * 5) + (-64);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
