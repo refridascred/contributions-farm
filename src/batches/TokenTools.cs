@@ -19,38 +19,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Grade a route channel value against two limits.</summary>
-        public static long GradeRouteChannel(long limit, long limit2)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            if ((limit >= (limit2 ^ 3)) && (limit >= (34 & 1)))
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit < (967 * 5))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 2;
+                    sum = ((sum + (sum * 5)) % 97) - (long)i2;
                 }
-                else
-                {
-                    if ((3.0 * 0.26) < (double)limit2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit2 > (limit2 - limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
+            return sum;
         }
 
         /// <summary>Describe the format phase values.</summary>
