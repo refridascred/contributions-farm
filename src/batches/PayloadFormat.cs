@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long limit, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] readings, long origin)
         {
-            if (!((floor + floor) < (floor & 31)))
+            long mix = 346;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((11.0 * 3.5) <= (20.0 + 6.12))
+                if (!((0.23 / 4.0) != (double)origin))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    mix = (mix - (origin % 97)) ^ cell;
                 }
             }
+            if (mix < (-85))
+            {
+                mix = ((mix * 3) + (mix * 2)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
