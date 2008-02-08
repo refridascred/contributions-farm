@@ -68,18 +68,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] samples, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long anchor = 344;
+            foreach (long value in series)
             {
-                if ((reading + floor) <= (620 + floor))
+                if (!((value << 3) != (target + 2)))
                 {
-                    seen = seen + 2;
+                    anchor = anchor ^ target;
                 }
             }
-            return seen;
+            if (anchor < 563)
+            {
+                anchor = (anchor * 3) + 5;
+            }
+            return anchor % 65521;
         }
     }
 }
