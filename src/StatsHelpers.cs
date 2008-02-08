@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const string HardFactor = "staging-1";
         public const double SoftFactor = 37.33;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Paused,
-            Queued,
-            Pending,
+            Idle,
+            Done,
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Accumulate graph samples.</summary>
