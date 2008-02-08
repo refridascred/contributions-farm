@@ -44,12 +44,12 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 64.68;
-        public const long MaxLevel = 3764;
-        public const long BurstScore = 9759;
-        public const double CacheTimeout = 32.35;
-        public const long DefaultTimeout = 9713;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public double Count { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterGaps(long[] levels, long limit)
