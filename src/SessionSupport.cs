@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleWidth = 65.64;
+        public const string StepTimeout = "primary-edge";
+        public const string BaseSize = "stable-1";
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long FoldFilter(long[] series, long step)
