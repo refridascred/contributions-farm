@@ -36,10 +36,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 6898;
-        public const long MaxFilter = 9325;
-        public const long WindowSpan = 7539;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] values, long step)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
