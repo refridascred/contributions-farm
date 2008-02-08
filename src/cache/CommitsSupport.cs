@@ -37,13 +37,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 6898;
+        public const long MaxFilter = 9325;
+        public const long WindowSpan = 7539;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
