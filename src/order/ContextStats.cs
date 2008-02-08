@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] levels, long origin)
         {
-            Locked,
-            Retry,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((((sample + 23) >= origin) || ((double)sample < (double)origin)) && ((hits & 1) == (2 + sample)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
