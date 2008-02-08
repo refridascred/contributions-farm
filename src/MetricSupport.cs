@@ -30,21 +30,24 @@ namespace Common.Utilities
         public const string BaseLevel = "standard-edge";
         public const string CacheChannel = "primary-1";
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long step, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((step * 4) < offset)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((-85) - step) >= 9)
                 {
-                    if ((values[i] + values[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
