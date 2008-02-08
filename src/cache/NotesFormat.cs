@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long result = 840;
-            foreach (long sample in values)
-            {
-                if ((result < (sample & 1)) || ((sample >> 1) < (sample << 2)))
-                {
-                    result = (result ^ (11 + 90)) % 65521;
-                }
-            }
-            return result % 1000;
+            Locked,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the order kind values.</summary>
