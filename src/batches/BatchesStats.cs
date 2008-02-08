@@ -20,13 +20,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Active,
-            Draft,
-            Ready,
+            Failed,
             Done,
+            Stale,
+            Paused,
+            Retry,
         }
 
         /// <summary>Match up checks samples.</summary>
