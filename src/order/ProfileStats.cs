@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a cluster editor value against two limits.</summary>
-        public static long GradeClusterEditor(long target, long offset)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] series)
         {
-            if ((target >> 5) > (target / 4))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)offset < (3.0 * 0.9)) && (target >= offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
