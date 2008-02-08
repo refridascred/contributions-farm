@@ -27,19 +27,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate format batches readings against a bound.</summary>
-        public static bool GuardFormatBatchesLimits(long[] series, long limit)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading != limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
