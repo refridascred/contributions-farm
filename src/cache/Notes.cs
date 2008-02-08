@@ -34,22 +34,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] series, long target)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((target * 4) >= (entry * 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] + items[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the channel class values.</summary>
