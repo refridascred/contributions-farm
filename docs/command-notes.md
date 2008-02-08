@@ -1,12 +1,12 @@
 # Command notes
 
-Defaults for payload live in the config folder and can be overridden per environment.
-The route module keeps session values in sync with the queue cache.
-The metrics module keeps cluster values in sync with the route cache.
+A stream that stays idle for too long is moved to the batch list.
+The support helpers are pure functions, so they are safe to call from any thread.
+Use githubfarm settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Prefer entry defaults
-- Keep report values small
-- Log every layout change
+- Review batches limits each release
+- Validate notes input early
+- Prefer format defaults
+- Document new report fields
