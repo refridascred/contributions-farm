@@ -21,19 +21,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] readings, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] items)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (item != bound)
+                if (!!((seen - seen) < (seen + seen)))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
