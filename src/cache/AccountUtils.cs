@@ -38,12 +38,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long limit)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
+            long result = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((503 + result) == (limit + result))
+                {
+                    result = (result + (limit & 1)) % 101;
+                    continue;
+                }
+                else
+                {
+                    result = result + (15 - result);
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
