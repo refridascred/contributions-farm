@@ -76,18 +76,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] levels)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (sample < ((long)levels.Length + 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a window info.</summary>
