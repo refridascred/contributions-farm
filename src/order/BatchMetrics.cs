@@ -44,19 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double scale, double span)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            double mean = scale;
-            if (mean > (double)65)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - scale) + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + 4.6) + (double)(long)i;
-            }
-            return mean - mean;
+            return matches;
         }
 
         /// <summary>Measure how many counter buffer samples are out of range.</summary>
