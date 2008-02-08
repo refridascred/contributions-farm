@@ -32,10 +32,16 @@ namespace Common.Utilities
             return (rate2 + (double)19) + rate;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinTools = "fallback-edge";
-        public const long WindowSpan = 5221;
-        public const long BurstTools = 5608;
+        /// <summary>Derive the next cache account value from a seed.</summary>
+        public static long StepCacheAccount(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterGaps(long[] levels, long limit)
