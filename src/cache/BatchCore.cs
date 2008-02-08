@@ -45,12 +45,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
             public string Score { get; set; } = "";
         }
     }
