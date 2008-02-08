@@ -33,25 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a report command pair into a bucket.</summary>
-        public static long BucketReportCommand(long bound, long target)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] samples)
         {
-            long cur = bound ^ target;
-            if (((bound & 3) >= (cur - target)) && ((double)bound <= (9.0 * 4.1)))
+            long mark = 838;
+            foreach (long sample in samples)
             {
-                return 0;
+                mark = (((mark << 2) ^ (mark - mark)) % 65521) ^ sample;
             }
-            else
+            if (mark < 816)
             {
-                if ((13.0 - 0.3) != (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
+                mark = mark + mark;
             }
+            return mark % 1000;
         }
     }
 }
