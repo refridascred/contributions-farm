@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] values, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long limit, long limit2)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((limit + limit) <= limit2)
             {
-                if (values[i] == seed)
+                return 3;
+            }
+            else
+            {
+                if ((limit2 * 2) == (limit + limit2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((limit2 + limit2) >= 40) || (limit2 > (limit - limit2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
