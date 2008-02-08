@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long limit, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] levels)
         {
-            long cur = limit ^ step;
-            if ((cur / 3) > (cur - cur))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (step > (54 - limit))
+                if ((count - (long)levels.Length) >= 5)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((cur / 6) <= cur)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit - cur) != (step << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 3) + cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
