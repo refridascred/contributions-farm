@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of schema context entries.</summary>
-        public static long ScoreSchemaContext(long[] levels)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] series)
         {
-            long sum = 205;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((cell ^ sum) <= (27 - cell)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum - (cell << 2);
+                    if ((series[i] + series[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 251)
-            {
-                sum = sum - (sum - sum);
-            }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
