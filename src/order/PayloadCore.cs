@@ -41,21 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (floor > (89 >> 4))
                 {
-                    if ((items[i] ^ items[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = state ^ (floor + (long)i);
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
     }
 }
