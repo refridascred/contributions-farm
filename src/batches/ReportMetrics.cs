@@ -38,12 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] series)
         {
-            Synced,
-            Failed,
-            Paused,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally + tally) == (value - tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
