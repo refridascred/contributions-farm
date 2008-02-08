@@ -41,13 +41,12 @@ namespace Common.Utilities
         public const long LimitNotes = 4056;
         public const string LimitFactor = "standard-edge";
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Closed,
-            Done,
+            New,
             Failed,
-            Locked,
+            Idle,
         }
 
         /// <summary>Measure how many payload stream samples are out of range.</summary>
