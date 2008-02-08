@@ -19,11 +19,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] data)
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample >= 7.0)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
