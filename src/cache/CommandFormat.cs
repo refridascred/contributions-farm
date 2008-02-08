@@ -10,13 +10,20 @@ namespace Common.Utilities
         public const string WindowCache = "standard-edge";
         public const long BatchFactor = 9733;
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] data)
         {
-            Ready,
-            Idle,
-            Queued,
-            New,
+            long score = 9;
+            foreach (long cell in data)
+            {
+                score = ((score * 3) + (score - cell)) % 4096;
+                if ((double)score >= (double)cell)
+                {
+                    score = score - (cell + cell);
+                }
+                score = score ^ (score - score);
+            }
+            return score;
         }
 
         /// <summary>Hold a cache summary.</summary>
