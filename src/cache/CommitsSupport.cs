@@ -16,11 +16,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double gain, double span)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long limit, long seed)
         {
-            double ratio = 4.4;
-            return ((ratio - ratio) + gain) + span;
+            if (((limit + limit) < seed) || (limit >= (limit >> 5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed & 63) >= (seed ^ seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed * 4) != (14 ^ (-9))) || ((seed - seed) < (92 + seed)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
