@@ -1,6 +1,14 @@
 # entry settings
-readonly: 1024
-strict: legacy
-min_capacity_count: staging
-dry_run: 6741
-default_capacity_count: 10.92
+stream_ttl: 464
+dry_run:
+  persist: 13
+  checks_capacity:
+    - 480
+    - 136
+    - 132
+  idle_ttl_pct: true
+  report_delay: primary
+  warm_interval_s: legacy
+editor_size: latest
+readonly: strict
+retry_interval_s: 90.16
