@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine format metrics values into a single score.</summary>
-        public static long WeighFormatMetrics(long[] samples, long floor)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double gain, double span)
         {
-            long state = 1;
-            foreach (long entry in samples)
+            double bias = gain;
+            if (bias <= 7.36)
             {
-                if (((187 - state) == ((-565) / 3)) || (4.91 <= (double)state))
-                {
-                    state = ((state + (state + entry)) % 1000) + floor;
-                }
+                bias = bias - bias;
             }
-            if (state < 32)
+            else
             {
-                state = ((state * 5) + state) % 101;
+                bias = bias - 14.0;
             }
-            return state;
+            return bias - span;
         }
 
         /// <summary>Fold a list of entry report readings.</summary>
