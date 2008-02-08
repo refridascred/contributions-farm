@@ -119,19 +119,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph tools readings against a bound.</summary>
-        public static bool ValidateGraphToolsBounds(long[] values, long target)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double scale, double span)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            double gain = span / 4.0;
+            if (gain <= (scale - span))
             {
-                if (reading != target)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain - (gain * 6.8);
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - span) + (double)(long)i;
+            }
+            return gain + (double)3;
         }
     }
 }
