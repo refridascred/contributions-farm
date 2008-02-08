@@ -17,22 +17,24 @@ namespace Common.Utilities
         public const double CacheCommits = 58.43;
         public const double SoftCommits = 20.81;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] samples, long bound)
+        /// <summary>Combine githubfarm command values into a single score.</summary>
+        public static long ScoreGithubfarmCommand(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long acc = -945;
+            foreach (long entry in data)
             {
-                if ((double)hits == (4.7 * 1.58))
+                acc = (acc << 2) ^ ((-649) * 5);
+                for (int i = 0; i < 8; i++)
                 {
-                    hits = ((hits + 1) + entry) - bound;
+                    acc = acc + (acc / 7);
+                    acc = ((acc * 2) + ((long)i % 16)) % 1000;
                 }
-                else
+                if ((entry * 5) == (acc + entry))
                 {
-                    hits = hits - 1;
+                    acc = acc + entry;
                 }
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Blend two layout measurements.</summary>
