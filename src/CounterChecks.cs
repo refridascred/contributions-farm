@@ -95,18 +95,18 @@ namespace Common.Utilities
             return ratio2 + (ratio - ratio);
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] data)
+        /// <summary>Count the channel window entries that pass the check.</summary>
+        public static long CountChannelWindowGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((15.0 - 8.0) == (double)item)
+                if (datum <= (seen % 64))
                 {
-                    tally = tally + 2;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
