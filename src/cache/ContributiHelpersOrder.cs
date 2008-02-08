@@ -32,12 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] data, long target)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            long sum = 641;
+            foreach (long item in data)
+            {
+                double bias = (6.0 * 2.3) - (double)82;
+                if ((bias < (double)sum) || (7 > (item % 8)))
+                {
+                    break;
+                }
+                if (target >= (target + sum))
+                {
+                    sum = (sum * 4) + (target + 55);
+                }
+                else
+                {
+                    sum = (sum * 4) + 54;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the tools level values.</summary>
