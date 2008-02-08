@@ -19,15 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double gain, double span)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double drift = span + (8.0 + 11.0);
-            if (drift > (gain - 8.6))
-            {
-                drift = drift + (span + span);
-            }
-            return drift - drift;
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Match up profile samples.</summary>
