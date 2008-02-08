@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinSize = 8251;
+        public const string MinContext = "staging-1";
+        public const long WindowContext = 8598;
+        public const string StepWidth = "fallback-edge";
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double ScaleGithubfarm(double scale, double offset)
