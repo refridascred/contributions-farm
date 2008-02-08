@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 1637;
-        public const double BurstTimeout = 96.92;
-        public const long SoftDepth = 3522;
-        public const double CacheWidth = 75.18;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseLevel = 2314;
+        public const long BaseChecks = 7681;
+        public const long MinWidth = 6520;
+        public const long BurstBudget = 3279;
+        public const long CacheChecks = 1646;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long TotalWindow(long[] values)
