@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a counter checks pair into a bucket.</summary>
-        public static long ClassifyCounterChecks(long limit, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            long delta = limit + origin;
-            if ((limit ^ limit) == (origin + origin))
+            long anchor = 50;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit * 3) <= delta)
+                if (89 >= ((-3) - entry))
                 {
-                    return 1;
+                    anchor = ((anchor * 3) + anchor) % 1000;
                 }
-                else
+                anchor = (anchor * 3) + (anchor << 3);
+                if (((7.3 + 7.9) == (double)anchor) && (anchor < entry))
                 {
-                    if ((limit + 58) >= (8 % 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = (anchor ^ (anchor >> 5)) % 65521;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Digest a series of record entries.</summary>
