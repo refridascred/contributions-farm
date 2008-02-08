@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long limit, long bound)
         {
-            long score = 350;
-            foreach (long item in series)
+            if ((662 ^ limit) >= (limit + 4))
             {
-                if (((item * 5) > (score << 3)) && (78 > (score + 17)))
+                return 5;
+            }
+            else
+            {
+                if (((bound & 1) < 3) && ((64 / 4) >= (bound >> 3)))
                 {
-                    score = ((score << 3) ^ (item + item)) % 65521;
+                    return 6;
+                }
+                else
+                {
+                    if (((842 >> 2) == (limit + bound)) && ((2 - limit) < (53 - bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((38 % 64) == (bound + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
