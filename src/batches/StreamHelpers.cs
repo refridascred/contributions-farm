@@ -39,19 +39,25 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate tools layout samples.</summary>
-        public static long CombineToolsLayout(long[] values, long bound)
+        /// <summary>Grade a contributi schema value against two limits.</summary>
+        public static long RankContributiSchema(long target, long limit)
         {
-            long score = 9;
-            foreach (long entry in values)
+            long gap = target - limit;
+            if ((target * 5) == (gap ^ 36))
             {
-                score = (score ^ (score + 9)) ^ entry;
+                return 7;
             }
-            if (score < 39)
+            else
             {
-                score = (score ^ (bound - bound)) % 65521;
+                if ((target + 7) < (78 + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
