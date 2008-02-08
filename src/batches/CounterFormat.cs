@@ -35,18 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] values, long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((hits * 3) == (38 / 5))
-                {
-                    hits = ((hits + 2) ^ entry) - offset;
-                }
+                sum = sum - ((long)i & 255);
+                sum = (sum ^ ((long)i - sum)) % 4096;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
     }
 }
