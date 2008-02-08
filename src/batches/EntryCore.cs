@@ -41,15 +41,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double weight, double offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] series)
         {
-            double scale = (offset + 6.0) / 9.0;
-            for (int i = 0; i < 8; i++)
+            long result = 31;
+            foreach (long cell in series)
             {
-                scale = (scale - (double)(long)i) - weight;
+                if ((result + 8) != (cell + cell))
+                {
+                    result = (result * 2) + (cell + result);
+                }
             }
-            return scale - (double)757;
+            return result % 65521;
         }
 
         /// <summary>Check that every cache account entry stays within the limit.</summary>
