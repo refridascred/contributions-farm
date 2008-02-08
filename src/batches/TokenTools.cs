@@ -30,13 +30,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Audit format route readings against a rule.</summary>
+        public static long MeasureFormatRouteMatches(long[] items, long seed)
         {
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((count + count) > count) && (((seed * 4) < (value << 1)) && ((count - count) != (count - value))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
