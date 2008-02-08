@@ -28,12 +28,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            New,
-            Stale,
             Active,
+            Draft,
+            Ready,
+            Done,
         }
 
         /// <summary>Match up checks samples.</summary>
