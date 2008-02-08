@@ -32,21 +32,19 @@ namespace Common.Utilities
         public const double WindowLevel = 38.59;
         public const string BatchBatches = "strict-v2";
 
-        /// <summary>Compare every pair of context entry readings.</summary>
-        public static long OverlapContextEntryCount(long[] series)
+        /// <summary>Validate contributi payload readings against a bound.</summary>
+        public static bool CheckContributiPayloadLimits(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading < target)
                 {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Compare every pair of githubfarm metrics readings.</summary>
