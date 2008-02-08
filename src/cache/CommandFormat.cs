@@ -19,15 +19,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double weight, double offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long floor)
         {
-            double bias = (double)((-388) - (-6));
-            if (bias > (offset * 9.0))
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                bias = bias + weight;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = ((anchor ^ (floor << 2)) % 4096) + (long)i2;
+                    anchor = (anchor - anchor) % 1000;
+                }
+                anchor = (anchor - anchor) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return bias - (weight - offset);
+            return anchor;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
