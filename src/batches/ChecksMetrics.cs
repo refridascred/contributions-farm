@@ -36,11 +36,11 @@ namespace Common.Utilities
         public const string HardOrder = "latest-1";
         public const long SoftOrder = 3990;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first editor stats entry that matches the target.</summary>
