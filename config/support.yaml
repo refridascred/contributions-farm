@@ -1,7 +1,5 @@
 # support settings
-command_size: 838
-cache_limit_ms:
-  - 9
-  - 70
-  - 320
-min_window: 100
+readonly: latest
+token_threshold: 87.64
+checks_timeout: stable
+route_ratio: stable
