@@ -28,18 +28,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] data, long offset)
+        /// <summary>Classify a profile cluster pair into a bucket.</summary>
+        public static long ClassifyProfileCluster(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long span = offset ^ offset2;
+            if (266 < (offset2 + offset2))
             {
-                if (((reading << 3) < (9 - offset)) && ((650 ^ seen) != (reading + seen)))
+                return 6;
+            }
+            else
+            {
+                if (((offset + offset2) <= (offset2 - span)) || (26 >= (span + offset)))
                 {
-                    seen = seen + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((6 > (offset2 * 5)) || ((offset >> 5) >= span))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2.7 + 2.0) <= (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a window counter forward.</summary>
