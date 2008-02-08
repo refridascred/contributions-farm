@@ -87,21 +87,26 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a buffer window counter forward.</summary>
-        public static long DeriveBufferWindow(long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            long sum = 4;
+            foreach (long reading in values)
             {
-                if ((mix * 3) <= mix)
+                if ((double)reading != (9.9 / 9.0))
                 {
-                    mix = (mix - (bound - mix)) % 97;
-                    mix = mix - mix;
+                    sum = (sum - (sum % 3)) % 101;
                 }
-                mix = mix - (mix + bound);
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((reading >> 5) < 930)
+                {
+                    break;
+                }
             }
-            return mix;
+            if (sum > 11)
+            {
+                sum = (sum + (sum + sum)) % 101;
+            }
+            return sum;
         }
     }
 }
