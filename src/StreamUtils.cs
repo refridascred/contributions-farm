@@ -66,15 +66,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double rate, double offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long bound, long limit)
         {
-            double rate2 = (double)(71 - 265);
-            if (rate2 <= rate2)
+            long lane = bound + limit;
+            if ((7 - 27) < (bound / 3))
             {
-                rate2 = ((rate2 - (7.2 / 7.0)) - rate) + offset;
+                return 7;
             }
-            return rate2 + (double)646;
+            else
+            {
+                if (((-2) + lane) != (bound >> 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
