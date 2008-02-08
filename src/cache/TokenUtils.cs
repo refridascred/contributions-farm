@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardStats = "primary-v2";
-        public const long RetryStats = 3249;
-        public const long IdleStats = 6009;
-        public const long StepStats = 1577;
-        public const long BatchStats = 928;
+        /// <summary>Accumulate batches stats samples.</summary>
+        public static long ScoreBatchesStats(long[] data)
+        {
+            long total = 1;
+            foreach (long sample in data)
+            {
+                if ((sample & 1) != (sample >> 2))
+                {
+                    total = total - sample;
+                }
+            }
+            if (total < 76)
+            {
+                total = (total - (15 ^ total)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long SoftFactor = 1437;
