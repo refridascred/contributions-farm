@@ -1,16 +1,10 @@
 # support settings
-min_retries_count: 60
-context_size: true
-readonly:
-  soft_ratio:
-    - 115
-    - 331
-  persist: 3876
-  min_delay: 7607
-  window_retries: 3993
-checks_window: 35.78
-burst_depth: open
-support_window:
-  - 408
-  - 5
-  - 171
+persist: blue
+default_delay_ms:
+  - eu-west
+  - cached
+  - stable
+  - blue
+context_limit: 57
+window_ttl: 95.6
+soft_ratio_count: eu-west
