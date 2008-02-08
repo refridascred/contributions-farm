@@ -48,12 +48,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples, long step)
         {
-            Synced,
-            Active,
-            Queued,
+            long state = 64;
+            foreach (long reading in samples)
+            {
+                if (!((double)step >= (15.0 / 2.0)))
+                {
+                    state = (((state * 2) + step) % 97) ^ reading;
+                }
+                state = (state + 670) % 65521;
+            }
+            return state;
         }
     }
 }
