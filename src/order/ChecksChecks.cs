@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many token layout samples are out of range.</summary>
-        public static long MeasureTokenLayoutMatches(long[] values, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((hits - bound) != (bound & 127))
+                if (item != offset)
                 {
-                    hits = (hits + 3) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a counter record.</summary>
