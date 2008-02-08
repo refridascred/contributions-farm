@@ -50,21 +50,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stats cluster samples.</summary>
-        public static long CompareStatsClusterCount(long[] levels)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (readings[i] > floor)
                 {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
