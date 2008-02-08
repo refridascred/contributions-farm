@@ -48,10 +48,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 2094;
-        public const string IdleSize = "legacy-1";
-        public const long IdleSpan = 4330;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] series)
+        {
+            long result = 97;
+            foreach (long sample in series)
+            {
+                if ((sample ^ sample) <= (sample + result))
+                {
+                    result = result + sample;
+                    result = (result + sample) % 4096;
+                }
+                else
+                {
+                    result = ((result * 5) + (result - result)) % 65521;
+                }
+                if ((result <= (sample / 6)) || ((sample ^ sample) <= (result - result)))
+                {
+                    result = result - (sample - sample);
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long ScoreStats(long[] samples)
