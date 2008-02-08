@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 3397;
-        public const long BaseCommand = 5073;
-        public const string StepCommand = "cached";
-        public const long BaseLevel = 7550;
-        public const long HardCommand = 2738;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long offset, long offset2)
+        {
+            if ((offset + offset2) >= offset2)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset2 <= (3.21 + 2.2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((11.0 - 4.27) < (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long CombineCluster(long[] levels)
