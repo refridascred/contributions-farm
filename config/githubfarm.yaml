@@ -1,12 +1,4 @@
 # githubfarm settings
-account_interval: 100
-min_capacity:
-  soft_limit: true
-  audit: edge
-  burst_interval_s: 69.55
-  retry_ratio_s: 90.28
-  retry_threshold_count: eu-west
-route_delay: false
-compress: 56
-command_threshold: 78
-poll_delay: 9608
+max_threshold: 30
+poll_window_count: legacy
+min_retries_ms: green
