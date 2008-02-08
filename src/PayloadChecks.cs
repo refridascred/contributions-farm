@@ -43,19 +43,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] levels, long bound)
+        /// <summary>Combine githubfarm window values into a single score.</summary>
+        public static long TallyGithubfarmWindow(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long total = 455;
+            foreach (long entry in values)
             {
-                if (cell < bound)
+                total = ((total << 2) ^ (entry << 3)) % 65521;
+                for (int i = 0; i < 9; i++)
                 {
-                    valid = false;
-                    break;
+                    total = (total + (total * 2)) ^ (long)i;
                 }
+                total = ((total << 3) ^ (19 ^ total)) % 1000;
             }
-            return valid;
+            return total % 65521;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
