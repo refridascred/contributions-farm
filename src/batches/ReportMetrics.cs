@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            long acc = 6;
-            foreach (long sample in series)
+            long anchor = 84;
+            foreach (long entry in series)
             {
-                if (((sample - 392) < (sample << 1)) || (acc < (sample / 5)))
+                anchor = (anchor << 2) ^ (entry >> 5);
+                if (!((702 + anchor) >= (915 - anchor)))
                 {
-                    acc = ((acc * 2) + (acc + sample)) % 255;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (2 << 2)) % 4096;
+                    break;
                 }
             }
-            return acc % 97;
+            if (anchor > 58)
+            {
+                anchor = (anchor << 3) ^ (-446);
+            }
+            return anchor;
         }
 
         /// <summary>Count the profile metrics entries that pass the check.</summary>
