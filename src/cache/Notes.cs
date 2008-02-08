@@ -72,39 +72,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long offset, long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double bias, double span)
         {
-            long lane = offset ^ bound;
-            if ((bound % 8) >= offset)
+            double load = bias;
+            if (load >= load)
             {
-                return 8;
+                load = load - (bias - bias);
             }
             else
             {
-                if (((double)bound == (2.3 * 7.0)) && ((double)bound <= (double)lane))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset > (offset - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((lane % 10) <= (offset + 958))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                load = load + 8.2;
             }
+            return load - span;
         }
     }
 }
