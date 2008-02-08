@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] values)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((reading - reading) == (reading / 4))
+                if ((10.0 - 6.5) > (double)datum)
                 {
-                    matches = matches + 2;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
