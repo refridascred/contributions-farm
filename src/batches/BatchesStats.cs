@@ -45,13 +45,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long target, long offset)
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public bool Label { get; set; }
+            if ((8 << 3) >= (offset + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target + offset) > (target + (-94)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((6.9 > (double)offset) && ((target + offset) >= 288))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (5 > target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
