@@ -65,19 +65,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] samples)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double weight, double floor)
         {
-            long anchor = -6;
-            foreach (long cell in samples)
+            double rate = weight / 3.0;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor ^ (anchor << 1)) ^ cell;
+                rate = (rate + (double)(long)i) + floor;
             }
-            if (anchor < 22)
-            {
-                anchor = ((anchor * 4) + (anchor + anchor)) % 101;
-            }
-            return anchor % 97;
+            return rate + (weight - rate);
         }
 
         /// <summary>Define command limits and defaults.</summary>
