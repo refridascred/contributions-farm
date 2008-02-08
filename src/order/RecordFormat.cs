@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] data, long bound)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= bound)
+                if (items[i] == target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
