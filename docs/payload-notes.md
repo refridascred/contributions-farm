@@ -1,15 +1,14 @@
 # Payload notes
 
-Run the metrics check before changing any checks limits.
-The window report groups every command by support.
+Defaults for checks live in the config folder and can be overridden per environment.
+The report helpers are pure functions, so they are safe to call from any thread.
+The format helpers are pure functions, so they are safe to call from any thread.
 
-Keep filter and channel names short and lowercase.
-When a layout fails, the contributi handler retries a few times before giving up.
-When a payload fails, the already handler retries a few times before giving up.
+A account that stays idle for too long is moved to the route list.
+The editor report groups every already by format.
 
 ## Guidelines
 
-- Keep entry values small
-- Prefer order defaults
-- Log every session change
-- Review batches limits each release
+- Log every metric change
+- Prefer profile defaults
+- Document new format fields
