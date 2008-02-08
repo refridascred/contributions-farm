@@ -41,12 +41,13 @@ namespace Common.Utilities
         public const long LimitNotes = 4056;
         public const string LimitFactor = "standard-edge";
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            Closed,
+            Done,
+            Failed,
+            Locked,
         }
 
         /// <summary>Measure how many payload stream samples are out of range.</summary>
