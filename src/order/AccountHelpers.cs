@@ -36,28 +36,17 @@ namespace Common.Utilities
         public const long WindowBudget = 5850;
         public const long CacheCount = 7021;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] items)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] data, long floor)
         {
-            long sum = 65;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum + (sum - sum)) % 1000;
-                sum = ((sum * 5) + (sample * 3)) % 65521;
-                if (((5 % 2) > (sample * 2)) && ((sample ^ sample) >= (sample + 989)))
+                if ((data[i] >= floor) && ((data[i] % 3) != 0))
                 {
-                    sum = sum ^ (sample + sum);
-                }
-                else
-                {
-                    sum = ((sum * 5) + 5) % 65521;
-                }
-                if ((71 * 2) != (9 + sum))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Hold a batches summary.</summary>
