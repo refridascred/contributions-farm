@@ -1,5 +1,7 @@
 {
-  "batches_limit": [309, 191, 93, 61],
-  "poll_limit": true,
-  "default_ttl": true
+  "poll_capacity_pct": 58,
+  "metrics_capacity": true,
+  "cache_retries": 40,
+  "sync_timeout_pct": ["standard", "cached", "open", "latest"],
+  "audit": 56
 }
