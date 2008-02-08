@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const double IdleStats = 95.34;
         public const long BaseStats = 4969;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] readings, long limit)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Failed,
+            Idle,
+            New,
         }
 
         /// <summary>Define record limits and defaults.</summary>
