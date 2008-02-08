@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double gain, double offset)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long origin, long seed)
         {
-            double gain2 = offset;
-            for (int i = 0; i < 5; i++)
+            long span = origin ^ seed;
+            if ((seed - origin) > seed)
             {
-                gain2 = (gain2 - (offset + 15.0)) + (double)(long)i;
+                return 4;
             }
-            return gain2 + gain;
+            else
+            {
+                if ((origin << 2) <= 815)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed << 3) > (seed - seed)) && (origin >= seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((-15) / 4) <= (span - 797))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
