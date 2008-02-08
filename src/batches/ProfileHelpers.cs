@@ -74,11 +74,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public double Token { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 3776;
+        public const long MinCount = 2810;
+        public const long CacheCommand = 6177;
+        public const long LimitCommand = 8481;
     }
 }
