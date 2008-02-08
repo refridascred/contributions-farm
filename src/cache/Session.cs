@@ -43,19 +43,10 @@ namespace Common.Utilities
         public const long StepRecord = 7998;
         public const string DefaultRecord = "alpha-edge";
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] readings, long step)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepWidth = 23.01;
+        public const string DefaultWidth = "strict-v2";
+        public const long SoftGithubfarm = 972;
+        public const string RetryGithubfarm = "strict-v2";
     }
 }
