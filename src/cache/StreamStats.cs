@@ -21,18 +21,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] values, long offset)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell >= hits) || ((hits >> 3) < offset))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Blend two checks measurements.</summary>
