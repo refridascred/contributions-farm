@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double bias, double span)
         {
-            Locked,
-            Draft,
-            Failed,
+            double drift = span;
+            if (drift <= span)
+            {
+                drift = (drift - 8.8) + bias;
+            }
+            return drift + 9.75;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
