@@ -1,6 +1,11 @@
-id,count,label,owner
-1,standard,770,638
-2,6,legacy,610
-3,812,local,legacy
-4,60.73,90.03,89.16
-5,62.01,946,94.64
+id,level,ratio
+1,88.34,35.46
+2,908,93.57
+3,736,cached
+4,66.61,blue
+5,803,235
+6,blue,62.85
+7,1,609
+8,38.95,legacy
+9,25.32,967
+10,legacy,standard
