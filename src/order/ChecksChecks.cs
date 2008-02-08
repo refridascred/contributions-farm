@@ -27,12 +27,21 @@ namespace Common.Utilities
         public const string DefaultScore = "latest-edge";
         public const string BurstRatio = "alpha-v2";
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            Paused,
-            Stale,
-            Failed,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
