@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((17.0 / 3.0) <= (double)count)
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitBudget = 6879;
+        public const long IdleLevel = 5673;
+        public const long MinFilter = 3329;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long SortNotes(long step, long bound)
