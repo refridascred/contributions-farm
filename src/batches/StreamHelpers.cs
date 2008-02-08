@@ -71,21 +71,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Queued,
+            Dropped,
         }
     }
 }
