@@ -34,21 +34,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] items)
+        /// <summary>Adjust a session record reading.</summary>
+        public static double BlendSessionRecord(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double weight = (double)(22 >> 3);
+            return (weight - (rate * 5.82)) + bias;
         }
 
         /// <summary>Describe the channel class values.</summary>
