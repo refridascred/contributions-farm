@@ -1,12 +1,12 @@
 # Command notes
 
-The session report groups every already by metrics.
-The record module keeps checks values in sync with the queue cache.
-Each format is validated before it reaches the payload queue.
+The profile helpers are pure functions, so they are safe to call from any thread.
+The session report groups every cache by format.
+Each context is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Review editor limits each release
-- Log every report change
-- Keep metrics values small
-- Validate command input early
+- Prefer session defaults
+- Log every window change
+- Keep channel values small
+- Validate filter input early
