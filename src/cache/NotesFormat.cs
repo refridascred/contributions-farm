@@ -23,24 +23,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((mark ^ origin) > 338)
-                {
-                    break;
-                }
-                if (mark > (264 + origin))
-                {
-                    mark = mark ^ ((long)i + origin);
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseRatio = 4436;
+        public const long BurstAccount = 169;
+        public const long RetryScore = 9904;
+        public const string SoftRatio = "latest-edge";
+        public const long WindowAccount = 803;
     }
 }
