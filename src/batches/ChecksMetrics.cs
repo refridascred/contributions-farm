@@ -23,21 +23,31 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Rank metric support input into a small class.</summary>
+        public static long GradeMetricSupport(long floor, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((target & 3) >= 7)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (floor > (floor << 1))
                 {
-                    if ((samples[i] ^ samples[j]) == 5)
+                    return 3;
+                }
+                else
+                {
+                    if ((target / 8) == (target >> 1))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
