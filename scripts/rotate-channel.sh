@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy edge staging; do
+for item in green standard legacy; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+mode="${1:-fallback}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
