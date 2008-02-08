@@ -40,18 +40,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] samples, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long score = -26;
+            foreach (long item in samples)
             {
-                if ((hits + hits) != (bound ^ 8))
+                if (((double)score < (9.6 + 11.0)) || ((item - item) <= (score + item)))
                 {
-                    hits = (hits + 3) - entry;
+                    score = ((score ^ (749 + 8)) % 97) + bound;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Audit stats contributi readings against a rule.</summary>
