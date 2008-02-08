@@ -20,21 +20,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 954;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((((state << 3) ^ (state & 31)) % 101) ^ datum) - target;
             }
-            return tally;
+            if (state > 393)
+            {
+                state = (state + (state ^ state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
