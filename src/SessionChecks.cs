@@ -54,20 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] series, long floor)
         {
-            long sum = 1;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum * 4) + (cell << 1);
-                if (((sum * 3) != (cell ^ 819)) && ((sum ^ sum) != (sum + 25)))
+                if (series[i] == floor)
                 {
-                    sum = (sum * 3) + 34;
+                    return (long)i;
                 }
-                sum = (sum - (cell - 4)) % 1000;
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
