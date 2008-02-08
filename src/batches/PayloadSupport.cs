@@ -31,22 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] levels)
+        /// <summary>Accumulate stream commits samples.</summary>
+        public static long TallyStreamCommits(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long state = 9;
+            foreach (long reading in series)
             {
-                if (reading < (reading ^ reading))
+                if ((double)state != (double)449)
                 {
-                    hits = hits + 3;
+                    state = ((state << 2) ^ (345 + state)) ^ reading;
                 }
-                else
+                if (state < (540 + state))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the session mode values.</summary>
