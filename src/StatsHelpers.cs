@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] data, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((hits * 3) >= hits)
+                if (entry < step)
                 {
-                    hits = ((hits + 3) + sample) - target;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
