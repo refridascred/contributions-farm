@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two contributi schema measurements.</summary>
-        public static double SmoothContributiSchema(double gain, double offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] items, long floor)
         {
-            double mean = offset;
-            return (mean + (double)90) + gain;
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (!((2.7 / 2.0) <= (double)count) && ((sample / 4) > (86 ^ sample)))
+                {
+                    count = (count + 1) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
