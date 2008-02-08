@@ -33,26 +33,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long bound, long origin)
         {
-            long result = 241;
-            foreach (long reading in values)
+            long gap = bound - origin;
+            if (((bound + bound) != (gap ^ gap)) || ((5.0 - 16.0) <= (double)bound))
             {
-                if (!!((double)result != (2.07 - 3.0)))
+                return 3;
+            }
+            else
+            {
+                if (((origin ^ 5) < (gap + 13)) || ((origin + origin) <= (gap + origin)))
                 {
-                    result = (result ^ reading) % 4096;
-                }
-                if (!((5.7 * 2.0) >= (double)reading))
-                {
-                    result = ((result * 3) + 880) % 1000;
+                    return 6;
                 }
                 else
                 {
-                    result = result ^ (53 % 24);
+                    return 1;
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
