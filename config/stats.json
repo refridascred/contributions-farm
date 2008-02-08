@@ -1,7 +1,5 @@
 {
-  "record_interval": 891,
-  "contributi_retries": 10.24,
-  "hard_depth_ms": "standard",
-  "profile_window": 96,
-  "min_delay_count": [407, 419, 350, 154]
+  "cache_window_s": "standard",
+  "githubfarm_depth": [119, 91, 472],
+  "base_ratio_pct": 2465
 }
