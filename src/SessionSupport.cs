@@ -13,18 +13,16 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] data)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mix = 45;
+            foreach (long cell in data)
             {
-                if ((double)(long)data.Length < (6.27 - 8.47))
-                {
-                    count = (count + 3) ^ datum;
-                }
+                mix = (mix - (mix - mix)) + limit;
+                mix = mix ^ (cell >> 2);
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Describe the stream class values.</summary>
