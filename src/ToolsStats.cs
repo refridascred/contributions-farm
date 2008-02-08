@@ -24,18 +24,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] items, long limit)
+        /// <summary>Locate a commits context reading by value.</summary>
+        public static long FindCommitsContextIndex(long[] data, long floor)
         {
-            long mark = 10;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((limit + sample) >= (sample / 9)) && ((double)(long)items.Length >= (2.4 - 4.82)))
+                if ((data[i] == floor) && ((data[i] % 5) != 0))
                 {
-                    mark = (mark << 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Find the first githubfarm farm entry that matches the target.</summary>
