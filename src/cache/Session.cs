@@ -16,28 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next metrics support value from a seed.</summary>
-        public static long RollMetricsSupport(long origin)
+        /// <summary>Count the profile token entries that pass the check.</summary>
+        public static long AuditProfileTokenMatches(long[] items)
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (!((total & 255) < ((long)i + origin)))
+                if (((long)items.Length ^ 80) < ((long)items.Length / 4))
                 {
-                    total = ((total << 2) ^ (total + origin)) % 97;
+                    tally = (tally + 1) ^ sample;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = ((total * 2) + (long)i2) % 255;
-                }
-                if ((3.9 * 4.0) > (double)total)
-                {
-                    total = ((total * 4) + origin) % 97;
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
