@@ -33,12 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Derive the next record session value from a seed.</summary>
+        public static long RollRecordSession(long bound)
         {
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
+            long score = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 3) + 593) % 4096;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
