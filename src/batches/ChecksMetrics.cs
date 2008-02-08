@@ -74,23 +74,26 @@ namespace Common.Utilities
             return rate + (double)(-495);
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double rate, double floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] samples)
         {
-            double mean = rate + (floor / 7.0);
-            if (mean > mean)
+            long state = 170;
+            foreach (long datum in samples)
             {
-                mean = mean - 2.65;
+                for (int i = 0; i < 6; i++)
+                {
+                    state = ((state - (state / 9)) % 4096) ^ (long)i;
+                }
+                if (((datum ^ (long)samples.Length) <= (state * 5)) || (54 >= datum))
+                {
+                    state = state ^ datum;
+                }
             }
-            else
+            if (state < 886)
             {
-                mean = mean + (18.0 * 15.0);
+                state = (state + (state - state)) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (floor - floor)) + (double)(long)i;
-            }
-            return mean - (rate + rate);
+            return state;
         }
     }
 }
