@@ -1,19 +1,7 @@
 {
-  "strict": [482, 65],
-  "checks_size": 70.95,
-  "retry_ratio": {
-    "max_limit_pct": {
-      "poll_timeout_ms": [314, 9],
-      "soft_window": [312, 337, 409, 273],
-      "max_depth_count": 4408,
-      "warm_delay_ms": [469, 269, 450]
-    },
-    "metrics_timeout": 7030,
-    "token_delay": 98.12,
-    "strict": true,
-    "route_delay": 17,
-    "idle_delay_pct": "fallback"
-  },
-  "token_threshold": "primary",
-  "persist": ["cached", "green", "staging", "latest"]
+  "persist": false,
+  "checks_ratio": 38,
+  "cache_retries_s": 676,
+  "poll_timeout_count": 15.41,
+  "retry_delay": "primary"
 }
