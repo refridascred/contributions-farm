@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] readings, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 21;
+            foreach (long datum in samples)
             {
-                if (readings[i] < target)
+                score = ((score << 3) ^ (score % 8)) % 1000;
+                if ((datum ^ datum) < datum)
                 {
-                    return (long)i;
+                    score = score - (17 / 7);
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
