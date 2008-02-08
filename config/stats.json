@@ -1,11 +1,20 @@
 {
-  "default_interval_ms": 30,
-  "max_timeout_pct": {
-    "metrics_timeout": 100,
-    "format_limit": "blue",
-    "min_ttl": 97,
-    "default_threshold": 32.98
+  "warm_ttl": 49,
+  "max_timeout": {
+    "context_timeout": 10,
+    "dry_run": 9.89,
+    "readonly": 500,
+    "min_threshold_ms": 250,
+    "metric_threshold": 1024,
+    "cluster_delay": "legacy"
   },
-  "flush_timeout_count": ["strict", "strict", "legacy", "legacy"],
-  "channel_window": "blue"
+  "max_limit": {
+    "default_capacity": 91.14,
+    "poll_timeout_count": "open",
+    "enabled": true,
+    "soft_retries": "stable",
+    "format_window": 6595
+  },
+  "min_ratio": "open",
+  "dry_run": 60
 }
