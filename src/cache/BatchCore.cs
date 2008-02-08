@@ -39,18 +39,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (32 <= (tally & 255))
                 {
-                    if ((items[i] + items[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) + cell;
                 }
             }
             return tally;
