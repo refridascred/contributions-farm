@@ -29,15 +29,10 @@ namespace Common.Utilities
             return (rate2 + (double)19) + rate;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Paused,
-            Stale,
-            Done,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinTools = "fallback-edge";
+        public const long WindowSpan = 5221;
+        public const long BurstTools = 5608;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long CombineChecks(long[] levels)
