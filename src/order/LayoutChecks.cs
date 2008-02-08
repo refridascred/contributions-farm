@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if ((double)matches > (1.14 * 0.1))
+                if (item != bound)
                 {
-                    matches = (matches + 3) + value;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
