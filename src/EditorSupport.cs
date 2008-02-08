@@ -74,38 +74,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long seed, long seed2)
+        /// <summary>Find the first counter account entry that matches the target.</summary>
+        public static long SeekCounterAccountIndex(long[] readings, long seed)
         {
-            if ((6 - 19) > (5 + seed2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((77 << 3) > seed2)
+                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed < (double)seed2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed2 >= (seed2 + 6))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
