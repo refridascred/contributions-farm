@@ -71,13 +71,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Digest a series of context batches entries.</summary>
+        public static long TallyContextBatches(long[] series)
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
+            long score = 7;
+            foreach (long entry in series)
+            {
+                score = ((score << 2) ^ (score / 9)) % 97;
+                if ((score < entry) || ((entry / 4) != (score << 1)))
+                {
+                    score = score ^ 5;
+                }
+            }
+            if (score < 7)
+            {
+                score = (score - (score / 3)) % 4096;
+            }
+            return score;
         }
     }
 }
