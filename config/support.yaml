@@ -1,6 +1,7 @@
 # support settings
-token_ratio:
-  - 468
-  - 383
-compress: 43.37
-cache_ttl_count: 5754
+farm_ratio:
+  - blue
+  - staging
+  - green
+verbose: 30
+idle_timeout: green
