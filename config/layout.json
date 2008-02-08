@@ -1,11 +1,13 @@
 {
-  "burst_timeout": 65,
-  "sync_depth_ms": "latest",
-  "report_size": {
-    "warm_capacity_s": true,
-    "batch_depth": 1024,
-    "soft_limit_count": "staging",
-    "hard_ratio": 60
+  "poll_ratio_ms": "edge",
+  "flush_size": 60,
+  "warm_ttl_ms": {
+    "cache_retries": 52.55,
+    "format_timeout": false,
+    "stats_timeout": 104,
+    "commits_delay": 100,
+    "batch_size_pct": true,
+    "strict": 500
   },
-  "account_capacity": [465, 246, 88, 31]
+  "burst_limit": "legacy"
 }
