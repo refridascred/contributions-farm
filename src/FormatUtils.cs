@@ -17,31 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long step, long offset)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            if ((18 & 3) <= (offset % 64))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset >= (double)(-63))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7 - step) > (301 % 60))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
