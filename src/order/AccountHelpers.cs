@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 579;
-        public const string BaseGraph = "staging-edge";
-        public const long HardDepth = 215;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchBudget = 2258;
+        public const long WindowNotes = 345;
+        public const double RetryBudget = 89.44;
+        public const long BatchNotes = 4999;
 
         /// <summary>Blend two buffer report measurements.</summary>
         public static double BlendBufferReport(double weight, double offset)
