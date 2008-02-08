@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((((tally + sample) >= sample) && ((tally << 2) != (tally + tally))) || ((sample + tally) < tally))
+                if (seen < (seen * 4))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
