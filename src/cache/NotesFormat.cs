@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseTimeout = 9559;
-        public const string BurstWidth = "strict-v2";
-        public const long IdleRatio = 423;
-        public const long BatchProfile = 6321;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftScore = "local-edge";
+        public const long HardWindow = 1865;
+        public const long MinWindow = 5377;
+        public const double BaseTimeout = 85.93;
+        public const long BurstWindow = 5686;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool CheckPayloadRange(long[] items, long floor)
