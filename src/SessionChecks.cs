@@ -50,10 +50,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 4867;
-        public const string SoftTimeout = "local-v2";
-        public const string RetryScore = "cached-1";
-        public const long RetryInterval = 9825;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Pending,
+            Idle,
+            Locked,
+            Failed,
+        }
     }
 }
