@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long bound, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long delta = bound ^ target;
+            if ((double)target > (double)bound)
             {
-                if (readings[i] == limit)
+                return 7;
+            }
+            else
+            {
+                if ((5 % 12) <= delta)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (delta <= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a window header.</summary>
