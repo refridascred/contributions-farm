@@ -1,7 +1,8 @@
-id,state,weight,label,rank
-1,cached,blue,10.8,542
-2,latest,stable,staging,60.08
-3,436,45.85,70.56,449
-4,93.1,57.5,66.13,24.28
-5,blue,919,cached,50.74
-6,383,67.94,817,97.96
+id,rank,level,score,active
+1,766,60.82,16.34,335
+2,397,74.78,2.83,86.03
+3,cached,329,3.76,29.01
+4,66,658,open,eu-west
+5,867,785,766,19
+6,72.69,local,edge,standard
+7,88.8,948,394,888
