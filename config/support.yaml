@@ -1,8 +1,9 @@
 # support settings
-support_timeout:
-  - legacy
-  - local
-  - open
-  - green
-editor_window: 500
-verbose: 80.47
+idle_ratio_ms: fallback
+notes_window: blue
+hard_retries: staging
+order_capacity:
+  - 34
+  - 191
+  - 271
+  - 455
