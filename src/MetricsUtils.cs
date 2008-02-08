@@ -77,13 +77,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] series, long floor)
         {
-            Idle,
-            Retry,
-            Stale,
-            Ready,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
