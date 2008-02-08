@@ -37,18 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] readings)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((13.0 + 7.27) > (double)matches)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) + reading;
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the cache mode values.</summary>
