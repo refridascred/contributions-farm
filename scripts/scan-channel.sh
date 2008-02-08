@@ -12,5 +12,12 @@ for i in $(seq 1 9); do
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=438
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-standard}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
