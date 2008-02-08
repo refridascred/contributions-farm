@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] samples, long floor)
         {
-            long anchor = 50;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (89 >= ((-3) - entry))
+                if ((hits > (hits % 10)) || !((39 ^ item) >= 783))
                 {
-                    anchor = ((anchor * 3) + anchor) % 1000;
+                    hits = (hits + 2) + floor;
                 }
-                anchor = (anchor * 3) + (anchor << 3);
-                if (((7.3 + 7.9) == (double)anchor) && (anchor < entry))
+                else
                 {
-                    anchor = (anchor ^ (anchor >> 5)) % 65521;
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
