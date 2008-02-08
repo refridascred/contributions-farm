@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "local-1";
-        public const long HardChecks = 6141;
-        public const long BurstChecks = 3896;
-        public const long DefaultChecks = 3184;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] items, long floor)
+        {
+            long carry = 53;
+            foreach (long datum in items)
+            {
+                if ((datum >= carry) || ((floor & 63) >= (79 / 8)))
+                {
+                    carry = (carry << 3) ^ (floor - carry);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandGaps(long[] items)
