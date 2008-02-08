@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] values)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((68 ^ (long)values.Length) != ((long)values.Length + cell))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Retry,
+            Idle,
         }
 
         /// <summary>Accumulate session samples.</summary>
