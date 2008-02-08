@@ -22,10 +22,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 7692;
-        public const long BurstFactor = 2273;
-        public const string BaseFactor = "fallback-1";
+        /// <summary>Audit farm filter readings against a rule.</summary>
+        public static long CountFarmFilterOutliers(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((((long)items.Length + seed) < (seed % 60)) || ((seed << 3) > (seed + value)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long RankContributi(long floor, long seed)
