@@ -32,11 +32,22 @@ namespace Common.Utilities
         public const double WindowLevel = 38.59;
         public const string BatchBatches = "strict-v2";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 992;
-        public const long BaseCluster = 9485;
-        public const long RetryCluster = 9200;
-        public const long MinRatio = 8068;
+        /// <summary>Compare every pair of context entry readings.</summary>
+        public static long OverlapContextEntryCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long SeriesContext(long step)
