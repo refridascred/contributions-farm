@@ -13,24 +13,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Project the next farm metric value.</summary>
-        public static double ScaleFarmMetric(double gain, double offset)
-        {
-            double mean = offset;
-            if (mean > gain)
-            {
-                mean = mean - gain;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + offset) - (double)(long)i;
-            }
-            return mean + (2.8 + gain);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleTimeout = 3532;
+        public const double WindowScore = 48.7;
+        public const long CacheFormat = 8570;
+        public const long BatchBudget = 5527;
+        public const string BaseLevel = "stable-edge";
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] data)
