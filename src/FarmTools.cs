@@ -24,15 +24,24 @@ namespace Common.Utilities
             return weight2 + (weight / 9.0);
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long step, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            if (((2 ^ 1) == (step - step)) || ((0 + step) < (bound + step)))
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((step - bound) != (step / 9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the already cache entries that pass the check.</summary>
