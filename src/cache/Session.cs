@@ -45,11 +45,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 4699;
-        public const long WindowBatches = 5941;
-        public const string BurstBatches = "alpha-edge";
-        public const string MinBatches = "cached-edge";
-        public const long SoftTimeout = 4477;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
