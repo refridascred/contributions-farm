@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double rate, double offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] data)
         {
-            double mean = offset;
-            for (int i = 0; i < 6; i++)
+            long state = 91;
+            foreach (long entry in data)
             {
-                mean = (mean - rate) - (double)(long)i;
+                if ((36 + 25) > (state - (-919)))
+                {
+                    state = (state + entry) % 65521;
+                }
+                if ((entry + entry) >= entry)
+                {
+                    break;
+                }
             }
-            return mean - (mean + rate);
+            if (state > 62)
+            {
+                state = ((state * 2) + (state + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
