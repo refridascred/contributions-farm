@@ -46,13 +46,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Synced,
-            Done,
-            Locked,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinDepth = 9979;
+        public const long MinAlready = 1780;
+        public const string MinInterval = "staging-1";
+        public const long MaxBudget = 3984;
 
         /// <summary>Project the next payload value.</summary>
         public static double AdjustPayload(double rate, double floor)
