@@ -19,21 +19,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = ((anchor ^ (floor << 2)) % 4096) + (long)i2;
-                    anchor = (anchor - anchor) % 1000;
-                }
-                anchor = (anchor - anchor) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
