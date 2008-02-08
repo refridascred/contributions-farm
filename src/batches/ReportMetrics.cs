@@ -18,39 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long target, long bound)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double weight, double offset)
         {
-            long prev = target ^ bound;
-            if ((double)prev == (20.0 - 15.0))
+            double bias = offset;
+            if (bias >= (offset - weight))
             {
-                return 7;
+                bias = bias + (weight * 1.0);
             }
             else
             {
-                if (((8.47 + 0.9) > (double)bound) || ((62 - 3) > (target >> 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (target < (target - prev))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)prev <= (double)605)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                bias = bias + (offset * 6.9);
             }
+            return bias - (6.92 - bias);
         }
 
         /// <summary>Count the profile metrics entries that pass the check.</summary>
