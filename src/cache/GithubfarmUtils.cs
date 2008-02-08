@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double weight, double span)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long bound)
         {
-            double scale = span;
-            if (scale >= scale)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                scale = scale + (scale - scale);
+                score = (score + bound) % 65521;
+                score = ((score * 5) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale + weight;
-            }
-            return scale - (scale + span);
+            return score;
         }
 
         /// <summary>Audit cluster schema readings against a rule.</summary>
