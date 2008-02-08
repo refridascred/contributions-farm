@@ -24,19 +24,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate stream already readings against a bound.</summary>
-        public static bool GuardStreamAlreadyBounds(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 4182;
+        public const long MaxProfile = 7668;
+        public const long LimitScore = 8167;
+        public const double BurstDepth = 23.1;
+        public const long RetryInterval = 9832;
     }
 }
