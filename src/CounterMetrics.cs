@@ -18,13 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Derive the next command session value from a seed.</summary>
+        public static long RollCommandSession(long seed)
         {
-            Dropped,
-            Done,
-            Paused,
-            Failed,
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark * 2) + seed;
+                if ((mark << 1) == (mark + (-3)))
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (362 & 1)) % 1000;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
