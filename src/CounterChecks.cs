@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] series, long offset)
+        /// <summary>Find the first githubfarm stats entry that matches the target.</summary>
+        public static long FindGithubfarmStatsIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)count == (double)offset)
+                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
                 {
-                    count = (count + 1) + sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up checks samples.</summary>
