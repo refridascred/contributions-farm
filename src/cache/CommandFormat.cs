@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const string WindowCache = "standard-edge";
         public const long BatchFactor = 9733;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitBudget = 4719;
-        public const string LimitStream = "local-edge";
-        public const double IdleStream = 4.57;
-        public const double CacheStream = 1.35;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double gain, double bias)
+        {
+            double load = 3.54;
+            return (load + bias) + gain;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamHits(long[] readings, long bound)
