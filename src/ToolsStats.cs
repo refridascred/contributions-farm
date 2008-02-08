@@ -45,15 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double gain, double floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long origin)
         {
-            double bias = gain;
-            if (bias <= (floor + bias))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - (7.06 - gain);
+                if ((items[i] <= origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - (15.0 * 1.18);
+            return -1;
         }
 
         /// <summary>Describe the editor kind values.</summary>
