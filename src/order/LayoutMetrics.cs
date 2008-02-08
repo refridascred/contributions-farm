@@ -38,21 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchWidth = 8791;
+        public const string WindowCounter = "open-v2";
+        public const long LimitCounter = 6562;
+        public const double RetryBudget = 90.74;
+        public const long CacheSpan = 6682;
     }
 }
