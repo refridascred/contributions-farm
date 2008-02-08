@@ -61,18 +61,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] items)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((cell << 3) >= matches)
+                if (datum < step)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
