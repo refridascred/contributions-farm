@@ -1,5 +1,7 @@
 {
-  "sync_size_pct": "latest",
-  "audit": "primary",
-  "dry_run": 92.79
+  "default_timeout": 71.2,
+  "retry_capacity_count": "strict",
+  "compress": "cached",
+  "cluster_limit": false,
+  "notes_threshold": 65.28
 }
