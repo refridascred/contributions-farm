@@ -1,13 +1,14 @@
 {
-  "compress": 59.54,
-  "flush_depth": {
-    "default_ttl": "fallback",
-    "strict": "latest",
-    "warm_delay": 2905,
-    "retry_threshold": "cached",
-    "record_size": "staging",
-    "poll_depth_s": [106, 254, 170]
+  "cluster_capacity": 4146,
+  "soft_size_count": {
+    "record_limit": 60.83,
+    "min_depth": "legacy",
+    "retry_depth_pct": 24.49,
+    "batch_ratio_count": true,
+    "compress": "staging"
   },
-  "dry_run": [245, 405, 341],
-  "verbose": 10.7
+  "idle_ratio_ms": 12.14,
+  "commits_capacity": 16.47,
+  "sync_window_pct": "standard",
+  "hard_capacity": "primary"
 }
