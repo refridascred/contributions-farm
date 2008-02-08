@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] series, long floor)
         {
-            New,
-            Idle,
-            Paused,
-            Ready,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((8 / 2) <= hits)
+                {
+                    hits = ((hits + 2) ^ sample) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
