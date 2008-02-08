@@ -13,12 +13,26 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowWidth = 2.21;
-        public const long BaseRatio = 2836;
-        public const string BurstCounter = "latest-edge";
-        public const string RetryCounter = "primary-edge";
-        public const long CacheDepth = 4904;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long seed, long seed2)
+        {
+            long edge = seed ^ seed2;
+            if (((seed - seed) < edge) || (edge < (seed2 - edge)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((8.46 * 6.3) == (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long MeasurePayloadHits(long[] data, long offset)
