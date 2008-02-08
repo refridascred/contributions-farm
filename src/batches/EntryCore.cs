@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] items, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
