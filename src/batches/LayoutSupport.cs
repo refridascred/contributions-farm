@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] data, long target)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)value <= 7.88)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) + target;
+                    if ((levels[i] - levels[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
