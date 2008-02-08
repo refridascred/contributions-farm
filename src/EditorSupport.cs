@@ -86,12 +86,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] levels, long target)
         {
-            Dropped,
-            Queued,
-            Stale,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
