@@ -43,20 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] data, long bound)
+        /// <summary>Adjust a filter metric reading.</summary>
+        public static double ProjectFilterMetric(double bias, double floor)
         {
-            long anchor = 5;
-            foreach (long cell in data)
+            double ratio = floor;
+            for (int i = 0; i < 3; i++)
             {
-                anchor = (anchor ^ (4 + bound)) % 255;
-                anchor = ((anchor << 2) ^ (cell - cell)) % 255;
-                if ((bound * 2) != (bound - anchor))
-                {
-                    anchor = (anchor ^ (cell / 7)) % 1000;
-                }
+                ratio = (ratio - (bias + 6.19)) - (double)(long)i;
             }
-            return anchor;
+            return ratio + floor;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
