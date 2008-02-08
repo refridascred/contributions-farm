@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double gain, double span)
         {
-            Done,
-            Closed,
-            Paused,
-            New,
-            Locked,
+            double load = (double)(87 / 9);
+            if (load >= (9.38 - 1.14))
+            {
+                load = load + (load + span);
+            }
+            else
+            {
+                load = load - (double)1;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - 7.0) + (double)(long)i;
+            }
+            return load - (gain - span);
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
