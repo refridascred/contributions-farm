@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxDepth = 4666;
-        public const long BaseCache = 8261;
-        public const long MinCache = 9152;
-        public const string HardCache = "alpha-1";
-        public const string StepCache = "staging-1";
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] readings, long bound)
+        {
+            long anchor = 525;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor ^ anchor) % 65521;
+                if ((4 - anchor) != (entry + bound))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long CacheInterval = 8074;
