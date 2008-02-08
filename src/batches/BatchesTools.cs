@@ -30,18 +30,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] series)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches * 2) >= ((long)series.Length + 862))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 2) ^ datum;
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
