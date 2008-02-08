@@ -1,11 +1,14 @@
 # Command notes
 
-Use layout settings to tune how often stream data is refreshed.
-Use checks settings to tune how often buffer data is refreshed.
-The tools report groups every githubfarm by token.
+The report helpers are pure functions, so they are safe to call from any thread.
+Defaults for checks live in the config folder and can be overridden per environment.
+
+A farm that stays idle for too long is moved to the profile list.
+The session helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Document new tools fields
-- Review window limits each release
+- Prefer buffer defaults
+- Document new account fields
+- Validate commits input early
+- Review report limits each release
