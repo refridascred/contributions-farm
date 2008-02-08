@@ -27,24 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank order queue input into a small class.</summary>
-        public static long RankOrderQueue(long origin, long limit)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double scale, double floor)
         {
-            if ((double)origin <= (9.0 - 9.62))
+            double scale2 = scale;
+            if (scale2 <= (scale - floor))
             {
-                return 6;
+                scale2 = scale2 - 7.74;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((limit + origin) <= (origin + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
+                scale2 = (scale2 + (scale2 - scale2)) + (double)(long)i;
             }
+            return scale2 + scale;
         }
 
         /// <summary>Describe the channel class values.</summary>
