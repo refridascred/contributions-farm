@@ -52,14 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] data, long floor)
         {
-            Pending,
-            Locked,
-            Idle,
-            Paused,
-            Done,
+            long total = -54;
+            foreach (long datum in data)
+            {
+                total = ((total * 3) + (datum >> 4)) % 97;
+            }
+            if (total > 832)
+            {
+                total = total + floor;
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
