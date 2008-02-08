@@ -1,21 +1,6 @@
 {
-  "cache_interval_count": "fallback",
-  "dry_run": {
-    "hard_ttl": 88,
-    "cache_limit": {
-      "queue_ttl": "green",
-      "warm_interval_count": 21.57,
-      "strict": "eu-west",
-      "order_window": "green"
-    },
-    "readonly": 1768,
-    "default_threshold_ms": {
-      "cluster_capacity": 19.51,
-      "token_ttl": 250,
-      "cache_depth_pct": "cached"
-    },
-    "burst_capacity_ms": "edge",
-    "payload_ttl": 6534
-  },
-  "idle_capacity": 45.89
+  "retry_window_s": "open",
+  "enabled": 38,
+  "idle_ratio_ms": 40.66,
+  "idle_retries_count": "fallback"
 }
