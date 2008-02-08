@@ -20,31 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long step, long seed)
+        /// <summary>Audit cluster schema readings against a rule.</summary>
+        public static long AuditClusterSchemaGaps(long[] samples)
         {
-            if ((768 * 5) <= (step - 63))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step >> 1) == (step + step)) && ((step >> 4) >= (62 / 2)))
+                if (((52 >> 5) >= (hits / 6)) || ((7.4 / 9.0) < (double)entry))
                 {
-                    return 3;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((seed + seed) <= 802)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
