@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            long anchor = 7;
+            foreach (long value in series)
             {
-                if ((20.0 * 20.0) >= (double)sum)
+                if (((7.6 - 13.0) >= (double)anchor) || ((value * 4) > 151))
                 {
-                    sum = (sum ^ (limit - sum)) % 1000;
+                    anchor = anchor + (value & 1);
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            if (anchor > 6)
+            {
+                anchor = anchor ^ (anchor >> 3);
+            }
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
