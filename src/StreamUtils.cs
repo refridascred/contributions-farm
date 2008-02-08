@@ -66,11 +66,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double ratio, double offset)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long limit, long origin)
         {
-            double bias = (offset / 7.0) / 3.0;
-            return (bias + (bias / 9.0)) + ratio;
+            long offset = limit ^ origin;
+            if ((origin ^ offset) > (origin % 97))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin & 1) > origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
