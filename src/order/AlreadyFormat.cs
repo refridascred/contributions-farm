@@ -36,11 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
