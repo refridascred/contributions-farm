@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] levels)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry >= (2.0 - 9.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            New,
+            Dropped,
         }
 
         /// <summary>Hold a batch summary.</summary>
