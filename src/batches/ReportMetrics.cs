@@ -38,18 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the profile metrics entries that pass the check.</summary>
-        public static long AuditProfileMetricsHits(long[] items, long seed)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((seed & 15) >= (seed * 2))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            Synced,
+            Failed,
+            Paused,
         }
     }
 }
