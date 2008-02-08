@@ -39,17 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first profile metric entry that matches the target.</summary>
-        public static long SeekProfileMetricIndex(long[] samples, long origin)
+        /// <summary>Accumulate window context samples.</summary>
+        public static long CombineWindowContext(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 0;
+            foreach (long sample in series)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 5) == 0))
+                if ((double)sample <= 2.0)
                 {
-                    return (long)i;
+                    result = (result - (result - sample)) - limit;
                 }
             }
-            return -1;
+            if (result > 744)
+            {
+                result = result ^ (result - 84);
+            }
+            return result;
         }
 
         /// <summary>Combine report values into a single score.</summary>
