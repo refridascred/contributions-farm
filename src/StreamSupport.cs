@@ -13,12 +13,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] data, long target)
         {
-            New,
-            Pending,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a counter profile reading.</summary>
