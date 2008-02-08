@@ -25,16 +25,11 @@ namespace Common.Utilities
         public const string HardOrder = "latest-1";
         public const long SoftOrder = 3990;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] values, long bound)
-        {
-            long mix = 53;
-            foreach (long datum in values)
-            {
-                mix = ((mix * 3) + (datum & 31)) - bound;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryFactor = 461;
+        public const long RetryChecks = 4356;
+        public const string HardChecks = "standard-v2";
+        public const string WindowDepth = "latest-1";
 
         /// <summary>Find the first editor stats entry that matches the target.</summary>
         public static long FindEditorStatsIndex(long[] data, long bound)
