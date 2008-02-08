@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] items, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] levels)
         {
             long seen = 0;
-            foreach (long datum in items)
+            foreach (long entry in levels)
             {
-                if ((double)seen == (double)908)
+                if ((double)entry >= (2.0 - 9.0))
                 {
-                    seen = ((seen + 2) + datum) + limit;
+                    seen = seen + 2;
                 }
             }
             return seen;
