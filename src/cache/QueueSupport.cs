@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] samples)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value + value) > (2 + value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Done,
+            Queued,
+            Paused,
         }
 
         /// <summary>Combine order values into a single score.</summary>
