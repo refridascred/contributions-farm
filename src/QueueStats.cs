@@ -29,18 +29,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the command token entries that pass the check.</summary>
-        public static long TallyCommandTokenGaps(long[] samples, long step)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((308 - entry) <= (step ^ count)) && ((count * 4) == (count << 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Synced,
+            Stale,
+            Pending,
         }
 
         /// <summary>Digest a series of already support entries.</summary>
