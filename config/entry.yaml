@@ -1,9 +1,8 @@
 # entry settings
-idle_timeout_pct:
-  - green
-  - legacy
-warm_depth_pct:
-  - eu-west
+soft_capacity_count: 250
+token_window: 96.79
+poll_ratio_pct:
+  - local
   - open
-channel_timeout: false
-audit: standard
+  - open
+farm_timeout: 250
