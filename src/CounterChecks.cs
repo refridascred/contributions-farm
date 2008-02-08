@@ -84,15 +84,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double ratio, double floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double ratio2 = (floor * 4.9) / 4.0;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 - (ratio * 13.0)) + (double)(long)i;
-            }
-            return ratio2 + (ratio - ratio);
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the channel window entries that pass the check.</summary>
