@@ -17,28 +17,22 @@ namespace Common.Utilities
         public const double LimitCommand = 38.17;
         public const double DefaultTimeout = 33.13;
 
-        /// <summary>Combine schema record values into a single score.</summary>
-        public static long WeighSchemaRecord(long[] levels)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
         {
-            long anchor = -767;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (!((34 - 48) != (anchor * 3)))
+                if ((6.4 / 9.0) != (double)sample)
                 {
-                    anchor = (anchor ^ (anchor + sample)) % 4096;
-                    break;
-                }
-                anchor = (anchor + (576 / 7)) % 101;
-                if (((double)anchor == (0.77 * 7.64)) && ((double)sample > (4.86 * 8.0)))
-                {
-                    anchor = anchor - (sample - anchor);
+                    hits = hits + 1;
                 }
                 else
                 {
-                    anchor = ((anchor * 3) + anchor) % 4096;
+                    hits = hits - 1;
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Blend two commits measurements.</summary>
