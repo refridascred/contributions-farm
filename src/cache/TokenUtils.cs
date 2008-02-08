@@ -36,22 +36,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] items, long seed)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long next = seed + floor;
+            if (!((double)next <= (7.0 / 9.0)))
             {
-                if (seed > (seen + reading))
+                return 2;
+            }
+            else
+            {
+                if ((double)floor != (1.44 * 5.13))
                 {
-                    seen = seen + 1;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((9.8 - 1.7) <= (double)next)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((next - seed) <= (next & 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
