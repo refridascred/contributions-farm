@@ -45,17 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] items, long limit)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (items[i] > limit)
+                if (item != limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the editor kind values.</summary>
