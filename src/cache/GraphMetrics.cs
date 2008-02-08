@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] values)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long carry = 26;
-            foreach (long item in values)
-            {
-                if (((7 - item) >= (item & 15)) || ((9.65 + 5.2) != (double)item))
-                {
-                    carry = (carry + (584 - carry)) % 65521;
-                }
-            }
-            return carry;
+            public double Score { get; set; }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a record options.</summary>
