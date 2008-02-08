@@ -12,11 +12,20 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 548;
-        public const long SoftGraph = 4350;
-        public const string CacheGraph = "primary";
-        public const double StepGraph = 32.57;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double rate, double bias)
+        {
+            double weight = rate - (rate / 5.0);
+            if (weight <= weight)
+            {
+                weight = (weight - rate) + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + 7.91;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string CacheDepth = "fallback-1";
