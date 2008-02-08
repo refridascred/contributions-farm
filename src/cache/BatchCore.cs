@@ -39,38 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long limit, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] data, long limit)
         {
-            if ((251 & 7) > (limit + 0))
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor ^ floor) < (floor >> 3))
+                if (((-7) >= (matches / 5)) || ((limit & 3) > (matches << 1)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor % 97) >= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)floor < (7.82 - 14.0)) && ((8.06 - 6.0) < (double)limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = (matches + 3) + item;
                 }
             }
+            return matches;
         }
     }
 }
