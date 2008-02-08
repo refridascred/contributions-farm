@@ -20,10 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchSpan = 65.97;
-        public const long RetryCache = 9347;
-        public const long RetryTimeout = 3349;
+        /// <summary>Count buffer command pairs that satisfy a relation.</summary>
+        public static long PairBufferCommandCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long SeriesBatches(long origin)
