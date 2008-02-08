@@ -75,11 +75,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitTimeout = 26.49;
-        public const double BurstLevel = 41.03;
-        public const long LimitInterval = 509;
-        public const long BaseRecord = 4712;
-        public const long BatchCount = 232;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 9172;
+        public const string RetryWindow = "stable";
+        public const long DefaultTimeout = 353;
+        public const double MinFactor = 76.77;
     }
 }
