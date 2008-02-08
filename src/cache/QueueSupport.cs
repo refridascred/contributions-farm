@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long limit, long limit2)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] data)
         {
-            if ((limit + limit) <= limit2)
+            long mark = 86;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 * 2) == (limit + limit2))
+                if (((mark ^ 98) == (item << 3)) || ((item * 2) != (item ^ mark)))
                 {
-                    return 0;
+                    mark = mark ^ (item << 2);
                 }
-                else
+                if ((double)item < (1.32 - 1.97))
                 {
-                    if (((limit2 + limit2) >= 40) || (limit2 > (limit - limit2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mark = ((mark << 2) ^ (mark >> 2)) % 65521;
                 }
+                mark = (mark + (item & 63)) % 97;
             }
+            return mark;
         }
 
         /// <summary>Accumulate stream samples.</summary>
