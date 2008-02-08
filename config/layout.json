@@ -1,8 +1,11 @@
 {
-  "stream_depth": 5,
-  "burst_retries": "local",
-  "retry_retries_count": 36.95,
-  "githubfarm_window": "primary",
-  "cache_threshold_count": ["open", "fallback"],
-  "audit": 51
+  "burst_timeout": 65,
+  "sync_depth_ms": "latest",
+  "report_size": {
+    "warm_capacity_s": true,
+    "batch_depth": 1024,
+    "soft_limit_count": "staging",
+    "hard_ratio": 60
+  },
+  "account_capacity": [465, 246, 88, 31]
 }
