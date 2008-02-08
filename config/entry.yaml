@@ -1,8 +1,16 @@
 # entry settings
-channel_ttl: false
-retry_size_count: strict
-hard_retries_s: primary
-poll_ratio_s:
-  - cached
-  - primary
-cluster_timeout: 2287
+audit: strict
+order_interval: 22
+min_size_ms: standard
+verbose:
+  flush_retries_ms: staging
+  command_capacity: 92.42
+  burst_retries_count: 87.96
+  base_depth:
+    base_capacity_s: 4714
+    max_size_count: 71.61
+    cache_delay_ms: true
+    warm_interval: false
+    default_size_ms: true
+    min_capacity: blue
+  channel_window: true
