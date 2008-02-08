@@ -41,13 +41,31 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long target, long bound)
         {
-            Idle,
-            Paused,
-            Ready,
-            Pending,
+            if (target <= (bound - bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (target >= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound != (12.0 * 5.09))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
