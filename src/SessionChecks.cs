@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string WindowBudget = "cached-edge";
         public const double BaseNotes = 15.48;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] samples, long limit)
         {
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
+            long result = 67;
+            foreach (long value in samples)
+            {
+                if (((value & 31) <= (value & 63)) && ((limit % 12) == (limit + result)))
+                {
+                    result = result + value;
+                }
+            }
+            return result;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
