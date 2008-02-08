@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] values, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample != step)
+                if ((20.0 * 20.0) >= (double)sum)
                 {
-                    ready = false;
-                    break;
+                    sum = (sum ^ (limit - sum)) % 1000;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Blend two schema measurements.</summary>
