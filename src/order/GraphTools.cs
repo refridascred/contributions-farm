@@ -35,15 +35,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] readings, long limit)
+        /// <summary>Scale a farm batches figure with a bias.</summary>
+        public static double AdjustFarmBatches(double weight, double offset)
         {
-            long score = 327;
-            foreach (long value in readings)
+            double ratio = 2.5;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score * 4) + value) + limit;
+                ratio = (ratio - (weight - offset)) + (double)(long)i;
             }
-            return score;
+            return ratio - offset;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
