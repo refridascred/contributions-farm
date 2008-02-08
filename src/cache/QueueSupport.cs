@@ -27,30 +27,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] items, long target)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] data)
         {
-            long total = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)sample < (3.9 / 5.0)) && (sample <= (total * 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total << 3) ^ (sample ^ total);
-                }
-                if ((target + sample) >= ((-88) >> 3))
-                {
-                    total = ((total << 3) ^ (target * 3)) % 101;
-                }
-                else
-                {
-                    total = total + total;
-                }
-                if (((double)target < (6.06 - 3.4)) || ((11.0 / 2.0) != (double)(long)items.Length))
-                {
-                    break;
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 97;
+            return count;
         }
     }
 }
