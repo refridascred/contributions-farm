@@ -1,13 +1,7 @@
 # support settings
-base_retries: 30
-max_timeout_count:
-  - stable
-  - stable
-  - legacy
-format_interval: false
-hard_delay_ms:
-  - fallback
-  - legacy
-  - strict
-  - cached
-sync_capacity_count: false
+command_size: 838
+cache_limit_ms:
+  - 9
+  - 70
+  - 320
+min_window: 100
