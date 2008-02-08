@@ -52,9 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 675;
-        public const double CacheFactor = 79.73;
-        public const double StepFarm = 50.71;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            New,
+            Active,
+            Done,
+            Retry,
+            Idle,
+        }
     }
 }
