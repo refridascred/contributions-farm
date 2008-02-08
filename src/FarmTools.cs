@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first report record entry that matches the target.</summary>
-        public static long LocateReportRecordIndex(long[] data, long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((data[i] <= target) && ((data[i] % 5) != 0))
+                if (!((452 + anchor) > (anchor >> 1)))
                 {
-                    return (long)i;
+                    anchor = anchor - (anchor / 6);
                 }
+                else
+                {
+                    anchor = anchor + (anchor ^ step);
+                    anchor = anchor - (step % 16);
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
