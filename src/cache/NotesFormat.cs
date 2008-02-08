@@ -23,11 +23,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseRatio = 4436;
-        public const long BurstAccount = 169;
-        public const long RetryScore = 9904;
-        public const string SoftRatio = "latest-edge";
-        public const long WindowAccount = 803;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
