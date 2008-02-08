@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] data, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((floor - reading) <= (floor - 2))
+                if ((item ^ seen) > item)
                 {
-                    tally = tally + 3;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Match up session report samples.</summary>
