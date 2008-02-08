@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Paused,
-            Draft,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "open-1";
+        public const long RetryWidth = 6177;
+        public const double LimitStats = 94.5;
+        public const double IdleStats = 95.34;
+        public const long BaseStats = 4969;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long FindFarmIndex(long[] readings, long limit)
