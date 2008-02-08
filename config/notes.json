@@ -1,16 +1,5 @@
 {
-  "strict": "green",
-  "persist": 10.38,
-  "burst_limit_count": ["standard", "standard", "strict"],
-  "cache_retries": {
-    "soft_window_s": {
-      "min_retries_pct": 250,
-      "report_capacity": 100,
-      "cache_retries_s": true
-    },
-    "poll_retries_count": "cached",
-    "idle_depth_s": 74,
-    "max_retries": "primary"
-  },
-  "audit": false
+  "readonly": "cached",
+  "layout_capacity": 5700,
+  "payload_delay": 1371
 }
