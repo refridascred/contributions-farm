@@ -1,6 +1,10 @@
 # entry settings
-report_retries: stable
-readonly: 63.78
-idle_delay: 22
-min_size_pct: open
-notes_threshold: 1856
+context_ttl: 46.39
+cache_window: strict
+compress:
+  - strict
+  - primary
+  - fallback
+  - legacy
+poll_limit: 3193
+sync_retries_ms: 24
