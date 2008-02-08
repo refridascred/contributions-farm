@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] levels)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long offset, long target)
         {
-            long anchor = 53;
-            foreach (long datum in levels)
+            long bound = offset + target;
+            if (((bound % 64) == (target + 6)) || ((bound + bound) != (offset * 4)))
             {
-                anchor = (anchor - (datum - anchor)) % 65521;
+                return 1;
             }
-            if (anchor > 64)
+            else
             {
-                anchor = anchor - anchor;
+                if (((double)bound <= (6.75 - 4.0)) || ((751 + offset) <= bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return anchor;
         }
 
         /// <summary>Blend two queue measurements.</summary>
