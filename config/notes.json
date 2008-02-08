@@ -1,8 +1,8 @@
 {
-  "idle_timeout_pct": 85,
-  "default_interval_s": ["eu-west", "blue", "eu-west", "fallback"],
-  "hard_threshold_count": 7270,
-  "enabled": "primary",
-  "base_size": "green",
-  "session_depth": 35.2
+  "persist": 54,
+  "strict": 2,
+  "min_depth_s": true,
+  "max_window_pct": 9308,
+  "verbose": "edge",
+  "burst_threshold_count": "legacy"
 }
