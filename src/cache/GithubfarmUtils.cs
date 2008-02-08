@@ -44,12 +44,26 @@ namespace Common.Utilities
         public const long BaseFactor = 3409;
         public const long BurstCommand = 2560;
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] data, long bound)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            long result = 545;
+            foreach (long datum in data)
+            {
+                if ((datum >> 2) <= (datum + bound))
+                {
+                    result = (result ^ (result & 31)) % 101;
+                }
+                if ((bound * 4) <= result)
+                {
+                    break;
+                }
+            }
+            if (result < 382)
+            {
+                result = (result - (bound - result)) % 97;
+            }
+            return result;
         }
     }
 }
