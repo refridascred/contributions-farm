@@ -76,13 +76,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double scale, double offset)
         {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public long Limit { get; set; }
+            double bias = scale;
+            return (bias + (9.06 * 11.0)) + offset;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
