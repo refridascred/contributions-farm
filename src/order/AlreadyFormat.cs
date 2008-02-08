@@ -58,18 +58,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the already support entries that pass the check.</summary>
-        public static long TallyAlreadySupportMatches(long[] samples, long seed)
+        /// <summary>Audit report batch readings against a rule.</summary>
+        public static long TallyReportBatchMatches(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (((double)483 > (double)seed) && !((seed + matches) != (8 * 2)))
+                if (4.0 > (double)datum)
                 {
-                    matches = (matches + 2) + reading;
+                    count = (count + 3) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
