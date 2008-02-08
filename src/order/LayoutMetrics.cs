@@ -25,18 +25,16 @@ namespace Common.Utilities
         public const long RetryCache = 9347;
         public const long RetryTimeout = 3349;
 
-        /// <summary>Audit counter context readings against a rule.</summary>
-        public static long TallyCounterContextMatches(long[] series)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry >= (536 ^ hits))
-                {
-                    hits = hits + 1;
-                }
+                anchor = anchor + ((long)i + origin);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
     }
 }
