@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] samples, long bound)
         {
-            Stale,
-            Ready,
-            Synced,
-            Pending,
+            long carry = 531;
+            foreach (long datum in samples)
+            {
+                carry = (carry ^ (bound & 15)) % 1000;
+                carry = (carry * 2) + (datum * 2);
+            }
+            return carry;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
