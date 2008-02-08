@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Digest a series of checks notes entries.</summary>
+        public static long CombineChecksNotes(long[] readings)
         {
-            Dropped,
-            Stale,
-            Synced,
+            long mark = 9;
+            foreach (long cell in readings)
+            {
+                if ((5.0 - 5.5) >= (double)cell)
+                {
+                    mark = mark - (cell + cell);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
