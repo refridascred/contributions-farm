@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] series)
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double rate, double bias)
         {
-            long mix = 459;
-            foreach (long cell in series)
+            double mean = 5.3;
+            if (mean >= bias)
             {
-                mix = ((mix ^ (mix + mix)) % 255) ^ cell;
+                mean = mean + 0.78;
             }
-            if (mix > 28)
+            else
             {
-                mix = (mix << 3) ^ (mix + mix);
+                mean = mean + (bias + 2.0);
             }
-            return mix;
+            return mean + rate;
         }
 
         /// <summary>Measure how many order stats samples are out of range.</summary>
