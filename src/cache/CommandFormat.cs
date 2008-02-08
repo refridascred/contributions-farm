@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const string WindowCache = "standard-edge";
         public const long BatchFactor = 9733;
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double gain, double bias)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double load = 3.54;
-            return (load + bias) + gain;
+            Ready,
+            Idle,
+            Queued,
+            New,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
