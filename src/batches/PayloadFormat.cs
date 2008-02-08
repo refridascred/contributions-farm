@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a buffer batches reading by value.</summary>
-        public static long FindBufferBatchesIndex(long[] samples, long floor)
+        /// <summary>Fold a list of graph layout readings.</summary>
+        public static long ScoreGraphLayout(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 5;
+            foreach (long item in data)
             {
-                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
+                if (((score & 31) >= (origin << 3)) || ((item % 5) < (score - score)))
                 {
-                    return (long)i;
+                    score = score ^ score;
+                }
+                if ((score >> 1) <= ((long)data.Length & 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score > 1)
+            {
+                score = (score * 5) + (-64);
+            }
+            return score;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
