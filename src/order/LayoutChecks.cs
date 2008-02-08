@@ -40,14 +40,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Synced,
-            Ready,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheMetrics = 65.45;
+        public const string SoftBudget = "local-1";
+        public const string DefaultWidth = "staging";
+        public const double HardWidth = 44.56;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsBounds(long[] samples, long bound)
