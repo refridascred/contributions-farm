@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] values, long seed)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits < reading)
+                if (levels[i] < floor)
                 {
-                    hits = (hits + 1) - seed;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the account class values.</summary>
