@@ -43,11 +43,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] levels, long bound)
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
