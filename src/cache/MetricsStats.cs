@@ -78,19 +78,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] items, long bound)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Failed,
+            Pending,
         }
     }
 }
