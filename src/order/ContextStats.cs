@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "alpha-v2";
-        public const long BurstCommits = 4683;
-        public const long MaxScore = 9323;
-        public const string IdleSize = "alpha-v2";
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Locked,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryLimits(long[] readings, long offset)
