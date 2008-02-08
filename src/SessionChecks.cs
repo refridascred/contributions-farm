@@ -46,14 +46,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Rank order farm input into a small class.</summary>
+        public static long SortOrderFarm(long target, long target2)
         {
-            Stale,
-            Done,
-            Failed,
-            Retry,
-            Draft,
+            if ((double)target2 <= (5.0 * 2.5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)target > (4.9 - 5.9)) && (target2 > target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target2 << 1) >= target2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target2 << 3) > (9 * 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
