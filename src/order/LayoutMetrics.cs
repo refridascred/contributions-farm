@@ -21,22 +21,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] values)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally >> 4) < tally)
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Failed,
+            Ready,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
