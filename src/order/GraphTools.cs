@@ -59,17 +59,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Find the first metric commits entry that matches the target.</summary>
-        public static long LocateMetricCommitsIndex(long[] values, long origin)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
