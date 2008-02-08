@@ -37,11 +37,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double gain, double span)
+        /// <summary>Classify a report command pair into a bucket.</summary>
+        public static long BucketReportCommand(long bound, long target)
         {
-            double ratio = span;
-            return (ratio - 0.7) + gain;
+            long cur = bound ^ target;
+            if (((bound & 3) >= (cur - target)) && ((double)bound <= (9.0 * 4.1)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((13.0 - 0.3) != (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
