@@ -41,19 +41,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] data, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (sample != seed)
+                if (matches > (93 & 31))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
