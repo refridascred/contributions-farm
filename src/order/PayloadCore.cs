@@ -28,16 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 2) + carry) % 65521;
-                carry = ((carry * 2) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
