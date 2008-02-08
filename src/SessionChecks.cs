@@ -68,18 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (((datum % 12) <= (seen >> 1)) || (seen >= datum))
-                {
-                    seen = (seen + 3) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 4867;
+        public const string SoftTimeout = "local-v2";
+        public const string RetryScore = "cached-1";
+        public const long RetryInterval = 9825;
     }
 }
