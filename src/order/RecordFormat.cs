@@ -27,11 +27,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 6598;
-        public const long DefaultBudget = 3405;
-        public const double LimitPayload = 75.37;
-        public const double IdleScore = 1.49;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheOutliers(long[] items)
