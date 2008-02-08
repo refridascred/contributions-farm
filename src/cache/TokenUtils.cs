@@ -25,15 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double ratio, double offset)
+        /// <summary>Count the queue order entries that pass the check.</summary>
+        public static long MeasureQueueOrderOutliers(long[] data, long step)
         {
-            double drift = offset;
-            if (drift >= (double)67)
+            long matches = 0;
+            foreach (long item in data)
             {
-                drift = (drift - (double)699) + ratio;
+                if ((item + step) >= (item / 2))
+                {
+                    matches = matches + 3;
+                }
             }
-            return drift - 3.2;
+            return matches;
         }
     }
 }
