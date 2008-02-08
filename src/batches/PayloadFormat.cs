@@ -25,23 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks buffer figure with a bias.</summary>
-        public static double SmoothChecksBuffer(double rate, double floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long seed, long target)
         {
-            double scale = (double)(81 + 16);
-            if (scale >= rate)
+            if (seed < target)
             {
-                scale = scale + (floor + scale);
+                return 0;
             }
             else
             {
-                scale = scale - rate;
+                if (0.3 > (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((target << 1) >= (546 / 5)) && ((seed % 64) >= (seed >> 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + rate) - (double)(long)i;
-            }
-            return scale - rate;
         }
 
         /// <summary>Hold a contributi entry.</summary>
