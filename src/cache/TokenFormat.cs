@@ -45,19 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] samples)
+        /// <summary>Measure how many order stats samples are out of range.</summary>
+        public static long MeasureOrderStatsHits(long[] items, long step)
         {
-            long mark = 838;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                mark = (((mark << 2) ^ (mark - mark)) % 65521) ^ sample;
+                if ((datum / 2) > (step - step))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (mark < 816)
-            {
-                mark = mark + mark;
-            }
-            return mark % 1000;
+            return matches;
         }
     }
 }
