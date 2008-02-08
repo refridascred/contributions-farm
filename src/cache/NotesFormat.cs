@@ -14,13 +14,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Count the githubfarm cluster entries that pass the check.</summary>
+        public static long TallyGithubfarmClusterMatches(long[] series, long bound)
         {
-            New,
-            Dropped,
-            Locked,
-            Pending,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (!(item <= (item * 4)) && ((bound - (long)series.Length) > (658 << 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
