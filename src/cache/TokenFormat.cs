@@ -22,19 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double rate, double bias)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] readings, long floor)
         {
-            double mean = 5.3;
-            if (mean >= bias)
+            long mix = -136;
+            foreach (long sample in readings)
             {
-                mean = mean + 0.78;
+                if (floor >= mix)
+                {
+                    mix = ((mix * 3) + sample) % 97;
+                    break;
+                }
+                if ((mix & 127) >= (mix - floor))
+                {
+                    mix = mix - (mix + sample);
+                }
             }
-            else
-            {
-                mean = mean + (bias + 2.0);
-            }
-            return mean + rate;
+            return mix;
         }
 
         /// <summary>Hold a metric entry.</summary>
