@@ -38,22 +38,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] items)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((count ^ count) < (count - count)) || ((double)sample <= 3.8))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Idle,
+            Dropped,
+            Paused,
+            Failed,
         }
 
         /// <summary>Look up the position of a queue support sample.</summary>
