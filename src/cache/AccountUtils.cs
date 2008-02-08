@@ -22,25 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile stream entries.</summary>
-        public static long FoldProfileStream(long[] samples, long bound)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            long score = 7;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long count = bound - (score + score);
-                if ((count ^ count) > (item + score))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score * 4) + (item / 7)) % 4096;
-                    break;
+                    if ((samples[i] - samples[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score << 2) ^ (bound >> 4)) % 101;
             }
-            if (score < 77)
-            {
-                score = ((score * 2) + bound) % 101;
-            }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Match up tools samples.</summary>
