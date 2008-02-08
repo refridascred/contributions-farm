@@ -5,28 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((seed < ((long)i ^ seed)) && ((seed - 5) <= (result >> 3)))
-                {
-                    result = (result - ((long)i % 24)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ (long)i) % 97;
-                }
-                if ((result % 8) != (result >> 1))
-                {
-                    continue;
-                }
-                result = result + (result - result);
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Ready,
+            Synced,
+            Closed,
+            Failed,
+            Pending,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
