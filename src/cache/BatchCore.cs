@@ -11,23 +11,15 @@ namespace Common.Utilities
         public const long BatchFactor = 3961;
         public const long CacheBatch = 4351;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            long score = -20;
+            foreach (long entry in items)
             {
-                if (((score - score) >= (long)i) && ((score << 1) != ((long)i * 3)))
-                {
-                    break;
-                }
-                if (((-26) * 5) < ((long)i % 7))
-                {
-                    score = ((score << 2) ^ (step - score)) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                score = score ^ (entry + score);
             }
-            return score;
+            return score % 4096;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
