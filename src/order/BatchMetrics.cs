@@ -17,11 +17,12 @@ namespace Common.Utilities
         public const double CacheCommits = 58.43;
         public const double SoftCommits = 20.81;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 9931;
-        public const double HardProfile = 14.97;
-        public const long DefaultProfile = 5987;
-        public const long BatchSize = 541;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public long Count { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenLimits(long[] values, long bound)
