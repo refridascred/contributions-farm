@@ -23,24 +23,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long seed, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] samples)
         {
-            if (!(step <= (step * 2)))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step << 3) < (step + 3))
+                if ((tally - reading) <= reading)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
