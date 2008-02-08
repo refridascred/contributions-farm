@@ -33,13 +33,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Locked,
-            New,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleTimeout = 6670;
+        public const long DefaultWindow = 8489;
+        public const long MaxRatio = 2442;
     }
 }
