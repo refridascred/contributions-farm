@@ -35,12 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryMetric = 21.62;
-        public const long SoftMetric = 6020;
-        public const string WindowFactor = "latest-edge";
-        public const double CacheMetric = 64.95;
-        public const long StepMetric = 6520;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((4.11 / 6.0) != (double)sample) && ((hits < (hits * 2)) && ((hits * 2) <= (sample & 31))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double SmoothSupport(double scale, double offset)
