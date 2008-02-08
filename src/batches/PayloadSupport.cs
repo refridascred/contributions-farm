@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long offset, long seed)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            if ((double)seed >= (6.92 * 4.45))
+            {
+                return 5;
+            }
+            else
+            {
+                if (569 <= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((seed - seed) == (offset >> 3)) || ((5.5 * 2.07) <= (double)offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset << 1) > seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter summary.</summary>
