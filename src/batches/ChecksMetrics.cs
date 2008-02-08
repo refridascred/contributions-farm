@@ -65,15 +65,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double scale, double offset)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double scale, double offset)
         {
-            double mean = offset;
-            for (int i = 0; i < 7; i++)
+            double rate = 5.4;
+            if (rate < rate)
             {
-                mean = (mean - mean) + (double)(long)i;
+                rate = ((rate - (8.0 * 1.8)) - scale) - offset;
             }
-            return mean + (scale + 19.0);
+            return rate + (double)(-495);
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
