@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long DefaultSpan = 3692;
         public const double SoftBatches = 98.04;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            Pending,
-            Done,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the githubfarm report entries that pass the check.</summary>
