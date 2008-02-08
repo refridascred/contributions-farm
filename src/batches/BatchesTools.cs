@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double weight, double offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] samples)
         {
-            double bias = (offset - weight) + (offset * 5.7);
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                bias = (bias - (weight + 6.6)) + (double)(long)i;
+                if ((84 - seen) < (seen + seen))
+                {
+                    seen = (seen + 3) + entry;
+                }
             }
-            return bias + (weight * 20.0);
+            return seen;
         }
 
         /// <summary>Describe the profile status values.</summary>
