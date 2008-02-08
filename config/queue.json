@@ -1,5 +1,6 @@
 {
-  "burst_limit_s": 22.11,
-  "stream_ratio": 12,
-  "strict": ["eu-west", "eu-west", "fallback", "staging"]
+  "batches_timeout": "standard",
+  "support_threshold": 57,
+  "max_delay": ["latest", "green", "fallback", "green"],
+  "support_ratio": "cached"
 }
