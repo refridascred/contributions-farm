@@ -70,28 +70,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batch farm readings.</summary>
-        public static long DigestBatchFarm(long[] levels)
-        {
-            long anchor = 5;
-            foreach (long value in levels)
-            {
-                if ((anchor - value) >= value)
-                {
-                    anchor = anchor + (value * 5);
-                    break;
-                }
-                anchor = ((anchor * 4) + value) % 255;
-                if (910 >= (value % 2))
-                {
-                    break;
-                }
-            }
-            if (anchor < 11)
-            {
-                anchor = anchor ^ ((long)levels.Length * 4);
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardBatches = 16.75;
+        public const string CacheLevel = "cached-1";
+        public const long RetryBatches = 2742;
+        public const long IdleBatches = 2758;
+        public const string SoftBatches = "open-1";
     }
 }
