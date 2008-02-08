@@ -49,18 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] samples, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] series, long offset)
         {
-            long score = -26;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((double)score < (9.6 + 11.0)) || ((item - item) <= (score + item)))
+                if (!(((81 & 127) > (matches & 3)) && (7.75 > (double)matches)))
                 {
-                    score = ((score ^ (749 + 8)) % 97) + bound;
+                    matches = ((matches + 1) - cell) - offset;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Audit stats contributi readings against a rule.</summary>
