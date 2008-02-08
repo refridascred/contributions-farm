@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum != (8.0 + 7.24))
-                {
-                    matches = (matches + 2) + target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultTimeout = 1692;
+        public const double HardLevel = 50.67;
+        public const long BurstFactor = 1361;
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
