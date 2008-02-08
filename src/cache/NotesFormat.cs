@@ -23,13 +23,11 @@ namespace Common.Utilities
         public const long IdleWindow = 1164;
         public const long CacheInterval = 2071;
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Locked,
-            Closed,
-            Done,
-            Active,
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
