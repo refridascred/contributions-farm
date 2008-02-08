@@ -22,21 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of queue buffer readings.</summary>
-        public static long CompareQueueBufferCount(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long bound, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((0.9 / 5.0) != (double)bound)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((8.91 * 5.38) > (double)step)
                 {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate window context samples.</summary>
