@@ -33,12 +33,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long floor, long target)
         {
-            Locked,
-            Stale,
-            New,
+            if ((1.83 * 0.8) > (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((143 & 255) <= (target + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target >= (8.4 + 5.51))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target > (6.0 + 8.27))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a farm batches figure with a bias.</summary>
