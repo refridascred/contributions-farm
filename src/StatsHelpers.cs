@@ -41,11 +41,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultStats = "primary-edge";
-        public const double IdleFactor = 98.36;
-        public const long CacheSize = 6837;
-        public const double BaseSpan = 18.55;
+        /// <summary>Measure how many command channel samples are out of range.</summary>
+        public static long AuditCommandChannelMatches(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((5.8 / 9.0) > (4.45 / 5.0))
+                {
+                    hits = ((hits + 1) + value) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] levels)
