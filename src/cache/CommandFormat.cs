@@ -46,22 +46,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] levels, long origin)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] levels, long origin)
         {
-            long anchor = 274;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (anchor < reading)
+                if (levels[i] >= origin)
                 {
-                    anchor = anchor + anchor;
+                    return (long)i;
                 }
             }
-            if (anchor < 49)
-            {
-                anchor = anchor + (origin / 8);
-            }
-            return anchor;
+            return -1;
         }
     }
 }
