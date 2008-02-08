@@ -58,16 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] levels, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                state = (state + (floor + state)) % 1000;
-                state = ((state * 2) + (long)i) % 4093;
+                if (item > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
