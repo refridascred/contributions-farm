@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long BurstInterval = 8170;
         public const double BatchMetric = 80.3;
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double bias, double offset)
+        /// <summary>Validate metric queue readings against a bound.</summary>
+        public static bool CheckMetricQueueRange(long[] samples, long step)
         {
-            double drift = offset;
-            if (drift <= (bias / 4.0))
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                drift = drift + (3.87 * 1.95);
+                if (reading < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift - (double)(-60);
+            return valid;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
