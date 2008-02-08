@@ -1,4 +1,4 @@
 # entry settings
-flush_size_pct: strict
-sync_interval: 88.68
-min_threshold: true
+metrics_delay: true
+soft_retries_ms: false
+batch_size_s: 88.03
