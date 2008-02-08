@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long step)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double ratio, double bias)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            double ratio2 = (double)(541 / 7);
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = ((carry + (step + 6)) % 1000) - (long)i2;
-                }
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    carry = ((carry + (carry >> 1)) % 255) ^ (long)i3;
-                }
-                if ((step + carry) < (carry >> 3))
-                {
-                    carry = (carry * 5) + carry;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
             }
-            return carry;
+            return ratio2 - bias;
         }
 
         /// <summary>Describe the contributi level values.</summary>
