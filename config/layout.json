@@ -1,6 +1,16 @@
 {
-  "retry_window_s": "open",
-  "enabled": 38,
-  "idle_ratio_ms": 40.66,
-  "idle_retries_count": "fallback"
+  "base_threshold": 95,
+  "window_capacity": 64.46,
+  "enabled": "strict",
+  "checks_timeout": "eu-west",
+  "default_size": {
+    "sync_ratio_s": "edge",
+    "audit": "stable",
+    "hard_ttl": {
+      "readonly": "fallback",
+      "max_depth": false,
+      "counter_ttl": false,
+      "retry_size_count": [345, 359]
+    }
+  }
 }
