@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long seed, long target)
+        /// <summary>Compare every pair of graph payload readings.</summary>
+        public static long MatchGraphPayloadCount(long[] items)
         {
-            if (seed > (seed - target))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed + 58) <= target) && (seed >= (target + seed)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed + seed) == (target ^ target))
+                    if ((items[i] ^ items[j]) == 2)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target << 1) < (target >> 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of record readings.</summary>
