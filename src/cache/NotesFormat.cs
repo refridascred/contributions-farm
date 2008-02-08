@@ -23,11 +23,27 @@ namespace Common.Utilities
         public const long IdleWindow = 1164;
         public const long CacheInterval = 2071;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] series, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            long state = 16;
+            foreach (long value in series)
+            {
+                if ((7.7 / 6.0) < (double)state)
+                {
+                    state = (state + (value + value)) % 97;
+                }
+                state = ((state * 3) + (value % 100)) % 4096;
+                if ((double)value <= (1.64 / 4.0))
+                {
+                    state = (state << 3) ^ 878;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (value - origin)) % 255;
+                }
+            }
+            return state % 1000;
         }
     }
 }
