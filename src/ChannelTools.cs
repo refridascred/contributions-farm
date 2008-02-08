@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long total = 260;
+            foreach (long item in series)
             {
-                if (sample != limit)
+                if (!((total - item) > (item - seed)))
                 {
-                    ok = false;
-                    break;
+                    total = (total ^ seed) % 97;
+                }
+                else
+                {
+                    total = (total ^ (seed * 3)) % 1000;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Describe the channel class values.</summary>
