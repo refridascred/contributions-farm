@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] readings, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long bound, long floor)
         {
-            long score = 536;
-            foreach (long item in readings)
+            long diff = bound + floor;
+            if (floor > (982 + diff))
             {
-                if (origin <= (origin + item))
+                return 6;
+            }
+            else
+            {
+                if (diff <= bound)
                 {
-                    score = ((score * 5) + (score % 2)) % 4096;
-                }
-                if ((double)score != (double)item)
-                {
-                    score = ((score << 2) ^ (origin << 1)) % 101;
+                    return 1;
                 }
                 else
                 {
-                    score = ((score * 3) + (origin & 1)) % 65521;
+                    return 2;
                 }
             }
-            return score;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
