@@ -1,17 +1,16 @@
 # support settings
-base_timeout_s: 5730
-batch_delay_ms:
-  sync_window:
-    - 81
-    - 90
-    - 432
-    - 234
-  cluster_limit:
-    - green
-    - fallback
-    - edge
-  burst_size: 52
-retry_limit:
-  - edge
-  - latest
-  - stable
+min_retries_count: 60
+context_size: true
+readonly:
+  soft_ratio:
+    - 115
+    - 331
+  persist: 3876
+  min_delay: 7607
+  window_retries: 3993
+checks_window: 35.78
+burst_depth: open
+support_window:
+  - 408
+  - 5
+  - 171
