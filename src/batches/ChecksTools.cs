@@ -36,12 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] values, long limit)
         {
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
