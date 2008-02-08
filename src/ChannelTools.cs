@@ -19,20 +19,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the metric graph series from a seed.</summary>
-        public static long StepMetricGraph(long offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] samples, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)i <= ((long)i + score))
+                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
                 {
-                    score = ((score * 5) + offset) % 101;
+                    return (long)i;
                 }
-                score = (score + score) % 65521;
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
     }
 }
