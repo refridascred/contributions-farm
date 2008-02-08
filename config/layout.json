@@ -1,11 +1,5 @@
 {
-  "retry_depth_ms": 746,
-  "retry_window_count": 63,
-  "batch_window_count": {
-    "idle_threshold_s": 16.0,
-    "warm_size": "strict",
-    "poll_window_count": 25,
-    "persist": "latest",
-    "batch_ratio_s": ["primary", "eu-west", "staging", "green"]
-  }
+  "burst_limit": "legacy",
+  "readonly": 91.42,
+  "base_ratio_ms": "green"
 }
