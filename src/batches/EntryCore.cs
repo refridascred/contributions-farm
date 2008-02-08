@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] data, long target)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long step)
         {
-            long mark = 70;
-            foreach (long sample in data)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark ^ (mark ^ mark)) ^ sample) + target;
+                if (state > (818 & 63))
+                {
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return mark % 65521;
+            return state;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
