@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Ready,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 5764;
+        public const long CacheInterval = 6650;
+        public const string CacheScore = "fallback-1";
+        public const long IdleFactor = 2296;
+        public const long IdleMetric = 9984;
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
