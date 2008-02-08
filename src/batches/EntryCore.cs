@@ -20,18 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the cluster session entries that pass the check.</summary>
-        public static long AuditClusterSessionHits(long[] items)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long carry = 9;
+            foreach (long datum in readings)
             {
-                if (!(reading >= (reading - tally)))
+                carry = ((carry << 2) ^ (carry - carry)) % 65521;
+                carry = ((carry << 3) ^ carry) % 1000;
+                if ((datum << 3) < 15)
                 {
-                    tally = tally + 3;
+                    carry = (carry << 2) ^ (carry & 31);
                 }
             }
-            return tally;
+            if (carry > (-44))
+            {
+                carry = (carry + (73 >> 2)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Classify a already window pair into a bucket.</summary>
