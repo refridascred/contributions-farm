@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "open-1";
-        public const long RetryWidth = 6177;
-        public const double LimitStats = 94.5;
-        public const double IdleStats = 95.34;
-        public const long BaseStats = 4969;
+        /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
+        public static long MeasureChannelGithubfarmGaps(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (origin <= (origin / 7))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
