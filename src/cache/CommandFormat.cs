@@ -42,19 +42,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every metric filter entry stays within the limit.</summary>
-        public static bool VerifyMetricFilterRange(long[] values, long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] - data[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
