@@ -1,17 +1,13 @@
 {
-  "dry_run": false,
-  "burst_threshold": 41,
-  "batches_capacity": false,
-  "default_timeout_count": {
-    "min_depth_ms": 8212,
-    "poll_depth_ms": {
-      "base_delay": 60.52,
-      "dry_run": "blue",
-      "retry_delay": 86.51,
-      "enabled": [116, 157],
-      "metric_depth": [150, 461, 260]
-    },
-    "payload_timeout": "latest",
-    "window_limit": 8.15
+  "persist": "cached",
+  "sync_size": 100,
+  "warm_size_s": "latest",
+  "default_limit_ms": "edge",
+  "verbose": 250,
+  "buffer_retries": {
+    "persist": "stable",
+    "default_threshold": "open",
+    "queue_limit": [151, 386, 84],
+    "cluster_limit": 1024
   }
 }
