@@ -68,13 +68,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double ratio, double floor)
         {
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
+            double mean = 12.0;
+            if (mean >= ratio)
+            {
+                mean = (mean - ratio) - floor;
+            }
+            return mean - 2.0;
         }
 
         /// <summary>Fold a list of graph payload readings.</summary>
