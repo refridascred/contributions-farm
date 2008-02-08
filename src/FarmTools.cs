@@ -35,9 +35,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftFactor = "alpha-v2";
-        public const long CacheWidth = 3556;
-        public const double IdleCache = 10.67;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
