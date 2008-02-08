@@ -34,12 +34,19 @@ namespace Common.Utilities
         public const long StepRecord = 7998;
         public const string DefaultRecord = "alpha-edge";
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Validate account cache readings against a bound.</summary>
+        public static bool VerifyAccountCacheRange(long[] readings, long origin)
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
