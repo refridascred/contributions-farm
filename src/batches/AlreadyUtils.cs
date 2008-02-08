@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 8135;
-        public const long BatchSize = 5680;
-        public const long IdleSpan = 9866;
-        public const double LimitCounter = 0.67;
-        public const long CacheCount = 5563;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count >> 2) > (count << 2))
+                {
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] series)
