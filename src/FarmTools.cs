@@ -21,8 +21,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowInterval = 4.08;
-        public const long BurstCache = 7214;
-        public const long CacheDepth = 1010;
+        public const string SoftFactor = "alpha-v2";
+        public const long CacheWidth = 3556;
+        public const double IdleCache = 10.67;
     }
 }
