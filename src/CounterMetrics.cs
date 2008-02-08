@@ -36,27 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] levels)
+        /// <summary>Validate farm metrics readings against a bound.</summary>
+        public static bool VerifyFarmMetricsLimits(long[] readings, long target)
         {
-            long total = 1;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                total = total ^ (entry & 1);
-                if (entry < (total / 3))
+                if (datum < target)
                 {
-                    total = total - (57 - entry);
-                }
-                else
-                {
-                    total = total - total;
+                    found = false;
+                    break;
                 }
             }
-            if (total > (-29))
-            {
-                total = (total * 3) + (total >> 2);
-            }
-            return total % 65521;
+            return found;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
