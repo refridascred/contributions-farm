@@ -10,14 +10,14 @@ namespace Common.Utilities
         public const double HardLevel = 50.67;
         public const long BurstFactor = 1361;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
+            Idle,
+            Synced,
             Closed,
-            New,
-            Dropped,
-            Locked,
-            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
