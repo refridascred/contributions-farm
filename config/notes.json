@@ -1,5 +1,6 @@
 {
-  "readonly": "cached",
-  "layout_capacity": 5700,
-  "payload_delay": 1371
+  "sync_limit_pct": 28,
+  "persist": false,
+  "enabled": "primary",
+  "filter_threshold": true
 }
