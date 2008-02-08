@@ -36,32 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache commits pair into a bucket.</summary>
-        public static long SortCacheCommits(long limit, long limit2)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] samples, long bound)
         {
-            long gap = limit ^ limit2;
-            if ((limit + 6) == (gap << 3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit2 % 8) > gap)
+                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((gap & 7) < gap)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
