@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first githubfarm stats entry that matches the target.</summary>
-        public static long FindGithubfarmStatsIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 6463;
+        public const long BurstScore = 8101;
+        public const double RetryLevel = 56.86;
+        public const string StepGraph = "latest-edge";
+        public const long CacheWidth = 8423;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenGaps(long[] series, long origin)
