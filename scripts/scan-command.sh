@@ -7,13 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+COMMAND_LIMIT=15
+log "limit is ${COMMAND_LIMIT}"
+
+for item in open stable; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
