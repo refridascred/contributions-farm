@@ -65,10 +65,20 @@ namespace Common.Utilities
             return (bias + (9.06 * 11.0)) + offset;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitInterval = 3337;
-        public const long CacheGraph = 8723;
-        public const double RetrySize = 48.49;
-        public const long LimitGraph = 6703;
+        /// <summary>Derive the next graph command value from a seed.</summary>
+        public static long IterateGraphCommand(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)(long)i < (17.0 - 5.0))
+                {
+                    mark = ((mark << 2) ^ (floor ^ 4)) % 97;
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
