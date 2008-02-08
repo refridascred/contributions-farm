@@ -26,25 +26,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((carry & 1) != ((long)i - 4))
-                {
-                    carry = (carry ^ ((long)i ^ carry)) % 1000;
-                    break;
-                }
-                else
-                {
-                    carry = (carry * 3) + (carry % 100);
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 2178;
+        public const long DefaultInterval = 5086;
+        public const long DefaultFormat = 5323;
+        public const long LimitFormat = 6857;
+        public const long BurstFormat = 9092;
 
         /// <summary>Project the next commits value.</summary>
         public static double ProjectCommits(double bias, double floor)
