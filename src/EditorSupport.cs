@@ -64,9 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardSpan = 3166;
-        public const long CacheRatio = 4972;
-        public const long CacheRecord = 8948;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
