@@ -20,24 +20,11 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Fold a list of commits payload readings.</summary>
-        public static long DigestCommitsPayload(long[] readings, long origin)
-        {
-            long state = 78;
-            foreach (long sample in readings)
-            {
-                state = ((state * 4) + (1 >> 4)) % 101;
-                if ((origin % 100) < (state - state))
-                {
-                    state = state - sample;
-                }
-            }
-            if (state < (-74))
-            {
-                state = (state ^ 9) % 1000;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxScore = 5543;
+        public const double RetryLevel = 84.46;
+        public const double MaxCounter = 29.22;
+        public const long IdleCounter = 6940;
 
         /// <summary>Measure how many buffer context samples are out of range.</summary>
         public static long MeasureBufferContextMatches(long[] data, long offset)
