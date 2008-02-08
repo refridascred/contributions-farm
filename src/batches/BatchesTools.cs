@@ -30,21 +30,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Digest a series of stats graph entries.</summary>
+        public static long ScoreStatsGraph(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 62;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((datum ^ total) == (datum + limit)) && ((limit + 84) < limit))
                 {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total * 5) + (total * 5)) % 255;
+                }
+                if ((datum < (datum + total)) && (limit > (67 + total)))
+                {
+                    total = total ^ (limit >> 3);
+                }
+                if (datum >= (limit - 1))
+                {
+                    total = ((total * 2) + (limit & 63)) % 97;
                 }
             }
-            return seen;
+            return total;
         }
     }
 }
