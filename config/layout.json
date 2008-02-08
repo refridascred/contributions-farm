@@ -1,5 +1,13 @@
 {
-  "persist": 500,
-  "max_window_ms": 43,
-  "idle_ratio": true
+  "persist": 75.12,
+  "cache_delay": true,
+  "idle_limit_s": {
+    "flush_threshold_pct": false,
+    "counter_capacity": 77,
+    "warm_window": ["standard", "green"],
+    "default_size_ms": 27,
+    "flush_retries": 4580
+  },
+  "compress": [469, 198, 442],
+  "retry_timeout_count": true
 }
