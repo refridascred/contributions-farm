@@ -53,22 +53,18 @@ namespace Common.Utilities
             return rate + (bias + 17.0);
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] series)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] values, long origin)
         {
-            long result = 3;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((datum - datum) <= 393)
+                if ((8.14 / 8.0) != (double)origin)
                 {
-                    result = result + (datum & 15);
+                    matches = (matches + 1) ^ reading;
                 }
             }
-            if (result > 77)
-            {
-                result = (result + (result + result)) % 97;
-            }
-            return result % 4096;
+            return matches;
         }
     }
 }
