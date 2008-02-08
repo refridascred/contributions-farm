@@ -1,7 +1,11 @@
 {
-  "min_delay_ms": 44,
-  "persist": 62,
-  "retry_timeout_ms": 250,
-  "retry_threshold": "blue",
-  "queue_window": 52.03
+  "max_window_ms": "legacy",
+  "enabled": "edge",
+  "already_size": [310, 123],
+  "persist": {
+    "cache_depth_pct": [335, 49, 381],
+    "min_retries_ms": false,
+    "sync_capacity_pct": [279, 173, 241]
+  },
+  "hard_window": false
 }
