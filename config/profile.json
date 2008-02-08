@@ -1,6 +1,7 @@
 {
-  "cache_retries": "staging",
-  "flush_delay": "latest",
-  "flush_window": false,
-  "token_window": "fallback"
+  "soft_delay_ms": false,
+  "burst_timeout": 30,
+  "min_ratio_s": 1024,
+  "poll_delay_pct": [282, 160],
+  "filter_depth": 6.72
 }
