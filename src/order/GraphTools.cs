@@ -49,18 +49,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] series, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long carry = 86;
+            foreach (long item in items)
             {
-                if (!(((81 & 127) > (matches & 3)) && (7.75 > (double)matches)))
+                if ((1.0 - 2.84) > (double)item)
                 {
-                    matches = ((matches + 1) - cell) - offset;
+                    carry = carry ^ (carry + carry);
+                }
+                else
+                {
+                    carry = (carry - carry) % 4096;
+                }
+                if (((double)item == (double)carry) && ((long)items.Length <= (carry % 10)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (carry < 586)
+            {
+                carry = ((carry * 4) + (carry / 9)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Audit stats contributi readings against a rule.</summary>
