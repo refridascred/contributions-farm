@@ -112,13 +112,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Draft,
-            Pending,
-            Active,
-            Idle,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardSpan = 3166;
+        public const long CacheRatio = 4972;
+        public const long CacheRecord = 8948;
     }
 }
