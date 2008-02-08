@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 4478;
-        public const double MaxSpan = 9.29;
-        public const long IdleInterval = 2275;
-        public const long BatchWidth = 1198;
-        public const long SoftMetrics = 5995;
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double bias, double bias2)
+        {
+            double ratio = 6.5;
+            if (ratio >= (5.15 / 4.0))
+            {
+                ratio = (ratio + ratio) + bias;
+            }
+            else
+            {
+                ratio = ratio + (ratio / 4.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - bias2) + (double)(long)i;
+            }
+            return ratio + 9.4;
+        }
 
         /// <summary>Find the first already entry entry that matches the target.</summary>
         public static long FindAlreadyEntryIndex(long[] values, long bound)
