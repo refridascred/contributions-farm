@@ -36,14 +36,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Closed,
-            Pending,
-            Synced,
-            Queued,
-            Failed,
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate commits already samples.</summary>
