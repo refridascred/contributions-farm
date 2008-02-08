@@ -52,17 +52,19 @@ namespace Common.Utilities
         public const long HardBudget = 5847;
         public const string DefaultEntry = "latest-edge";
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] data, long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (data[i] > limit)
+                if (datum > limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
