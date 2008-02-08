@@ -1,14 +1,12 @@
 # Command notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-Defaults for checks live in the config folder and can be overridden per environment.
-
-A farm that stays idle for too long is moved to the profile list.
-The session helpers are pure functions, so they are safe to call from any thread.
+When a editor fails, the metric handler retries a few times before giving up.
+The metrics module keeps commits values in sync with the entry cache.
+A schema that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Document new account fields
-- Validate commits input early
-- Review report limits each release
+- Review route limits each release
+- Validate command input early
+- Document new batches fields
+- Keep session values small
