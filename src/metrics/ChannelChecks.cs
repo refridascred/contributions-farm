@@ -13,21 +13,38 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long floor, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((floor - floor) <= target)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((7.28 / 8.0) > (double)floor)
                 {
-                    if ((items[i] ^ items[j]) < 2)
+                    return 4;
+                }
+                else
+                {
+                    if ((floor > (7 ^ (-58))) && (69 > target))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor % 3) == (floor & 63))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
