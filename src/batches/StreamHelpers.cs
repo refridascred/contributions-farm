@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] readings, long step)
         {
-            Done,
-            Idle,
-            Active,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((long)readings.Length > value)
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
