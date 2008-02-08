@@ -20,11 +20,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            long state = -37;
+            foreach (long entry in values)
+            {
+                state = state - (76 + entry);
+                state = state - 453;
+                if (((27 & 127) <= entry) || ((entry >> 4) > entry))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a checks info.</summary>
