@@ -13,16 +13,30 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] data, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] series, long step)
         {
-            long mix = 45;
-            foreach (long cell in data)
+            long state = 77;
+            foreach (long entry in series)
             {
-                mix = (mix - (mix - mix)) + limit;
-                mix = mix ^ (cell >> 2);
+                if ((step < 982) && ((step + step) <= (step * 2)))
+                {
+                    state = (state - (state - state)) % 1000;
+                    state = (state << 2) ^ (477 & 31);
+                    break;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (89 >> 3)) % 101;
+                    state = (state + (step + entry)) % 4096;
+                }
+                state = state + entry;
             }
-            return mix % 4096;
+            if (state < 0)
+            {
+                state = (state ^ (state + state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the stream class values.</summary>
