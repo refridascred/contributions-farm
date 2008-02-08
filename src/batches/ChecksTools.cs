@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long BatchWidth = 1198;
         public const long SoftMetrics = 5995;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long seed)
         {
-            Idle,
-            Pending,
-            Synced,
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = sum - sum;
+                if (9.0 < (double)(long)i)
+                {
+                    sum = (sum + (sum * 3)) % 97;
+                    sum = sum - (seed + sum);
+                }
+                sum = (sum + 6) % 255;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Combine schema record values into a single score.</summary>
