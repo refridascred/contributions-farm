@@ -1,9 +1,10 @@
 # githubfarm settings
-audit: stable
-tools_retries: 2859
-enabled: true
-burst_size: 5554
-hard_delay_ms:
-  - fallback
-  - staging
-session_ratio: primary
+verbose:
+  - 393
+  - 490
+  - 74
+channel_depth: legacy
+flush_depth_ms: 92
+account_limit: 8024
+min_timeout: true
+max_size_ms: 1024
