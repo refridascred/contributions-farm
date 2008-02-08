@@ -72,24 +72,13 @@ namespace Common.Utilities
             return mean + (17.0 - ratio);
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long offset, long bound)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            if (bound < (803 ^ 169))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound >= (18.0 / 8.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Find the first payload support entry that matches the target.</summary>
