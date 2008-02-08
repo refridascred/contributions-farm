@@ -40,11 +40,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheMetrics = 65.45;
-        public const string SoftBudget = "local-1";
-        public const string DefaultWidth = "staging";
-        public const double HardWidth = 44.56;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] items, long bound)
+        {
+            long anchor = 7;
+            foreach (long value in items)
+            {
+                anchor = (anchor - anchor) ^ value;
+            }
+            if (anchor > 8)
+            {
+                anchor = (anchor << 3) ^ bound;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsBounds(long[] samples, long bound)
