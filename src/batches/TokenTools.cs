@@ -30,22 +30,9 @@ namespace Common.Utilities
         public const long HardProfile = 4556;
         public const long BurstSpan = 1931;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((origin - 523) >= 290)
-                {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 51.47;
+        public const double CacheNotes = 91.11;
+        public const long BurstRatio = 2998;
     }
 }
