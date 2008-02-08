@@ -28,22 +28,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values, long target)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long carry = 48;
-            foreach (long datum in values)
-            {
-                if ((18 + datum) <= (datum - carry))
-                {
-                    carry = (carry - target) % 1000;
-                }
-                else
-                {
-                    carry = ((carry * 2) + ((-95) - datum)) % 97;
-                }
-            }
-            return carry % 1000;
+            Paused,
+            Pending,
+            Done,
+            Stale,
+            New,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
