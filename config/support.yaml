@@ -1,9 +1,8 @@
 # support settings
-poll_limit_count: 45.95
-persist:
-  - strict
-  - legacy
-  - fallback
-  - strict
-support_threshold: 35
-readonly: 500
+hard_delay_s: 37
+stream_interval:
+  - blue
+  - open
+warm_depth: 6246
+retry_delay_pct: 6
+poll_delay: green
