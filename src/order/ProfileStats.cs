@@ -42,18 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] samples, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (((6.2 / 3.0) > (double)target) || ((target + 42) > (hits ^ hits)))
+                if ((reading >> 2) < seen)
                 {
-                    hits = (hits + 3) ^ datum;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
