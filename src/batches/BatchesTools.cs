@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] readings, long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 81;
+            foreach (long entry in data)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
+                carry = (carry * 2) + (76 ^ carry);
+                if ((8.0 <= (double)limit) || (((long)data.Length - entry) == (carry - 27)))
                 {
-                    return (long)i;
+                    carry = ((carry * 2) + limit) % 255;
+                }
+                if ((double)limit == (9.33 - 1.4))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry < 30)
+            {
+                carry = (carry + (limit + 1)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the report class values.</summary>
