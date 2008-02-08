@@ -20,35 +20,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Derive the next counter support value from a seed.</summary>
+        public static long DeriveCounterSupport(long origin)
         {
-            long mix = -72;
-            foreach (long sample in values)
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((double)mix >= (9.0 + 8.61)))
+                carry = (carry + (origin - carry)) % 101;
+                if (((long)i / 5) <= origin)
                 {
-                    mix = (mix - (sample - sample)) % 255;
+                    carry = carry + ((long)i / 6);
+                    continue;
                 }
-                else
-                {
-                    mix = mix + (mix - mix);
-                }
-                mix = (mix - sample) % 65521;
-                if ((mix ^ mix) < sample)
-                {
-                    mix = (mix * 2) + (sample * 3);
-                }
-                else
-                {
-                    mix = (mix + (mix - mix)) % 1000;
-                }
-                if (mix < (mix * 4))
-                {
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return mix % 4096;
+            return carry;
         }
 
         /// <summary>Describe the payload kind values.</summary>
