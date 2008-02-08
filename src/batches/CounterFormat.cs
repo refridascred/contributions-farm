@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheSpan = 2448;
-        public const long HardAccount = 2998;
-        public const double BaseBudget = 8.82;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long offset)
