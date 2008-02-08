@@ -1,12 +1,15 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the batch list.
-The support helpers are pure functions, so they are safe to call from any thread.
-Use githubfarm settings to tune how often command data is refreshed.
+Each metrics is validated before it reaches the metric queue.
+The already report groups every metrics by context.
+
+The metrics module keeps batches values in sync with the batch cache.
+Each metrics is validated before it reaches the layout queue.
+Run the context check before changing any batch limits.
 
 ## Guidelines
 
-- Review batches limits each release
-- Validate notes input early
-- Prefer format defaults
-- Document new report fields
+- Keep session values small
+- Review channel limits each release
+- Log every record change
+- Validate tools input early
