@@ -59,32 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long floor, long seed)
+        /// <summary>Check that every commits notes entry stays within the limit.</summary>
+        public static bool CheckCommitsNotesLimits(long[] series, long limit)
         {
-            long next = floor + seed;
-            if ((5.75 * 5.8) < (double)seed)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (2 <= (seed - seed))
+                if (datum <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - seed) <= next)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Fold a list of record readings.</summary>
