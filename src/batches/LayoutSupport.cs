@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every buffer notes entry stays within the limit.</summary>
-        public static bool VerifyBufferNotesLimits(long[] samples, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (sample < target)
+                if ((double)value <= 7.88)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) + target;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
