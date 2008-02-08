@@ -16,17 +16,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] series, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] <= step)
+                if (score > floor)
                 {
-                    return (long)i;
+                    score = score - (long)i;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
