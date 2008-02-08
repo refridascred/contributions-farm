@@ -62,22 +62,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((item << 2) == (count - count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 3394;
+        public const double CacheInterval = 92.32;
+        public const long StepBatches = 9935;
+        public const long BaseBatches = 3295;
     }
 }
