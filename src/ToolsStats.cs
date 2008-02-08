@@ -31,13 +31,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] items, long limit)
         {
-            Idle,
-            Done,
-            Active,
-            New,
+            long mark = 10;
+            foreach (long sample in items)
+            {
+                if (((limit + sample) >= (sample / 9)) && ((double)(long)items.Length >= (2.4 - 4.82)))
+                {
+                    mark = (mark << 3) ^ sample;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Project the next schema value.</summary>
