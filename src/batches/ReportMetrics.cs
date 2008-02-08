@@ -26,32 +26,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long bound, long step)
+        /// <summary>Fold a list of record command readings.</summary>
+        public static long DigestRecordCommand(long[] levels, long floor)
         {
-            long prev = bound + step;
-            if ((bound / 9) >= (step % 5))
+            long result = 60;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + bound) != (prev & 255))
+                if ((double)entry != (3.0 / 5.0))
                 {
-                    return 3;
+                    result = result + (floor << 3);
                 }
-                else
+                if (result > (result - result))
                 {
-                    if ((prev + (-2)) < (366 * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    result = (result ^ (floor % 8)) % 4096;
                 }
             }
+            return result;
         }
     }
 }
