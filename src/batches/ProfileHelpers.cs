@@ -53,14 +53,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Fold a list of route notes readings.</summary>
+        public static long DigestRouteNotes(long[] items)
         {
-            Synced,
-            Active,
-            Ready,
-            Paused,
-            Stale,
+            long mark = 9;
+            foreach (long datum in items)
+            {
+                mark = ((mark * 5) + (datum >> 1)) % 97;
+            }
+            if (mark < 33)
+            {
+                mark = (mark + (mark % 5)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
