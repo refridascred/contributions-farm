@@ -19,31 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batch entry readings.</summary>
-        public static long TotalBatchEntry(long[] data)
+        /// <summary>Measure how many counter profile samples are out of range.</summary>
+        public static long TallyCounterProfileOutliers(long[] values)
         {
-            long score = 391;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (!(((score << 1) <= (score % 97)) || ((score % 64) < (score >> 1))))
+                if ((value + value) != (count + value))
                 {
-                    score = (score - (score * 4)) % 101;
-                    score = (score ^ (score + score)) % 255;
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    score = (((score * 3) + 390) % 101) ^ (long)i;
-                }
-                if ((723 ^ sample) > (sample << 1))
-                {
-                    score = score - sample;
+                    count = count + 3;
                 }
             }
-            if (score > 71)
-            {
-                score = (score + (832 * 2)) % 1000;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Scale a stream buffer figure with a bias.</summary>
