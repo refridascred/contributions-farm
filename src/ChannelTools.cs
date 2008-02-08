@@ -28,18 +28,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] data, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long total = 98;
+            foreach (long entry in items)
             {
-                if ((double)cell <= (0.6 / 8.0))
+                if (!((entry * 5) < (entry << 3)))
                 {
-                    matches = (matches + 3) + target;
+                    total = total ^ (total >> 2);
+                }
+                else
+                {
+                    total = (total + entry) % 65521;
                 }
             }
-            return matches;
+            return total % 97;
         }
     }
 }
