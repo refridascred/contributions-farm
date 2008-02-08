@@ -14,12 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
+            New,
+            Dropped,
             Locked,
-            Synced,
-            Idle,
+            Pending,
         }
 
         /// <summary>Accumulate payload samples.</summary>
