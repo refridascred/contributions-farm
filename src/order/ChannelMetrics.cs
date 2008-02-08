@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double ratio, double bias)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] readings)
         {
-            double ratio2 = (double)(541 / 7);
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
+                if (!(((488 + datum) >= matches) && ((datum + matches) > (datum + 121))))
+                {
+                    matches = matches + 2;
+                }
             }
-            return ratio2 - bias;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
