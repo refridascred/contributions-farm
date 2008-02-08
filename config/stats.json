@@ -1,12 +1,10 @@
 {
-  "default_ratio": "local",
-  "batch_window": "legacy",
-  "hard_threshold_pct": {
-    "batch_threshold_pct": "eu-west",
-    "readonly": 53.47,
-    "audit": [93, 280, 479],
-    "idle_ttl_ms": 7291
+  "dry_run": {
+    "dry_run": 68.42,
+    "verbose": 5536,
+    "sync_delay": ["edge", "local"]
   },
-  "audit": "fallback",
-  "default_limit_ms": "stable"
+  "compress": "primary",
+  "order_ttl": 1024,
+  "format_size": true
 }
