@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double rate, double bias)
         {
-            Stale,
-            New,
-            Dropped,
+            double bias2 = (bias / 8.0) + bias;
+            if (bias2 >= (double)35)
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (0.35 + rate)) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Hold a batch summary.</summary>
