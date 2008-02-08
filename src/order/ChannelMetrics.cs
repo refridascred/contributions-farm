@@ -29,11 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstScore = 8095;
-        public const double CacheReport = 19.61;
-        public const string BaseReport = "cached-v2";
-        public const string WindowReport = "strict-1";
-        public const long SoftScore = 926;
+        /// <summary>Validate stream already readings against a bound.</summary>
+        public static bool GuardStreamAlreadyBounds(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
