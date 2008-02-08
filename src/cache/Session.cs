@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long bound)
         {
-            Dropped,
-            Failed,
-            Idle,
-            New,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define record limits and defaults.</summary>
