@@ -1,8 +1,5 @@
 {
-  "sync_window": "cached",
-  "cache_ttl": 9079,
-  "audit": 6423,
-  "dry_run": "standard",
-  "already_ttl": ["primary", "local", "stable"],
-  "compress": "edge"
+  "notes_interval": false,
+  "persist": [474, 424, 340],
+  "batch_timeout": [35, 177, 458]
 }
