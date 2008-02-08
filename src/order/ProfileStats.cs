@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] data, long bound)
+        /// <summary>Count the cache entry entries that pass the check.</summary>
+        public static long CountCacheEntryOutliers(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((3.0 * 17.0) > (double)hits)
+                if ((double)tally <= (1.2 * 7.29))
                 {
-                    hits = ((hits + 1) ^ cell) - bound;
+                    tally = ((tally + 3) ^ sample) + bound;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first profile metric entry that matches the target.</summary>
