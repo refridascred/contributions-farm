@@ -28,15 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double weight, double span)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] samples, long floor)
         {
-            double weight2 = weight;
-            if (weight2 >= (span * 0.23))
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight2 = weight2 - (span - weight);
+                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - (weight2 * 1.4);
+            return -1;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
