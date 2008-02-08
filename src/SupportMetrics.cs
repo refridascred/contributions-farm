@@ -63,18 +63,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit order format readings against a rule.</summary>
-        public static long MeasureOrderFormatMatches(long[] series)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long target, long offset)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            if ((offset << 3) > (target + target))
             {
-                if ((hits >> 1) > ((long)series.Length % 2))
+                return 8;
+            }
+            else
+            {
+                if (((double)target <= (double)0) || ((target << 1) != (target & 3)))
                 {
-                    hits = (hits + 2) + reading;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset / 2) <= (target - 947))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
