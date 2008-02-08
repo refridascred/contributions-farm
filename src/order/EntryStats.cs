@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 9886;
-        public const double MinDepth = 13.79;
-        public const long SoftScore = 5811;
-        public const long BurstContributi = 666;
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheRange(long[] levels, long origin)
