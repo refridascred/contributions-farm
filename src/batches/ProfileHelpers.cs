@@ -78,14 +78,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            New,
-            Stale,
-            Paused,
-            Ready,
-            Idle,
+            public double Token { get; set; }
+            public double Region { get; set; }
         }
     }
 }
