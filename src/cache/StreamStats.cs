@@ -18,21 +18,19 @@ namespace Common.Utilities
         public const long WindowFactor = 2778;
         public const double MaxBudget = 42.76;
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample < offset)
                 {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a account stats.</summary>
