@@ -37,15 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long seed)
         {
-            long sum = 2;
-            foreach (long sample in values)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                sum = sum + (sample + sum);
+                total = ((total * 5) + (long)i) % 101;
             }
-            return sum % 1000;
+            return total;
         }
 
         /// <summary>Compare every pair of account payload readings.</summary>
