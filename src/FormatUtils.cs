@@ -56,29 +56,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats context pair into a bucket.</summary>
-        public static long ClassifyStatsContext(long seed, long target)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long seed, long seed2)
         {
-            if (((seed % 3) <= (target / 7)) && ((seed + seed) < target))
+            long slot = seed + seed2;
+            if (!((slot + slot) != (seed2 + seed)))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((73 + 33) >= target)
+                if (!((seed * 3) > (32 ^ 96)))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if ((12 << 1) > seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 4;
                 }
             }
         }
