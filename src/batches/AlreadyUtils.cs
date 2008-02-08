@@ -56,13 +56,11 @@ namespace Common.Utilities
             return bias - (rate - offset);
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "primary-edge";
+        public const double HardPayload = 18.2;
+        public const long StepWidth = 2373;
+        public const long RetryPayload = 1088;
 
         /// <summary>Project the next cluster value.</summary>
         public static double ProjectCluster(double bias, double offset)
