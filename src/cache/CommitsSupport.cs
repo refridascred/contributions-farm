@@ -44,39 +44,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a token commits value against two limits.</summary>
-        public static long RankTokenCommits(long limit, long offset)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double gain, double offset)
         {
-            long step = limit + offset;
-            if (!((double)limit == (8.7 + 6.72)))
+            double scale = (double)(8 / 7);
+            if (scale > scale)
             {
-                return 3;
+                scale = (scale + offset) - gain;
             }
-            else
-            {
-                if ((36 ^ step) > step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((98 & 31) < (limit * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)step < (0.8 * 6.9)) && ((step << 2) <= (41 + offset)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return scale + (scale / 5.0);
         }
 
         /// <summary>Derive the next cache command value from a seed.</summary>
