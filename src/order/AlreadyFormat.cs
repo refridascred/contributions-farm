@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinDepth = 9765;
-        public const long HardCommits = 352;
-        public const string BaseCommits = "cached-edge";
-        public const double LimitCommits = 63.18;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Locked,
+            Pending,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long IterateChannel(long limit)
