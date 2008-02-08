@@ -23,11 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftFactor = 1437;
-        public const long CacheWidth = 6188;
-        public const long StepFactor = 1809;
-        public const double WindowCache = 23.76;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long TallyCommitsOutliers(long[] items, long seed)
