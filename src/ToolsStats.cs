@@ -39,18 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm farm entry that matches the target.</summary>
-        public static long LookupGithubfarmFarmIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 8297;
+        public const long StepRatio = 3408;
+        public const long MinBudget = 7859;
+        public const long MaxInterval = 1016;
+        public const double BaseCount = 91.7;
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
