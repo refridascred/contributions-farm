@@ -41,18 +41,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] data)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (4.0 <= (double)count)
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank session input into a small class.</summary>
