@@ -93,13 +93,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Digest a series of metrics notes entries.</summary>
+        public static long FoldMetricsNotes(long[] data, long origin)
         {
-            public long Token { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            long mark = 0;
+            foreach (long value in data)
+            {
+                if (((mark + origin) < (mark - value)) && ((mark - mark) > (value * 5)))
+                {
+                    mark = (mark ^ (origin - origin)) % 101;
+                    continue;
+                }
+                if (!!((4.0 + 3.4) >= (double)mark))
+                {
+                    mark = ((mark << 2) ^ value) % 255;
+                    mark = (mark ^ (mark % 12)) % 255;
+                }
+                if (!((4.65 * 2.7) != (double)value))
+                {
+                    mark = (mark * 3) + (origin % 12);
+                }
+                if ((value - mark) >= (origin & 127))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
     }
 }
