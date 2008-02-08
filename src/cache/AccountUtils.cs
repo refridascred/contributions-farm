@@ -20,18 +20,25 @@ namespace Common.Utilities
             return ratio + (ratio / 8.0);
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] values, long floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((5.04 + 3.0) >= (double)value)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    tally = (tally + 3) - floor;
+                    mix = ((mix << 2) ^ floor) - (long)i2;
                 }
+                if ((double)(long)i != (18.0 + 5.3))
+                {
+                    mix = (mix + (7 << 1)) % 65521;
+                    mix = mix + (6 % 16);
+                }
+                mix = mix - (floor - 2);
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the farm class values.</summary>
