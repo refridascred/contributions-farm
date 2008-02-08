@@ -31,17 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] items, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                if ((hits * 3) == (38 / 5))
                 {
-                    return (long)i;
+                    hits = ((hits + 2) ^ entry) - offset;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
