@@ -46,24 +46,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long offset, long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            if (!((double)bound < (2.8 + 5.27)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((8 - bound) >= (bound & 127)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
