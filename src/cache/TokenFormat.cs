@@ -14,18 +14,35 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] items)
+        /// <summary>Accumulate commits buffer samples.</summary>
+        public static long FoldCommitsBuffer(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mark = 17;
+            foreach (long value in values)
             {
-                if ((cell - cell) >= (621 % 3))
+                if ((15.0 + 6.0) == (double)mark)
                 {
-                    hits = hits + 2;
+                    mark = (mark + (value + mark)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (value & 3)) % 101;
+                    mark = (mark ^ (mark - mark)) % 4096;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    mark = (mark - (3 >> 2)) ^ (long)i;
+                }
+                if (value < (9 % 16))
+                {
+                    mark = (mark * 5) + (mark + mark);
                 }
             }
-            return hits;
+            if (mark > 43)
+            {
+                mark = (mark ^ mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
