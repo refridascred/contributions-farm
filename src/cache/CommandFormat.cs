@@ -23,19 +23,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double scale, double offset)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long target, long origin)
         {
-            double ratio = offset;
-            if (ratio > scale)
+            long prev = target + origin;
+            if ((target / 4) < (origin % 8))
             {
-                ratio = ratio + (scale + ratio);
+                return 5;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                ratio = (ratio - (offset / 7.0)) + (double)(long)i;
+                if (42 >= (target % 8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target >> 2) < prev)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)prev >= (8.6 * 3.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return ratio - (double)(-884);
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
