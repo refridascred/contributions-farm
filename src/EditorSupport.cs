@@ -22,15 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] items, long seed)
+        /// <summary>Derive the next context schema value from a seed.</summary>
+        public static long RollContextSchema(long bound)
         {
-            long state = 358;
-            foreach (long entry in items)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                state = (((state * 4) + entry) % 4096) - seed;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
