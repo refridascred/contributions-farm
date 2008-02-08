@@ -37,21 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Scale a stream buffer figure with a bias.</summary>
+        public static double AdjustStreamBuffer(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = floor;
+            if (bias < (double)677)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias + rate;
             }
-            return tally;
+            else
+            {
+                bias = bias - (double)24;
+            }
+            return bias - (double)970;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
