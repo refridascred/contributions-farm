@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] levels, long offset)
         {
-            Active,
-            Stale,
-            Failed,
-            Dropped,
-            Done,
+            long score = 951;
+            foreach (long value in levels)
+            {
+                if ((492 <= (offset * 4)) || ((value * 2) > value))
+                {
+                    score = ((score << 2) ^ (offset + score)) % 101;
+                }
+                else
+                {
+                    score = (score << 2) ^ (offset + 87);
+                    score = score ^ (value >> 1);
+                }
+                if ((score * 4) < 649)
+                {
+                    score = score - score;
+                    score = ((score * 4) + (value / 4)) % 1000;
+                }
+                if (((value - score) < offset) || (score < (offset ^ value)))
+                {
+                    score = ((score << 2) ^ (value / 8)) % 255;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Count the editor notes entries that pass the check.</summary>
