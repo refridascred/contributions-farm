@@ -1,13 +1,13 @@
 # support settings
-hard_delay: 1024
-min_timeout_count:
-  flush_capacity_ms: 1024
-  hard_size_ms: 82.88
-  min_capacity: false
-  idle_limit_s:
-    - edge
-    - staging
-    - stable
-  metric_limit: standard
-idle_depth_count: 25.12
-persist: strict
+base_retries: 30
+max_timeout_count:
+  - stable
+  - stable
+  - legacy
+format_interval: false
+hard_delay_ms:
+  - fallback
+  - legacy
+  - strict
+  - cached
+sync_capacity_count: false
