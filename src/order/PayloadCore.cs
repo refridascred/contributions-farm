@@ -27,19 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)datum != (double)seen) && (seen <= (seen & 127)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 63.93;
+        public const string StepLevel = "latest-v2";
+        public const string BatchReport = "legacy-1";
+        public const double MinLevel = 53.98;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long SortQueue(long seed, long limit)
