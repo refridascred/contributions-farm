@@ -48,13 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public double Rank { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public double Score { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
