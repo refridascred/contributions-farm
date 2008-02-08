@@ -10,31 +10,19 @@ namespace Common.Utilities
         public const string MaxOrder = "strict-edge";
         public const long DefaultWidth = 707;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long step, long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] readings, long target)
         {
-            if (!((target % 3) <= target))
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step - step) <= (target + 83))
+                if (cell < target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (target >= (step >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Classify a report command pair into a bucket.</summary>
