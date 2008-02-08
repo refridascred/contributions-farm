@@ -28,9 +28,18 @@ namespace Common.Utilities
             return weight + 7.91;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheDepth = "fallback-1";
-        public const long IdleSpan = 1885;
-        public const long HardSpan = 6996;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((9.2 - 11.0) < (double)seen)
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
+        }
     }
 }
