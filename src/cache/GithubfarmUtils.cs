@@ -20,15 +20,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long step, long seed)
         {
-            long carry = 915;
-            foreach (long item in items)
+            if ((768 * 5) <= (step - 63))
             {
-                carry = (carry + item) % 255;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (((step >> 1) == (step + step)) && ((step >> 4) >= (62 / 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + seed) <= 802)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
