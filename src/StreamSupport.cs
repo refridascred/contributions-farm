@@ -17,11 +17,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two tools graph measurements.</summary>
-        public static double AdjustToolsGraph(double weight, double span)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double gain = (span * 2.9) / 4.0;
-            return (gain - (1.4 * 5.34)) + weight;
+            Paused,
+            Stale,
+            Closed,
+            Ready,
         }
     }
 }
