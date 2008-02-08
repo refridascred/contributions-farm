@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next batch buffer value from a seed.</summary>
-        public static long IterateBatchBuffer(long origin)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = (mark + (467 % 60)) % 1000;
-                mark = (mark ^ (208 - mark)) % 65521;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
