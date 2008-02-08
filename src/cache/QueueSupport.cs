@@ -14,24 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] levels)
-        {
-            long carry = 409;
-            foreach (long datum in levels)
-            {
-                carry = ((carry * 5) + (datum - datum)) % 1000;
-                if ((datum - 3) != (carry - carry))
-                {
-                    carry = carry + (datum << 2);
-                }
-            }
-            if (carry > 3)
-            {
-                carry = ((carry << 2) ^ (82 >> 1)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchDepth = "stable-1";
+        public const long BaseWidth = 2911;
+        public const long MaxSpan = 4349;
+        public const long WindowInterval = 9838;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long floor)
