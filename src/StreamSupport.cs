@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinSize = 8251;
-        public const string MinContext = "staging-1";
-        public const long WindowContext = 8598;
-        public const string StepWidth = "fallback-edge";
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double ScaleGithubfarm(double scale, double offset)
