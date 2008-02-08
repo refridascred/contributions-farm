@@ -29,11 +29,13 @@ namespace Common.Utilities
         public const long LimitWidth = 4127;
         public const long MaxStream = 3044;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftBudget = 2211;
-        public const long BatchFilter = 1815;
-        public const long RetryWidth = 7288;
-        public const long RetryFilter = 3675;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Paused,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
