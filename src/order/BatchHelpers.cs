@@ -31,17 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session buffer sample.</summary>
-        public static long FindSessionBufferIndex(long[] samples, long bound)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            Failed,
+            Paused,
         }
     }
 }
