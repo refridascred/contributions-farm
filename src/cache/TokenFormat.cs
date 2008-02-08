@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "fallback";
-        public const string MaxOrder = "strict-edge";
-        public const long DefaultWidth = 707;
+        /// <summary>Derive the next batch buffer value from a seed.</summary>
+        public static long IterateBatchBuffer(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = (mark + (467 % 60)) % 1000;
+                mark = (mark ^ (208 - mark)) % 65521;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool GuardSupportLimits(long[] readings, long target)
