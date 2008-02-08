@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank checks metrics input into a small class.</summary>
-        public static long SortChecksMetrics(long bound, long floor)
+        /// <summary>Digest a series of githubfarm batches entries.</summary>
+        public static long CombineGithubfarmBatches(long[] items, long step)
         {
-            if ((floor ^ floor) != (floor + 806))
+            long score = 851;
+            foreach (long sample in items)
             {
-                return 5;
+                score = ((score - (score * 2)) + sample) + step;
             }
-            else
+            if (score < 2)
             {
-                if (1.46 >= (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((floor + bound) < floor) || ((floor << 2) <= (bound / 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                score = ((score << 2) ^ (70 / 5)) % 1000;
             }
+            return score % 65521;
         }
 
         /// <summary>Describe the channel status values.</summary>
