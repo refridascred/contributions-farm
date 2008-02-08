@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Blend two command context measurements.</summary>
+        public static double ProjectCommandContext(double rate, double floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            double drift = rate;
+            for (int i = 0; i < 2; i++)
             {
-                mix = ((mix * 3) + (mix * 4)) % 101;
-                if (floor >= (mix * 4))
-                {
-                    mix = (mix - (120 & 31)) % 4096;
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
+                drift = ((drift - (rate - 2.0)) - (double)(long)i) + floor;
             }
-            return mix;
+            return drift - (drift / 6.0);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
