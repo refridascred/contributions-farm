@@ -1,4 +1,15 @@
 # support settings
-githubfarm_interval: 12
-burst_limit_count: 11.83
-idle_capacity_ms: edge
+enabled:
+  command_timeout: 66
+  base_ratio: 250
+  strict:
+    - open
+    - standard
+min_ratio: eu-west
+retry_limit: blue
+base_depth_ms:
+  - legacy
+  - fallback
+  - fallback
+  - staging
+persist: 19.62
