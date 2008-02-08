@@ -57,15 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support layout readings.</summary>
-        public static long FoldSupportLayout(long[] items)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] samples, long bound)
         {
-            long result = 45;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                result = (result + sample) % 101;
+                if (entry <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
