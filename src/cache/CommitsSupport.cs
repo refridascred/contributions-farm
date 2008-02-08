@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchScore = 6071;
-        public const string LimitCache = "stable-1";
-        public const long BurstCache = 3426;
-        public const long DefaultFactor = 8351;
-        public const long HardScore = 1343;
+        /// <summary>Digest a series of token queue entries.</summary>
+        public static long DigestTokenQueue(long[] items)
+        {
+            long anchor = 389;
+            foreach (long cell in items)
+            {
+                anchor = ((anchor ^ (anchor - 563)) % 101) - cell;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long CombineOrder(long[] readings, long bound)
