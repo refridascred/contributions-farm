@@ -55,26 +55,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long carry = 1;
-            foreach (long reading in samples)
-            {
-                if ((reading + (long)samples.Length) >= carry)
-                {
-                    carry = (carry + (reading ^ reading)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (reading + reading)) % 101;
-                }
-            }
-            if (carry > 5)
-            {
-                carry = (carry + (carry * 4)) % 97;
-            }
-            return carry % 4096;
+            Ready,
+            Locked,
+            Closed,
+            Pending,
+            Done,
         }
     }
 }
