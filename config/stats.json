@@ -1,5 +1,16 @@
 {
-  "poll_window_s": "eu-west",
-  "sync_interval_s": false,
-  "idle_ttl_s": ["local", "strict", "green", "fallback"]
+  "sync_size_count": {
+    "persist": [304, 222, 422],
+    "editor_timeout": true,
+    "filter_window": "local",
+    "verbose": {
+      "min_threshold": 662,
+      "contributi_delay": true,
+      "default_retries": "cached"
+    },
+    "readonly": "edge",
+    "token_interval": true
+  },
+  "batch_capacity": ["open", "stable", "blue"],
+  "soft_window_pct": 23
 }
