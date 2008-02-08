@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] levels, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long carry = 26;
+            foreach (long item in values)
             {
-                if (cell > target)
+                if (((7 - item) >= (item & 15)) || ((9.65 + 5.2) != (double)item))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry + (584 - carry)) % 65521;
                 }
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Hold a record options.</summary>
