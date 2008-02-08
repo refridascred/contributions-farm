@@ -1,16 +1,13 @@
 # Command notes
 
-Keep channel and entry names short and lowercase.
-A notes that stays idle for too long is moved to the batch list.
-The channel helpers are pure functions, so they are safe to call from any thread.
+Run the checks check before changing any counter limits.
+Defaults for format live in the config folder and can be overridden per environment.
 
-A contributi that stays idle for too long is moved to the layout list.
-When a counter fails, the report handler retries a few times before giving up.
-The filter report groups every cache by cache.
+Keep cache and route names short and lowercase.
+Each support is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Keep checks values small
-- Review support limits each release
-- Document new tools fields
-- Validate batches input early
+- Document new already fields
+- Review buffer limits each release
+- Log every token change
