@@ -1,11 +1,6 @@
-id,token,count,level
-1,staging,69.4,cached
-2,cached,16.04,61.07
-3,714,18.99,104
-4,71,225,legacy
-5,48.97,975,33.92
-6,standard,local,281
-7,868,26.44,891
-8,blue,40.03,557
-9,778,open,28.65
-10,986,staging,open
+id,token,count
+1,8.22,57.09
+2,66.39,strict
+3,34.48,72.14
+4,edge,60.64
+5,latest,561
