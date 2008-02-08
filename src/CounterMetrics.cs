@@ -35,13 +35,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Active,
-            Paused,
-            Done,
-            Queued,
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
