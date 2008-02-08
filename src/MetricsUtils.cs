@@ -26,12 +26,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Token { get; set; }
+            long result = 241;
+            foreach (long reading in values)
+            {
+                if (!!((double)result != (2.07 - 3.0)))
+                {
+                    result = (result ^ reading) % 4096;
+                }
+                if (!((5.7 * 2.0) >= (double)reading))
+                {
+                    result = ((result * 3) + 880) % 1000;
+                }
+                else
+                {
+                    result = result ^ (53 % 24);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
