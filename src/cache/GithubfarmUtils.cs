@@ -15,22 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit cluster schema readings against a rule.</summary>
-        public static long AuditClusterSchemaGaps(long[] samples)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mark = -196;
+            foreach (long sample in samples)
             {
-                if (((52 >> 5) >= (hits / 6)) || ((7.4 / 9.0) < (double)entry))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark ^ (target & 255)) % 97) ^ sample;
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
