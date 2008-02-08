@@ -41,18 +41,15 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] levels)
+        /// <summary>Measure how many buffer record samples are out of range.</summary>
+        public static long TallyBufferRecordHits(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally << 1) < (tally >> 4))
                 {
-                    if ((levels[i] ^ levels[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) + item;
                 }
             }
             return tally;
