@@ -1,25 +1,6 @@
 # support settings
-schema_timeout: standard
-editor_interval:
-  min_limit_count: 45
-  retry_ratio_ms:
-    max_window_count: primary
-    min_delay: true
-    persist: false
-    hard_retries_ms: 36
-  context_capacity: 85
-  stream_delay:
-    notes_size:
-      - 394
-      - 118
-    enabled:
-      - 61
-      - 461
-      - 37
-    support_interval: false
-    window_window: true
-metric_size:
-  - 497
-  - 223
-  - 483
-  - 489
+context_capacity: 43
+graph_depth: true
+readonly: 100
+idle_size: 12.46
+record_threshold: fallback
