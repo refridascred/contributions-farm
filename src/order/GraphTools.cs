@@ -21,15 +21,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] data, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] samples, long origin)
         {
-            long result = 848;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                result = (((result * 4) + (result / 3)) ^ datum) + limit;
+                if (datum < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Combine window context values into a single score.</summary>
