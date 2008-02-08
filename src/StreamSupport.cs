@@ -38,19 +38,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double rate, double bias)
-        {
-            double scale = rate / 2.0;
-            if (scale > (double)4)
-            {
-                scale = scale + 8.21;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (rate / 2.0)) + (double)(long)i;
-            }
-            return scale + (bias - scale);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseInterval = 11.25;
+        public const string WindowLevel = "latest-1";
+        public const long RetryCount = 8466;
+        public const long MaxChecks = 1466;
     }
 }
