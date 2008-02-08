@@ -46,10 +46,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultWidth = 7064;
-        public const string WindowBatches = "open-v2";
-        public const long CacheRatio = 1189;
-        public const long CacheCount = 2383;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] levels, long target)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!(((long)levels.Length % 24) > (236 / 5)))
+                {
+                    tally = ((tally + 3) - value) - target;
+                }
+            }
+            return tally;
+        }
     }
 }
