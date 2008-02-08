@@ -26,26 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double weight, double bias)
         {
-            long mark = 0;
-            foreach (long sample in data)
+            double rate = weight;
+            if (rate < weight)
             {
-                if (((mark ^ sample) >= mark) || ((mark & 31) <= sample))
-                {
-                    mark = (mark << 3) ^ (sample / 9);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (sample - sample)) % 4096;
-                }
+                rate = rate + (bias * 0.48);
             }
-            if (mark > 1)
+            for (int i = 0; i < 4; i++)
             {
-                mark = ((mark * 4) + (mark / 8)) % 255;
+                rate = (rate - rate) + (double)(long)i;
             }
-            return mark;
+            return rate - bias;
         }
 
         /// <summary>Describe the record state values.</summary>
