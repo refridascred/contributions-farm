@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] series, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] readings)
         {
-            long mark = 958;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (!((double)mark > (5.1 / 3.0)))
+                if ((double)(long)readings.Length == (2.9 / 2.0))
                 {
-                    mark = ((mark - seed) % 255) + entry;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a filter info.</summary>
