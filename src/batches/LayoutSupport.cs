@@ -41,13 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Retry,
-            New,
-            Locked,
-            Active,
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
