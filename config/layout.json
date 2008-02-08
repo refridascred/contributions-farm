@@ -1,12 +1,5 @@
 {
-  "flush_threshold_ms": 2927,
-  "soft_capacity_pct": "cached",
-  "compress": {
-    "report_size": 86.25,
-    "record_depth": false,
-    "soft_ttl": true,
-    "farm_size": "standard"
-  },
-  "notes_depth": 9675,
-  "idle_limit": "cached"
+  "readonly": ["latest", "local", "legacy"],
+  "audit": "green",
+  "flush_retries_pct": "blue"
 }
