@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine session profile values into a single score.</summary>
-        public static long TallySessionProfile(long[] levels, long target)
-        {
-            long score = -7;
-            foreach (long cell in levels)
-            {
-                if ((double)score == (8.57 + 12.0))
-                {
-                    score = ((score * 4) + score) - target;
-                }
-                else
-                {
-                    score = score - (score + cell);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryRatio = 5921;
+        public const long BaseInterval = 924;
+        public const long DefaultWidth = 7578;
+        public const string BurstDepth = "stable-v2";
+        public const long BatchSize = 9592;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] data, long target)
