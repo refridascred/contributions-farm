@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string WindowBudget = "cached-edge";
         public const double BaseNotes = 15.48;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] data)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum & 127) != (seen ^ seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
