@@ -51,22 +51,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] data)
-        {
-            long mix = 43;
-            foreach (long entry in data)
-            {
-                if ((entry - 137) >= (mix & 31))
-                {
-                    mix = (mix - (entry << 2)) % 101;
-                }
-                if ((mix < (mix + 38)) && ((mix - entry) > mix))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 675;
+        public const double CacheFactor = 79.73;
+        public const double StepFarm = 50.71;
     }
 }
