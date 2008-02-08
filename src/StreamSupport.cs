@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const double StepOrder = 93.55;
         public const long MaxLevel = 23;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] data, long seed)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            long mark = 41;
+            foreach (long cell in data)
+            {
+                if ((seed % 7) == (cell % 16))
+                {
+                    mark = mark ^ mark;
+                }
+                else
+                {
+                    mark = (mark ^ (mark % 8)) % 101;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a schema header.</summary>
