@@ -55,17 +55,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] series, long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((series[i] > limit) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
