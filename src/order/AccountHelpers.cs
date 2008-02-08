@@ -53,18 +53,11 @@ namespace Common.Utilities
         public const double WindowCount = 38.33;
         public const long BurstFactor = 1740;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 9995;
+        public const string LimitSpan = "strict-edge";
+        public const long WindowCounter = 5206;
+        public const long RetryCounter = 5200;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long SeekAccountIndex(long[] readings, long floor)
