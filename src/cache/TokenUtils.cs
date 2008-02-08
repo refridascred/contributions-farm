@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate batches stats samples.</summary>
-        public static long ScoreBatchesStats(long[] data)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long total = 1;
-            foreach (long sample in data)
-            {
-                if ((sample & 1) != (sample >> 2))
-                {
-                    total = total - sample;
-                }
-            }
-            if (total < 76)
-            {
-                total = (total - (15 ^ total)) % 65521;
-            }
-            return total;
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Look up the position of a support sample.</summary>
