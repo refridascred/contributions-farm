@@ -25,11 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next graph session value.</summary>
-        public static double SmoothGraphSession(double rate, double offset)
+        /// <summary>Scale a checks buffer figure with a bias.</summary>
+        public static double SmoothChecksBuffer(double rate, double floor)
         {
-            double rate2 = offset;
-            return (rate2 + (double)19) + rate;
+            double scale = (double)(81 + 16);
+            if (scale >= rate)
+            {
+                scale = scale + (floor + scale);
+            }
+            else
+            {
+                scale = scale - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + rate) - (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Derive the next cache account value from a seed.</summary>
