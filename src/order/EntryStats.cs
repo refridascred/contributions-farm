@@ -48,12 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
+            public double Rank { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Blend two commits report measurements.</summary>
