@@ -32,23 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] samples, long offset)
         {
-            long acc = 1;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc ^ (acc - acc);
-                if ((double)value > (double)acc)
+                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
                 {
-                    acc = ((acc << 2) ^ acc) % 255;
-                }
-                if (!((acc - acc) < (acc % 100)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
