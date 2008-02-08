@@ -33,10 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "open-1";
-        public const long CacheTools = 6403;
-        public const long LimitDepth = 2472;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool ValidateQueueRange(long[] data, long seed)
