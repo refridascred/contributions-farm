@@ -26,10 +26,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleCounter = "open-v2";
-        public const string BurstCounter = "strict-1";
-        public const long BatchInterval = 5011;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long bound, long limit)
+        {
+            if ((limit & 1) <= (bound << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((limit + bound) < (bound + bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long AuditNotesHits(long[] readings, long seed)
