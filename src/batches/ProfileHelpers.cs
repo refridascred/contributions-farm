@@ -37,20 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Audit contributi already readings against a rule.</summary>
+        public static long MeasureContributiAlreadyMatches(long[] levels)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((double)state <= 8.89) || ((double)(long)i == (1.45 - 13.0)))
+                if (871 >= (value ^ hits))
                 {
-                    state = ((state << 2) ^ ((-4) % 24)) % 4096;
-                    continue;
+                    hits = hits + 1;
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of route notes readings.</summary>
