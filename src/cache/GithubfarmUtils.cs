@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long anchor = 79;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor - reading) % 4096;
-            }
-            if (anchor < 90)
-            {
-                anchor = anchor ^ (anchor & 255);
-            }
-            return anchor;
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit cluster schema readings against a rule.</summary>
