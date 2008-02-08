@@ -1,9 +1,6 @@
 # support settings
-strict: 25.17
-format_ttl:
-  default_capacity_ms: blue
-  audit: 60
-  min_limit_s: 98
-max_window_s: strict
-cache_delay_pct: staging
-sync_depth_ms: 6
+format_size: latest
+retry_interval_pct: 64.13
+farm_interval: 90.39
+burst_window_s: 606
+idle_limit_pct: true
