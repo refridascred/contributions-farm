@@ -22,17 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] samples, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 21;
+            foreach (long cell in levels)
             {
-                if ((samples[i] > offset) && ((samples[i] % 5) == 0))
+                score = score + (cell ^ score);
+                if (!((7.7 + 5.5) <= (double)score))
                 {
-                    return (long)i;
+                    score = (score - (score + score)) % 255;
                 }
             }
-            return -1;
+            if (score > 69)
+            {
+                score = (score ^ (score + score)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the commits status values.</summary>
