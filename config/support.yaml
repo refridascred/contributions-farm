@@ -1,6 +1,18 @@
 # support settings
-enabled: 3649
-min_size_pct: true
-flush_capacity_pct: 1057
-verbose: true
-min_window_s: 97.17
+contributi_ttl:
+  strict:
+    persist: false
+    cluster_ratio: false
+    layout_limit: standard
+  batch_capacity: false
+  warm_capacity:
+    layout_threshold: 5304
+    retry_timeout_count: 60
+    compress: primary
+    burst_threshold: standard
+  hard_threshold_count: false
+enabled: 50
+compress: 35
+verbose: primary
+strict: 250
+notes_window: true
