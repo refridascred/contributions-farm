@@ -1,27 +1,17 @@
 # githubfarm settings
-min_timeout:
-  - open
-  - stable
-  - local
-  - strict
-hard_window_ms: local
-sync_ttl_count: 1024
-account_ttl: 500
-sync_ttl_s: 250
-idle_timeout:
-  burst_size:
-    default_capacity: 19
-    min_interval_s:
-      - blue
-      - green
-      - open
-    persist: local
-  retry_delay_pct: edge
-  retry_depth_pct: 1024
-  audit: eu-west
-  compress:
-    flush_delay: 89
-    persist: primary
-    poll_size_count: 44
-    poll_size_s: false
-    max_window: 83.39
+hard_capacity_count:
+  - 1
+  - 14
+  - 298
+  - 394
+min_size_pct: staging
+profile_size:
+  burst_delay_count: 35.43
+  compress: eu-west
+  readonly: false
+  enabled: standard
+  channel_interval:
+    - 301
+    - 296
+soft_ratio_pct: 43.01
+flush_size_ms: 49.04
