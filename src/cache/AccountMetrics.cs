@@ -68,21 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] items, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                mix = (mix ^ seed) % 97;
-                mix = ((mix << 3) ^ (mix + mix)) % 97;
-                for (int i2 = 0; i2 < 4; i2++)
+                if (((393 - reading) < seen) || (((double)target <= (10.0 + 5.7)) || (12.0 > (1.0 + 7.0))))
                 {
-                    mix = ((mix - (mix << 1)) % 255) ^ (long)i2;
+                    seen = seen + 3;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Audit order command readings against a rule.</summary>
