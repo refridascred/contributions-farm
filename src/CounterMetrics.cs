@@ -31,21 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((reading << 3) < (9 - offset)) && ((650 ^ seen) != (reading + seen)))
                 {
-                    if ((data[i] ^ data[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Adjust a support reading.</summary>
