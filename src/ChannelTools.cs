@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheFactor = 1880;
-        public const long StepNotes = 6144;
-        public const long LimitNotes = 5684;
-        public const string DefaultNotes = "standard-1";
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double ratio, double offset)
+        {
+            double load = (offset / 4.0) / 2.0;
+            if (load > (double)353)
+            {
+                load = load - (ratio / 7.0);
+            }
+            else
+            {
+                load = load + (load + ratio);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (ratio * 4.12)) + (double)(long)i;
+            }
+            return load - load;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
