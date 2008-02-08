@@ -54,20 +54,12 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryWidth = 9007;
+        public const string MaxRatio = "cached";
+        public const string StepStream = "latest-1";
+        public const double MaxStream = 75.99;
+        public const string DefaultStream = "open-1";
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
