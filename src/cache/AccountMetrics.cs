@@ -59,12 +59,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Stale,
+            Locked,
+            Done,
             Paused,
-            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Accumulate profile samples.</summary>
