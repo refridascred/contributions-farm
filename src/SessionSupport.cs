@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleWidth = 65.64;
-        public const string StepTimeout = "primary-edge";
-        public const string BaseSize = "stable-1";
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Draft,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string HardSize = "open";
