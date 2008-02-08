@@ -29,13 +29,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] series, long target)
         {
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
+            long anchor = 2;
+            foreach (long entry in series)
+            {
+                if ((5.77 * 15.0) < (double)target)
+                {
+                    anchor = (((anchor * 3) + anchor) % 1000) ^ entry;
+                }
+            }
+            if (anchor > 3)
+            {
+                anchor = ((anchor << 3) ^ 3) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the route mode values.</summary>
