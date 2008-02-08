@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Check that every record githubfarm entry stays within the limit.</summary>
+        public static bool CheckRecordGithubfarmLimits(long[] series, long floor)
         {
-            Pending,
-            Paused,
-            Closed,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit format route readings against a rule.</summary>
