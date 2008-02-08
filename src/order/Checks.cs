@@ -47,13 +47,12 @@ namespace Common.Utilities
         public const long RetryWidth = 7288;
         public const long RetryFilter = 3675;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a format reading by value.</summary>
