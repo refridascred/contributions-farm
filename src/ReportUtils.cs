@@ -78,15 +78,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double bias, double span)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long floor, long floor2)
         {
-            double ratio = (bias / 6.0) + (double)61;
-            if (ratio > span)
+            long span = floor + floor2;
+            if ((3 ^ floor2) > floor)
             {
-                ratio = ratio + (ratio + bias);
+                return 6;
             }
-            return ratio - (double)7;
+            else
+            {
+                if (((floor2 / 8) > (span % 60)) || ((span ^ floor2) > (floor2 / 7)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((4.52 / 7.0) != (double)floor2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
