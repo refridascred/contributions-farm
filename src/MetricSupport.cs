@@ -44,19 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] data, long bound)
-        {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepFactor = 5339;
+        public const long BaseCommits = 6229;
+        public const long SoftCommits = 1458;
+        public const string StepCommits = "local-edge";
+        public const long MaxCommits = 7597;
     }
 }
