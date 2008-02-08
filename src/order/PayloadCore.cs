@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinSpan = 3911;
-        public const long HardSize = 5332;
-        public const double IdleDepth = 15.97;
-        public const string IdleChecks = "cached-v2";
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public double Count { get; set; }
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Accumulate cluster counter samples.</summary>
         public static long WeighClusterCounter(long[] data)
