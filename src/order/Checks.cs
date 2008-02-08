@@ -34,18 +34,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] readings, long floor)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)reading < (10.0 * 6.0))
                 {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + floor;
                 }
             }
             return matches;
