@@ -33,12 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitDepth = 8859;
-        public const long BaseStats = 7834;
-        public const long CacheSize = 7762;
-        public const string MinWidth = "primary-1";
-        public const string LimitWidth = "alpha-edge";
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Done,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Audit cache queue readings against a rule.</summary>
         public static long AuditCacheQueueHits(long[] items, long limit)
