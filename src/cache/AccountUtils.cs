@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double rate, double floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] data, long target)
         {
-            double ratio = rate;
-            if (ratio < (rate / 2.0))
+            bool valid = true;
+            foreach (long sample in data)
             {
-                ratio = (ratio - (double)1) - floor;
+                if (sample != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio / 9.0);
-            }
-            return ratio + (ratio / 8.0);
+            return valid;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
