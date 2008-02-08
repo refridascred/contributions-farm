@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long BurstChecks = 3896;
         public const long DefaultChecks = 3184;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] items)
         {
-            Queued,
-            Active,
-            Pending,
-            Done,
-            Ready,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (seen >= ((long)items.Length & 7))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
