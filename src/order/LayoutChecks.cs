@@ -49,19 +49,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Measure how many payload stream samples are out of range.</summary>
+        public static long AuditPayloadStreamOutliers(long[] samples, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((long)i == (state >> 3))
+                if ((65 - tally) == (tally + tally))
                 {
-                    state = (state * 3) + ((long)i << 2);
+                    tally = ((tally + 2) - value) + target;
                 }
-                state = ((state * 4) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a batch stats.</summary>
