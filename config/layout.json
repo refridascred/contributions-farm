@@ -1,8 +1,5 @@
 {
-  "format_window": false,
-  "channel_retries": "open",
-  "sync_size": 86,
-  "idle_limit": 500,
-  "metrics_timeout": 28,
-  "compress": 60
+  "channel_depth": "cached",
+  "schema_retries": "staging",
+  "format_delay": "eu-west"
 }
