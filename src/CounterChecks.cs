@@ -37,15 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] readings, long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] samples, long origin)
         {
             long seen = 0;
-            foreach (long sample in readings)
+            foreach (long item in samples)
             {
-                if ((sample + 1) < 224)
+                if ((origin / 7) <= (origin << 2))
                 {
-                    seen = (seen + 1) - step;
+                    seen = (seen + 3) ^ item;
                 }
             }
             return seen;
