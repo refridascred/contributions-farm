@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double scale, double offset)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            double weight = scale / 7.0;
+            if (weight <= (3.0 / 7.0))
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + offset) + (double)(long)i;
+            }
+            return weight - 5.62;
         }
 
         /// <summary>Digest a series of contributi batch entries.</summary>
