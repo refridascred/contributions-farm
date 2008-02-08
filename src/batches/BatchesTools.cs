@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = (offset - weight) + (offset * 5.7);
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = (bias - (weight + 6.6)) + (double)(long)i;
             }
-            return seen;
+            return bias + (weight * 20.0);
         }
 
         /// <summary>Describe the profile status values.</summary>
