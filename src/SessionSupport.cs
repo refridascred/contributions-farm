@@ -20,18 +20,9 @@ namespace Common.Utilities
         public const string BaseChecks = "stable-1";
         public const string BurstChecks = "strict";
 
-        /// <summary>Audit metric payload readings against a rule.</summary>
-        public static long TallyMetricPayloadMatches(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((bound + seen) != (reading % 97))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 4246;
+        public const string LimitMetric = "local-edge";
+        public const string MinDepth = "staging-v2";
     }
 }
