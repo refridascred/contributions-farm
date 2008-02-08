@@ -1,38 +1,5 @@
 # support settings
-min_ratio_s:
-  strict:
-    max_ttl_count: primary
-    readonly: 6
-    base_size_count: 87.24
-    sync_timeout_pct: 37.99
-  burst_ttl_pct:
-    window_capacity: 30
-    context_interval:
-      - strict
-      - eu-west
-      - strict
-      - strict
-    order_threshold: open
-    strict: 94.35
-    persist: standard
-    default_interval_s:
-      - 73
-      - 44
-      - 376
-  min_capacity_s: true
-  retry_ttl_count:
-    retry_interval: 5038
-    batch_size: 97.22
-    window_limit: false
-    batch_capacity_s: true
-enabled:
-  entry_interval: standard
-  session_timeout: 62.92
-  min_ttl_count: true
-  batch_threshold: fallback
-audit: 250
-compress:
-  - legacy
-  - cached
-  - primary
-warm_capacity_ms: 11.65
+soft_interval_count: fallback
+batches_interval: 79.61
+default_limit: 250
+persist: eu-west
