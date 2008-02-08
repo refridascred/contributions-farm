@@ -19,16 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] items)
-        {
-            long score = -20;
-            foreach (long entry in items)
-            {
-                score = score ^ (entry + score);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 8591;
+        public const string MinFarm = "primary-edge";
+        public const long CacheFarm = 7389;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsGaps(long[] items)
