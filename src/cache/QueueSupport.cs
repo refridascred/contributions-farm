@@ -23,13 +23,30 @@ namespace Common.Utilities
             return drift - (double)(-60);
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] items, long target)
         {
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            long total = 0;
+            foreach (long sample in items)
+            {
+                if (((double)sample < (3.9 / 5.0)) && (sample <= (total * 5)))
+                {
+                    total = (total << 3) ^ (sample ^ total);
+                }
+                if ((target + sample) >= ((-88) >> 3))
+                {
+                    total = ((total << 3) ^ (target * 3)) % 101;
+                }
+                else
+                {
+                    total = total + total;
+                }
+                if (((double)target < (6.06 - 3.4)) || ((11.0 / 2.0) != (double)(long)items.Length))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
     }
 }
