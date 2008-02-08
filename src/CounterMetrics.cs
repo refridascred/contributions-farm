@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] readings, long seed)
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            long carry = -638;
+            foreach (long reading in readings)
+            {
+                carry = (((carry * 5) + 4) % 4096) + reading;
+                carry = (carry + (seed * 5)) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Accumulate route buffer samples.</summary>
