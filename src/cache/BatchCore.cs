@@ -45,19 +45,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate checks batches readings against a bound.</summary>
-        public static bool VerifyChecksBatchesBounds(long[] values, long limit)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
