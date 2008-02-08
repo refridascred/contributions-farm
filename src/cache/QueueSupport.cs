@@ -12,21 +12,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 25;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((4.92 * 6.0) == (double)result)
                 {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (((result << 2) ^ (result / 7)) % 65521) ^ cell;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
