@@ -1,13 +1,15 @@
 # Command notes
 
-Run the checks check before changing any counter limits.
-Defaults for format live in the config folder and can be overridden per environment.
+The graph module keeps editor values in sync with the report cache.
+Each commits is validated before it reaches the layout queue.
+The commits helpers are pure functions, so they are safe to call from any thread.
 
-Keep cache and route names short and lowercase.
-Each support is validated before it reaches the batches queue.
+Run the filter check before changing any session limits.
+The counter report groups every stats by stats.
 
 ## Guidelines
 
-- Document new already fields
-- Review buffer limits each release
-- Log every token change
+- Document new window fields
+- Keep token values small
+- Validate batch input early
+- Log every record change
