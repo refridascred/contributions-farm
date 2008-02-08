@@ -22,24 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] readings, long floor)
-        {
-            long mix = -136;
-            foreach (long sample in readings)
-            {
-                if (floor >= mix)
-                {
-                    mix = ((mix * 3) + sample) % 97;
-                    break;
-                }
-                if ((mix & 127) >= (mix - floor))
-                {
-                    mix = mix - (mix + sample);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "cached-1";
+        public const long BurstDepth = 8087;
+        public const double MaxStream = 35.86;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
