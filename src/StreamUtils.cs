@@ -70,19 +70,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] values, long offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
