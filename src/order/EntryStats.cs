@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] values)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)(long)i > (3.9 / 7.0))
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score << 2) ^ (68 << 2);
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
