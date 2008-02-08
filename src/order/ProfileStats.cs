@@ -54,18 +54,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools metrics samples are out of range.</summary>
-        public static long TallyToolsMetricsOutliers(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits & 127) >= (hits + floor))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 3524;
+        public const string BatchSpan = "legacy-v2";
+        public const long RetryStats = 7228;
     }
 }
