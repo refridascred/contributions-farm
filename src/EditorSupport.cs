@@ -58,19 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] levels, long bound)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            double bias = (double)(771 << 3);
+            if (bias <= bias)
             {
-                if (item > bound)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = ((bias + bias) - gain) + offset;
             }
-            return stale;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - 6.61;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
