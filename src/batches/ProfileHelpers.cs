@@ -65,17 +65,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] samples, long step)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
