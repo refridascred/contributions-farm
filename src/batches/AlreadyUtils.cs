@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardCounter = "fallback-edge";
+        public const long RetryCounter = 7683;
+        public const long BurstFactor = 2127;
+        public const long IdleCounter = 9538;
+        public const long CacheScore = 9962;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsGaps(long[] readings)
