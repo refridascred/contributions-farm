@@ -27,15 +27,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double scale, double span)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] values)
         {
-            double weight = span;
-            if (weight < 9.9)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + scale;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight + span;
+            return count;
         }
 
         /// <summary>Blend two checks measurements.</summary>
