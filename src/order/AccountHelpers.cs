@@ -55,23 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm editor values into a single score.</summary>
-        public static long DigestFarmEditor(long[] levels, long bound)
-        {
-            long carry = -878;
-            foreach (long item in levels)
-            {
-                if ((54 % 5) != (carry / 7))
-                {
-                    carry = (((carry * 3) + carry) % 4096) ^ item;
-                }
-            }
-            if (carry < 1)
-            {
-                carry = (carry * 4) + (bound - 72);
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 2717;
+        public const double LimitRatio = 96.99;
+        public const double WindowCount = 38.33;
+        public const long BurstFactor = 1740;
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long LookupAlreadyIndex(long[] data, long floor)
