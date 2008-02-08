@@ -73,10 +73,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 4618;
-        public const long StepEditor = 9089;
-        public const long MaxEditor = 990;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] items)
+        {
+            long result = 3;
+            foreach (long reading in items)
+            {
+                if ((result * 5) < reading)
+                {
+                    result = (result - reading) % 97;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long DigestProfile(long[] data)
