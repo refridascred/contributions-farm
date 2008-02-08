@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public double Limit { get; set; }
-            public bool Count { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Blend two graph measurements.</summary>
