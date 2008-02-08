@@ -51,19 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double rate, double floor)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double rate2 = (double)95 - 3.9;
-            if (rate2 >= rate2)
-            {
-                rate2 = (rate2 - (rate + 7.31)) - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 + 4.77) - (double)(long)i;
-            }
-            return rate2 - rate2;
+            New,
+            Done,
+            Stale,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
