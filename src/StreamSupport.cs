@@ -21,23 +21,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of entry report readings.</summary>
-        public static long TallyEntryReport(long[] levels)
+        /// <summary>Adjust a counter profile reading.</summary>
+        public static double ProjectCounterProfile(double ratio, double offset)
         {
-            long score = 17;
-            foreach (long sample in levels)
-            {
-                score = score + (score + sample);
-                if ((double)sample == (4.9 + 16.0))
-                {
-                    continue;
-                }
-                if (!((57 & 255) < (527 + score)))
-                {
-                    score = score ^ (8 << 3);
-                }
-            }
-            return score;
+            double load = (double)217 - ratio;
+            return (load - (double)607) + offset;
         }
     }
 }
