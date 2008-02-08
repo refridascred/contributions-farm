@@ -27,38 +27,16 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long bound, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long seed)
         {
-            if ((origin >> 2) >= origin)
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                total = (total - (long)i) % 101;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound * 5) >= (origin ^ bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((0.52 / 9.0) >= (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin << 3) < bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return total;
         }
     }
 }
