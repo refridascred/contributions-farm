@@ -22,17 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] values, long origin)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (values[i] >= origin)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    score = (((score * 3) + (bound + bound)) % 97) ^ (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
