@@ -24,14 +24,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Match up githubfarm profile samples.</summary>
+        public static long PairGithubfarmProfileCount(long[] samples)
         {
-            Queued,
-            Draft,
-            Ready,
-            Failed,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
