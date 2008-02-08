@@ -30,22 +30,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] data)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((9.74 / 3.0) < (double)seen)
-                {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
