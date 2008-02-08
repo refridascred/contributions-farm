@@ -41,13 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Count the already support entries that pass the check.</summary>
+        public static long MeasureAlreadySupportHits(long[] data)
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (!(item >= (0 & 31)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the tools level values.</summary>
