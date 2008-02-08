@@ -42,17 +42,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] data, long seed)
+        /// <summary>Roll a batches filter counter forward.</summary>
+        public static long IterateBatchesFilter(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                anchor = anchor - (anchor - floor);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
