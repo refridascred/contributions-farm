@@ -26,26 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] readings, long limit)
-        {
-            long mix = 5;
-            foreach (long reading in readings)
-            {
-                if ((reading >> 4) < (reading + (-9)))
-                {
-                    mix = (mix + mix) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (limit ^ reading)) % 255;
-                }
-            }
-            if (mix < 674)
-            {
-                mix = ((mix * 5) + (limit - mix)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstSize = 2917;
+        public const long IdleWindow = 4191;
+        public const long MaxWindow = 7257;
+        public const double BurstBudget = 14.75;
+        public const double DefaultSize = 46.79;
     }
 }
