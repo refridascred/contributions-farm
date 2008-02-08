@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] levels)
+        /// <summary>Combine buffer commits values into a single score.</summary>
+        public static long WeighBufferCommits(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mark = -5;
+            foreach (long sample in data)
             {
-                if (((hits - cell) < hits) || ((hits & 1) >= (hits + cell)))
+                if ((sample & 127) != (sample - 2))
                 {
-                    hits = hits + 2;
+                    mark = mark + (mark >> 5);
                 }
-                else
+                if (((double)mark <= (9.74 / 5.0)) && ((double)sample != (double)mark))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return mark % 97;
         }
 
         /// <summary>Count the metrics stream entries that pass the check.</summary>
