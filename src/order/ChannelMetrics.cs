@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const double MaxCounter = 29.22;
         public const long IdleCounter = 6940;
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double scale, double floor)
+        /// <summary>Audit notes token readings against a rule.</summary>
+        public static long AuditNotesTokenMatches(long[] data, long offset)
         {
-            double scale2 = (double)(0 << 1);
-            if (scale2 <= (scale * 14.0))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                scale2 = (scale2 + scale) + floor;
+                if ((double)datum > 11.0)
+                {
+                    seen = (seen + 1) - offset;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (double)65;
-            }
-            return scale2 + scale;
+            return seen;
         }
     }
 }
