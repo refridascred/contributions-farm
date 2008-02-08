@@ -55,17 +55,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long origin, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((bound << 2) <= origin) && (origin <= 809))
             {
-                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound > (3.0 + 2.49))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + origin) < (origin % 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((2.18 * 9.5) == (double)bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a session summary.</summary>
