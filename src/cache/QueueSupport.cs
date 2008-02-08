@@ -14,11 +14,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchDepth = "stable-1";
-        public const long BaseWidth = 2911;
-        public const long MaxSpan = 4349;
-        public const long WindowInterval = 9838;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepAccount = "alpha";
+        public const double BurstRatio = 31.15;
+        public const long DefaultBudget = 5456;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long floor)
