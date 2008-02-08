@@ -41,26 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] data)
-        {
-            long state = 64;
-            foreach (long sample in data)
-            {
-                if ((state >= (state % 8)) && ((6 - state) < (sample - (-378))))
-                {
-                    state = ((state << 2) ^ ((-148) + 56)) % 4096;
-                }
-                if (((9 * 5) > ((long)data.Length & 15)) || ((state + state) >= (sample & 127)))
-                {
-                    break;
-                }
-            }
-            if (state > 746)
-            {
-                state = (state * 5) + state;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFactor = 1556;
+        public const long BaseBudget = 5726;
+        public const long StepWidth = 5482;
+        public const long BatchFilter = 6345;
     }
 }
