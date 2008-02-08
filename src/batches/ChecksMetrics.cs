@@ -53,38 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long offset, long floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            if ((floor >> 4) >= (floor * 3))
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                anchor = anchor - ((long)i >> 4);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (floor >= (offset % 24))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor > (offset ^ offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset - 5) <= (floor * 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
