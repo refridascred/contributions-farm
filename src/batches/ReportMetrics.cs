@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] levels, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 350;
+            foreach (long item in series)
             {
-                if (levels[i] <= limit)
+                if (((item * 5) > (score << 3)) && (78 > (score + 17)))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (item + item)) % 65521;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
