@@ -28,14 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] readings)
         {
-            Paused,
-            Pending,
-            Done,
-            Stale,
-            New,
+            long mark = 86;
+            foreach (long entry in readings)
+            {
+                if ((entry - 411) >= entry)
+                {
+                    mark = mark - entry;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
