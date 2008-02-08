@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 8604;
-        public const long StepCount = 785;
-        public const double MinContributi = 40.03;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] data)
+        {
+            long sum = 5;
+            foreach (long reading in data)
+            {
+                if (!((5.56 / 8.0) > (double)reading))
+                {
+                    sum = ((sum << 3) ^ reading) % 97;
+                }
+                else
+                {
+                    sum = (sum + (sum + sum)) % 101;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long OverlapOrderCount(long[] samples)
