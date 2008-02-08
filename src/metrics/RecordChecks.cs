@@ -23,19 +23,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] readings, long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long carry = 0;
+            foreach (long value in samples)
             {
-                if (item < target)
+                carry = (carry - value) % 65521;
+                if ((671 / 8) > (value << 2))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry ^ offset) % 65521;
                 }
             }
-            return valid;
+            return carry % 97;
         }
 
         /// <summary>Hold a batches record.</summary>
