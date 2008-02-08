@@ -1,7 +1,8 @@
 {
-  "format_window": "latest",
-  "dry_run": 63.64,
-  "readonly": 82.69,
-  "idle_size": "open",
-  "base_delay_pct": ["fallback", "latest"]
+  "stream_depth": 5,
+  "burst_retries": "local",
+  "retry_retries_count": 36.95,
+  "githubfarm_window": "primary",
+  "cache_threshold_count": ["open", "fallback"],
+  "audit": 51
 }
