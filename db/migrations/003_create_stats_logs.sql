@@ -2,8 +2,10 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     weight REAL,
-    count INTEGER NOT NULL DEFAULT 0,
-    state TEXT NOT NULL DEFAULT 'new'
+    state TEXT NOT NULL DEFAULT 'new',
+    region TEXT,
+    score REAL NOT NULL DEFAULT 0,
+    ratio REAL
 );
 
 CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
