@@ -21,13 +21,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Measure how many channel session samples are out of range.</summary>
+        public static long AuditChannelSessionGaps(long[] series)
         {
-            public double Count { get; set; }
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (matches > (item >> 2))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
