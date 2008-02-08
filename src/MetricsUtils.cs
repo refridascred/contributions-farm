@@ -78,18 +78,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] samples)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long carry = -6;
+            foreach (long cell in values)
             {
-                if ((256 % 64) != (item % 16))
+                if ((double)carry <= (3.2 * 15.0))
                 {
-                    seen = seen + 3;
+                    carry = (carry ^ (cell & 1)) - target;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a cluster summary.</summary>
