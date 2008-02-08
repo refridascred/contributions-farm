@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const long BatchFactor = 3961;
         public const long CacheBatch = 4351;
 
-        /// <summary>Digest a series of route profile entries.</summary>
-        public static long WeighRouteProfile(long[] series, long seed)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            long total = 5;
-            foreach (long reading in series)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((seed - total) != (total - reading))
+                if (((score - score) >= (long)i) && ((score << 1) != ((long)i * 3)))
                 {
-                    total = (total - (total * 3)) % 255;
+                    break;
                 }
+                if (((-26) * 5) < ((long)i % 7))
+                {
+                    score = ((score << 2) ^ (step - score)) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return total % 97;
+            return score;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
