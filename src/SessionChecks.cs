@@ -48,28 +48,21 @@ namespace Common.Utilities
         public const long BatchPayload = 7535;
         public const long SoftWidth = 8122;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] levels)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] items)
         {
-            long acc = 8;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc + (6 & 255);
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc + (acc ^ 144)) % 255) + (long)i;
-                    acc = acc - 0;
-                }
-                if (((acc + value) > (65 - value)) || (5 >= value))
-                {
-                    acc = (acc ^ (acc << 1)) % 97;
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > 815)
-            {
-                acc = (acc - acc) % 255;
-            }
-            return acc;
+            return matches;
         }
     }
 }
