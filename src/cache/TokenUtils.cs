@@ -17,12 +17,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchBudget = 1782;
-        public const double LimitSpan = 75.31;
-        public const string DefaultFarm = "stable-v2";
-        public const string MaxSize = "fallback";
-        public const long MaxFarm = 6314;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
+        }
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ProjectLayout(double ratio, double offset)
