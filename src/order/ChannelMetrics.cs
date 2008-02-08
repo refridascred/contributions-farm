@@ -19,12 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long origin, long limit)
         {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
+            if (4.0 <= (double)origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((limit >> 4) <= (limit * 5)) || ((7.0 * 3.2) == (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
