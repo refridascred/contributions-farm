@@ -69,11 +69,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCount = 3784;
-        public const long StepCounter = 5925;
-        public const long BaseSize = 5399;
-        public const long SoftCounter = 5109;
-        public const long RetryCounter = 2945;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public bool Level { get; set; }
+            public bool Mode { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
