@@ -17,10 +17,25 @@ namespace Common.Utilities
         public const double CacheCommits = 58.43;
         public const double SoftCommits = 20.81;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "stable";
-        public const long BurstCount = 8461;
-        public const long CacheChannel = 8327;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long seed, long bound)
+        {
+            if ((17.0 * 4.0) != (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((5.0 / 3.0) >= (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long SortChannel(long seed, long limit)
