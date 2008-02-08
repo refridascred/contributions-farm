@@ -42,15 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double bias, double offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] samples, long target)
         {
-            double rate = bias + offset;
-            if (rate <= (rate - bias))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                rate = rate - (double)919;
+                if (((6.2 / 3.0) > (double)target) || ((target + 42) > (hits ^ hits)))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
             }
-            return rate + (bias + 17.0);
+            return hits;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
