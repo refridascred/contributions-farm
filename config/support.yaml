@@ -1,5 +1,7 @@
 # support settings
-retry_ratio_s: 60.24
-layout_ttl: fallback
-farm_window: 100
-soft_capacity_ms: legacy
+entry_depth: open
+idle_capacity: 3144
+warm_timeout: latest
+counter_limit:
+  - eu-west
+  - blue
