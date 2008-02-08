@@ -79,21 +79,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Derive the next cache command value from a seed.</summary>
+        public static long IterateCacheCommand(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = ((mark * 4) + (mark + mark)) % 255;
+                if (floor <= (mark / 6))
                 {
-                    if ((series[i] - series[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark << 3) ^ mark;
+                    mark = (mark + ((long)i + mark)) % 255;
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Validate window contributi readings against a bound.</summary>
