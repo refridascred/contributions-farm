@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double ratio, double span)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] readings, long target)
         {
-            double gain = (ratio - span) * 3.0;
-            if (gain < (17.0 + ratio))
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + (double)9;
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (span - 0.2)) + (double)(long)i;
-            }
-            return gain + (gain - gain);
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
