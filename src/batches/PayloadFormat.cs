@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long DefaultSpan = 3692;
         public const double SoftBatches = 98.04;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] samples, long step)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Done,
+            Closed,
         }
 
         /// <summary>Count the githubfarm report entries that pass the check.</summary>
