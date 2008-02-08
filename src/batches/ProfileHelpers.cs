@@ -52,19 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route notes readings.</summary>
-        public static long DigestRouteNotes(long[] items)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] samples)
         {
-            long mark = 9;
-            foreach (long datum in items)
+            long anchor = -6;
+            foreach (long cell in samples)
             {
-                mark = ((mark * 5) + (datum >> 1)) % 97;
+                anchor = (anchor ^ (anchor << 1)) ^ cell;
             }
-            if (mark < 33)
+            if (anchor < 22)
             {
-                mark = (mark + (mark % 5)) % 97;
+                anchor = ((anchor * 4) + (anchor + anchor)) % 101;
             }
-            return mark;
+            return anchor % 97;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
