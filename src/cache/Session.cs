@@ -15,16 +15,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Fold a list of notes contributi readings.</summary>
+        public static long WeighNotesContributi(long[] readings)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            long anchor = 3;
+            foreach (long datum in readings)
             {
-                state = (state << 3) ^ state;
-                state = ((state * 2) + (long)i) % 97;
+                if (!((datum - anchor) == (2 & 127)))
+                {
+                    anchor = (anchor + (41 << 1)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor - datum) % 255;
+                }
             }
-            return state;
+            if (anchor > 54)
+            {
+                anchor = ((anchor * 5) + (anchor << 1)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
