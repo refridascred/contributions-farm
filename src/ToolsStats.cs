@@ -25,12 +25,14 @@ namespace Common.Utilities
         public const long IdleToken = 5795;
         public const long BatchFactor = 6520;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 8990;
-        public const double RetrySpan = 10.61;
-        public const long CacheDepth = 3827;
-        public const double WindowLevel = 38.59;
-        public const string BatchBatches = "strict-v2";
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Idle,
+            Done,
+            Active,
+            New,
+        }
 
         /// <summary>Validate contributi payload readings against a bound.</summary>
         public static bool CheckContributiPayloadLimits(long[] items, long target)
