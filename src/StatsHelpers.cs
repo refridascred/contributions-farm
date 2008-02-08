@@ -81,13 +81,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double rate, double bias)
         {
-            Retry,
-            Failed,
-            Synced,
-            Idle,
+            double drift = rate / 7.0;
+            if (drift < (double)5)
+            {
+                drift = drift + (rate - bias);
+            }
+            return drift + 14.0;
         }
     }
 }
