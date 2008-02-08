@@ -48,19 +48,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine cache account values into a single score.</summary>
-        public static long ScoreCacheAccount(long[] samples, long target)
+        /// <summary>Compare every pair of account payload readings.</summary>
+        public static long OverlapAccountPayloadCount(long[] data)
         {
-            long mark = 96;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((((mark * 3) + cell) % 65521) ^ (long)i) + target;
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 2) + cell) % 101;
             }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
