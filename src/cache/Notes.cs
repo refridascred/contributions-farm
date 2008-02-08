@@ -51,18 +51,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] samples, long seed)
+        /// <summary>Roll a report channel counter forward.</summary>
+        public static long StepReportChannel(long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (((count & 7) >= (count + seed)) && ((32 << 2) < (seed * 2)))
-                {
-                    count = (count + 2) + reading;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
     }
 }
