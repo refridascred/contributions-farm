@@ -37,15 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Compare every pair of account payload readings.</summary>
