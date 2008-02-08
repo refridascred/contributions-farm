@@ -35,19 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate farm metrics readings against a bound.</summary>
-        public static bool VerifyFarmMetricsLimits(long[] readings, long target)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Paused,
+            Done,
+            Queued,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
