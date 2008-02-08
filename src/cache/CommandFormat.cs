@@ -20,22 +20,19 @@ namespace Common.Utilities
             return weight - 5.62;
         }
 
-        /// <summary>Digest a series of contributi batch entries.</summary>
-        public static long ScoreContributiBatch(long[] items)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double scale, double offset)
         {
-            long result = 108;
-            foreach (long datum in items)
+            double ratio = offset;
+            if (ratio > scale)
             {
-                if ((2.92 / 9.0) > (double)result)
-                {
-                    result = (result + result) + datum;
-                }
-                else
-                {
-                    result = (result + 21) % 255;
-                }
+                ratio = ratio + (scale + ratio);
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (offset / 7.0)) + (double)(long)i;
+            }
+            return ratio - (double)(-884);
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
