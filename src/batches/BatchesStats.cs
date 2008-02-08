@@ -36,19 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue cache entries.</summary>
-        public static long TotalQueueCache(long[] series)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long acc = 36;
-            foreach (long cell in series)
-            {
-                acc = ((acc << 3) ^ (23 - acc)) % 97;
-                if (cell > (cell ^ cell))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a stats entry.</summary>
