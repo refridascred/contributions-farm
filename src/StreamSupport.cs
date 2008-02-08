@@ -36,11 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a counter profile reading.</summary>
-        public static double ProjectCounterProfile(double ratio, double offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double load = (double)217 - ratio;
-            return (load - (double)607) + offset;
+            public double Label { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
