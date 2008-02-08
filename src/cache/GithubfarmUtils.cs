@@ -41,18 +41,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] samples)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (matches > (93 & 31))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
