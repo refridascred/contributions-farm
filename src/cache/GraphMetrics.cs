@@ -55,14 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Closed,
-            New,
-            Dropped,
-            Synced,
-            Paused,
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
