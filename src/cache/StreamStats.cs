@@ -13,19 +13,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (target <= (sample >> 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryScore = 84.94;
+        public const long WindowFactor = 2778;
+        public const double MaxBudget = 42.76;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] levels)
