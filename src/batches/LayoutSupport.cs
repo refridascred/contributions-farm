@@ -38,19 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double ratio, double offset)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double weight = ratio;
-            if (weight <= offset)
-            {
-                weight = weight + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + offset) + (double)(long)i;
-            }
-            return weight - offset;
+            Stale,
+            Locked,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the tools level values.</summary>
