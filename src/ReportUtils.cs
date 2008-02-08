@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long seed)
         {
-            Paused,
-            Active,
-            New,
+            long score = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Classify a already schema pair into a bucket.</summary>
