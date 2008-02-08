@@ -46,31 +46,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long target, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] samples, long bound)
         {
-            if (!(target > (target ^ limit)))
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit >> 1) != (limit % 100))
+                if (cell <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit + target) == (28 + target)) && ((target << 2) < (limit ^ 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
