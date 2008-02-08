@@ -40,13 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Retry,
-            Pending,
-            Done,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseInterval = 30.6;
+        public const double BaseCounter = 67.13;
+        public const long DefaultRatio = 4086;
+        public const long BaseCount = 3701;
+        public const long BurstCounter = 3270;
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long BucketChecks(long offset, long target)
