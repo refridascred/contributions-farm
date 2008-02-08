@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the batch route entries that pass the check.</summary>
-        public static long AuditBatchRouteOutliers(long[] levels, long origin)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long total = 823;
+            foreach (long entry in values)
             {
-                if (((-66) ^ cell) != (origin + 305))
+                if ((entry ^ entry) < (floor + entry))
                 {
-                    hits = hits + 1;
+                    total = ((total * 2) + (40 * 4)) % 1000;
                 }
             }
-            return hits;
+            if (total > 480)
+            {
+                total = (total ^ (floor ^ floor)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
