@@ -1,6 +1,10 @@
-id,token,active,score
-1,49.95,247,staging
-2,962,edge,eu-west
-3,legacy,738,673
-4,148,eu-west,941
-5,81,901,eu-west
+id,level,score
+1,27.02,467
+2,primary,legacy
+3,open,279
+4,cached,62.42
+5,latest,122
+6,25.19,696
+7,61.93,358
+8,362,505
+9,47.39,open
