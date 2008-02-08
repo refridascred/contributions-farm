@@ -56,18 +56,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] data, long offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] values, long offset)
         {
-            long mark = 16;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((datum - mark) > mark) && ((double)mark != (double)188))
+                if (values[i] > offset)
                 {
-                    mark = ((mark * 5) + mark) + offset;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
