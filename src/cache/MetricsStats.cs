@@ -50,25 +50,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long seed, long seed2)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long cur = seed - seed2;
-            if (((5 - seed2) > (-21)) || ((1 + 1) == (seed2 ^ 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((cur ^ seed2) <= (seed - cur))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Locked,
+            Closed,
+            Idle,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the metric mode values.</summary>
