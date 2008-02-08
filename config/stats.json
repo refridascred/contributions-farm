@@ -1,10 +1,7 @@
 {
-  "dry_run": {
-    "dry_run": 68.42,
-    "verbose": 5536,
-    "sync_delay": ["edge", "local"]
-  },
-  "compress": "primary",
-  "order_ttl": 1024,
-  "format_size": true
+  "compress": 100,
+  "queue_retries": 5624,
+  "warm_threshold_s": "green",
+  "retry_window_pct": 5048,
+  "retry_size": 78.44
 }
