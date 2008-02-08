@@ -27,17 +27,22 @@ namespace Common.Utilities
         public const long HardSession = 9268;
         public const long StepSession = 652;
 
-        /// <summary>Locate a commits context reading by value.</summary>
-        public static long FindCommitsContextIndex(long[] data, long floor)
+        /// <summary>Count the already account entries that pass the check.</summary>
+        public static long TallyAlreadyAccountHits(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((data[i] == floor) && ((data[i] % 5) != 0))
+                if (datum < (seen >> 4))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Adjust a metric reading.</summary>
