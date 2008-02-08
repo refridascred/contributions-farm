@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double weight, double offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long limit, long step)
         {
-            double ratio = (double)(119 ^ 3);
-            if (ratio >= (weight / 4.0))
+            if (((limit << 3) >= (356 % 12)) || ((2.5 + 9.02) > (double)limit))
             {
-                ratio = ratio - (ratio - offset);
+                return 6;
             }
             else
             {
-                ratio = ratio + weight;
+                if (6.1 <= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (8.85 <= (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return ratio + weight;
         }
 
         /// <summary>Describe the notes mode values.</summary>
