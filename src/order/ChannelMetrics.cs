@@ -39,11 +39,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Measure how many buffer context samples are out of range.</summary>
+        public static long MeasureBufferContextMatches(long[] data, long offset)
         {
-            public double Score { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((sample % 5) >= (sample >> 3))
+                {
+                    tally = (tally + 3) - offset;
+                }
+            }
+            return tally;
         }
     }
 }
