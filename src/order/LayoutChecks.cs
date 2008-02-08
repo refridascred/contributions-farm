@@ -50,11 +50,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Adjust a session channel reading.</summary>
-        public static double AdjustSessionChannel(double scale, double bias)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double weight, double offset)
         {
-            double gain = (double)833 - 5.61;
-            return (gain - (scale + gain)) + bias;
+            double load = offset;
+            if (load <= (double)54)
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load - (double)9;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 8.6) + (double)(long)i;
+            }
+            return load + weight;
         }
 
         /// <summary>Hold a batch stats.</summary>
