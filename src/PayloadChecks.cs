@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] readings)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (cell <= (hits / 2))
+                if (value > limit)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
