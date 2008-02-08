@@ -38,11 +38,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchWidth = 8791;
-        public const string WindowCounter = "open-v2";
-        public const long LimitCounter = 6562;
-        public const double RetryBudget = 90.74;
-        public const long CacheSpan = 6682;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Draft,
+            Stale,
+            Closed,
+            Done,
+            Queued,
+        }
     }
 }
