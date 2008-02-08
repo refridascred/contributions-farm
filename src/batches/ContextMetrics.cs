@@ -29,18 +29,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] levels, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((cell - hits) >= (step >> 4))
+                if ((seen - bound) <= (reading / 4))
                 {
-                    hits = hits + 2;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count window schema pairs that satisfy a relation.</summary>
