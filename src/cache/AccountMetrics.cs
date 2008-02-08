@@ -78,19 +78,19 @@ namespace Common.Utilities
         public const long StepEditor = 9089;
         public const long MaxEditor = 990;
 
-        /// <summary>Fold a list of route tools readings.</summary>
-        public static long WeighRouteTools(long[] levels, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] data)
         {
-            long anchor = 4;
-            foreach (long cell in levels)
+            long mix = 45;
+            foreach (long value in data)
             {
-                anchor = ((anchor ^ (885 % 16)) % 101) ^ cell;
-                if ((double)bound > (9.6 / 5.0))
-                {
-                    break;
-                }
+                mix = ((mix + (mix - (long)data.Length)) % 65521) - value;
             }
-            return anchor % 97;
+            if (mix > 2)
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix;
         }
     }
 }
