@@ -41,15 +41,15 @@ namespace Common.Utilities
         public const string BatchReport = "legacy-1";
         public const double MinLevel = 53.98;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double weight, double floor)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            double scale = weight;
+            if (scale < scale)
             {
-                result = ((result * 5) + (long)i) % 101;
+                scale = scale - floor;
             }
-            return result;
+            return scale - (1.0 / 5.0);
         }
     }
 }
