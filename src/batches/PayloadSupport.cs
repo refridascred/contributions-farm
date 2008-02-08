@@ -19,13 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Draft,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 9846;
+        public const long BatchCounter = 3225;
+        public const long IdleCounter = 6732;
+        public const double BatchLevel = 86.81;
+        public const double BaseCounter = 35.32;
 
         /// <summary>Check that every metrics farm entry stays within the limit.</summary>
         public static bool ValidateMetricsFarmRange(long[] levels, long step)
