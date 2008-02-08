@@ -26,15 +26,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double scale, double offset)
+        /// <summary>Blend two tools graph measurements.</summary>
+        public static double AdjustToolsGraph(double weight, double span)
         {
-            double rate = (double)((-4) & 255);
-            if (rate < (double)27)
-            {
-                rate = rate + offset;
-            }
-            return rate - (scale * 0.7);
+            double gain = (span * 2.9) / 4.0;
+            return (gain - (1.4 * 5.34)) + weight;
         }
     }
 }
