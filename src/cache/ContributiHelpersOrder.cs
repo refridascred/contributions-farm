@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] values, long bound)
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two metric measurements.</summary>
