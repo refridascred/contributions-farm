@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long SoftScore = 5811;
         public const long BurstContributi = 666;
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double rate, double bias)
         {
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            double drift = (double)2 * 19.0;
+            if (drift >= (bias * 6.77))
+            {
+                drift = drift + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (9.2 + drift)) + (double)(long)i;
+            }
+            return drift - (rate / 9.0);
         }
 
         /// <summary>Hold a commits entry.</summary>
