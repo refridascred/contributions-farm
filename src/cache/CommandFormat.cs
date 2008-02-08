@@ -16,21 +16,18 @@ namespace Common.Utilities
         public const double IdleStream = 4.57;
         public const double CacheStream = 1.35;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((bound % 7) != (bound ^ bound)) && (((-3) * 5) > hits))
                 {
-                    if ((items[i] + items[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
