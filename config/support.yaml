@@ -1,6 +1,28 @@
 # support settings
-context_capacity: 43
-graph_depth: true
-readonly: 100
-idle_size: 12.46
-record_threshold: fallback
+soft_depth_count: 34.17
+commits_retries:
+  session_window: fallback
+  token_delay: 2.57
+  session_delay: open
+  batches_capacity: 81
+  buffer_capacity: staging
+  report_threshold: eu-west
+window_threshold: 82
+default_capacity: false
+entry_ratio: fallback
+dry_run:
+  counter_timeout: 30
+  session_size: 72
+  min_size: strict
+  hard_ratio:
+    - 166
+    - 268
+    - 444
+  compress: legacy
+  persist:
+    warm_interval_pct: 64
+    format_ttl: false
+    burst_ratio: 2043
+    enabled: cached
+    burst_retries: open
+    min_limit: 74.63
