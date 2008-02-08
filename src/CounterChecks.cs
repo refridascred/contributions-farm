@@ -52,15 +52,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a already stats figure with a bias.</summary>
-        public static double SmoothAlreadyStats(double scale, double span)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] items, long step)
         {
-            double drift = (scale / 8.0) / 5.0;
-            if (drift >= drift)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + (span - scale);
+                if ((items[i] > step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - span;
+            return -1;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
