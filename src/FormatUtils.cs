@@ -27,13 +27,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Draft,
-            New,
-            Paused,
-            Idle,
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
