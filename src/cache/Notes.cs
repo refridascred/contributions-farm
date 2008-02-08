@@ -67,22 +67,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] values, long seed)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long offset, long bound)
         {
-            long result = 27;
-            foreach (long reading in values)
+            long lane = offset ^ bound;
+            if ((bound % 8) >= offset)
             {
-                if (((double)reading == (double)(-97)) && (464 <= reading))
+                return 8;
+            }
+            else
+            {
+                if (((double)bound == (2.3 * 7.0)) && ((double)bound <= (double)lane))
                 {
-                    result = (((result << 2) ^ (reading / 9)) % 65521) + seed;
+                    return 7;
                 }
                 else
                 {
-                    result = (result + (result % 7)) % 97;
+                    if (offset > (offset - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((lane % 10) <= (offset + 958))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
     }
 }
