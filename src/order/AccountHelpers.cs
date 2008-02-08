@@ -11,22 +11,23 @@ namespace Common.Utilities
         public const double RetryBudget = 89.44;
         public const long BatchNotes = 4999;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] samples)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mix = 6;
+            foreach (long sample in series)
             {
-                if ((4.22 - 2.0) > (double)seen)
+                if (((sample / 9) < (mix / 9)) || ((double)sample < (7.8 + 4.32)))
                 {
-                    seen = (seen + 3) + datum;
+                    mix = (mix + sample) % 4096;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = (mix + (16 >> 1)) % 97;
             }
-            return seen;
+            if (mix < 9)
+            {
+                mix = ((mix << 3) ^ mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the layout kind values.</summary>
