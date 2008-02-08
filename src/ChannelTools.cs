@@ -31,13 +31,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Iterate the record session series from a seed.</summary>
+        public static long RollRecordSession(long seed)
         {
-            Dropped,
-            Locked,
-            Draft,
-            Ready,
+            long state = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
