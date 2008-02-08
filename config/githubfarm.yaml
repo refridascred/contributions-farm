@@ -1,6 +1,5 @@
 # githubfarm settings
-route_capacity: standard
-channel_ratio: false
-entry_interval:
-  - latest
-  - cached
+retry_threshold_ms: 71.24
+sync_capacity_count: true
+min_window_s: 37.9
+enabled: standard
