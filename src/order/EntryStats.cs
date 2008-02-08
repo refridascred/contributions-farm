@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 9886;
+        public const double MinDepth = 13.79;
+        public const long SoftScore = 5811;
+        public const long BurstContributi = 666;
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
