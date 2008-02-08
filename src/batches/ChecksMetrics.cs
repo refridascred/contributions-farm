@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] values, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (item > origin)
+                if ((datum << 1) <= 869)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) - target;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
