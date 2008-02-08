@@ -13,19 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] values, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] levels)
         {
-            long state = 14;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                state = ((state - (floor / 2)) % 1000) - value;
+                if ((double)matches != (0.6 - 0.3))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
             }
-            if (state < 8)
-            {
-                state = (state * 2) + floor;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the token state values.</summary>
