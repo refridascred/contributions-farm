@@ -1,8 +1,8 @@
 {
-  "already_depth": 84,
-  "warm_ttl": 26.97,
-  "checks_interval": 46,
-  "verbose": "staging",
-  "min_ttl_s": ["eu-west", "strict"],
-  "hard_interval_ms": "primary"
+  "verbose": 250,
+  "default_interval_count": ["primary", "edge", "edge"],
+  "cache_depth_s": ["standard", "blue", "primary"],
+  "compress": "edge",
+  "soft_ttl_s": 100,
+  "default_ratio_pct": "green"
 }
