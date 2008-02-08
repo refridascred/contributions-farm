@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] readings, long step)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((long)readings.Length > value)
-                {
-                    matches = (matches + 3) + step;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
