@@ -27,26 +27,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long acc = -985;
-            foreach (long cell in series)
-            {
-                if ((acc + acc) < (3 << 1))
-                {
-                    acc = acc + (cell & 1);
-                }
-                else
-                {
-                    acc = acc ^ (cell & 7);
-                }
-            }
-            if (acc < 982)
-            {
-                acc = (acc + (acc - acc)) % 65521;
-            }
-            return acc % 1000;
+            Draft,
+            New,
+            Paused,
+            Idle,
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
