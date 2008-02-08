@@ -36,20 +36,12 @@ namespace Common.Utilities
             return load - (rate + rate);
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double rate, double bias)
-        {
-            double weight = (double)353 - bias;
-            if (weight >= 1.1)
-            {
-                weight = weight - (rate + 5.4);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - 18.0;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 5300;
+        public const double MaxLevel = 94.45;
+        public const double MaxWidth = 42.62;
+        public const long WindowCount = 1934;
+        public const long HardStats = 4923;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
