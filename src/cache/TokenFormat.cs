@@ -14,10 +14,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "cached-1";
-        public const long BurstDepth = 8087;
-        public const double MaxStream = 35.86;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double bias, double bias2)
+        {
+            double weight = (bias2 - bias) / 4.0;
+            if (weight >= (double)296)
+            {
+                weight = weight + (1.88 * 19.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight + bias;
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long BucketCluster(long bound, long origin)
