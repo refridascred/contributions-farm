@@ -1,18 +1,5 @@
 # support settings
-contributi_ttl:
-  strict:
-    persist: false
-    cluster_ratio: false
-    layout_limit: standard
-  batch_capacity: false
-  warm_capacity:
-    layout_threshold: 5304
-    retry_timeout_count: 60
-    compress: primary
-    burst_threshold: standard
-  hard_threshold_count: false
-enabled: 50
-compress: 35
-verbose: primary
-strict: 250
-notes_window: true
+retry_ratio_s: 60.24
+layout_ttl: fallback
+farm_window: 100
+soft_capacity_ms: legacy
