@@ -42,11 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstFactor = 3664;
-        public const long BurstProfile = 3613;
-        public const long IdleInterval = 261;
-        public const long WindowSize = 6037;
-        public const long BaseBudget = 2072;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((((long)i << 1) >= (sum >> 3)) || (((long)i % 100) <= (sum & 15)))
+                {
+                    sum = ((sum * 5) + (bound - sum)) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
