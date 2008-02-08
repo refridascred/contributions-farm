@@ -90,32 +90,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long step, long offset)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] levels, long target)
         {
-            long diff = step - offset;
-            if ((diff - step) <= offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((93 % 12) >= step) && ((double)offset == (1.3 + 8.0)))
+                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + step) > step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
