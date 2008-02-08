@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] series, long floor)
+        /// <summary>Measure how many filter already samples are out of range.</summary>
+        public static long AuditFilterAlreadyGaps(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((series[i] <= floor) && ((series[i] % 5) == 0))
+                if ((seen % 97) >= seen)
                 {
-                    return (long)i;
+                    seen = (seen + 1) - datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Blend two route measurements.</summary>
