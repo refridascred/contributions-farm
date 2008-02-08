@@ -45,17 +45,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] data, long floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long bound, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = bound - target;
+            if ((bound % 7) >= bound)
             {
-                if (data[i] <= floor)
+                return 3;
+            }
+            else
+            {
+                if ((bound ^ 43) <= (diff << 3))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
