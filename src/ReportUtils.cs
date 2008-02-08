@@ -78,31 +78,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long seed, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] levels, long offset)
         {
-            if (24 >= (bound >> 5))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed >= 2.0)
+                if (71 <= (0 - sample))
                 {
-                    return 1;
+                    tally = (tally + 3) + offset;
                 }
                 else
                 {
-                    if (!((15.0 * 9.27) <= (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
