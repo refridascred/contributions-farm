@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double gain, double offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] samples)
         {
-            double ratio = (0.11 * 5.0) - (offset - gain);
-            return ratio - (double)(-54);
+            long result = 84;
+            foreach (long sample in samples)
+            {
+                if ((sample - result) > (88 * 5))
+                {
+                    result = (result ^ 9) % 101;
+                }
+                else
+                {
+                    result = result + (result - 559);
+                }
+                result = (result * 4) + (sample << 3);
+            }
+            return result;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
