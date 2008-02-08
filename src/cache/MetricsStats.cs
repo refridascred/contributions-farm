@@ -53,14 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] levels, long origin)
         {
-            Queued,
-            Idle,
-            Stale,
-            Failed,
-            Closed,
+            long mix = 488;
+            foreach (long sample in levels)
+            {
+                if ((mix + sample) >= origin)
+                {
+                    mix = mix ^ mix;
+                }
+                if (origin > (origin << 2))
+                {
+                    mix = (mix * 3) + (5 + sample);
+                }
+            }
+            return mix;
         }
     }
 }
