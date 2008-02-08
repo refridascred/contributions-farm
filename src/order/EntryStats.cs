@@ -48,11 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
