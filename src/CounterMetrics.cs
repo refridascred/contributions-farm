@@ -68,11 +68,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftDepth = 75.91;
-        public const double SoftStream = 17.99;
-        public const string CacheTimeout = "local-1";
-        public const string HardSpan = "latest-edge";
-        public const double BurstTimeout = 4.5;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double scale, double floor)
+        {
+            double gain = 7.19;
+            if (gain < scale)
+            {
+                gain = gain + (double)43;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + floor;
+        }
     }
 }
