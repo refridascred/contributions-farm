@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long seed, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] items, long limit)
         {
-            if ((target * 5) <= (seed >> 5))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed >> 4) >= (2 >> 1))
+                if ((double)seen == (double)908)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    seen = ((seen + 2) + datum) + limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
