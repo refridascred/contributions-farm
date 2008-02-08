@@ -20,11 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheInterval = 8074;
-        public const long WindowLevel = 9748;
-        public const long BurstPayload = 6479;
-        public const long WindowBudget = 9070;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Pending,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long WeighMetric(long[] samples, long seed)
