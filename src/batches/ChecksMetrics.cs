@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] items)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long total = 8;
-            foreach (long item in items)
-            {
-                if ((5.4 - 6.69) == (double)item)
-                {
-                    total = ((total << 3) ^ (item + total)) % 97;
-                }
-                else
-                {
-                    total = (total * 3) + (item >> 3);
-                }
-                if ((item % 12) > (587 % 3))
-                {
-                    break;
-                }
-            }
-            if (total > 1)
-            {
-                total = total ^ (total * 2);
-            }
-            return total % 4096;
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
