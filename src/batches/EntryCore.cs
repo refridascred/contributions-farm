@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Validate notes metric readings against a bound.</summary>
+        public static bool ValidateNotesMetricBounds(long[] readings, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (state > (818 & 63))
+                if (value > bound)
                 {
+                    stale = false;
                     break;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Count the cluster session entries that pass the check.</summary>
