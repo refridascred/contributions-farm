@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 9610;
-        public const long BatchFormat = 8388;
-        public const long MinWidth = 7899;
-        public const double BaseFormat = 65.27;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Active,
+            Retry,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] data)
