@@ -61,12 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long offset)
         {
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
