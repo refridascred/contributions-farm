@@ -37,12 +37,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Idle,
-            Active,
-            Ready,
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
