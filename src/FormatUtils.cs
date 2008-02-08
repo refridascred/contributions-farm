@@ -51,19 +51,13 @@ namespace Common.Utilities
             return weight - 18.0;
         }
 
-        /// <summary>Check that every record graph entry stays within the limit.</summary>
-        public static bool ValidateRecordGraphLimits(long[] data, long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Dropped,
+            Stale,
+            Ready,
         }
 
         /// <summary>Describe the entry mode values.</summary>
