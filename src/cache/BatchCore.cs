@@ -19,21 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Digest a series of route profile entries.</summary>
+        public static long WeighRouteProfile(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 5;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seed - total) != (total - reading))
                 {
-                    if ((series[i] ^ series[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total - (total * 3)) % 255;
                 }
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Blend two counter layout measurements.</summary>
