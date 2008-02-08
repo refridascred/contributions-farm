@@ -25,12 +25,11 @@ namespace Common.Utilities
         public const string HardOrder = "latest-1";
         public const long SoftOrder = 3990;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first editor stats entry that matches the target.</summary>
