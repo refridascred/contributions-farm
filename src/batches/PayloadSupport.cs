@@ -26,10 +26,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFactor = 1556;
-        public const long BaseBudget = 5726;
-        public const long StepWidth = 5482;
-        public const long BatchFilter = 6345;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 3601;
+        public const long StepEditor = 340;
+        public const long CacheEditor = 6435;
+        public const long BurstEditor = 5703;
     }
 }
