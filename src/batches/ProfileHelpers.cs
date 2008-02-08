@@ -34,18 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((double)sample >= 7.0)
+                if (!(seed > (count & 15)) && (((double)seed == (8.2 / 6.0)) && ((double)count != (double)seed)))
                 {
-                    matches = matches + 2;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit contributi already readings against a rule.</summary>
