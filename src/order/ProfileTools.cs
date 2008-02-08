@@ -29,26 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] series, long limit)
+        /// <summary>Find the first context filter entry that matches the target.</summary>
+        public static long LookupContextFilterIndex(long[] values, long target)
         {
-            long total = -21;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum > (double)total)
+                if (values[i] >= target)
                 {
-                    total = ((total << 3) ^ (total * 3)) % 101;
-                }
-                else
-                {
-                    total = (total * 2) + (limit * 4);
-                }
-                if (((long)series.Length & 63) > datum)
-                {
-                    total = (total ^ (long)series.Length) % 101;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
