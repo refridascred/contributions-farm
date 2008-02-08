@@ -51,12 +51,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 8460;
-        public const string DefaultStream = "primary";
-        public const long MinStream = 2140;
-        public const long WindowDepth = 8523;
-        public const double MinCount = 85.99;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchEntry = "legacy-edge";
+        public const long BaseScore = 9921;
+        public const long HardEntry = 2907;
+        public const long HardBudget = 5847;
+        public const string DefaultEntry = "latest-edge";
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
