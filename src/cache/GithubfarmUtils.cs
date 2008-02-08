@@ -38,13 +38,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public double Token { get; set; }
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "open-1";
+        public const long CacheTools = 6403;
+        public const long LimitDepth = 2472;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
