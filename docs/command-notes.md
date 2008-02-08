@@ -1,16 +1,14 @@
 # Command notes
 
-When a report fails, the payload handler retries a few times before giving up.
-The window report groups every context by schema.
-The format helpers are pure functions, so they are safe to call from any thread.
+A cache that stays idle for too long is moved to the editor list.
+The route report groups every context by record.
+Defaults for format live in the config folder and can be overridden per environment.
 
-Defaults for stream live in the config folder and can be overridden per environment.
-A support that stays idle for too long is moved to the channel list.
-When a record fails, the stream handler retries a few times before giving up.
+Run the session check before changing any stats limits.
+The payload helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every contributi change
-- Document new notes fields
-- Review counter limits each release
-- Validate editor input early
+- Document new metric fields
+- Keep stream values small
+- Review metrics limits each release
