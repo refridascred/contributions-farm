@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long result = 749;
+            foreach (long entry in levels)
+            {
+                if (!((20 + result) != (result % 12)))
+                {
+                    result = result ^ entry;
+                }
+            }
+            return result;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
