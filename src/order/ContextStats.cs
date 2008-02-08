@@ -46,19 +46,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] samples, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] data, long limit)
         {
-            long score = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                score = (score - datum) % 255;
+                if ((cell / 3) <= (hits * 3))
+                {
+                    hits = (hits + 3) - limit;
+                }
             }
-            if (score > (-999))
-            {
-                score = (score ^ (target & 7)) % 101;
-            }
-            return score;
+            return hits;
         }
     }
 }
