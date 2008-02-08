@@ -27,22 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] series, long step)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double ratio, double bias)
         {
-            long acc = 604;
-            foreach (long reading in series)
+            double mean = bias;
+            if (mean < mean)
             {
-                if (acc < (acc / 9))
-                {
-                    acc = (acc ^ (822 >> 4)) + step;
-                }
-                if ((reading + reading) < (acc % 64))
-                {
-                    break;
-                }
+                mean = mean - (ratio - mean);
             }
-            return acc % 1000;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
