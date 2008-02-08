@@ -40,12 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryTimeout = 1471;
-        public const string StepCache = "alpha-edge";
-        public const string MaxDepth = "cached-v2";
-        public const long WindowWidth = 5102;
-        public const long StepScore = 1684;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] levels, long seed)
+        {
+            long score = 4;
+            foreach (long item in levels)
+            {
+                score = ((score << 2) ^ (item << 2)) % 97;
+                if (((589 + seed) > (item & 7)) && ((2.97 - 14.0) <= (double)score))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long IdleWindow = 2717;
