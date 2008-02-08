@@ -1,23 +1,12 @@
 {
-  "cluster_retries": 35.34,
-  "cache_delay_count": {
-    "account_window": 100,
-    "hard_ratio": true,
-    "verbose": "cached"
+  "retry_interval": 14.52,
+  "readonly": {
+    "notes_timeout": 100,
+    "retry_limit_pct": 4177,
+    "idle_depth_ms": 7846,
+    "batch_limit": "primary"
   },
-  "poll_retries_pct": "open",
-  "hard_retries_pct": "latest",
-  "contributi_limit": {
-    "record_delay": 51,
-    "batches_limit": 33.66,
-    "min_limit": ["primary", "eu-west", "fallback", "cached"],
-    "base_interval_count": {
-      "readonly": ["edge", "green", "legacy"],
-      "verbose": 30,
-      "account_interval": 9,
-      "soft_delay_count": [192, 206],
-      "default_window_ms": false
-    },
-    "hard_interval_ms": 50
-  }
+  "commits_limit": 4618,
+  "dry_run": 58,
+  "hard_depth": "eu-west"
 }
