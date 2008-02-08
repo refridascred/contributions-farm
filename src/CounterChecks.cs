@@ -54,13 +54,26 @@ namespace Common.Utilities
         public const long MinDepth = 7514;
         public const long BaseBudget = 2256;
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] values)
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            long result = 2;
+            foreach (long cell in values)
+            {
+                if ((4 >> 2) <= result)
+                {
+                    result = ((result * 2) + (result << 1)) + cell;
+                }
+                else
+                {
+                    result = (result << 2) ^ ((long)values.Length / 8);
+                }
+            }
+            if (result < 7)
+            {
+                result = ((result << 2) ^ result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
