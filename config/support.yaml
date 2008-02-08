@@ -1,32 +1,12 @@
 # support settings
-default_timeout: latest
-entry_window: cached
-cache_ratio_s:
-  retry_ratio_count:
-    - edge
-    - strict
-    - standard
-    - primary
-  compress:
-    strict:
-      - 5
-      - 436
-    warm_size_count:
-      - 312
-      - 412
-      - 184
-    idle_ttl_count:
-      - strict
-      - legacy
-      - local
-    soft_capacity_pct: true
-    entry_window: local
-  sync_delay_pct:
-    - strict
-    - green
-    - fallback
-  idle_delay_pct: latest
-  payload_ttl: eu-west
-soft_threshold: standard
-enabled: 8318
-warm_size: eu-west
+dry_run: 41
+persist: latest
+notes_timeout:
+  persist: false
+  min_delay_pct: true
+  idle_depth_pct: 250
+batch_delay:
+  - 25
+  - 397
+  - 458
+  - 226
