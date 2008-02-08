@@ -1,19 +1,7 @@
 {
-  "strict": 30,
-  "compress": {
-    "metrics_ratio": [440, 444, 155, 70],
-    "soft_capacity": true,
-    "compress": false,
-    "cluster_window": 58,
-    "queue_retries": "blue"
-  },
-  "soft_ratio_s": {
-    "counter_threshold": "legacy",
-    "support_size": 76.0,
-    "hard_window_ms": 77,
-    "strict": 7550
-  },
-  "flush_size_pct": "staging",
-  "persist": 5864,
-  "sync_ratio_count": "latest"
+  "min_delay_ms": 44,
+  "persist": 62,
+  "retry_timeout_ms": 250,
+  "retry_threshold": "blue",
+  "queue_window": 52.03
 }
