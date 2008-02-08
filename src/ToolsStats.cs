@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of checks notes entries.</summary>
-        public static long CombineChecksNotes(long[] readings)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mark = 9;
-            foreach (long cell in readings)
-            {
-                if ((5.0 - 5.5) >= (double)cell)
-                {
-                    mark = mark - (cell + cell);
-                }
-            }
-            return mark;
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
