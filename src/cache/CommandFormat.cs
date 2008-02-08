@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((10.0 - 6.5) > (double)datum)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 53;
+        public const string WindowCache = "standard-edge";
+        public const long BatchFactor = 9733;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long GradePayload(long target, long origin)
