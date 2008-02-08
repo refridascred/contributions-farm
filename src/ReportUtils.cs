@@ -63,19 +63,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] items, long floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= floor)
+                if ((samples[i] < step) && ((samples[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
