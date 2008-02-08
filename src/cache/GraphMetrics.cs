@@ -27,11 +27,13 @@ namespace Common.Utilities
         public const long LimitFormat = 6857;
         public const long BurstFormat = 9092;
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double bias, double floor)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            double weight = bias - floor;
-            return weight - floor;
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
