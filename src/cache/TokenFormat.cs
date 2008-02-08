@@ -18,10 +18,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardCount = 452;
-        public const double StepSize = 9.97;
-        public const long MaxEditor = 1801;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - cell) >= (621 % 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long WeighProfile(long[] samples)
