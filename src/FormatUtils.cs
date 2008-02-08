@@ -27,12 +27,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 5300;
-        public const double MaxLevel = 94.45;
-        public const double MaxWidth = 42.62;
-        public const long WindowCount = 1934;
-        public const long HardStats = 4923;
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] samples, long origin)
+        {
+            long score = 6;
+            foreach (long sample in samples)
+            {
+                score = ((((score << 3) ^ score) % 255) + sample) + origin;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long StepCommand(long offset)
