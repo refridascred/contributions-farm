@@ -31,19 +31,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] data, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long mix = -639;
+            foreach (long entry in samples)
             {
-                if (reading > seed)
+                if (((long)samples.Length - mix) == (origin << 1))
                 {
-                    ready = false;
+                    mix = mix - (mix ^ mix);
+                }
+                else
+                {
+                    mix = ((mix * 4) + (entry - mix)) % 97;
+                }
+                if ((14.0 + 6.0) == (double)entry)
+                {
                     break;
                 }
             }
-            return ready;
+            return mix;
         }
     }
 }
