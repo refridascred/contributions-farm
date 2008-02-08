@@ -30,24 +30,18 @@ namespace Common.Utilities
             return weight + (double)1;
         }
 
-        /// <summary>Combine githubfarm command values into a single score.</summary>
-        public static long ScoreGithubfarmCommand(long[] data)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] series)
         {
-            long acc = -945;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long value in series)
             {
-                acc = (acc << 2) ^ ((-649) * 5);
-                for (int i = 0; i < 8; i++)
+                if ((double)count < 1.4)
                 {
-                    acc = acc + (acc / 7);
-                    acc = ((acc * 2) + ((long)i % 16)) % 1000;
-                }
-                if ((entry * 5) == (acc + entry))
-                {
-                    acc = acc + entry;
+                    count = (count + 2) + value;
                 }
             }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Blend two layout measurements.</summary>
