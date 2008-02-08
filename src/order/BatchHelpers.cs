@@ -22,31 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long limit, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            if ((limit + limit) > step)
+            long score = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((limit + limit) != (6 % 64)) || ((11.0 * 20.0) == (double)limit))
+                if ((score >> 5) >= (limit - (long)i))
                 {
-                    return 5;
+                    score = (score << 2) ^ (limit + score);
+                    score = ((score * 5) + (long)i) % 97;
                 }
-                else
-                {
-                    if ((37 << 1) < limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Validate cache command readings against a bound.</summary>
