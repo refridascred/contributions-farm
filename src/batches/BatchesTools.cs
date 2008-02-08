@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] readings, long floor)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
