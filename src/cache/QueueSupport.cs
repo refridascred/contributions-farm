@@ -32,10 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "strict-1";
-        public const long LimitRatio = 4567;
-        public const long BaseSize = 8890;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] samples, long floor)
+        {
+            long mark = -472;
+            foreach (long value in samples)
+            {
+                if (mark >= (value + 8))
+                {
+                    mark = (mark - (mark + 2)) + floor;
+                }
+            }
+            if (mark < 48)
+            {
+                mark = (mark - (mark - mark)) % 255;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long DigestBatch(long[] series)
