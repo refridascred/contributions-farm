@@ -28,22 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] samples, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] items)
         {
-            long acc = 4;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((seed >= (seed + acc)) || ((seed - (long)samples.Length) < acc))
+                if ((9.5 * 2.18) < (6.78 + 6.12))
                 {
-                    acc = (((acc * 4) + ((-2) - (long)samples.Length)) % 101) ^ value;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            if (acc > 172)
-            {
-                acc = (acc - (seed + seed)) % 101;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
