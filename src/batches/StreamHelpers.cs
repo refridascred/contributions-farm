@@ -49,25 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order stats pair into a bucket.</summary>
-        public static long BucketOrderStats(long floor, long floor2)
-        {
-            if ((floor2 + floor) < (1 / 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2.8 - 0.9) == (double)floor2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleGithubfarm = 92.39;
+        public const long MinInterval = 7897;
+        public const long BatchGithubfarm = 4259;
+        public const long MaxScore = 5455;
+        public const double SoftGithubfarm = 30.08;
 
         /// <summary>Adjust a context reading.</summary>
         public static double ProjectContext(double bias, double bias2)
