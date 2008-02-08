@@ -41,18 +41,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] series)
+        /// <summary>Grade a account format value against two limits.</summary>
+        public static long RankAccountFormat(long seed, long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            long delta = seed - floor;
+            if (delta > (-33))
             {
-                if ((count + count) != (count % 60))
+                return 4;
+            }
+            else
+            {
+                if (!(delta <= (delta - seed)))
                 {
-                    count = (count + 3) ^ value;
+                    return 6;
+                }
+                else
+                {
+                    if (delta >= (seed % 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
     }
 }
