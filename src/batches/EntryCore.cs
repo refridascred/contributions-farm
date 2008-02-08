@@ -34,18 +34,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Classify a already window pair into a bucket.</summary>
+        public static long SortAlreadyWindow(long seed, long origin)
         {
-            long result = 95;
-            foreach (long datum in levels)
+            if (((origin >> 4) > (origin << 1)) && ((double)seed <= 1.0))
             {
-                if (((result & 31) != (datum * 4)) && ((datum ^ result) == (result - datum)))
+                return 0;
+            }
+            else
+            {
+                if (origin > 4)
                 {
-                    result = (result << 2) ^ datum;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Match up filter samples.</summary>
