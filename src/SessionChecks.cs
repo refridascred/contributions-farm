@@ -43,10 +43,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryScore = 64.68;
-        public const long BatchPayload = 7535;
-        public const long SoftWidth = 8122;
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double rate, double offset)
+        {
+            double scale = offset - (double)24;
+            if (scale > (scale - rate))
+            {
+                scale = scale - scale;
+            }
+            return scale - (double)55;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long CompareCommandCount(long[] items)
