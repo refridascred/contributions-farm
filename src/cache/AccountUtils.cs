@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every editor account entry stays within the limit.</summary>
-        public static bool VerifyEditorAccountLimits(long[] levels, long limit)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the cache state values.</summary>
