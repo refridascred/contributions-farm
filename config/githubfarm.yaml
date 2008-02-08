@@ -1,5 +1,20 @@
 # githubfarm settings
-dry_run: 250
-hard_delay_pct: 69.38
-support_timeout: 500
-base_retries_count: staging
+account_ratio:
+  compress:
+    retry_limit_pct:
+      - legacy
+      - blue
+      - primary
+    default_interval_ms: false
+    support_retries: true
+  readonly: strict
+  sync_capacity_pct: legacy
+flush_limit:
+  - 123
+  - 351
+  - 74
+  - 230
+strict: eu-west
+sync_size_pct: 64.86
+cache_interval_ms: true
+flush_window_ms: false
