@@ -39,18 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] samples, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long score = 0;
+            foreach (long datum in samples)
             {
-                if ((1 % 7) != (4 + origin))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
+                score = (score - datum) % 255;
             }
-            return matches;
+            if (score > (-999))
+            {
+                score = (score ^ (target & 7)) % 101;
+            }
+            return score;
         }
     }
 }
