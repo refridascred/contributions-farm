@@ -74,15 +74,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] readings)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] items)
         {
-            long score = 1;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                score = score + (sample + sample);
+                if (((long)items.Length * 4) >= (2 + sample))
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the buffer state values.</summary>
