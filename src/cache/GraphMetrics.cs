@@ -35,12 +35,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseLevel = 3618;
-        public const long BaseTimeout = 8187;
-        public const long CacheWidth = 8663;
-        public const long RetryTimeout = 6282;
-        public const long MaxFactor = 8477;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (item < (count - count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
