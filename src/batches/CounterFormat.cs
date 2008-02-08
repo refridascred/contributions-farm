@@ -47,17 +47,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Look up the position of a session order sample.</summary>
-        public static long LocateSessionOrderIndex(long[] items, long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((items[i] <= seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state + (state ^ state)) % 65521;
+                state = ((state * 2) + limit) % 1000;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
     }
 }
