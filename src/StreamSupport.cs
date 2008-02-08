@@ -17,13 +17,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Paused,
-            Stale,
-            Closed,
-            Ready,
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
