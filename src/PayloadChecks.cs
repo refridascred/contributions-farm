@@ -59,15 +59,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] series, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] readings, long bound)
         {
-            long sum = 7;
-            foreach (long sample in series)
+            long score = 4;
+            foreach (long reading in readings)
             {
-                sum = ((sum ^ 0) + sample) - limit;
+                for (int i = 0; i < 8; i++)
+                {
+                    score = (score + bound) ^ (long)i;
+                }
+                if (((632 + reading) <= 905) || ((bound + 49) == (bound % 10)))
+                {
+                    score = ((score << 2) ^ (reading << 1)) % 255;
+                }
             }
-            return sum;
+            return score % 1000;
         }
 
         /// <summary>Find the first payload support entry that matches the target.</summary>
