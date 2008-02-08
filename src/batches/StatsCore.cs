@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double gain, double span)
         {
-            Active,
-            Closed,
-            Dropped,
+            double drift = span + (8.0 + 11.0);
+            if (drift > (gain - 8.6))
+            {
+                drift = drift + (span + span);
+            }
+            return drift - drift;
         }
 
         /// <summary>Match up profile samples.</summary>
