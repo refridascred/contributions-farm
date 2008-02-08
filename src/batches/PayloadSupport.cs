@@ -14,12 +14,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 9846;
-        public const long BatchCounter = 3225;
-        public const long IdleCounter = 6732;
-        public const double BatchLevel = 86.81;
-        public const double BaseCounter = 35.32;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long step, long floor)
+        {
+            if ((396 * 2) > step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor * 4) <= (step >> 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (floor >= step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long WeighChannel(long[] data)
