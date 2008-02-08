@@ -49,16 +49,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double rate, double bias)
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
+            double rate2 = (double)(-544) - bias;
+            for (int i = 0; i < 6; i++)
             {
-                state = state - (state / 3);
-                state = ((state * 2) + (long)i) % 97;
+                rate2 = ((rate2 + 2.0) + (double)(long)i) - rate;
             }
-            return state;
+            return rate2 - (bias / 2.0);
         }
     }
 }
