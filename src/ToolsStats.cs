@@ -68,20 +68,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                long offset = (floor - floor) - (carry + floor);
-                if ((offset >= (carry - offset)) || ((477 - offset) >= (floor & 7)))
-                {
-                    offset = (offset - (offset << 3)) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseFactor = 1767;
+        public const double LimitCount = 52.72;
+        public const double HardChannel = 82.69;
     }
 }
