@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double ratio, double floor)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double weight = (double)(2 * 3);
-            if (weight >= ratio)
-            {
-                weight = weight - floor;
-            }
-            else
-            {
-                weight = weight - floor;
-            }
-            return weight + weight;
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the cache phase values.</summary>
