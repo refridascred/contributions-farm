@@ -28,19 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] values, long limit)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Closed,
+            Done,
+            Active,
         }
     }
 }
