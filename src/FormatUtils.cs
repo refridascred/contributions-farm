@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next record channel value from a seed.</summary>
-        public static long DeriveRecordChannel(long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                mark = mark ^ (mark + seed);
-                mark = (mark - (mark ^ 14)) % 65521;
-                mark = ((mark * 2) + (long)i) % 1000;
+                mark = ((mark * 3) + (mark ^ 92)) % 65521;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
             return mark;
         }
