@@ -78,17 +78,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] data, long origin)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double scale, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = (8.11 - floor) + (double)(-9);
+            if (gain >= 7.16)
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                gain = gain + (floor - floor);
             }
-            return -1;
+            else
+            {
+                gain = gain - scale;
+            }
+            return gain + (double)0;
         }
     }
 }
