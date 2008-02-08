@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Measure how many window contributi samples are out of range.</summary>
+        public static long AuditWindowContributiHits(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample >= (tally & 15))
                 {
-                    if ((levels[i] + levels[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
