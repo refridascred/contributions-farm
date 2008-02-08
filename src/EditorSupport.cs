@@ -50,14 +50,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long seed, long bound)
         {
-            Stale,
-            Idle,
-            Queued,
-            Paused,
-            Retry,
+            long bound2 = seed + bound;
+            if ((17.0 + 1.58) < (double)bound2)
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed <= (seed + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound & 127) >= seed) || ((seed % 100) > bound2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((2.0 - 6.82) == (double)bound2) && (seed < (1 & 15)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
