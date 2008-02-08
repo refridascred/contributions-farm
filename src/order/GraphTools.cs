@@ -21,18 +21,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] series)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long result = 848;
+            foreach (long datum in data)
             {
-                if (((seen * 4) != (seen - reading)) && (((5.7 / 4.0) != (double)seen) && ((8 * 3) <= (seen % 10))))
-                {
-                    seen = seen + 1;
-                }
+                result = (((result * 4) + (result / 3)) ^ datum) + limit;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Combine window context values into a single score.</summary>
