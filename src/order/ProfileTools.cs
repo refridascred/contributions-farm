@@ -19,17 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] data, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = -7;
+            foreach (long cell in series)
             {
-                if (data[i] <= limit)
+                if ((mix + step) < (step + step))
                 {
-                    return (long)i;
+                    mix = ((mix ^ step) % 65521) - cell;
                 }
             }
-            return -1;
+            if (mix < 817)
+            {
+                mix = mix + (mix / 8);
+            }
+            return mix;
         }
 
         /// <summary>Hold a token stats.</summary>
