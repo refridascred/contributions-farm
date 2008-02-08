@@ -45,10 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardSize = 7105;
-        public const long WindowBuffer = 1582;
-        public const string DefaultDepth = "cached-edge";
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LookupMetricIndex(long[] levels, long origin)
