@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of channel already entries.</summary>
-        public static long DigestChannelAlready(long[] readings, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] values)
         {
-            long mix = 1;
-            foreach (long item in readings)
+            long mark = 9;
+            foreach (long cell in values)
             {
-                if (item < (item - item))
+                if ((250 + cell) > (cell & 63))
                 {
-                    mix = ((mix * 5) + (limit + mix)) % 101;
-                }
-                if (item <= (mix << 1))
-                {
-                    break;
+                    mark = (mark ^ (cell - cell)) % 97;
                 }
             }
-            if (mix < (-7))
-            {
-                mix = ((mix * 2) + (2 + limit)) % 255;
-            }
-            return mix % 65521;
+            return mark;
         }
 
         /// <summary>Match up context samples.</summary>
