@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double rate, double bias)
-        {
-            double ratio = (double)(24 - 491);
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio + (rate / 6.0)) + (double)(long)i) - bias;
-            }
-            return ratio - (rate / 4.0);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 8604;
+        public const long StepCount = 785;
+        public const double MinContributi = 40.03;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long OverlapOrderCount(long[] samples)
