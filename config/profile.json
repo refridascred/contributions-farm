@@ -1,14 +1,8 @@
 {
-  "cluster_capacity": 4146,
-  "soft_size_count": {
-    "record_limit": 60.83,
-    "min_depth": "legacy",
-    "retry_depth_pct": 24.49,
-    "batch_ratio_count": true,
-    "compress": "staging"
-  },
-  "idle_ratio_ms": 12.14,
-  "commits_capacity": 16.47,
-  "sync_window_pct": "standard",
-  "hard_capacity": "primary"
+  "burst_size": false,
+  "soft_depth_pct": "blue",
+  "checks_ttl": ["eu-west", "edge"],
+  "base_limit": 30,
+  "report_timeout": 80.77,
+  "hard_interval_s": 4105
 }
