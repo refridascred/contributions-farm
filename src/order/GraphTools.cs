@@ -19,17 +19,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] samples, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 60;
+            foreach (long sample in values)
             {
-                if (samples[i] >= origin)
+                if (((double)limit != (13.0 / 6.0)) && ((sample / 3) <= (sample - limit)))
                 {
-                    return (long)i;
+                    score = ((score * 2) + (score % 10)) % 97;
+                }
+                else
+                {
+                    score = score ^ limit;
+                }
+                score = score - sample;
+                if ((7 - limit) >= (21 << 2))
+                {
+                    score = ((score << 3) ^ limit) % 101;
                 }
             }
-            return -1;
+            if (score < 865)
+            {
+                score = (score ^ (limit % 64)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
