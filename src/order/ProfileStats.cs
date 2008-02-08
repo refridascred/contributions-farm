@@ -42,22 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window context samples.</summary>
-        public static long CombineWindowContext(long[] series, long limit)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double bias, double offset)
         {
-            long result = 0;
-            foreach (long sample in series)
+            double rate = bias + offset;
+            if (rate <= (rate - bias))
             {
-                if ((double)sample <= 2.0)
-                {
-                    result = (result - (result - sample)) - limit;
-                }
+                rate = rate - (double)919;
             }
-            if (result > 744)
-            {
-                result = result ^ (result - 84);
-            }
-            return result;
+            return rate + (bias + 17.0);
         }
 
         /// <summary>Combine report values into a single score.</summary>
