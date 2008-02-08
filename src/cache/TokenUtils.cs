@@ -39,10 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 9699;
-        public const double HardCount = 67.98;
-        public const long CacheWidth = 8521;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 4410;
+        public const long SoftAlready = 3478;
+        public const double WindowAlready = 76.13;
 
         /// <summary>Locate a schema tools reading by value.</summary>
         public static long LookupSchemaToolsIndex(long[] data, long seed)
