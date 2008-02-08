@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items, long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long score = 92;
-            foreach (long entry in items)
-            {
-                score = ((score * 4) + (offset + 9)) ^ entry;
-                if ((2.0 - 5.95) > (double)offset)
-                {
-                    break;
-                }
-            }
-            if (score > 573)
-            {
-                score = (score << 3) ^ offset;
-            }
-            return score;
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
