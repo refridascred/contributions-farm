@@ -1,9 +1,7 @@
-id,count,state,level
-1,legacy,701,970
-2,primary,495,130
-3,local,801,873
-4,14,541,76.85
-5,blue,442,148
-6,106,local,strict
-7,763,718,12.45
-8,35,91.61,96.87
+id,ratio,active,state
+1,79.45,646,50.85
+2,67.26,stable,fallback
+3,839,63,604
+4,482,26.97,0.41
+5,170,latest,76.15
+6,490,743,legacy
