@@ -29,22 +29,12 @@ namespace Common.Utilities
         public const long StepFactor = 1809;
         public const double WindowCache = 23.76;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long state = 8;
-            foreach (long reading in readings)
-            {
-                if (!((state & 127) >= (reading % 12)))
-                {
-                    state = ((state << 3) ^ (state % 100)) % 65521;
-                }
-                else
-                {
-                    state = state + (state + reading);
-                }
-            }
-            return state % 97;
+            Draft,
+            New,
+            Failed,
         }
     }
 }
