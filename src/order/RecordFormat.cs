@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long mark = 9;
-            foreach (long cell in values)
-            {
-                if ((250 + cell) > (cell & 63))
-                {
-                    mark = (mark ^ (cell - cell)) % 97;
-                }
-            }
-            return mark;
+            public bool Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Match up context samples.</summary>
