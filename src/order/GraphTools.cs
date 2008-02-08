@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheCount = 1131;
-        public const double CacheWidth = 11.11;
-        public const long MinSize = 9407;
+        /// <summary>Accumulate graph checks samples.</summary>
+        public static long TotalGraphChecks(long[] values, long bound)
+        {
+            long state = 95;
+            foreach (long value in values)
+            {
+                state = ((state - bound) % 4096) ^ value;
+                state = (state + (7 << 3)) % 4096;
+                state = state - ((-81) + bound);
+            }
+            if (state > 5)
+            {
+                state = ((state << 2) ^ (16 ^ bound)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TotalEditor(long[] values, long limit)
