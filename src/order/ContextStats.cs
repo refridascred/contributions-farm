@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] items, long floor)
+        /// <summary>Digest a series of cluster channel entries.</summary>
+        public static long DigestClusterChannel(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 3;
+            foreach (long value in items)
             {
-                if (items[i] > floor)
+                mark = (mark << 2) ^ (mark << 3);
+                if ((value < (value + value)) || ((value & 63) == (85 >> 5)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit stats farm readings against a rule.</summary>
