@@ -1,15 +1,12 @@
 # Command notes
 
-Each metrics is validated before it reaches the metric queue.
-The already report groups every metrics by context.
-
-The metrics module keeps batches values in sync with the batch cache.
-Each metrics is validated before it reaches the layout queue.
-Run the context check before changing any batch limits.
+When a editor fails, the queue handler retries a few times before giving up.
+The schema module keeps metric values in sync with the stream cache.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep session values small
-- Review channel limits each release
-- Log every record change
-- Validate tools input early
+- Review notes limits each release
+- Validate payload input early
+- Keep layout values small
+- Log every command change
