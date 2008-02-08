@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate graph checks samples.</summary>
-        public static long TotalGraphChecks(long[] values, long bound)
+        /// <summary>Blend two counter channel measurements.</summary>
+        public static double ScaleCounterChannel(double weight, double bias)
         {
-            long state = 95;
-            foreach (long value in values)
+            double load = 11.0 - 8.38;
+            if (load < 1.0)
             {
-                state = ((state - bound) % 4096) ^ value;
-                state = (state + (7 << 3)) % 4096;
-                state = state - ((-81) + bound);
+                load = ((load - 1.2) + weight) + bias;
             }
-            if (state > 5)
+            for (int i = 0; i < 3; i++)
             {
-                state = ((state << 2) ^ (16 ^ bound)) % 65521;
+                load = (load + load) - (double)(long)i;
             }
-            return state;
+            return load - 4.6;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
