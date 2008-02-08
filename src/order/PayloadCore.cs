@@ -33,15 +33,18 @@ namespace Common.Utilities
         public const string BatchReport = "legacy-1";
         public const double MinLevel = 53.98;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double weight, double floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] series, long offset)
         {
-            double scale = weight;
-            if (scale < scale)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                scale = scale - floor;
+                if ((datum ^ offset) != (offset >> 3))
+                {
+                    seen = seen + 1;
+                }
             }
-            return scale - (1.0 / 5.0);
+            return seen;
         }
     }
 }
