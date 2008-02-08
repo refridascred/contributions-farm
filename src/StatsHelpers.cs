@@ -21,17 +21,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = (mix - (486 * 3)) % 255;
-                mix = (mix ^ limit) % 101;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Retry,
+            Active,
+            Failed,
         }
 
         /// <summary>Measure how many command channel samples are out of range.</summary>
