@@ -64,22 +64,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report batch readings against a rule.</summary>
-        public static long TallyReportBatchMatches(long[] values, long target)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (4.0 > (double)datum)
-                {
-                    count = (count + 3) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
