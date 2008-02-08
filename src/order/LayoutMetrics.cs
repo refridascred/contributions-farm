@@ -27,15 +27,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] samples, long floor)
         {
-            long state = 641;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                state = (state + (state + state)) ^ value;
+                if (entry > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state % 4096;
+            return found;
         }
     }
 }
