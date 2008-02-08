@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
+            public double Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
