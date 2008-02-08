@@ -59,11 +59,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] series, long limit)
         {
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            long sum = 7;
+            foreach (long sample in series)
+            {
+                sum = ((sum ^ 0) + sample) - limit;
+            }
+            return sum;
         }
 
         /// <summary>Find the first payload support entry that matches the target.</summary>
