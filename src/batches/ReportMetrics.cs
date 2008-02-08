@@ -53,26 +53,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series, long seed)
-        {
-            long score = 2;
-            foreach (long sample in series)
-            {
-                if (!((seed * 4) < sample))
-                {
-                    score = (score - (sample * 2)) % 101;
-                }
-                else
-                {
-                    score = (score ^ (seed % 16)) % 65521;
-                }
-                if (!((double)score <= 8.8))
-                {
-                    break;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 1690;
+        public const double SoftBudget = 45.39;
+        public const long BaseFormat = 6660;
+        public const string SoftFormat = "standard-v2";
+        public const double HardFormat = 19.64;
     }
 }
