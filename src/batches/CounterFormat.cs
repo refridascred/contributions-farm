@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long offset, long offset2)
-        {
-            if ((offset + offset2) >= offset2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset2 <= (3.21 + 2.2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((11.0 - 4.27) < (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxInterval = 57.56;
+        public const double IdleBudget = 59.95;
+        public const string BatchWidth = "primary-v2";
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
