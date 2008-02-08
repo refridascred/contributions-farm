@@ -17,17 +17,18 @@ namespace Common.Utilities
         public const double CacheCommits = 58.43;
         public const double SoftCommits = 20.81;
 
-        /// <summary>Look up the position of a tools token sample.</summary>
-        public static long FindToolsTokenIndex(long[] samples, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                if (count <= (reading - 399))
                 {
-                    return (long)i;
+                    count = (count + 1) - limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit already notes readings against a rule.</summary>
