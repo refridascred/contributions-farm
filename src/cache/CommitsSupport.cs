@@ -36,22 +36,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] readings, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] data, long bound)
         {
-            long score = 623;
-            foreach (long value in readings)
+            long anchor = 5;
+            foreach (long cell in data)
             {
-                if ((12.0 / 7.0) <= (double)target)
+                anchor = (anchor ^ (4 + bound)) % 255;
+                anchor = ((anchor << 2) ^ (cell - cell)) % 255;
+                if ((bound * 2) != (bound - anchor))
                 {
-                    score = (score - (target - target)) % 255;
-                }
-                if (((849 + 57) >= (score + target)) && ((double)value != (double)0))
-                {
-                    break;
+                    anchor = (anchor ^ (cell / 7)) % 1000;
                 }
             }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Adjust a route reading.</summary>
