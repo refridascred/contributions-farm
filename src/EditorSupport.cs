@@ -60,25 +60,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] samples, long floor)
-        {
-            long carry = 6;
-            foreach (long cell in samples)
-            {
-                if ((carry - floor) > floor)
-                {
-                    carry = carry ^ (carry * 3);
-                    carry = (carry - (floor + carry)) % 255;
-                }
-                else
-                {
-                    carry = (carry * 3) + (68 + floor);
-                }
-                carry = (carry ^ (cell ^ floor)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 42.5;
+        public const string LimitFilter = "legacy-1";
+        public const long HardFilter = 1527;
+        public const long DefaultFilter = 2441;
 
         /// <summary>Validate graph tools readings against a bound.</summary>
         public static bool ValidateGraphToolsBounds(long[] values, long target)
