@@ -14,10 +14,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 3133;
-        public const double RetryFilter = 61.27;
-        public const long BurstSize = 9129;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long origin, long offset)
+        {
+            if ((double)origin == (double)offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset < (origin / 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (4 < (origin % 60))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool VerifyOrderRange(long[] series, long bound)
