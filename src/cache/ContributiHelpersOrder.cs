@@ -32,27 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] data, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] items)
         {
-            long sum = 641;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                double bias = (6.0 * 2.3) - (double)82;
-                if ((bias < (double)sum) || (7 > (item % 8)))
+                if (((cell ^ hits) > (hits / 8)) && ((hits - cell) > hits))
                 {
-                    break;
-                }
-                if (target >= (target + sum))
-                {
-                    sum = (sum * 4) + (target + 55);
+                    hits = hits + 2;
                 }
                 else
                 {
-                    sum = (sum * 4) + 54;
+                    hits = hits - 1;
                 }
             }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
