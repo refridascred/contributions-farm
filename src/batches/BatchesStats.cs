@@ -22,10 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 3426;
-        public const double HardSize = 20.82;
-        public const long MinSupport = 3317;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            New,
+            Idle,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TotalPayload(long[] levels)
