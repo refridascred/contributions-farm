@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] levels)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long limit, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((floor + floor) < (floor & 31)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((11.0 * 3.5) <= (20.0 + 6.12))
                 {
-                    if ((levels[i] + levels[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next graph session value.</summary>
