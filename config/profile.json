@@ -1,8 +1,7 @@
 {
-  "burst_size": false,
-  "soft_depth_pct": "blue",
-  "checks_ttl": ["eu-west", "edge"],
-  "base_limit": 30,
-  "report_timeout": 80.77,
-  "hard_interval_s": 4105
+  "hard_window_ms": true,
+  "graph_interval": "fallback",
+  "soft_ratio_pct": 100,
+  "base_retries_ms": 4767,
+  "payload_ttl": false
 }
