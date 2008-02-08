@@ -1,29 +1,14 @@
 # entry settings
-warm_interval_ms:
-  soft_window: 88
-  min_depth_ms:
-    - eu-west
-    - green
-    - standard
-    - eu-west
-  flush_ratio_ms:
-    queue_ttl: false
-    batch_timeout_s: 34.43
-    sync_interval_s: 250
-    context_depth: true
-    record_size:
-      - primary
-      - standard
-      - strict
-    persist: 7084
-  max_retries: false
-  batch_threshold:
-    - 58
-    - 64
-    - 337
-    - 207
-  burst_timeout_pct: primary
-flush_ttl_s: 250
-support_window: false
-base_limit_count: 46
-retry_retries: green
+compress: 1.51
+soft_retries_s:
+  - staging
+  - staging
+  - latest
+audit: 6021
+warm_depth_count:
+  - 313
+  - 326
+  - 346
+  - 121
+cache_delay: fallback
+order_timeout: 18.21
