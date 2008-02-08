@@ -1,12 +1,13 @@
 # Command notes
 
-When a editor fails, the metric handler retries a few times before giving up.
-The metrics module keeps commits values in sync with the entry cache.
-A schema that stays idle for too long is moved to the metric list.
+Each counter is validated before it reaches the entry queue.
+Use account settings to tune how often farm data is refreshed.
+
+A context that stays idle for too long is moved to the queue list.
+Keep channel and queue names short and lowercase.
 
 ## Guidelines
 
-- Review route limits each release
-- Validate command input early
-- Document new batches fields
-- Keep session values small
+- Validate stats input early
+- Review filter limits each release
+- Keep stream values small
