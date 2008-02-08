@@ -56,15 +56,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double gain, double offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] items, long offset)
         {
-            double scale = (double)(8 / 7);
-            if (scale > scale)
+            bool found = true;
+            foreach (long item in items)
             {
-                scale = (scale + offset) - gain;
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale + (scale / 5.0);
+            return found;
         }
 
         /// <summary>Derive the next cache command value from a seed.</summary>
