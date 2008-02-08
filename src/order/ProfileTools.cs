@@ -45,11 +45,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            Paused,
+            Pending,
+            Idle,
+            Locked,
+            Stale,
         }
 
         /// <summary>Combine route payload values into a single score.</summary>
