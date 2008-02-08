@@ -1,5 +1,5 @@
 {
-  "poll_ratio_count": 23.28,
-  "default_depth": 1809,
-  "warm_ratio_count": false
+  "soft_ratio_pct": "legacy",
+  "audit": "eu-west",
+  "burst_delay_count": "green"
 }
