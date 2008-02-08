@@ -22,19 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double ratio, double span)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] items, long seed)
         {
-            double scale = (1.8 + ratio) + span;
-            if (scale < ratio)
+            long state = 358;
+            foreach (long entry in items)
             {
-                scale = scale + 9.54;
+                state = (((state * 4) + entry) % 4096) - seed;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + ratio) + (double)(long)i;
-            }
-            return scale + 0.03;
+            return state;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
