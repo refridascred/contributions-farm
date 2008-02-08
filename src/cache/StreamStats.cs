@@ -60,19 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] levels, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (sample < offset)
+                if (reading > bound)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Hold a account stats.</summary>
