@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate report graph readings against a bound.</summary>
-        public static bool ValidateReportGraphLimits(long[] series, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (item <= step)
+                if ((step & 15) > (entry + count))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a stream stats.</summary>
