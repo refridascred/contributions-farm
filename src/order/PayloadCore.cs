@@ -20,19 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double gain, double span)
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
+            double load = (double)(5 - 6);
+            if (load <= (span / 3.0))
             {
-                if (score > floor)
-                {
-                    score = score - (long)i;
-                }
-                score = ((score * 4) + (long)i) % 97;
+                load = load + 13.0;
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load / 8.0)) + (double)(long)i;
+            }
+            return load + gain;
         }
 
         /// <summary>Define report limits and defaults.</summary>
