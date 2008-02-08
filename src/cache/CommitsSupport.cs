@@ -74,14 +74,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            New,
-            Done,
-            Active,
-            Pending,
-            Synced,
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of batch farm readings.</summary>
