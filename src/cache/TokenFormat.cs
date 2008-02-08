@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double rate, double floor)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            double scale = (rate / 4.0) * 8.8;
+            if (scale <= (rate - scale))
+            {
+                scale = scale + floor;
+            }
+            else
+            {
+                scale = scale - 7.2;
+            }
+            return scale + floor;
         }
 
         /// <summary>Accumulate commits buffer samples.</summary>
