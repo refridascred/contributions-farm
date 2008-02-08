@@ -44,31 +44,13 @@ namespace Common.Utilities
         public const long StepFactor = 7378;
         public const double IdleDepth = 37.12;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long offset, long seed)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            if ((13.0 - 5.0) >= (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((5.2 + 5.41) != (double)offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset < (seed << 1)) || (7 < (seed / 8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Locked,
+            Closed,
+            Draft,
         }
     }
 }
