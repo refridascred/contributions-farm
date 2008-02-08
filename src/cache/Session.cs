@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Roll a cache githubfarm counter forward.</summary>
+        public static long RollCacheGithubfarm(long origin)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long score = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Derive the next metrics support value from a seed.</summary>
