@@ -23,14 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Iterate the stream schema series from a seed.</summary>
+        public static long StepStreamSchema(long seed)
         {
-            Draft,
-            Retry,
-            Done,
-            Pending,
-            Synced,
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 3) + seed) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the checks filter series from a seed.</summary>
