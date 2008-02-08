@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Look up the position of a route format sample.</summary>
+        public static long LookupRouteFormatIndex(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (levels[i] < seed)
                 {
-                    if ((readings[i] ^ readings[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate token cache readings against a bound.</summary>
