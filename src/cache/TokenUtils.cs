@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const long StepStats = 1577;
         public const long BatchStats = 928;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count * 5) >= count)
-                {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftFactor = 1437;
+        public const long CacheWidth = 6188;
+        public const long StepFactor = 1809;
+        public const double WindowCache = 23.76;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long FoldEditor(long[] readings)
