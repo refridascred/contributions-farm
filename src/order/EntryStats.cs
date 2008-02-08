@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long anchor = 256;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor ^ (anchor % 16)) ^ sample;
-            }
-            if (anchor > 9)
-            {
-                anchor = (anchor + (anchor >> 5)) % 4096;
-            }
-            return anchor;
+            Draft,
+            Paused,
+            New,
         }
 
         /// <summary>Grade a githubfarm channel value against two limits.</summary>
