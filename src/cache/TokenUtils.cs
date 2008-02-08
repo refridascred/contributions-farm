@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] levels, long offset)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long total = 520;
-            foreach (long item in levels)
-            {
-                total = (((total * 2) + (total >> 2)) ^ item) - offset;
-                total = (total + total) % 65521;
-            }
-            return total % 97;
+            public double Owner { get; set; }
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
