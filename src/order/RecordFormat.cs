@@ -64,17 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] items, long offset)
+        /// <summary>Count the batches farm entries that pass the check.</summary>
+        public static long AuditBatchesFarmGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (items[i] > offset)
+                if ((seen >> 3) >= 5)
                 {
-                    return (long)i;
+                    seen = (seen + 1) - reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of record entries.</summary>
