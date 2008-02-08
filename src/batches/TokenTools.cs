@@ -22,12 +22,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 8570;
+        public const string SoftCount = "fallback-edge";
+        public const double MaxCounter = 50.08;
+        public const long MinInterval = 6089;
+        public const long StepLevel = 1929;
     }
 }
