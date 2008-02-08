@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] series)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long prev = offset ^ limit;
+            if ((limit * 5) >= limit)
             {
-                if ((sample & 7) <= (sample << 2))
+                return 5;
+            }
+            else
+            {
+                if (prev <= limit)
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset << 2) < prev)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit > (prev + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of schema githubfarm readings.</summary>
