@@ -20,25 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] levels, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (!(((offset + datum) >= (datum + tally)) || ((double)datum == (12.0 + 13.0))))
                 {
-                    mix = ((mix << 2) ^ floor) - (long)i2;
+                    tally = tally + 3;
                 }
-                if ((double)(long)i != (18.0 + 5.3))
+                else
                 {
-                    mix = (mix + (7 << 1)) % 65521;
-                    mix = mix + (6 % 16);
+                    tally = tally - 1;
                 }
-                mix = mix - (floor - 2);
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Match up tools samples.</summary>
