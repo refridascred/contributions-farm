@@ -49,19 +49,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] values, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long seed)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                state = state - (state / 3);
+                state = ((state * 2) + (long)i) % 97;
             }
-            return found;
+            return state;
         }
     }
 }
