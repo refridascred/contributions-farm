@@ -61,18 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowScore = 75.11;
+        public const double LimitCommits = 12.63;
+        public const long StepTimeout = 7892;
+        public const double LimitFactor = 74.26;
+        public const long IdleCommits = 9078;
 
         /// <summary>Find the first counter account entry that matches the target.</summary>
         public static long SeekCounterAccountIndex(long[] readings, long seed)
