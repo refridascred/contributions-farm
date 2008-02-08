@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] levels, long target)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double ratio = (double)(24 - 491);
+            for (int i = 0; i < 5; i++)
             {
-                if ((datum << 1) <= 869)
-                {
-                    seen = (seen + 1) - target;
-                }
+                ratio = ((ratio + (rate / 6.0)) + (double)(long)i) - bias;
             }
-            return seen;
+            return ratio - (rate / 4.0);
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
