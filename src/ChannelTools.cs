@@ -14,12 +14,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
             Ready,
-            Locked,
-            New,
+            Pending,
+            Stale,
+            Failed,
+            Done,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
