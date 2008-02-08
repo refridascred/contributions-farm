@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] levels, long origin)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > origin)
+                if ((samples[i] > offset) && ((samples[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Roll a support schema counter forward.</summary>
