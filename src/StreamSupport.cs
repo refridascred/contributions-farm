@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] values, long floor)
+        /// <summary>Count the notes batches entries that pass the check.</summary>
+        public static long TallyNotesBatchesGaps(long[] levels, long origin)
         {
-            long total = 823;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((entry ^ entry) < (floor + entry))
+                if ((724 % 5) > origin)
                 {
-                    total = ((total * 2) + (40 * 4)) % 1000;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            if (total > 480)
-            {
-                total = (total ^ (floor ^ floor)) % 4096;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Validate token cache readings against a bound.</summary>
