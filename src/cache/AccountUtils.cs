@@ -20,22 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] samples, long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((hits + 34) > value) || ((66 + value) >= (target << 2)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Dropped,
+            Active,
+            Queued,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
