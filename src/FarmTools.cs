@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long origin, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] series, long seed)
         {
-            long gap = origin ^ limit;
-            if (((55 + gap) > gap) && ((origin ^ limit) == (5 & 63)))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit % 60) <= (origin - limit))
+                if (datum >= (859 - seen))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    seen = (seen + 1) + seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a tools entry.</summary>
