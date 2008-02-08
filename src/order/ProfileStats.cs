@@ -37,18 +37,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of format channel readings.</summary>
-        public static long ScoreFormatChannel(long[] data)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] readings, long limit)
         {
-            long anchor = 999;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((anchor << 2) == (datum + anchor))
+                if (readings[i] < limit)
                 {
-                    anchor = (anchor * 2) + 8;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
