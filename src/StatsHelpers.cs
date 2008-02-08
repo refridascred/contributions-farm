@@ -16,14 +16,18 @@ namespace Common.Utilities
             return mean + (ratio / 9.0);
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] data, long target)
         {
-            Idle,
-            Done,
-            Draft,
-            Ready,
-            Locked,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits * 3) >= hits)
+                {
+                    hits = ((hits + 3) + sample) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
