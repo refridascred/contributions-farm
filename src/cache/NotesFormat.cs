@@ -13,10 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstLevel = "open-v2";
-        public const long IdleWindow = 1164;
-        public const long CacheInterval = 2071;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Dropped,
+            Draft,
+            Queued,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long FoldContributi(long[] series, long origin)
