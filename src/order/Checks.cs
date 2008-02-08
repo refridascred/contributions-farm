@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] values, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                state = (state + (origin * 3)) % 255;
-                state = ((state * 3) + (long)i) % 97;
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
