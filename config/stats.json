@@ -1,5 +1,5 @@
 {
-  "flush_threshold": true,
-  "order_ttl": ["green", "fallback"],
-  "idle_threshold": true
+  "warm_ratio": [150, 63],
+  "base_retries_count": "green",
+  "schema_threshold": 8.32
 }
