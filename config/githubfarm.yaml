@@ -1,11 +1,11 @@
 # githubfarm settings
-burst_size_pct: primary
-graph_size:
+soft_interval_s: true
+flush_threshold_s:
+  - 473
+  - 184
+  - 287
+min_threshold_ms: 58.09
+batch_depth:
+  - latest
+  - blue
   - strict
-  - stable
-  - open
-  - cached
-poll_ratio_pct: 250
-graph_interval: 1024
-max_threshold: legacy
-audit: false
