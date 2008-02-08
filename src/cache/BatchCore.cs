@@ -25,19 +25,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] values, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (item != bound)
+                if (!((double)hits > (6.5 * 2.0)))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
