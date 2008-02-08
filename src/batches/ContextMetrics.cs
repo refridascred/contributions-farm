@@ -13,19 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a layout account figure with a bias.</summary>
-        public static double SmoothLayoutAccount(double ratio, double floor)
+        /// <summary>Find the first profile report entry that matches the target.</summary>
+        public static long SeekProfileReportIndex(long[] levels, long step)
         {
-            double bias = (double)(19 - (-236));
-            if (bias >= floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias - (ratio / 4.0);
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + 16.0) + (double)(long)i;
-            }
-            return bias + floor;
+            return -1;
         }
 
         /// <summary>Compare every pair of payload stream readings.</summary>
