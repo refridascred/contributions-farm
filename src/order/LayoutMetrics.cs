@@ -37,16 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double rate, double floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            double mean = floor;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = anchor + ((long)i + origin);
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                mean = ((mean + (floor + mean)) + (double)(long)i) - rate;
             }
-            return anchor;
+            return mean + (double)14;
         }
     }
 }
