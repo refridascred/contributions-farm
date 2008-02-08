@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 8204;
-        public const long IdleCount = 2964;
-        public const long WindowFactor = 6531;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinDepth = 9765;
+        public const long HardCommits = 352;
+        public const string BaseCommits = "cached-edge";
+        public const double LimitCommits = 63.18;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long IterateChannel(long limit)
