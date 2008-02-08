@@ -1,18 +1,14 @@
 # support settings
-contributi_delay:
-  warm_size_pct:
-    - 303
-    - 152
-    - 154
-  min_ttl_count: stable
-  max_depth_s: standard
-  readonly: 30.04
-retry_timeout: 1024
-route_delay: strict
-soft_ttl:
-  - green
-  - legacy
-  - standard
-  - legacy
-hard_delay: 92.76
-batch_depth_ms: local
+cluster_ratio:
+  readonly: 2642
+  enabled: false
+  support_capacity: false
+  soft_capacity: false
+  sync_size_ms: open
+metrics_ttl: 51.35
+retry_capacity: false
+max_ratio:
+  max_ttl_pct: legacy
+  persist: fallback
+  compress: stable
+  warm_ratio_pct: 1024
