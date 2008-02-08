@@ -1,5 +1,20 @@
 {
-  "burst_limit": "legacy",
-  "readonly": 91.42,
-  "base_ratio_ms": "green"
+  "record_interval": {
+    "checks_size": "fallback",
+    "cluster_interval": "open",
+    "enabled": ["open", "fallback", "staging"],
+    "soft_depth_ms": {
+      "batches_threshold": true,
+      "dry_run": 5616,
+      "cache_size": "staging",
+      "compress": 32.35,
+      "min_ratio_ms": 250,
+      "verbose": 47.39
+    },
+    "retry_interval_pct": false,
+    "soft_window": "strict"
+  },
+  "hard_retries_ms": 8376,
+  "session_retries": "blue",
+  "buffer_retries": 84.76
 }
