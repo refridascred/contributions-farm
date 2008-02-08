@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next stream account value from a seed.</summary>
-        public static long SeriesStreamAccount(long offset)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((offset - 368) == (acc << 3))
-                {
-                    acc = ((acc * 4) + (7 ^ offset)) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Paused,
+            Queued,
+            Idle,
         }
 
         /// <summary>Accumulate already samples.</summary>
