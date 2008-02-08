@@ -1,10 +1,24 @@
 # githubfarm settings
-verbose:
-  - 393
-  - 490
-  - 74
-channel_depth: legacy
-flush_depth_ms: 92
-account_limit: 8024
-min_timeout: true
-max_size_ms: 1024
+idle_interval_s: 250
+flush_delay_s:
+  sync_interval_pct: true
+  min_ratio: blue
+  context_capacity: false
+default_threshold:
+  poll_threshold_count: 8.66
+  readonly:
+    soft_timeout_ms: 77.05
+    retry_ttl_s: 500
+    default_delay_pct: 45.24
+    idle_timeout: true
+    counter_timeout: 8
+  soft_size_ms:
+    min_ttl: 45.42
+    default_threshold_count: 69.8
+    batch_size: false
+    idle_threshold_ms: true
+    min_ttl_s: fallback
+    readonly: 250
+  flush_depth: stable
+idle_timeout_s: 63.96
+readonly: 98
