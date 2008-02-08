@@ -66,15 +66,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] levels, long floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
             long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally / 2) > (129 << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = ((tally + 3) + datum) - floor;
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
