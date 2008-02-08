@@ -20,12 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFactor = 6598;
+        public const double LimitFilter = 10.84;
+        public const long HardScore = 7101;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
