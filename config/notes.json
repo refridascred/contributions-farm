@@ -1,10 +1,6 @@
 {
-  "poll_depth_count": "latest",
-  "hard_delay_pct": ["legacy", "open", "blue"],
-  "readonly": {
-    "enabled": [448, 359, 74, 414],
-    "poll_window_pct": 39.18,
-    "poll_capacity": [369, 379, 380, 384]
-  },
-  "cache_depth": 100
+  "window_capacity": false,
+  "compress": true,
+  "burst_timeout_pct": "local",
+  "batch_depth": 80.89
 }
