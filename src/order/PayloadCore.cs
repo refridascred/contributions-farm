@@ -32,10 +32,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxScore = 9789;
-        public const long WindowBatches = 267;
-        public const string RetryTimeout = "strict-edge";
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double weight, double span)
+        {
+            double weight2 = weight;
+            if (weight2 >= (span * 0.23))
+            {
+                weight2 = weight2 - (span - weight);
+            }
+            return weight2 - (weight2 * 1.4);
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] data)
