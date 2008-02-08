@@ -15,12 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] values, long floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] > floor)
+                if (readings[i] < target)
                 {
                     return (long)i;
                 }
