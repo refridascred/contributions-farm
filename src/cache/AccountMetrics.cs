@@ -45,21 +45,32 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Match up metric commits samples.</summary>
-        public static long PairMetricCommitsCount(long[] samples)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = -134;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = total + (value >> 5);
+                if ((461 & 63) == (limit << 2))
                 {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total + (total - limit)) % 97;
+                    total = (total ^ (value & 1)) % 65521;
+                }
+                if (7.8 < (double)value)
+                {
+                    total = (total - (limit * 2)) % 4096;
+                }
+                else
+                {
+                    total = (total + (limit - total)) % 101;
                 }
             }
-            return hits;
+            if (total < 6)
+            {
+                total = ((total << 2) ^ limit) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Locate a stream channel reading by value.</summary>
