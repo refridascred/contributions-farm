@@ -68,13 +68,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double gain, double span)
         {
-            Queued,
-            Draft,
-            Paused,
-            Closed,
+            double weight = 17.0 + span;
+            return weight + (gain - 5.54);
         }
     }
 }
