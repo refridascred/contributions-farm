@@ -38,22 +38,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] readings, long floor)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long bound)
         {
-            long score = 48;
-            foreach (long sample in readings)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (((floor >> 1) != ((-5) & 1)) || ((sample * 3) > (score + 74)))
+                if (((total - total) == ((long)i - 14)) && ((total + (long)i) > ((long)i ^ total)))
                 {
-                    score = score - (sample * 2);
-                }
-                if ((sample >> 2) <= (floor / 6))
-                {
+                    total = ((total * 5) + (total / 5)) % 4096;
                     break;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Hold a context record.</summary>
