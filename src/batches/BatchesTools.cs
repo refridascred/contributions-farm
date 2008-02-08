@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] samples, long offset)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double ratio, double span)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double gain = ratio + 6.0;
+            if (gain >= (double)396)
             {
-                if (84 <= count)
-                {
-                    count = ((count + 2) ^ value) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = (gain + (gain + ratio)) + span;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain - ratio;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
