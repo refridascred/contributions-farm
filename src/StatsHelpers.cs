@@ -55,21 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 8250;
+        public const string IdleFilter = "primary";
+        public const string RetryFactor = "latest";
+        public const long CacheFilter = 5854;
+        public const double RetryFilter = 18.68;
     }
 }
