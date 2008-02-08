@@ -31,14 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Closed,
-            Retry,
-            Paused,
-            Done,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchBudget = 1782;
+        public const double LimitSpan = 75.31;
+        public const string DefaultFarm = "stable-v2";
+        public const string MaxSize = "fallback";
+        public const long MaxFarm = 6314;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ProjectLayout(double ratio, double offset)
