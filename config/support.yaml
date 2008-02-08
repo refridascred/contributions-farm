@@ -1,33 +1,8 @@
 # support settings
-context_ttl: 8529
-flush_delay_count:
-  farm_capacity:
-    soft_depth_s: true
-    support_retries: 94
-    poll_size_ms: 60
-    burst_depth_pct: 4536
-    readonly: 250
-  warm_window_ms: fallback
-  route_capacity: primary
-  base_window_count: 18.73
-  verbose:
-    - 418
-    - 12
-    - 477
-    - 399
-warm_timeout_count: 31
-enabled:
-  soft_interval: staging
-  idle_retries: 1330
-  max_capacity: false
-  warm_depth_count:
-    warm_ttl:
-      - 460
-      - 442
-      - 423
-      - 77
-    already_ttl: 48.87
-    readonly: primary
-    warm_depth: 18
-    persist: true
-    strict: 32
+poll_capacity_count: 68.17
+batches_threshold: false
+dry_run:
+  - edge
+  - standard
+  - fallback
+strict: staging
