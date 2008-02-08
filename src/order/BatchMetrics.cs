@@ -59,12 +59,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Locate a schema stream reading by value.</summary>
+        public static long SeekSchemaStreamIndex(long[] levels, long floor)
         {
-            Draft,
-            New,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
