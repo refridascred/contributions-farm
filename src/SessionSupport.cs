@@ -13,12 +13,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleTimeout = 3532;
-        public const double WindowScore = 48.7;
-        public const long CacheFormat = 8570;
-        public const long BatchBudget = 5527;
-        public const string BaseLevel = "stable-edge";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)(long)data.Length < (6.27 - 8.47))
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
