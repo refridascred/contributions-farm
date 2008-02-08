@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 3814;
-        public const double RetryTimeout = 35.49;
-        public const long DefaultSpan = 3692;
-        public const double SoftBatches = 98.04;
+        /// <summary>Locate a buffer batches reading by value.</summary>
+        public static long FindBufferBatchesIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long CompareAlreadyCount(long[] values)
