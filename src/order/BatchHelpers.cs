@@ -20,19 +20,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] series, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] items)
         {
-            long state = 954;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                state = ((((state << 3) ^ (state & 31)) % 101) ^ datum) - target;
+                if (datum <= (8 ^ datum))
+                {
+                    count = count + 1;
+                }
             }
-            if (state > 393)
-            {
-                state = (state + (state ^ state)) % 65521;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
