@@ -21,13 +21,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Retry,
-            Active,
-            Failed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinBudget = 7011;
+        public const double DefaultReport = 0.21;
+        public const long DefaultScore = 422;
 
         /// <summary>Measure how many command channel samples are out of range.</summary>
         public static long AuditCommandChannelMatches(long[] samples, long step)
