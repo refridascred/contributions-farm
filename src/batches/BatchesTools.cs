@@ -20,38 +20,21 @@ namespace Common.Utilities
         public const long BaseOrder = 8114;
         public const long DefaultDepth = 5450;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long limit, long limit2)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] readings)
         {
-            if (limit2 <= 8)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit2 % 16) != (limit >> 3)) && ((limit2 + 99) <= (limit << 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)limit >= (7.07 - 3.59)) || ((double)limit <= (2.59 / 5.0)))
+                    if ((readings[i] + readings[j]) == 17)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)limit > (15.0 / 5.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
