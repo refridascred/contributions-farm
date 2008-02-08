@@ -38,11 +38,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseSize = "staging-v2";
-        public const long BaseInterval = 1209;
-        public const long BaseFactor = 3409;
-        public const long BurstCommand = 2560;
+        /// <summary>Validate tools filter readings against a bound.</summary>
+        public static bool VerifyToolsFilterBounds(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long ScoreToken(long[] data, long bound)
