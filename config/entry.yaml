@@ -1,12 +1,12 @@
 # entry settings
-persist: 30
-soft_ttl_s: true
+hard_size: 81.64
+cache_ratio_s: 4491
 dry_run:
-  min_retries_pct: true
-  idle_depth_s: false
-  flush_ratio_s:
-    - stable
-    - eu-west
-max_retries_s: false
-max_window_count: true
-cache_capacity_ms: false
+  warm_retries_ms: standard
+  counter_ttl: 53.58
+  report_delay: 100
+  base_retries_s: 500
+  window_delay:
+    - 194
+    - 497
+    - 202
