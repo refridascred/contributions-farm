@@ -19,21 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of schema githubfarm readings.</summary>
-        public static long MatchSchemaGithubfarmCount(long[] items)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 549;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((anchor - entry) >= (entry * 2))
                 {
-                    if ((items[i] ^ items[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor + (anchor % 24);
+                }
+                if (!(((-361) - anchor) > (anchor + entry)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
