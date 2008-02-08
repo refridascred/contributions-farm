@@ -62,11 +62,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Locate a channel record reading by value.</summary>
+        public static long LookupChannelRecordIndex(long[] items, long seed)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
