@@ -64,13 +64,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Stale,
-            Draft,
-            Ready,
-            New,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardInterval = "legacy-v2";
+        public const long BatchMetrics = 6188;
+        public const long DefaultMetrics = 7053;
+        public const long MaxSize = 7207;
+        public const long LimitRatio = 8269;
     }
 }
