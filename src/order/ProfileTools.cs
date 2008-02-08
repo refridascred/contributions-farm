@@ -45,13 +45,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
+            Stale,
+            Done,
+            Synced,
             Closed,
-            Active,
-            Retry,
-            New,
+            Paused,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
