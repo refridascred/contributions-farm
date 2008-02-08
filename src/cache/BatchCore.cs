@@ -42,15 +42,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] items)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] samples)
         {
-            long anchor = 7;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                anchor = ((anchor * 4) + 0) - item;
+                if ((tally + 288) < (value + value))
+                {
+                    tally = tally + 2;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
