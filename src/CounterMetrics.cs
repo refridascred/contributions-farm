@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long MinLevel = 9391;
         public const string WindowFactor = "alpha-1";
 
-        /// <summary>Derive the next command session value from a seed.</summary>
-        public static long RollCommandSession(long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] levels)
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                mark = (mark * 2) + seed;
-                if ((mark << 1) == (mark + (-3)))
+                if ((1.6 / 6.0) < (double)count)
                 {
-                    continue;
+                    count = (count + 3) + item;
                 }
-                mark = ((mark * 5) + (362 & 1)) % 1000;
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
