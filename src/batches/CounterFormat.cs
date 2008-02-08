@@ -14,10 +14,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 66.13;
-        public const double CacheDepth = 1.48;
-        public const long LimitBatches = 8381;
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LocateNotesIndex(long[] items, long floor)
