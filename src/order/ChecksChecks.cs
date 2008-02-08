@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] series, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (series[i] >= target)
+                if ((floor - reading) <= (floor - 2))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit editor tools readings against a rule.</summary>
