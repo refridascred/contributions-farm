@@ -17,11 +17,15 @@ namespace Common.Utilities
         public const string HardOrder = "latest-1";
         public const long SoftOrder = 3990;
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] values, long bound)
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            long mix = 53;
+            foreach (long datum in values)
+            {
+                mix = ((mix * 3) + (datum & 31)) - bound;
+            }
+            return mix % 97;
         }
 
         /// <summary>Find the first editor stats entry that matches the target.</summary>
