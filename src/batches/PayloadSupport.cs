@@ -26,10 +26,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 3601;
-        public const long StepEditor = 340;
-        public const long CacheEditor = 6435;
-        public const long BurstEditor = 5703;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
