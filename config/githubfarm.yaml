@@ -1,12 +1,22 @@
 # githubfarm settings
-batches_interval: local
-hard_size_count: 50.91
-dry_run:
-  sync_delay_ms: 63
-  editor_capacity: latest
-  entry_limit:
-    - local
-    - standard
-    - staging
-    - eu-west
-min_timeout_pct: strict
+tools_interval: 47.29
+strict: false
+sync_threshold_ms:
+  filter_interval: 30
+  sync_limit_ms: 2218
+  context_ratio:
+    cache_window_pct: 100
+    layout_size:
+      - fallback
+      - strict
+      - fallback
+      - fallback
+    context_size: strict
+    cache_capacity_count: 90.3
+    burst_delay_pct:
+      - stable
+      - staging
+      - standard
+      - fallback
+soft_timeout_count: 54
+sync_size_count: open
