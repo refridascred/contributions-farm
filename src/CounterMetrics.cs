@@ -13,20 +13,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 4619;
+        public const long BatchSpan = 6335;
+        public const string StepLevel = "alpha-v2";
+        public const long RetryContributi = 7463;
 
         /// <summary>Match up account schema samples.</summary>
         public static long CompareAccountSchemaCount(long[] readings)
