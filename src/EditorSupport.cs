@@ -52,13 +52,10 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Active,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxSpan = 989;
+        public const long RetryBatches = 7106;
+        public const long HardFactor = 1785;
 
         /// <summary>Find the first counter account entry that matches the target.</summary>
         public static long SeekCounterAccountIndex(long[] readings, long seed)
