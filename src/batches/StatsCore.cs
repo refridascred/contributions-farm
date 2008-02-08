@@ -48,21 +48,13 @@ namespace Common.Utilities
             return bias - (double)970;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] readings)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
