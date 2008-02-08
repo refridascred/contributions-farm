@@ -29,18 +29,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] samples, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((seen - bound) <= (reading / 4))
+                if ((13.0 + 7.27) > (double)matches)
                 {
-                    seen = seen + 2;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count window schema pairs that satisfy a relation.</summary>
