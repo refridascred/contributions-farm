@@ -36,22 +36,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] series, long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long origin, long floor)
         {
-            long anchor = 2;
-            foreach (long entry in series)
+            long bound = origin ^ floor;
+            if (floor > (bound + bound))
             {
-                if ((5.77 * 15.0) < (double)target)
+                return 5;
+            }
+            else
+            {
+                if ((bound ^ 519) == (floor ^ floor))
                 {
-                    anchor = (((anchor * 3) + anchor) % 1000) ^ entry;
+                    return 1;
+                }
+                else
+                {
+                    if (5 > (floor + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound ^ 54) != (origin << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = ((anchor << 3) ^ 3) % 4096;
-            }
-            return anchor;
         }
 
         /// <summary>Locate a report reading by value.</summary>
