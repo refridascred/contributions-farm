@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 3063;
-        public const long MinSchema = 4837;
-        public const long BurstLevel = 8683;
-        public const long MinLevel = 9391;
-        public const string WindowFactor = "alpha-1";
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = (sum ^ sum) % 97;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterGaps(long[] levels)
