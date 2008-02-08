@@ -1,12 +1,26 @@
 # entry settings
-default_retries_s: 500
-base_delay: staging
-retry_retries_count:
-  queue_interval: 28.53
-  default_window: fallback
-  audit: false
-graph_threshold: 250
-retry_retries_ms:
-  - 339
-  - 4
-cache_depth_count: fallback
+hard_capacity: 6
+compress:
+  stream_ratio: blue
+  default_timeout_count: 95.41
+  enabled: 17.48
+  counter_ttl: 94.71
+  already_size:
+    - 497
+    - 220
+    - 120
+  notes_delay: standard
+base_size_ms:
+  cache_ttl_pct: false
+  contributi_timeout: 96
+  max_window_ms:
+    - legacy
+    - local
+    - stable
+    - eu-west
+  flush_size:
+    base_depth_s: blue
+    persist: 34.37
+    cache_size: 14.6
+  already_threshold: false
+  counter_limit: blue
