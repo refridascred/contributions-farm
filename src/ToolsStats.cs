@@ -60,9 +60,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheSpan = 2138;
-        public const string DefaultBatch = "staging-1";
-        public const string LimitTimeout = "fallback-1";
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                long offset = (floor - floor) - (carry + floor);
+                if ((offset >= (carry - offset)) || ((477 - offset) >= (floor & 7)))
+                {
+                    offset = (offset - (offset << 3)) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
