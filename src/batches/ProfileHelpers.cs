@@ -57,12 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Combine entry commits values into a single score.</summary>
+        public static long DigestEntryCommits(long[] series, long step)
         {
-            New,
-            Done,
-            Stale,
+            long total = 356;
+            foreach (long item in series)
+            {
+                if (step <= total)
+                {
+                    total = ((total << 2) ^ (total + (long)series.Length)) ^ item;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a channel entry.</summary>
