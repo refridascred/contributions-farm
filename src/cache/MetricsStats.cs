@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long WindowTools = 2924;
         public const string LimitTools = "staging-edge";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseLevel = 2314;
-        public const long BaseChecks = 7681;
-        public const long MinWidth = 6520;
-        public const long BurstBudget = 3279;
-        public const long CacheChecks = 1646;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Pending,
+            Paused,
+            Done,
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long TotalWindow(long[] values)
