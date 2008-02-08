@@ -1,5 +1,12 @@
 # githubfarm settings
-record_size: strict
-poll_delay_ms: 1024
-flush_retries_s: green
-enabled: 100
+batches_interval: local
+hard_size_count: 50.91
+dry_run:
+  sync_delay_ms: 63
+  editor_capacity: latest
+  entry_limit:
+    - local
+    - standard
+    - staging
+    - eu-west
+min_timeout_pct: strict
