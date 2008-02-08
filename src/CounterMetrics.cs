@@ -35,12 +35,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryMetric = 21.62;
+        public const long SoftMetric = 6020;
+        public const string WindowFactor = "latest-edge";
+        public const double CacheMetric = 64.95;
+        public const long StepMetric = 6520;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long MatchProfileCount(long[] values)
