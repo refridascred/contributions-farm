@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long limit, long step)
+        /// <summary>Audit graph stream readings against a rule.</summary>
+        public static long TallyGraphStreamMatches(long[] values)
         {
-            if (((limit << 3) >= (356 % 12)) || ((2.5 + 9.02) > (double)limit))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (6.1 <= (double)limit)
+                if (sample <= (946 - sample))
                 {
-                    return 8;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if (8.85 <= (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
