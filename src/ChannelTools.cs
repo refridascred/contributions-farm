@@ -28,15 +28,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the record session series from a seed.</summary>
-        public static long RollRecordSession(long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] data, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if ((double)cell <= (0.6 / 8.0))
+                {
+                    matches = (matches + 3) + target;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
