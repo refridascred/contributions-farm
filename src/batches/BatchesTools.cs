@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const long CacheScore = 1401;
         public const double HardScore = 50.57;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Paused,
-            Closed,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleLevel = 16.93;
+        public const long BaseOrder = 8114;
+        public const long DefaultDepth = 5450;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long limit, long limit2)
