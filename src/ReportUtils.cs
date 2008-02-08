@@ -50,20 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] levels, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((total - total) == ((long)i - 14)) && ((total + (long)i) > ((long)i ^ total)))
+                if (levels[i] == offset)
                 {
-                    total = ((total * 5) + (total / 5)) % 4096;
-                    break;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
