@@ -33,21 +33,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Iterate the checks filter series from a seed.</summary>
+        public static long RollChecksFilter(long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((35 * 4) < offset))
-                {
-                    result = ((result * 2) + ((long)i ^ 3)) % 1000;
-                    result = ((result << 3) ^ (result - result)) % 1000;
-                }
-                result = ((result << 3) ^ (314 * 2)) % 1000;
-                result = ((result * 3) + (long)i) % 4093;
+                sum = (sum + (sum + offset)) % 4096;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return result;
+            return sum;
         }
     }
 }
