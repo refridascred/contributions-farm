@@ -1,10 +1,6 @@
-id,score,ratio
-1,94.53,191
-2,legacy,435
-3,legacy,77.72
-4,open,edge
-5,eu-west,600
-6,fallback,544
-7,87.92,165
-8,local,93.01
-9,375,local
+id,count,label,owner
+1,standard,770,638
+2,6,legacy,610
+3,812,local,legacy
+4,60.73,90.03,89.16
+5,62.01,946,94.64
