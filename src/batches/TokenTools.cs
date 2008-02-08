@@ -60,9 +60,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 51.47;
-        public const double CacheNotes = 91.11;
-        public const long BurstRatio = 2998;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long step, long offset)
+        {
+            if (((offset ^ step) >= 14) || (offset >= (step & 15)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step - offset) < offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + step) <= (step + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step >= (step - 7)) && ((6.5 / 2.0) >= (double)offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
