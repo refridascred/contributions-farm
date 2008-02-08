@@ -19,15 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            double bias = (double)(59 ^ 65);
-            if (bias > (9.59 + floor))
-            {
-                bias = bias - bias;
-            }
-            return bias + weight;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
