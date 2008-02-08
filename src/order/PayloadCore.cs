@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] levels)
         {
-            long anchor = -674;
-            foreach (long entry in samples)
+            long anchor = 53;
+            foreach (long datum in levels)
             {
-                anchor = (anchor ^ entry) % 101;
+                anchor = (anchor - (datum - anchor)) % 65521;
             }
-            return anchor % 1000;
+            if (anchor > 64)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
