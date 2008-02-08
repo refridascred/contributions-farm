@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] samples)
         {
-            Paused,
-            Done,
-            Failed,
-            Queued,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value + value) > (2 + value))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
