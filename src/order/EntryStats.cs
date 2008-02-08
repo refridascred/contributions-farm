@@ -55,18 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] values)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((239 ^ hits) < (item % 64))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two commits report measurements.</summary>
