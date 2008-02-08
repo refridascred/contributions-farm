@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a commits format value against two limits.</summary>
-        public static long GradeCommitsFormat(long floor, long origin)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long bound, long bound2)
         {
-            if ((floor >> 3) > (3 * 4))
+            long edge = bound ^ bound2;
+            if ((edge % 12) < (bound2 + edge))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((double)origin == (4.28 * 2.6))
+                if (((double)edge >= (1.4 + 7.6)) && (213 >= (bound2 % 64)))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((10.0 * 3.54) >= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((floor % 16) <= (6 - floor)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
