@@ -1,5 +1,8 @@
 # support settings
-readonly: latest
-token_threshold: 87.64
-checks_timeout: stable
-route_ratio: stable
+metrics_retries: 95.98
+readonly: 75.32
+idle_ttl_count:
+  - edge
+  - green
+  - fallback
+audit: strict
