@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long limit, long step)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long cur = limit ^ step;
+            if ((cur / 3) > (cur - cur))
             {
-                if ((count >> 2) > (count << 2))
+                return 6;
+            }
+            else
+            {
+                if (step > (54 - limit))
                 {
-                    count = (count + 3) + entry;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((cur / 6) <= cur)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit - cur) != (step << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
