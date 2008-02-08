@@ -59,18 +59,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] levels, long bound)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((1.0 / 5.0) <= (double)value)
-                {
-                    tally = (tally + 2) + bound;
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first payload support entry that matches the target.</summary>
