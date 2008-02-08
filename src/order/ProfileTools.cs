@@ -45,14 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Stale,
-            Done,
-            Synced,
-            Closed,
-            Paused,
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
