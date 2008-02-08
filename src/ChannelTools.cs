@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 587;
+        public const long RetryNotes = 7499;
+        public const string CacheInterval = "latest";
 
         /// <summary>Blend two order tools measurements.</summary>
         public static double ProjectOrderTools(double scale, double bias)
