@@ -46,11 +46,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            Draft,
+            Locked,
+            Retry,
+            Queued,
+            Synced,
         }
     }
 }
