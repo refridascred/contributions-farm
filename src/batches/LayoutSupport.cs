@@ -13,18 +13,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] items)
+        /// <summary>Rank editor window input into a small class.</summary>
+        public static long ClassifyEditorWindow(long seed, long step)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long edge = seed ^ step;
+            if (((seed & 3) >= step) && ((edge % 8) >= (edge ^ seed)))
             {
-                if ((value * 2) < value)
+                return 3;
+            }
+            else
+            {
+                if (5 <= (step & 127))
                 {
-                    seen = seen + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((3.77 / 4.0) != (double)edge)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the format class values.</summary>
