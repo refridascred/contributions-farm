@@ -35,15 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] samples)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] data)
         {
             long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((4.11 / 6.0) != (double)sample) && ((hits < (hits * 2)) && ((hits * 2) <= (sample & 31))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((data[i] ^ data[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
