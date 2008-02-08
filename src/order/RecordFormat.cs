@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Ready,
-            Paused,
-            Closed,
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a route info.</summary>
