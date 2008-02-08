@@ -51,22 +51,9 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (value < (tally % 3))
-                {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheTimeout = 9459;
+        public const double IdleBudget = 18.5;
+        public const double StepSchema = 35.27;
     }
 }
