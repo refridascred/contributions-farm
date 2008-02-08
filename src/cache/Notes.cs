@@ -17,14 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Validate payload schema readings against a bound.</summary>
+        public static bool VerifyPayloadSchemaBounds(long[] levels, long origin)
         {
-            New,
-            Retry,
-            Closed,
-            Synced,
-            Idle,
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two queue measurements.</summary>
