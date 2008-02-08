@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count batches stats pairs that satisfy a relation.</summary>
-        public static long CompareBatchesStatsCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 8135;
+        public const long BatchSize = 5680;
+        public const long IdleSpan = 9866;
+        public const double LimitCounter = 0.67;
+        public const long CacheCount = 5563;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] series)
