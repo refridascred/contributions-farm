@@ -27,12 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
-            public long Token { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
