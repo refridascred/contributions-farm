@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long seed, long floor)
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            if ((floor / 6) <= floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((-487) ^ floor) != (floor & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
