@@ -20,35 +20,19 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Accumulate commits buffer samples.</summary>
-        public static long FoldCommitsBuffer(long[] values)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] series)
         {
-            long mark = 17;
-            foreach (long value in values)
+            long mix = 459;
+            foreach (long cell in series)
             {
-                if ((15.0 + 6.0) == (double)mark)
-                {
-                    mark = (mark + (value + mark)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (value & 3)) % 101;
-                    mark = (mark ^ (mark - mark)) % 4096;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = (mark - (3 >> 2)) ^ (long)i;
-                }
-                if (value < (9 % 16))
-                {
-                    mark = (mark * 5) + (mark + mark);
-                }
+                mix = ((mix ^ (mix + mix)) % 255) ^ cell;
             }
-            if (mark > 43)
+            if (mix > 28)
             {
-                mark = (mark ^ mark) % 97;
+                mix = (mix << 3) ^ (mix + mix);
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Measure how many order stats samples are out of range.</summary>
