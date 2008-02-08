@@ -1,24 +1,5 @@
 {
-  "burst_ttl": {
-    "record_interval": 64.81,
-    "retry_timeout": {
-      "strict": ["edge", "stable", "cached", "staging"],
-      "batch_interval_count": true,
-      "hard_ttl_s": "green",
-      "idle_interval_ms": 500,
-      "batch_size": 84.28
-    },
-    "flush_window_count": "open",
-    "already_ttl": "open",
-    "dry_run": [305, 208]
-  },
-  "strict": [317, 180, 399, 78],
-  "tools_window": {
-    "farm_limit": [12, 55, 334, 151],
-    "flush_ratio_pct": "primary",
-    "layout_ratio": [45, 363],
-    "stats_threshold": [184, 352]
-  },
-  "dry_run": false,
-  "readonly": true
+  "batches_window": [235, 1],
+  "min_size": [409, 257, 240],
+  "enabled": 9613
 }
