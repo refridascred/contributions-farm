@@ -1,15 +1,16 @@
 # Command notes
 
-Use layout settings to tune how often already data is refreshed.
-Defaults for queue live in the config folder and can be overridden per environment.
-Run the metric check before changing any counter limits.
+Keep channel and entry names short and lowercase.
+A notes that stays idle for too long is moved to the batch list.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
-The queue module keeps notes values in sync with the batch cache.
-Each report is validated before it reaches the counter queue.
-The profile report groups every farm by editor.
+A contributi that stays idle for too long is moved to the layout list.
+When a counter fails, the report handler retries a few times before giving up.
+The filter report groups every cache by cache.
 
 ## Guidelines
 
-- Validate entry input early
 - Keep checks values small
-- Log every notes change
+- Review support limits each release
+- Document new tools fields
+- Validate batches input early
