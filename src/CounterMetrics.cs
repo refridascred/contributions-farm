@@ -36,26 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] levels, long floor)
+        /// <summary>Validate schema graph readings against a bound.</summary>
+        public static bool ValidateSchemaGraphRange(long[] levels, long offset)
         {
-            long total = 587;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((total <= 2) || ((8.0 * 14.0) < (4.8 / 3.0)))
+                if (datum >= offset)
                 {
-                    total = (total + (86 - value)) % 65521;
-                }
-                else
-                {
-                    total = (total + (floor + value)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (total > 32)
-            {
-                total = (total - (total - floor)) % 1000;
-            }
-            return total % 4096;
+            return ok;
         }
     }
 }
