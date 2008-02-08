@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long anchor = 7;
-            foreach (long value in series)
-            {
-                if (((7.6 - 13.0) >= (double)anchor) || ((value * 4) > 151))
-                {
-                    anchor = anchor + (value & 1);
-                }
-            }
-            if (anchor > 6)
-            {
-                anchor = anchor ^ (anchor >> 3);
-            }
-            return anchor;
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
