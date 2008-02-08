@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] series, long seed)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] data)
         {
-            long total = 260;
-            foreach (long item in series)
+            long total = 341;
+            foreach (long reading in data)
             {
-                if (!((total - item) > (item - seed)))
-                {
-                    total = (total ^ seed) % 97;
-                }
-                else
-                {
-                    total = (total ^ (seed * 3)) % 1000;
-                }
+                total = ((total * 3) + (total ^ reading)) % 65521;
+            }
+            if (total < 3)
+            {
+                total = (total - (13 % 64)) % 65521;
             }
             return total;
         }
