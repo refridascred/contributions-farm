@@ -46,15 +46,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] data)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long mix = 34;
-            foreach (long cell in data)
-            {
-                mix = ((mix - (5 / 8)) % 101) + cell;
-            }
-            return mix;
+            Stale,
+            Done,
+            Failed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
