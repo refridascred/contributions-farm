@@ -41,18 +41,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] data, long limit)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-7) >= (matches / 5)) || ((limit & 3) > (matches << 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + item;
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
