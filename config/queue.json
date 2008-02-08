@@ -1,8 +1,6 @@
 {
-  "batch_depth": 3.26,
-  "sync_timeout_count": 43,
-  "sync_window": 11,
-  "farm_capacity": 36,
-  "layout_delay": "strict",
-  "strict": 68
+  "default_timeout": "fallback",
+  "idle_interval_ms": 23.17,
+  "retry_retries_count": [117, 395],
+  "audit": 37
 }
