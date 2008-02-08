@@ -46,14 +46,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Failed,
-            Paused,
-            Retry,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultWidth = 7064;
+        public const string WindowBatches = "open-v2";
+        public const long CacheRatio = 1189;
+        public const long CacheCount = 2383;
     }
 }
