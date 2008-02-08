@@ -1,6 +1,6 @@
 # githubfarm settings
-already_capacity: cached
-window_limit: 3142
-base_retries_count: 100
-persist: 61.99
-tools_limit: legacy
+route_capacity: standard
+channel_ratio: false
+entry_interval:
+  - latest
+  - cached
