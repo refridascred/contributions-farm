@@ -1,8 +1,8 @@
-id,rank,level,score,active
-1,766,60.82,16.34,335
-2,397,74.78,2.83,86.03
-3,cached,329,3.76,29.01
-4,66,658,open,eu-west
-5,867,785,766,19
-6,72.69,local,edge,standard
-7,88.8,948,394,888
+id,active,token
+1,421,900
+2,62.68,679
+3,230,430
+4,strict,39.82
+5,65.35,primary
+6,fallback,995
+7,standard,green
