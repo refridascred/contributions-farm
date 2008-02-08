@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] levels, long offset)
+        /// <summary>Audit session stream readings against a rule.</summary>
+        public static long MeasureSessionStreamOutliers(long[] values, long seed)
         {
-            long mix = 7;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                mix = ((mix - (9 >> 3)) % 4096) + reading;
-                mix = ((mix << 2) ^ (mix & 127)) % 4096;
-                if (((offset - 7) < (offset << 2)) || (2.54 < (double)offset))
+                if ((double)seed < (4.0 + 8.9))
                 {
-                    mix = ((mix * 3) + offset) % 101;
+                    seen = (seen + 2) - datum;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
