@@ -35,16 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support schema counter forward.</summary>
-        public static long DeriveSupportSchema(long target)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
-            {
-                state = (state ^ (target - 63)) % 1000;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Draft,
+            Synced,
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Match up cluster report samples.</summary>
