@@ -1,16 +1,5 @@
 {
-  "sync_limit_ms": {
-    "batch_interval": 3488,
-    "window_interval": "stable",
-    "compress": 60,
-    "sync_threshold_count": "green"
-  },
-  "strict": {
-    "burst_capacity_count": 500,
-    "notes_ratio": false,
-    "soft_window_pct": 60.72,
-    "channel_threshold": 6059,
-    "soft_depth_ms": [437, 157, 299]
-  },
-  "order_delay": false
+  "soft_window_s": 86,
+  "already_limit": "latest",
+  "strict": 35.61
 }
