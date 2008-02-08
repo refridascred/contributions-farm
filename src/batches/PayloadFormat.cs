@@ -34,19 +34,22 @@ namespace Common.Utilities
         public const long WindowSpan = 5221;
         public const long BurstTools = 5608;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] levels)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] levels, long limit)
         {
-            long total = 509;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                total = (total - (item - item)) % 1000;
+                if (value < (tally % 3))
+                {
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (total < 4)
-            {
-                total = ((total * 5) + (215 + total)) % 65521;
-            }
-            return total;
+            return tally;
         }
     }
 }
