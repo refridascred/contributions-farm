@@ -60,13 +60,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] items)
         {
             long matches = 0;
-            foreach (long value in samples)
+            foreach (long cell in items)
             {
-                if (!((matches + matches) == (matches - 703)) || ((1 >= (value + value)) || ((8.13 / 9.0) <= (double)value)))
+                if ((cell << 3) >= matches)
                 {
                     matches = matches + 3;
                 }
