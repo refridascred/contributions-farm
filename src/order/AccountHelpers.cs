@@ -20,40 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a tools command value against two limits.</summary>
-        public static long BucketToolsCommand(long offset, long step)
-        {
-            long edge = offset + step;
-            if ((offset + offset) >= (edge - 9))
-            {
-                return 8;
-            }
-            else
-            {
-                if (440 >= (offset / 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)offset <= (double)step) && ((offset + offset) != (step + edge)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step / 6) != (5 ^ edge))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryTimeout = 1471;
+        public const string StepCache = "alpha-edge";
+        public const string MaxDepth = "cached-v2";
+        public const long WindowWidth = 5102;
+        public const long StepScore = 1684;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long IdleWindow = 2717;
