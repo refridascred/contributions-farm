@@ -26,18 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already support entries that pass the check.</summary>
-        public static long MeasureAlreadySupportHits(long[] data)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (!(item >= (0 & 31)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            Pending,
+            Idle,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the tools level values.</summary>
