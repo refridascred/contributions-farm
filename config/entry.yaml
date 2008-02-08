@@ -1,16 +1,12 @@
 # entry settings
-audit: strict
-order_interval: 22
-min_size_ms: standard
-verbose:
-  flush_retries_ms: staging
-  command_capacity: 92.42
-  burst_retries_count: 87.96
-  base_depth:
-    base_capacity_s: 4714
-    max_size_count: 71.61
-    cache_delay_ms: true
-    warm_interval: false
-    default_size_ms: true
-    min_capacity: blue
-  channel_window: true
+persist: 30
+soft_ttl_s: true
+dry_run:
+  min_retries_pct: true
+  idle_depth_s: false
+  flush_ratio_s:
+    - stable
+    - eu-west
+max_retries_s: false
+max_window_count: true
+cache_capacity_ms: false
