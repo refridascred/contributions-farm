@@ -36,18 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] samples, long origin)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((origin / 7) <= (origin << 2))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
