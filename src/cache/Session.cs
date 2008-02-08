@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
-        public static long MeasureChannelGithubfarmGaps(long[] readings, long origin)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (origin <= (origin / 7))
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next metrics support value from a seed.</summary>
