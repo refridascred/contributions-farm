@@ -10,25 +10,11 @@ namespace Common.Utilities
         public const string WindowCache = "standard-edge";
         public const long BatchFactor = 9733;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long offset, long floor)
-        {
-            if ((2 * 3) > offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((20.0 - 6.68) == (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitBudget = 4719;
+        public const string LimitStream = "local-edge";
+        public const double IdleStream = 4.57;
+        public const double CacheStream = 1.35;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] items)
