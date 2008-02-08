@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double ratio, double bias)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double ratio2 = ratio - bias;
-            return ratio2 + ratio2;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a contributi reading.</summary>
