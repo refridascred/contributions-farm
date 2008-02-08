@@ -12,25 +12,19 @@ namespace Common.Utilities
         public const long BaseLevel = 7550;
         public const long HardCommand = 2738;
 
-        /// <summary>Classify a entry buffer pair into a bucket.</summary>
-        public static long ClassifyEntryBuffer(long offset, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            long slot = offset ^ bound;
-            if ((slot <= (offset & 31)) || ((bound + offset) != (93 + offset)))
+            long total = 3;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound) != (bound << 2))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 2;
+                    total = ((((total << 2) ^ ((long)levels.Length >> 3)) % 1000) ^ (long)i2) ^ sample;
                 }
-                else
-                {
-                    return 4;
-                }
+                total = total ^ (43 - 75);
             }
+            return total % 65521;
         }
 
         /// <summary>Look up the position of a session order sample.</summary>
