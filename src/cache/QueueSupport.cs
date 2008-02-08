@@ -19,18 +19,11 @@ namespace Common.Utilities
         public const double BurstRatio = 31.15;
         public const long DefaultBudget = 5456;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)871 >= (double)(long)values.Length)
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftInterval = 58.8;
+        public const string RetryAccount = "legacy-1";
+        public const long SoftBudget = 9887;
+        public const long BaseAccount = 2707;
+        public const double MinAccount = 78.12;
     }
 }
