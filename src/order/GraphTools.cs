@@ -32,21 +32,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((seen * 4) != (seen - reading)) && (((5.7 / 4.0) != (double)seen) && ((8 * 3) <= (seen % 10))))
                 {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine session values into a single score.</summary>
