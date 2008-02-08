@@ -28,19 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] series, long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Stale,
+            Active,
         }
 
         /// <summary>Match up checks samples.</summary>
