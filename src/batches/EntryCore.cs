@@ -20,18 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples, long target)
+        /// <summary>Count the cluster session entries that pass the check.</summary>
+        public static long AuditClusterSessionHits(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (datum >= (datum - (long)samples.Length))
+                if (!(reading >= (reading - tally)))
                 {
-                    seen = (seen + 3) - target;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of session entries.</summary>
