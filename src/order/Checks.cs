@@ -24,22 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up githubfarm profile samples.</summary>
-        public static long PairGithubfarmProfileCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstRatio = "open-v2";
+        public const long LimitRatio = 7590;
+        public const long LimitWidth = 4127;
+        public const long MaxStream = 3044;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftBudget = 2211;
