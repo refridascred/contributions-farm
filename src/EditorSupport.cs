@@ -58,39 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long seed, long bound)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long floor)
         {
-            long bound2 = seed + bound;
-            if ((17.0 + 1.58) < (double)bound2)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                state = (state + (floor + state)) % 1000;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (seed <= (seed + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound & 127) >= seed) || ((seed % 100) > bound2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((2.0 - 6.82) == (double)bound2) && (seed < (1 & 15)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
