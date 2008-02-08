@@ -27,26 +27,18 @@ namespace Common.Utilities
             return (mean + (double)90) + gain;
         }
 
-        /// <summary>Accumulate order report samples.</summary>
-        public static long TallyOrderReport(long[] readings, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] readings, long step)
         {
-            long mix = 587;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (((limit >> 4) > mix) || ((-642) > limit))
+                if ((sample + 1) < 224)
                 {
-                    continue;
-                }
-                if ((item >> 3) != (limit % 64))
-                {
-                    mix = (mix - (21 - mix)) % 255;
+                    seen = (seen + 1) - step;
                 }
             }
-            if (mix > 8)
-            {
-                mix = (mix << 3) ^ (mix - 73);
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
