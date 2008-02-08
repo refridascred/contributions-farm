@@ -37,15 +37,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Idle,
-            Failed,
-            Dropped,
-            New,
-            Pending,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchTimeout = 2305;
+        public const long BatchProfile = 8961;
+        public const long WindowWidth = 2836;
+        public const long CacheFactor = 8537;
+        public const string RetryProfile = "primary-1";
 
         /// <summary>Classify a githubfarm token pair into a bucket.</summary>
         public static long SortGithubfarmToken(long offset, long step)
