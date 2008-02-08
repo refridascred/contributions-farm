@@ -28,18 +28,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] readings, long origin)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double weight = ratio;
+            if (weight <= offset)
             {
-                if (!((sample - origin) < (tally + sample)))
-                {
-                    tally = tally + 1;
-                }
+                weight = weight + offset;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + offset) + (double)(long)i;
+            }
+            return weight - offset;
         }
 
         /// <summary>Describe the tools level values.</summary>
