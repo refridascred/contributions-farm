@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank batch layout input into a small class.</summary>
-        public static long GradeBatchLayout(long bound, long target)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double ratio, double offset)
         {
-            long span = bound + target;
-            if ((bound + 0) > (bound << 3))
+            double mean = offset - (double)3;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                mean = (mean + (ratio * 7.2)) - (double)(long)i;
             }
-            else
-            {
-                if ((span * 5) != (58 ^ span))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound - span) >= (target % 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((-669) - span) >= (target >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mean + (ratio / 9.0);
         }
 
         /// <summary>Describe the editor status values.</summary>
