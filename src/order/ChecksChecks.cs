@@ -23,16 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstDepth = 4876;
+        public const string StepAlready = "alpha-edge";
+        public const double CacheInterval = 24.97;
+        public const string MinRatio = "alpha-v2";
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
