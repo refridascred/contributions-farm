@@ -63,18 +63,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] items)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long result = 3;
-            foreach (long reading in items)
-            {
-                if ((result * 5) < reading)
-                {
-                    result = (result - reading) % 97;
-                }
-            }
-            return result;
+            Stale,
+            Paused,
+            Closed,
         }
 
         /// <summary>Accumulate profile samples.</summary>
