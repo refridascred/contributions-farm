@@ -1,6 +1,9 @@
-id,state,count
-1,edge,3.19
-2,staging,13.65
-3,open,824
-4,875,74.32
-5,legacy,688
+id,count,token,score
+1,3.05,green,open
+2,latest,742,36
+3,972,520,786
+4,77.84,74.87,830
+5,blue,285,31.6
+6,fallback,520,primary
+7,367,813,96.44
+8,907,13.47,standard
