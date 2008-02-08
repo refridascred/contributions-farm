@@ -20,15 +20,22 @@ namespace Common.Utilities
             return gain + 12.0;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double ratio, double floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] samples)
         {
-            double scale = (9.0 + floor) * 3.2;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                scale = ((scale + 1.84) + (double)(long)i) + ratio;
+                if ((matches ^ (-9)) >= 209)
+                {
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return scale + (floor - scale);
+            return matches;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
