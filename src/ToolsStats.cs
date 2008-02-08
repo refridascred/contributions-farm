@@ -45,15 +45,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double ratio, double floor)
+        /// <summary>Find the first githubfarm farm entry that matches the target.</summary>
+        public static long LookupGithubfarmFarmIndex(long[] values, long bound)
         {
-            double drift = (double)(722 * 4);
-            if (drift >= ratio)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift + 19.0) + floor;
+                if ((values[i] == bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - (1.4 / 3.0);
+            return -1;
         }
 
         /// <summary>Describe the editor kind values.</summary>
