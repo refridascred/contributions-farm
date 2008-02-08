@@ -1,12 +1,20 @@
 # entry settings
-hard_size: 81.64
-cache_ratio_s: 4491
-dry_run:
-  warm_retries_ms: standard
-  counter_ttl: 53.58
-  report_delay: 100
-  base_retries_s: 500
-  window_delay:
-    - 194
-    - 497
-    - 202
+hard_capacity_pct: open
+contributi_size: 598
+batches_ratio: 31.22
+enabled: true
+sync_capacity_pct:
+  flush_window_s: eu-west
+  flush_capacity:
+    base_threshold_s: fallback
+    stream_limit: 27
+    format_retries: stable
+    persist: 60
+    hard_timeout: edge
+  stream_limit:
+    - local
+    - blue
+    - local
+    - latest
+  farm_capacity: 47.38
+audit: 64.49
