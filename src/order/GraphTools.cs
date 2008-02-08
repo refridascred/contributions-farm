@@ -35,18 +35,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] items, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long score = 327;
+            foreach (long value in readings)
             {
-                if ((double)(long)items.Length < (double)tally)
-                {
-                    tally = ((tally + 1) ^ value) - origin;
-                }
+                score = ((score * 4) + value) + limit;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
