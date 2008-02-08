@@ -20,18 +20,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] levels)
+        /// <summary>Grade a githubfarm channel value against two limits.</summary>
+        public static long BucketGithubfarmChannel(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long prev = bound - seed;
+            if (!(bound <= (bound + bound)))
             {
-                if ((seen ^ value) > (value >> 2))
+                return 1;
+            }
+            else
+            {
+                if (seed > (prev - prev))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((prev - prev) >= (prev + prev))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((prev >> 1) < (bound + prev))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a stats session value against two limits.</summary>
