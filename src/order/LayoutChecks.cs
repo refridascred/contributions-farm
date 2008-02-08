@@ -49,11 +49,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch stats.</summary>
