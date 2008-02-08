@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary local latest open; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
+mode="${1:-open}"
 case "${mode}" in
-    edge)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in legacy open eu-west; do
+    log "checking ${item}"
+done
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
