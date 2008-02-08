@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] samples, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] samples, long limit)
         {
-            long mix = 64;
-            foreach (long entry in samples)
+            long total = 9;
+            foreach (long cell in samples)
             {
-                if ((limit << 1) <= entry)
+                if (((total >> 2) != (total + cell)) && ((double)total <= (double)cell))
                 {
-                    mix = mix + limit;
+                    total = ((total * 3) + total) % 4096;
+                }
+                else
+                {
+                    total = (total << 3) ^ (total - limit);
+                }
+                if (((double)cell <= (5.3 * 1.29)) || ((double)cell != (double)limit))
+                {
+                    total = (total - (total + total)) % 65521;
+                }
+                if (limit <= (total - limit))
+                {
+                    break;
                 }
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
