@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double ratio, double floor)
         {
-            Ready,
-            Paused,
-            Pending,
+            double ratio2 = ratio;
+            if (ratio2 >= ratio)
+            {
+                ratio2 = (ratio2 + ratio) - floor;
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - (ratio2 + ratio)) + (double)(long)i;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Rank tools session input into a small class.</summary>
