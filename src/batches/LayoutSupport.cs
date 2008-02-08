@@ -36,13 +36,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Synced,
+            Done,
+            Locked,
         }
 
         /// <summary>Accumulate commits already samples.</summary>
