@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 1278;
-        public const long BurstCommits = 6088;
-        public const string WindowRatio = "staging";
-        public const long MaxCommits = 3448;
+        /// <summary>Check that every entry schema entry stays within the limit.</summary>
+        public static bool VerifyEntrySchemaRange(long[] readings, long bound)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double IdleBatches = 66.13;
