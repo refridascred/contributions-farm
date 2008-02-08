@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up format support samples.</summary>
-        public static long CompareFormatSupportCount(long[] values)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double ratio2 = ratio - bias;
+            return ratio2 + ratio2;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
