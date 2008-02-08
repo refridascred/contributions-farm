@@ -23,38 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long target, long target2)
+        /// <summary>Blend two contributi schema measurements.</summary>
+        public static double SmoothContributiSchema(double gain, double offset)
         {
-            if (((-1) + target2) > (target2 - target2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target >> 2) <= (target2 >> 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target2 >= (target << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (target >= (target - 8))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            double mean = offset;
+            return (mean + (double)90) + gain;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
