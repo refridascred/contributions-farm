@@ -44,14 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Synced,
-            Paused,
-            Closed,
-            Idle,
-            Draft,
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public double Region { get; set; }
         }
     }
 }
