@@ -38,18 +38,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many payload entry samples are out of range.</summary>
-        public static long AuditPayloadEntryOutliers(long[] items)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((sample << 3) != (8 << 1))
-                {
-                    count = count + 3;
-                }
+                score = score - score;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
     }
 }
