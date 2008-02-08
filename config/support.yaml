@@ -1,8 +1,9 @@
 # support settings
-poll_capacity_count: 68.17
-batches_threshold: false
-dry_run:
-  - edge
-  - standard
-  - fallback
-strict: staging
+strict: 25.17
+format_ttl:
+  default_capacity_ms: blue
+  audit: 60
+  min_limit_s: 98
+max_window_s: strict
+cache_delay_pct: staging
+sync_depth_ms: 6
