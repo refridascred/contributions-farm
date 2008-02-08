@@ -22,15 +22,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Combine token values into a single score.</summary>
