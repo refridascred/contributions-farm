@@ -19,25 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long step, long step2)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            long cur = step ^ step2;
-            if ((step / 9) > (4 ^ cur))
+            long carry = 409;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step2 * 2) > step2)
+                carry = ((carry * 5) + (datum - datum)) % 1000;
+                if ((datum - 3) != (carry - carry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    carry = carry + (datum << 2);
                 }
             }
+            if (carry > 3)
+            {
+                carry = ((carry << 2) ^ (82 >> 1)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many payload entry samples are out of range.</summary>
