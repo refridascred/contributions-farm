@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank githubfarm farm input into a small class.</summary>
-        public static long BucketGithubfarmFarm(long seed, long floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long span = seed ^ floor;
-            if ((floor + seed) < (seed * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8.0 / 7.0) != (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + seed) == (span + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Match up session samples.</summary>
