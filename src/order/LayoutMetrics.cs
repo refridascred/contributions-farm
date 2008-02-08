@@ -36,21 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((reading / 6) < (-9)) && (((-5) * 4) == (hits + hits)))
                 {
-                    if ((readings[i] - readings[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
