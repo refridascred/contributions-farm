@@ -26,21 +26,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] levels)
+        /// <summary>Count the profile metrics entries that pass the check.</summary>
+        public static long AuditProfileMetricsHits(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed & 15) >= (seed * 2))
                 {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) + value;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
