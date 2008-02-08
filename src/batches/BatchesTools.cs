@@ -37,18 +37,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] levels)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((24 * 2) > item)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Locked,
+            New,
         }
     }
 }
