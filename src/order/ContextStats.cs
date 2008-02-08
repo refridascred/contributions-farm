@@ -32,39 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long floor, long offset)
+        /// <summary>Audit checks channel readings against a rule.</summary>
+        public static long CountChecksChannelOutliers(long[] items)
         {
-            long offset2 = floor ^ offset;
-            if ((45 & 15) != (offset << 2))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((5.0 * 16.0) > (double)offset2) && ((floor & 31) >= (offset2 & 127)))
+                if ((item >= tally) || (716 > tally))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset ^ 551) < floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((floor - 3) > 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a notes header.</summary>
