@@ -49,13 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Validate cache command readings against a bound.</summary>
+        public static bool VerifyCacheCommandBounds(long[] values, long step)
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public bool Level { get; set; }
-            public bool Limit { get; set; }
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
