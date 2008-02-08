@@ -66,18 +66,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] series)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long delta = origin + offset;
+            if (((59 + origin) != (offset + 6)) || ((4.3 + 9.31) >= (double)delta))
             {
-                if ((tally + tally) == (value - tally))
+                return 5;
+            }
+            else
+            {
+                if (!((delta << 3) >= (offset + origin)))
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset <= (8.0 + 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
