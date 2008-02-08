@@ -22,23 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] data, long bound)
         {
-            long mix = 7;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                mix = (mix - ((-355) - mix)) - sample;
-                if ((double)71 > (double)mix)
+                if ((3.0 * 17.0) > (double)hits)
                 {
-                    mix = (mix ^ (mix << 3)) % 4096;
+                    hits = ((hits + 1) ^ cell) - bound;
                 }
             }
-            if (mix < 4)
-            {
-                mix = ((mix * 4) + (956 << 1)) % 255;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Combine already values into a single score.</summary>
