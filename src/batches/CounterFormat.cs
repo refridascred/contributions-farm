@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long total = 3;
-            foreach (long sample in levels)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = ((((total << 2) ^ ((long)levels.Length >> 3)) % 1000) ^ (long)i2) ^ sample;
-                }
-                total = total ^ (43 - 75);
-            }
-            return total % 65521;
+            Draft,
+            Stale,
+            Active,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
