@@ -1,22 +1,4 @@
 # support settings
-cache_window_s: edge
-soft_ratio_s: 28
-idle_interval_s:
-  hard_ttl_ms: false
-  strict: 44.63
-  cache_window: 7699
-  warm_retries_count: 20.06
-  poll_threshold: false
-enabled:
-  - 281
-  - 138
-  - 328
-command_limit:
-  default_interval_ms: 19
-  audit: 500
-  idle_ttl_count: 13
-  batch_ttl: latest
-  profile_capacity:
-    - staging
-    - legacy
-flush_depth_ms: 51
+batch_timeout_ms: 100
+sync_retries_s: false
+notes_capacity: 1070
