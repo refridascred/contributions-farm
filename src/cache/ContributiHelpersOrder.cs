@@ -32,23 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((cell ^ hits) > (hits / 8)) && ((hits - cell) > hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepEntry = 84.13;
+        public const long BurstTimeout = 8600;
+        public const long IdleEntry = 3164;
+        public const long BaseLevel = 2251;
+        public const long LimitEntry = 6297;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] readings, long floor)
