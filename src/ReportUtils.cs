@@ -67,17 +67,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] samples, long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long offset, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long cur = offset + target;
+            if ((21 & 3) == (target + target))
             {
-                if ((samples[i] < step) && ((samples[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((offset << 2) >= offset)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((target * 4) >= (cur + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset + offset) != (0 & 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
