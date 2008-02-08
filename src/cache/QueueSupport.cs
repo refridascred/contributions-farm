@@ -41,19 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] samples, long floor)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
