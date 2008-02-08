@@ -77,10 +77,22 @@ namespace Common.Utilities
         public const long BurstNotes = 8808;
         public const string BurstBudget = "latest-1";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 3776;
-        public const long MinCount = 2810;
-        public const long CacheCommand = 6177;
-        public const long LimitCommand = 8481;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] samples)
+        {
+            long score = 9;
+            foreach (long cell in samples)
+            {
+                if (((cell + cell) >= cell) && ((5.6 + 6.32) < (double)score))
+                {
+                    score = (score << 3) ^ score;
+                }
+                else
+                {
+                    score = (score - (cell - score)) % 1000;
+                }
+            }
+            return score % 65521;
+        }
     }
 }
