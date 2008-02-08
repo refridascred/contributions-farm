@@ -28,32 +28,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long origin, long origin2)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long seed)
         {
-            long edge = origin - origin2;
-            if ((15 + edge) > edge)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
+                carry = ((carry * 2) + carry) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)origin2 >= (14.0 / 3.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin2 == (8.0 - 1.82))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
