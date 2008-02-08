@@ -45,38 +45,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long target, long offset)
-        {
-            if ((8 << 3) >= (offset + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target + offset) > (target + (-94)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.9 > (double)offset) && ((target + offset) >= 288))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (5 > target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 315;
+        public const long CacheDepth = 3047;
+        public const long HardDepth = 4286;
+        public const long BaseStats = 238;
     }
 }
