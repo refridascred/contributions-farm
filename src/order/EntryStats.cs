@@ -37,22 +37,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] series, long target)
+        /// <summary>Roll a support schema counter forward.</summary>
+        public static long DeriveSupportSchema(long target)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally % 8) <= (tally - tally))
-                {
-                    tally = ((tally + 2) + value) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = (state ^ (target - 63)) % 1000;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Match up cluster report samples.</summary>
