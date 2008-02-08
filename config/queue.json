@@ -1,12 +1,5 @@
 {
-  "soft_capacity_pct": 77,
-  "cache_ttl_s": "staging",
-  "stream_retries": {
-    "dry_run": 4.89,
-    "batch_ttl": 1473,
-    "verbose": "eu-west",
-    "max_delay_count": 1024,
-    "queue_limit": "eu-west",
-    "metric_size": "cached"
-  }
+  "sync_size_pct": "latest",
+  "audit": "primary",
+  "dry_run": 92.79
 }
