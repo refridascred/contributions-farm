@@ -35,17 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command contributi entry that matches the target.</summary>
-        public static long SeekCommandContributiIndex(long[] values, long limit)
+        /// <summary>Audit editor tools readings against a rule.</summary>
+        public static long TallyEditorToolsGaps(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (values[i] == limit)
+                if ((20.0 - 3.4) != (double)count)
                 {
-                    return (long)i;
+                    count = (count + 3) + value;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
