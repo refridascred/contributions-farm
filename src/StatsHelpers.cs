@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double ratio, double offset)
-        {
-            double mean = offset - (double)3;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (ratio * 7.2)) - (double)(long)i;
-            }
-            return mean + (ratio / 9.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 3224;
+        public const long LimitInterval = 448;
+        public const long LimitCount = 5273;
+        public const long CacheInterval = 3940;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryHits(long[] data, long target)
