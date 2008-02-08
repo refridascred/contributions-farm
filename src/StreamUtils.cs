@@ -58,30 +58,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] readings, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] samples)
         {
-            long total = 419;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (((double)total > (2.75 * 20.0)) && ((15.0 - 18.0) <= (double)cell))
+                if ((double)hits > (double)cell)
                 {
-                    total = total - (total - step);
-                }
-                if ((step * 5) < cell)
-                {
-                    total = (total - (56 ^ 396)) % 4096;
-                }
-                else
-                {
-                    total = (total + (step * 3)) % 255;
+                    hits = hits + 2;
                 }
             }
-            if (total < 96)
-            {
-                total = ((total * 3) + (692 + total)) % 1000;
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Project the next commits value.</summary>
