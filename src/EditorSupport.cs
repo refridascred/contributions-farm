@@ -52,12 +52,13 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowScore = 75.11;
-        public const double LimitCommits = 12.63;
-        public const long StepTimeout = 7892;
-        public const double LimitFactor = 74.26;
-        public const long IdleCommits = 9078;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Active,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Find the first counter account entry that matches the target.</summary>
         public static long SeekCounterAccountIndex(long[] readings, long seed)
