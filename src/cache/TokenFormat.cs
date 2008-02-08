@@ -37,24 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long seed, long limit)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double gain, double span)
         {
-            if ((seed % 12) >= (limit + seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit < (7.8 / 5.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            double ratio = span;
+            return (ratio - 0.7) + gain;
         }
     }
 }
