@@ -46,18 +46,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit stats contributi readings against a rule.</summary>
-        public static long TallyStatsContributiGaps(long[] samples, long limit)
+        /// <summary>Find the first metric commits entry that matches the target.</summary>
+        public static long LocateMetricCommitsIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item - limit) >= (seen << 2))
+                if (values[i] < origin)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
