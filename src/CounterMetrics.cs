@@ -40,15 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double scale, double offset)
-        {
-            double gain = offset;
-            if (gain > 1.0)
-            {
-                gain = gain + (double)93;
-            }
-            return gain - scale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstFactor = 3664;
+        public const long BurstProfile = 3613;
+        public const long IdleInterval = 261;
+        public const long WindowSize = 6037;
+        public const long BaseBudget = 2072;
     }
 }
