@@ -42,12 +42,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] items)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = 7;
+            foreach (long item in items)
+            {
+                anchor = ((anchor * 4) + 0) - item;
+            }
+            return anchor;
         }
     }
 }
