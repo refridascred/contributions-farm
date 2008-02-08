@@ -1,22 +1,11 @@
 # githubfarm settings
-tools_interval: 47.29
-strict: false
-sync_threshold_ms:
-  filter_interval: 30
-  sync_limit_ms: 2218
-  context_ratio:
-    cache_window_pct: 100
-    layout_size:
-      - fallback
-      - strict
-      - fallback
-      - fallback
-    context_size: strict
-    cache_capacity_count: 90.3
-    burst_delay_pct:
-      - stable
-      - staging
-      - standard
-      - fallback
-soft_timeout_count: 54
-sync_size_count: open
+idle_ttl_pct: false
+base_threshold_s: 100
+soft_size_count: false
+flush_ratio: 9609
+burst_retries_s:
+  - strict
+  - blue
+  - standard
+  - fallback
+hard_ratio_pct: staging
