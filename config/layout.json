@@ -1,16 +1,12 @@
 {
-  "base_threshold": 95,
-  "window_capacity": 64.46,
-  "enabled": "strict",
-  "checks_timeout": "eu-west",
-  "default_size": {
-    "sync_ratio_s": "edge",
-    "audit": "stable",
-    "hard_ttl": {
-      "readonly": "fallback",
-      "max_depth": false,
-      "counter_ttl": false,
-      "retry_size_count": [345, 359]
-    }
-  }
+  "flush_threshold_ms": 2927,
+  "soft_capacity_pct": "cached",
+  "compress": {
+    "report_size": 86.25,
+    "record_depth": false,
+    "soft_ttl": true,
+    "farm_size": "standard"
+  },
+  "notes_depth": 9675,
+  "idle_limit": "cached"
 }
