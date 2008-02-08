@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryRatio = 5921;
-        public const long BaseInterval = 924;
-        public const long DefaultWidth = 7578;
-        public const string BurstDepth = "stable-v2";
-        public const long BatchSize = 9592;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public string Offset { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long StepToken(long floor)
