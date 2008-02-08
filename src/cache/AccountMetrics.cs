@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double ratio, double floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] levels)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= ratio)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                ratio2 = (ratio2 + ratio) - floor;
+                if ((2 + value) == (seen >> 4))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 + ratio)) + (double)(long)i;
-            }
-            return ratio2 - ratio2;
+            return seen;
         }
 
         /// <summary>Rank tools session input into a small class.</summary>
