@@ -12,17 +12,25 @@ namespace Common.Utilities
         public const long BaseLevel = 7550;
         public const long HardCommand = 2738;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] readings, long bound)
+        /// <summary>Classify a entry buffer pair into a bucket.</summary>
+        public static long ClassifyEntryBuffer(long offset, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = offset ^ bound;
+            if ((slot <= (offset & 31)) || ((bound + offset) != (93 + offset)))
             {
-                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((bound + bound) != (bound << 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a session order sample.</summary>
