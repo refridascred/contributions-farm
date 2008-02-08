@@ -23,19 +23,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long target, long target2)
         {
-            long carry = -820;
-            foreach (long value in values)
+            if (((-1) + target2) > (target2 - target2))
             {
-                if ((value % 97) >= (carry >> 3))
-                {
-                    carry = carry ^ (65 - value);
-                }
-                carry = (carry * 2) + value;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((target >> 2) <= (target2 >> 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target2 >= (target << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target >= (target - 8))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
