@@ -62,29 +62,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long step, long step2)
+        /// <summary>Classify a stats context pair into a bucket.</summary>
+        public static long ClassifyStatsContext(long seed, long target)
         {
-            long cur = step - step2;
-            if ((step / 9) < (step + step))
+            if (((seed % 3) <= (target / 7)) && ((seed + seed) < target))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((cur * 4) == (step2 << 2))
+                if ((73 + 33) >= target)
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if (((3.41 * 6.0) < (double)step2) || (cur >= (cur * 5)))
+                    if ((12 << 1) > seed)
                     {
-                        return 8;
+                        return 1;
                     }
                     else
                     {
-                        return 1;
+                        return 6;
                     }
                 }
             }
