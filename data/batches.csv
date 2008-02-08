@@ -1,8 +1,9 @@
-id,ratio,score,rank
-1,71.73,598,legacy
-2,legacy,54.64,911
-3,244,17.22,38
-4,standard,strict,eu-west
-5,536,944,blue
-6,82.14,95.93,31.37
-7,91.89,blue,staging
+id,count,state,level
+1,legacy,701,970
+2,primary,495,130
+3,local,801,873
+4,14,541,76.85
+5,blue,442,148
+6,106,local,strict
+7,763,718,12.45
+8,35,91.61,96.87
