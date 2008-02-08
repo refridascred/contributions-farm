@@ -20,12 +20,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            Ready,
+            New,
+            Active,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
