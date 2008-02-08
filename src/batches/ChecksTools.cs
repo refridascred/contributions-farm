@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const long BatchWidth = 1198;
         public const long SoftMetrics = 5995;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 0.57;
-        public const double LimitCommand = 38.17;
-        public const double DefaultTimeout = 33.13;
+        /// <summary>Find the first already entry entry that matches the target.</summary>
+        public static long FindAlreadyEntryIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatOutliers(long[] readings)
