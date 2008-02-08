@@ -48,38 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long offset, long target)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            if (((offset + offset) == (offset * 3)) && ((offset & 63) >= (offset * 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + offset) < (offset ^ 48))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)target <= (double)offset) || (offset <= (offset + 853)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset >= 6.0)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            New,
+            Active,
+            Dropped,
         }
 
         /// <summary>Measure how many report cache samples are out of range.</summary>
