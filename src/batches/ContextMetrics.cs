@@ -32,22 +32,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Compare every pair of payload stream readings.</summary>
-        public static long OverlapPayloadStreamCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstInterval = 9961;
+        public const string CacheReport = "primary";
+        public const double IdleCount = 1.41;
+        public const long HardReport = 6365;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TotalEntry(long[] values)
