@@ -44,15 +44,14 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Derive the next cache account value from a seed.</summary>
-        public static long StepCacheAccount(long bound)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            New,
+            Locked,
+            Paused,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
