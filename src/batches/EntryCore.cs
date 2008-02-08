@@ -55,19 +55,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every cache account entry stays within the limit.</summary>
-        public static bool GuardCacheAccountRange(long[] levels, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] data)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (value <= step)
+                if ((cell ^ count) < (count - count))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the profile state values.</summary>
