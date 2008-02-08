@@ -90,21 +90,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Fold a list of filter report readings.</summary>
+        public static long TallyFilterReport(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 94;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc ^ (cell & 1)) % 4096) + offset;
             }
-            return matches;
+            return acc;
         }
     }
 }
