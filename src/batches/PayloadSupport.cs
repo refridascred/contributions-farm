@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 5636;
-        public const long BurstBudget = 3850;
-        public const long HardDepth = 2702;
-        public const double BatchInterval = 72.12;
-        public const long MaxLayout = 2072;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long IdleFactor = 1556;
