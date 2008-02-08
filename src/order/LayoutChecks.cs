@@ -34,12 +34,13 @@ namespace Common.Utilities
         public const long LimitNotes = 4056;
         public const string LimitFactor = "standard-edge";
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            New,
-            Failed,
-            Idle,
+            Retry,
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Match up order samples.</summary>
