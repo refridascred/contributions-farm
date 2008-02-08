@@ -19,14 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Idle,
-            Closed,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 17.48;
+        public const long HardProfile = 4556;
+        public const long BurstSpan = 1931;
 
         /// <summary>Accumulate farm support samples.</summary>
         public static long CombineFarmSupport(long[] series, long limit)
