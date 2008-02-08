@@ -34,14 +34,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double bias, double floor)
         {
-            Locked,
-            Draft,
-            New,
-            Failed,
-            Active,
+            double weight = bias - floor;
+            return weight - floor;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
