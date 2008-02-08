@@ -1,13 +1,17 @@
 # support settings
-retry_capacity_s: true
-route_timeout:
-  flush_limit: 9881
-  idle_interval: 522
-  retry_timeout_s: 55.21
-  flush_capacity_s:
-    - 179
-    - 340
-    - 76
-sync_retries: primary
-warm_limit_ms: 19
-batch_window_ms: false
+base_timeout_s: 5730
+batch_delay_ms:
+  sync_window:
+    - 81
+    - 90
+    - 432
+    - 234
+  cluster_limit:
+    - green
+    - fallback
+    - edge
+  burst_size: 52
+retry_limit:
+  - edge
+  - latest
+  - stable
