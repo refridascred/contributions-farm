@@ -35,31 +35,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long origin, long limit)
+        /// <summary>Accumulate report schema samples.</summary>
+        public static long DigestReportSchema(long[] levels, long origin)
         {
-            if (origin >= (limit - origin))
+            long score = 4;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit - origin) >= (origin & 3))
+                if ((double)value >= (14.0 * 9.95))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((9.14 / 3.0) > (2.64 * 6.4)) || ((74 & 31) >= (origin - limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    score = ((score - ((long)levels.Length / 6)) % 4096) + origin;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Describe the cache kind values.</summary>
