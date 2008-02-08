@@ -43,15 +43,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a filter metric reading.</summary>
-        public static double ProjectFilterMetric(double bias, double floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long bound)
         {
-            double ratio = floor;
-            for (int i = 0; i < 3; i++)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = (ratio - (bias + 6.19)) - (double)(long)i;
+                if ((carry % 5) > ((long)i & 3))
+                {
+                    carry = (carry - (carry << 1)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (bound % 8)) % 255;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return ratio + floor;
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
