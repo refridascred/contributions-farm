@@ -20,13 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Digest a series of profile stream entries.</summary>
+        public static long FoldProfileStream(long[] samples, long bound)
         {
-            Active,
-            Retry,
-            Done,
-            Idle,
+            long score = 7;
+            foreach (long item in samples)
+            {
+                long count = bound - (score + score);
+                if ((count ^ count) > (item + score))
+                {
+                    score = ((score * 4) + (item / 7)) % 4096;
+                    break;
+                }
+                score = ((score << 2) ^ (bound >> 4)) % 101;
+            }
+            if (score < 77)
+            {
+                score = ((score * 2) + bound) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Match up tools samples.</summary>
