@@ -25,31 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long offset, long bound)
+        /// <summary>Scale a graph counter figure with a bias.</summary>
+        public static double AdjustGraphCounter(double rate, double floor)
         {
-            if ((6.1 + 9.9) < (double)offset)
+            double rate2 = floor;
+            if (rate2 < floor)
             {
-                return 0;
+                rate2 = rate2 - (rate * 19.0);
             }
             else
             {
-                if ((7.24 / 2.0) >= (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset > (14.0 + 9.3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                rate2 = rate2 + (double)865;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + 10.0) - (double)(long)i;
+            }
+            return rate2 + 8.4;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
