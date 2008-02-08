@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long seed)
         {
-            Stale,
-            Synced,
-            Active,
-            Failed,
+            long total = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
