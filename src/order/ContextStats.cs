@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] readings, long offset)
+        /// <summary>Look up the position of a tools checks sample.</summary>
+        public static long LookupToolsChecksIndex(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= offset)
+                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
