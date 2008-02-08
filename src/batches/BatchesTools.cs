@@ -30,26 +30,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of stats graph entries.</summary>
-        public static long ScoreStatsGraph(long[] series, long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long total = 62;
-            foreach (long datum in series)
-            {
-                if (((datum ^ total) == (datum + limit)) && ((limit + 84) < limit))
-                {
-                    total = ((total * 5) + (total * 5)) % 255;
-                }
-                if ((datum < (datum + total)) && (limit > (67 + total)))
-                {
-                    total = total ^ (limit >> 3);
-                }
-                if (datum >= (limit - 1))
-                {
-                    total = ((total * 2) + (limit & 63)) % 97;
-                }
-            }
-            return total;
+            New,
+            Pending,
+            Retry,
         }
     }
 }
