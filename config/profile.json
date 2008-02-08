@@ -1,6 +1,8 @@
 {
-  "checks_retries": 45,
-  "githubfarm_retries": "fallback",
-  "flush_timeout_count": "cached",
-  "sync_ratio_count": ["eu-west", "open"]
+  "base_ratio_ms": "fallback",
+  "retry_ratio_s": [335, 435, 228, 361],
+  "idle_window": 82.0,
+  "idle_retries_count": [87, 170, 356],
+  "min_retries": 15,
+  "sync_threshold_s": 500
 }
