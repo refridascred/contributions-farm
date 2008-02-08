@@ -28,17 +28,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a command metric sample.</summary>
-        public static long FindCommandMetricIndex(long[] items, long origin)
+        /// <summary>Count the counter graph entries that pass the check.</summary>
+        public static long CountCounterGraphOutliers(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((items[i] > origin) && ((items[i] % 3) != 0))
+                if ((64 + seen) >= entry)
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
