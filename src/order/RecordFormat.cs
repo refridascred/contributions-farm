@@ -12,21 +12,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long bound, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((bound - step) < (103 - step))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((bound ^ 26) <= (bound ^ 2))
                 {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
