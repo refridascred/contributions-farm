@@ -1,7 +1,9 @@
-id,ratio,active,state
-1,79.45,646,50.85
-2,67.26,stable,fallback
-3,839,63,604
-4,482,26.97,0.41
-5,170,latest,76.15
-6,490,743,legacy
+id,level,region
+1,90.41,659
+2,standard,244
+3,524,strict
+4,16.65,970
+5,15,2.94
+6,943,primary
+7,25.22,632
+8,standard,edge
