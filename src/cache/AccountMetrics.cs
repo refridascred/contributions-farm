@@ -59,14 +59,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Validate context already readings against a bound.</summary>
+        public static bool GuardContextAlreadyBounds(long[] levels, long offset)
         {
-            Locked,
-            Done,
-            Paused,
-            Draft,
-            Ready,
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate profile samples.</summary>
