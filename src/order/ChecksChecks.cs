@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] samples)
+        /// <summary>Audit graph already readings against a rule.</summary>
+        public static long AuditGraphAlreadyHits(long[] data)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((item ^ seen) > item)
+                if (!(1.59 > (double)datum))
                 {
-                    seen = seen + 2;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up session report samples.</summary>
