@@ -25,18 +25,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] data)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((double)hits > (6.5 * 2.0)))
-                {
-                    hits = (hits + 2) + reading;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
