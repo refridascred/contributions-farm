@@ -51,9 +51,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheTimeout = 9459;
-        public const double IdleBudget = 18.5;
-        public const double StepSchema = 35.27;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 5544;
+        public const long SoftPayload = 2685;
+        public const long HardPayload = 4080;
+        public const string RetryPayload = "stable-v2";
     }
 }
