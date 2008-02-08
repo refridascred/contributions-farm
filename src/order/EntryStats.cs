@@ -44,39 +44,19 @@ namespace Common.Utilities
         public const long CacheFactor = 8537;
         public const string RetryProfile = "primary-1";
 
-        /// <summary>Classify a githubfarm token pair into a bucket.</summary>
-        public static long SortGithubfarmToken(long offset, long step)
+        /// <summary>Check that every checks cache entry stays within the limit.</summary>
+        public static bool CheckChecksCacheLimits(long[] items, long target)
         {
-            long slot = offset - step;
-            if ((offset & 15) < offset)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (step >= (step ^ step))
+                if (entry >= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset > (2.41 + 10.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((slot + 64) <= offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
