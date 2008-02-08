@@ -86,19 +86,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] levels, long target)
+        /// <summary>Validate graph tools readings against a bound.</summary>
+        public static bool ValidateGraphToolsBounds(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (entry > target)
+                if (reading != target)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
