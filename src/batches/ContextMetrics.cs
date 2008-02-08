@@ -47,26 +47,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] items)
         {
-            long anchor = 1;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((5.0 - 3.56) != (double)anchor)
+                if (5 < (matches ^ matches))
                 {
-                    anchor = ((anchor << 3) ^ (item + anchor)) % 97;
-                }
-                if (((item - item) < (-6)) || ((double)anchor < (double)57))
-                {
-                    break;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            if (anchor > (-813))
-            {
-                anchor = (anchor * 4) + (92 >> 1);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a command options.</summary>
