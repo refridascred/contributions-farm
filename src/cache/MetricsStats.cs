@@ -20,12 +20,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] data, long floor)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the counter graph entries that pass the check.</summary>
