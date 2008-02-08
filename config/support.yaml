@@ -1,32 +1,32 @@
 # support settings
-hard_delay:
-  flush_ttl_count: 97
-  cache_threshold_ms:
-    enabled:
-      - 435
-      - 405
-    queue_threshold:
-      - 173
-      - 177
-    poll_size_ms:
-      - fallback
-      - eu-west
-      - cached
-      - edge
-    warm_ttl_ms: 62.58
-    batch_window: 7461
-    min_ratio_pct: 7181
-  audit: legacy
-  cache_timeout_count:
-    account_ttl: 8655
-    retry_interval_ms: edge
-    cache_interval: false
-    layout_size:
-      - 142
-      - 356
-      - 167
-      - 229
-    stream_ttl: cached
-    retry_delay_count: green
-soft_depth: 1.01
-strict: 84.35
+default_timeout: latest
+entry_window: cached
+cache_ratio_s:
+  retry_ratio_count:
+    - edge
+    - strict
+    - standard
+    - primary
+  compress:
+    strict:
+      - 5
+      - 436
+    warm_size_count:
+      - 312
+      - 412
+      - 184
+    idle_ttl_count:
+      - strict
+      - legacy
+      - local
+    soft_capacity_pct: true
+    entry_window: local
+  sync_delay_pct:
+    - strict
+    - green
+    - fallback
+  idle_delay_pct: latest
+  payload_ttl: eu-west
+soft_threshold: standard
+enabled: 8318
+warm_size: eu-west
