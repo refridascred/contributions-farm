@@ -36,13 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Count tools editor pairs that satisfy a relation.</summary>
+        public static long CompareToolsEditorCount(long[] levels)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stats entry.</summary>
