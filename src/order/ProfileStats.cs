@@ -64,11 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardInterval = "legacy-v2";
-        public const long BatchMetrics = 6188;
-        public const long DefaultMetrics = 7053;
-        public const long MaxSize = 7207;
-        public const long LimitRatio = 8269;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double scale, double floor)
+        {
+            double weight = 7.0;
+            if (weight > (floor - 3.0))
+            {
+                weight = (weight + floor) - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight + (double)8;
+        }
     }
 }
