@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const long LimitNotes = 4056;
         public const string LimitFactor = "standard-edge";
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
             Retry,
-            Paused,
-            Locked,
-            Queued,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the commits state values.</summary>
