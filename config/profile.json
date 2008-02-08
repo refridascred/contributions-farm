@@ -1,8 +1,6 @@
 {
-  "sync_depth_ms": true,
-  "soft_ratio_ms": "legacy",
-  "max_interval_s": "staging",
-  "hard_capacity_s": "local",
-  "hard_ttl": "green",
-  "retry_size_s": "eu-west"
+  "cache_retries": "staging",
+  "flush_delay": "latest",
+  "flush_window": false,
+  "token_window": "fallback"
 }
