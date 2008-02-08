@@ -20,13 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Locked,
+            Pending,
+            Paused,
             Dropped,
-            Active,
-            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
