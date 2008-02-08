@@ -71,18 +71,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinLevel = 7806;
+        public const long MinDepth = 7514;
+        public const long BaseBudget = 2256;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
