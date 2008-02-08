@@ -66,19 +66,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate commits record readings against a bound.</summary>
-        public static bool ValidateCommitsRecordBounds(long[] readings, long target)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Active,
+            Closed,
+            Dropped,
+            Synced,
         }
     }
 }
