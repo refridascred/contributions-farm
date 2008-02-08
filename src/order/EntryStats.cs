@@ -26,13 +26,15 @@ namespace Common.Utilities
             return drift - (rate / 9.0);
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] items)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            long mix = 28;
+            foreach (long value in items)
+            {
+                mix = (mix ^ (value & 3)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the graph mode values.</summary>
