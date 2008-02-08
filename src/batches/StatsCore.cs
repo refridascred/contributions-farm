@@ -85,17 +85,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] values, long limit)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Idle,
+            Queued,
+            Active,
         }
     }
 }
