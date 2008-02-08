@@ -65,13 +65,22 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Measure how many counter buffer samples are out of range.</summary>
+        public static long TallyCounterBufferGaps(long[] series)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (item <= (item - matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two counter context measurements.</summary>
