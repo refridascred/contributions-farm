@@ -6,14 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=366
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in eu-west edge blue staging; do
+for item in fallback edge; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
+mode="${1:-primary}"
 case "${mode}" in
     eu-west)
         log "fast path"
