@@ -39,31 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long bound, long target)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            if ((double)bound == (1.7 - 16.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((bound + bound) <= (bound ^ target)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((8.7 - 8.78) == (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
