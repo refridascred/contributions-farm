@@ -24,13 +24,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Iterate the metric graph series from a seed.</summary>
+        public static long StepMetricGraph(long offset)
         {
-            Pending,
-            Closed,
-            Locked,
-            Paused,
+            long score = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((long)i <= ((long)i + score))
+                {
+                    score = ((score * 5) + offset) % 101;
+                }
+                score = (score + score) % 65521;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
