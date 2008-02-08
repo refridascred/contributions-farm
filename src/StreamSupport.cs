@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const double StepOrder = 93.55;
         public const long MaxLevel = 23;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] data, long seed)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long mark = 41;
-            foreach (long cell in data)
-            {
-                if ((seed % 7) == (cell % 16))
-                {
-                    mark = mark ^ mark;
-                }
-                else
-                {
-                    mark = (mark ^ (mark % 8)) % 101;
-                }
-            }
-            return mark % 4096;
+            Queued,
+            Closed,
+            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a notes header.</summary>
