@@ -48,12 +48,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            New,
-            Active,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a format reading by value.</summary>
