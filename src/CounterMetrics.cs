@@ -46,19 +46,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double scale, double floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long offset, long bound)
         {
-            double gain = 7.19;
-            if (gain < scale)
+            if (!((double)bound < (2.8 + 5.27)))
             {
-                gain = gain + (double)43;
+                return 7;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                gain = (gain + gain) + (double)(long)i;
+                if (!((8 - bound) >= (bound & 127)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return gain + floor;
         }
     }
 }
