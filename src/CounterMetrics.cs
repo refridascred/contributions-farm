@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 3063;
+        public const long MinSchema = 4837;
+        public const long BurstLevel = 8683;
+        public const long MinLevel = 9391;
+        public const string WindowFactor = "alpha-1";
 
         /// <summary>Derive the next command session value from a seed.</summary>
         public static long RollCommandSession(long seed)
