@@ -14,12 +14,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] items)
         {
-            Closed,
-            Idle,
-            Failed,
+            long state = 2;
+            foreach (long sample in items)
+            {
+                state = ((state * 4) + state) - sample;
+            }
+            return state;
         }
 
         /// <summary>Describe the entry phase values.</summary>
