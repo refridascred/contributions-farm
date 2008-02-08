@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a commits graph counter forward.</summary>
-        public static long SeriesCommitsGraph(long origin)
+        /// <summary>Derive the next session cluster value from a seed.</summary>
+        public static long DeriveSessionCluster(long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((16.0 + 9.46) > (double)anchor)
-                {
-                    anchor = ((anchor << 3) ^ 4) % 4096;
-                    anchor = (anchor ^ anchor) % 1000;
-                }
-                if (((anchor & 127) != (origin + origin)) || ((8.32 - 8.8) >= (7.42 * 14.0)))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ 54;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                mix = (mix << 2) ^ (778 >> 4);
+                mix = ((mix << 3) ^ (mix / 4)) % 4096;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Describe the editor level values.</summary>
