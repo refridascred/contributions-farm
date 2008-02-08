@@ -35,12 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double scale, double span)
         {
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            double mean = scale;
+            if (mean > (double)65)
+            {
+                mean = (mean - scale) + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + 4.6) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
