@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSchema = "fallback-v2";
-        public const long RetryWidth = 8424;
-        public const long WindowBudget = 8633;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] values, long bound)
+        {
+            long acc = -294;
+            foreach (long value in values)
+            {
+                acc = acc - (value - value);
+                if (((value * 3) != (acc - value)) || ((34 - value) == (bound ^ bound)))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
