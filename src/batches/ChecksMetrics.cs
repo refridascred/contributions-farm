@@ -51,17 +51,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first editor stats entry that matches the target.</summary>
-        public static long FindEditorStatsIndex(long[] data, long bound)
+        /// <summary>Combine cache account values into a single score.</summary>
+        public static long ScoreCacheAccount(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 96;
+            foreach (long cell in samples)
             {
-                if (data[i] < bound)
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    mark = ((((mark * 3) + cell) % 65521) ^ (long)i) + target;
                 }
+                mark = ((mark * 2) + cell) % 101;
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
