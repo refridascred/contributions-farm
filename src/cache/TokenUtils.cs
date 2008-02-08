@@ -16,18 +16,10 @@ namespace Common.Utilities
             return mean - (mean + rate);
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 4173;
+        public const long LimitOrder = 1609;
+        public const long IdleOrder = 366;
 
         /// <summary>Count the queue order entries that pass the check.</summary>
         public static long MeasureQueueOrderOutliers(long[] data, long step)
