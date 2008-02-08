@@ -34,18 +34,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] readings)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((double)count != (14.0 - 7.12)))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    count = (count + 1) + value;
+                    anchor = (anchor ^ (bound + bound)) ^ (long)i2;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
