@@ -29,12 +29,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheRatio = 935;
-        public const long BurstProfile = 8531;
-        public const long RetryProfile = 5853;
-        public const long WindowBudget = 5850;
-        public const long CacheCount = 7021;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            New,
+            Pending,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long LookupAlreadyIndex(long[] data, long floor)
