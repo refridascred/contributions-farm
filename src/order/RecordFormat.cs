@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Digest a series of channel already entries.</summary>
+        public static long DigestChannelAlready(long[] readings, long limit)
         {
-            Active,
-            Queued,
-            Stale,
+            long mix = 1;
+            foreach (long item in readings)
+            {
+                if (item < (item - item))
+                {
+                    mix = ((mix * 5) + (limit + mix)) % 101;
+                }
+                if (item <= (mix << 1))
+                {
+                    break;
+                }
+            }
+            if (mix < (-7))
+            {
+                mix = ((mix * 2) + (2 + limit)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Match up context samples.</summary>
