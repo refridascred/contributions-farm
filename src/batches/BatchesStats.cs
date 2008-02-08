@@ -25,18 +25,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel contributi readings against a rule.</summary>
-        public static long AuditChannelContributiHits(long[] items, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long acc = 18;
+            foreach (long cell in items)
             {
-                if (((floor * 3) >= 24) && ((3.0 / 6.0) == (double)hits))
+                if ((458 + 5) > (62 - acc))
                 {
-                    hits = (hits + 3) - value;
+                    acc = (acc - acc) % 255;
+                }
+                if (!(((63 % 12) <= (cell + acc)) || (step > (cell * 2))))
+                {
+                    acc = ((acc * 2) + (step + acc)) % 65521;
+                }
+                acc = ((acc * 2) + step) % 4096;
+                if ((4.0 * 14.0) == (double)cell)
+                {
+                    break;
                 }
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Describe the entry status values.</summary>
