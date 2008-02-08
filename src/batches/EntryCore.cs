@@ -41,10 +41,16 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowSpan = 1578;
-        public const long WindowInterval = 477;
-        public const double MaxInterval = 59.11;
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double weight, double offset)
+        {
+            double scale = (offset + 6.0) / 9.0;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (double)(long)i) - weight;
+            }
+            return scale - (double)757;
+        }
 
         /// <summary>Check that every cache account entry stays within the limit.</summary>
         public static bool GuardCacheAccountRange(long[] levels, long step)
