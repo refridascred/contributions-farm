@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 77.89;
-        public const string SoftBuffer = "legacy-v2";
-        public const long DefaultBuffer = 1751;
-        public const string BaseInterval = "alpha";
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count << 3) <= step)
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of order window readings.</summary>
         public static long ScoreOrderWindow(long[] values, long target)
