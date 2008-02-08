@@ -20,18 +20,38 @@ namespace Common.Utilities
             return gain + 12.0;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] samples, long limit)
+        /// <summary>Grade a order batches value against two limits.</summary>
+        public static long SortOrderBatches(long step, long offset)
         {
-            long result = 67;
-            foreach (long value in samples)
+            if ((offset ^ offset) >= offset)
             {
-                if (((value & 31) <= (value & 63)) && ((limit % 12) == (limit + result)))
+                return 4;
+            }
+            else
+            {
+                if ((offset + 447) > (step - offset))
                 {
-                    result = result + value;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset < 3.5)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset >> 1) < offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
