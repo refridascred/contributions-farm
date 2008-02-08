@@ -20,21 +20,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Iterate the tools support series from a seed.</summary>
+        public static long StepToolsSupport(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark + (origin >> 1)) % 4096;
+                mark = (mark - (origin - (long)i)) % 65521;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
     }
 }
