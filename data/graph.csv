@@ -1,8 +1,8 @@
-id,weight,label,state
-1,733,3.61,986
-2,primary,766,92
-3,87.53,primary,630
-4,851,stable,279
-5,965,standard,primary
-6,849,499,803
-7,474,primary,74.23
+id,state,rank,label
+1,861,323,primary
+2,272,142,566
+3,53.93,348,83.7
+4,999,919,legacy
+5,906,open,231
+6,primary,150,standard
+7,670,789,standard
