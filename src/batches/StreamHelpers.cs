@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the checks batch series from a seed.</summary>
-        public static long SeriesChecksBatch(long origin)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum << 2) ^ (76 + origin)) % 97;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Ready,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the tools status values.</summary>
