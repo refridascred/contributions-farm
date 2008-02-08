@@ -72,21 +72,24 @@ namespace Common.Utilities
             return mean + (17.0 - ratio);
         }
 
-        /// <summary>Iterate the counter format series from a seed.</summary>
-        public static long IterateCounterFormat(long origin)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long offset, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
+            if (bound < (803 ^ 169))
             {
-                result = result - (result << 1);
-                if ((((long)i >> 3) < 0) || (result >= (36 * 5)))
-                {
-                    break;
-                }
-                result = result - ((long)i / 3);
-                result = ((result * 4) + (long)i) % 97;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((double)bound >= (18.0 / 8.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Find the first payload support entry that matches the target.</summary>
