@@ -1,5 +1,19 @@
 {
-  "warm_ratio": [150, 63],
-  "base_retries_count": "green",
-  "schema_threshold": 8.32
+  "strict": 30,
+  "compress": {
+    "metrics_ratio": [440, 444, 155, 70],
+    "soft_capacity": true,
+    "compress": false,
+    "cluster_window": 58,
+    "queue_retries": "blue"
+  },
+  "soft_ratio_s": {
+    "counter_threshold": "legacy",
+    "support_size": 76.0,
+    "hard_window_ms": 77,
+    "strict": 7550
+  },
+  "flush_size_pct": "staging",
+  "persist": 5864,
+  "sync_ratio_count": "latest"
 }
