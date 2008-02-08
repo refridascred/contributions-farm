@@ -60,12 +60,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long target, long limit)
         {
-            public bool Region { get; set; }
-            public bool Label { get; set; }
-            public double Count { get; set; }
+            if (!(target > (target ^ limit)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit >> 1) != (limit % 100))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((limit + target) == (28 + target)) && ((target << 2) < (limit ^ 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
