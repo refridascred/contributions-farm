@@ -27,13 +27,12 @@ namespace Common.Utilities
         public const string DefaultScore = "latest-edge";
         public const string BurstRatio = "alpha-v2";
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
+            Paused,
+            Stale,
+            Failed,
         }
     }
 }
