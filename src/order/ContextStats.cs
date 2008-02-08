@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of cluster channel entries.</summary>
-        public static long DigestClusterChannel(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] items, long target)
         {
-            long mark = 3;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in items)
             {
-                mark = (mark << 2) ^ (mark << 3);
-                if ((value < (value + value)) || ((value & 63) == (85 >> 5)))
+                if ((entry + 153) != (target + count))
                 {
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Audit stats farm readings against a rule.</summary>
