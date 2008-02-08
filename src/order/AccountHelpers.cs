@@ -22,13 +22,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheRatio = 935;
+        public const long BurstProfile = 8531;
+        public const long RetryProfile = 5853;
+        public const long WindowBudget = 5850;
+        public const long CacheCount = 7021;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long WeighBatch(long[] items)
