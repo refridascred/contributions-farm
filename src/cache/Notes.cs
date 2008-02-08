@@ -45,19 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double scale, double floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] series, long target)
         {
-            double scale2 = scale;
-            if (scale2 <= (scale - floor))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                scale2 = scale2 - 7.74;
+                if ((target * 4) >= (entry * 3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + (scale2 - scale2)) + (double)(long)i;
-            }
-            return scale2 + scale;
+            return matches;
         }
 
         /// <summary>Describe the channel class values.</summary>
