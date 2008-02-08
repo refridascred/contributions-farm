@@ -29,40 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long origin, long floor)
-        {
-            long bound = origin ^ floor;
-            if (floor > (bound + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound ^ 519) == (floor ^ floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (5 > (floor + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound ^ 54) != (origin << 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinBudget = "cached-v2";
+        public const double LimitLevel = 63.82;
+        public const double BaseBudget = 53.23;
+        public const long LimitSpan = 4593;
+        public const long CacheGraph = 2602;
 
         /// <summary>Count the batches farm entries that pass the check.</summary>
         public static long AuditBatchesFarmGaps(long[] values)
