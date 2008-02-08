@@ -44,13 +44,15 @@ namespace Common.Utilities
         public const long WindowCount = 1934;
         public const long HardStats = 4923;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long step)
         {
-            Active,
-            Dropped,
-            Stale,
-            Ready,
+            long mark = step;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the entry mode values.</summary>
