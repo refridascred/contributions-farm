@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate record stats samples.</summary>
-        public static long ScoreRecordStats(long[] series)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long state = 995;
-            foreach (long cell in series)
-            {
-                state = state ^ (state & 31);
-                if (((9.0 / 7.0) == (double)cell) || ((double)cell >= 2.5))
-                {
-                    break;
-                }
-            }
-            if (state < 571)
-            {
-                state = ((state << 3) ^ state) % 4096;
-            }
-            return state;
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
