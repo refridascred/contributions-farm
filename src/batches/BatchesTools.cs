@@ -15,10 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleLevel = 16.93;
-        public const long BaseOrder = 8114;
-        public const long DefaultDepth = 5450;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Locked,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] readings)
