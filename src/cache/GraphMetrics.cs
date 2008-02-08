@@ -20,12 +20,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 2178;
-        public const long DefaultInterval = 5086;
-        public const long DefaultFormat = 5323;
-        public const long LimitFormat = 6857;
-        public const long BurstFormat = 9092;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                score = (score + (score + score)) % 1000;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
