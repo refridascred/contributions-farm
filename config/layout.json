@@ -1,10 +1,11 @@
 {
-  "hard_capacity_count": true,
-  "cache_size_ms": {
-    "flush_timeout": "legacy",
-    "readonly": "green",
-    "warm_timeout_s": 934
-  },
-  "warm_retries_count": 5498,
-  "default_interval": 100
+  "retry_depth_ms": 746,
+  "retry_window_count": 63,
+  "batch_window_count": {
+    "idle_threshold_s": 16.0,
+    "warm_size": "strict",
+    "poll_window_count": 25,
+    "persist": "latest",
+    "batch_ratio_s": ["primary", "eu-west", "staging", "green"]
+  }
 }
