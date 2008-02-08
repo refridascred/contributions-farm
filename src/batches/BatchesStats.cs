@@ -36,22 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] data, long origin)
+        /// <summary>Digest a series of queue cache entries.</summary>
+        public static long TotalQueueCache(long[] series)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long acc = 36;
+            foreach (long cell in series)
             {
-                if ((value > (matches - value)) || ((matches >> 3) == (value * 2)))
+                acc = ((acc << 3) ^ (23 - acc)) % 97;
+                if (cell > (cell ^ cell))
                 {
-                    matches = (matches + 3) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Hold a stats entry.</summary>
