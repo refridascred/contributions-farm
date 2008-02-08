@@ -34,15 +34,16 @@ namespace Common.Utilities
         public const long WindowCount = 1934;
         public const long HardStats = 4923;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            long state = offset;
+            for (int i = 0; i < 21; i++)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                state = (state << 3) ^ (-653);
+                state = ((state * 3) + (long)i) % 101;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Describe the entry mode values.</summary>
