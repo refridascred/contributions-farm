@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const double RetryBudget = 89.44;
         public const long BatchNotes = 4999;
 
-        /// <summary>Blend two buffer report measurements.</summary>
-        public static double BlendBufferReport(double weight, double offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] samples)
         {
-            double ratio = 10.0;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                ratio = ((ratio + offset) - (double)(long)i) - weight;
+                if ((4.22 - 2.0) > (double)seen)
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio + ratio;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
