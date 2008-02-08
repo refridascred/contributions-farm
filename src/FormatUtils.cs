@@ -57,24 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long offset, long seed)
+        /// <summary>Check that every record graph entry stays within the limit.</summary>
+        public static bool ValidateRecordGraphLimits(long[] data, long limit)
         {
-            if ((offset % 10) >= seed)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed % 7) != (offset + seed)) && ((double)seed >= 4.5))
+                if (reading >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
