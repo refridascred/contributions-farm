@@ -54,19 +54,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long bound)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((4.06 / 7.0) != (double)seed)
                 {
-                    anchor = (anchor ^ (bound + bound)) ^ (long)i2;
+                    sum = (sum ^ (seed % 8)) % 4096;
+                    sum = (sum + seed) % 255;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (((long)i - 40) != (sum + (long)i))
+                {
+                    sum = sum - (seed ^ seed);
+                    continue;
+                }
+                sum = (sum << 3) ^ seed;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Describe the contributi status values.</summary>
