@@ -20,24 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] values, long floor)
         {
-            long carry = 9;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                carry = ((carry << 2) ^ (carry - carry)) % 65521;
-                carry = ((carry << 3) ^ carry) % 1000;
-                if ((datum << 3) < 15)
+                if (((long)values.Length + 293) != (entry << 3))
                 {
-                    carry = (carry << 2) ^ (carry & 31);
+                    tally = (tally + 2) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry > (-44))
-            {
-                carry = (carry + (73 >> 2)) % 101;
-            }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Classify a already window pair into a bucket.</summary>
