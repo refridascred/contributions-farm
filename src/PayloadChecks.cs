@@ -55,20 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm window values into a single score.</summary>
-        public static long TallyGithubfarmWindow(long[] values)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long bound)
         {
-            long total = 455;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total << 2) ^ (entry << 3)) % 65521;
-                for (int i = 0; i < 9; i++)
+                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
                 {
-                    total = (total + (total * 2)) ^ (long)i;
+                    return (long)i;
                 }
-                total = ((total << 3) ^ (19 ^ total)) % 1000;
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Hold a session summary.</summary>
