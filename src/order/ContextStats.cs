@@ -26,11 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 8123;
-        public const string BatchAlready = "open";
-        public const long SoftAlready = 6250;
-        public const double StepAlready = 11.63;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] samples, long step)
+        {
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long GradePayload(long limit, long bound)
