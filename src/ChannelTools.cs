@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double ratio, double offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double load = (offset / 4.0) / 2.0;
-            if (load > (double)353)
-            {
-                load = load - (ratio / 7.0);
-            }
-            else
-            {
-                load = load + (load + ratio);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (ratio * 4.12)) + (double)(long)i;
-            }
-            return load - load;
+            Synced,
+            Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the channel level values.</summary>
