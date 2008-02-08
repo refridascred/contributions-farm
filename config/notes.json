@@ -1,13 +1,9 @@
 {
-  "compress": 14.95,
-  "flush_timeout_count": "staging",
-  "command_retries": "legacy",
-  "poll_capacity_s": "stable",
-  "batch_ratio_count": false,
-  "hard_retries_ms": {
-    "verbose": true,
-    "contributi_retries": 9,
-    "warm_size": "fallback",
-    "checks_retries": 95.77
+  "contributi_retries": ["legacy", "fallback", "stable", "staging"],
+  "default_depth_ms": 44.36,
+  "burst_threshold_ms": {
+    "dry_run": false,
+    "readonly": 85.57,
+    "burst_window_pct": 60
   }
 }
