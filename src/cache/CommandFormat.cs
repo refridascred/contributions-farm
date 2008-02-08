@@ -17,18 +17,15 @@ namespace Common.Utilities
             return (load + bias) + gain;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] readings, long bound)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double bias = (double)((-388) - (-6));
+            if (bias > (offset * 9.0))
             {
-                if (((bound % 7) != (bound ^ bound)) && (((-3) * 5) > hits))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
+                bias = bias + weight;
             }
-            return hits;
+            return bias - (weight - offset);
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
