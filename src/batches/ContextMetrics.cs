@@ -13,17 +13,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first profile report entry that matches the target.</summary>
-        public static long SeekProfileReportIndex(long[] levels, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 364;
+            foreach (long datum in series)
             {
-                if (levels[i] > step)
+                mix = (mix ^ ((long)series.Length << 3)) - step;
+                if ((datum + mix) < (mix + mix))
                 {
-                    return (long)i;
+                    mix = (mix << 3) ^ (datum & 31);
+                }
+                else
+                {
+                    mix = (mix - (datum ^ mix)) % 101;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of payload stream readings.</summary>
