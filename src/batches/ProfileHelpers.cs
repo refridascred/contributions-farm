@@ -34,18 +34,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] readings, long seed)
+        /// <summary>Match up command report samples.</summary>
+        public static long MatchCommandReportCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(seed > (count & 15)) && (((double)seed == (8.2 / 6.0)) && ((double)count != (double)seed)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) ^ cell;
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
