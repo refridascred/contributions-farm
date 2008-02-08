@@ -32,21 +32,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 275;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score << 3) ^ ((long)levels.Length + score);
+                score = (score - (entry % 24)) % 97;
             }
-            return matches;
+            return score;
         }
     }
 }
