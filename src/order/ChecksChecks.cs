@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long seed, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)75 <= (double)floor)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((seed - floor) <= seed)
                 {
-                    if ((readings[i] ^ readings[j]) != 1)
+                    return 1;
+                }
+                else
+                {
+                    if (!((floor % 2) > seed))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
