@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] readings)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] values, long seed)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            foreach (long reading in values)
             {
-                if (((6.9 * 0.8) > (double)hits) && ((double)hits == (1.18 + 2.17)))
+                if (hits < reading)
                 {
-                    hits = (hits + 3) + datum;
+                    hits = (hits + 1) - seed;
                 }
             }
             return hits;
