@@ -1,16 +1,12 @@
 {
-  "sync_threshold_ms": 30,
-  "graph_depth": "legacy",
-  "dry_run": "primary",
-  "audit": {
-    "dry_run": 2887,
-    "notes_window": 468,
-    "max_window": {
-      "default_capacity_count": ["edge", "latest", "eu-west"],
-      "readonly": "standard",
-      "verbose": 8728,
-      "record_retries": 33.17,
-      "poll_limit_ms": 75
-    }
-  }
+  "default_ratio": "local",
+  "batch_window": "legacy",
+  "hard_threshold_pct": {
+    "batch_threshold_pct": "eu-west",
+    "readonly": 53.47,
+    "audit": [93, 280, 479],
+    "idle_ttl_ms": 7291
+  },
+  "audit": "fallback",
+  "default_limit_ms": "stable"
 }
