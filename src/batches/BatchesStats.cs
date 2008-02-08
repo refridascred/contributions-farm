@@ -31,18 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] series)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((cell + cell) <= tally)
+                if (reading != bound)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
