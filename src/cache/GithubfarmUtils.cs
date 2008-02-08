@@ -15,27 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] samples, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            long mark = 322;
+            foreach (long datum in samples)
             {
-                if ((floor + floor) > ((long)i ^ floor))
+                if ((mark - bound) == (datum + mark))
                 {
-                    carry = (carry + (carry * 3)) % 1000;
+                    mark = ((mark << 2) ^ (47 ^ bound)) % 1000;
                 }
-                else
-                {
-                    carry = (carry + floor) % 101;
-                }
-                if ((floor << 2) <= floor)
-                {
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return mark % 1000;
         }
 
         /// <summary>Validate tools filter readings against a bound.</summary>
