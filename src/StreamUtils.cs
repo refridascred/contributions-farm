@@ -85,12 +85,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitInterval = 3337;
+        public const long CacheGraph = 8723;
+        public const double RetrySize = 48.49;
+        public const long LimitGraph = 6703;
     }
 }
