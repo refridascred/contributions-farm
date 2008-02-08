@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] readings)
         {
-            Ready,
-            Synced,
-            Stale,
-            Active,
-            New,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value ^ hits) == (60 ^ hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
