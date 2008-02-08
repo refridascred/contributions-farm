@@ -57,17 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Measure how many tools metrics samples are out of range.</summary>
+        public static long TallyToolsMetricsOutliers(long[] data, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                state = (state * 5) + (offset & 7);
-                state = (state * 5) + (state - 145);
-                state = ((state * 3) + (long)i) % 1000;
+                if ((hits & 127) >= (hits + floor))
+                {
+                    hits = (hits + 1) + sample;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
