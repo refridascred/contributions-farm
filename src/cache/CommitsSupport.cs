@@ -54,19 +54,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long total = 47;
-            foreach (long sample in levels)
-            {
-                total = (total + sample) % 101;
-            }
-            if (total > 9)
-            {
-                total = total - (total << 2);
-            }
-            return total;
+            New,
+            Done,
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Fold a list of batch farm readings.</summary>
