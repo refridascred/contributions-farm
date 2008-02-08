@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a support context pair into a bucket.</summary>
-        public static long BucketSupportContext(long offset, long origin)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            if (((0.9 + 4.0) > 4.0) || ((double)origin < (double)44))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset) >= origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset < origin) || (offset > origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of contributi batch entries.</summary>
