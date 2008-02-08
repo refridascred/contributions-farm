@@ -45,23 +45,18 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double scale, double floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] readings, long step)
         {
-            double weight = (double)((-94) + 92);
-            if (weight <= (double)9)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                weight = weight + (floor * 4.5);
+                if ((sample + seen) < (step << 2))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                weight = weight - (scale - scale);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + 17.0) - (double)(long)i;
-            }
-            return weight - (floor * 1.07);
+            return seen;
         }
 
         /// <summary>Combine stats command values into a single score.</summary>
