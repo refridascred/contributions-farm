@@ -1,12 +1,5 @@
 {
-  "min_capacity": [362, 86],
-  "audit": 24,
-  "dry_run": "fallback",
-  "channel_interval": {
-    "metric_ttl": 10,
-    "order_capacity": 6675,
-    "persist": [444, 100],
-    "poll_window_s": false,
-    "verbose": "edge"
-  }
+  "poll_ratio_count": 23.28,
+  "default_depth": 1809,
+  "warm_ratio_count": false
 }
