@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=461
+mode="${1:-cached}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=435
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in stable standard; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
