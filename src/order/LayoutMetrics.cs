@@ -19,23 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] items)
-        {
-            long anchor = 549;
-            foreach (long entry in items)
-            {
-                if ((anchor - entry) >= (entry * 2))
-                {
-                    anchor = anchor + (anchor % 24);
-                }
-                if (!(((-361) - anchor) > (anchor + entry)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchSpan = 65.97;
+        public const long RetryCache = 9347;
+        public const long RetryTimeout = 3349;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderHits(long[] levels, long bound)
