@@ -1,13 +1,8 @@
 {
-  "already_ttl": "green",
-  "default_interval": 65.92,
-  "base_limit": [75, 343],
-  "dry_run": {
-    "enabled": false,
-    "sync_depth_count": 83.34,
-    "flush_timeout": 30,
-    "githubfarm_ratio": 60,
-    "verbose": [7, 60, 485, 203]
-  },
-  "persist": ["primary", "standard", "legacy"]
+  "batch_depth": 3.26,
+  "sync_timeout_count": 43,
+  "sync_window": 11,
+  "farm_capacity": 36,
+  "layout_delay": "strict",
+  "strict": 68
 }
