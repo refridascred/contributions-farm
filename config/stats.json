@@ -1,16 +1,8 @@
 {
-  "sync_size_count": {
-    "persist": [304, 222, 422],
-    "editor_timeout": true,
-    "filter_window": "local",
-    "verbose": {
-      "min_threshold": 662,
-      "contributi_delay": true,
-      "default_retries": "cached"
-    },
-    "readonly": "edge",
-    "token_interval": true
-  },
-  "batch_capacity": ["open", "stable", "blue"],
-  "soft_window_pct": 23
+  "sync_window_count": 100,
+  "graph_size": 81.23,
+  "soft_ttl_ms": 9830,
+  "idle_delay": false,
+  "warm_limit_pct": 27,
+  "poll_delay_count": ["local", "eu-west", "green", "eu-west"]
 }
