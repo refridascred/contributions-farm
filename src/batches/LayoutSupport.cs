@@ -42,21 +42,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)target != (double)count)
                 {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + cell;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
