@@ -1,5 +1,5 @@
 {
-  "min_threshold": ["edge", "open", "primary"],
-  "commits_timeout": 250,
-  "readonly": 43
+  "poll_window_s": "eu-west",
+  "sync_interval_s": false,
+  "idle_ttl_s": ["local", "strict", "green", "fallback"]
 }
