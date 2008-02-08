@@ -25,13 +25,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the graph mode values.</summary>
