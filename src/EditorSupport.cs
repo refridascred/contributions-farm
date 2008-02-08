@@ -47,17 +47,21 @@ namespace Common.Utilities
         public const long RetryBatches = 7106;
         public const long HardFactor = 1785;
 
-        /// <summary>Find the first counter account entry that matches the target.</summary>
-        public static long SeekCounterAccountIndex(long[] readings, long seed)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
