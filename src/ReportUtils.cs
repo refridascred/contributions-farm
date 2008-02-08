@@ -78,19 +78,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] items, long limit)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double bias, double span)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double ratio = (bias / 6.0) + (double)61;
+            if (ratio > span)
             {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio + (ratio + bias);
             }
-            return valid;
+            return ratio - (double)7;
         }
     }
 }
