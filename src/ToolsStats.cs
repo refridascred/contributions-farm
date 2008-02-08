@@ -14,10 +14,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftToken = "staging-v2";
-        public const long IdleToken = 5795;
-        public const long BatchFactor = 6520;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] readings, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
