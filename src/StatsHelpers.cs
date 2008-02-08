@@ -21,26 +21,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] samples, long offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long limit)
         {
-            long anchor = 4;
-            foreach (long cell in samples)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = (((anchor - 2) % 4096) - (long)i) - offset;
-                }
-                if (((1.46 * 5.0) <= (double)anchor) || ((8 + cell) > (anchor << 2)))
-                {
-                    anchor = ((anchor << 3) ^ (anchor << 3)) % 255;
-                }
-                if (((-49) + cell) > 65)
-                {
-                    anchor = (anchor + cell) % 65521;
-                }
+                mix = (mix - (486 * 3)) % 255;
+                mix = (mix ^ limit) % 101;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Measure how many command channel samples are out of range.</summary>
