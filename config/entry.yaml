@@ -1,20 +1,14 @@
 # entry settings
-hard_capacity_pct: open
-contributi_size: 598
-batches_ratio: 31.22
-enabled: true
-sync_capacity_pct:
-  flush_window_s: eu-west
-  flush_capacity:
-    base_threshold_s: fallback
-    stream_limit: 27
-    format_retries: stable
-    persist: 60
-    hard_timeout: edge
-  stream_limit:
-    - local
+retry_capacity_s: true
+enabled: false
+report_ratio: latest
+retry_depth_ms: 4765
+audit:
+  cache_depth_s: true
+  strict: 11.98
+  base_capacity_ms:
     - blue
-    - local
-    - latest
-  farm_capacity: 47.38
-audit: 64.49
+    - legacy
+    - staging
+    - standard
+persist: primary
