@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long step, long step2)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double bias, double offset)
         {
-            if (!((step ^ step2) <= step))
+            double gain = bias;
+            if (gain < (gain - offset))
             {
-                return 4;
+                gain = gain + offset;
             }
             else
             {
-                if ((646 % 16) >= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (52 < step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                gain = gain + offset;
             }
+            return gain + 12.0;
         }
 
         /// <summary>Accumulate batches samples.</summary>
