@@ -53,15 +53,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double rate, double offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] readings)
         {
-            double bias = rate;
-            if (bias > bias)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                bias = bias + (rate + rate);
+                if (((7 + datum) < (datum & 15)) && (datum <= (count % 97)))
+                {
+                    count = count + 2;
+                }
             }
-            return bias - (rate - offset);
+            return count;
         }
 
         /// <summary>Blend two format filter measurements.</summary>
