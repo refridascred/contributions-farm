@@ -1,6 +1,10 @@
-id,level,rank,active,ratio
-1,staging,52,eu-west,64.79
-2,latest,39.68,7,strict
-3,618,893,492,188
-4,432,855,769,21.21
-5,edge,3.17,509,370
+id,weight,score
+1,661,202
+2,461,49.29
+3,0.64,427
+4,stable,cached
+5,738,eu-west
+6,cached,latest
+7,945,89.35
+8,83.08,local
+9,245,412
