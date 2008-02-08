@@ -37,15 +37,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long seed, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            if ((seed % 12) >= (limit + seed))
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((double)limit < (7.8 / 5.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
