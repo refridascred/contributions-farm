@@ -1,7 +1,8 @@
 {
-  "layout_capacity": 100,
-  "persist": false,
-  "farm_timeout": 26.39,
-  "sync_threshold_ms": 30,
-  "enabled": false
+  "sync_depth_ms": true,
+  "soft_ratio_ms": "legacy",
+  "max_interval_s": "staging",
+  "hard_capacity_s": "local",
+  "hard_ttl": "green",
+  "retry_size_s": "eu-west"
 }
