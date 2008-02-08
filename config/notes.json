@@ -1,6 +1,7 @@
 {
-  "hard_retries": false,
-  "order_ttl": 7948,
-  "flush_interval_s": 100,
-  "warm_depth_ms": "strict"
+  "graph_delay": 2619,
+  "cluster_delay": ["eu-west", "latest", "standard"],
+  "contributi_limit": 59.3,
+  "record_delay": ["primary", "stable"],
+  "channel_depth": "eu-west"
 }
