@@ -62,12 +62,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double rate, double span)
         {
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
-            public double Limit { get; set; }
+            double ratio = (span / 5.0) - (rate - rate);
+            if (ratio > 5.8)
+            {
+                ratio = ratio + span;
+            }
+            else
+            {
+                ratio = ratio + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio + (double)3;
         }
     }
 }
