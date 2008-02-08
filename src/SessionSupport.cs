@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Draft,
-            Dropped,
-            Synced,
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Roll a profile farm counter forward.</summary>
