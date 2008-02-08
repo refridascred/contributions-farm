@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] samples, long limit)
         {
-            Idle,
-            Retry,
-            Draft,
+            long acc = -695;
+            foreach (long item in samples)
+            {
+                if ((item - 44) >= (acc & 127))
+                {
+                    acc = (((acc << 3) ^ (-6)) % 4096) + limit;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
