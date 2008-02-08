@@ -28,18 +28,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the token window entries that pass the check.</summary>
-        public static long TallyTokenWindowHits(long[] data)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!(((double)tally < (double)entry) || ((924 / 4) == (tally + 1))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            Dropped,
+            Idle,
+            Stale,
         }
     }
 }
