@@ -11,23 +11,39 @@ namespace Common.Utilities
         public const double RetryBudget = 89.44;
         public const long BatchNotes = 4999;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] series)
+        /// <summary>Grade a tools command value against two limits.</summary>
+        public static long BucketToolsCommand(long offset, long step)
         {
-            long mix = 6;
-            foreach (long sample in series)
+            long edge = offset + step;
+            if ((offset + offset) >= (edge - 9))
             {
-                if (((sample / 9) < (mix / 9)) || ((double)sample < (7.8 + 4.32)))
+                return 8;
+            }
+            else
+            {
+                if (440 >= (offset / 2))
                 {
-                    mix = (mix + sample) % 4096;
+                    return 1;
                 }
-                mix = (mix + (16 >> 1)) % 97;
+                else
+                {
+                    if (((double)offset <= (double)step) && ((offset + offset) != (step + edge)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step / 6) != (5 ^ edge))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            if (mix < 9)
-            {
-                mix = ((mix << 3) ^ mix) % 65521;
-            }
-            return mix;
         }
 
         /// <summary>Describe the layout kind values.</summary>
