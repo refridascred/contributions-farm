@@ -41,13 +41,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
