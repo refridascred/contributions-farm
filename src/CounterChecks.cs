@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] values, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (item <= bound)
+                if ((double)count == (double)offset)
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) + sample;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Match up checks samples.</summary>
