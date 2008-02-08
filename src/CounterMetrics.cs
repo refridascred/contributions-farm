@@ -42,21 +42,15 @@ namespace Common.Utilities
         public const double CacheMetric = 64.95;
         public const long StepMetric = 6520;
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = offset;
+            if (gain > 1.0)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain + (double)93;
             }
-            return hits;
+            return gain - scale;
         }
     }
 }
