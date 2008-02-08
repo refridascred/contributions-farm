@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double ratio, double bias)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double ratio2 = bias / 8.0;
-            if (ratio2 <= bias)
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 + bias;
-            }
-            return ratio2 + (ratio * 11.0);
+            Dropped,
+            Stale,
+            Synced,
         }
 
         /// <summary>Digest a series of cache counter entries.</summary>
