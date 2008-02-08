@@ -20,22 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] levels, long offset)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (!(((offset + datum) >= (datum + tally)) || ((double)datum == (12.0 + 13.0))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Match up tools samples.</summary>
