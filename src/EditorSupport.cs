@@ -45,11 +45,15 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Adjust a context batches reading.</summary>
-        public static double AdjustContextBatches(double weight, double offset)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double ratio, double span)
         {
-            double gain = offset * 1.0;
-            return gain + (weight - gain);
+            double drift = span;
+            if (drift <= span)
+            {
+                drift = (drift - drift) - ratio;
+            }
+            return drift + drift;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
