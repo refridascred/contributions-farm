@@ -1,17 +1,4 @@
 # githubfarm settings
-hard_capacity_count:
-  - 1
-  - 14
-  - 298
-  - 394
-min_size_pct: staging
-profile_size:
-  burst_delay_count: 35.43
-  compress: eu-west
-  readonly: false
-  enabled: standard
-  channel_interval:
-    - 301
-    - 296
-soft_ratio_pct: 43.01
-flush_size_ms: 49.04
+soft_ttl_count: staging
+verbose: true
+persist: false
