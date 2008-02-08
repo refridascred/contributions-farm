@@ -20,14 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 8603;
+        public const long CacheRatio = 128;
+        public const long IdleLevel = 8707;
+        public const double StepLayout = 60.85;
+        public const string BurstLayout = "primary-edge";
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] series, long target)
