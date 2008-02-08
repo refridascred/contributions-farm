@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const double IdleBudget = 59.95;
         public const string BatchWidth = "primary-v2";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "open";
-        public const string BatchChecks = "open-v2";
-        public const double IdleChecks = 67.32;
-        public const double WindowSize = 3.85;
-        public const double MinSize = 89.17;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleBatches = 66.13;
+        public const double CacheDepth = 1.48;
+        public const long LimitBatches = 8381;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long CombineReport(long[] values)
