@@ -1,6 +1,17 @@
 {
-  "retry_ratio": "strict",
-  "idle_capacity": "edge",
-  "flush_size": "standard",
-  "commits_size": 27
+  "dry_run": false,
+  "burst_threshold": 41,
+  "batches_capacity": false,
+  "default_timeout_count": {
+    "min_depth_ms": 8212,
+    "poll_depth_ms": {
+      "base_delay": 60.52,
+      "dry_run": "blue",
+      "retry_delay": 86.51,
+      "enabled": [116, 157],
+      "metric_depth": [150, 461, 260]
+    },
+    "payload_timeout": "latest",
+    "window_limit": 8.15
+  }
 }
