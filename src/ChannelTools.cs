@@ -19,18 +19,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] samples, long target)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long mix = 4;
-            foreach (long datum in samples)
-            {
-                if (datum <= (target & 1))
-                {
-                    mix = ((mix * 3) + 5) % 65521;
-                }
-            }
-            return mix;
+            Dropped,
+            Locked,
+            Draft,
+            Ready,
         }
     }
 }
