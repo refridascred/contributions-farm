@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 8603;
-        public const long CacheRatio = 128;
-        public const long IdleLevel = 8707;
-        public const double StepLayout = 60.85;
-        public const string BurstLayout = "primary-edge";
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] values)
+        {
+            long anchor = 127;
+            foreach (long datum in values)
+            {
+                anchor = ((anchor - anchor) % 65521) ^ datum;
+            }
+            if (anchor < 61)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] series, long target)
