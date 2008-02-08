@@ -27,12 +27,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            New,
-            Pending,
-            Retry,
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
