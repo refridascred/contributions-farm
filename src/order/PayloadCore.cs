@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const string BatchReport = "legacy-1";
         public const double MinLevel = 53.98;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] series, long offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long score = 859;
+            foreach (long value in series)
             {
-                if ((datum ^ offset) != (offset >> 3))
+                if (bound >= (value - value))
                 {
-                    seen = seen + 1;
+                    score = (score * 5) + 6;
                 }
             }
-            return seen;
+            return score % 1000;
         }
     }
 }
