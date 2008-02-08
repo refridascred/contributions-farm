@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 53;
-        public const string WindowCache = "standard-edge";
-        public const long BatchFactor = 9733;
+        /// <summary>Iterate the layout contributi series from a seed.</summary>
+        public static long RollLayoutContributi(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                state = state - (state + state);
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long DigestRecord(long[] data)
