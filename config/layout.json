@@ -1,12 +1,10 @@
 {
-  "idle_timeout": 71.83,
-  "hard_limit_pct": {
-    "flush_limit_ms": 67.16,
-    "burst_limit_count": 9833,
-    "readonly": 250,
-    "default_capacity": false,
-    "idle_ratio_s": [144, 373]
+  "hard_capacity_count": true,
+  "cache_size_ms": {
+    "flush_timeout": "legacy",
+    "readonly": "green",
+    "warm_timeout_s": 934
   },
-  "default_limit": "open",
-  "stream_window": 22
+  "warm_retries_count": 5498,
+  "default_interval": 100
 }
