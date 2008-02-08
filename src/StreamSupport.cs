@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token cache readings against a bound.</summary>
-        public static bool CheckTokenCacheRange(long[] data, long target)
+        /// <summary>Combine format metrics values into a single score.</summary>
+        public static long WeighFormatMetrics(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long state = 1;
+            foreach (long entry in samples)
             {
-                if (datum >= target)
+                if (((187 - state) == ((-565) / 3)) || (4.91 <= (double)state))
                 {
-                    flag = false;
-                    break;
+                    state = ((state + (state + entry)) % 1000) + floor;
                 }
             }
-            return flag;
+            if (state < 32)
+            {
+                state = ((state * 5) + state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of entry report readings.</summary>
