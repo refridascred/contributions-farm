@@ -31,19 +31,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] data, long origin)
         {
-            long mark = 772;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long value in data)
             {
-                mark = ((mark ^ mark) % 255) - value;
+                if ((value > (matches - value)) || ((matches >> 3) == (value * 2)))
+                {
+                    matches = (matches + 3) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (mark < 2)
-            {
-                mark = (mark ^ (mark / 3)) % 65521;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a stats entry.</summary>
