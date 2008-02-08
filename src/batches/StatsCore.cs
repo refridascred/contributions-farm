@@ -73,13 +73,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
-            public double Total { get; set; }
+            long score = 1;
+            foreach (long sample in readings)
+            {
+                score = score + (sample + sample);
+            }
+            return score;
         }
 
         /// <summary>Fold a list of filter report readings.</summary>
