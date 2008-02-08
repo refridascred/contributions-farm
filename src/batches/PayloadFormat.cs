@@ -55,10 +55,21 @@ namespace Common.Utilities
             return gain + rate;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "cached";
-        public const long BurstBudget = 5543;
-        public const long BurstLevel = 3574;
-        public const long WindowLayout = 9778;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
