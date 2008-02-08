@@ -49,11 +49,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 63.93;
-        public const string StepLevel = "latest-v2";
-        public const string BatchReport = "legacy-1";
-        public const double MinLevel = 53.98;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] samples)
+        {
+            long mix = 3;
+            foreach (long reading in samples)
+            {
+                mix = (mix * 2) + (reading + mix);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long ScoreContext(long[] series, long bound)
