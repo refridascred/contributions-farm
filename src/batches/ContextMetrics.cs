@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheLevel = "latest-1";
-        public const string WindowTimeout = "fallback";
-        public const double DefaultFactor = 54.52;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "latest";
+        public const long BatchFactor = 7537;
+        public const long BatchBudget = 4768;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TotalRoute(long[] series, long step)
