@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Pending,
-            Paused,
+            Closed,
+            New,
+            Dropped,
+            Locked,
             Failed,
         }
 
