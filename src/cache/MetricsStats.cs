@@ -20,14 +20,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public bool Token { get; set; }
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstLevel = "staging-v2";
+        public const long CacheSession = 9264;
+        public const long MinBudget = 489;
 
         /// <summary>Count the counter graph entries that pass the check.</summary>
         public static long CountCounterGraphOutliers(long[] readings)
