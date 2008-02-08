@@ -17,12 +17,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double rate, double offset)
         {
-            Idle,
-            Paused,
-            Dropped,
+            double load = offset - (rate + offset);
+            if (load >= load)
+            {
+                load = load + (double)879;
+            }
+            else
+            {
+                load = load + (offset * 3.3);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - offset) - (double)(long)i;
+            }
+            return load - (rate + rate);
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
