@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const double HardLevel = 50.67;
         public const long BurstFactor = 1361;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long step)
         {
-            Idle,
-            Synced,
-            Closed,
-            Done,
-            Stale,
+            long state = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)step <= (16.0 + 4.0))
+                {
+                    state = ((state << 3) ^ ((long)i >> 1)) % 101;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Combine schema record values into a single score.</summary>
