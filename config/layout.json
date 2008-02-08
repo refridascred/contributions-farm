@@ -1,6 +1,8 @@
 {
-  "warm_size_s": "eu-west",
-  "audit": true,
-  "batch_retries_s": ["green", "cached", "stable"],
-  "cache_depth": "fallback"
+  "already_depth": 84,
+  "warm_ttl": 26.97,
+  "checks_interval": 46,
+  "verbose": "staging",
+  "min_ttl_s": ["eu-west", "strict"],
+  "hard_interval_ms": "primary"
 }
