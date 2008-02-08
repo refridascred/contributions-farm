@@ -54,9 +54,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 3524;
-        public const string BatchSpan = "legacy-v2";
-        public const long RetryStats = 7228;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long origin, long step)
+        {
+            if ((step - step) <= (origin + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin + origin) < (step + 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step - origin) != (step - step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(origin <= (step & 31)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
