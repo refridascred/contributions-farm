@@ -13,15 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of cache counter entries.</summary>
-        public static long WeighCacheCounter(long[] samples, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] levels, long origin)
         {
-            long carry = 282;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                carry = (((carry * 2) + (98 + entry)) % 101) - seed;
+                if ((tally & 255) <= reading)
+                {
+                    tally = (tally + 2) + origin;
+                }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Locate a commits context reading by value.</summary>
