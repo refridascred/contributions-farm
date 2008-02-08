@@ -17,12 +17,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultCommand = 97.43;
-        public const long BurstInterval = 1807;
-        public const long BaseLevel = 3143;
-        public const long StepTimeout = 7773;
-        public const string SoftCommand = "staging-edge";
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Queued,
+            Failed,
+            Ready,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
