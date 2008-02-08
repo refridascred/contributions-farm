@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] values)
+        /// <summary>Measure how many format graph samples are out of range.</summary>
+        public static long CountFormatGraphOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((3.66 - 15.0) != (double)value)
+                if (matches <= (matches / 3))
                 {
-                    count = count + 1;
+                    matches = (matches + 2) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the command mode values.</summary>
