@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 5445;
-        public const string StepSpan = "staging-edge";
-        public const long CacheAlready = 8241;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Paused,
+            Draft,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long FindFarmIndex(long[] readings, long limit)
