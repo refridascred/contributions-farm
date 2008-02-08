@@ -12,15 +12,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Derive the next context schema value from a seed.</summary>
-        public static long RollContextSchema(long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((double)item != (5.7 * 2.0))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Blend two entry support measurements.</summary>
