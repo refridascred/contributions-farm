@@ -29,10 +29,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 3988;
-        public const long MaxFactor = 1727;
-        public const double CacheDepth = 49.91;
-        public const long LimitSize = 4647;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double scale, double span)
+        {
+            double weight = (double)((-67) + 950);
+            if (weight < span)
+            {
+                weight = (weight + (double)2) - scale;
+            }
+            return weight - (span / 8.0);
+        }
     }
 }
