@@ -26,21 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window command samples.</summary>
-        public static long PairWindowCommandCount(long[] samples)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((mark ^ sample) >= mark) || ((mark & 31) <= sample))
                 {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark << 3) ^ (sample / 9);
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (sample - sample)) % 4096;
                 }
             }
-            return hits;
+            if (mark > 1)
+            {
+                mark = ((mark * 4) + (mark / 8)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a report options.</summary>
