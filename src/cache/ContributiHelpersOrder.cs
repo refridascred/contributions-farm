@@ -32,19 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double rate, double floor)
+        /// <summary>Match up checks token samples.</summary>
+        public static long MatchChecksTokenCount(long[] readings)
         {
-            double scale = rate;
-            if (scale < (floor / 5.0))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + rate) - (double)(long)i;
-            }
-            return scale + rate;
+            return count;
         }
 
         /// <summary>Fold a list of counter support readings.</summary>
