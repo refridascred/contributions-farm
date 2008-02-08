@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double bias, double bias2)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data)
         {
-            double rate = (double)(688 ^ 607);
-            if (rate < (double)321)
+            long sum = 5;
+            foreach (long sample in data)
             {
-                rate = ((rate + 5.2) - bias) + bias2;
+                sum = ((sum * 2) + (long)data.Length) % 1000;
+                if ((double)475 <= (double)sample)
+                {
+                    sum = sum + sum;
+                    sum = ((sum << 2) ^ ((-4) << 1)) % 65521;
+                }
+                if ((sum + 58) < (sample >> 3))
+                {
+                    sum = (sum ^ (84 * 2)) % 65521;
+                }
+                else
+                {
+                    sum = sum ^ 2;
+                }
             }
-            return rate - 8.71;
+            return sum;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
