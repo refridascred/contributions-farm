@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=318
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-fallback}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in edge legacy; do
+for item in staging local; do
     log "checking ${item}"
 done
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
