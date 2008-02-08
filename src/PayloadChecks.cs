@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] readings)
         {
-            Failed,
-            Pending,
-            Synced,
-            Done,
-            Draft,
+            long state = 6;
+            foreach (long entry in readings)
+            {
+                state = (state << 3) ^ entry;
+                state = (state * 3) + (state * 2);
+            }
+            if (state < 88)
+            {
+                state = (state - state) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
