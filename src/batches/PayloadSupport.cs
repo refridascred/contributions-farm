@@ -14,32 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long floor)
-        {
-            if ((396 * 2) > step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor * 4) <= (step >> 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor >= step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 5636;
+        public const long BurstBudget = 3850;
+        public const long HardDepth = 2702;
+        public const double BatchInterval = 72.12;
+        public const long MaxLayout = 2072;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long IdleFactor = 1556;
