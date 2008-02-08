@@ -26,22 +26,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] values, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long acc = 48;
+            foreach (long value in readings)
             {
-                if ((((double)seen != (5.01 / 4.0)) || ((seed + reading) >= (seen & 1))) && (((reading / 8) >= (reading & 3)) || ((seed ^ seen) <= (seen + seen))))
+                if (!((9 ^ acc) < value))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = acc ^ value;
                 }
             }
-            return seen;
+            if (acc < 178)
+            {
+                acc = acc ^ acc;
+            }
+            return acc % 65521;
         }
     }
 }
