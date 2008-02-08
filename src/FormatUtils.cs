@@ -57,23 +57,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long seed, long seed2)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long offset, long seed)
         {
-            long slot = seed + seed2;
-            if (!((slot + slot) != (seed2 + seed)))
+            if ((offset % 10) >= seed)
             {
                 return 0;
             }
             else
             {
-                if (!((seed * 3) > (32 ^ 96)))
+                if (((seed % 7) != (offset + seed)) && ((double)seed >= 4.5))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    return 4;
+                    return 7;
                 }
             }
         }
