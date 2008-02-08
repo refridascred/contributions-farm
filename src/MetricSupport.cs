@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] levels, long limit)
         {
-            long score = 21;
-            foreach (long datum in samples)
+            long carry = 123;
+            foreach (long cell in levels)
             {
-                score = ((score << 3) ^ (score % 8)) % 1000;
-                if ((datum ^ datum) < datum)
-                {
-                    score = score - (17 / 7);
-                }
+                carry = (((carry << 3) ^ cell) % 101) + limit;
             }
-            return score % 1000;
+            if (carry < 444)
+            {
+                carry = (carry ^ (carry ^ (long)levels.Length)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
