@@ -20,18 +20,31 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] items)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long limit, long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if ((limit + limit) > step)
             {
-                if (datum <= (8 ^ datum))
+                return 0;
+            }
+            else
+            {
+                if (((limit + limit) != (6 % 64)) || ((11.0 * 20.0) == (double)limit))
                 {
-                    count = count + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((37 << 1) < limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
