@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + 153) != (target + count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowCommits = "alpha-v2";
+        public const long BurstCommits = 4683;
+        public const long MaxScore = 9323;
+        public const string IdleSize = "alpha-v2";
 
         /// <summary>Audit stats farm readings against a rule.</summary>
         public static long MeasureStatsFarmMatches(long[] samples, long offset)
