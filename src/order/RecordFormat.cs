@@ -58,21 +58,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 113;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(result <= (result * 2)))
                 {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result + (result + 8)) + item) - step;
                 }
             }
-            return matches;
+            if (result < 833)
+            {
+                result = ((result * 3) + result) % 255;
+            }
+            return result;
         }
     }
 }
