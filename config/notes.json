@@ -1,6 +1,8 @@
 {
-  "flush_timeout_pct": "cached",
-  "soft_depth": "primary",
-  "batch_size_pct": "green",
-  "batch_timeout": false
+  "sync_window_pct": 60,
+  "audit": 19.38,
+  "flush_depth_ms": 78.52,
+  "persist": "eu-west",
+  "burst_depth": 50.07,
+  "checks_depth": "primary"
 }
