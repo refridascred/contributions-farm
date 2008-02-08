@@ -58,19 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double gain, double offset)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] values, long limit)
         {
-            double bias = (double)(771 << 3);
-            if (bias <= bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = ((bias + bias) - gain) + offset;
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - 6.61;
+            return -1;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
