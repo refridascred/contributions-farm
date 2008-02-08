@@ -1,14 +1,11 @@
 # Command notes
 
-Each channel is validated before it reaches the stats queue.
-Defaults for format live in the config folder and can be overridden per environment.
-Use report settings to tune how often filter data is refreshed.
-
-Keep queue and stream names short and lowercase.
-Each stream is validated before it reaches the channel queue.
+A tools that stays idle for too long is moved to the entry list.
+A farm that stays idle for too long is moved to the layout list.
+Use cluster settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Keep filter values small
-- Validate metric input early
+- Document new account fields
+- Review support limits each release
+- Log every stats change
