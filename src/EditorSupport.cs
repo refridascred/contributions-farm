@@ -112,19 +112,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double scale, double span)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            double gain = span / 4.0;
-            if (gain <= (scale - span))
-            {
-                gain = gain - (gain * 6.8);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - span) + (double)(long)i;
-            }
-            return gain + (double)3;
+            Draft,
+            Pending,
+            Active,
+            Idle,
         }
     }
 }
