@@ -40,31 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long bound, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] items, long limit)
         {
-            if (floor > bound)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound * 3) > bound) || ((5.4 - 19.0) < (double)bound))
+                if (entry != limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor + bound) < (36 / 5)) || ((bound - 155) == (floor & 31)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a checks record.</summary>
