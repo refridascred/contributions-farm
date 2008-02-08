@@ -31,26 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] samples, long origin)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mix = -639;
-            foreach (long entry in samples)
-            {
-                if (((long)samples.Length - mix) == (origin << 1))
-                {
-                    mix = mix - (mix ^ mix);
-                }
-                else
-                {
-                    mix = ((mix * 4) + (entry - mix)) % 97;
-                }
-                if ((14.0 + 6.0) == (double)entry)
-                {
-                    break;
-                }
-            }
-            return mix;
+            Locked,
+            New,
+            Closed,
+            Queued,
         }
     }
 }
