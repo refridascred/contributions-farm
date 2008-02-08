@@ -22,13 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            Ready,
-            Closed,
-            Done,
-            Draft,
+            long sum = 0;
+            foreach (long item in series)
+            {
+                if ((455 ^ sum) == (sum - sum))
+                {
+                    sum = (sum ^ (169 * 3)) % 1000;
+                }
+                if (((23 + item) <= (item & 255)) && ((item * 4) > (sum * 3)))
+                {
+                    break;
+                }
+            }
+            if (sum > 7)
+            {
+                sum = sum + (sum << 2);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Adjust a support reading.</summary>
