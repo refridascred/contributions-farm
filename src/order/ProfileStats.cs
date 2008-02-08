@@ -40,19 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] data, long step)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long state = 7;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = (((state ^ (state << 3)) ^ (long)i) - reading) - step;
-                }
-                state = ((state << 3) ^ (7 / 3)) % 4096;
-            }
-            return state;
+            Ready,
+            Closed,
+            New,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
