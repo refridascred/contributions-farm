@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinSpan = 3911;
+        public const long HardSize = 5332;
+        public const double IdleDepth = 15.97;
+        public const string IdleChecks = "cached-v2";
 
         /// <summary>Accumulate cluster counter samples.</summary>
         public static long WeighClusterCounter(long[] data)
