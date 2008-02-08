@@ -23,11 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstDepth = 4876;
-        public const string StepAlready = "alpha-edge";
-        public const double CacheInterval = 24.97;
-        public const string MinRatio = "alpha-v2";
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
