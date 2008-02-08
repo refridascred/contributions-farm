@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Compare every pair of counter buffer readings.</summary>
+        public static long MatchCounterBufferCount(long[] series)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
