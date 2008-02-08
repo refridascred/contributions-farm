@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] data, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (reading > step)
+                if ((4.48 / 7.0) <= (double)seen)
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 1) - item) - bound;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
