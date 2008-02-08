@@ -73,20 +73,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next graph command value from a seed.</summary>
-        public static long IterateGraphCommand(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)(long)i < (17.0 - 5.0))
-                {
-                    mark = ((mark << 2) ^ (floor ^ 4)) % 97;
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "fallback";
+        public const string LimitProfile = "cached-v2";
+        public const double MinDepth = 97.93;
+        public const string LimitCount = "alpha-edge";
     }
 }
