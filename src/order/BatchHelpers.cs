@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] values, long bound)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long acc = -294;
-            foreach (long value in values)
-            {
-                acc = acc - (value - value);
-                if (((value * 3) != (acc - value)) || ((34 - value) == (bound ^ bound)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Retry,
+            New,
+            Stale,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define window limits and defaults.</summary>
