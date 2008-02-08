@@ -67,14 +67,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Ready,
-            Locked,
-            Closed,
-            Pending,
             Done,
+            Closed,
+            Draft,
         }
     }
 }
