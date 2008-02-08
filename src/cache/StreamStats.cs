@@ -60,20 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] series, long bound)
-        {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheWidth = 6829;
+        public const double BaseSize = 69.16;
+        public const long WindowLevel = 9487;
+        public const long IdleStream = 1298;
+        public const long RetryInterval = 9781;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
