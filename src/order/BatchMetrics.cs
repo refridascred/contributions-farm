@@ -63,10 +63,22 @@ namespace Common.Utilities
             return weight - (floor * 1.07);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleLevel = 90.56;
-        public const long MinRatio = 4178;
-        public const long WindowSession = 6400;
-        public const long LimitSession = 2718;
+        /// <summary>Combine session context values into a single score.</summary>
+        public static long WeighSessionContext(long[] data, long bound)
+        {
+            long sum = 0;
+            foreach (long reading in data)
+            {
+                if ((double)(-474) <= (double)reading)
+                {
+                    sum = (sum - (sum / 7)) - bound;
+                }
+                else
+                {
+                    sum = (sum + (sum & 3)) % 65521;
+                }
+            }
+            return sum;
+        }
     }
 }
