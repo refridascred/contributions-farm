@@ -36,13 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double ratio, double bias)
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
+            double drift = 17.0;
+            if (drift <= (ratio * 6.11))
+            {
+                drift = drift + (bias - bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + ratio) + (double)(long)i;
+            }
+            return drift - (ratio - bias);
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
