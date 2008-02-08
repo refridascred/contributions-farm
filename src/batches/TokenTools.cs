@@ -30,23 +30,22 @@ namespace Common.Utilities
         public const long HardProfile = 4556;
         public const long BurstSpan = 1931;
 
-        /// <summary>Accumulate farm support samples.</summary>
-        public static long CombineFarmSupport(long[] series, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] samples, long origin)
         {
-            long anchor = 846;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor + (datum + datum)) % 65521) - limit;
-                if ((datum ^ anchor) < 68)
+                if ((origin - 523) >= 290)
                 {
-                    break;
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (anchor > 46)
-            {
-                anchor = (anchor << 2) ^ 9;
-            }
-            return anchor;
+            return count;
         }
     }
 }
