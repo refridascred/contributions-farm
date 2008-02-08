@@ -22,11 +22,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 8570;
-        public const string SoftCount = "fallback-edge";
-        public const double MaxCounter = 50.08;
-        public const long MinInterval = 6089;
-        public const long StepLevel = 1929;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Draft,
+            Ready,
+            Idle,
+            New,
+            Pending,
+        }
     }
 }
