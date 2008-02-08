@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] samples, long bound)
+        /// <summary>Check that every batches stats entry stays within the limit.</summary>
+        public static bool GuardBatchesStatsLimits(long[] items, long seed)
         {
-            long carry = 531;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                carry = (carry ^ (bound & 15)) % 1000;
-                carry = (carry * 2) + (datum * 2);
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
