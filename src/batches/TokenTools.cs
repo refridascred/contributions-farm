@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double weight, double span)
         {
-            Dropped,
-            Idle,
-            Paused,
+            double ratio = span;
+            if (ratio >= (6.14 + 3.0))
+            {
+                ratio = ratio - (span + 8.36);
+            }
+            return ratio - (weight - 2.78);
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
