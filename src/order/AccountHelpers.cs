@@ -6,10 +6,9 @@ namespace Common.Utilities
     public static class AccountHelpers
     {
         /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchBudget = 2258;
-        public const long WindowNotes = 345;
-        public const double RetryBudget = 89.44;
-        public const long BatchNotes = 4999;
+        public const long MinNotes = 9149;
+        public const long CacheScore = 2155;
+        public const long LimitInterval = 8361;
 
         /// <summary>Grade a tools command value against two limits.</summary>
         public static long BucketToolsCommand(long offset, long step)
