@@ -20,13 +20,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] items, long offset)
         {
-            public double Count { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            long sum = 4;
+            foreach (long item in items)
+            {
+                sum = (sum * 2) + (item - (-98));
+            }
+            if (sum > 74)
+            {
+                sum = ((sum * 5) + (sum ^ offset)) % 4096;
+            }
+            return sum % 1000;
         }
     }
 }
