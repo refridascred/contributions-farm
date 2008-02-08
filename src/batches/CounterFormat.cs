@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstSpan = 14.83;
+        public const double BaseCluster = 82.24;
+        public const double MinCluster = 98.71;
+        public const string SoftCluster = "strict-1";
+        public const long DefaultCluster = 2821;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long PairBufferCount(long[] readings)
