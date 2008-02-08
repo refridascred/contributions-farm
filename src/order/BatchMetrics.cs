@@ -59,15 +59,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stats command values into a single score.</summary>
-        public static long WeighStatsCommand(long[] levels, long origin)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long state = 97;
-            foreach (long datum in levels)
-            {
-                state = ((state + datum) % 65521) - origin;
-            }
-            return state;
+            Draft,
+            New,
+            Locked,
         }
     }
 }
