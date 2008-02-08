@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double rate, double offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            double load = offset;
-            for (int i = 0; i < 7; i++)
+            long result = 5;
+            foreach (long reading in readings)
             {
-                load = (load + (load - rate)) - (double)(long)i;
+                if (!(1 >= (reading >> 5)))
+                {
+                    result = ((result << 2) ^ (reading - (-90))) % 255;
+                }
+                else
+                {
+                    result = (result * 4) + (long)readings.Length;
+                }
             }
-            return load + (offset + offset);
+            return result;
         }
 
         /// <summary>Count buffer command pairs that satisfy a relation.</summary>
