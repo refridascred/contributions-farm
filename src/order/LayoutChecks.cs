@@ -49,23 +49,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double weight, double offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long floor)
         {
-            double load = offset;
-            if (load <= (double)54)
+            long state = floor;
+            for (int i = 0; i < 9; i++)
             {
-                load = load - load;
+                if ((long)i == (state >> 3))
+                {
+                    state = (state * 3) + ((long)i << 2);
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                load = load - (double)9;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - 8.6) + (double)(long)i;
-            }
-            return load + weight;
+            return state;
         }
 
         /// <summary>Hold a batch stats.</summary>
