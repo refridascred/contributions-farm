@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate githubfarm metric readings against a bound.</summary>
-        public static bool ValidateGithubfarmMetricBounds(long[] values, long offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] values)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long carry = 86;
+            foreach (long reading in values)
             {
-                if (datum <= offset)
+                carry = carry + (reading ^ reading);
+                carry = (carry * 4) + carry;
+                if (((double)reading == (9.3 / 5.0)) || (carry <= reading))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
