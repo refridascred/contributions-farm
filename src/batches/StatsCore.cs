@@ -90,19 +90,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] readings, long target)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
