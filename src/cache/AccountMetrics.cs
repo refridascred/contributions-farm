@@ -31,18 +31,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] readings)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long offset, long step)
         {
-            long mark = 86;
-            foreach (long entry in readings)
+            long lane = offset + step;
+            if ((double)step == (double)36)
             {
-                if ((entry - 411) >= entry)
+                return 6;
+            }
+            else
+            {
+                if ((5.0 / 4.0) >= (double)offset)
                 {
-                    mark = mark - entry;
+                    return 0;
+                }
+                else
+                {
+                    if (!((step >> 2) < step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((0 + lane) < (step + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return mark % 65521;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
