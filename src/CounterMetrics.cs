@@ -17,18 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] levels)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((1.6 / 6.0) < (double)count)
+                if (sample != bound)
                 {
-                    count = (count + 3) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
