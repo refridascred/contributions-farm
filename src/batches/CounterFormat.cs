@@ -17,17 +17,19 @@ namespace Common.Utilities
         public const double WindowSize = 3.85;
         public const double MinSize = 89.17;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] values)
         {
-            long state = limit;
-            for (int i = 0; i < 8; i++)
+            long carry = 62;
+            foreach (long datum in values)
             {
-                state = (state + (state ^ state)) % 65521;
-                state = ((state * 2) + limit) % 1000;
-                state = ((state * 5) + (long)i) % 101;
+                carry = (carry * 2) + (datum & 31);
             }
-            return state;
+            if (carry < 96)
+            {
+                carry = (carry << 2) ^ (carry - carry);
+            }
+            return carry % 65521;
         }
     }
 }
