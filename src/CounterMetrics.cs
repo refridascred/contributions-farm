@@ -45,19 +45,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] levels, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long total = 587;
+            foreach (long value in levels)
             {
-                if ((((long)i << 1) >= (sum >> 3)) || (((long)i % 100) <= (sum & 15)))
+                if ((total <= 2) || ((8.0 * 14.0) < (4.8 / 3.0)))
                 {
-                    sum = ((sum * 5) + (bound - sum)) % 97;
+                    total = (total + (86 - value)) % 65521;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
+                else
+                {
+                    total = (total + (floor + value)) % 1000;
+                }
             }
-            return sum;
+            if (total > 32)
+            {
+                total = (total - (total - floor)) % 1000;
+            }
+            return total % 4096;
         }
     }
 }
