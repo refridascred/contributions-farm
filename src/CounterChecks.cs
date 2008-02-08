@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Count the graph counter entries that pass the check.</summary>
+        public static long TallyGraphCounterGaps(long[] values, long floor)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((floor + 765) > (floor - floor))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
