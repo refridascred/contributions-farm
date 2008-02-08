@@ -50,19 +50,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double weight, double span)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long floor, long step)
         {
-            double rate = 8.29;
-            if (rate > rate)
+            if (!((double)step < 5.5))
             {
-                rate = rate - rate;
+                return 1;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                rate = (rate + weight) + (double)(long)i;
+                if (floor > step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)step < (double)floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step - floor) == (floor - floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return rate + span;
         }
     }
 }
