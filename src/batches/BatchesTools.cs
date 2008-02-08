@@ -34,9 +34,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 3.0;
-        public const long IdleInterval = 1337;
-        public const long DefaultScore = 8236;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] values, long origin)
+        {
+            long total = 8;
+            foreach (long reading in values)
+            {
+                total = (total ^ origin) % 101;
+                if (((origin << 1) <= (total ^ origin)) && ((origin ^ reading) != ((-1) + reading)))
+                {
+                    total = (total << 3) ^ (origin ^ reading);
+                }
+                if (!((double)reading > (7.19 / 3.0)))
+                {
+                    break;
+                }
+            }
+            if (total < 7)
+            {
+                total = (total * 5) + (origin % 3);
+            }
+            return total % 65521;
+        }
     }
 }
