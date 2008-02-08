@@ -23,15 +23,19 @@ namespace Common.Utilities
         public const long DefaultProfile = 5987;
         public const long BatchSize = 541;
 
-        /// <summary>Scale a schema route figure with a bias.</summary>
-        public static double BlendSchemaRoute(double bias, double offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] values, long bound)
         {
-            double bias2 = bias + (double)79;
-            if (bias2 > 11.0)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                bias2 = (bias2 - (bias / 9.0)) + offset;
+                if (sample != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias2 - bias;
+            return valid;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
