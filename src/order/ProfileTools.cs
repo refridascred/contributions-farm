@@ -31,19 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] items, long bound)
+        /// <summary>Count the graph filter entries that pass the check.</summary>
+        public static long MeasureGraphFilterGaps(long[] items, long target)
         {
-            bool stale = true;
+            long seen = 0;
             foreach (long cell in items)
             {
-                if (cell >= bound)
+                if ((seen + cell) >= ((long)items.Length ^ target))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the tools level values.</summary>
