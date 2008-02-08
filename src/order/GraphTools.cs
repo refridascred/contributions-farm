@@ -32,12 +32,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
