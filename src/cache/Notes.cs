@@ -28,19 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate payload schema readings against a bound.</summary>
-        public static bool VerifyPayloadSchemaBounds(long[] levels, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (datum > origin)
+                if ((6 + reading) >= reading)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) + bound;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
