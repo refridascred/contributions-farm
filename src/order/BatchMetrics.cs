@@ -31,18 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already notes readings against a rule.</summary>
-        public static long MeasureAlreadyNotesOutliers(long[] items)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum * 3) > (count * 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a account reading.</summary>
