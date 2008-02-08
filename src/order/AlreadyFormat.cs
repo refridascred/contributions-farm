@@ -70,14 +70,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long target, long bound)
         {
-            Ready,
-            Active,
-            Closed,
-            Dropped,
-            Synced,
+            if ((394 & 31) != (target - 23))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target >= (bound >> 3)) && (bound < target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
