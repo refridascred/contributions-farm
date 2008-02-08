@@ -13,14 +13,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Grade a route channel value against two limits.</summary>
+        public static long GradeRouteChannel(long limit, long limit2)
         {
-            Queued,
-            Draft,
-            Done,
-            Pending,
-            Idle,
+            if ((limit >= (limit2 ^ 3)) && (limit >= (34 & 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit < (967 * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((3.0 * 0.26) < (double)limit2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit2 > (limit2 - limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session state values.</summary>
