@@ -45,12 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardSize = 7105;
+        public const long WindowBuffer = 1582;
+        public const string DefaultDepth = "cached-edge";
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LookupMetricIndex(long[] levels, long origin)
