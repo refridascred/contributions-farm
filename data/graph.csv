@@ -1,7 +1,10 @@
-id,weight,ratio,count
-1,76.85,87.97,75.4
-2,455,edge,59
-3,874,459,604
-4,local,primary,32.62
-5,82.16,738,56.18
-6,edge,legacy,local
+id,score,ratio
+1,94.53,191
+2,legacy,435
+3,legacy,77.72
+4,open,edge
+5,eu-west,600
+6,fallback,544
+7,87.92,165
+8,local,93.01
+9,375,local
