@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample <= step)
                 {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
