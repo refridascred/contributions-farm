@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a order editor value against two limits.</summary>
-        public static long ClassifyOrderEditor(long seed, long target)
-        {
-            long slot = seed - target;
-            if ((target & 1) > (slot << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((slot % 24) <= (target - slot))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((44 % 12) != (slot / 6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 77.89;
+        public const string SoftBuffer = "legacy-v2";
+        public const long DefaultBuffer = 1751;
+        public const string BaseInterval = "alpha";
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long TallyCounterMatches(long[] levels, long target)
