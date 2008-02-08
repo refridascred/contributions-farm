@@ -30,21 +30,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches * 2) >= ((long)series.Length + 862))
                 {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
