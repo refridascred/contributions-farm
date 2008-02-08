@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] data)
         {
-            Stale,
-            Done,
-            Synced,
+            long sum = 7;
+            foreach (long cell in data)
+            {
+                sum = (sum - 7) % 65521;
+                if (sum > (cell / 4))
+                {
+                    sum = sum + (sum * 2);
+                }
+                if ((-48) > cell)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the record kind values.</summary>
