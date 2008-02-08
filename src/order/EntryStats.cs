@@ -72,23 +72,18 @@ namespace Common.Utilities
             return rate + 7.0;
         }
 
-        /// <summary>Combine payload farm values into a single score.</summary>
-        public static long DigestPayloadFarm(long[] items, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] values, long origin)
         {
-            long acc = -4;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                acc = acc - (acc - (long)items.Length);
-                if ((floor & 63) < (sample * 2))
+                if (tally < (tally & 3))
                 {
-                    break;
+                    tally = ((tally + 2) + cell) + origin;
                 }
             }
-            if (acc > 352)
-            {
-                acc = (acc + (8 + floor)) % 255;
-            }
-            return acc;
+            return tally;
         }
     }
 }
