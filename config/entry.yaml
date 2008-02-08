@@ -1,9 +1,12 @@
 # entry settings
-farm_size: legacy
-counter_ttl: 903
-warm_limit_s:
-  - 131
-  - 88
-  - 467
-persist: 250
-burst_ratio_ms: 44.77
+default_retries_s: 500
+base_delay: staging
+retry_retries_count:
+  queue_interval: 28.53
+  default_window: fallback
+  audit: false
+graph_threshold: 250
+retry_retries_ms:
+  - 339
+  - 4
+cache_depth_count: fallback
