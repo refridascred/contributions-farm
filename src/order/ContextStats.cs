@@ -67,15 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double weight, double bias)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double gain = (double)110 - (double)30;
-            if (gain < bias)
-            {
-                gain = gain + (double)85;
-            }
-            return gain - (weight + weight);
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
