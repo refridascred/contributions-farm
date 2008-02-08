@@ -67,15 +67,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a report channel counter forward.</summary>
-        public static long StepReportChannel(long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] values, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            long result = 27;
+            foreach (long reading in values)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if (((double)reading == (double)(-97)) && (464 <= reading))
+                {
+                    result = (((result << 2) ^ (reading / 9)) % 65521) + seed;
+                }
+                else
+                {
+                    result = (result + (result % 7)) % 97;
+                }
             }
-            return acc;
+            return result % 1000;
         }
     }
 }
