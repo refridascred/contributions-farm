@@ -31,21 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count tools editor pairs that satisfy a relation.</summary>
-        public static long CompareToolsEditorCount(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell + cell) <= tally)
                 {
-                    if ((levels[i] + levels[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a stats entry.</summary>
