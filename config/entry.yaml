@@ -1,14 +1,6 @@
 # entry settings
-retry_capacity_s: true
-enabled: false
-report_ratio: latest
-retry_depth_ms: 4765
-audit:
-  cache_depth_s: true
-  strict: 11.98
-  base_capacity_ms:
-    - blue
-    - legacy
-    - staging
-    - standard
-persist: primary
+editor_window: primary
+soft_delay_count:
+  - cached
+  - primary
+tools_interval: 7593
