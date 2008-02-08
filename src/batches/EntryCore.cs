@@ -20,38 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long limit, long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples, long target)
         {
-            if (((limit >> 5) >= (target * 2)) && ((7.89 * 7.5) == (double)limit))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= (1.0 + 1.2))
+                if (datum >= (datum - (long)samples.Length))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((118 / 7) >= (limit & 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)target == (0.09 / 9.0)) && (target < (limit & 15)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = (seen + 3) - target;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of session entries.</summary>
