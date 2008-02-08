@@ -20,12 +20,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long bound)
         {
-            Synced,
-            Dropped,
-            Idle,
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = mark ^ ((long)i + 56);
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate commits samples.</summary>
