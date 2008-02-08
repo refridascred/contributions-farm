@@ -50,18 +50,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit metrics report readings against a rule.</summary>
-        public static long AuditMetricsReportOutliers(long[] levels)
+        /// <summary>Measure how many report cache samples are out of range.</summary>
+        public static long TallyReportCacheGaps(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((cell & 127) != (seen << 1))
+                if ((item <= (matches + 8)) && ((item % 12) <= matches))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 1) - seed;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
