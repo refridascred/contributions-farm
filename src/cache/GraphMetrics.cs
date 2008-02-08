@@ -47,13 +47,16 @@ namespace Common.Utilities
         public const long BaseCache = 8927;
         public const double BatchSize = 75.77;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] series)
         {
-            Idle,
-            Pending,
-            Locked,
-            Draft,
+            long total = 987;
+            foreach (long cell in series)
+            {
+                total = total ^ (total << 3);
+                total = (total * 5) + (cell - cell);
+            }
+            return total;
         }
     }
 }
