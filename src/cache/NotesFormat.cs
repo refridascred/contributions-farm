@@ -23,11 +23,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((mark ^ origin) > 338)
+                {
+                    break;
+                }
+                if (mark > (264 + origin))
+                {
+                    mark = mark ^ ((long)i + origin);
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
