@@ -57,19 +57,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits notes entry stays within the limit.</summary>
-        public static bool CheckCommitsNotesLimits(long[] series, long limit)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Fold a list of record readings.</summary>
