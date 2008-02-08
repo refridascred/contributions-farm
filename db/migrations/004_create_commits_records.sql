@@ -1,15 +1,11 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    ratio REAL,
-    weight REAL,
-    owner TEXT NOT NULL,
+    rank INTEGER,
     level INTEGER,
-    created_at TIMESTAMP
+    state TEXT NOT NULL DEFAULT 'new',
+    owner TEXT NOT NULL,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
-
-INSERT INTO commits_records (ratio, weight, owner, level) VALUES (68.66, 42.35, 'fallback', 26);
-INSERT INTO commits_records (ratio, weight, owner, level) VALUES (92.22, 1.76, 'eu-west', 27);
-INSERT INTO commits_records (ratio, weight, owner, level) VALUES (77.78, 72.13, 'stable', 48);
+CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
