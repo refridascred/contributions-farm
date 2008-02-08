@@ -32,13 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] levels)
         {
-            Closed,
-            Active,
-            New,
-            Queued,
+            long acc = 1;
+            foreach (long value in levels)
+            {
+                acc = acc ^ (acc - acc);
+                if ((double)value > (double)acc)
+                {
+                    acc = ((acc << 2) ^ acc) % 255;
+                }
+                if (!((acc - acc) < (acc % 100)))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
