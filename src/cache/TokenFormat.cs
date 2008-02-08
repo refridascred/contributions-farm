@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double rate, double floor)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long seed, long target)
         {
-            double scale = (rate / 4.0) * 8.8;
-            if (scale <= (rate - scale))
+            if (seed > (seed - target))
             {
-                scale = scale + floor;
+                return 1;
             }
             else
             {
-                scale = scale - 7.2;
+                if (((seed + 58) <= target) && (seed >= (target + seed)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed + seed) == (target ^ target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target << 1) < (target >> 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return scale + floor;
         }
 
         /// <summary>Fold a list of record readings.</summary>
