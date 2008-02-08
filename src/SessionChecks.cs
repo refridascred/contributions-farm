@@ -21,18 +21,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] items, long floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((floor < (3 - hits)) || (1.0 <= (double)hits))
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
