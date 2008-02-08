@@ -1,16 +1,4 @@
 # support settings
-compress:
-  already_threshold: 10.56
-  flush_ttl_ms: 11.39
-  layout_capacity: false
-  stream_retries:
-    support_size: 58
-    retry_capacity_ms: green
-    burst_depth: local
-    base_interval_ms: 53.98
-    soft_ttl_pct: latest
-  dry_run: 92
-batch_retries_pct: true
-soft_window_ms: 37
-contributi_size: open
-cache_threshold_pct: primary
+githubfarm_interval: 12
+burst_limit_count: 11.83
+idle_capacity_ms: edge
