@@ -63,13 +63,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            Done,
-            Stale,
-            Paused,
-            Retry,
+            long result = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
