@@ -54,13 +54,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] items, long offset)
         {
-            Failed,
-            Done,
-            Dropped,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of record entries.</summary>
