@@ -22,15 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            long mix = 7;
+            foreach (long sample in readings)
             {
-                total = ((total * 5) + (long)i) % 97;
+                mix = (mix - ((-355) - mix)) - sample;
+                if ((double)71 > (double)mix)
+                {
+                    mix = (mix ^ (mix << 3)) % 4096;
+                }
             }
-            return total;
+            if (mix < 4)
+            {
+                mix = ((mix * 4) + (956 << 1)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the channel phase values.</summary>
