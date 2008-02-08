@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 9938;
+        public const string WindowSize = "latest";
+        public const long SoftCount = 8332;
+        public const long HardRatio = 2217;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long DefaultNotes = 6825;
