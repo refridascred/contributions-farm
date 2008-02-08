@@ -68,22 +68,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] series, long target)
+        /// <summary>Blend two counter context measurements.</summary>
+        public static double SmoothCounterContext(double weight, double offset)
         {
-            long anchor = 344;
-            foreach (long value in series)
+            double weight2 = 7.6;
+            if (weight2 <= (7.0 + weight))
             {
-                if (!((value << 3) != (target + 2)))
-                {
-                    anchor = anchor ^ target;
-                }
+                weight2 = (weight2 - (double)484) - offset;
             }
-            if (anchor < 563)
-            {
-                anchor = (anchor * 3) + 5;
-            }
-            return anchor % 65521;
+            return weight2 + weight2;
         }
     }
 }
