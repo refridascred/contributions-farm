@@ -39,15 +39,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] data)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long score = 8;
-            foreach (long sample in data)
-            {
-                score = ((score ^ (1 + (long)data.Length)) % 4096) ^ sample;
-            }
-            return score;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
