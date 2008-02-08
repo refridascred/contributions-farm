@@ -20,16 +20,32 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long origin, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            long prev = origin + floor;
+            if (!(prev >= (prev + origin)))
             {
-                score = (score + (score + score)) % 1000;
-                score = ((score * 2) + (long)i) % 65521;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((floor < origin) && ((double)floor <= 2.7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + origin) > (floor & 31))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools summary.</summary>
