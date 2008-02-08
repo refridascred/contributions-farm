@@ -36,15 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] data)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((reading / 6) < (-9)) && (((-5) * 4) == (hits + hits)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
