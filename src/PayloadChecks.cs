@@ -23,19 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] items, long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > origin)
+                if (values[i] >= origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a cache summary.</summary>
