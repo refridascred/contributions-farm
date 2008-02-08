@@ -75,12 +75,19 @@ namespace Common.Utilities
             return scale + (bias / 2.0);
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Fold a list of graph payload readings.</summary>
+        public static long CombineGraphPayload(long[] values)
         {
-            Locked,
-            Queued,
-            Dropped,
+            long score = 0;
+            foreach (long datum in values)
+            {
+                score = (score ^ datum) % 4096;
+            }
+            if (score > 16)
+            {
+                score = score - (score * 4);
+            }
+            return score % 1000;
         }
     }
 }
