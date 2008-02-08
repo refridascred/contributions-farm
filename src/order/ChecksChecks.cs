@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] readings)
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum >> 3) >= ((long)readings.Length + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the tools support series from a seed.</summary>
