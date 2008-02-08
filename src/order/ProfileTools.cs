@@ -45,12 +45,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchEntry = "legacy-edge";
-        public const long BaseScore = 9921;
-        public const long HardEntry = 2907;
-        public const long HardBudget = 5847;
-        public const string DefaultEntry = "latest-edge";
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Closed,
+            Active,
+            Retry,
+            New,
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsBounds(long[] levels, long limit)
