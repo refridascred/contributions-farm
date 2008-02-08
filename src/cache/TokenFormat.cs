@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
             public double Limit { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public double Count { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Blend two graph measurements.</summary>
