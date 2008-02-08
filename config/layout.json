@@ -1,5 +1,5 @@
 {
-  "already_depth": 3557,
-  "batch_ratio": 86.2,
-  "batch_capacity_ms": false
+  "batch_ttl_count": ["strict", "stable", "cached", "green"],
+  "compress": "latest",
+  "sync_size_pct": "fallback"
 }
