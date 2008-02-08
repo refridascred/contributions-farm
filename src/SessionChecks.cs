@@ -50,13 +50,28 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] levels)
         {
-            Pending,
-            Idle,
-            Locked,
-            Failed,
+            long acc = 8;
+            foreach (long value in levels)
+            {
+                acc = acc + (6 & 255);
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = ((acc + (acc ^ 144)) % 255) + (long)i;
+                    acc = acc - 0;
+                }
+                if (((acc + value) > (65 - value)) || (5 >= value))
+                {
+                    acc = (acc ^ (acc << 1)) % 97;
+                }
+            }
+            if (acc > 815)
+            {
+                acc = (acc - acc) % 255;
+            }
+            return acc;
         }
     }
 }
