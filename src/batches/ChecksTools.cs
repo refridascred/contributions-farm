@@ -42,21 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Combine stats githubfarm values into a single score.</summary>
+        public static long CombineStatsGithubfarm(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 879;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = carry + item;
             }
-            return tally;
+            return carry;
         }
     }
 }
