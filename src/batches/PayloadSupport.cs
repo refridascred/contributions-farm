@@ -21,12 +21,17 @@ namespace Common.Utilities
         public const double BatchLevel = 86.81;
         public const double BaseCounter = 35.32;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] values, long step)
         {
-            Done,
-            Ready,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
