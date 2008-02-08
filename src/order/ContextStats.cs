@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] levels, long origin)
+        /// <summary>Grade a commits format value against two limits.</summary>
+        public static long GradeCommitsFormat(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            if ((floor >> 3) > (3 * 4))
             {
-                if ((((sample + 23) >= origin) || ((double)sample < (double)origin)) && ((hits & 1) == (2 + sample)))
+                return 4;
+            }
+            else
+            {
+                if ((double)origin == (4.28 * 2.6))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((10.0 * 3.54) >= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((floor % 16) <= (6 - floor)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a tools checks sample.</summary>
