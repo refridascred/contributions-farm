@@ -34,13 +34,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
