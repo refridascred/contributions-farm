@@ -43,13 +43,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
+            long carry = 36;
+            foreach (long datum in samples)
+            {
+                if ((16.0 + 0.86) != (double)carry)
+                {
+                    carry = (carry ^ 48) % 101;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ 1;
+                }
+                if (((1.13 * 9.8) > (double)carry) || ((datum / 2) != (carry % 97)))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
