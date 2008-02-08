@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] readings)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value ^ hits) == (60 ^ hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
