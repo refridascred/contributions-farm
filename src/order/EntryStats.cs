@@ -57,13 +57,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            Idle,
+            Failed,
+            Dropped,
+            New,
+            Pending,
         }
 
         /// <summary>Combine command values into a single score.</summary>
