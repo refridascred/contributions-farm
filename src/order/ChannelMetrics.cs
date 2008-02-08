@@ -16,12 +16,17 @@ namespace Common.Utilities
             return ratio2 - bias;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] levels, long origin)
         {
-            Active,
-            Retry,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
