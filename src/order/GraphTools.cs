@@ -35,15 +35,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine window context values into a single score.</summary>
-        public static long TotalWindowContext(long[] values, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] items, long origin)
         {
-            long total = 72;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                total = (((total * 5) + total) + entry) + limit;
+                if ((double)(long)items.Length < (double)tally)
+                {
+                    tally = ((tally + 1) ^ value) - origin;
+                }
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
