@@ -57,11 +57,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 8250;
-        public const string IdleFilter = "primary";
-        public const string RetryFactor = "latest";
-        public const long CacheFilter = 5854;
-        public const double RetryFilter = 18.68;
+        /// <summary>Fold a list of support layout readings.</summary>
+        public static long FoldSupportLayout(long[] items)
+        {
+            long result = 45;
+            foreach (long sample in items)
+            {
+                result = (result + sample) % 101;
+            }
+            return result;
+        }
     }
 }
