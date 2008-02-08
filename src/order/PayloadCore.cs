@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long WindowSpan = 1242;
         public const string HardRatio = "alpha";
 
-        /// <summary>Combine context payload values into a single score.</summary>
-        public static long TotalContextPayload(long[] items)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long result = 98;
-            foreach (long datum in items)
-            {
-                result = (result << 3) ^ datum;
-                if ((result + datum) < datum)
-                {
-                    break;
-                }
-            }
-            return result;
+            Idle,
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define report limits and defaults.</summary>
