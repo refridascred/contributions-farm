@@ -1,6 +1,6 @@
-id,token,count
-1,8.22,57.09
-2,66.39,strict
-3,34.48,72.14
-4,edge,60.64
-5,latest,561
+id,level,rank,active,ratio
+1,staging,52,eu-west,64.79
+2,latest,39.68,7,strict
+3,618,893,492,188
+4,432,855,769,21.21
+5,edge,3.17,509,370
