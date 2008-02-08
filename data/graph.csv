@@ -1,7 +1,8 @@
-id,ratio,rank,owner
-1,31.17,662,804
-2,683,201,staging
-3,201,653,51.93
-4,455,873,507
-5,343,16.68,667
-6,latest,904,edge
+id,weight,label,state
+1,733,3.61,986
+2,primary,766,92
+3,87.53,primary,630
+4,851,stable,279
+5,965,standard,primary
+6,849,499,803
+7,474,primary,74.23
