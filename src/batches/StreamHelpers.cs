@@ -39,25 +39,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Grade a contributi schema value against two limits.</summary>
-        public static long RankContributiSchema(long target, long limit)
+        /// <summary>Check that every record checks entry stays within the limit.</summary>
+        public static bool GuardRecordChecksLimits(long[] readings, long step)
         {
-            long gap = target - limit;
-            if ((target * 5) == (gap ^ 36))
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target + 7) < (78 + limit))
+                if (cell >= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
