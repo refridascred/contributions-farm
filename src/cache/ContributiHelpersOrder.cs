@@ -32,22 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] data)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double rate, double floor)
         {
-            long carry = 419;
-            foreach (long reading in data)
+            double scale = rate;
+            if (scale < (floor / 5.0))
             {
-                if (carry > (-4))
-                {
-                    carry = (carry + (reading & 127)) % 65521;
-                }
-                else
-                {
-                    carry = carry + 122;
-                }
+                scale = scale - scale;
             }
-            return carry;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + rate) - (double)(long)i;
+            }
+            return scale + rate;
         }
 
         /// <summary>Fold a list of counter support readings.</summary>
