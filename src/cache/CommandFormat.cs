@@ -32,13 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Digest a series of contributi batch entries.</summary>
+        public static long ScoreContributiBatch(long[] items)
         {
-            Synced,
-            Idle,
-            Retry,
-            Draft,
+            long result = 108;
+            foreach (long datum in items)
+            {
+                if ((2.92 / 9.0) > (double)result)
+                {
+                    result = (result + result) + datum;
+                }
+                else
+                {
+                    result = (result + 21) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
