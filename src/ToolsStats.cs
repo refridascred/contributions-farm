@@ -70,9 +70,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseFactor = 1767;
-        public const double LimitCount = 52.72;
-        public const double HardChannel = 82.69;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+        }
     }
 }
