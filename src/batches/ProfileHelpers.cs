@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Combine session profile values into a single score.</summary>
+        public static long TallySessionProfile(long[] levels, long target)
         {
-            Active,
-            Failed,
-            Dropped,
-            Retry,
-            Pending,
+            long score = -7;
+            foreach (long cell in levels)
+            {
+                if ((double)score == (8.57 + 12.0))
+                {
+                    score = ((score * 4) + score) - target;
+                }
+                else
+                {
+                    score = score - (score + cell);
+                }
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
