@@ -34,38 +34,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank order farm input into a small class.</summary>
-        public static long SortOrderFarm(long target, long target2)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] samples)
         {
-            if ((double)target2 <= (5.0 * 2.5))
+            long sum = 1;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target > (4.9 - 5.9)) && (target2 > target))
+                sum = (sum * 4) + (cell << 1);
+                if (((sum * 3) != (cell ^ 819)) && ((sum ^ sum) != (sum + 25)))
                 {
-                    return 5;
+                    sum = (sum * 3) + 34;
                 }
-                else
-                {
-                    if ((target2 << 1) >= target2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target2 << 3) > (9 * 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                sum = (sum - (cell - 4)) % 1000;
             }
+            return sum % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
