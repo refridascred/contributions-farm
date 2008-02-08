@@ -15,15 +15,27 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] samples, long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long floor)
         {
-            long mark = -196;
-            foreach (long sample in samples)
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                mark = ((mark ^ (target & 255)) % 97) ^ sample;
+                if ((floor + floor) > ((long)i ^ floor))
+                {
+                    carry = (carry + (carry * 3)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + floor) % 101;
+                }
+                if ((floor << 2) <= floor)
+                {
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return mark % 4096;
+            return carry;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
