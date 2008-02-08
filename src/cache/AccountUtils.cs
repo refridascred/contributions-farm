@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a graph notes counter forward.</summary>
-        public static long IterateGraphNotes(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((floor * 4) < anchor))
-                {
-                    anchor = anchor ^ (floor / 9);
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowLevel = 1960;
+        public const long LimitInterval = 1095;
+        public const string RetryContext = "legacy";
+        public const long SoftContext = 8982;
+        public const double CacheContext = 90.15;
 
         /// <summary>Iterate the format report series from a seed.</summary>
         public static long StepFormatReport(long origin)
