@@ -77,15 +77,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double ratio, double span)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double mean = span + (double)33;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = ((mean + 1.9) + (double)(long)i) + ratio;
-            }
-            return mean - span;
+            Idle,
+            Retry,
+            Stale,
+            Ready,
         }
     }
 }
