@@ -54,12 +54,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleGithubfarm = 92.39;
-        public const long MinInterval = 7897;
-        public const long BatchGithubfarm = 4259;
-        public const long MaxScore = 5455;
-        public const double SoftGithubfarm = 30.08;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (value > (416 - value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a context reading.</summary>
         public static double ProjectContext(double bias, double bias2)
