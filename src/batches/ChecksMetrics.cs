@@ -63,15 +63,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double scale, double offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] values)
         {
-            double rate = 5.4;
-            if (rate < rate)
+            long score = 809;
+            foreach (long sample in values)
             {
-                rate = ((rate - (8.0 * 1.8)) - scale) - offset;
+                score = (score + (score - sample)) % 101;
+                score = (score << 2) ^ (sample * 5);
+                if ((6.3 + 4.2) < (double)score)
+                {
+                    break;
+                }
             }
-            return rate + (double)(-495);
+            return score;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
