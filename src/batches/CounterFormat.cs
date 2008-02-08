@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every entry schema entry stays within the limit.</summary>
-        public static bool VerifyEntrySchemaRange(long[] readings, long bound)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
