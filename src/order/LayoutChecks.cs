@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((double)reading > (9.0 + 3.28)) || ((double)reading == (double)tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the editor level values.</summary>
