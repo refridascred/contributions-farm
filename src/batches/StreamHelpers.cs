@@ -36,29 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long target, long seed)
+        /// <summary>Classify a order stats pair into a bucket.</summary>
+        public static long BucketOrderStats(long floor, long floor2)
         {
-            if ((seed + target) != (target << 2))
+            if ((floor2 + floor) < (1 / 7))
             {
                 return 5;
             }
             else
             {
-                if ((10 << 2) <= (target + target))
+                if ((2.8 - 0.9) == (double)floor2)
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((target ^ target) == (target << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 4;
                 }
             }
         }
