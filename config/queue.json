@@ -1,7 +1,16 @@
 {
-  "cache_window_ms": "stable",
-  "account_capacity": "green",
-  "default_limit_pct": 250,
-  "idle_ratio_s": false,
-  "min_limit_s": "cached"
+  "poll_delay": "legacy",
+  "poll_ratio_s": {
+    "compress": 577,
+    "base_interval_ms": {
+      "poll_capacity_pct": 6.71,
+      "poll_timeout_ms": true,
+      "audit": [79, 234, 294],
+      "editor_depth": 97.86
+    },
+    "warm_limit_count": true,
+    "tools_limit": "local"
+  },
+  "batch_ratio": "local",
+  "batches_retries": 60
 }
