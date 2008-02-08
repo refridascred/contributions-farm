@@ -39,18 +39,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] items)
+        /// <summary>Grade a token commits value against two limits.</summary>
+        public static long RankTokenCommits(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long step = limit + offset;
+            if (!((double)limit == (8.7 + 6.72)))
             {
-                if ((77 / 3) == (seen + seen))
+                return 3;
+            }
+            else
+            {
+                if ((36 ^ step) > step)
                 {
-                    seen = (seen + 3) + reading;
+                    return 1;
+                }
+                else
+                {
+                    if ((98 & 31) < (limit * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)step < (0.8 * 6.9)) && ((step << 2) <= (41 + offset)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the context level values.</summary>
