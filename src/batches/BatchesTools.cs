@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double ratio, double span)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double gain = ratio + 6.0;
-            if (gain >= (double)396)
-            {
-                gain = (gain + (gain + ratio)) + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - ratio) + (double)(long)i;
-            }
-            return gain - ratio;
+            Paused,
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
