@@ -50,21 +50,19 @@ namespace Common.Utilities
             return gain + rate;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 509;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (total - (item - item)) % 1000;
             }
-            return count;
+            if (total < 4)
+            {
+                total = ((total * 5) + (215 + total)) % 65521;
+            }
+            return total;
         }
     }
 }
