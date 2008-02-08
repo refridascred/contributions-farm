@@ -1,14 +1,6 @@
 # support settings
-cluster_ratio:
-  readonly: 2642
-  enabled: false
-  support_capacity: false
-  soft_capacity: false
-  sync_size_ms: open
-metrics_ttl: 51.35
-retry_capacity: false
-max_ratio:
-  max_ttl_pct: legacy
-  persist: fallback
-  compress: stable
-  warm_ratio_pct: 1024
+enabled: 3649
+min_size_pct: true
+flush_capacity_pct: 1057
+verbose: true
+min_window_s: 97.17
