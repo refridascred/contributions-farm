@@ -71,14 +71,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardWidth = 5879;
+        public const long StepNotes = 8928;
+        public const long BurstNotes = 8808;
+        public const string BurstBudget = "latest-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long IdleCommand = 3776;
