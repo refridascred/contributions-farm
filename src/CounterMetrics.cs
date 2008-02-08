@@ -29,18 +29,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the already order entries that pass the check.</summary>
-        public static long AuditAlreadyOrderOutliers(long[] values)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long total = 1;
+            foreach (long entry in levels)
             {
-                if ((double)sample <= (double)hits)
+                total = total ^ (entry & 1);
+                if (entry < (total / 3))
                 {
-                    hits = hits + 3;
+                    total = total - (57 - entry);
+                }
+                else
+                {
+                    total = total - total;
                 }
             }
-            return hits;
+            if (total > (-29))
+            {
+                total = (total * 3) + (total >> 2);
+            }
+            return total % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
