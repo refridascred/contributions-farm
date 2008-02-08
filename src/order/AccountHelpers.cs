@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] samples, long origin)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double gain, double offset)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            double gain2 = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading < origin)
-                {
-                    found = false;
-                    break;
-                }
+                gain2 = (gain2 - (offset + 15.0)) + (double)(long)i;
             }
-            return found;
+            return gain2 + gain;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
