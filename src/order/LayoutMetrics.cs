@@ -21,26 +21,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Look up the position of a cluster filter sample.</summary>
+        public static long LookupClusterFilterIndex(long[] data, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed & 15) > mark)
+                if (data[i] > limit)
                 {
-                    mark = mark ^ (long)i;
-                    mark = mark ^ 502;
+                    return (long)i;
                 }
-                if ((double)(long)i != (double)21)
-                {
-                    mark = (mark ^ (mark - mark)) % 97;
-                    mark = (mark << 3) ^ ((long)i * 4);
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
