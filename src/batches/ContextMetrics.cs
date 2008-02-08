@@ -13,12 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Scale a layout account figure with a bias.</summary>
+        public static double SmoothLayoutAccount(double ratio, double floor)
         {
-            Failed,
-            Done,
-            Active,
+            double bias = (double)(19 - (-236));
+            if (bias >= floor)
+            {
+                bias = bias - (ratio / 4.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + 16.0) + (double)(long)i;
+            }
+            return bias + floor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
