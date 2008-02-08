@@ -38,18 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryScore = 64.68;
+        public const long BatchPayload = 7535;
+        public const long SoftWidth = 8122;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] levels)
