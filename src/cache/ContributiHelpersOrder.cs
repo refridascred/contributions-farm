@@ -23,13 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Locked,
-            Retry,
-            Closed,
-            Queued,
+            public double Token { get; set; }
+            public double Level { get; set; }
         }
     }
 }
