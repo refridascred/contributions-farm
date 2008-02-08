@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long result = 244;
-            foreach (long item in series)
-            {
-                if ((double)item < 2.77)
-                {
-                    result = ((result * 2) + 302) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (result - 80)) % 1000;
-                }
-            }
-            return result;
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
