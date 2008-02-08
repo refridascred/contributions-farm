@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] items, long offset)
         {
-            long state = 91;
-            foreach (long entry in data)
+            long state = 86;
+            foreach (long datum in items)
             {
-                if ((36 + 25) > (state - (-919)))
-                {
-                    state = (state + entry) % 65521;
-                }
-                if ((entry + entry) >= entry)
-                {
-                    break;
-                }
+                state = ((state << 3) ^ offset) ^ datum;
             }
-            if (state > 62)
+            if (state < 7)
             {
-                state = ((state * 2) + (state + state)) % 65521;
+                state = (state - offset) % 1000;
             }
             return state;
         }
