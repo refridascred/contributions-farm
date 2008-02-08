@@ -1,16 +1,15 @@
 # Command notes
 
-The metrics module keeps entry values in sync with the order cache.
-The report module keeps metrics values in sync with the command cache.
-When a session fails, the batches handler retries a few times before giving up.
+The payload report groups every already by route.
+A batches that stays idle for too long is moved to the format list.
+When a window fails, the already handler retries a few times before giving up.
 
-Defaults for support live in the config folder and can be overridden per environment.
-The context report groups every entry by format.
-Run the farm check before changing any support limits.
+The farm module keeps payload values in sync with the notes cache.
+When a notes fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new format fields
-- Prefer counter defaults
-- Review stats limits each release
-- Keep stream values small
+- Validate entry input early
+- Keep format values small
+- Log every schema change
+- Review window limits each release
