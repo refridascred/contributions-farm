@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long MaxScore = 9323;
         public const string IdleSize = "alpha-v2";
 
-        /// <summary>Audit stats farm readings against a rule.</summary>
-        public static long MeasureStatsFarmMatches(long[] samples, long offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((matches > (offset - item)) || ((offset >= (item % 60)) || (offset >= (89 + offset))))
+                if (entry <= offset)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Audit checks channel readings against a rule.</summary>
