@@ -1,5 +1,6 @@
 {
-  "batch_ttl_count": ["strict", "stable", "cached", "green"],
-  "compress": "latest",
-  "sync_size_pct": "fallback"
+  "stats_capacity": "latest",
+  "already_delay": "latest",
+  "burst_size_pct": "staging",
+  "default_size": 500
 }
