@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
