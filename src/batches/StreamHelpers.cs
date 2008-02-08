@@ -23,17 +23,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long offset, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((6.1 + 9.9) < (double)offset)
             {
-                if (values[i] <= offset)
+                return 0;
+            }
+            else
+            {
+                if ((7.24 / 2.0) >= (double)bound)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset > (14.0 + 9.3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a order stats pair into a bucket.</summary>
