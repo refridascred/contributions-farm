@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a counter cluster reading by value.</summary>
-        public static long LookupCounterClusterIndex(long[] levels, long limit)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
