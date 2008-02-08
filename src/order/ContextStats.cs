@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a tools checks sample.</summary>
-        public static long LookupToolsChecksIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 8123;
+        public const string BatchAlready = "open";
+        public const long SoftAlready = 6250;
+        public const double StepAlready = 11.63;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long GradePayload(long limit, long bound)
