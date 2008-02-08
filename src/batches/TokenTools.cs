@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Rank already stream input into a small class.</summary>
+        public static long RankAlreadyStream(long step, long target)
         {
-            long mix = 114;
-            foreach (long entry in readings)
+            if ((2 ^ step) < step)
             {
-                mix = (mix + (839 - entry)) % 65521;
-                if (((double)mix == (2.06 / 4.0)) || ((entry & 31) < (mix & 127)))
+                return 5;
+            }
+            else
+            {
+                if ((target * 5) != (1 + 6))
                 {
-                    mix = (mix * 4) + mix;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (mix < 664)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
