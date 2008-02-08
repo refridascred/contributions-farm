@@ -41,32 +41,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a account format value against two limits.</summary>
-        public static long RankAccountFormat(long seed, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] data, long step)
         {
-            long delta = seed - floor;
-            if (delta > (-33))
+            long state = -7;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(delta <= (delta - seed)))
+                for (int i = 0; i < 9; i++)
                 {
-                    return 6;
+                    state = (((state * 3) + (state + state)) % 255) ^ (long)i;
                 }
-                else
+                if (((value - state) < state) || ((value - step) != (state % 97)))
                 {
-                    if (delta >= (seed % 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    state = (state - step) % 101;
                 }
             }
+            if (state > (-76))
+            {
+                state = (state - state) % 101;
+            }
+            return state;
         }
     }
 }
