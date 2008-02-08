@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double rate, double offset)
         {
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            double mean = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - rate) - (double)(long)i;
+            }
+            return mean - (mean + rate);
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
