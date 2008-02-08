@@ -27,12 +27,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long offset)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
