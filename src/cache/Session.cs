@@ -23,26 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes contributi readings.</summary>
-        public static long WeighNotesContributi(long[] readings)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] readings, long limit)
         {
-            long anchor = 3;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((datum - anchor) == (2 & 127)))
+                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
                 {
-                    anchor = (anchor + (41 << 1)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor - datum) % 255;
+                    return (long)i;
                 }
             }
-            if (anchor > 54)
-            {
-                anchor = ((anchor * 5) + (anchor << 1)) % 65521;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up stream samples.</summary>
