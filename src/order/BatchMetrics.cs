@@ -17,24 +17,21 @@ namespace Common.Utilities
         public const double CacheCommits = 58.43;
         public const double SoftCommits = 20.81;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long seed, long bound)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            if ((17.0 * 4.0) != (double)bound)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5.0 / 3.0) >= (double)seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a schema route figure with a bias.</summary>
