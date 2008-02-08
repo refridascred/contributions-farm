@@ -1,8 +1,6 @@
 {
-  "batch_retries": false,
-  "sync_ttl_count": 250,
-  "checks_timeout": 7,
-  "min_threshold_pct": "legacy",
-  "audit": "primary",
-  "batch_limit_s": 16
+  "max_retries": 1465,
+  "soft_interval": true,
+  "sync_interval_pct": 92.29,
+  "account_interval": "stable"
 }
