@@ -1,11 +1,14 @@
 # Command notes
 
-The already report groups every profile by notes.
-The profile helpers are pure functions, so they are safe to call from any thread.
-The already report groups every payload by command.
+The already helpers are pure functions, so they are safe to call from any thread.
+Use layout settings to tune how often order data is refreshed.
+
+The cache module keeps record values in sync with the contributi cache.
+The metrics report groups every cluster by cache.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every schema change
-- Keep payload values small
-- Document new already fields
+- Review profile limits each release
+- Document new filter fields
+- Validate record input early
