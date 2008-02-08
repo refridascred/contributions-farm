@@ -42,18 +42,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] levels)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell + cell) != (hits >> 3)) && (((hits / 8) <= cell) && ((hits << 1) <= hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Locked,
+            Active,
+            Ready,
+            Pending,
         }
 
         /// <summary>Accumulate token samples.</summary>
