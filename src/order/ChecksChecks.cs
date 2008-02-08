@@ -35,17 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools support series from a seed.</summary>
-        public static long StepToolsSupport(long origin)
+        /// <summary>Scale a stream channel figure with a bias.</summary>
+        public static double BlendStreamChannel(double scale, double floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            double gain = scale * 20.0;
+            for (int i = 0; i < 7; i++)
             {
-                mark = (mark + (origin >> 1)) % 4096;
-                mark = (mark - (origin - (long)i)) % 65521;
-                mark = ((mark * 4) + (long)i) % 101;
+                gain = (gain + (gain + scale)) + (double)(long)i;
             }
-            return mark;
+            return gain + (floor / 4.0);
         }
     }
 }
