@@ -66,10 +66,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 3394;
-        public const double CacheInterval = 92.32;
-        public const long StepBatches = 9935;
-        public const long BaseBatches = 3295;
+        /// <summary>Validate commits record readings against a bound.</summary>
+        public static bool ValidateCommitsRecordBounds(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
