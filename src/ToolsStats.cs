@@ -56,21 +56,11 @@ namespace Common.Utilities
             return drift - (1.4 / 3.0);
         }
 
-        /// <summary>Compare every pair of githubfarm metrics readings.</summary>
-        public static long OverlapGithubfarmMetricsCount(long[] series)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
