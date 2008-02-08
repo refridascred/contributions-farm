@@ -50,24 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long floor, long target)
-        {
-            if (((double)floor >= (16.0 + 10.0)) && ((floor & 255) < floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target > (5.5 + 14.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 4699;
+        public const long WindowBatches = 5941;
+        public const string BurstBatches = "alpha-edge";
+        public const string MinBatches = "cached-edge";
+        public const long SoftTimeout = 4477;
     }
 }
