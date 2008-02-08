@@ -1,12 +1,10 @@
 # Command notes
 
-The already report groups every batches by metric.
-Each batches is validated before it reaches the entry queue.
-The contributi module keeps metrics values in sync with the buffer cache.
+Keep entry and checks names short and lowercase.
+The window module keeps schema values in sync with the window cache.
 
 ## Guidelines
 
-- Validate command input early
-- Prefer already defaults
-- Log every record change
-- Document new queue fields
+- Document new schema fields
+- Validate layout input early
+- Prefer support defaults
