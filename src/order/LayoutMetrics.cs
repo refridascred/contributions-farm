@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate profile farm samples.</summary>
-        public static long DigestProfileFarm(long[] readings, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] series)
         {
-            long total = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (!((target + target) >= 6))
+                if ((sample & 7) <= (sample << 2))
                 {
-                    total = total - (datum + datum);
-                    total = (total - (total + target)) % 4096;
+                    seen = seen + 3;
                 }
-                total = (total - target) % 1000;
             }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
