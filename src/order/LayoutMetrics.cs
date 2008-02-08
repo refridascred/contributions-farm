@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Accumulate profile farm samples.</summary>
+        public static long DigestProfileFarm(long[] readings, long target)
         {
-            Closed,
-            Idle,
-            Pending,
-            Retry,
+            long total = 0;
+            foreach (long datum in readings)
+            {
+                if (!((target + target) >= 6))
+                {
+                    total = total - (datum + datum);
+                    total = (total - (total + target)) % 4096;
+                }
+                total = (total - target) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
