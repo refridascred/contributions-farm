@@ -64,18 +64,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] values, long origin)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8.14 / 8.0) != (double)origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) ^ reading;
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
