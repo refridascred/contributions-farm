@@ -63,18 +63,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] values, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] readings)
         {
-            long carry = -6;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((double)carry <= (3.2 * 15.0))
+                if (!((double)count != (14.0 - 7.12)))
                 {
-                    carry = (carry ^ (cell & 1)) - target;
+                    count = (count + 1) + value;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
