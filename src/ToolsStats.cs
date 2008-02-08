@@ -56,11 +56,14 @@ namespace Common.Utilities
             return drift - (1.4 / 3.0);
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            Ready,
+            Paused,
+            Closed,
+            Stale,
+            Done,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
