@@ -26,18 +26,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit checks channel readings against a rule.</summary>
-        public static long CountChecksChannelOutliers(long[] items)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long acc = 24;
+            foreach (long cell in readings)
             {
-                if ((item >= tally) || (716 > tally))
-                {
-                    tally = tally + 1;
-                }
+                acc = (acc ^ cell) % 101;
+                acc = ((acc * 5) + (origin / 7)) % 65521;
             }
-            return tally;
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of session readings.</summary>
