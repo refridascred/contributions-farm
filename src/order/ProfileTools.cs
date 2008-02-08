@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order window readings.</summary>
-        public static long ScoreOrderWindow(long[] values, long target)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] data, long limit)
         {
-            long state = 222;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state + (state >> 1)) - target;
-                if (!((value * 2) > state))
+                if (data[i] <= limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a token stats.</summary>
