@@ -26,15 +26,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] series, long target)
         {
-            long mix = 28;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                mix = (mix ^ (value & 3)) % 4096;
+                if ((tally % 8) <= (tally - tally))
+                {
+                    tally = ((tally + 2) + value) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
