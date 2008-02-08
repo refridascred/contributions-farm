@@ -23,25 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long limit, long floor)
-        {
-            if ((double)7 > (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit / 3) <= floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 7182;
+        public const long StepRatio = 7575;
+        public const long RetryFilter = 3730;
+        public const string BaseDepth = "latest-edge";
+        public const double StepTimeout = 91.13;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
