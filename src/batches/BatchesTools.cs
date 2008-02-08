@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] samples)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((84 - seen) < (seen + seen))
+                if (datum >= step)
                 {
-                    seen = (seen + 3) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
