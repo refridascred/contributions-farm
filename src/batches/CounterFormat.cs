@@ -25,19 +25,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            double drift = floor;
-            if (drift >= (floor / 4.0))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift - 5.15) + ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - 12.0) + (double)(long)i;
-            }
-            return drift + (double)811;
+            return tally;
         }
     }
 }
