@@ -36,20 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] levels)
-        {
-            long carry = 9;
-            foreach (long entry in levels)
-            {
-                carry = ((carry * 3) + ((long)levels.Length + entry)) % 1000;
-                if ((entry / 8) == (carry + carry))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 1210;
+        public const long BaseBudget = 6699;
+        public const long BatchToken = 975;
+        public const string IdleToken = "standard";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchFarm = 675;
