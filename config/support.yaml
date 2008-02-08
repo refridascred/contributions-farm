@@ -1,5 +1,13 @@
 # support settings
-soft_interval_count: fallback
-batches_interval: 79.61
-default_limit: 250
-persist: eu-west
+retry_capacity_s: true
+route_timeout:
+  flush_limit: 9881
+  idle_interval: 522
+  retry_timeout_s: 55.21
+  flush_capacity_s:
+    - 179
+    - 340
+    - 76
+sync_retries: primary
+warm_limit_ms: 19
+batch_window_ms: false
