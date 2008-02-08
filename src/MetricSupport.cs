@@ -44,11 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepFactor = 5339;
-        public const long BaseCommits = 6229;
-        public const long SoftCommits = 1458;
-        public const string StepCommits = "local-edge";
-        public const long MaxCommits = 7597;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] series, long offset)
+        {
+            long acc = 5;
+            foreach (long reading in series)
+            {
+                if ((9.09 / 2.0) > (double)offset)
+                {
+                    acc = ((acc ^ offset) % 255) - reading;
+                }
+            }
+            return acc;
+        }
     }
 }
