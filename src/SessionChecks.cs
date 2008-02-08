@@ -43,15 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double rate, double offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double scale = offset - (double)24;
-            if (scale > (scale - rate))
-            {
-                scale = scale - scale;
-            }
-            return scale - (double)55;
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
