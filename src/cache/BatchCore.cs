@@ -19,11 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] series)
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two counter layout measurements.</summary>
