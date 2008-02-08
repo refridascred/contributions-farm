@@ -28,19 +28,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits >> 2) <= (entry * 2))
-                {
-                    hits = (hits + 2) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultStats = "primary-edge";
+        public const double IdleFactor = 98.36;
+        public const long CacheSize = 6837;
+        public const double BaseSpan = 18.55;
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] levels)
