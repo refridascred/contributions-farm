@@ -14,11 +14,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleSpan = "open-edge";
-        public const long SoftCommand = 6711;
-        public const long LimitCommand = 8290;
-        public const double HardCount = 42.54;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] samples, long offset)
+        {
+            long anchor = 7;
+            foreach (long sample in samples)
+            {
+                anchor = (((anchor + (37 & 63)) % 255) + sample) + offset;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
