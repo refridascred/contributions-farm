@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] data)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (seen < (seen * 4))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
