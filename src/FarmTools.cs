@@ -10,24 +10,14 @@ namespace Common.Utilities
         public const long IdleLevel = 5673;
         public const long MinFilter = 3329;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long step, long bound)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            if (((2 ^ 1) == (step - step)) || ((0 + step) < (bound + step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step - bound) != (step / 9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Retry,
+            Pending,
+            Done,
+            New,
+            Closed,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
