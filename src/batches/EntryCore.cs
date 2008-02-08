@@ -33,24 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already window pair into a bucket.</summary>
-        public static long SortAlreadyWindow(long seed, long origin)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            if (((origin >> 4) > (origin << 1)) && ((double)seed <= 1.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin > 4)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
