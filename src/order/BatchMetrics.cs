@@ -57,17 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a schema stream reading by value.</summary>
-        public static long SeekSchemaStreamIndex(long[] levels, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] <= floor)
+                if ((reading + floor) <= (620 + floor))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
