@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long RetryNotes = 7499;
         public const string CacheInterval = "latest";
 
-        /// <summary>Audit tools contributi readings against a rule.</summary>
-        public static long AuditToolsContributiGaps(long[] levels)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell < (3.9 - 1.4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Iterate the metric graph series from a seed.</summary>
