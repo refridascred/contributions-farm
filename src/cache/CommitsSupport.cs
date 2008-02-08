@@ -42,19 +42,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] values, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] items)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (reading >= step)
+                if ((77 / 3) == (seen + seen))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the context level values.</summary>
