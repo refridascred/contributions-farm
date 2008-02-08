@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Accumulate tools checks samples.</summary>
+        public static long DigestToolsChecks(long[] levels, long bound)
         {
-            Pending,
-            Locked,
-            Active,
+            long sum = -99;
+            foreach (long cell in levels)
+            {
+                if ((sum <= (67 & 127)) && ((3.7 * 6.2) > (double)sum))
+                {
+                    sum = ((sum - sum) ^ cell) + bound;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Grade a route channel value against two limits.</summary>
