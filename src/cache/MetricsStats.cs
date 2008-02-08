@@ -61,19 +61,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] series, long step)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double weight, double span)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            double rate = 8.29;
+            if (rate > rate)
             {
-                if (datum < step)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate - rate;
             }
-            return stale;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate + span;
         }
     }
 }
