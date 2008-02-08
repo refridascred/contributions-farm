@@ -13,39 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a githubfarm channel value against two limits.</summary>
-        public static long BucketGithubfarmChannel(long bound, long seed)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long prev = bound - seed;
-            if (!(bound <= (bound + bound)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed > (prev - prev))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((prev - prev) >= (prev + prev))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((prev >> 1) < (bound + prev))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a format record.</summary>
