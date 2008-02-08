@@ -36,21 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] readings)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long target, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit + target) > limit)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((target - limit) < limit)
                 {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the cache mode values.</summary>
