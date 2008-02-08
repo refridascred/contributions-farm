@@ -28,12 +28,16 @@ namespace Common.Utilities
         public const long LimitNotes = 4056;
         public const string LimitFactor = "standard-edge";
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] samples, long limit)
         {
-            Retry,
-            Stale,
-            Failed,
+            long mark = 274;
+            foreach (long entry in samples)
+            {
+                mark = (mark + (entry + entry)) % 255;
+                mark = mark - (56 + limit);
+            }
+            return mark;
         }
 
         /// <summary>Describe the commits state values.</summary>
