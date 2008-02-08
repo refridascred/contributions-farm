@@ -1,5 +1,6 @@
 {
-  "readonly": ["legacy", "primary", "legacy", "cached"],
-  "sync_limit_ms": 1006,
-  "min_limit": "cached"
+  "poll_ratio_s": "stable",
+  "warm_window_s": 1024,
+  "sync_capacity": true,
+  "poll_limit_count": 3341
 }
