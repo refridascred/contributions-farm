@@ -27,15 +27,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double scale, double span)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] readings, long floor)
         {
-            double weight = (double)((-67) + 950);
-            if (weight < span)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                weight = (weight + (double)2) - scale;
+                if (item != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight - (span / 8.0);
+            return ready;
         }
     }
 }
