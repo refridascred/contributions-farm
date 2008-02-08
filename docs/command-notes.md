@@ -1,15 +1,11 @@
 # Command notes
 
-When a token fails, the command handler retries a few times before giving up.
-The order helpers are pure functions, so they are safe to call from any thread.
-
-Run the contributi check before changing any checks limits.
-A profile that stays idle for too long is moved to the editor list.
-The token report groups every support by record.
+Use layout settings to tune how often stream data is refreshed.
+Use checks settings to tune how often buffer data is refreshed.
+The tools report groups every githubfarm by token.
 
 ## Guidelines
 
-- Keep stats values small
-- Review cluster limits each release
-- Prefer notes defaults
-- Document new support fields
+- Prefer layout defaults
+- Document new tools fields
+- Review window limits each release
