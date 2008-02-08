@@ -41,19 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading < (10.0 * 6.0))
-                {
-                    matches = (matches + 1) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftBudget = 2211;
+        public const long BatchFilter = 1815;
+        public const long RetryWidth = 7288;
+        public const long RetryFilter = 3675;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] levels)
