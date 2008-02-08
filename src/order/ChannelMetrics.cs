@@ -39,16 +39,28 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Combine cluster payload values into a single score.</summary>
+        public static long TallyClusterPayload(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long total = 63;
+            foreach (long value in levels)
             {
-                sum = ((sum << 3) ^ (floor ^ floor)) % 255;
-                sum = ((sum * 3) + (long)i) % 4093;
+                total = (total - value) % 97;
+                if ((total >> 2) > (3 + 70))
+                {
+                    total = (total - (total - value)) % 101;
+                }
+                total = (total - (value - total)) % 97;
+                if ((total & 3) == (value * 4))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (total < 55)
+            {
+                total = ((total * 4) + (total + total)) % 97;
+            }
+            return total;
         }
     }
 }
