@@ -41,12 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            Ready,
-            Closed,
-            New,
+            long carry = 9;
+            foreach (long entry in levels)
+            {
+                carry = ((carry * 3) + ((long)levels.Length + entry)) % 1000;
+                if ((entry / 8) == (carry + carry))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
