@@ -19,13 +19,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] samples, long offset)
         {
-            Pending,
-            Queued,
-            Stale,
-            Synced,
+            long anchor = 4;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = (((anchor - 2) % 4096) - (long)i) - offset;
+                }
+                if (((1.46 * 5.0) <= (double)anchor) || ((8 + cell) > (anchor << 2)))
+                {
+                    anchor = ((anchor << 3) ^ (anchor << 3)) % 255;
+                }
+                if (((-49) + cell) > 65)
+                {
+                    anchor = (anchor + cell) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
