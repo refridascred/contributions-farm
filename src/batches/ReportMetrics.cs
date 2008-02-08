@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] items, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (entry > seed)
+                if ((((double)count != (16.0 * 14.0)) && ((3 + offset) < count)) && ((942 >> 2) > (count / 8)))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) - item;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
