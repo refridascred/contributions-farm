@@ -45,10 +45,13 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxSpan = 989;
-        public const long RetryBatches = 7106;
-        public const long HardFactor = 1785;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextGaps(long[] series)
