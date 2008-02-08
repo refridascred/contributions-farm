@@ -54,16 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double weight, double span)
         {
-            long total = 987;
-            foreach (long cell in series)
+            double mean = span;
+            if (mean < span)
             {
-                total = total ^ (total << 3);
-                total = (total * 5) + (cell - cell);
+                mean = mean - weight;
             }
-            return total;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + weight) + (double)(long)i;
+            }
+            return mean + 17.0;
         }
     }
 }
