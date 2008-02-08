@@ -29,19 +29,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] items, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (datum < step)
+                if ((cell - hits) >= (step >> 4))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Count window schema pairs that satisfy a relation.</summary>
