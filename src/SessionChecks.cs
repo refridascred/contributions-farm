@@ -20,38 +20,15 @@ namespace Common.Utilities
             return gain + 12.0;
         }
 
-        /// <summary>Grade a order batches value against two limits.</summary>
-        public static long SortOrderBatches(long step, long offset)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double ratio, double floor)
         {
-            if ((offset ^ offset) >= offset)
+            double scale = (9.0 + floor) * 3.2;
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
+                scale = ((scale + 1.84) + (double)(long)i) + ratio;
             }
-            else
-            {
-                if ((offset + 447) > (step - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset < 3.5)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset >> 1) < offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return scale + (floor - scale);
         }
 
         /// <summary>Look up the position of a route sample.</summary>
