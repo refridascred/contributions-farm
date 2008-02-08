@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const double MaxCounter = 29.22;
         public const long IdleCounter = 6940;
 
-        /// <summary>Audit notes token readings against a rule.</summary>
-        public static long AuditNotesTokenMatches(long[] data, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((double)datum > 11.0)
+                if ((double)datum < 1.0)
                 {
-                    seen = (seen + 1) - offset;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
