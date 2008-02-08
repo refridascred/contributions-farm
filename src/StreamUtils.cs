@@ -54,11 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double scale, double offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] data, long offset)
         {
-            double bias = scale;
-            return (bias + (9.06 * 11.0)) + offset;
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next graph command value from a seed.</summary>
