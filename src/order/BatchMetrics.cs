@@ -19,10 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardWidth = 6020;
-        public const double CacheCommits = 58.43;
-        public const double SoftCommits = 20.81;
+        /// <summary>Adjust a payload already reading.</summary>
+        public static double BlendPayloadAlready(double rate, double span)
+        {
+            double weight = rate;
+            if (weight > 0.81)
+            {
+                weight = (weight + (2.3 + weight)) + span;
+            }
+            return weight + (double)1;
+        }
 
         /// <summary>Combine githubfarm command values into a single score.</summary>
         public static long ScoreGithubfarmCommand(long[] data)
