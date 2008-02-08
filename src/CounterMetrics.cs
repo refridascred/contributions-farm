@@ -18,25 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long seed, long seed2)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long edge = seed ^ seed2;
-            if (((seed - seed) < edge) || (edge < (seed2 - edge)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8.46 * 6.3) == (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Dropped,
+            Done,
+            Paused,
+            Failed,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
