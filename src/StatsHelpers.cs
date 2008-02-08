@@ -57,19 +57,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] samples, long bound)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= bound)
+                if (values[i] > offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
