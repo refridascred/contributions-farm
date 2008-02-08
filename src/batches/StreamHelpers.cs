@@ -68,23 +68,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double bias, double bias2)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double scale = bias2;
-            if (scale > bias2)
-            {
-                scale = scale + 0.52;
-            }
-            else
-            {
-                scale = scale + (double)27;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (bias * 14.0)) - (double)(long)i;
-            }
-            return scale + (bias / 2.0);
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of graph payload readings.</summary>
