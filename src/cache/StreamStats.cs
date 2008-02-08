@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] readings)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)(long)readings.Length == (2.9 / 2.0))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a window snapshot.</summary>
