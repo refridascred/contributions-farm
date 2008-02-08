@@ -31,16 +31,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                total = (total - (long)i) % 101;
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Synced,
+            Idle,
+            Dropped,
+            Pending,
+            Locked,
         }
     }
 }
