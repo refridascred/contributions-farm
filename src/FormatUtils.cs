@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] data, long floor)
+        /// <summary>Digest a series of stream stats entries.</summary>
+        public static long TotalStreamStats(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long carry = 555;
+            foreach (long entry in series)
             {
-                if ((1.1 * 15.0) >= (double)floor)
-                {
-                    seen = (seen + 3) - entry;
-                }
+                carry = ((carry * 3) + (carry + entry)) % 255;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Rank token input into a small class.</summary>
