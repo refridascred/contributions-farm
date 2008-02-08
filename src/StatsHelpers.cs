@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "primary-edge";
-        public const long BaseInterval = 7099;
-        public const string HardFactor = "staging-1";
-        public const double SoftFactor = 37.33;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
