@@ -20,17 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] data, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 31;
+            foreach (long value in data)
             {
-                if (data[i] <= offset)
+                if (target < (target * 3))
                 {
-                    return (long)i;
+                    result = result - (result / 5);
+                    break;
+                }
+                if ((6.3 - 3.8) != (double)result)
+                {
+                    result = result - (93 ^ value);
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Derive the next record session value from a seed.</summary>
