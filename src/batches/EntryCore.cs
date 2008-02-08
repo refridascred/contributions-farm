@@ -41,16 +41,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next record session value from a seed.</summary>
-        public static long RollRecordSession(long bound)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 3) + 593) % 4096;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Check that every cache account entry stays within the limit.</summary>
