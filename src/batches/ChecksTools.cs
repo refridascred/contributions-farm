@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long BatchWidth = 1198;
         public const long SoftMetrics = 5995;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] data, long floor)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Pending,
+            Synced,
         }
 
         /// <summary>Combine schema record values into a single score.</summary>
