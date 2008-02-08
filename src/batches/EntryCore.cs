@@ -41,13 +41,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            New,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowSpan = 1578;
+        public const long WindowInterval = 477;
+        public const double MaxInterval = 59.11;
 
         /// <summary>Check that every cache account entry stays within the limit.</summary>
         public static bool GuardCacheAccountRange(long[] levels, long step)
