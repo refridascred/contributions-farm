@@ -50,27 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long carry = 5;
-            foreach (long item in samples)
-            {
-                carry = carry + (carry << 2);
-                if ((carry * 5) < item)
-                {
-                    carry = (carry + (carry % 5)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 3) + item) % 255;
-                }
-            }
-            if (carry < 6)
-            {
-                carry = carry ^ (carry % 3);
-            }
-            return carry;
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
