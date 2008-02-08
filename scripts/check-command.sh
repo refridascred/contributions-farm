@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=86
+for item in standard primary; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=199
 log "limit is ${COMMAND_LIMIT}"
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
-
-mode="${1:-strict}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "total ${total}"
