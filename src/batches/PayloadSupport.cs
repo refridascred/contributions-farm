@@ -31,14 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] levels)
         {
-            Queued,
-            Stale,
-            Active,
-            Pending,
-            Dropped,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (reading < (reading ^ reading))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stats header.</summary>
