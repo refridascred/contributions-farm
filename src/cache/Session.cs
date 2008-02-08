@@ -19,19 +19,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long bound)
+        /// <summary>Derive the next metrics support value from a seed.</summary>
+        public static long RollMetricsSupport(long origin)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long total = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry < bound)
+                if (!((total & 255) < ((long)i + origin)))
                 {
-                    valid = false;
-                    break;
+                    total = ((total << 2) ^ (total + origin)) % 97;
                 }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = ((total * 2) + (long)i2) % 255;
+                }
+                if ((3.9 * 4.0) > (double)total)
+                {
+                    total = ((total * 4) + origin) % 97;
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
