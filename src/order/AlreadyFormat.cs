@@ -70,24 +70,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long target, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double span)
         {
-            if ((394 & 31) != (target - 23))
+            double bias = weight;
+            if (bias < (span * 6.4))
             {
-                return 6;
+                bias = bias - weight;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((target >= (bound >> 3)) && (bound < target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
+                bias = (bias + weight) + (double)(long)i;
             }
+            return bias - (weight - weight);
         }
     }
 }
