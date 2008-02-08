@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double weight, double span)
         {
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
+            double scale = span;
+            if (scale >= scale)
+            {
+                scale = scale + (scale - scale);
+            }
+            else
+            {
+                scale = scale + weight;
+            }
+            return scale - (scale + span);
         }
 
         /// <summary>Audit cluster schema readings against a rule.</summary>
