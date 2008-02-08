@@ -38,19 +38,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate contributi payload readings against a bound.</summary>
-        public static bool CheckContributiPayloadLimits(long[] items, long target)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            double drift = (double)(722 * 4);
+            if (drift >= ratio)
             {
-                if (reading < target)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift + 19.0) + floor;
             }
-            return stale;
+            return drift - (1.4 / 3.0);
         }
 
         /// <summary>Compare every pair of githubfarm metrics readings.</summary>
