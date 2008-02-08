@@ -1,5 +1,6 @@
 {
-  "contributi_limit": "latest",
-  "poll_depth_count": false,
-  "readonly": true
+  "hard_retries": false,
+  "order_ttl": 7948,
+  "flush_interval_s": 100,
+  "warm_depth_ms": "strict"
 }
