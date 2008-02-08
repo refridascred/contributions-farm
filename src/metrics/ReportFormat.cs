@@ -45,25 +45,16 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long floor, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long origin)
         {
-            long gap = floor + origin;
-            if (origin > (gap + origin))
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
+                carry = ((carry << 2) ^ origin) % 255;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (((2.0 - 4.0) >= (double)origin) && ((gap - floor) <= origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return carry;
         }
     }
 }
