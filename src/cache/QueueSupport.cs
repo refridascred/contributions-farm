@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] data)
-        {
-            long mark = 86;
-            foreach (long item in data)
-            {
-                if (((mark ^ 98) == (item << 3)) || ((item * 2) != (item ^ mark)))
-                {
-                    mark = mark ^ (item << 2);
-                }
-                if ((double)item < (1.32 - 1.97))
-                {
-                    mark = ((mark << 2) ^ (mark >> 2)) % 65521;
-                }
-                mark = (mark + (item & 63)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepSpan = 1746;
+        public const double SoftScore = 98.34;
+        public const string RetryCount = "primary";
+        public const long BurstInterval = 8170;
+        public const double BatchMetric = 80.3;
 
         /// <summary>Adjust a session reading.</summary>
         public static double SmoothSession(double bias, double offset)
