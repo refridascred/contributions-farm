@@ -72,22 +72,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] items, long seed)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long mark = 909;
-            foreach (long value in items)
-            {
-                if (15 >= (mark & 31))
-                {
-                    mark = ((mark + (value / 2)) % 65521) - seed;
-                }
-                if (!((mark / 6) <= ((long)items.Length + mark)))
-                {
-                    mark = ((mark << 2) ^ (mark + mark)) % 97;
-                }
-            }
-            return mark % 1000;
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of filter report readings.</summary>
