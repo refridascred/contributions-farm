@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] data)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] items, long target)
         {
-            long sum = 5;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (!((5.56 / 8.0) > (double)reading))
+                if (cell < target)
                 {
-                    sum = ((sum << 3) ^ reading) % 97;
-                }
-                else
-                {
-                    sum = (sum + (sum + sum)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return stale;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
