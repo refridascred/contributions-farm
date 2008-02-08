@@ -27,19 +27,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] readings, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (item != floor)
+                if ((((double)seen != (5.01 / 4.0)) || ((seed + reading) >= (seen & 1))) && (((reading / 8) >= (reading & 3)) || ((seed ^ seen) <= (seen + seen))))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
