@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Count the report queue entries that pass the check.</summary>
+        public static long AuditReportQueueGaps(long[] items, long bound)
         {
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches % 8) > bound)
+                {
+                    matches = (matches + 2) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
