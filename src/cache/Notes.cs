@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 5518;
+        public const long IdleContext = 7631;
+        public const string BatchSpan = "staging-v2";
 
         /// <summary>Accumulate editor support samples.</summary>
         public static long DigestEditorSupport(long[] readings)
