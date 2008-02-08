@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] samples, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((hits > (hits % 10)) || !((39 ^ item) >= 783))
-                {
-                    hits = (hits + 2) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (state + (origin * 3)) % 255;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
