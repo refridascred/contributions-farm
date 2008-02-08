@@ -1,6 +1,8 @@
 {
-  "stats_capacity": "latest",
-  "already_delay": "latest",
-  "burst_size_pct": "staging",
-  "default_size": 500
+  "persist": 1810,
+  "default_ttl_pct": 1861,
+  "retry_ttl": true,
+  "sync_retries": ["green", "open", "primary"],
+  "profile_retries": "blue",
+  "batch_retries": 1591
 }
