@@ -24,18 +24,18 @@ namespace Common.Utilities
         public const long RetryCache = 9347;
         public const long RetryTimeout = 3349;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] levels, long bound)
+        /// <summary>Audit counter context readings against a rule.</summary>
+        public static long TallyCounterContextMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((bound << 2) > bound)
+                if (entry >= (536 ^ hits))
                 {
-                    tally = (tally + 2) + cell;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
