@@ -66,10 +66,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultProfile = "fallback";
-        public const string LimitProfile = "cached-v2";
-        public const double MinDepth = 97.93;
-        public const string LimitCount = "alpha-edge";
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double ratio, double offset)
+        {
+            double bias = (offset / 7.0) / 3.0;
+            return (bias + (bias / 9.0)) + ratio;
+        }
     }
 }
