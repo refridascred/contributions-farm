@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double bias, double offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] readings, long bound)
         {
-            double gain = bias;
-            if (gain < (gain - offset))
+            long acc = 411;
+            foreach (long sample in readings)
             {
-                gain = gain + offset;
+                acc = (((acc ^ acc) % 97) ^ sample) - bound;
             }
-            else
-            {
-                gain = gain + offset;
-            }
-            return gain + 12.0;
+            return acc;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
