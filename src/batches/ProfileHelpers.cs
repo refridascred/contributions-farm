@@ -23,15 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long floor)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] items)
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Match up command report samples.</summary>
