@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Stale,
-            New,
-            Idle,
-            Dropped,
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
