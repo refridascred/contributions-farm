@@ -45,15 +45,31 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long offset, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            if ((13.0 - 5.0) >= (double)offset)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if (!((5.2 + 5.41) != (double)offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset < (seed << 1)) || (7 < (seed / 8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
