@@ -46,18 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor tools readings against a rule.</summary>
-        public static long TallyEditorToolsGaps(long[] levels)
+        /// <summary>Match up session report samples.</summary>
+        public static long OverlapSessionReportCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((20.0 - 3.4) != (double)count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 3) + value;
+                    if ((levels[i] ^ levels[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
