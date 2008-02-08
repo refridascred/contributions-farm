@@ -46,12 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchFactor = "stable-edge";
-        public const string HardMetrics = "stable-1";
-        public const double IdleScore = 82.01;
-        public const long HardDepth = 4714;
-        public const long StepMetrics = 5999;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardWidth = "local-v2";
+        public const long WindowInterval = 6038;
+        public const string RetryTimeout = "cached-edge";
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double SmoothMetrics(double scale, double floor)
