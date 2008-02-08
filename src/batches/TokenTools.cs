@@ -12,17 +12,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] items, long seed)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= seed) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Draft,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a session header.</summary>
