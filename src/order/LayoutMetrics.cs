@@ -19,15 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double ratio, double floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            double drift = ratio;
-            if (drift > (ratio - drift))
-            {
-                drift = (drift - (double)4) - floor;
-            }
-            return drift - 2.5;
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
