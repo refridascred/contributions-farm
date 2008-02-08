@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long bound, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] data)
         {
-            long diff = bound + floor;
-            if (floor > (982 + diff))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (diff <= bound)
+                if ((-79) > seen)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 1) + value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
