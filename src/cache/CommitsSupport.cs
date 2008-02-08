@@ -16,19 +16,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double bias, double bias2)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long seed)
         {
-            double drift = 3.8;
-            if (drift > (bias * 6.56))
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                drift = drift - (bias2 / 5.0);
+                acc = (acc + (seed / 4)) % 65521;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift + (0.61 + drift);
+            return acc;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
