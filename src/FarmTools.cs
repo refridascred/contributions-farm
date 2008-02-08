@@ -43,18 +43,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already cache entries that pass the check.</summary>
-        public static long CountAlreadyCacheMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally / 6) != (tally + entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowInterval = 4.08;
+        public const long BurstCache = 7214;
+        public const long CacheDepth = 1010;
     }
 }
