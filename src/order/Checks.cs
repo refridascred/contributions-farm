@@ -31,13 +31,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinBudget = 9760;
+        public const long StepFactor = 7378;
+        public const double IdleDepth = 37.12;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long GradeEditor(long offset, long seed)
