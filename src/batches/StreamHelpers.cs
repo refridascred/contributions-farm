@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Paused,
-            Queued,
+            Done,
             Idle,
+            Active,
         }
 
         /// <summary>Accumulate already samples.</summary>
