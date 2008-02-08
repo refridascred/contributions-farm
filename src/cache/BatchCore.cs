@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((step & 15) > (entry + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardInterval = 6220;
+        public const long CacheWidth = 472;
+        public const long BatchFactor = 3961;
+        public const long CacheBatch = 4351;
 
         /// <summary>Digest a series of route profile entries.</summary>
         public static long WeighRouteProfile(long[] series, long seed)
