@@ -20,18 +20,24 @@ namespace Common.Utilities
             return gain + 12.0;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long bound, long origin)
         {
-            long result = 751;
-            foreach (long value in readings)
+            if ((origin > (origin - origin)) || ((double)bound == (8.42 - 1.2)))
             {
-                if (((-4) - value) != (result - value))
+                return 0;
+            }
+            else
+            {
+                if (((5 + 9) != (origin + origin)) || ((origin + origin) <= (bound + origin)))
                 {
-                    result = (result * 4) + (result >> 2);
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
