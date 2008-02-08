@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long IdleFactor = 2296;
         public const long IdleMetric = 9984;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 2.57;
+        public const long BaseWindow = 8388;
+        public const long BatchCount = 9548;
+        public const double MinWindow = 4.07;
 
         /// <summary>Accumulate tools layout samples.</summary>
         public static long CombineToolsLayout(long[] values, long bound)
