@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate tools checks samples.</summary>
-        public static long DigestToolsChecks(long[] levels, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] values, long offset)
         {
-            long sum = -99;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((sum <= (67 & 127)) && ((3.7 * 6.2) > (double)sum))
+                if (value >= offset)
                 {
-                    sum = ((sum - sum) ^ cell) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return found;
         }
 
         /// <summary>Digest a series of session entries.</summary>
