@@ -25,24 +25,15 @@ namespace Common.Utilities
         public const string LimitCluster = "primary-edge";
         public const long RetryLevel = 7952;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long step, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] samples, long bound)
         {
-            if ((step * 4) < offset)
+            long mark = 75;
+            foreach (long value in samples)
             {
-                return 7;
+                mark = ((((mark * 4) + mark) % 97) ^ value) - bound;
             }
-            else
-            {
-                if (((-85) - step) >= 9)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mark % 65521;
         }
     }
 }
