@@ -27,21 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] readings)
+        /// <summary>Validate format batches readings against a bound.</summary>
+        public static bool GuardFormatBatchesLimits(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading != limit)
                 {
-                    if ((readings[i] + readings[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
