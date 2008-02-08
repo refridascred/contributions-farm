@@ -1,5 +1,15 @@
 {
-  "record_timeout": "open",
-  "cache_window": [275, 194],
-  "poll_ttl": 91
+  "poll_interval": false,
+  "support_delay": 7768,
+  "cache_limit_s": {
+    "cluster_threshold": 500,
+    "window_capacity": 46,
+    "dry_run": "edge",
+    "commits_threshold": false,
+    "min_delay": 9.51,
+    "profile_timeout": true
+  },
+  "hard_interval": 89.6,
+  "cluster_size": "open",
+  "metric_limit": "standard"
 }
