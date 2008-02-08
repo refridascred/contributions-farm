@@ -14,14 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Done,
-            Stale,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 3133;
+        public const double RetryFilter = 61.27;
+        public const long BurstSize = 9129;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool VerifyOrderRange(long[] series, long bound)
