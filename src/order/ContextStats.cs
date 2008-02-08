@@ -39,11 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] samples, long origin)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((1 % 7) != (4 + origin))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
     }
 }
