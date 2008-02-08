@@ -31,18 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the graph filter entries that pass the check.</summary>
-        public static long MeasureGraphFilterGaps(long[] items, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((seen + cell) >= ((long)items.Length ^ target))
+                if (!((datum - datum) != (15 - datum)))
                 {
-                    seen = seen + 3;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the filter level values.</summary>
