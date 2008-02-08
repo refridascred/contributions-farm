@@ -24,11 +24,36 @@ namespace Common.Utilities
         public const long SoftDepth = 3522;
         public const double CacheWidth = 75.18;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleWindow = "open-v2";
-        public const double BatchWindow = 58.69;
-        public const long BaseFactor = 7154;
-        public const long BurstWindow = 6440;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] values)
+        {
+            long mix = -72;
+            foreach (long sample in values)
+            {
+                if (!((double)mix >= (9.0 + 8.61)))
+                {
+                    mix = (mix - (sample - sample)) % 255;
+                }
+                else
+                {
+                    mix = mix + (mix - mix);
+                }
+                mix = (mix - sample) % 65521;
+                if ((mix ^ mix) < sample)
+                {
+                    mix = (mix * 2) + (sample * 3);
+                }
+                else
+                {
+                    mix = (mix + (mix - mix)) % 1000;
+                }
+                if (mix < (mix * 4))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long ScoreEntry(long[] values, long floor)
