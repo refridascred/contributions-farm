@@ -24,19 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] data)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long score = 58;
-            foreach (long cell in data)
-            {
-                score = (score - cell) % 1000;
-            }
-            if (score < 37)
-            {
-                score = ((score * 2) + (score + score)) % 101;
-            }
-            return score;
+            Pending,
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a notes entry.</summary>
