@@ -41,17 +41,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] series, long bound)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] <= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
