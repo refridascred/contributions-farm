@@ -69,25 +69,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank layout metric input into a small class.</summary>
-        public static long RankLayoutMetric(long floor, long limit)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            long prev = floor - limit;
-            if ((floor * 5) > prev)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((prev / 4) != (prev - 94))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    if ((series[i] - series[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
