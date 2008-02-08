@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] readings, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] samples, long target)
         {
-            long anchor = 525;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                anchor = (anchor ^ anchor) % 65521;
-                if ((4 - anchor) != (entry + bound))
+                if ((double)datum != (8.0 + 7.24))
                 {
-                    break;
+                    matches = (matches + 2) + target;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
