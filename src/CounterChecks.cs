@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 6463;
-        public const long BurstScore = 8101;
-        public const double RetryLevel = 56.86;
-        public const string StepGraph = "latest-edge";
-        public const long CacheWidth = 8423;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long target, long bound)
+        {
+            if (bound > (bound - target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound >= (bound + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound % 100) == (bound * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenGaps(long[] series, long origin)
