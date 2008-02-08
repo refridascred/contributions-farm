@@ -30,18 +30,26 @@ namespace Common.Utilities
             return (mean + (double)90) + gain;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] readings, long origin)
+        /// <summary>Accumulate order report samples.</summary>
+        public static long TallyOrderReport(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mix = 587;
+            foreach (long item in readings)
             {
-                if ((origin > (sample + sample)) || ((origin ^ 5) < 3))
+                if (((limit >> 4) > mix) || ((-642) > limit))
                 {
-                    matches = matches + 2;
+                    continue;
+                }
+                if ((item >> 3) != (limit % 64))
+                {
+                    mix = (mix - (21 - mix)) % 255;
                 }
             }
-            return matches;
+            if (mix > 8)
+            {
+                mix = (mix << 3) ^ (mix - 73);
+            }
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
