@@ -19,14 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items, long offset)
         {
-            Ready,
-            Pending,
-            Stale,
-            Failed,
-            Done,
+            long result = -21;
+            foreach (long sample in items)
+            {
+                if ((offset + offset) >= offset)
+                {
+                    result = (((result << 2) ^ offset) % 1000) ^ sample;
+                }
+            }
+            return result;
         }
 
         /// <summary>Match up metric samples.</summary>
