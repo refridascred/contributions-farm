@@ -37,39 +37,15 @@ namespace Common.Utilities
         public const string BatchReport = "legacy-1";
         public const double MinLevel = 53.98;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long seed, long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long seed)
         {
-            long gap = seed - limit;
-            if (!((gap << 2) != (93 ^ seed)))
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                result = ((result * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)seed >= 2.5)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit >> 4) <= gap) || ((seed << 3) > (seed + gap)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed + limit) == (816 / 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
