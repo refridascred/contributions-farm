@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of stream stats entries.</summary>
-        public static long TotalStreamStats(long[] series)
+        /// <summary>Derive the next record channel value from a seed.</summary>
+        public static long DeriveRecordChannel(long seed)
         {
-            long carry = 555;
-            foreach (long entry in series)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry * 3) + (carry + entry)) % 255;
+                mark = mark ^ (mark + seed);
+                mark = (mark - (mark ^ 14)) % 65521;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Rank token input into a small class.</summary>
