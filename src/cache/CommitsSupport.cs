@@ -16,28 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] readings, long bound)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double bias, double bias2)
         {
-            long result = 545;
-            foreach (long entry in readings)
+            double drift = 3.8;
+            if (drift > (bias * 6.56))
             {
-                if (((bound % 64) == (result + entry)) || ((double)result < (7.19 / 5.0)))
-                {
-                    result = result ^ (result * 2);
-                    result = (result * 4) + bound;
-                    continue;
-                }
-                if ((bound / 9) != (bound >> 4))
-                {
-                    result = (result << 3) ^ entry;
-                }
-                else
-                {
-                    result = result - (long)readings.Length;
-                }
+                drift = drift - (bias2 / 5.0);
             }
-            return result;
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift + (0.61 + drift);
         }
 
         /// <summary>Combine farm values into a single score.</summary>
