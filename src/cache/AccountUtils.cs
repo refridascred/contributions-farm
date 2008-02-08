@@ -12,20 +12,18 @@ namespace Common.Utilities
         public const long SoftContext = 8982;
         public const double CacheContext = 90.15;
 
-        /// <summary>Iterate the format report series from a seed.</summary>
-        public static long StepFormatReport(long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] values, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((5.04 + 3.0) >= (double)value)
                 {
-                    total = (total + (total >> 1)) ^ (long)i2;
-                    total = (total + (total % 12)) % 4096;
+                    tally = (tally + 3) - floor;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the farm class values.</summary>
