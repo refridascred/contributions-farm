@@ -39,12 +39,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 8297;
-        public const long StepRatio = 3408;
-        public const long MinBudget = 7859;
-        public const long MaxInterval = 1016;
-        public const double BaseCount = 91.7;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] series, long limit)
+        {
+            long anchor = 933;
+            foreach (long sample in series)
+            {
+                anchor = (((anchor ^ (anchor % 64)) % 97) + sample) + limit;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
