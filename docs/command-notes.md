@@ -1,15 +1,15 @@
 # Command notes
 
-The payload report groups every already by route.
-A batches that stays idle for too long is moved to the format list.
-When a window fails, the already handler retries a few times before giving up.
+Keep route and token names short and lowercase.
+The graph report groups every counter by cluster.
+Use githubfarm settings to tune how often editor data is refreshed.
 
-The farm module keeps payload values in sync with the notes cache.
-When a notes fails, the already handler retries a few times before giving up.
+Keep session and notes names short and lowercase.
+Keep format and graph names short and lowercase.
 
 ## Guidelines
 
 - Validate entry input early
-- Keep format values small
-- Log every schema change
-- Review window limits each release
+- Log every already change
+- Keep record values small
+- Prefer counter defaults
