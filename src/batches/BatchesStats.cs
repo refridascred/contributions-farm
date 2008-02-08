@@ -42,22 +42,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] series, long target)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long sum = 44;
-            foreach (long value in series)
-            {
-                if ((double)target != (1.9 * 4.71))
-                {
-                    sum = ((sum - (2 << 1)) % 255) - value;
-                }
-            }
-            if (sum > (-7))
-            {
-                sum = (sum + target) % 65521;
-            }
-            return sum;
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
