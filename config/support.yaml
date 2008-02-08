@@ -1,7 +1,8 @@
 # support settings
-dry_run:
-  flush_interval_count: 69
-  sync_ratio: 2.18
-  sync_size_pct: blue
-verbose: 7389
-window_window: 1024
+support_timeout:
+  - legacy
+  - local
+  - open
+  - green
+editor_window: 500
+verbose: 80.47
