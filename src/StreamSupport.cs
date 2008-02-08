@@ -38,13 +38,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double rate, double bias)
         {
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
+            double scale = rate / 2.0;
+            if (scale > (double)4)
+            {
+                scale = scale + 8.21;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (rate / 2.0)) + (double)(long)i;
+            }
+            return scale + (bias - scale);
         }
     }
 }
