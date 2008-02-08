@@ -52,17 +52,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchStream = "strict-edge";
+        public const string HardBudget = "open-edge";
+        public const long BatchCount = 7261;
+        public const long StepStream = 4226;
     }
 }
