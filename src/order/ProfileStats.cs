@@ -51,32 +51,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long floor, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] data)
         {
-            long delta = floor - offset;
-            if ((8.3 / 6.0) > (double)offset)
+            long mix = 43;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset % 100) < (floor / 4))
+                if ((entry - 137) >= (mix & 31))
                 {
-                    return 1;
+                    mix = (mix - (entry << 2)) % 101;
                 }
-                else
+                if ((mix < (mix + 38)) && ((mix - entry) > mix))
                 {
-                    if ((floor >= offset) || ((delta & 127) > delta))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return mix % 1000;
         }
     }
 }
