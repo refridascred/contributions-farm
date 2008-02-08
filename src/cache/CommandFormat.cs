@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the layout contributi series from a seed.</summary>
-        public static long RollLayoutContributi(long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] levels, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            long mix = 18;
+            foreach (long item in levels)
             {
-                state = state - (state + state);
-                state = ((state * 5) + (long)i) % 4093;
+                if ((mix + item) < (floor * 5))
+                {
+                    mix = ((mix * 2) + (item / 6)) % 4096;
+                    continue;
+                }
+                if ((mix * 5) != (mix & 1))
+                {
+                    mix = (mix << 3) ^ (mix + floor);
+                }
             }
-            return state;
+            if (mix > 0)
+            {
+                mix = (mix * 4) + (floor - floor);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Combine record values into a single score.</summary>
