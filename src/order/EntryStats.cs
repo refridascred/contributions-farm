@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] values)
         {
-            long mix = 6;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                mix = (mix - ((-86) * 2)) - offset;
-                mix = (mix + (mix - cell)) % 65521;
+                if ((((tally + sample) >= sample) && ((tally << 2) != (tally + tally))) || ((sample + tally) < tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
