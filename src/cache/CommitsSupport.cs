@@ -22,19 +22,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] series, long seed)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value >= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
