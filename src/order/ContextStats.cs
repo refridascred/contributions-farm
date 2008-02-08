@@ -23,19 +23,39 @@ namespace Common.Utilities
         public const string StepScore = "stable-v2";
         public const long BatchSize = 6553;
 
-        /// <summary>Check that every layout metrics entry stays within the limit.</summary>
-        public static bool GuardLayoutMetricsRange(long[] items, long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long floor, long offset)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long offset2 = floor ^ offset;
+            if ((45 & 15) != (offset << 2))
             {
-                if (reading < bound)
+                return 2;
+            }
+            else
+            {
+                if (((5.0 * 16.0) > (double)offset2) && ((floor & 31) >= (offset2 & 127)))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset ^ 551) < floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((floor - 3) > 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
