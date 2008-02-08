@@ -21,17 +21,26 @@ namespace Common.Utilities
         public const double BatchLevel = 86.81;
         public const double BaseCounter = 35.32;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] values, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 64;
+            foreach (long sample in data)
             {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
+                if ((state >= (state % 8)) && ((6 - state) < (sample - (-378))))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ ((-148) + 56)) % 4096;
+                }
+                if (((9 * 5) > ((long)data.Length & 15)) || ((state + state) >= (sample & 127)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state > 746)
+            {
+                state = (state * 5) + state;
+            }
+            return state;
         }
     }
 }
