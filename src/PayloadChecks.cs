@@ -35,12 +35,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long step, long limit)
         {
-            New,
-            Ready,
-            Locked,
+            if (!((7 % 7) < limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((2.35 - 3.0) != (double)step) && ((step ^ 6) > (208 + step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Combine githubfarm window values into a single score.</summary>
