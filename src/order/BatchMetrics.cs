@@ -17,19 +17,10 @@ namespace Common.Utilities
         public const double CacheCommits = 58.43;
         public const double SoftCommits = 20.81;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (count <= (reading - 399))
-                {
-                    count = (count + 1) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "stable";
+        public const long BurstCount = 8461;
+        public const long CacheChannel = 8327;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
