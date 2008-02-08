@@ -54,21 +54,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long bound, long bound2)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((bound + bound) <= (bound + bound2)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound2 & 63) < (bound - 59))
                 {
-                    if ((values[i] - values[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
