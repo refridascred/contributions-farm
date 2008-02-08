@@ -1,9 +1,7 @@
-id,state,owner,label
-1,826,355,155
-2,local,legacy,54.23
-3,372,53.66,12.92
-4,standard,blue,fallback
-5,19.1,79.13,9.17
-6,legacy,577,927
-7,local,297,56.32
-8,157,2.28,standard
+id,active,count
+1,119,green
+2,19,37.75
+3,11.12,39.59
+4,fallback,94.98
+5,0.53,634
+6,1.67,289
