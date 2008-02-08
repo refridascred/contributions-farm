@@ -28,12 +28,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
