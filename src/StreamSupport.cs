@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double span)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double bias = gain;
-            if (bias <= 7.36)
-            {
-                bias = bias - bias;
-            }
-            else
-            {
-                bias = bias - 14.0;
-            }
-            return bias - span;
+            New,
+            Pending,
+            Active,
         }
 
         /// <summary>Fold a list of entry report readings.</summary>
