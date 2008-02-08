@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] series, long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] values, long floor)
         {
-            long sum = 4;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                sum = ((sum - (bound * 5)) % 255) ^ sample;
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum < 84)
-            {
-                sum = sum - sum;
-            }
-            return sum % 65521;
+            return stale;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
