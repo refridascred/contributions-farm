@@ -37,14 +37,19 @@ namespace Common.Utilities
         public const long CacheTools = 6403;
         public const long LimitDepth = 2472;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] data, long seed)
         {
-            Done,
-            Queued,
-            Synced,
-            Draft,
-            Dropped,
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
