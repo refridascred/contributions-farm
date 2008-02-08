@@ -73,18 +73,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a stream channel reading by value.</summary>
-        public static long LocateStreamChannelIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 4618;
+        public const long StepEditor = 9089;
+        public const long MaxEditor = 990;
 
         /// <summary>Fold a list of route tools readings.</summary>
         public static long WeighRouteTools(long[] levels, long bound)
