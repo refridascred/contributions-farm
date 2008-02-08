@@ -49,22 +49,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many payload stream samples are out of range.</summary>
-        public static long AuditPayloadStreamOutliers(long[] samples, long target)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((65 - tally) == (tally + tally))
-                {
-                    tally = ((tally + 2) - value) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a batch stats.</summary>
