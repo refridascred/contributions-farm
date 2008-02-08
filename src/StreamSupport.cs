@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the format contributi entries that pass the check.</summary>
-        public static long MeasureFormatContributiHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((datum % 5) <= tally) && (datum < (datum + datum)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleTimeout = 8397;
+        public const double StepOrder = 93.55;
+        public const long MaxLevel = 23;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
