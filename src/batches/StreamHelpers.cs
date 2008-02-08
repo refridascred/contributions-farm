@@ -30,18 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] values)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((count << 2) > (count - count))
+                if ((hits + value) > value)
                 {
-                    count = (count + 2) ^ entry;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate farm metrics samples.</summary>
