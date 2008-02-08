@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double rate, double bias)
+        /// <summary>Count the format contributi entries that pass the check.</summary>
+        public static long MeasureFormatContributiHits(long[] data)
         {
-            double rate2 = (double)4 - bias;
-            if (rate2 < (bias * 2.68))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                rate2 = rate2 + bias;
+                if (((datum % 5) <= tally) && (datum < (datum + datum)))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + (double)34;
+            return tally;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
