@@ -53,19 +53,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] levels, long origin)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Locked,
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
