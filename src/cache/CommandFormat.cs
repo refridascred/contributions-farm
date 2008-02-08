@@ -10,37 +10,22 @@ namespace Common.Utilities
         public const string WindowCache = "standard-edge";
         public const long BatchFactor = 9733;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long target, long origin)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long offset, long floor)
         {
-            long prev = target + origin;
-            if ((target / 4) < (origin % 8))
+            if ((2 * 3) > offset)
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if (42 >= (target % 8))
+                if ((20.0 - 6.68) == (double)offset)
                 {
                     return 4;
                 }
                 else
                 {
-                    if ((target >> 2) < prev)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)prev >= (8.6 * 3.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
