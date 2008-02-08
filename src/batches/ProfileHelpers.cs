@@ -48,19 +48,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi already readings against a rule.</summary>
-        public static long MeasureContributiAlreadyMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (871 >= (value ^ hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 2094;
+        public const string IdleSize = "legacy-1";
+        public const long IdleSpan = 4330;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long ScoreStats(long[] samples)
