@@ -94,19 +94,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate context already readings against a bound.</summary>
-        public static bool GuardContextAlreadyBounds(long[] levels, long offset)
+        /// <summary>Audit order command readings against a rule.</summary>
+        public static long CountOrderCommandGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (sample != offset)
+                if ((hits + hits) <= (hits >> 5))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
