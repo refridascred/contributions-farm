@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double rate, double offset)
         {
-            public bool Level { get; set; }
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            double load = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (load - rate)) - (double)(long)i;
+            }
+            return load + (offset + offset);
         }
 
         /// <summary>Count buffer command pairs that satisfy a relation.</summary>
