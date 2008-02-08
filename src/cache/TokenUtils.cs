@@ -40,16 +40,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the checks filter series from a seed.</summary>
-        public static long RollChecksFilter(long offset)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double ratio, double offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            double drift = offset;
+            if (drift >= (double)67)
             {
-                sum = (sum + (sum + offset)) % 4096;
-                sum = ((sum * 5) + (long)i) % 97;
+                drift = (drift - (double)699) + ratio;
             }
-            return sum;
+            return drift - 3.2;
         }
     }
 }
