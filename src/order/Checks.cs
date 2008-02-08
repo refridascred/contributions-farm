@@ -50,17 +50,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] values, long offset)
+        /// <summary>Audit metrics report readings against a rule.</summary>
+        public static long AuditMetricsReportOutliers(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (values[i] > offset)
+                if ((cell & 127) != (seen << 1))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
