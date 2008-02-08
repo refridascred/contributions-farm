@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double gain, double offset)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double scale = (double)(6 << 1);
-            if (scale <= scale)
-            {
-                scale = scale + (gain * 1.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (6.05 / 3.0)) + (double)(long)i;
-            }
-            return scale - offset;
+            Stale,
+            Synced,
+            Active,
+            Failed,
         }
 
         /// <summary>Define token limits and defaults.</summary>
