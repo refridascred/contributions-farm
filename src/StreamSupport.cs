@@ -36,11 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double scale, double offset)
         {
-            public double Label { get; set; }
-            public double Rank { get; set; }
+            double rate = (double)((-4) & 255);
+            if (rate < (double)27)
+            {
+                rate = rate + offset;
+            }
+            return rate - (scale * 0.7);
         }
     }
 }
