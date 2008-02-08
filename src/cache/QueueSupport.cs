@@ -24,22 +24,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] samples, long floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            long mark = -472;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mark >= (value + 8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark - (mark + 2)) + floor;
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark < 48)
-            {
-                mark = (mark - (mark - mark)) % 255;
-            }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
