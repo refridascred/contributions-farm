@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long target, long bound)
         {
-            Queued,
-            Done,
-            Retry,
+            long prev = target ^ bound;
+            if ((double)prev == (20.0 - 15.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((8.47 + 0.9) > (double)bound) || ((62 - 3) > (target >> 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (target < (target - prev))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)prev <= (double)605)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the profile metrics entries that pass the check.</summary>
