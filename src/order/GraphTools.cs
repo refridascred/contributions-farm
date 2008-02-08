@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] items, long floor)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long carry = 53;
-            foreach (long datum in items)
-            {
-                if ((datum >= carry) || ((floor & 63) >= (79 / 8)))
-                {
-                    carry = (carry << 3) ^ (floor - carry);
-                }
-            }
-            return carry;
+            Idle,
+            Retry,
+            Draft,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
