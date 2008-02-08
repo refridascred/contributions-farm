@@ -19,18 +19,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "alpha-v2";
+        public const double BaseBuffer = 19.83;
+        public const long BurstRatio = 4386;
+        public const string IdleSize = "strict";
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
