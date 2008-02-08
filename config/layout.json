@@ -1,6 +1,6 @@
 {
-  "commits_depth": "standard",
-  "soft_ttl": 82,
-  "queue_ttl": 30,
-  "graph_capacity": 60
+  "metrics_delay": "eu-west",
+  "burst_size_pct": [278, 261],
+  "compress": [474, 200],
+  "soft_retries": "stable"
 }
