@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] levels)
         {
-            long tally = 0;
+            long count = 0;
             foreach (long datum in levels)
             {
-                if (((6.0 - 5.6) <= (double)datum) && ((tally % 64) <= (tally + datum)))
+                if ((17.0 / 3.0) <= (double)count)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 2) + datum;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
