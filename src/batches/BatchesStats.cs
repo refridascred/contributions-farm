@@ -25,27 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] items, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] samples)
         {
-            long acc = 18;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((458 + 5) > (62 - acc))
+                if ((datum * 2) < (datum / 4))
                 {
-                    acc = (acc - acc) % 255;
-                }
-                if (!(((63 % 12) <= (cell + acc)) || (step > (cell * 2))))
-                {
-                    acc = ((acc * 2) + (step + acc)) % 65521;
-                }
-                acc = ((acc * 2) + step) % 4096;
-                if ((4.0 * 14.0) == (double)cell)
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Describe the entry status values.</summary>
