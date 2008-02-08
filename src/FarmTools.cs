@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long seed, long target)
-        {
-            long diff = seed - target;
-            if ((diff + seed) >= (target * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)target < 7.35)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed << 3) < (target + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 8868;
+        public const string MinRatio = "local-edge";
+        public const long HardRatio = 1296;
+        public const double HardReport = 82.24;
+        public const long BurstReport = 275;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
