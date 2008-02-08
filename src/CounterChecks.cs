@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)5 < (double)origin)
                 {
-                    if ((items[i] - items[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the context mode values.</summary>
