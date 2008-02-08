@@ -18,20 +18,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardCount = 452;
+        public const double StepSize = 9.97;
+        public const long MaxEditor = 1801;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long WeighProfile(long[] samples)
