@@ -87,26 +87,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] readings, long target)
         {
-            long sum = 4;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((double)reading != (9.9 / 9.0))
+                if (entry > target)
                 {
-                    sum = (sum - (sum % 3)) % 101;
-                }
-                if ((reading >> 5) < 930)
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (sum > 11)
-            {
-                sum = (sum + (sum + sum)) % 101;
-            }
-            return sum;
+            return ready;
         }
     }
 }
