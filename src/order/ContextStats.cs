@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 631;
-        public const double IdleTimeout = 76.22;
-        public const long MinCounter = 220;
-        public const long DefaultCounter = 1211;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] levels)
+        {
+            long score = -895;
+            foreach (long sample in levels)
+            {
+                if ((sample / 8) <= (score + sample))
+                {
+                    score = ((score * 2) + (score + score)) % 4096;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderLimits(long[] samples, long step)
