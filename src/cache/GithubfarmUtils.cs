@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            Done,
+            Closed,
+            Paused,
+            New,
+            Locked,
         }
 
         /// <summary>Audit cluster schema readings against a rule.</summary>
