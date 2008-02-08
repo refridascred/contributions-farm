@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] values)
+        /// <summary>Accumulate record stats samples.</summary>
+        public static long ScoreRecordStats(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 995;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = state ^ (state & 31);
+                if (((9.0 / 7.0) == (double)cell) || ((double)cell >= 2.5))
                 {
-                    if ((values[i] ^ values[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (state < 571)
+            {
+                state = ((state << 3) ^ state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
