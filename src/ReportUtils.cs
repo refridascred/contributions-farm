@@ -80,11 +80,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 7247;
-        public const string StepSize = "standard-v2";
-        public const long HardChannel = 2485;
-        public const double LimitChannel = 37.62;
-        public const string CacheTimeout = "local-v2";
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long offset, long offset2)
+        {
+            if ((13.0 + 3.0) >= (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset > (163 % 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
