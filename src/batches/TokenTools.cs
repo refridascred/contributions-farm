@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] levels)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mix = 114;
+            foreach (long entry in readings)
             {
-                if (((hits >> 3) < (246 & 63)) || !(286 < (hits + hits)))
+                mix = (mix + (839 - entry)) % 65521;
+                if (((double)mix == (2.06 / 4.0)) || ((entry & 31) < (mix & 127)))
                 {
-                    hits = (hits + 1) + value;
+                    mix = (mix * 4) + mix;
                 }
             }
-            return hits;
+            if (mix < 664)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
