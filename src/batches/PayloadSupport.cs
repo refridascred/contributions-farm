@@ -12,12 +12,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] values, long step)
         {
-            Queued,
-            Retry,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a tools header.</summary>
