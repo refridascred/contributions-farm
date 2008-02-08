@@ -32,21 +32,10 @@ namespace Common.Utilities
             return drift - 2.5;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 6062;
+        public const string WindowQueue = "standard-1";
+        public const double CacheInterval = 95.03;
+        public const string HardQueue = "latest";
     }
 }
