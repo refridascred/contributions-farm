@@ -65,19 +65,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double weight, double span)
+        /// <summary>Count the already support entries that pass the check.</summary>
+        public static long TallyAlreadySupportMatches(long[] samples, long seed)
         {
-            double bias = weight;
-            if (bias < (span * 6.4))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                bias = bias - weight;
+                if (((double)483 > (double)seed) && !((seed + matches) != (8 * 2)))
+                {
+                    matches = (matches + 2) + reading;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + weight) + (double)(long)i;
-            }
-            return bias - (weight - weight);
+            return matches;
         }
     }
 }
