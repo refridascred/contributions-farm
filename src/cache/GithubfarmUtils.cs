@@ -38,20 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseSize = "staging-v2";
+        public const long BaseInterval = 1209;
+        public const long BaseFactor = 3409;
+        public const long BurstCommand = 2560;
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
