@@ -45,19 +45,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double rate, double span)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            double drift = (double)9 + (rate - 4.0);
+            if (drift > (rate / 8.0))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = ((carry << 2) ^ 99) - (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                drift = (drift + rate) - span;
             }
-            return carry;
+            return drift + drift;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
