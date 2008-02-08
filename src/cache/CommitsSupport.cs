@@ -61,14 +61,12 @@ namespace Common.Utilities
         public const double MaxStream = 75.99;
         public const string DefaultStream = "open-1";
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public double Flag { get; set; }
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 9479;
+        public const long MaxMetrics = 4716;
+        public const double SoftSpan = 81.05;
+        public const long BaseMetrics = 404;
+        public const string SoftLevel = "local-v2";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double HardBatches = 16.75;
