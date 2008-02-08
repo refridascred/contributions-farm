@@ -1,4 +1,11 @@
 # githubfarm settings
-max_threshold: 30
-poll_window_count: legacy
-min_retries_ms: green
+burst_size_pct: primary
+graph_size:
+  - strict
+  - stable
+  - open
+  - cached
+poll_ratio_pct: 250
+graph_interval: 1024
+max_threshold: legacy
+audit: false
