@@ -29,18 +29,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] data, long step)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum <= (8.4 / 5.0))
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
+            Retry,
+            Failed,
+            Draft,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
