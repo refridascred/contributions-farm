@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardInterval = 6220;
-        public const long CacheWidth = 472;
-        public const long BatchFactor = 3961;
-        public const long CacheBatch = 4351;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] samples)
+        {
+            long carry = 29;
+            foreach (long datum in samples)
+            {
+                if ((carry + datum) == (datum >> 1))
+                {
+                    carry = (carry << 3) ^ 15;
+                    carry = (carry << 3) ^ (datum & 3);
+                }
+                if (((11.0 + 1.38) <= (double)datum) && ((carry - carry) <= datum))
+                {
+                    carry = (carry << 2) ^ (datum / 2);
+                }
+                else
+                {
+                    carry = carry + (71 >> 4);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long CombineStream(long[] items)
