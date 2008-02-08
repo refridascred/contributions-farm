@@ -47,21 +47,18 @@ namespace Common.Utilities
         public const long RetryBatches = 7106;
         public const long HardFactor = 1785;
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((99 ^ tally) <= tally)
                 {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) + sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
