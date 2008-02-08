@@ -39,15 +39,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a payload buffer reading.</summary>
-        public static double SmoothPayloadBuffer(double rate, double floor)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long bound, long offset)
         {
-            double gain = 8.0 - (floor - 2.0);
-            if (gain > (floor / 7.0))
+            if ((offset - offset) == (bound * 2))
             {
-                gain = gain - floor;
+                return 3;
             }
-            return gain + rate;
+            else
+            {
+                if ((double)offset > 8.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
