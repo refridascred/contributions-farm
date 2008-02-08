@@ -40,10 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSchema = "local-edge";
-        public const long BaseSchema = 1348;
-        public const double BurstSchema = 17.1;
+        /// <summary>Iterate the notes tools series from a seed.</summary>
+        public static long IterateNotesTools(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = mix + ((long)i >> 1);
+                mix = mix ^ 919;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double ProjectStats(double rate, double offset)
