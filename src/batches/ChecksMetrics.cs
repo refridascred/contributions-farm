@@ -64,17 +64,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] samples, long offset)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - mean) + (double)(long)i;
             }
-            return -1;
+            return mean + (scale + 19.0);
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
