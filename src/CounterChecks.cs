@@ -20,19 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double gain, double span)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            double rate = gain;
-            if (rate < (gain - 2.0))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate - gain;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate + (double)893;
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
