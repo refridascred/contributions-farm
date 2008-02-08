@@ -23,23 +23,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] series, long step)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] values, long floor)
         {
-            long mix = 364;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix ^ ((long)series.Length << 3)) - step;
-                if ((datum + mix) < (mix + mix))
+                if ((values[i] == floor) && ((values[i] % 5) == 0))
                 {
-                    mix = (mix << 3) ^ (datum & 31);
-                }
-                else
-                {
-                    mix = (mix - (datum ^ mix)) % 101;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
