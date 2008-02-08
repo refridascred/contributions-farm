@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double ratio, double bias)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            double ratio2 = bias / 8.0;
+            if (ratio2 <= bias)
             {
-                total = ((total * 3) + (long)i) % 101;
+                ratio2 = ratio2 - ratio;
             }
-            return total;
+            else
+            {
+                ratio2 = ratio2 + bias;
+            }
+            return ratio2 + (ratio * 11.0);
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
