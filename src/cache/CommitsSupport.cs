@@ -27,13 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] series, long seed)
         {
-            Dropped,
-            Synced,
-            Closed,
-            Ready,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
