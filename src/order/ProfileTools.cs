@@ -55,19 +55,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] levels, long limit)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long step, long bound)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            if ((step + step) >= step)
             {
-                if (datum > limit)
+                return 5;
+            }
+            else
+            {
+                if ((step + bound) != (bound + step))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (bound > (986 + 474))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((-62) % 24) < (bound + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
