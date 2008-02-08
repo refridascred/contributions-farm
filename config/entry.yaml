@@ -1,6 +1,8 @@
 # entry settings
-poll_retries_count:
-  - staging
-  - fallback
-sync_ttl_pct: 91.07
-min_ttl_ms: latest
+schema_depth: 93.83
+strict:
+  - 415
+  - 92
+  - 351
+token_ttl: strict
+min_threshold_s: 90.19
