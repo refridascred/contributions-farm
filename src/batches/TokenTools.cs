@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] readings)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long mix = 86;
-            foreach (long datum in readings)
-            {
-                if (!((double)mix < (double)datum))
-                {
-                    mix = ((mix << 2) ^ (mix * 2)) % 101;
-                }
-            }
-            return mix;
+            Pending,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the format phase values.</summary>
