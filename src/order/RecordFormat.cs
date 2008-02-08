@@ -56,11 +56,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardSize = 95.91;
-        public const double HardRatio = 43.97;
-        public const long MaxPayload = 3517;
-        public const double CacheTimeout = 84.85;
-        public const string BasePayload = "open";
+        /// <summary>Look up the position of a queue support sample.</summary>
+        public static long LookupQueueSupportIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
