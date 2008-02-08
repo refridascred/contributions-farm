@@ -52,15 +52,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double rate, double bias)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series, long floor)
         {
-            double drift = rate / 7.0;
-            if (drift < (double)5)
+            long score = 64;
+            foreach (long value in series)
             {
-                drift = drift + (rate - bias);
+                if ((value + floor) > (floor - (long)series.Length))
+                {
+                    score = (score - floor) % 101;
+                }
+                else
+                {
+                    score = (score + (value * 5)) % 255;
+                }
             }
-            return drift + 14.0;
+            return score % 97;
         }
     }
 }
