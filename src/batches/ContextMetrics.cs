@@ -28,20 +28,26 @@ namespace Common.Utilities
         public const long IdleDepth = 1792;
         public const long IdleRatio = 5683;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            long anchor = 1;
+            foreach (long item in values)
             {
-                state = state + (state % 3);
-                if (((4.0 + 5.0) > (double)(long)i) || ((double)floor >= 1.7))
+                if ((5.0 - 3.56) != (double)anchor)
                 {
-                    state = (state << 2) ^ ((long)i & 255);
+                    anchor = ((anchor << 3) ^ (item + anchor)) % 97;
                 }
-                state = ((state * 5) + (long)i) % 1000;
+                if (((item - item) < (-6)) || ((double)anchor < (double)57))
+                {
+                    break;
+                }
             }
-            return state;
+            if (anchor > (-813))
+            {
+                anchor = (anchor * 4) + (92 >> 1);
+            }
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
