@@ -13,11 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardSize = "open";
-        public const string WindowDepth = "local-1";
-        public const string MinProfile = "standard-v2";
-        public const long WindowLevel = 5777;
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long DigestProfile(long[] readings, long limit)
