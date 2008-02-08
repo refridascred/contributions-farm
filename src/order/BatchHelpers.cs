@@ -34,22 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] items)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((tally >> 3) < entry)
+                if (value >= step)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
