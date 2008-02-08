@@ -29,12 +29,22 @@ namespace Common.Utilities
         public const long StepFactor = 1809;
         public const double WindowCache = 23.76;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] items, long seed)
         {
-            Draft,
-            New,
-            Failed,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (seed > (seen + reading))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
