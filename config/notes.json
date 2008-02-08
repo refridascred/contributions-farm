@@ -1,13 +1,8 @@
 {
-  "persist": "cached",
-  "sync_size": 100,
-  "warm_size_s": "latest",
-  "default_limit_ms": "edge",
-  "verbose": 250,
-  "buffer_retries": {
-    "persist": "stable",
-    "default_threshold": "open",
-    "queue_limit": [151, 386, 84],
-    "cluster_limit": 1024
-  }
+  "audit": false,
+  "min_retries": "latest",
+  "verbose": "blue",
+  "default_capacity_ms": 26,
+  "soft_capacity": "blue",
+  "editor_capacity": "green"
 }
