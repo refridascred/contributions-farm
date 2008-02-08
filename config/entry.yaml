@@ -1,34 +1,6 @@
 # entry settings
-idle_timeout_count:
-  audit:
-    - strict
-    - blue
-  strict: true
-  cache_delay: open
-  contributi_retries: 100
-  persist: true
-dry_run: 5911
-flush_size_s: 1024
-compress:
-  hard_retries_count:
-    - blue
-    - standard
-    - legacy
-    - blue
-  flush_interval:
-    - standard
-    - legacy
-    - fallback
-    - blue
-  base_depth_s: false
-  enabled: 2073
-  support_retries:
-    editor_delay: 49.34
-    base_limit_ms: 16.71
-    retry_capacity_s: stable
-    soft_limit_s: 35
-  min_timeout: 60
-batches_retries:
-  - 465
-  - 169
-  - 303
+report_retries: stable
+readonly: 63.78
+idle_delay: 22
+min_size_pct: open
+notes_threshold: 1856
