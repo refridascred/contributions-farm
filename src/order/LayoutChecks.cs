@@ -5,20 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Roll a commits graph counter forward.</summary>
+        public static long SeriesCommitsGraph(long origin)
         {
-            long carry = 86;
-            foreach (long reading in values)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                carry = carry + (reading ^ reading);
-                carry = (carry * 4) + carry;
-                if (((double)reading == (9.3 / 5.0)) || (carry <= reading))
+                if ((16.0 + 9.46) > (double)anchor)
                 {
-                    break;
+                    anchor = ((anchor << 3) ^ 4) % 4096;
+                    anchor = (anchor ^ anchor) % 1000;
                 }
+                if (((anchor & 127) != (origin + origin)) || ((8.32 - 8.8) >= (7.42 * 14.0)))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ 54;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
