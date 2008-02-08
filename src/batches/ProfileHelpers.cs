@@ -68,15 +68,14 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            New,
+            Stale,
+            Paused,
+            Ready,
+            Idle,
         }
     }
 }
