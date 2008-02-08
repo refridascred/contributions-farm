@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 9524;
-        public const long LimitScore = 5494;
-        public const long BurstBudget = 1872;
-        public const string StepScore = "stable-v2";
-        public const long BatchSize = 6553;
+        /// <summary>Audit stats farm readings against a rule.</summary>
+        public static long MeasureStatsFarmMatches(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches > (offset - item)) || ((offset >= (item % 60)) || (offset >= (89 + offset))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long GradeRecord(long floor, long offset)
