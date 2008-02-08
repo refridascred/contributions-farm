@@ -32,21 +32,31 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long target, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((seed + target) != (target << 2))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((10 << 2) <= (target + target))
                 {
-                    if ((samples[i] - samples[j]) != 1)
+                    return 0;
+                }
+                else
+                {
+                    if ((target ^ target) == (target << 1))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a metric options.</summary>
