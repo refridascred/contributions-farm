@@ -59,10 +59,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchStream = "strict-edge";
-        public const string HardBudget = "open-edge";
-        public const long BatchCount = 7261;
-        public const long StepStream = 4226;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Retry,
+            Failed,
+            Synced,
+            Idle,
+        }
     }
 }
