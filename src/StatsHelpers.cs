@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 3224;
-        public const long LimitInterval = 448;
-        public const long LimitCount = 5273;
-        public const long CacheInterval = 3940;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public long Label { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryHits(long[] data, long target)
