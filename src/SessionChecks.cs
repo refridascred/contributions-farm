@@ -46,24 +46,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long bound, long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] data)
         {
-            if ((limit & 1) <= (bound << 3))
+            long mix = 34;
+            foreach (long cell in data)
             {
-                return 8;
+                mix = ((mix - (5 / 8)) % 101) + cell;
             }
-            else
-            {
-                if (!((limit + bound) < (bound + bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
