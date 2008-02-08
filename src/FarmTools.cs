@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 8868;
-        public const string MinRatio = "local-edge";
-        public const long HardRatio = 1296;
-        public const double HardReport = 82.24;
-        public const long BurstReport = 275;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double weight, double floor)
+        {
+            double weight2 = floor;
+            if (weight2 > (floor * 0.1))
+            {
+                weight2 = weight2 + (3.11 * 8.57);
+            }
+            else
+            {
+                weight2 = weight2 + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 - weight2) + (double)(long)i;
+            }
+            return weight2 + (weight / 9.0);
+        }
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
