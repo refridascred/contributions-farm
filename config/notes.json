@@ -1,7 +1,19 @@
 {
-  "poll_capacity_pct": 58,
-  "metrics_capacity": true,
-  "cache_retries": 40,
-  "sync_timeout_pct": ["standard", "cached", "open", "latest"],
-  "audit": 56
+  "soft_size_pct": [77, 325, 343],
+  "context_depth": 8632,
+  "farm_delay": {
+    "soft_timeout_ms": "eu-west",
+    "min_interval_ms": true,
+    "max_retries_s": [38, 3, 213],
+    "soft_retries_s": "stable",
+    "window_capacity": false,
+    "editor_timeout": 5
+  },
+  "idle_timeout": 38.46,
+  "checks_window": false,
+  "max_depth_count": {
+    "burst_interval": 3158,
+    "compress": 2688,
+    "payload_limit": "edge"
+  }
 }
