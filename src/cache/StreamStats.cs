@@ -34,19 +34,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double bias, double bias2)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double rate = bias;
-            if (rate < (bias * 7.4))
-            {
-                rate = (rate - (16.0 / 2.0)) + bias2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (double)9) + (double)(long)i;
-            }
-            return rate + (double)(-555);
+            Synced,
+            Paused,
+            Closed,
+            Idle,
+            Draft,
         }
     }
 }
