@@ -12,23 +12,10 @@ namespace Common.Utilities
         public const long BatchWidth = 1198;
         public const long SoftMetrics = 5995;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = sum - sum;
-                if (9.0 < (double)(long)i)
-                {
-                    sum = (sum + (sum * 3)) % 97;
-                    sum = sum - (seed + sum);
-                }
-                sum = (sum + 6) % 255;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 0.57;
+        public const double LimitCommand = 38.17;
+        public const double DefaultTimeout = 33.13;
 
         /// <summary>Combine schema record values into a single score.</summary>
         public static long WeighSchemaRecord(long[] levels)
