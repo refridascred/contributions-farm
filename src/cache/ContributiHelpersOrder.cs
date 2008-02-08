@@ -50,22 +50,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] series)
+        /// <summary>Match up stats cluster samples.</summary>
+        public static long CompareStatsClusterCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.17 - 6.0) != (double)matches)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
