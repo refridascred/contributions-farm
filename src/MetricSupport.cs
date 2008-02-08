@@ -24,22 +24,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] levels)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (((reading << 1) == (7 + reading)) || ((matches - reading) < (matches * 2)))
+                if (!((double)acc != (14.0 * 5.39)))
                 {
-                    matches = matches + 2;
+                    acc = (acc - (13 + acc)) % 101;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = (acc * 2) + (long)i;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
