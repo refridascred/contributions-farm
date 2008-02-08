@@ -1,11 +1,5 @@
 {
-  "max_window_ms": "legacy",
-  "enabled": "edge",
-  "already_size": [310, 123],
-  "persist": {
-    "cache_depth_pct": [335, 49, 381],
-    "min_retries_ms": false,
-    "sync_capacity_pct": [279, 173, 241]
-  },
-  "hard_window": false
+  "readonly": ["legacy", "primary", "legacy", "cached"],
+  "sync_limit_ms": 1006,
+  "min_limit": "cached"
 }
