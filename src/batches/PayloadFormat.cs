@@ -22,21 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Project the next graph session value.</summary>
+        public static double SmoothGraphSession(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double rate2 = offset;
+            return (rate2 + (double)19) + rate;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
