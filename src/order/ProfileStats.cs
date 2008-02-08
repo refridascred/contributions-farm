@@ -56,38 +56,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long origin, long step)
-        {
-            if ((step - step) <= (origin + step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin + origin) < (step + 6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - origin) != (step - step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(origin <= (step & 31)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepTimeout = 34.15;
+        public const long HardProfile = 414;
+        public const string MinProfile = "strict-v2";
     }
 }
