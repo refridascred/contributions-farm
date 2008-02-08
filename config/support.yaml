@@ -1,46 +1,25 @@
 # support settings
-record_limit: 2122
-metrics_limit:
-  - staging
-  - standard
-  - stable
-default_ttl: edge
-support_window:
-  githubfarm_ttl:
-    - latest
-    - latest
-  min_limit_s: cached
-  poll_size: true
-  idle_capacity_s: stable
-  support_window: 100
-hard_size_ms: true
-idle_timeout_s:
-  channel_window:
-    soft_timeout_ms: 56.3
-    burst_timeout:
-      - 334
-      - 43
-      - 128
-    entry_timeout: 60
-    persist: 5205
-  cache_ratio_count:
-    - 385
-    - 278
-    - 418
-    - 499
-  editor_ratio:
-    min_interval_s:
-      - green
-      - staging
-    token_depth:
-      - strict
-      - green
-    warm_size: 15
-    counter_threshold: 92.08
-  max_threshold_count:
-    graph_window: true
-    profile_ratio:
-      - 442
-      - 302
-    context_window: 250
-  cache_window: standard
+schema_timeout: standard
+editor_interval:
+  min_limit_count: 45
+  retry_ratio_ms:
+    max_window_count: primary
+    min_delay: true
+    persist: false
+    hard_retries_ms: 36
+  context_capacity: 85
+  stream_delay:
+    notes_size:
+      - 394
+      - 118
+    enabled:
+      - 61
+      - 461
+      - 37
+    support_interval: false
+    window_window: true
+metric_size:
+  - 497
+  - 223
+  - 483
+  - 489
