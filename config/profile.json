@@ -1,8 +1,12 @@
 {
-  "already_size": 5434,
-  "hard_threshold_s": "cached",
-  "verbose": 54.97,
-  "sync_timeout": ["legacy", "edge", "stable"],
-  "retry_limit_s": "edge",
-  "strict": "green"
+  "strict": "stable",
+  "audit": "staging",
+  "entry_depth": {
+    "readonly": 8826,
+    "layout_timeout": [260, 166],
+    "sync_ratio": ["stable", "local", "staging"],
+    "max_capacity_count": ["green", "open", "fallback", "staging"]
+  },
+  "soft_timeout": 9769,
+  "flush_capacity_ms": 65
 }
