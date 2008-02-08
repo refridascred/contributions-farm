@@ -23,19 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] readings, long floor)
+        /// <summary>Validate token cache readings against a bound.</summary>
+        public static bool CheckTokenCacheRange(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (datum > floor)
+                if (datum >= target)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Hold a batch entry.</summary>
