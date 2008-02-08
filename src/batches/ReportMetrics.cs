@@ -26,22 +26,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of record command readings.</summary>
-        public static long DigestRecordCommand(long[] levels, long floor)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            long result = 60;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry != (3.0 / 5.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result + (floor << 3);
-                }
-                if (result > (result - result))
-                {
-                    result = (result ^ (floor % 8)) % 4096;
+                    if ((levels[i] - levels[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
