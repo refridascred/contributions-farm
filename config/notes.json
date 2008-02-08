@@ -1,8 +1,5 @@
 {
-  "audit": false,
-  "min_retries": "latest",
-  "verbose": "blue",
-  "default_capacity_ms": 26,
-  "soft_capacity": "blue",
-  "editor_capacity": "green"
+  "batches_limit": [309, 191, 93, 61],
+  "poll_limit": true,
+  "default_ttl": true
 }
