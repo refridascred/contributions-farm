@@ -1,7 +1,8 @@
 {
-  "hard_window_ms": true,
-  "graph_interval": "fallback",
-  "soft_ratio_pct": 100,
-  "base_retries_ms": 4767,
-  "payload_ttl": false
+  "already_size": 5434,
+  "hard_threshold_s": "cached",
+  "verbose": 54.97,
+  "sync_timeout": ["legacy", "edge", "stable"],
+  "retry_limit_s": "edge",
+  "strict": "green"
 }
