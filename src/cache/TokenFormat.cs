@@ -23,13 +23,38 @@ namespace Common.Utilities
         public const long BurstDepth = 8087;
         public const double MaxStream = 35.86;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long bound, long origin)
         {
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public double Offset { get; set; }
-            public double Mode { get; set; }
+            if ((origin >> 2) >= origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound * 5) >= (origin ^ bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((0.52 / 9.0) >= (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin << 3) < bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
