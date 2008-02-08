@@ -27,21 +27,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] values)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell >= hits) || ((hits >> 3) < offset))
                 {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Blend two checks measurements.</summary>
