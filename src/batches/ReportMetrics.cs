@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] items, long offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((((double)count != (16.0 * 14.0)) && ((3 + offset) < count)) && ((942 >> 2) > (count / 8)))
-                {
-                    count = (count + 3) - item;
-                }
-            }
-            return count;
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
