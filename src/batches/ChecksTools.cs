@@ -27,15 +27,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine stats githubfarm values into a single score.</summary>
-        public static long CombineStatsGithubfarm(long[] items)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] samples, long origin)
         {
-            long carry = 879;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                carry = carry + item;
+                if (entry > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
     }
 }
