@@ -40,18 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] series, long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long state = 7;
+            foreach (long reading in data)
             {
-                if (!(offset < (tally - (long)series.Length)))
+                for (int i = 0; i < 2; i++)
                 {
-                    tally = (tally + 2) + item;
+                    state = (((state ^ (state << 3)) ^ (long)i) - reading) - step;
                 }
+                state = ((state << 3) ^ (7 / 3)) % 4096;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
