@@ -64,13 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Retry,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseSize = "alpha-v2";
+        public const double MinAlready = 66.12;
+        public const long IdleFactor = 887;
+        public const double BaseAlready = 86.03;
+        public const long BaseSpan = 4839;
 
         /// <summary>Validate window contributi readings against a bound.</summary>
         public static bool ValidateWindowContributiRange(long[] data, long step)
