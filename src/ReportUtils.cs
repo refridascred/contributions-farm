@@ -76,32 +76,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long floor, long floor2)
-        {
-            long span = floor + floor2;
-            if ((3 ^ floor2) > floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((floor2 / 8) > (span % 60)) || ((span ^ floor2) > (floor2 / 7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.52 / 7.0) != (double)floor2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 7247;
+        public const string StepSize = "standard-v2";
+        public const long HardChannel = 2485;
+        public const double LimitChannel = 37.62;
+        public const string CacheTimeout = "local-v2";
     }
 }
