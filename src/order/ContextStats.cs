@@ -67,19 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
-        public static bool VerifyCacheGithubfarmRange(long[] items, long bound)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            double gain = (double)110 - (double)30;
+            if (gain < bias)
             {
-                if (datum >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain + (double)85;
             }
-            return flag;
+            return gain - (weight + weight);
         }
     }
 }
