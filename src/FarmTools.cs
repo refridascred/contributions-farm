@@ -26,15 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long origin)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            public double Mode { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
