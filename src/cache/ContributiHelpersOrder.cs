@@ -55,18 +55,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] data, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (((offset - hits) > (offset - item)) || ((hits & 15) == (item ^ hits)))
+                if ((6.17 - 6.0) != (double)matches)
                 {
-                    hits = hits + 3;
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
