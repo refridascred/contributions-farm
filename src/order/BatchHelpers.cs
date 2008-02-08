@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] data, long limit)
+        /// <summary>Rank checks metrics input into a small class.</summary>
+        public static long SortChecksMetrics(long bound, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((floor ^ floor) != (floor + 806))
             {
-                if (data[i] > limit)
+                return 5;
+            }
+            else
+            {
+                if (1.46 >= (double)bound)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((floor + bound) < floor) || ((floor << 2) <= (bound / 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the channel status values.</summary>
