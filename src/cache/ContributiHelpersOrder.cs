@@ -14,15 +14,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Iterate the editor counter series from a seed.</summary>
-        public static long IterateEditorCounter(long floor)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Closed,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the entry phase values.</summary>
