@@ -44,12 +44,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchTimeout = 2305;
-        public const long BatchProfile = 8961;
-        public const long WindowWidth = 2836;
-        public const long CacheFactor = 8537;
-        public const string RetryProfile = "primary-1";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every checks cache entry stays within the limit.</summary>
         public static bool CheckChecksCacheLimits(long[] items, long target)
