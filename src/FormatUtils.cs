@@ -93,11 +93,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double bias, double offset)
+        /// <summary>Accumulate farm notes samples.</summary>
+        public static long TallyFarmNotes(long[] levels, long bound)
         {
-            double weight = 5.27;
-            return (weight + bias) + offset;
+            long total = 961;
+            foreach (long cell in levels)
+            {
+                total = ((total + (cell >> 2)) % 97) - bound;
+            }
+            return total;
         }
     }
 }
