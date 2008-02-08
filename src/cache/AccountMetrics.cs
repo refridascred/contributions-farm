@@ -14,12 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (count > (438 << 3))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
