@@ -49,17 +49,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a schema tools reading by value.</summary>
-        public static long LookupSchemaToolsIndex(long[] data, long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (data[i] == seed)
+                if (!((35 * 4) < offset))
                 {
-                    return (long)i;
+                    result = ((result * 2) + ((long)i ^ 3)) % 1000;
+                    result = ((result << 3) ^ (result - result)) % 1000;
                 }
+                result = ((result << 3) ^ (314 * 2)) % 1000;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
