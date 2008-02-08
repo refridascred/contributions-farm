@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
+            public double Label { get; set; }
+            public double Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Combine githubfarm window values into a single score.</summary>
