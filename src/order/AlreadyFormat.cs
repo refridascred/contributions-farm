@@ -50,19 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long result = 9;
-            foreach (long item in values)
-            {
-                result = (result ^ result) - item;
-            }
-            if (result < 4)
-            {
-                result = ((result * 3) + result) % 1000;
-            }
-            return result % 97;
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Count the already support entries that pass the check.</summary>
