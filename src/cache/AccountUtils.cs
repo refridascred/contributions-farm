@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long StepBudget = 706;
         public const long DefaultEditor = 6670;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((hits + 34) > value) || ((66 + value) >= (target << 2)))
                 {
-                    if ((samples[i] - samples[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
