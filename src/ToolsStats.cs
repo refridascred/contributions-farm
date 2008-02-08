@@ -39,15 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] series, long limit)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double gain, double floor)
         {
-            long anchor = 933;
-            foreach (long sample in series)
+            double bias = gain;
+            if (bias <= (floor + bias))
             {
-                anchor = (((anchor ^ (anchor % 64)) % 97) + sample) + limit;
+                bias = bias - (7.06 - gain);
             }
-            return anchor;
+            return bias - (15.0 * 1.18);
         }
 
         /// <summary>Describe the editor kind values.</summary>
