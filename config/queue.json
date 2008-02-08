@@ -1,22 +1,6 @@
 {
-  "filter_ratio": {
-    "payload_depth": true,
-    "strict": 94.95,
-    "base_ratio": "edge",
-    "verbose": {
-      "editor_interval": ["fallback", "edge", "blue", "primary"],
-      "batches_ratio": "staging",
-      "batch_timeout": ["open", "standard", "open", "stable"]
-    },
-    "poll_depth_count": 100,
-    "default_capacity_s": 6211
-  },
-  "readonly": "fallback",
-  "hard_window_count": {
-    "compress": 100,
-    "context_size": 16.52,
-    "dry_run": "primary"
-  },
-  "payload_depth": 4017,
-  "account_depth": "staging"
+  "hard_ttl": "strict",
+  "cache_size": "edge",
+  "readonly": [105, 22, 112, 254],
+  "retry_ratio_count": 53.75
 }
