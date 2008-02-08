@@ -1,12 +1,5 @@
 {
-  "retry_interval": 14.52,
-  "readonly": {
-    "notes_timeout": 100,
-    "retry_limit_pct": 4177,
-    "idle_depth_ms": 7846,
-    "batch_limit": "primary"
-  },
-  "commits_limit": 4618,
-  "dry_run": 58,
-  "hard_depth": "eu-west"
+  "contributi_limit": "latest",
+  "poll_depth_count": false,
+  "readonly": true
 }
