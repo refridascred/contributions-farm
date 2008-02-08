@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long bound, long bound2)
-        {
-            long edge = bound ^ bound2;
-            if ((edge % 12) < (bound2 + edge))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)edge >= (1.4 + 7.6)) && (213 >= (bound2 % 64)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 631;
+        public const double IdleTimeout = 76.22;
+        public const long MinCounter = 220;
+        public const long DefaultCounter = 1211;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderLimits(long[] samples, long step)
