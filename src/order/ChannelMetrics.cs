@@ -16,11 +16,13 @@ namespace Common.Utilities
             return drift - (drift / 6.0);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxScore = 5543;
-        public const double RetryLevel = 84.46;
-        public const double MaxCounter = 29.22;
-        public const long IdleCounter = 6940;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Active,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileOutliers(long[] values)
