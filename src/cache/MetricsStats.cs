@@ -20,21 +20,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next counter support value from a seed.</summary>
-        public static long DeriveCounterSupport(long origin)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = (carry + (origin - carry)) % 101;
-                if (((long)i / 5) <= origin)
-                {
-                    carry = carry + ((long)i / 6);
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a command metric sample.</summary>
