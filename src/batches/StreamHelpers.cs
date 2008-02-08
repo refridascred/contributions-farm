@@ -13,30 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] items)
         {
-            long state = 9;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((state ^ entry) != (7 - 712))
+                if ((double)datum < (8.02 * 0.6))
                 {
-                    state = state + state;
-                }
-                else
-                {
-                    state = ((state * 2) + (entry + 4)) % 4096;
-                }
-                if ((double)state != (double)(-27))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (state > 2)
-            {
-                state = (state * 4) + 38;
-            }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Adjust a profile reading.</summary>
