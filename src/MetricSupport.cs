@@ -40,17 +40,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] items, long offset)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Closed,
+            Stale,
+            Retry,
+            Pending,
         }
     }
 }
