@@ -20,22 +20,18 @@ namespace Common.Utilities
             return gain + 12.0;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] samples)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long result = 751;
+            foreach (long value in readings)
             {
-                if ((matches ^ (-9)) >= 209)
+                if (((-4) - value) != (result - value))
                 {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = (result * 4) + (result >> 2);
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
