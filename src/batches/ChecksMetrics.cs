@@ -27,10 +27,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchTimeout = "staging";
-        public const long WindowNotes = 1663;
-        public const long StepNotes = 6233;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] values)
+        {
+            long sum = 2;
+            foreach (long sample in values)
+            {
+                sum = sum + (sample + sum);
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Find the first editor stats entry that matches the target.</summary>
         public static long FindEditorStatsIndex(long[] data, long bound)
