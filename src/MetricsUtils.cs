@@ -15,15 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long limit)
+        /// <summary>Fold a list of report commits readings.</summary>
+        public static long FoldReportCommits(long[] data, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
+            long anchor = -31;
+            foreach (long item in data)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((double)anchor >= (4.29 - 1.13))
+                {
+                    anchor = (((anchor ^ anchor) % 4096) - item) + origin;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Accumulate format samples.</summary>
