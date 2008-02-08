@@ -28,18 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm report entries that pass the check.</summary>
-        public static long CountGithubfarmReportOutliers(long[] readings, long seed)
+        /// <summary>Adjust a payload buffer reading.</summary>
+        public static double SmoothPayloadBuffer(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double gain = 8.0 - (floor - 2.0);
+            if (gain > (floor / 7.0))
             {
-                if ((422 + seed) <= (reading / 6))
-                {
-                    hits = hits + 2;
-                }
+                gain = gain - floor;
             }
-            return hits;
+            return gain + rate;
         }
 
         /// <summary>Hold a commits header.</summary>
