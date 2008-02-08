@@ -1,5 +1,11 @@
 {
-  "channel_depth": "cached",
-  "schema_retries": "staging",
-  "format_delay": "eu-west"
+  "max_limit_ms": "standard",
+  "batch_ratio_s": [390, 5, 404],
+  "min_threshold_ms": "local",
+  "report_delay": "strict",
+  "burst_ratio": {
+    "base_ttl_pct": 98.93,
+    "retry_size_pct": false,
+    "burst_depth": "edge"
+  }
 }
