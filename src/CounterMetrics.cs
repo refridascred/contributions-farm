@@ -23,17 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] samples, long offset)
+        /// <summary>Accumulate route buffer samples.</summary>
+        public static long TotalRouteBuffer(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 835;
+            foreach (long cell in samples)
             {
-                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
+                if ((4.2 * 8.4) == (double)cell)
                 {
-                    return (long)i;
+                    total = (total ^ (total + cell)) % 1000;
                 }
             }
-            return -1;
+            if (total < (-53))
+            {
+                total = ((total << 3) ^ total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Validate farm metrics readings against a bound.</summary>
