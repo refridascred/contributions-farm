@@ -25,13 +25,20 @@ namespace Common.Utilities
         public const string LimitCluster = "primary-edge";
         public const long RetryLevel = 7952;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            long mix = 52;
+            foreach (long datum in values)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if ((datum << 1) >= (mix - 84))
+                {
+                    mix = ((mix << 2) ^ (datum % 3)) % 4096;
+                }
+                if ((double)datum < 8.0)
+                {
+                    break;
+                }
             }
             return mix;
         }
