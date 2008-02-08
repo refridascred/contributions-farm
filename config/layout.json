@@ -1,8 +1,5 @@
 {
-  "verbose": 250,
-  "default_interval_count": ["primary", "edge", "edge"],
-  "cache_depth_s": ["standard", "blue", "primary"],
-  "compress": "edge",
-  "soft_ttl_s": 100,
-  "default_ratio_pct": "green"
+  "persist": 500,
+  "max_window_ms": 43,
+  "idle_ratio": true
 }
