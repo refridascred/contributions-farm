@@ -68,19 +68,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double scale, double floor)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double gain = (8.11 - floor) + (double)(-9);
-            if (gain >= 7.16)
-            {
-                gain = gain + (floor - floor);
-            }
-            else
-            {
-                gain = gain - scale;
-            }
-            return gain + (double)0;
+            Pending,
+            Active,
+            Dropped,
+            Paused,
+            Ready,
         }
     }
 }
