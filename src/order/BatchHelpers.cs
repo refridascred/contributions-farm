@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!((cell + cell) <= (origin / 8)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSchema = "fallback-v2";
+        public const long RetryWidth = 8424;
+        public const long WindowBudget = 8633;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
