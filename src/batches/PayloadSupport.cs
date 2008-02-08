@@ -49,11 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
+            Idle,
+            Closed,
+            New,
+            Dropped,
         }
     }
 }
