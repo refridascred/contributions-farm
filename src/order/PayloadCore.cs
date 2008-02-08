@@ -36,19 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double gain, double offset)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
+            double rate = (double)(124 / 4);
+            if (rate > (double)66)
             {
-                if (floor > (89 >> 4))
-                {
-                    state = state ^ (floor + (long)i);
-                }
-                state = ((state * 4) + (long)i) % 97;
+                rate = rate + gain;
             }
-            return state;
+            return rate + (offset / 2.0);
         }
     }
 }
