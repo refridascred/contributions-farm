@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 3814;
+        public const double RetryTimeout = 35.49;
+        public const long DefaultSpan = 3692;
+        public const double SoftBatches = 98.04;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LocateCounterIndex(long[] samples, long step)
