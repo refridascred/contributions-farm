@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 84.13;
-        public const long BurstTimeout = 8600;
-        public const long IdleEntry = 3164;
-        public const long BaseLevel = 2251;
-        public const long LimitEntry = 6297;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] readings, long floor)
