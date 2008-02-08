@@ -1,6 +1,6 @@
 # entry settings
-editor_window: primary
-soft_delay_count:
-  - cached
-  - primary
-tools_interval: 7593
+poll_retries_count:
+  - staging
+  - fallback
+sync_ttl_pct: 91.07
+min_ttl_ms: latest
