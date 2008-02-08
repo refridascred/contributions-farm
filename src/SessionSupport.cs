@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const string StepTimeout = "primary-edge";
         public const string BaseSize = "stable-1";
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Ready,
-            Queued,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardSize = "open";
+        public const string WindowDepth = "local-1";
+        public const string MinProfile = "standard-v2";
+        public const long WindowLevel = 5777;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesMatches(long[] levels, long origin)
