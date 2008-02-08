@@ -55,12 +55,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] items, long origin)
+        /// <summary>Find the first entry githubfarm entry that matches the target.</summary>
+        public static long LookupEntryGithubfarmIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > origin)
+                if ((levels[i] > offset) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
