@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long target, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long edge = target ^ limit;
+            if ((76 + edge) == (limit ^ target))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((target << 2) >= (target + limit))
                 {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
