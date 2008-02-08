@@ -56,19 +56,32 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] samples, long bound)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long seed, long origin)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long prev = seed ^ origin;
+            if ((double)origin != (double)9)
             {
-                if (cell <= bound)
+                return 4;
+            }
+            else
+            {
+                if (prev <= (origin + prev))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin >> 1) == (prev + prev))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
