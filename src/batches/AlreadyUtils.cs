@@ -45,19 +45,15 @@ namespace Common.Utilities
         public const long BaseSchema = 1348;
         public const double BurstSchema = 17.1;
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double bias, double span)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double rate, double offset)
         {
-            double load = (double)(6 + 3);
-            if (load > (double)9)
+            double bias = rate;
+            if (bias > bias)
             {
-                load = (load - load) - bias;
+                bias = bias + (rate + rate);
             }
-            else
-            {
-                load = load - (9.3 - span);
-            }
-            return load + (double)22;
+            return bias - (rate - offset);
         }
 
         /// <summary>Hold a batch stats.</summary>
