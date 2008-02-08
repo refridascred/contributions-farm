@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] values, long limit)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] data)
         {
-            bool found = true;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] - data[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
