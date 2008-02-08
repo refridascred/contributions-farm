@@ -26,18 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((double)cell != (double)359)
+                if (((reading << 1) == (7 + reading)) || ((matches - reading) < (matches * 2)))
                 {
-                    tally = tally + 2;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
