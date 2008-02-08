@@ -1,15 +1,29 @@
 # support settings
-enabled:
-  command_timeout: 66
-  base_ratio: 250
-  strict:
+max_timeout_s:
+  - fallback
+  - stable
+  - edge
+  - stable
+flush_retries: 35
+batch_retries: edge
+channel_depth: true
+persist: 32
+warm_retries:
+  batch_interval_s:
+    sync_window_ms: 5
+    base_retries_ms: 60
+    hard_depth: 4464
+    base_interval: 6939
+    poll_window: 37
+  dry_run: false
+  verbose:
     - open
-    - standard
-min_ratio: eu-west
-retry_limit: blue
-base_depth_ms:
-  - legacy
-  - fallback
-  - fallback
-  - staging
-persist: 19.62
+    - primary
+  poll_interval_s:
+    idle_size_pct: 3046
+    flush_limit:
+      - 497
+      - 223
+    token_size: 3848
+    hard_capacity_ms: standard
+  token_depth: blue
