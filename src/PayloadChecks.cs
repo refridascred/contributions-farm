@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public double Label { get; set; }
-            public double Size { get; set; }
-            public double Count { get; set; }
+            New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Combine githubfarm window values into a single score.</summary>
