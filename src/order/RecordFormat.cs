@@ -53,22 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] readings, long step)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long result = 113;
-            foreach (long item in readings)
-            {
-                if (!(result <= (result * 2)))
-                {
-                    result = ((result + (result + 8)) + item) - step;
-                }
-            }
-            if (result < 833)
-            {
-                result = ((result * 3) + result) % 255;
-            }
-            return result;
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
