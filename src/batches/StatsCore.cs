@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long bound, long target)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
-            long delta = bound ^ target;
-            if ((double)target > (double)bound)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5 % 12) <= delta)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (delta <= bound)
+                    if ((levels[i] + levels[j]) == 12)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a window header.</summary>
