@@ -1,15 +1,13 @@
 # Command notes
 
-Keep route and token names short and lowercase.
-The graph report groups every counter by cluster.
-Use githubfarm settings to tune how often editor data is refreshed.
+Keep editor and counter names short and lowercase.
+Run the command check before changing any context limits.
 
-Keep session and notes names short and lowercase.
-Keep format and graph names short and lowercase.
+A token that stays idle for too long is moved to the window list.
+The stats module keeps context values in sync with the report cache.
 
 ## Guidelines
 
-- Validate entry input early
-- Log every already change
-- Keep record values small
-- Prefer counter defaults
+- Validate farm input early
+- Log every githubfarm change
+- Prefer command defaults
