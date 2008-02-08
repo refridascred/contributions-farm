@@ -23,27 +23,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] series, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] levels, long target)
         {
-            long state = 16;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((7.7 / 6.0) < (double)state)
+                if ((7.74 / 5.0) == (double)seen)
                 {
-                    state = (state + (value + value)) % 97;
-                }
-                state = ((state * 3) + (value % 100)) % 4096;
-                if ((double)value <= (1.64 / 4.0))
-                {
-                    state = (state << 3) ^ 878;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (value - origin)) % 255;
+                    seen = ((seen + 2) + entry) - target;
                 }
             }
-            return state % 1000;
+            return seen;
         }
     }
 }
