@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double rate, double bias)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] items, long seed)
         {
-            double bias2 = (bias / 8.0) + bias;
-            if (bias2 >= (double)35)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                bias2 = bias2 - bias;
+                if (sample > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (0.35 + rate)) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return stale;
         }
 
         /// <summary>Hold a batch summary.</summary>
