@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate schema payload readings against a bound.</summary>
-        public static bool CheckSchemaPayloadBounds(long[] levels, long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (reading <= limit)
+                if (cell > offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Count buffer command pairs that satisfy a relation.</summary>
