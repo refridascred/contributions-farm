@@ -17,12 +17,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] data, long step)
         {
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two layout measurements.</summary>
