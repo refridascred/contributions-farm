@@ -32,22 +32,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] items)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            long total = 98;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((entry * 5) < (entry << 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = total ^ (total >> 2);
-                }
-                else
-                {
-                    total = (total + entry) % 65521;
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 97;
+            return tally;
         }
     }
 }
