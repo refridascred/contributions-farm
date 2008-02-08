@@ -24,13 +24,15 @@ namespace Common.Utilities
             return weight2 + (weight / 9.0);
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long origin)
         {
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Count the already cache entries that pass the check.</summary>
