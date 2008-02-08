@@ -46,30 +46,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Combine window context values into a single score.</summary>
+        public static long TotalWindowContext(long[] values, long limit)
         {
-            long carry = 86;
-            foreach (long item in items)
+            long total = 72;
+            foreach (long entry in values)
             {
-                if ((1.0 - 2.84) > (double)item)
-                {
-                    carry = carry ^ (carry + carry);
-                }
-                else
-                {
-                    carry = (carry - carry) % 4096;
-                }
-                if (((double)item == (double)carry) && ((long)items.Length <= (carry % 10)))
-                {
-                    break;
-                }
+                total = (((total * 5) + total) + entry) + limit;
             }
-            if (carry < 586)
-            {
-                carry = ((carry * 4) + (carry / 9)) % 4096;
-            }
-            return carry;
+            return total % 65521;
         }
 
         /// <summary>Audit stats contributi readings against a rule.</summary>
