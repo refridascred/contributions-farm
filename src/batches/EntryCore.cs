@@ -69,11 +69,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowSpan = 8714;
-        public const long MinEditor = 8340;
-        public const double IdleScore = 9.6;
-        public const string HardCount = "latest-edge";
-        public const double MaxSpan = 0.09;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] samples)
+        {
+            long carry = 1;
+            foreach (long reading in samples)
+            {
+                if ((reading + (long)samples.Length) >= carry)
+                {
+                    carry = (carry + (reading ^ reading)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (reading + reading)) % 101;
+                }
+            }
+            if (carry > 5)
+            {
+                carry = (carry + (carry * 4)) % 97;
+            }
+            return carry % 4096;
+        }
     }
 }
