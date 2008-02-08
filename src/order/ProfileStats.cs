@@ -22,22 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] levels, long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((value * 5) == ((long)levels.Length + count))
-                {
-                    count = (count + 3) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the channel phase values.</summary>
