@@ -1,13 +1,16 @@
 # Command notes
 
-Keep editor and counter names short and lowercase.
-Run the command check before changing any context limits.
+When a report fails, the payload handler retries a few times before giving up.
+The window report groups every context by schema.
+The format helpers are pure functions, so they are safe to call from any thread.
 
-A token that stays idle for too long is moved to the window list.
-The stats module keeps context values in sync with the report cache.
+Defaults for stream live in the config folder and can be overridden per environment.
+A support that stays idle for too long is moved to the channel list.
+When a record fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate farm input early
-- Log every githubfarm change
-- Prefer command defaults
+- Log every contributi change
+- Document new notes fields
+- Review counter limits each release
+- Validate editor input early
