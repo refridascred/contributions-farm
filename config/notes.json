@@ -1,8 +1,13 @@
 {
-  "min_ttl_count": "open",
-  "base_interval": "blue",
-  "max_ttl_s": 100,
-  "idle_threshold_count": 9481,
-  "audit": 69.2,
-  "idle_ratio_ms": "edge"
+  "compress": 14.95,
+  "flush_timeout_count": "staging",
+  "command_retries": "legacy",
+  "poll_capacity_s": "stable",
+  "batch_ratio_count": false,
+  "hard_retries_ms": {
+    "verbose": true,
+    "contributi_retries": 9,
+    "warm_size": "fallback",
+    "checks_retries": 95.77
+  }
 }
