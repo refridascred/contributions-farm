@@ -90,12 +90,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] levels, long target)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
+                if ((data[i] <= target) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
