@@ -35,18 +35,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] levels)
+        /// <summary>Audit schema commits readings against a rule.</summary>
+        public static long CountSchemaCommitsHits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (item < (count - count))
+                if (seen >= (limit / 3))
                 {
-                    count = count + 3;
+                    seen = (seen + 3) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a stats record.</summary>
