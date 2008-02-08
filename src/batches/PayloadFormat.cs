@@ -39,13 +39,10 @@ namespace Common.Utilities
             return gain + rate;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "cached";
+        public const long BurstBudget = 5543;
+        public const long BurstLevel = 3574;
+        public const long WindowLayout = 9778;
     }
 }
