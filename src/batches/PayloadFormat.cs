@@ -23,31 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long seed, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] levels)
         {
-            if (seed < target)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (0.3 > (double)seed)
+                if (((77 + cell) > (4 >> 5)) || ((double)cell < (15.0 + 0.3)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((target << 1) >= (546 / 5)) && ((seed % 64) >= (seed >> 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a contributi entry.</summary>
