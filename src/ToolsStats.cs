@@ -26,22 +26,32 @@ namespace Common.Utilities
         public const long HardSession = 9268;
         public const long StepSession = 652;
 
-        /// <summary>Count the already account entries that pass the check.</summary>
-        public static long TallyAlreadyAccountHits(long[] readings)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long lane = floor ^ origin;
+            if ((133 << 3) <= (lane - floor))
             {
-                if (datum < (seen >> 4))
+                return 7;
+            }
+            else
+            {
+                if ((27 + 31) > lane)
                 {
-                    seen = seen + 3;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (floor >= (floor - origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
