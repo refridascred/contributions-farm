@@ -30,11 +30,9 @@ namespace Common.Utilities
             return drift + 9.75;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 3.0;
+        public const long IdleInterval = 1337;
+        public const long DefaultScore = 8236;
     }
 }
