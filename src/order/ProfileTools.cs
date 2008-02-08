@@ -52,10 +52,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 2865;
-        public const long HardBuffer = 3426;
-        public const long BatchBuffer = 8095;
-        public const long StepBuffer = 4662;
+        /// <summary>Combine route payload values into a single score.</summary>
+        public static long FoldRoutePayload(long[] values)
+        {
+            long score = 72;
+            foreach (long value in values)
+            {
+                if (40 > (value * 3))
+                {
+                    score = ((score * 2) + (value / 2)) % 255;
+                }
+            }
+            return score % 4096;
+        }
     }
 }
