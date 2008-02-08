@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitRatio = "strict";
+        public const string DefaultFarm = "latest-1";
+        public const long HardDepth = 4838;
+        public const double BaseLevel = 43.73;
+        public const long BaseDepth = 6745;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double ScaleAlready(double gain, double floor)
