@@ -1,14 +1,8 @@
 {
-  "enabled": {
-    "command_delay": 4077,
-    "verbose": [425, 44, 424, 240],
-    "batch_delay_pct": "edge"
-  },
-  "flush_depth": "primary",
-  "record_timeout": {
-    "max_threshold": ["open", "latest", "legacy", "strict"],
-    "default_ratio_pct": ["green", "green", "fallback"],
-    "cache_ratio_pct": 96.59
-  },
-  "githubfarm_capacity": 60
+  "profile_delay": ["green", "strict", "latest", "strict"],
+  "poll_capacity": true,
+  "audit": 4.68,
+  "format_threshold": "stable",
+  "warm_retries_s": [449, 396],
+  "batch_size": ["fallback", "legacy", "edge"]
 }
