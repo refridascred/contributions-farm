@@ -13,12 +13,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftDepth = 3180;
-        public const long MinChecks = 1197;
-        public const double HardLevel = 16.49;
-        public const string BaseChecks = "stable-1";
-        public const string BurstChecks = "strict";
+        /// <summary>Roll a profile farm counter forward.</summary>
+        public static long DeriveProfileFarm(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = ((mark << 3) ^ 5) ^ (long)i2;
+                }
+                if ((mark * 5) >= (mark << 3))
+                {
+                    mark = (mark ^ (mark + mark)) % 101;
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinMetric = 4246;
