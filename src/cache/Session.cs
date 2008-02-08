@@ -36,12 +36,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstRatio = 16.1;
-        public const double MinBudget = 26.11;
-        public const double CacheRecord = 96.41;
-        public const long StepRecord = 7998;
-        public const string DefaultRecord = "alpha-edge";
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double StepWidth = 23.01;
