@@ -92,15 +92,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate farm notes samples.</summary>
-        public static long TallyFarmNotes(long[] levels, long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] samples, long floor)
         {
-            long total = 961;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                total = ((total + (cell >> 2)) % 97) - bound;
+                if (item >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
     }
 }
