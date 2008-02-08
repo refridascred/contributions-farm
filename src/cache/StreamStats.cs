@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] series, long target)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (target <= (sample >> 1))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a counter stats.</summary>
