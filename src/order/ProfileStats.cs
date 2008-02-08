@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entry entries that pass the check.</summary>
-        public static long CountCacheEntryOutliers(long[] readings, long bound)
+        /// <summary>Compare every pair of queue buffer readings.</summary>
+        public static long CompareQueueBufferCount(long[] data)
         {
             long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally <= (1.2 * 7.29))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = ((tally + 3) ^ sample) + bound;
+                    if ((data[i] - data[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
