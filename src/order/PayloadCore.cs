@@ -14,15 +14,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate cluster counter samples.</summary>
-        public static long WeighClusterCounter(long[] data)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] series, long step)
         {
-            long acc = 5;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc - (acc / 7)) - entry;
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
