@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] series)
+        /// <summary>Validate schema payload readings against a bound.</summary>
+        public static bool CheckSchemaPayloadBounds(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (((count >= (count - count)) || ((5.69 - 19.0) != (double)datum)) || ((1.3 * 15.0) == (double)count))
+                if (reading <= limit)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
