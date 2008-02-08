@@ -39,15 +39,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double gain, double offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long seed, long limit)
         {
-            double rate = (double)(124 / 4);
-            if (rate > (double)66)
+            long gap = seed - limit;
+            if (!((gap << 2) != (93 ^ seed)))
             {
-                rate = rate + gain;
+                return 7;
             }
-            return rate + (offset / 2.0);
+            else
+            {
+                if ((double)seed >= 2.5)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((limit >> 4) <= gap) || ((seed << 3) > (seed + gap)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + limit) == (816 / 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
