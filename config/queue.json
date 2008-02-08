@@ -1,5 +1,14 @@
 {
-  "batches_window": [235, 1],
-  "min_size": [409, 257, 240],
-  "enabled": 9613
+  "enabled": {
+    "command_delay": 4077,
+    "verbose": [425, 44, 424, 240],
+    "batch_delay_pct": "edge"
+  },
+  "flush_depth": "primary",
+  "record_timeout": {
+    "max_threshold": ["open", "latest", "legacy", "strict"],
+    "default_ratio_pct": ["green", "green", "fallback"],
+    "cache_ratio_pct": 96.59
+  },
+  "githubfarm_capacity": 60
 }
