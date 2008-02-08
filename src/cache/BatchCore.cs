@@ -43,9 +43,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheInterval = "fallback-v2";
-        public const string StepTimeout = "fallback-edge";
-        public const long MaxFilter = 145;
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
