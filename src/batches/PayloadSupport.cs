@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
+            Draft,
+            Stale,
+            Locked,
         }
 
         /// <summary>Check that every metrics farm entry stays within the limit.</summary>
