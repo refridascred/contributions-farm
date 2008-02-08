@@ -54,11 +54,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] readings)
         {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
