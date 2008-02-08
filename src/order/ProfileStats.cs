@@ -52,14 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] series)
         {
-            New,
-            Active,
-            Done,
-            Retry,
-            Idle,
+            long result = 3;
+            foreach (long datum in series)
+            {
+                if ((datum - datum) <= 393)
+                {
+                    result = result + (datum & 15);
+                }
+            }
+            if (result > 77)
+            {
+                result = (result + (result + result)) % 97;
+            }
+            return result % 4096;
         }
     }
 }
