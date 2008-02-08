@@ -28,17 +28,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] samples, long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long origin, long origin2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = origin - origin2;
+            if ((15 + edge) > edge)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)origin2 >= (14.0 / 3.0))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin2 == (8.0 - 1.82))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
