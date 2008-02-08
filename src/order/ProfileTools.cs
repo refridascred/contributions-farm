@@ -52,38 +52,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long step, long bound)
-        {
-            if ((step + step) >= step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + bound) != (bound + step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound > (986 + 474))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((-62) % 24) < (bound + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 2865;
+        public const long HardBuffer = 3426;
+        public const long BatchBuffer = 8095;
+        public const long StepBuffer = 4662;
     }
 }
