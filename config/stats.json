@@ -1,5 +1,5 @@
 {
-  "cache_window_s": "standard",
-  "githubfarm_depth": [119, 91, 472],
-  "base_ratio_pct": 2465
+  "min_threshold": ["edge", "open", "primary"],
+  "commits_timeout": 250,
+  "readonly": 43
 }
