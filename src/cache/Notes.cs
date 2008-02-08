@@ -51,18 +51,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] samples, long seed)
         {
-            long score = -359;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((sample + score) >= score)
+                if (((count & 7) >= (count + seed)) && ((32 << 2) < (seed * 2)))
                 {
-                    score = (score ^ (sample + sample)) % 97;
+                    count = (count + 2) + reading;
                 }
             }
-            return score;
+            return count;
         }
     }
 }
