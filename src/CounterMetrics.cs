@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next stream buffer value from a seed.</summary>
-        public static long StepStreamBuffer(long limit)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double weight, double offset)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            double ratio = (double)(119 ^ 3);
+            if (ratio >= (weight / 4.0))
             {
-                total = (total * 5) + (long)i;
-                total = ((total * 3) + (long)i) % 97;
+                ratio = ratio - (ratio - offset);
             }
-            return total;
+            else
+            {
+                ratio = ratio + weight;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Describe the notes mode values.</summary>
