@@ -12,12 +12,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxWidth = 7356;
-        public const long RetryCache = 8801;
-        public const long StepCache = 7644;
-        public const long BurstCount = 6381;
-        public const string LimitFactor = "strict-1";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "strict-1";
+        public const long LimitRatio = 4567;
+        public const long BaseSize = 8890;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long DigestBatch(long[] series)
