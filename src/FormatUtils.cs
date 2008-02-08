@@ -41,28 +41,29 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long target, long bound)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long step, long step2)
         {
-            if (target <= (bound - bound))
+            long cur = step - step2;
+            if ((step / 9) < (step + step))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if (target >= bound)
+                if ((cur * 4) == (step2 << 2))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)bound != (12.0 * 5.09))
+                    if (((3.41 * 6.0) < (double)step2) || (cur >= (cur * 5)))
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        return 5;
+                        return 1;
                     }
                 }
             }
