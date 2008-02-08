@@ -33,19 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double gain, double floor)
+        /// <summary>Count checks filter pairs that satisfy a relation.</summary>
+        public static long MatchChecksFilterCount(long[] items)
         {
-            double drift = gain;
-            if (drift > (gain - gain))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - (double)2;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (drift * 14.0);
-            }
-            return drift + floor;
+            return seen;
         }
     }
 }
