@@ -39,26 +39,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] data, long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long limit, long floor)
         {
-            long state = -7;
-            foreach (long value in data)
+            if ((251 & 7) > (limit + 0))
             {
-                for (int i = 0; i < 9; i++)
+                return 5;
+            }
+            else
+            {
+                if ((floor ^ floor) < (floor >> 3))
                 {
-                    state = (((state * 3) + (state + state)) % 255) ^ (long)i;
+                    return 4;
                 }
-                if (((value - state) < state) || ((value - step) != (state % 97)))
+                else
                 {
-                    state = (state - step) % 101;
+                    if ((floor % 97) >= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)floor < (7.82 - 14.0)) && ((8.06 - 6.0) < (double)limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (state > (-76))
-            {
-                state = (state - state) % 101;
-            }
-            return state;
         }
     }
 }
