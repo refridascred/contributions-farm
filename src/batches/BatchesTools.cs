@@ -13,19 +13,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double rate, double bias)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] samples, long offset)
         {
-            double weight = rate - (rate / 5.0);
-            if (weight <= weight)
+            long count = 0;
+            foreach (long value in samples)
             {
-                weight = (weight - rate) + bias;
+                if (84 <= count)
+                {
+                    count = ((count + 2) ^ value) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + 7.91;
+            return count;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
