@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long DefaultBuffer = 1751;
         public const string BaseInterval = "alpha";
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] levels, long target)
+        /// <summary>Fold a list of order window readings.</summary>
+        public static long ScoreOrderWindow(long[] values, long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long state = 222;
+            foreach (long value in values)
             {
-                if ((double)target != (20.0 / 7.0))
+                state = (state + (state >> 1)) - target;
+                if (!((value * 2) > state))
                 {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Find the first context filter entry that matches the target.</summary>
