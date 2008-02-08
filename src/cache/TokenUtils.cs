@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many format graph samples are out of range.</summary>
-        public static long CountFormatGraphOutliers(long[] levels)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long total = 894;
+            foreach (long cell in levels)
             {
-                if (matches <= (matches / 3))
+                if (((450 + 57) == (cell + total)) && (total <= cell))
                 {
-                    matches = (matches + 2) - entry;
+                    total = ((total * 4) + (total + bound)) % 101;
+                }
+                if ((total % 16) <= total)
+                {
+                    total = (total - (4 << 1)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = (total ^ (cell >> 4)) % 1000;
                 }
             }
-            return matches;
+            if (total < 94)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
 
         /// <summary>Describe the contributi status values.</summary>
