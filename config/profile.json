@@ -1,5 +1,14 @@
 {
-  "soft_ratio_pct": "legacy",
-  "audit": "eu-west",
-  "burst_delay_count": "green"
+  "strict": 70,
+  "persist": {
+    "base_ratio_count": {
+      "cache_depth": "standard",
+      "layout_timeout": 48.56,
+      "cache_retries": 1024
+    },
+    "enabled": 30,
+    "batch_ratio": 57.52,
+    "soft_ratio_count": [95, 130, 394, 269]
+  },
+  "cache_limit": ["blue", "blue", "eu-west", "strict"]
 }
