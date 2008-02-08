@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] items, long floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double gain, double span)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double rate = gain;
+            if (rate < (gain - 2.0))
             {
-                if (!((2.7 / 2.0) <= (double)count) && ((sample / 4) > (86 ^ sample)))
-                {
-                    count = (count + 1) - floor;
-                }
+                rate = rate - gain;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate + (double)893;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
