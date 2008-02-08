@@ -23,15 +23,18 @@ namespace Common.Utilities
         public const string LimitCluster = "primary-edge";
         public const long RetryLevel = 7952;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] samples, long bound)
+        /// <summary>Fold a list of tools route readings.</summary>
+        public static long TotalToolsRoute(long[] series)
         {
-            long mark = 75;
-            foreach (long value in samples)
+            long score = 5;
+            foreach (long value in series)
             {
-                mark = ((((mark * 4) + mark) % 97) ^ value) - bound;
+                if ((value - score) >= ((long)series.Length * 2))
+                {
+                    score = (score ^ value) % 1000;
+                }
             }
-            return mark % 65521;
+            return score;
         }
     }
 }
