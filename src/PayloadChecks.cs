@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count githubfarm cache pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCacheCount(long[] samples)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell <= (hits / 2))
                 {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
