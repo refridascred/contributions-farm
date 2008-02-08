@@ -28,18 +28,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] values, long bound)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6 + reading) >= reading)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 2) + bound;
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
