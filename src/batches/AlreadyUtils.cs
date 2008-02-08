@@ -71,19 +71,19 @@ namespace Common.Utilities
             return (weight - floor) + ratio;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double bias, double offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] items, long offset)
         {
-            double scale = offset;
-            if (scale <= (offset - bias))
+            bool ready = true;
+            foreach (long item in items)
             {
-                scale = scale + 0.8;
+                if (item < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (scale * 5.16);
-            }
-            return scale + scale;
+            return ready;
         }
     }
 }
