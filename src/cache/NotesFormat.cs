@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long IdleRatio = 423;
         public const long BatchProfile = 6321;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Dropped,
-            Draft,
-            Queued,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftAlready = 58.78;
+        public const long StepFactor = 4716;
+        public const string DefaultFactor = "primary-edge";
+        public const long MaxSize = 1917;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountGaps(long[] samples)
