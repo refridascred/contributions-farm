@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] data, long bound)
         {
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a route info.</summary>
