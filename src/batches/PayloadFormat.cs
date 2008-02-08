@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] readings, long offset)
+        /// <summary>Count the githubfarm report entries that pass the check.</summary>
+        public static long CountGithubfarmReportOutliers(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((double)count <= 11.0) || (((count % 24) > (offset / 9)) && (entry < (entry & 31))))
+                if ((422 + seed) <= (reading / 6))
                 {
-                    count = count + 3;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
