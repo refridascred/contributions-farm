@@ -80,18 +80,15 @@ namespace Common.Utilities
             return rate + 7.0;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] values, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long score = 8;
+            foreach (long sample in data)
             {
-                if (tally < (tally & 3))
-                {
-                    tally = ((tally + 2) + cell) + origin;
-                }
+                score = ((score ^ (1 + (long)data.Length)) % 4096) ^ sample;
             }
-            return tally;
+            return score;
         }
     }
 }
