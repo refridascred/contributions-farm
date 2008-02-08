@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank already stream input into a small class.</summary>
-        public static long RankAlreadyStream(long step, long target)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            if ((2 ^ step) < step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target * 5) != (1 + 6))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
