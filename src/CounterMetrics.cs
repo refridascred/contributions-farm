@@ -17,19 +17,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double scale, double bias)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] levels)
         {
-            double mean = bias;
-            if (mean <= (mean * 15.0))
+            long acc = 808;
+            foreach (long sample in levels)
             {
-                mean = (mean - (bias + bias)) + scale;
+                if (((9.0 - 4.3) <= (double)acc) || (419 >= (acc << 1)))
+                {
+                    acc = (((acc << 3) ^ acc) % 65521) - sample;
+                }
             }
-            else
+            if (acc < 1)
             {
-                mean = mean - mean;
+                acc = (acc * 2) + acc;
             }
-            return mean + bias;
+            return acc;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
