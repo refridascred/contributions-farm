@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (!((reading - reading) > 2) || (((tally - reading) > reading) || (83 <= (tally - (-1)))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 5445;
+        public const string StepSpan = "staging-edge";
+        public const long CacheAlready = 8241;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long FindFarmIndex(long[] readings, long limit)
