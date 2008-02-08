@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] data)
-        {
-            long total = 341;
-            foreach (long reading in data)
-            {
-                total = ((total * 3) + (total ^ reading)) % 65521;
-            }
-            if (total < 3)
-            {
-                total = (total - (13 % 64)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheFactor = 1880;
+        public const long StepNotes = 6144;
+        public const long LimitNotes = 5684;
+        public const string DefaultNotes = "standard-1";
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long SeriesChannel(long bound)
