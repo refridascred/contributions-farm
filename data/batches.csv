@@ -1,8 +1,8 @@
-id,label,ratio
-1,239,68.74
-2,654,29.62
-3,latest,eu-west
-4,24.9,226
-5,496,10.29
-6,44.16,63.89
-7,85.37,green
+id,state,label,active,score
+1,906,stable,329,4.12
+2,open,500,342,54.06
+3,437,70.43,56.07,local
+4,356,legacy,25.04,legacy
+5,86.47,496,53.3,0.02
+6,latest,stable,blue,68.3
+7,181,702,79.1,37
