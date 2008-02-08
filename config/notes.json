@@ -1,9 +1,8 @@
 {
-  "contributi_retries": ["legacy", "fallback", "stable", "staging"],
-  "default_depth_ms": 44.36,
-  "burst_threshold_ms": {
-    "dry_run": false,
-    "readonly": 85.57,
-    "burst_window_pct": 60
-  }
+  "idle_timeout_pct": 85,
+  "default_interval_s": ["eu-west", "blue", "eu-west", "fallback"],
+  "hard_threshold_count": 7270,
+  "enabled": "primary",
+  "base_size": "green",
+  "session_depth": 35.2
 }
