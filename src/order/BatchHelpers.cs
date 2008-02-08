@@ -38,19 +38,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate cache command readings against a bound.</summary>
-        public static bool VerifyCacheCommandBounds(long[] values, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long mark = -24;
+            foreach (long value in items)
             {
-                if (entry > step)
+                mark = (mark << 3) ^ value;
+                if ((mark * 2) >= (mark + mark))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark * 4) + (mark / 8);
                 }
             }
-            return flag;
+            if (mark > 355)
+            {
+                mark = (mark * 2) + ((-578) * 5);
+            }
+            return mark % 1000;
         }
     }
 }
