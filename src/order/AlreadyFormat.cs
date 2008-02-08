@@ -19,21 +19,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Derive the next metric commits value from a seed.</summary>
-        public static long DeriveMetricCommits(long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            long mark = 65;
+            foreach (long value in series)
             {
-                long slot = (state - state) + (state + (long)i);
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((522 + 51) >= (value % 64))
                 {
-                    state = (((state << 3) ^ (slot / 7)) % 97) ^ (long)i2;
+                    mark = (mark - value) % 1000;
                 }
-                slot = (slot << 3) ^ (state / 2);
-                state = ((state * 2) + (long)i) % 101;
+                else
+                {
+                    mark = ((mark * 4) + (value & 63)) % 97;
+                }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Describe the already phase values.</summary>
