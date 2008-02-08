@@ -34,17 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first context filter entry that matches the target.</summary>
-        public static long LookupContextFilterIndex(long[] values, long target)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
