@@ -37,14 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Queued,
-            Pending,
-            Retry,
-            Locked,
-            Closed,
+            Idle,
+            Active,
+            Ready,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
