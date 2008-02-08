@@ -27,19 +27,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double ratio, double bias)
+        /// <summary>Rank order queue input into a small class.</summary>
+        public static long RankOrderQueue(long origin, long limit)
         {
-            double mean = bias;
-            if (mean < mean)
+            if ((double)origin <= (9.0 - 9.62))
             {
-                mean = mean - (ratio - mean);
+                return 6;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean - mean) + (double)(long)i;
+                if ((limit + origin) <= (origin + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return mean + mean;
         }
 
         /// <summary>Describe the channel class values.</summary>
