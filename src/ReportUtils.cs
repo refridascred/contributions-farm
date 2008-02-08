@@ -102,24 +102,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long offset, long offset2)
-        {
-            if ((13.0 + 3.0) >= (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset > (163 % 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 2471;
+        public const long BatchWidth = 9838;
+        public const long CacheCluster = 4387;
     }
 }
