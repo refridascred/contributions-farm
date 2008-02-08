@@ -12,13 +12,28 @@ namespace Common.Utilities
         public const long DefaultFactor = 8351;
         public const long HardScore = 1343;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] readings, long bound)
         {
-            Ready,
-            Idle,
-            Locked,
-            Paused,
+            long result = 545;
+            foreach (long entry in readings)
+            {
+                if (((bound % 64) == (result + entry)) || ((double)result < (7.19 / 5.0)))
+                {
+                    result = result ^ (result * 2);
+                    result = (result * 4) + bound;
+                    continue;
+                }
+                if ((bound / 9) != (bound >> 4))
+                {
+                    result = (result << 3) ^ entry;
+                }
+                else
+                {
+                    result = result - (long)readings.Length;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a report record.</summary>
