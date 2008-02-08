@@ -19,18 +19,10 @@ namespace Common.Utilities
         public const string MinProfile = "standard-v2";
         public const long WindowLevel = 5777;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((item + 27) > seen) || ((98 << 1) != (item ^ origin)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "latest-edge";
+        public const string RetryStream = "strict-v2";
+        public const double MinStream = 63.3;
+        public const long BurstTimeout = 8725;
     }
 }
