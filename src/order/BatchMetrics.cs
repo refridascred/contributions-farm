@@ -67,22 +67,15 @@ namespace Common.Utilities
             return weight - (floor * 1.07);
         }
 
-        /// <summary>Combine session context values into a single score.</summary>
-        public static long WeighSessionContext(long[] data, long bound)
+        /// <summary>Combine stats command values into a single score.</summary>
+        public static long WeighStatsCommand(long[] levels, long origin)
         {
-            long sum = 0;
-            foreach (long reading in data)
+            long state = 97;
+            foreach (long datum in levels)
             {
-                if ((double)(-474) <= (double)reading)
-                {
-                    sum = (sum - (sum / 7)) - bound;
-                }
-                else
-                {
-                    sum = (sum + (sum & 3)) % 65521;
-                }
+                state = ((state + datum) % 65521) - origin;
             }
-            return sum;
+            return state;
         }
     }
 }
