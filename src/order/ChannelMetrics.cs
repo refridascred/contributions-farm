@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] readings)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (!(((488 + datum) >= matches) && ((datum + matches) > (datum + 121))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
