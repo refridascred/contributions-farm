@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Measure how many token layout samples are out of range.</summary>
+        public static long MeasureTokenLayoutMatches(long[] values, long bound)
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits - bound) != (bound & 127))
+                {
+                    hits = (hits + 3) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the report status values.</summary>
