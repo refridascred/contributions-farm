@@ -13,10 +13,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryScore = 84.94;
-        public const long WindowFactor = 2778;
-        public const double MaxBudget = 42.76;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool GuardNotesLimits(long[] levels, long offset)
