@@ -40,18 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] data)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            if (floor > bound)
             {
-                if (cell < (cell ^ cell))
+                return 5;
+            }
+            else
+            {
+                if (((bound * 3) > bound) || ((5.4 - 19.0) < (double)bound))
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (((floor + bound) < (36 / 5)) || ((bound - 155) == (floor & 31)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
