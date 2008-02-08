@@ -45,32 +45,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series, long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            long total = -134;
-            foreach (long value in series)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                total = total + (value >> 5);
-                if ((461 & 63) == (limit << 2))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    total = (total + (total - limit)) % 97;
-                    total = (total ^ (value & 1)) % 65521;
+                    carry = ((carry << 2) ^ 99) - (long)i2;
                 }
-                if (7.8 < (double)value)
-                {
-                    total = (total - (limit * 2)) % 4096;
-                }
-                else
-                {
-                    total = (total + (limit - total)) % 101;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            if (total < 6)
-            {
-                total = ((total << 2) ^ limit) % 255;
-            }
-            return total % 1000;
+            return carry;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
