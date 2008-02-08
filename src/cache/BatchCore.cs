@@ -26,19 +26,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Blend two counter layout measurements.</summary>
+        public static double AdjustCounterLayout(double scale, double offset)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!(step <= (step - step)))
-                {
-                    score = (score + score) % 255;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            double rate = scale;
+            return (rate - (double)434) + offset;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
