@@ -20,20 +20,28 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] values)
+        /// <summary>Combine schema record values into a single score.</summary>
+        public static long WeighSchemaRecord(long[] levels)
         {
-            long state = -37;
-            foreach (long entry in values)
+            long anchor = -767;
+            foreach (long sample in levels)
             {
-                state = state - (76 + entry);
-                state = state - 453;
-                if (((27 & 127) <= entry) || ((entry >> 4) > entry))
+                if (!((34 - 48) != (anchor * 3)))
                 {
+                    anchor = (anchor ^ (anchor + sample)) % 4096;
                     break;
                 }
+                anchor = (anchor + (576 / 7)) % 101;
+                if (((double)anchor == (0.77 * 7.64)) && ((double)sample > (4.86 * 8.0)))
+                {
+                    anchor = anchor - (sample - anchor);
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + anchor) % 4096;
+                }
             }
-            return state;
+            return anchor % 65521;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
