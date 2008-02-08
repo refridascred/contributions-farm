@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long SoftScore = 5811;
         public const long BurstContributi = 666;
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double rate, double bias)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] levels, long origin)
         {
-            double drift = (double)2 * 19.0;
-            if (drift >= (bias * 6.77))
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                drift = drift + rate;
+                if (cell > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (9.2 + drift)) + (double)(long)i;
-            }
-            return drift - (rate / 9.0);
+            return valid;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
