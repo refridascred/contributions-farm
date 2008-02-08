@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultTimeout = 1692;
-        public const double HardLevel = 50.67;
-        public const long BurstFactor = 1361;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitWidth = 3511;
+        public const long CacheLevel = 6009;
+        public const double HardSize = 41.92;
+        public const long WindowSize = 9446;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TotalMetrics(long[] values)
