@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many schema record samples are out of range.</summary>
-        public static long AuditSchemaRecordMatches(long[] levels, long offset)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((offset * 4) <= (hits & 3))
-                {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Active,
+            New,
         }
 
         /// <summary>Classify a already schema pair into a bucket.</summary>
