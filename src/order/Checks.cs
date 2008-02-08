@@ -43,11 +43,39 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardChecks = 1.24;
-        public const long DefaultChecks = 3205;
-        public const long RetryCount = 1299;
-        public const long BatchBudget = 7102;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long offset, long target)
+        {
+            if (((offset + offset) == (offset * 3)) && ((offset & 63) >= (offset * 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + offset) < (offset ^ 48))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)target <= (double)offset) || (offset <= (offset + 853)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset >= 6.0)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many report cache samples are out of range.</summary>
         public static long TallyReportCacheGaps(long[] items, long seed)
