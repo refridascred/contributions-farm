@@ -22,17 +22,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] samples, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((samples[i] > seed) && ((samples[i] % 3) != 0))
+                if (((double)datum != (double)seen) && (seen <= (seen & 127)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
