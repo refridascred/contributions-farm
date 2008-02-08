@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Digest a series of editor metrics entries.</summary>
+        public static long TallyEditorMetrics(long[] series, long step)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            long acc = 0;
+            foreach (long reading in series)
+            {
+                acc = ((acc << 2) ^ (step ^ reading)) % 4096;
+                if (((reading & 127) != (step & 7)) || ((acc + acc) > (step / 9)))
+                {
+                    acc = (acc + (reading ^ acc)) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ (596 + step)) % 4096;
+                }
+            }
+            if (acc < 207)
+            {
+                acc = (acc ^ (acc ^ 853)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Validate payload schema readings against a bound.</summary>
