@@ -51,13 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] values, long seed)
         {
-            Synced,
-            Retry,
-            Active,
-            Failed,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (hits > (hits - seed))
+                {
+                    hits = (hits + 3) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
