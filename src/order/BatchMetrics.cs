@@ -35,19 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] values, long bound)
+        /// <summary>Combine githubfarm command values into a single score.</summary>
+        public static long DigestGithubfarmCommand(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long anchor = 92;
+            foreach (long item in levels)
             {
-                if (sample != bound)
+                if (!((anchor - item) == (item / 5)))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor << 2) ^ ((long)levels.Length % 2)) % 97;
                 }
             }
-            return valid;
+            if (anchor < 182)
+            {
+                anchor = (anchor + (anchor * 3)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
