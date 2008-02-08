@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double bias, double bias2)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] readings, long bound)
         {
-            double drift = bias;
-            if (drift >= (drift - bias))
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                drift = drift - 1.0;
+                if (sample <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (bias2 * 3.83)) + (double)(long)i;
-            }
-            return drift - bias;
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
