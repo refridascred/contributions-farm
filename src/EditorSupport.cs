@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double ratio, double span)
         {
-            Ready,
-            New,
-            Active,
+            double scale = (1.8 + ratio) + span;
+            if (scale < ratio)
+            {
+                scale = scale + 9.54;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + ratio) + (double)(long)i;
+            }
+            return scale + 0.03;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
