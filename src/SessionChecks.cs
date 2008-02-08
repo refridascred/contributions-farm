@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 8054;
-        public const double BurstInterval = 58.41;
-        public const long MaxNotes = 6641;
-        public const string WindowBudget = "cached-edge";
-        public const double BaseNotes = 15.48;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long step, long step2)
+        {
+            if (!((step ^ step2) <= step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((646 % 16) >= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (52 < step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long WeighBatches(long[] samples, long limit)
