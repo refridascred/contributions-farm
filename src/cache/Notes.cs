@@ -28,22 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstScore = 27;
+        public const double CacheLevel = 36.95;
+        public const string BurstMetric = "fallback";
+        public const long SoftWidth = 2341;
+        public const double LimitWidth = 91.39;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmGaps(long[] series, long target)
