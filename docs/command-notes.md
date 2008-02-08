@@ -1,14 +1,16 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Use layout settings to tune how often order data is refreshed.
+The metrics module keeps entry values in sync with the order cache.
+The report module keeps metrics values in sync with the command cache.
+When a session fails, the batches handler retries a few times before giving up.
 
-The cache module keeps record values in sync with the contributi cache.
-The metrics report groups every cluster by cache.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Defaults for support live in the config folder and can be overridden per environment.
+The context report groups every entry by format.
+Run the farm check before changing any support limits.
 
 ## Guidelines
 
-- Review profile limits each release
-- Document new filter fields
-- Validate record input early
+- Document new format fields
+- Prefer counter defaults
+- Review stats limits each release
+- Keep stream values small
