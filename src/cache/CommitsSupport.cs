@@ -13,12 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitDepth = 8900;
-        public const long MaxPayload = 5035;
-        public const string BasePayload = "strict-1";
-        public const long StepPayload = 3467;
-        public const string BatchFactor = "primary";
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Ready,
+            Idle,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyBounds(long[] series, long seed)
