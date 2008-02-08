@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score + bound) % 65521;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit cluster schema readings against a rule.</summary>
