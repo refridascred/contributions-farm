@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] levels, long seed)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double scale, double offset)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double bias = scale + (scale + offset);
+            if (bias < (double)15)
             {
-                if (reading >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias - (double)25;
             }
-            return found;
+            return bias + scale;
         }
 
         /// <summary>Describe the entry phase values.</summary>
