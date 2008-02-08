@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Done,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheLevel = 7865;
+        public const long StepCommits = 739;
+        public const long BatchWidth = 5820;
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
