@@ -39,18 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 9699;
+        public const double HardCount = 67.98;
+        public const long CacheWidth = 8521;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long ClassifyMetrics(long seed, long floor)
