@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double weight, double bias)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] data, long seed)
         {
-            double rate = weight;
-            if (rate < weight)
+            bool ready = true;
+            foreach (long item in data)
             {
-                rate = rate + (bias * 0.48);
+                if (item != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - bias;
+            return ready;
         }
 
         /// <summary>Measure how many buffer record samples are out of range.</summary>
