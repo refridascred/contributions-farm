@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of githubfarm batches entries.</summary>
-        public static long CombineGithubfarmBatches(long[] items, long step)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            long score = 851;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score - (score * 2)) + sample) + step;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score < 2)
-            {
-                score = ((score << 2) ^ (70 / 5)) % 1000;
-            }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
