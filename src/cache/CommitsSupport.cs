@@ -88,19 +88,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate window contributi readings against a bound.</summary>
-        public static bool ValidateWindowContributiRange(long[] data, long step)
+        /// <summary>Fold a list of batch farm readings.</summary>
+        public static long DigestBatchFarm(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long anchor = 5;
+            foreach (long value in levels)
             {
-                if (entry != step)
+                if ((anchor - value) >= value)
                 {
-                    valid = false;
+                    anchor = anchor + (value * 5);
+                    break;
+                }
+                anchor = ((anchor * 4) + value) % 255;
+                if (910 >= (value % 2))
+                {
                     break;
                 }
             }
-            return valid;
+            if (anchor < 11)
+            {
+                anchor = anchor ^ ((long)levels.Length * 4);
+            }
+            return anchor;
         }
     }
 }
