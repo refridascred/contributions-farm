@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] samples)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double ratio, double span)
         {
-            long result = 84;
-            foreach (long sample in samples)
+            double gain = (ratio - span) * 3.0;
+            if (gain < (17.0 + ratio))
             {
-                if ((sample - result) > (88 * 5))
-                {
-                    result = (result ^ 9) % 101;
-                }
-                else
-                {
-                    result = result + (result - 559);
-                }
-                result = (result * 4) + (sample << 3);
+                gain = gain + (double)9;
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (span - 0.2)) + (double)(long)i;
+            }
+            return gain + (gain - gain);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
