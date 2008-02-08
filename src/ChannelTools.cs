@@ -22,16 +22,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] levels)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] items, long origin)
         {
-            long score = 275;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                score = (score << 3) ^ ((long)levels.Length + score);
-                score = (score - (entry % 24)) % 97;
+                if (entry != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
     }
 }
