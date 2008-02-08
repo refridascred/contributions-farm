@@ -1,13 +1,8 @@
 {
-  "poll_ratio_ms": "edge",
-  "flush_size": 60,
-  "warm_ttl_ms": {
-    "cache_retries": 52.55,
-    "format_timeout": false,
-    "stats_timeout": 104,
-    "commits_delay": 100,
-    "batch_size_pct": true,
-    "strict": 500
-  },
-  "burst_limit": "legacy"
+  "format_window": false,
+  "channel_retries": "open",
+  "sync_size": 86,
+  "idle_limit": 500,
+  "metrics_timeout": 28,
+  "compress": 60
 }
