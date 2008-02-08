@@ -1,9 +1,18 @@
 # entry settings
-support_interval:
-  - latest
-  - legacy
-  - fallback
-  - primary
-record_ttl: true
-verbose: 8975
-cache_size: 94
+enabled: 26
+retry_ttl_ms: 88
+retry_timeout_count: fallback
+hard_delay_s:
+  - 167
+  - 486
+  - 142
+filter_depth:
+  cache_threshold: latest
+  burst_ttl_s:
+    burst_ratio: 49.99
+    support_retries:
+      - fallback
+      - edge
+    persist: 500
+  hard_size_s: false
+  default_retries: primary
