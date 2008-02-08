@@ -47,14 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Draft,
-            Ready,
-            Idle,
-            New,
-            Pending,
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
