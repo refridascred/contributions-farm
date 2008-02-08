@@ -30,18 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] values)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits + value) > value)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
