@@ -20,16 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double scale, double offset)
-        {
-            double bias = scale + (scale + offset);
-            if (bias < (double)15)
-            {
-                bias = bias - (double)25;
-            }
-            return bias + scale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleSpan = "open-edge";
+        public const long SoftCommand = 6711;
+        public const long LimitCommand = 8290;
+        public const double HardCount = 42.54;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
