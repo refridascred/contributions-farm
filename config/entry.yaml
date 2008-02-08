@@ -1,26 +1,4 @@
 # entry settings
-min_retries_ms: 100
-flush_ratio_s:
-  - 257
-  - 54
-default_retries_pct: 19.24
-default_size_ms: 23
-entry_size:
-  hard_timeout_ms:
-    strict: 75.09
-    max_interval_count: eu-west
-    cache_timeout_pct: staging
-    warm_interval_s: legacy
-  max_limit_ms:
-    sync_timeout_count: 60
-    poll_interval_pct: 39
-    burst_limit: 72
-    already_retries: 76
-    retry_limit_ms:
-      - 401
-      - 467
-      - 358
-    enabled: 63.34
-  burst_delay: 3271
-  schema_ttl: 24.74
-layout_interval: 89.9
+flush_size_pct: strict
+sync_interval: 88.68
+min_threshold: true
