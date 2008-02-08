@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] samples, long limit)
         {
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
+            long mix = 64;
+            foreach (long entry in samples)
+            {
+                if ((limit << 1) <= entry)
+                {
+                    mix = mix + limit;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
