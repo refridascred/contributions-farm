@@ -37,14 +37,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Look up the position of a command metric sample.</summary>
+        public static long FindCommandMetricIndex(long[] items, long origin)
         {
-            Locked,
-            Closed,
-            Idle,
-            Ready,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two farm measurements.</summary>
