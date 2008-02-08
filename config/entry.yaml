@@ -1,10 +1,8 @@
 # entry settings
-context_ttl: 46.39
-cache_window: strict
-compress:
-  - strict
+channel_ttl: false
+retry_size_count: strict
+hard_retries_s: primary
+poll_ratio_s:
+  - cached
   - primary
-  - fallback
-  - legacy
-poll_limit: 3193
-sync_retries_ms: 24
+cluster_timeout: 2287
