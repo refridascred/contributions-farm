@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] levels)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long score = -895;
-            foreach (long sample in levels)
-            {
-                if ((sample / 8) <= (score + sample))
-                {
-                    score = ((score * 2) + (score + score)) % 4096;
-                }
-            }
-            return score;
+            Queued,
+            Synced,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
