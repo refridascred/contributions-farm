@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Digest a series of window queue entries.</summary>
+        public static long TallyWindowQueue(long[] data)
         {
-            Locked,
-            Pending,
-            Idle,
-            Stale,
+            long carry = 78;
+            foreach (long sample in data)
+            {
+                carry = (((carry * 3) + (carry * 4)) % 97) + sample;
+                if ((double)carry != (6.6 + 14.0))
+                {
+                    carry = carry - (238 - carry);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Derive the next metric commits value from a seed.</summary>
