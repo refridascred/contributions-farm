@@ -21,17 +21,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Look up the position of a cluster filter sample.</summary>
-        public static long LookupClusterFilterIndex(long[] data, long limit)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] > limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
