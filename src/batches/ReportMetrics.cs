@@ -26,21 +26,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long bound, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long prev = bound + step;
+            if ((bound / 9) >= (step % 5))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((step + bound) != (prev & 255))
                 {
-                    if ((data[i] - data[j]) > 18)
+                    return 3;
+                }
+                else
+                {
+                    if ((prev + (-2)) < (366 * 5))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
     }
 }
