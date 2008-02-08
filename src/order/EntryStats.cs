@@ -44,19 +44,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] data, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (item > step)
+                if ((7.14 * 5.13) > (double)cell)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Check that every checks cache entry stays within the limit.</summary>
