@@ -31,15 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double rate, double floor)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double gain, double floor)
         {
-            double mean = floor;
-            for (int i = 0; i < 9; i++)
+            double drift = gain;
+            if (drift > (gain - gain))
             {
-                mean = ((mean + (floor + mean)) + (double)(long)i) - rate;
+                drift = drift - (double)2;
             }
-            return mean + (double)14;
+            else
+            {
+                drift = drift - (drift * 14.0);
+            }
+            return drift + floor;
         }
     }
 }
