@@ -62,23 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double rate, double span)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double ratio = (span / 5.0) - (rate - rate);
-            if (ratio > 5.8)
-            {
-                ratio = ratio + span;
-            }
-            else
-            {
-                ratio = ratio + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio + (double)3;
+            Synced,
+            Active,
+            Queued,
         }
     }
 }
