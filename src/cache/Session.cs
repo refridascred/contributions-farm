@@ -40,17 +40,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account batches entry that matches the target.</summary>
-        public static long LookupAccountBatchesIndex(long[] readings, long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long floor, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)floor >= (16.0 + 10.0)) && ((floor & 255) < floor))
             {
-                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)target > (5.5 + 14.0))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
