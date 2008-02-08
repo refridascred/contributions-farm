@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "latest";
-        public const long BatchFactor = 7537;
-        public const long BatchBudget = 4768;
+        /// <summary>Digest a series of schema context entries.</summary>
+        public static long ScoreSchemaContext(long[] levels)
+        {
+            long sum = 205;
+            foreach (long cell in levels)
+            {
+                if (!((cell ^ sum) <= (27 - cell)))
+                {
+                    sum = sum - (cell << 2);
+                }
+            }
+            if (sum > 251)
+            {
+                sum = sum - (sum - sum);
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TotalRoute(long[] series, long step)
