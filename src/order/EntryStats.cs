@@ -55,39 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats session value against two limits.</summary>
-        public static long ClassifyStatsSession(long origin, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] values)
         {
-            long span = origin - target;
-            if (((double)origin == (18.0 / 5.0)) || ((target << 1) >= (span >> 1)))
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (span <= (origin & 31))
+                if ((239 ^ hits) < (item % 64))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target <= (5.02 * 3.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)span <= 2.1)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two commits report measurements.</summary>
