@@ -89,10 +89,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 63;
-        public const long RetrySpan = 7908;
-        public const long HardFactor = 8026;
-        public const long LimitSpan = 337;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long floor)
+        {
+            if (9 < (floor >> 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)offset >= (4.0 + 2.05))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
