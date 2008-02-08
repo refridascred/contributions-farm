@@ -37,10 +37,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseInterval = 11.25;
-        public const string WindowLevel = "latest-1";
-        public const long RetryCount = 8466;
-        public const long MaxChecks = 1466;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Pending,
+            Locked,
+            Paused,
+            Draft,
+            Synced,
+        }
     }
 }
