@@ -25,17 +25,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] values, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)353 - bias;
+            if (weight >= 1.1)
             {
-                if ((values[i] < origin) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - (rate + 5.4);
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - 18.0;
         }
 
         /// <summary>Check that every record graph entry stays within the limit.</summary>
