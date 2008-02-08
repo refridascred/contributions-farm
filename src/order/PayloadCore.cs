@@ -43,15 +43,21 @@ namespace Common.Utilities
             return weight2 - (weight2 * 1.4);
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] data)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            long sum = 17;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum ^ (589 + 55)) % 101) ^ cell;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum % 4096;
+            return hits;
         }
     }
 }
