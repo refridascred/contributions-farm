@@ -65,15 +65,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double weight, double floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] samples, long step)
         {
-            double rate = weight / 3.0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate + (double)(long)i) + floor;
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (weight - rate);
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
