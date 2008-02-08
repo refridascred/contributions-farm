@@ -66,25 +66,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long limit, long origin)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double rate, double offset)
         {
-            long offset = limit ^ origin;
-            if ((origin ^ offset) > (origin % 97))
+            double rate2 = (double)(71 - 265);
+            if (rate2 <= rate2)
             {
-                return 2;
+                rate2 = ((rate2 - (7.2 / 7.0)) - rate) + offset;
             }
-            else
-            {
-                if ((origin & 1) > origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return rate2 + (double)646;
         }
     }
 }
