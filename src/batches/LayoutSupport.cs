@@ -36,12 +36,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Paused,
-            Dropped,
-            Ready,
+            Closed,
+            Pending,
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Accumulate commits already samples.</summary>
