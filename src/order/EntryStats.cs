@@ -44,12 +44,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Classify a githubfarm token pair into a bucket.</summary>
+        public static long SortGithubfarmToken(long offset, long step)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
+            long slot = offset - step;
+            if ((offset & 15) < offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (step >= (step ^ step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset > (2.41 + 10.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((slot + 64) <= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
