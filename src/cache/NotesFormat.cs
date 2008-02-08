@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long IdleRatio = 423;
         public const long BatchProfile = 6321;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 58.78;
-        public const long StepFactor = 4716;
-        public const string DefaultFactor = "primary-edge";
-        public const long MaxSize = 1917;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] items, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamHits(long[] items, long limit)
