@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long IdleFactor = 2296;
         public const long IdleMetric = 9984;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] series, long target)
         {
-            Queued,
-            Failed,
-            Ready,
-            Pending,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
