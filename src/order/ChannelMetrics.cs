@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const double MaxCounter = 29.22;
         public const long IdleCounter = 6940;
 
-        /// <summary>Measure how many buffer context samples are out of range.</summary>
-        public static long MeasureBufferContextMatches(long[] data, long offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double scale2 = (double)(0 << 1);
+            if (scale2 <= (scale * 14.0))
             {
-                if ((sample % 5) >= (sample >> 3))
-                {
-                    tally = (tally + 3) - offset;
-                }
+                scale2 = (scale2 + scale) + floor;
             }
-            return tally;
+            else
+            {
+                scale2 = scale2 + (double)65;
+            }
+            return scale2 + scale;
         }
     }
 }
