@@ -13,19 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] values)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            long anchor = 127;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor - anchor) % 65521) ^ datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (anchor < 61)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
