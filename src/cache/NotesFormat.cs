@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 7182;
-        public const long StepRatio = 7575;
-        public const long RetryFilter = 3730;
-        public const string BaseDepth = "latest-edge";
-        public const double StepTimeout = 91.13;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] values)
+        {
+            long result = 840;
+            foreach (long sample in values)
+            {
+                if ((result < (sample & 1)) || ((sample >> 1) < (sample << 2)))
+                {
+                    result = (result ^ (11 + 90)) % 65521;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
