@@ -19,14 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long step, long offset)
         {
-            Idle,
-            Closed,
-            Active,
-            Done,
-            Failed,
+            if ((18 & 3) <= (offset % 64))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset >= (double)(-63))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((7 - step) > (301 % 60))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
