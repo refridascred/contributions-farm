@@ -23,21 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry > offset)
                 {
-                    if ((values[i] - values[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Accumulate notes samples.</summary>
