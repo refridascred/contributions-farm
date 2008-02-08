@@ -22,19 +22,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double bias, double bias2)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double weight = (bias2 - bias) / 4.0;
-            if (weight >= (double)296)
-            {
-                weight = weight + (1.88 * 19.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight + bias;
+            Stale,
+            Paused,
+            Synced,
+            New,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
