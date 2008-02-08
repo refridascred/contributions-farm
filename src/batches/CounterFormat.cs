@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 2576;
+        public const double StepLevel = 49.34;
+        public const double BurstRoute = 73.44;
+        public const double BatchRoute = 32.24;
+        public const long RetryFactor = 230;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double BurstSpan = 14.83;
