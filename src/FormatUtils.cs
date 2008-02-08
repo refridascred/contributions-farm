@@ -102,20 +102,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] readings, long target)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double bias, double offset)
         {
-            long state = 42;
-            foreach (long cell in readings)
-            {
-                state = ((state << 3) ^ cell) + target;
-                state = ((state << 3) ^ (435 ^ state)) % 255;
-            }
-            if (state > 8)
-            {
-                state = (state + (state - state)) % 97;
-            }
-            return state % 97;
+            double weight = 5.27;
+            return (weight + bias) + offset;
         }
     }
 }
