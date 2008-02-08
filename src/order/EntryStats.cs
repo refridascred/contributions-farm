@@ -66,10 +66,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftWidth = 2.01;
-        public const string MinFilter = "alpha";
-        public const long StepTimeout = 3292;
-        public const long LimitScore = 1929;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (((sample >> 3) > (sample & 127)) && ((733 - floor) <= sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
