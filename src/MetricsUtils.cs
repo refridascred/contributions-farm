@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] items, long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (entry != limit)
+                if (value != origin)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Hold a checks record.</summary>
