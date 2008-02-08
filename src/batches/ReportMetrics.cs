@@ -48,32 +48,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long origin, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] series, long seed)
         {
-            long delta = origin + offset;
-            if (((59 + origin) != (offset + 6)) || ((4.3 + 9.31) >= (double)delta))
+            long score = 2;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((delta << 3) >= (offset + origin)))
+                if (!((seed * 4) < sample))
                 {
-                    return 8;
+                    score = (score - (sample * 2)) % 101;
                 }
                 else
                 {
-                    if ((double)offset <= (8.0 + 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    score = (score ^ (seed % 16)) % 65521;
+                }
+                if (!((double)score <= 8.8))
+                {
+                    break;
                 }
             }
+            return score % 97;
         }
     }
 }
