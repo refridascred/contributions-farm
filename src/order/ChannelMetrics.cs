@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of counter buffer readings.</summary>
-        public static long MatchCounterBufferCount(long[] series)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = ((mix * 3) + (mix * 4)) % 101;
+                if (floor >= (mix * 4))
                 {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix - (120 & 31)) % 4096;
+                    continue;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
