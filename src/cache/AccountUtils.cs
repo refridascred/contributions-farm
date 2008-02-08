@@ -28,18 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metric report readings against a rule.</summary>
-        public static long TallyMetricReportHits(long[] items, long step)
+        /// <summary>Count the token window entries that pass the check.</summary>
+        public static long TallyTokenWindowHits(long[] data)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (((datum >> 3) >= (long)items.Length) && !((count ^ (-682)) < (datum + count)))
+                if (!(((double)tally < (double)entry) || ((924 / 4) == (tally + 1))))
                 {
-                    count = (count + 3) - step;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
