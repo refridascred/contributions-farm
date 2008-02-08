@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 48.9;
+        public const double HardTools = 52.28;
+        public const double StepTools = 50.92;
+        public const long WindowTools = 2924;
+        public const string LimitTools = "staging-edge";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BaseLevel = 2314;
