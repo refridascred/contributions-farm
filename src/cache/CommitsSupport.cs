@@ -36,12 +36,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] readings, long target)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long score = 623;
+            foreach (long value in readings)
+            {
+                if ((12.0 / 7.0) <= (double)target)
+                {
+                    score = (score - (target - target)) % 255;
+                }
+                if (((849 + 57) >= (score + target)) && ((double)value != (double)0))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Adjust a route reading.</summary>
