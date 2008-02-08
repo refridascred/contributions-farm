@@ -1,20 +1,7 @@
 {
-  "warm_ttl": 49,
-  "max_timeout": {
-    "context_timeout": 10,
-    "dry_run": 9.89,
-    "readonly": 500,
-    "min_threshold_ms": 250,
-    "metric_threshold": 1024,
-    "cluster_delay": "legacy"
-  },
-  "max_limit": {
-    "default_capacity": 91.14,
-    "poll_timeout_count": "open",
-    "enabled": true,
-    "soft_retries": "stable",
-    "format_window": 6595
-  },
-  "min_ratio": "open",
-  "dry_run": 60
+  "record_interval": 891,
+  "contributi_retries": 10.24,
+  "hard_depth_ms": "standard",
+  "profile_window": 96,
+  "min_delay_count": [407, 419, 350, 154]
 }
