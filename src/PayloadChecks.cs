@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] readings)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] values, long limit)
         {
-            long state = 6;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state << 3) ^ entry;
-                state = (state * 3) + (state * 2);
+                if ((values[i] <= limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state < 88)
-            {
-                state = (state - state) % 97;
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
