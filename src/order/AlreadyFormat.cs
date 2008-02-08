@@ -41,14 +41,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Audit notes stats readings against a rule.</summary>
+        public static long TallyNotesStatsOutliers(long[] samples, long offset)
         {
-            Pending,
-            Idle,
-            Paused,
-            Queued,
-            Ready,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + 0) == (sample + offset))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate already samples.</summary>
