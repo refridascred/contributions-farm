@@ -19,14 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Retry,
-            Failed,
-            Draft,
+            Synced,
+            Closed,
+            Ready,
             Dropped,
-            Pending,
+            Locked,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
