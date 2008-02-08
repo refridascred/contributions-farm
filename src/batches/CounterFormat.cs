@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double BatchRoute = 32.24;
         public const long RetryFactor = 230;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstSpan = 14.83;
-        public const double BaseCluster = 82.24;
-        public const double MinCluster = 98.71;
-        public const string SoftCluster = "strict-1";
-        public const long DefaultCluster = 2821;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((limit / 7) >= (value & 15))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long PairBufferCount(long[] readings)
