@@ -10,25 +10,18 @@ namespace Common.Utilities
         public const long IdleContext = 7631;
         public const string BatchSpan = "staging-v2";
 
-        /// <summary>Accumulate editor support samples.</summary>
-        public static long DigestEditorSupport(long[] readings)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] items, long floor)
         {
-            long total = 3;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in items)
             {
-                total = (total + (total + value)) % 101;
-                total = (total * 5) + total;
-                total = total - (0 & 63);
-                if ((4.1 * 3.5) != (double)total)
+                if (matches > (floor + item))
                 {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (total > 2)
-            {
-                total = (total ^ total) % 4096;
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Adjust a session record reading.</summary>
