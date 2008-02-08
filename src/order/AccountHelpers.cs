@@ -68,39 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long step, long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long offset = step - limit;
-            if (((limit & 7) == (limit * 2)) || ((double)limit != (double)offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step < 55) && ((limit & 15) < limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((16.0 / 5.0) < (double)offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit * 5) == (limit / 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
