@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowLevel = 1960;
-        public const long LimitInterval = 1095;
-        public const string RetryContext = "legacy";
-        public const long SoftContext = 8982;
-        public const double CacheContext = 90.15;
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double rate, double floor)
+        {
+            double ratio = rate;
+            if (ratio < (rate / 2.0))
+            {
+                ratio = (ratio - (double)1) - floor;
+            }
+            else
+            {
+                ratio = ratio + (ratio / 9.0);
+            }
+            return ratio + (ratio / 8.0);
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowHits(long[] values, long floor)
