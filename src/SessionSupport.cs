@@ -13,18 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftDepth = 3180;
+        public const long MinChecks = 1197;
+        public const double HardLevel = 16.49;
+        public const string BaseChecks = "stable-1";
+        public const string BurstChecks = "strict";
 
         /// <summary>Audit metric payload readings against a rule.</summary>
         public static long TallyMetricPayloadMatches(long[] levels, long bound)
