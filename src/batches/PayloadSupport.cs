@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] levels, long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long state = -312;
-            foreach (long entry in levels)
-            {
-                if ((offset >> 4) > state)
-                {
-                    state = ((state + offset) % 255) + entry;
-                }
-            }
-            return state;
+            New,
+            Done,
+            Active,
+            Paused,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
