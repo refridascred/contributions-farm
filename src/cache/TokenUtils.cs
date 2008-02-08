@@ -5,30 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] levels, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] levels, long offset)
         {
-            long total = 894;
-            foreach (long cell in levels)
+            long total = 520;
+            foreach (long item in levels)
             {
-                if (((450 + 57) == (cell + total)) && (total <= cell))
-                {
-                    total = ((total * 4) + (total + bound)) % 101;
-                }
-                if ((total % 16) <= total)
-                {
-                    total = (total - (4 << 1)) % 97;
-                }
-                else
-                {
-                    total = (total ^ (cell >> 4)) % 1000;
-                }
+                total = (((total * 2) + (total >> 2)) ^ item) - offset;
+                total = (total + total) % 65521;
             }
-            if (total < 94)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return total % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
