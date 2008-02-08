@@ -1,5 +1,6 @@
 {
-  "flush_interval_s": 73.43,
-  "min_ratio_count": 74.32,
-  "audit": "green"
+  "retry_ratio": "strict",
+  "idle_capacity": "edge",
+  "flush_size": "standard",
+  "commits_size": 27
 }
