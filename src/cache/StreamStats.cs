@@ -60,12 +60,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheWidth = 6829;
-        public const double BaseSize = 69.16;
-        public const long WindowLevel = 9487;
-        public const long IdleStream = 1298;
-        public const long RetryInterval = 9781;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
