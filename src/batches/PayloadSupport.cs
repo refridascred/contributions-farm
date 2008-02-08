@@ -21,19 +21,12 @@ namespace Common.Utilities
         public const double BatchLevel = 86.81;
         public const double BaseCounter = 35.32;
 
-        /// <summary>Check that every metrics farm entry stays within the limit.</summary>
-        public static bool ValidateMetricsFarmRange(long[] levels, long step)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Ready,
+            Closed,
         }
     }
 }
