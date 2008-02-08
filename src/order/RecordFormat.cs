@@ -54,17 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardSize = 95.91;
+        public const double HardRatio = 43.97;
+        public const long MaxPayload = 3517;
+        public const double CacheTimeout = 84.85;
+        public const string BasePayload = "open";
     }
 }
