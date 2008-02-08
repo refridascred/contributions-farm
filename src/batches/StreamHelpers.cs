@@ -44,22 +44,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate farm metrics samples.</summary>
-        public static long ScoreFarmMetrics(long[] values, long origin)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] readings, long seed)
         {
-            long acc = -2;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((18.0 + 5.0) <= (double)origin) && ((9.4 * 10.0) != (double)origin))
+                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
                 {
-                    acc = (acc ^ (119 + origin)) ^ reading;
+                    return (long)i;
                 }
             }
-            if (acc > (-216))
-            {
-                acc = (acc ^ (acc + origin)) % 101;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Blend two queue measurements.</summary>
