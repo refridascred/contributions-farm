@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 9149;
-        public const long CacheScore = 2155;
-        public const long LimitInterval = 8361;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] samples, long origin)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Grade a tools command value against two limits.</summary>
         public static long BucketToolsCommand(long offset, long step)
