@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the graph counter entries that pass the check.</summary>
-        public static long TallyGraphCounterGaps(long[] values, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((floor + 765) > (floor - floor))
+                if (item <= bound)
                 {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Blend two contributi schema measurements.</summary>
