@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 5558;
-        public const long CacheScore = 1401;
-        public const double HardScore = 50.57;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Locked,
+            Retry,
+            Draft,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double IdleLevel = 16.93;
