@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitWidth = 3511;
-        public const long CacheLevel = 6009;
-        public const double HardSize = 41.92;
-        public const long WindowSize = 9446;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 4478;
+        public const double MaxSpan = 9.29;
+        public const long IdleInterval = 2275;
+        public const long BatchWidth = 1198;
+        public const long SoftMetrics = 5995;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TotalMetrics(long[] values)
