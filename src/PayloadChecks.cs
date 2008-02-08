@@ -33,11 +33,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double rate, double floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double load = rate;
-            return (load - rate) + floor;
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
