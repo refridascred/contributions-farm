@@ -1,12 +1,12 @@
 # Command notes
 
-When a editor fails, the queue handler retries a few times before giving up.
-The schema module keeps metric values in sync with the stream cache.
-The stats helpers are pure functions, so they are safe to call from any thread.
+The already report groups every batches by metric.
+Each batches is validated before it reaches the entry queue.
+The contributi module keeps metrics values in sync with the buffer cache.
 
 ## Guidelines
 
-- Review notes limits each release
-- Validate payload input early
-- Keep layout values small
-- Log every command change
+- Validate command input early
+- Prefer already defaults
+- Log every record change
+- Document new queue fields
