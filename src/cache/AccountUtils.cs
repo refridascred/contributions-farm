@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count & 7) >= (count + count))
-                {
-                    count = ((count + 3) ^ reading) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 2204;
+        public const double IdleQueue = 48.58;
+        public const string BurstRatio = "primary-edge";
+        public const long RetryQueue = 121;
+        public const long StepInterval = 5136;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutGaps(long[] samples, long target)
