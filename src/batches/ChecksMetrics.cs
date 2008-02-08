@@ -23,31 +23,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank metric support input into a small class.</summary>
-        public static long GradeMetricSupport(long floor, long target)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] series, long limit)
         {
-            if ((target & 3) >= 7)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor > (floor << 1))
+                if (series[i] <= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target / 8) == (target >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
