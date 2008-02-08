@@ -14,15 +14,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] samples, long offset)
+        /// <summary>Iterate the editor counter series from a seed.</summary>
+        public static long IterateEditorCounter(long floor)
         {
-            long anchor = 7;
-            foreach (long sample in samples)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (((anchor + (37 & 63)) % 255) + sample) + offset;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return anchor % 4096;
+            return acc;
         }
 
         /// <summary>Describe the entry phase values.</summary>
