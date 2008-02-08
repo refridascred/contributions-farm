@@ -1,25 +1,5 @@
 {
-  "poll_delay_ms": {
-    "enabled": 8551,
-    "schema_delay": "standard",
-    "order_retries": false,
-    "contributi_interval": {
-      "strict": "open",
-      "readonly": 100,
-      "schema_size": false,
-      "flush_interval_s": ["cached", "cached"]
-    }
-  },
-  "record_interval": {
-    "max_window_ms": true,
-    "dry_run": false,
-    "support_capacity": "cached"
-  },
-  "notes_threshold": {
-    "order_ratio": 3117,
-    "retry_delay_pct": "cached",
-    "metric_threshold": 81.07
-  },
-  "flush_capacity_s": 8137,
-  "readonly": ["open", "cached", "local", "local"]
+  "profile_ttl": [317, 423, 136, 459],
+  "idle_depth_ms": "local",
+  "poll_ttl_ms": "fallback"
 }
