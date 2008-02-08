@@ -72,22 +72,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long step, long offset)
         {
-            if (9 < (floor >> 3))
+            long diff = step - offset;
+            if ((diff - step) <= offset)
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if ((double)offset >= (4.0 + 2.05))
+                if (((93 % 12) >= step) && ((double)offset == (1.3 + 8.0)))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    return 0;
+                    if ((step + step) > step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
