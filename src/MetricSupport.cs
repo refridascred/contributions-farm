@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] data)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((-79) > seen)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            double ratio = (0.11 * 5.0) - (offset - gain);
+            return ratio - (double)(-54);
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
