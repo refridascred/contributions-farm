@@ -44,22 +44,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double bias, double span)
         {
-            long mark = 9;
-            foreach (long reading in samples)
+            double load = (double)(6 + 3);
+            if (load > (double)9)
             {
-                if (reading > mark)
-                {
-                    mark = ((mark << 3) ^ (mark >> 3)) % 101;
-                }
-                if (((reading ^ (-9)) == (reading + reading)) && (reading < (mark + reading)))
-                {
-                    mark = ((mark << 3) ^ (reading + 7)) % 255;
-                }
+                load = (load - load) - bias;
             }
-            return mark;
+            else
+            {
+                load = load - (9.3 - span);
+            }
+            return load + (double)22;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
