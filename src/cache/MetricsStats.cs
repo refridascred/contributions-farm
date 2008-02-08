@@ -60,12 +60,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] samples)
         {
-            Closed,
-            Failed,
-            Pending,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!((matches + matches) == (matches - 703)) || ((1 >= (value + value)) || ((8.13 / 9.0) <= (double)value)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
