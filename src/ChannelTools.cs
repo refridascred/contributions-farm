@@ -19,17 +19,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] samples, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 4;
+            foreach (long datum in samples)
             {
-                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
+                if (datum <= (target & 1))
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + 5) % 65521;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
