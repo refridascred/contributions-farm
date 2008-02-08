@@ -32,11 +32,20 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstInterval = 9961;
-        public const string CacheReport = "primary";
-        public const double IdleCount = 1.41;
-        public const long HardReport = 6365;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] items, long step)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TotalEntry(long[] values)
