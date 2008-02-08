@@ -39,18 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] readings, long step)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long bound, long target)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            if ((double)bound == (1.7 - 16.0))
             {
-                if ((hits - value) >= (hits + 10))
+                return 3;
+            }
+            else
+            {
+                if (!((bound + bound) <= (bound ^ target)))
                 {
-                    hits = (hits + 2) - step;
+                    return 2;
+                }
+                else
+                {
+                    if ((8.7 - 8.78) == (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
