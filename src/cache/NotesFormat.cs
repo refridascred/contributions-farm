@@ -17,18 +17,18 @@ namespace Common.Utilities
         public const string DefaultFactor = "primary-edge";
         public const long MaxSize = 1917;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] samples)
+        /// <summary>Measure how many buffer context samples are out of range.</summary>
+        public static long TallyBufferContextGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((double)reading < (double)reading)
+                if (((datum + 145) > (tally >> 2)) && ((tally % 3) <= (tally << 2)))
                 {
-                    hits = hits + 2;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
