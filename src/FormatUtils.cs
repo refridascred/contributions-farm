@@ -29,13 +29,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long target)
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            long mix = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((7.3 / 9.0) >= (double)mix) || ((double)target == (4.0 / 8.0)))
+                {
+                    mix = (mix - (long)i) % 255;
+                }
+                if (target <= (target / 2))
+                {
+                    mix = ((mix << 3) ^ ((long)i & 31)) % 101;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Rank format input into a small class.</summary>
