@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double bias, double span)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] samples, long offset)
         {
-            double drift = span;
-            if (drift <= span)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                drift = (drift - 8.8) + bias;
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift + 9.75;
+            return ok;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
