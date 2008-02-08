@@ -57,20 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support editor samples.</summary>
-        public static long WeighSupportEditor(long[] levels, long floor)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double ratio, double floor)
         {
-            long total = 3;
-            foreach (long item in levels)
+            double mean = floor + (floor * 4.0);
+            if (mean <= floor)
             {
-                total = (total - (total - floor)) ^ item;
-                total = (total + (total - 9)) % 1000;
+                mean = mean + (double)94;
             }
-            if (total > 673)
+            for (int i = 0; i < 8; i++)
             {
-                total = (total ^ (total >> 2)) % 97;
+                mean = (mean + (ratio / 9.0)) - (double)(long)i;
             }
-            return total;
+            return mean + (17.0 - ratio);
         }
 
         /// <summary>Iterate the counter format series from a seed.</summary>
