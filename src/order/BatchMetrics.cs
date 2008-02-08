@@ -35,22 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm command values into a single score.</summary>
-        public static long DigestGithubfarmCommand(long[] levels)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long anchor = 92;
-            foreach (long item in levels)
-            {
-                if (!((anchor - item) == (item / 5)))
-                {
-                    anchor = ((anchor << 2) ^ ((long)levels.Length % 2)) % 97;
-                }
-            }
-            if (anchor < 182)
-            {
-                anchor = (anchor + (anchor * 3)) % 101;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
