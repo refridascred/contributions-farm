@@ -27,18 +27,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] data, long origin)
+        /// <summary>Count the already cache entries that pass the check.</summary>
+        public static long CountAlreadyCacheMatches(long[] data)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (((count + origin) > (cell + count)) && (origin >= (count >> 2)))
+                if ((tally / 6) != (tally + entry))
                 {
-                    count = count + 2;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
