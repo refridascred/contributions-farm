@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 9771;
-        public const double BurstCount = 59.84;
-        public const long SoftCounter = 7190;
-        public const long WindowSpan = 1242;
-        public const string HardRatio = "alpha";
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long bound, long limit)
+        {
+            long span = bound ^ limit;
+            if ((span + limit) < (bound + 478))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((span + span) > (328 - bound)) && ((bound + bound) == (limit + bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound < (1.4 / 8.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(span > (bound - limit)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
