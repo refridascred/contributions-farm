@@ -55,11 +55,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 2717;
-        public const double LimitRatio = 96.99;
-        public const double WindowCount = 38.33;
-        public const long BurstFactor = 1740;
+        /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmEditorLimits(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long MaxCounter = 9995;
