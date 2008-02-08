@@ -13,17 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first metric batches entry that matches the target.</summary>
-        public static long LocateMetricBatchesIndex(long[] items, long floor)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((items[i] > floor) && ((items[i] % 3) != 0))
+                if (floor > (score + (long)i))
                 {
-                    return (long)i;
+                    score = (score * 3) + floor;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the cache kind values.</summary>
