@@ -71,19 +71,12 @@ namespace Common.Utilities
             return (weight - floor) + ratio;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] items, long offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Done,
+            Pending,
         }
     }
 }
