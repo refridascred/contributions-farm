@@ -31,13 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] values, long target)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (hits > (entry + target))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
