@@ -43,19 +43,19 @@ namespace Common.Utilities
         public const long StepRecord = 7998;
         public const string DefaultRecord = "alpha-edge";
 
-        /// <summary>Validate account cache readings against a bound.</summary>
-        public static bool VerifyAccountCacheRange(long[] readings, long origin)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (entry < origin)
+                if (value != step)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
