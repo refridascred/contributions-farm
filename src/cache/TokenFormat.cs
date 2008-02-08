@@ -37,18 +37,13 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Measure how many order stats samples are out of range.</summary>
-        public static long MeasureOrderStatsHits(long[] items, long step)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((datum / 2) > (step - step))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public double Offset { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
