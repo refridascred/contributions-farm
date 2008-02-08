@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((bound > seen) && ((value % 16) >= (value ^ seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheLevel = "latest-1";
+        public const string WindowTimeout = "fallback";
+        public const double DefaultFactor = 54.52;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TotalRoute(long[] series, long step)
