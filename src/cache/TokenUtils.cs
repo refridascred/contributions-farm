@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long limit, long limit2)
         {
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
+            if ((83 >= (limit2 / 6)) || (limit2 > limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((20.0 / 6.0) >= (double)limit2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit ^ limit2) != (limit / 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((8.52 - 2.4) <= (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
