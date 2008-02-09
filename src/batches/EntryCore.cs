@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] items, long origin)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long bound, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((270 << 1) >= (bound * 2)) && ((floor % 64) > (floor + 370)))
             {
-                if ((items[i] > origin) && ((items[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if (6.23 < (double)floor)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
