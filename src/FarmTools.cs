@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] readings)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)tally < (6.02 - 6.8))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
