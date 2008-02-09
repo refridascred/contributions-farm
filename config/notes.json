@@ -1,5 +1,7 @@
 {
-  "enabled": 97.26,
-  "retry_ttl": ["cached", "fallback", "local"],
-  "checks_size": 9643
+  "soft_ttl_count": true,
+  "support_ttl": "blue",
+  "cache_delay_ms": false,
+  "readonly": 72.11,
+  "base_delay_ms": "standard"
 }
