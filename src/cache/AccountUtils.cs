@@ -29,22 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] samples, long limit)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((hits ^ hits) != (item << 3))
-                {
-                    hits = (hits + 3) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
