@@ -64,13 +64,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long origin, long bound)
         {
-            Queued,
-            Synced,
-            Idle,
-            Retry,
+            long cur = origin - bound;
+            if (origin > (7 / 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)cur <= (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + cur) > 97)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
