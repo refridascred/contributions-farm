@@ -6,16 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local standard; do
+for item in standard eu-west latest edge; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=443
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-stable}"
+mode="${1:-blue}"
 case "${mode}" in
-    local)
+    cached)
         log "fast path"
         ;;
     *)
