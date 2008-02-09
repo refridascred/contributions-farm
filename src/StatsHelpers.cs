@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] values)
+        /// <summary>Audit payload order readings against a rule.</summary>
+        public static long AuditPayloadOrderHits(long[] items, long step)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)tally >= (5.6 * 3.58))
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 2) ^ sample) - step;
                 }
             }
             return tally;
