@@ -20,10 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseBudget = 2706;
-        public const string LimitCluster = "primary-edge";
-        public const long RetryLevel = 7952;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 7011;
+        public const long HardSize = 9156;
+        public const double IdleSchema = 57.52;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] levels, long seed)
