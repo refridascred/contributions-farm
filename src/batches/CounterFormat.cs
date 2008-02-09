@@ -29,22 +29,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] samples, long bound)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < (count >> 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
