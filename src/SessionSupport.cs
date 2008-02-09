@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const string SoftSize = "legacy-1";
         public const long HardSpan = 3661;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (tally >= (bound + item))
                 {
-                    if ((data[i] + data[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count schema profile pairs that satisfy a relation.</summary>
