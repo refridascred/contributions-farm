@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a notes graph value against two limits.</summary>
-        public static long SortNotesGraph(long seed, long origin)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            long next = seed ^ origin;
-            if (next <= 35)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin * 2) >= (next + origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed ^ origin) <= (origin % 64))
+                    if ((values[i] ^ values[j]) > 0)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
