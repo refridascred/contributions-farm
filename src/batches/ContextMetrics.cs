@@ -61,14 +61,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            Draft,
-            Queued,
-            Pending,
-            Failed,
-            Paused,
+            long score = -103;
+            foreach (long entry in levels)
+            {
+                score = (score ^ entry) % 4096;
+                score = (score * 3) + (score + score);
+                score = ((score << 3) ^ (entry / 2)) % 97;
+            }
+            if (score > 809)
+            {
+                score = (score ^ (score << 3)) % 97;
+            }
+            return score % 4096;
         }
     }
 }
