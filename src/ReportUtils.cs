@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] items, long target)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            double mean = (double)(3 - 712);
+            if (mean < (double)(-84))
             {
-                if (reading != target)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + (bias / 3.0);
             }
-            return stale;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + offset;
         }
 
         /// <summary>Measure how many token record samples are out of range.</summary>
