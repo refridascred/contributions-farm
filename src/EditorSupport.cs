@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
