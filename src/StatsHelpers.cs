@@ -68,22 +68,23 @@ namespace Common.Utilities
         public const long CacheProfile = 2300;
         public const long BatchLevel = 7176;
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long step, long seed)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long target, long limit)
         {
-            if (((seed + seed) <= (step / 9)) && ((seed - seed) <= (2 - step)))
+            long step = target ^ limit;
+            if (!((7.93 * 1.18) < (double)step))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((0.92 + 8.31) > (double)step)
+                if (!((17.0 - 8.0) <= (double)step))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 1;
+                    return 8;
                 }
             }
         }
