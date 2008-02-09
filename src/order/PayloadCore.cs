@@ -24,13 +24,16 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] series, long origin)
         {
-            Done,
-            Synced,
-            Paused,
-            Queued,
+            long total = 0;
+            foreach (long item in series)
+            {
+                total = ((total + total) - item) - origin;
+                total = (total << 2) ^ total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Project the next entry account value.</summary>
