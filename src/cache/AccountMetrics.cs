@@ -60,12 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count the layout profile entries that pass the check.</summary>
+        public static long AuditLayoutProfileHits(long[] data)
         {
-            Failed,
-            Ready,
-            Idle,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (!((double)item != (double)seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of route entries.</summary>
