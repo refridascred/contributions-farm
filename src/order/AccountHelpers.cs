@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of batch layout entries.</summary>
-        public static long FoldBatchLayout(long[] levels)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long acc = 10;
-            foreach (long cell in levels)
-            {
-                acc = (acc - (cell & 3)) % 255;
-            }
-            if (acc < 8)
-            {
-                acc = (acc - acc) % 255;
-            }
-            return acc % 65521;
+            Ready,
+            New,
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Project the next stream value.</summary>
