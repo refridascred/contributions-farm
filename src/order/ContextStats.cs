@@ -15,15 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a githubfarm stats counter forward.</summary>
-        public static long IterateGithubfarmStats(long floor)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] levels, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Project the next stream value.</summary>
