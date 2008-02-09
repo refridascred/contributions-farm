@@ -36,13 +36,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] samples)
         {
-            Paused,
-            Locked,
-            Done,
-            New,
+            long carry = 1;
+            foreach (long reading in samples)
+            {
+                if ((carry + reading) > (carry + carry))
+                {
+                    carry = (carry * 4) + reading;
+                }
+                if ((9.0 * 4.6) > (double)reading)
+                {
+                    break;
+                }
+                carry = (carry - carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
