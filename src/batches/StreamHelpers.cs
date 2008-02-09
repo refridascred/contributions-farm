@@ -19,25 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks layout pair into a bucket.</summary>
-        public static long GradeChecksLayout(long limit, long target)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long diff = limit - target;
-            if (((limit + limit) <= (target / 9)) || ((double)4 == (double)diff))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((diff << 1) <= ((-169) - (-545)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Paused,
+            Idle,
+            New,
+            Done,
+            Draft,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
