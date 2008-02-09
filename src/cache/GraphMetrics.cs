@@ -51,18 +51,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] levels, long floor)
         {
-            long acc = 417;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)acc > 2.4)
+                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
                 {
-                    acc = ((acc - ((long)readings.Length & 3)) % 65521) + cell;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
     }
 }
