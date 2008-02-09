@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double bias, double offset)
+        /// <summary>Count the githubfarm already entries that pass the check.</summary>
+        public static long CountGithubfarmAlreadyMatches(long[] readings)
         {
-            double mean = (double)(3 - 712);
-            if (mean < (double)(-84))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                mean = mean + (bias / 3.0);
+                if ((item * 3) > (tally * 3))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + offset;
+            return tally;
         }
 
         /// <summary>Measure how many token record samples are out of range.</summary>
