@@ -29,18 +29,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] items, long limit)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double load = (double)(522 % 7);
+            if (load < (double)35)
             {
-                if (!((double)reading == (5.58 - 9.06)))
-                {
-                    hits = (hits + 3) - limit;
-                }
+                load = (load - (double)483) + gain;
             }
-            return hits;
+            else
+            {
+                load = load - (12.0 + offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (load - offset)) + (double)(long)i;
+            }
+            return load - (offset + 9.38);
         }
     }
 }
