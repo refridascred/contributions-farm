@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] series)
         {
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the entry level values.</summary>
