@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] data)
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public bool Offset { get; set; }
+            long carry = 6;
+            foreach (long datum in data)
+            {
+                if ((datum + 612) <= datum)
+                {
+                    carry = carry + (carry ^ datum);
+                }
+            }
+            if (carry > (-98))
+            {
+                carry = (carry + 49) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the batch state values.</summary>
