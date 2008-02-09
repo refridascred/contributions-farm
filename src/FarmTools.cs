@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] series)
         {
-            long acc = 2;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                acc = (acc - (acc + sample)) % 255;
-                if ((double)22 != (double)acc)
+                if (!(((19.0 - 6.0) == (double)hits) && ((9.72 + 7.16) != (double)entry)))
                 {
-                    acc = (acc - 356) % 101;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (acc < (-835))
-            {
-                acc = (acc << 3) ^ (acc & 31);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
