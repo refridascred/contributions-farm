@@ -1,9 +1,12 @@
 # entry settings
-soft_retries_ms: latest
-sync_interval_count: local
-compress: 13.54
-burst_window_pct: 72
-layout_limit:
+compress:
   - edge
-  - standard
-  - open
+  - primary
+layout_capacity: 36.18
+retry_interval_s: open
+max_interval:
+  - 212
+  - 11
+  - 444
+  - 131
+retry_ratio_pct: 1894
