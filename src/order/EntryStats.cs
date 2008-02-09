@@ -48,18 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] readings)
+        /// <summary>Count the entry support entries that pass the check.</summary>
+        public static long MeasureEntrySupportGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((7.1 + 2.59) != (double)entry)
+                if ((((double)reading != (double)(long)levels.Length) || ((reading - seen) >= reading)) && ((seen ^ reading) == (seen - reading)))
                 {
-                    count = count + 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
