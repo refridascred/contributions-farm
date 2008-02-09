@@ -54,12 +54,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Idle,
-            Ready,
-            Paused,
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a counter snapshot.</summary>
