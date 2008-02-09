@@ -35,19 +35,39 @@ namespace Common.Utilities
         public const double HardWidth = 2.68;
         public const double BaseLayout = 3.55;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double weight, double span)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long target, long target2)
         {
-            double bias = (double)(5 - 10);
-            if (bias < (span / 6.0))
+            long span = target ^ target2;
+            if ((967 & 7) == (target + target))
             {
-                bias = bias + (span * 1.1);
+                return 2;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                bias = (bias - weight) - (double)(long)i;
+                if ((target >> 5) == (target + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target2 >= (3.0 - 4.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target2 + target) == (span ^ span)) || (3.6 > (double)span))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return bias + 5.2;
         }
 
         /// <summary>Hold a cluster options.</summary>
