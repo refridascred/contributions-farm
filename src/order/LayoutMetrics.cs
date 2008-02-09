@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long BaseTools = 7419;
         public const long SoftDepth = 9920;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] series, long offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (offset <= (matches >> 3))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            Active,
+            Retry,
+            Done,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
