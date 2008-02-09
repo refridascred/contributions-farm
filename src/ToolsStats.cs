@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] data)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] readings, long seed)
         {
-            long carry = 6;
-            foreach (long datum in data)
+            long total = 61;
+            foreach (long value in readings)
             {
-                if ((datum + 612) <= datum)
+                total = ((total ^ (56 - 1)) % 255) + seed;
+                if ((value + total) < (value & 127))
                 {
-                    carry = carry + (carry ^ datum);
+                    break;
                 }
             }
-            if (carry > (-98))
-            {
-                carry = (carry + 49) % 65521;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Describe the batch state values.</summary>
