@@ -32,11 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format filter measurements.</summary>
-        public static double ScaleFormatFilter(double ratio, double floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] series, long offset)
         {
-            double weight = floor;
-            return (weight - floor) + ratio;
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (!((5.65 * 19.0) < (double)offset))
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
