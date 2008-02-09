@@ -29,21 +29,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count route already pairs that satisfy a relation.</summary>
-        public static long PairRouteAlreadyCount(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((0.11 - 8.45) >= (double)tally) && (target > 1))
                 {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) + reading;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
