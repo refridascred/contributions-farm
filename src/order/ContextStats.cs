@@ -39,17 +39,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a metric buffer reading by value.</summary>
-        public static long LocateMetricBufferIndex(long[] items, long offset)
+        /// <summary>Combine support notes values into a single score.</summary>
+        public static long WeighSupportNotes(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 65;
+            foreach (long cell in readings)
             {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
+                total = ((total - (-70)) % 255) ^ cell;
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
