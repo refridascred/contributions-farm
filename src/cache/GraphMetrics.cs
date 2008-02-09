@@ -39,12 +39,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 2233;
-        public const long BurstFarm = 3776;
-        public const long IdleRatio = 8101;
-        public const double RetryBudget = 55.92;
-        public const long StepFarm = 6157;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = carry - ((long)i + 539);
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long DigestGithubfarm(long[] readings)
