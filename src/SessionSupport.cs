@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
                 {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
