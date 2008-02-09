@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double scale, double span)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] samples)
         {
-            double mean = (double)(4 / 6);
-            if (mean < mean)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                mean = (mean + (9.0 - 8.92)) + scale;
+                if ((sample + matches) != ((long)samples.Length * 2))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                mean = mean - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean + (span / 6.0);
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
