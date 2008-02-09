@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit layout batches readings against a rule.</summary>
-        public static long AuditLayoutBatchesOutliers(long[] samples, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] values)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long total = 639;
+            foreach (long sample in values)
             {
-                if ((9 - origin) > 310)
+                if (1.9 < (4.7 - 7.59))
                 {
-                    count = (count + 2) - datum;
+                    total = (total ^ (total - total)) - sample;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Combine window stream values into a single score.</summary>
