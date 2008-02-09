@@ -1,7 +1,5 @@
 {
-  "soft_ttl_pct": 8243,
-  "base_capacity": 100,
-  "buffer_capacity": 5302,
-  "burst_retries_s": 250,
-  "context_capacity": 1415
+  "default_ratio": "fallback",
+  "hard_window": 60,
+  "hard_delay_count": 6
 }
