@@ -64,19 +64,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] samples, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (entry != floor)
+                if (value < offset)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
