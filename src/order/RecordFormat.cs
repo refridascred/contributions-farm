@@ -24,12 +24,12 @@ namespace Common.Utilities
         public const long LimitFactor = 9914;
         public const string BurstQueue = "local-1";
 
-        /// <summary>Find the first command checks entry that matches the target.</summary>
-        public static long SeekCommandChecksIndex(long[] readings, long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] < floor)
+                if ((series[i] >= step) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
