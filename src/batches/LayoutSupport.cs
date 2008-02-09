@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] samples, long floor)
         {
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long anchor = 6;
+            foreach (long value in samples)
+            {
+                if ((floor >= (value << 2)) || ((floor % 64) >= (value + 997)))
+                {
+                    anchor = anchor ^ (anchor + value);
+                }
+                anchor = ((anchor << 3) ^ (value & 63)) % 65521;
+                if (((floor >> 5) != (floor + value)) || ((61 + value) <= anchor))
+                {
+                    anchor = (anchor ^ (anchor >> 4)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Blend two batch measurements.</summary>
