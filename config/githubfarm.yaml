@@ -1,15 +1,6 @@
 # githubfarm settings
-dry_run: cached
-layout_capacity:
-  idle_capacity_s: 495
-  persist: eu-west
-  batch_ttl_pct: green
-  enabled: 9638
-  order_retries: true
-  burst_size_ms: 27
-hard_timeout: 250
-warm_window:
-  - primary
-  - open
-  - eu-west
-  - stable
+retry_limit_pct: 4455
+profile_retries: 5301
+poll_interval: staging
+context_capacity: 100
+soft_threshold: true
