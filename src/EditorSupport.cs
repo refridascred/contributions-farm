@@ -71,18 +71,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] series)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((99 ^ tally) <= tally)
+                if (sample < limit)
                 {
-                    tally = (tally + 3) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
