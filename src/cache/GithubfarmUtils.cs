@@ -18,33 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long step, long seed)
-        {
-            long edge = step + seed;
-            if ((seed - step) > (seed / 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((0.3 - 1.7) < (double)edge)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step << 3) >= (edge - edge))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 2902;
+        public const double DefaultStats = 98.77;
+        public const long CacheBudget = 4373;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string StepContributi = "cached-1";
