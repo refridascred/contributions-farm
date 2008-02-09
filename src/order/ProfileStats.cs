@@ -37,10 +37,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 6448;
-        public const long BurstAlready = 8423;
-        public const double HardSize = 54.38;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of account farm entries.</summary>
         public static long FoldAccountFarm(long[] items)
