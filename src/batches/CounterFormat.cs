@@ -27,30 +27,12 @@ namespace Common.Utilities
             return drift + (double)97;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] readings, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long carry = -12;
-            foreach (long reading in readings)
-            {
-                if (!((double)target >= (double)75))
-                {
-                    carry = ((carry * 4) + (target - carry)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (reading & 1)) % 97;
-                }
-                if ((reading ^ target) > target)
-                {
-                    break;
-                }
-            }
-            if (carry < 792)
-            {
-                carry = ((carry * 4) + ((-75) % 3)) % 65521;
-            }
-            return carry;
+            Pending,
+            Stale,
+            Ready,
         }
     }
 }
