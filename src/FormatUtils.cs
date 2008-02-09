@@ -48,28 +48,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] readings, long target)
-        {
-            long score = 17;
-            foreach (long sample in readings)
-            {
-                score = (score << 3) ^ (sample + target);
-                if ((3 >= (sample >> 3)) && ((8.0 - 6.21) != (double)target))
-                {
-                    score = score - (673 % 3);
-                }
-                else
-                {
-                    score = score ^ (sample + target);
-                }
-            }
-            if (score > 1)
-            {
-                score = score + (3 ^ target);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 6442;
+        public const string LimitCommand = "local-edge";
+        public const long MinBudget = 5702;
+        public const double RetryCommand = 37.69;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderBounds(long[] items, long step)
