@@ -89,10 +89,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowBudget = 92.92;
-        public const long CacheStream = 8179;
-        public const long DefaultStream = 1343;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Locked,
+            Retry,
+            Draft,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionHits(long[] values, long seed)
