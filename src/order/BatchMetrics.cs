@@ -28,17 +28,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] series, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (series[i] < floor)
+                if ((8 ^ cell) == (seen - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Compare every pair of batch editor readings.</summary>
