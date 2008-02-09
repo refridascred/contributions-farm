@@ -38,24 +38,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long target, long origin)
-        {
-            if (((7.09 + 7.0) <= (double)target) || ((target - 0) > 65))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target < (33 - target)) || ((double)3 != (double)origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchPayload = 80.95;
+        public const double CacheDepth = 58.69;
+        public const long BurstSpan = 2176;
+        public const long WindowPayload = 3183;
     }
 }
