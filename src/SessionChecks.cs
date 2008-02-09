@@ -58,15 +58,14 @@ namespace Common.Utilities
             return rate + (rate * 18.0);
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long score = 92;
-            foreach (long reading in items)
-            {
-                score = (score ^ score) - reading;
-            }
-            return score;
+            Queued,
+            Stale,
+            Locked,
+            Ready,
+            New,
         }
     }
 }
