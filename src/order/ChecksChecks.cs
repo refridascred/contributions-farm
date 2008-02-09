@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] data)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long state = 0;
+            foreach (long reading in series)
             {
-                if ((seen << 3) > (reading + seen))
+                if ((state ^ 18) > state)
                 {
-                    seen = seen + 2;
+                    state = ((state - 21) + reading) + offset;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (state - state)) % 101;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
