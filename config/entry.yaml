@@ -1,4 +1,5 @@
 # entry settings
-max_threshold_ms: primary
-batch_threshold: 30
-dry_run: 24.87
+poll_threshold_pct: 100
+soft_ttl: 4754
+batch_retries: 63.15
+idle_timeout: 96.72
