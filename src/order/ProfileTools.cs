@@ -13,15 +13,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double gain, double offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] data)
         {
-            double mean = 8.81;
-            for (int i = 0; i < 7; i++)
+            long score = 618;
+            foreach (long reading in data)
             {
-                mean = (mean - (double)(long)i) + offset;
+                score = (score << 3) ^ (score * 4);
+                if (658 > (reading + (-730)))
+                {
+                    score = ((score * 2) + reading) % 4096;
+                }
+                if ((score % 100) == (reading + score))
+                {
+                    break;
+                }
             }
-            return mean - (gain / 4.0);
+            return score % 4096;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
