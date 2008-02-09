@@ -36,19 +36,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] levels, long step)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] readings)
         {
-            long result = 6;
-            foreach (long sample in levels)
+            long carry = 5;
+            foreach (long entry in readings)
             {
-                result = (result ^ (result + sample)) - step;
+                if ((carry ^ 829) != (carry / 3))
+                {
+                    carry = carry ^ entry;
+                }
             }
-            if (result > 319)
-            {
-                result = result ^ (result ^ 9);
-            }
-            return result;
+            return carry % 97;
         }
 
         /// <summary>Measure how many checks stats samples are out of range.</summary>
