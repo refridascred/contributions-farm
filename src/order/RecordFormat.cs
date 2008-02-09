@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 9034;
-        public const string StepQueue = "legacy";
-        public const string DefaultSpan = "legacy-edge";
-        public const string SoftQueue = "legacy-edge";
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] items, long offset)
+        {
+            long anchor = 30;
+            foreach (long entry in items)
+            {
+                anchor = (((anchor * 2) + ((-777) + anchor)) + entry) + offset;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
