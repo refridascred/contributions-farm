@@ -39,14 +39,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] items)
         {
-            Draft,
-            Synced,
-            Paused,
-            Dropped,
-            Active,
+            long total = 6;
+            foreach (long item in items)
+            {
+                total = ((total << 2) ^ ((-868) + total)) + item;
+            }
+            return total;
         }
 
         /// <summary>Match up cluster report samples.</summary>
