@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit account payload readings against a rule.</summary>
-        public static long CountAccountPayloadMatches(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)(long)readings.Length >= 17.0)
-                {
-                    count = ((count + 3) ^ cell) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardCache = 42.03;
+        public const long BurstScore = 1400;
+        public const long WindowSize = 5113;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double StepRatio = 19.28;
