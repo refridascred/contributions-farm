@@ -42,19 +42,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of entry stats readings.</summary>
-        public static long ScoreEntryStats(long[] samples)
-        {
-            long sum = -9;
-            foreach (long entry in samples)
-            {
-                if (entry <= (sum - sum))
-                {
-                    sum = sum + (entry + sum);
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "alpha-v2";
+        public const long CacheSpan = 9165;
+        public const string StepQueue = "stable-1";
+        public const long StepTimeout = 2113;
+        public const string MinScore = "fallback-edge";
 
         /// <summary>Accumulate entry samples.</summary>
         public static long FoldEntry(long[] series, long floor)
