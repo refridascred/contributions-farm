@@ -19,15 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long offset, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            long next = offset + limit;
+            if (((offset % 7) <= (limit << 3)) || ((double)offset < 6.9))
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((230 & 31) != (limit % 97))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset > (next - next))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
