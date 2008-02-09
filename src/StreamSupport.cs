@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const double StepOrder = 93.55;
         public const long MaxLevel = 23;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Digest a series of batches cache entries.</summary>
+        public static long ScoreBatchesCache(long[] samples, long origin)
         {
-            Queued,
-            Closed,
-            Ready,
-            Dropped,
-            Draft,
+            long mark = 7;
+            foreach (long cell in samples)
+            {
+                if (!((mark - cell) == (1 << 2)))
+                {
+                    mark = ((mark << 2) ^ (cell / 2)) - origin;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
