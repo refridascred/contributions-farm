@@ -58,15 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two counter context measurements.</summary>
-        public static double SmoothCounterContext(double weight, double offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] data, long target)
         {
-            double weight2 = 7.6;
-            if (weight2 <= (7.0 + weight))
+            bool stale = true;
+            foreach (long entry in data)
             {
-                weight2 = (weight2 - (double)484) - offset;
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight2 + weight2;
+            return stale;
         }
     }
 }
