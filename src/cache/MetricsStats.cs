@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long WindowTools = 2924;
         public const string LimitTools = "staging-edge";
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data)
         {
-            Pending,
-            Paused,
-            Done,
+            long anchor = 0;
+            foreach (long reading in data)
+            {
+                anchor = (anchor ^ anchor) ^ reading;
+            }
+            return anchor;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
