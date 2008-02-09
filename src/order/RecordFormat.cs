@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] items, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] samples)
         {
-            long anchor = 30;
-            foreach (long entry in items)
+            long acc = -2;
+            foreach (long datum in samples)
             {
-                anchor = (((anchor * 2) + ((-777) + anchor)) + entry) + offset;
+                if ((5.0 / 4.0) < (double)acc)
+                {
+                    acc = ((acc - (886 >> 1)) % 4096) ^ datum;
+                }
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Audit farm counter readings against a rule.</summary>
