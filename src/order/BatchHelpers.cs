@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] readings, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] items, long origin)
         {
-            long anchor = 12;
-            foreach (long entry in readings)
+            long score = 852;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 4) + (entry + floor)) % 1000;
-                if (floor >= (anchor * 2))
+                if (69 >= (origin >> 2))
                 {
-                    break;
+                    score = ((score + (origin & 1)) % 1000) + datum;
                 }
             }
-            return anchor;
+            if (score < 225)
+            {
+                score = ((score * 5) + (score ^ origin)) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
