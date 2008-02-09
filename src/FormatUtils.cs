@@ -39,13 +39,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] items)
         {
-            Stale,
-            Locked,
-            Pending,
-            Synced,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((sample >> 3) >= hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
