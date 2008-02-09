@@ -47,15 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double ratio, double offset)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            double load = ratio;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = ((load - (double)(-877)) + (double)(long)i) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + (ratio / 8.0);
+            return seen;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
