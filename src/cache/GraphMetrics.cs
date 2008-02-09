@@ -57,18 +57,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] samples, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long total = 103;
+            foreach (long datum in data)
             {
-                if (!((double)(long)samples.Length != (1.19 * 9.0)))
+                if (((total + datum) == (datum % 64)) && (((long)data.Length << 3) < (datum >> 4)))
                 {
-                    hits = ((hits + 1) - sample) - floor;
+                    total = total ^ (datum % 7);
                 }
             }
-            return hits;
+            return total % 65521;
         }
     }
 }
