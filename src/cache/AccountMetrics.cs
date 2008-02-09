@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] values, long target)
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if (151 <= (sample + sample))
+                {
+                    seen = (seen + 1) - target;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the batch state values.</summary>
