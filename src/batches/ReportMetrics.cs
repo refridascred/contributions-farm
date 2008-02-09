@@ -25,13 +25,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            Paused,
-            Idle,
-            New,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate window checks readings against a bound.</summary>
