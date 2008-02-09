@@ -48,18 +48,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit profile checks readings against a rule.</summary>
-        public static long TallyProfileChecksGaps(long[] readings, long step)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (!(((hits - step) <= (step - hits)) || ((double)7 <= (double)hits)))
-                {
-                    hits = (hits + 2) - value;
-                }
-            }
-            return hits;
+            Active,
+            Dropped,
+            Pending,
+            Locked,
+            Retry,
         }
     }
 }
