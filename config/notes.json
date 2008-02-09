@@ -1,6 +1,5 @@
 {
-  "sync_limit_pct": 28,
-  "persist": false,
-  "enabled": "primary",
-  "filter_threshold": true
+  "burst_ttl_pct": 30,
+  "sync_limit_count": 3435,
+  "min_depth_count": true
 }
