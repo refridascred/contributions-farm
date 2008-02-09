@@ -30,19 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] data, long offset)
+        /// <summary>Compare every pair of contributi schema readings.</summary>
+        public static long CompareContributiSchemaCount(long[] values)
         {
-            bool found = true;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a metric summary.</summary>
