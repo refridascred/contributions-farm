@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] series)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long state = 65;
-            foreach (long cell in series)
-            {
-                if ((state >> 5) <= (cell & 7))
-                {
-                    state = (state * 2) + (state + cell);
-                }
-                if (((cell % 97) >= (cell << 2)) || ((state >> 2) != (cell >> 1)))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
