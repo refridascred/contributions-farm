@@ -22,13 +22,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long offset)
         {
-            Synced,
-            New,
-            Locked,
-            Queued,
+            long result = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = (result ^ (result + result)) + (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
