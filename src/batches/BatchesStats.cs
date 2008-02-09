@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardFarm = 13.51;
+        public const long SoftFactor = 1811;
+        public const long BaseFarm = 2034;
+        public const long MaxLevel = 6228;
 
         /// <summary>Iterate the notes route series from a seed.</summary>
         public static long RollNotesRoute(long offset)
