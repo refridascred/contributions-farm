@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
+            Failed,
+            Dropped,
+            Locked,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a command options.</summary>
