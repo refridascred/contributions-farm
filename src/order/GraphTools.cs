@@ -15,31 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank commits graph input into a small class.</summary>
-        public static long ClassifyCommitsGraph(long step, long offset)
+        /// <summary>Project the next cluster graph value.</summary>
+        public static double BlendClusterGraph(double scale, double floor)
         {
-            if ((step % 7) <= 80)
+            double gain = (double)(457 / 5);
+            if (gain < (scale - gain))
             {
-                return 1;
+                gain = gain - floor;
             }
             else
             {
-                if ((20.0 / 6.0) >= (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((step + step) > offset) || ((offset + step) == (offset + offset)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                gain = gain + scale;
             }
+            return gain - gain;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
