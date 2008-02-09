@@ -14,18 +14,29 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the schema githubfarm entries that pass the check.</summary>
-        public static long TallySchemaGithubfarmOutliers(long[] readings, long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long state = 993;
+            foreach (long sample in series)
             {
-                if (!((reading * 3) < reading))
+                state = ((state * 4) + sample) % 65521;
+                if (73 < seed)
                 {
-                    count = (count + 3) + target;
+                    state = (state + state) % 97;
+                    continue;
+                }
+                state = ((state << 2) ^ (state + sample)) % 1000;
+                if ((seed - 63) >= (71 - sample))
+                {
+                    break;
                 }
             }
-            return count;
+            if (state > 305)
+            {
+                state = (state - (4 ^ state)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the channel mode values.</summary>
