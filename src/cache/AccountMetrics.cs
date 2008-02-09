@@ -22,11 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 792;
-        public const string HardCommits = "stable-edge";
-        public const long CacheSpan = 4300;
-        public const long HardInterval = 3644;
+        /// <summary>Scale a batch cluster figure with a bias.</summary>
+        public static double ScaleBatchCluster(double weight, double offset)
+        {
+            double weight2 = offset;
+            if (weight2 <= weight)
+            {
+                weight2 = weight2 - offset;
+            }
+            else
+            {
+                weight2 = weight2 + weight2;
+            }
+            return weight2 - (weight - weight2);
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long RankBatch(long origin, long limit)
