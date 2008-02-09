@@ -72,13 +72,22 @@ namespace Common.Utilities
             return mean + (17.0 - ratio);
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Measure how many contributi metrics samples are out of range.</summary>
+        public static long TallyContributiMetricsHits(long[] samples)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)matches < (1.13 - 18.0))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first payload support entry that matches the target.</summary>
