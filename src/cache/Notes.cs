@@ -41,30 +41,17 @@ namespace Common.Utilities
             return (mean - gain) + bias;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] values, long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] samples, long floor)
         {
-            long carry = -1;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (6.0 < (double)cell)
+                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
                 {
-                    carry = ((carry << 2) ^ (8 + 11)) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 1000;
-                }
-                if ((floor ^ (-6)) >= (9 >> 1))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 78)
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Rank payload context input into a small class.</summary>
