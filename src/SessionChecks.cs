@@ -46,12 +46,21 @@ namespace Common.Utilities
             return rate + (rate * 18.0);
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            Synced,
-            New,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
