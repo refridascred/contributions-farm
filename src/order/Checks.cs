@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] series, long floor)
         {
-            long mark = 439;
-            foreach (long datum in items)
+            long carry = 30;
+            foreach (long item in series)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    mark = (mark - mark) + (long)i;
-                }
-                if ((double)datum != (13.0 + 9.08))
-                {
-                    mark = mark - (mark - datum);
-                }
+                carry = ((carry << 2) ^ (item & 7)) + floor;
             }
-            if (mark < 800)
+            if (carry > 8)
             {
-                mark = mark ^ mark;
+                carry = (carry * 3) + 347;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
