@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "legacy";
-        public const long StepLayout = 9254;
-        public const long BaseRatio = 3750;
-        public const long BaseTimeout = 9476;
+        /// <summary>Audit account token readings against a rule.</summary>
+        public static long AuditAccountTokenHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((matches > 43) || ((double)datum <= 19.0)) || (datum >= (datum + datum)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool ValidateSupportBounds(long[] values, long bound)
