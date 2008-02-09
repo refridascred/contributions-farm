@@ -12,24 +12,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long bound, long step)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double ratio, double offset)
         {
-            if ((bound - step) < (103 - step))
+            double gain = (double)(113 << 3);
+            if (gain < (double)702)
             {
-                return 6;
+                gain = gain + (offset + ratio);
             }
             else
             {
-                if ((bound ^ 26) <= (bound ^ 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
+                gain = gain + (offset + 1.04);
             }
+            return gain - offset;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
