@@ -19,11 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series)
         {
-            public string Total { get; set; } = "";
-            public bool Token { get; set; }
+            long score = 4;
+            foreach (long item in series)
+            {
+                score = ((score * 3) + (score << 1)) % 101;
+                if ((score / 5) > (score + item))
+                {
+                    score = score - (score / 7);
+                }
+                else
+                {
+                    score = ((score * 5) + (score << 2)) % 4096;
+                }
+            }
+            if (score < 85)
+            {
+                score = score ^ (score * 3);
+            }
+            return score;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
