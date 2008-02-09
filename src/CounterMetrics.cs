@@ -47,24 +47,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] levels, long offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] items, long bound)
         {
-            long mix = 8;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix + (offset % 24)) % 101;
-                mix = (mix + (cell & 15)) % 65521;
-                if ((mix + cell) != (offset - 8))
+                if (items[i] >= bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 82)
-            {
-                mix = ((mix << 2) ^ (offset - offset)) % 97;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate checks samples.</summary>
