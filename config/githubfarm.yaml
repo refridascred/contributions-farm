@@ -1,6 +1,8 @@
 # githubfarm settings
-retry_limit_pct: 4455
-profile_retries: 5301
-poll_interval: staging
-context_capacity: 100
-soft_threshold: true
+min_ratio_count: latest
+batch_depth_pct: true
+filter_ttl: 57.91
+enabled:
+  - primary
+  - local
+  - stable
