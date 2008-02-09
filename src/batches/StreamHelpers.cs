@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepTimeout = "standard-edge";
-        public const long DefaultMetrics = 2005;
-        public const double IdleDepth = 38.68;
-        public const string BatchMetrics = "standard-edge";
-        public const long BaseCount = 2931;
+        /// <summary>Combine githubfarm payload values into a single score.</summary>
+        public static long WeighGithubfarmPayload(long[] samples, long limit)
+        {
+            long total = 185;
+            foreach (long entry in samples)
+            {
+                total = ((total ^ (total & 1)) % 101) - entry;
+                if (62 > (771 - limit))
+                {
+                    total = (total + (limit + limit)) % 101;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorHits(long[] series)
