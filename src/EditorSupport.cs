@@ -34,12 +34,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Failed,
-            New,
-            Pending,
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many channel format samples are out of range.</summary>
