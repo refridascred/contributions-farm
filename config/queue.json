@@ -1,8 +1,6 @@
 {
-  "base_interval": false,
-  "contributi_threshold": "open",
-  "flush_ttl": ["open", "eu-west", "staging", "cached"],
-  "max_size_pct": 60,
-  "verbose": 8105,
-  "soft_size": ["green", "cached"]
+  "graph_delay": 74.37,
+  "retry_depth_s": "open",
+  "persist": true,
+  "min_capacity": 84
 }
