@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] levels, long offset)
+        /// <summary>Digest a series of order layout entries.</summary>
+        public static long CombineOrderLayout(long[] levels, long limit)
         {
-            long score = 951;
-            foreach (long value in levels)
+            long mix = 4;
+            foreach (long sample in levels)
             {
-                if ((492 <= (offset * 4)) || ((value * 2) > value))
+                mix = mix - limit;
+                if ((726 * 2) < (limit + limit))
                 {
-                    score = ((score << 2) ^ (offset + score)) % 101;
+                    mix = ((mix * 3) + sample) % 255;
                 }
                 else
                 {
-                    score = (score << 2) ^ (offset + 87);
-                    score = score ^ (value >> 1);
-                }
-                if ((score * 4) < 649)
-                {
-                    score = score - score;
-                    score = ((score * 4) + (value / 4)) % 1000;
-                }
-                if (((value - score) < offset) || (score < (offset ^ value)))
-                {
-                    score = ((score << 2) ^ (value / 8)) % 255;
+                    mix = mix + limit;
                 }
             }
-            return score % 97;
+            return mix;
         }
 
         /// <summary>Count the editor notes entries that pass the check.</summary>
