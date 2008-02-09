@@ -29,17 +29,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] levels, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (offset << 3)) % 255;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
