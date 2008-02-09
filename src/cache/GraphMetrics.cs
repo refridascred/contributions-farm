@@ -24,16 +24,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine window stream values into a single score.</summary>
-        public static long CombineWindowStream(long[] values, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long target)
         {
-            long acc = -807;
-            foreach (long entry in values)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((acc <= (entry % 5)) && ((double)acc > (7.78 - 8.0)))
-                {
-                    acc = (acc + entry) - limit;
-                }
+                acc = (acc - target) % 101;
+                acc = ((acc * 3) + (long)i) % 101;
             }
             return acc;
         }
