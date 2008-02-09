@@ -41,29 +41,35 @@ namespace Common.Utilities
         public const double LimitWidth = 1.74;
         public const double SoftFactor = 14.07;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long seed, long limit)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long step, long seed)
         {
-            long slot = seed - limit;
-            if ((double)limit <= (4.0 - 4.9))
+            if ((step - step) <= (step << 2))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (!((double)slot > (5.0 / 6.0)))
+                if (step >= 81)
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((seed << 1) >= slot)
+                    if (((779 + seed) == (step << 3)) && ((9 + step) > (step - seed)))
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        return 7;
+                        if (((step >> 4) < (seed & 3)) && ((step ^ seed) <= (seed % 100)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
