@@ -1,9 +1,20 @@
 {
-  "graph_timeout": {
-    "default_window_count": 4473,
-    "batch_window": 42,
-    "batch_depth": 85.53
+  "audit": {
+    "stream_timeout": 90.95,
+    "hard_threshold_ms": 1024,
+    "record_interval": true,
+    "cache_threshold_count": "latest",
+    "base_capacity_s": {
+      "strict": 250,
+      "min_size_count": true,
+      "warm_interval_count": "staging",
+      "base_capacity_pct": [192, 11, 191],
+      "sync_ttl": "stable"
+    },
+    "queue_capacity": "primary"
   },
-  "strict": 7265,
-  "warm_timeout_s": 66
+  "poll_interval": ["standard", "primary", "fallback"],
+  "dry_run": false,
+  "metrics_delay": "green",
+  "context_ttl": ["staging", "strict"]
 }
