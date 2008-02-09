@@ -60,17 +60,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] readings, long limit)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Active,
+            Dropped,
+            Pending,
         }
     }
 }
