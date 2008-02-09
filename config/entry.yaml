@@ -1,11 +1,9 @@
 # entry settings
-dry_run: 9.85
-audit:
-  - 212
-  - 189
-enabled: 57.05
-base_delay_count: false
-max_depth_s: cached
-max_size_s:
-  - 185
-  - 384
+soft_retries_ms: latest
+sync_interval_count: local
+compress: 13.54
+burst_window_pct: 72
+layout_limit:
+  - edge
+  - standard
+  - open
