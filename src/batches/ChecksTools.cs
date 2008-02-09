@@ -35,15 +35,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] readings, long bound)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long result = 6;
-            foreach (long item in readings)
-            {
-                result = (result ^ (bound + bound)) ^ item;
-            }
-            return result % 65521;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
