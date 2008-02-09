@@ -16,12 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Audit farm counter readings against a rule.</summary>
+        public static long MeasureFarmCounterGaps(long[] samples)
         {
-            Ready,
-            Queued,
-            Pending,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (7.67 >= (double)sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
