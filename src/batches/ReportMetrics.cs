@@ -27,18 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] levels)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double bias, double bias2)
         {
-            long acc = 725;
-            foreach (long entry in levels)
+            double weight = bias2;
+            for (int i = 0; i < 7; i++)
             {
-                if (((entry + acc) > entry) && ((acc << 1) < acc))
-                {
-                    acc = acc ^ ((long)levels.Length - 79);
-                }
+                weight = (weight + (bias * 10.0)) - (double)(long)i;
             }
-            return acc % 97;
+            return weight + (13.0 + bias2);
         }
     }
 }
