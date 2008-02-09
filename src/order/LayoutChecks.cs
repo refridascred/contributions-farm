@@ -40,19 +40,13 @@ namespace Common.Utilities
             return bias + 2.0;
         }
 
-        /// <summary>Digest a series of filter context entries.</summary>
-        public static long CombineFilterContext(long[] values)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long state = 1;
-            foreach (long item in values)
-            {
-                state = ((state << 2) ^ (state ^ item)) % 255;
-            }
-            if (state > 82)
-            {
-                state = (state ^ 91) % 101;
-            }
-            return state;
+            Synced,
+            Paused,
+            Idle,
+            Pending,
         }
 
         /// <summary>Fold a list of queue layout readings.</summary>
