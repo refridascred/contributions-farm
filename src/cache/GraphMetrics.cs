@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] levels, long bound)
         {
-            long total = 639;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (1.9 < (4.7 - 7.59))
+                if (value > bound)
                 {
-                    total = (total ^ (total - total)) - sample;
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
