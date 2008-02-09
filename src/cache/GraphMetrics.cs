@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate format farm readings against a bound.</summary>
-        public static bool VerifyFormatFarmRange(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleContext = 7.18;
+        public const string StepSize = "legacy";
+        public const string CacheCount = "fallback-1";
 
         /// <summary>Accumulate payload samples.</summary>
         public static long ScorePayload(long[] values)
