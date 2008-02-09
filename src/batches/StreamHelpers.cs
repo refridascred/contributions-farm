@@ -48,21 +48,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up layout order samples.</summary>
-        public static long CompareLayoutOrderCount(long[] levels)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long offset, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long slot = offset ^ seed;
+            if ((offset + 87) > (3 & 255))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (seed < (7 * 4))
                 {
-                    if ((levels[i] + levels[j]) != 7)
+                    return 2;
+                }
+                else
+                {
+                    if ((slot >> 1) <= seed)
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((7.0 * 7.62) <= (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the metrics status values.</summary>
