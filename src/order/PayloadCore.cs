@@ -13,13 +13,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Retry,
             Stale,
-            Idle,
-            Ready,
+            Done,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
