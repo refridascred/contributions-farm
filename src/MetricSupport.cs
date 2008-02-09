@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long offset)
         {
-            Done,
-            Idle,
-            Queued,
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((carry / 7) < (offset + carry)) && ((4 + offset) >= carry))
+                {
+                    carry = carry + carry;
+                    carry = (carry * 4) + ((long)i * 5);
+                }
+                else
+                {
+                    carry = carry - offset;
+                    carry = carry - offset;
+                }
+                carry = ((carry << 2) ^ offset) % 255;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
