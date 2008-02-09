@@ -1,6 +1,15 @@
 {
-  "sync_limit_ms": 28,
-  "stream_ratio": "blue",
-  "compress": [345, 64, 292, 15],
-  "flush_depth": "cached"
+  "dry_run": {
+    "metric_timeout": 640,
+    "sync_interval_s": 46.78,
+    "sync_capacity_s": {
+      "cache_retries": false,
+      "persist": 2442,
+      "burst_retries": "eu-west",
+      "notes_capacity": true,
+      "already_depth": "open"
+    }
+  },
+  "farm_limit": "local",
+  "verbose": 434
 }
