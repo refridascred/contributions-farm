@@ -1,18 +1,16 @@
 # githubfarm settings
-max_window_count: latest
-format_ratio: 47.52
-max_threshold_ms: 28
-metrics_interval:
-  - edge
-  - stable
-  - fallback
-  - strict
-idle_ratio_pct: false
-warm_retries:
-  max_retries_s: 24.86
-  cache_window_ms:
-    base_ttl_pct: 21.03
-    session_limit: true
-    soft_ratio_pct: strict
-  min_capacity_ms: true
-  hard_window_ms: staging
+max_delay_ms: 48
+sync_retries_ms: 67.36
+strict:
+  soft_depth_count:
+    persist: false
+    retry_limit_count: local
+    profile_threshold:
+      - 407
+      - 299
+      - 137
+      - 120
+    enabled: eu-west
+    format_limit: staging
+  soft_limit: true
+  default_capacity_ms: 8984
