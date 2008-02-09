@@ -46,22 +46,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] values, long floor)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (((count % 10) != (count - reading)) || (((long)values.Length < (28 >> 1)) && ((reading % 8) != (count << 1))))
-                {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
