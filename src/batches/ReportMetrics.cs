@@ -14,17 +14,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] items, long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = bias;
+            if (bias2 >= (double)4)
             {
-                if ((items[i] > origin) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + (bias / 8.0);
             }
-            return -1;
+            return bias2 - (0.3 + weight);
         }
 
         /// <summary>Adjust a batch reading.</summary>
