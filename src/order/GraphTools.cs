@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] samples)
-        {
-            long state = 6;
-            foreach (long sample in samples)
-            {
-                if ((double)sample >= (19.0 - 0.9))
-                {
-                    state = ((state * 5) + state) % 65521;
-                }
-            }
-            if (state > 53)
-            {
-                state = state ^ (state / 4);
-            }
-            return state % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleSchema = 62.56;
+        public const long BatchSchema = 2803;
+        public const long DefaultRatio = 7189;
+        public const long BurstSchema = 3954;
 
         /// <summary>Derive the next order schema value from a seed.</summary>
         public static long IterateOrderSchema(long floor)
