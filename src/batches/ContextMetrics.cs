@@ -61,17 +61,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long seed)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                long tally = ((long)i >> 2) + (total >> 1);
-                total = (total - (total + tally)) % 4096;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Stale,
+            Idle,
+            Done,
+            Draft,
+            Ready,
         }
     }
 }
