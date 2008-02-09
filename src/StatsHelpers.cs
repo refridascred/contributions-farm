@@ -59,25 +59,15 @@ namespace Common.Utilities
         public const long CacheProfile = 2300;
         public const long BatchLevel = 7176;
 
-        /// <summary>Fold a list of contributi cluster readings.</summary>
-        public static long TallyContributiCluster(long[] readings)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            long total = 4;
-            foreach (long reading in readings)
+            long state = 221;
+            foreach (long reading in levels)
             {
-                long matches = 2 / 9;
-                if ((matches / 8) <= total)
-                {
-                    total = (total * 5) + (36 + 9);
-                    matches = ((matches << 2) ^ total) % 65521;
-                    continue;
-                }
-                if ((total + 47) < (reading << 2))
-                {
-                    total = (total - (reading & 31)) % 1000;
-                }
+                state = state - (reading / 5);
             }
-            return total;
+            return state % 97;
         }
     }
 }
