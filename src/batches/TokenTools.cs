@@ -35,31 +35,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long seed, long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] data)
         {
-            if ((seed % 3) <= (3 & 63))
+            long acc = 1;
+            foreach (long reading in data)
             {
-                return 7;
+                acc = acc ^ (310 + reading);
             }
-            else
-            {
-                if (((double)limit > (double)seed) || (seed < limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (19 >= (limit + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return acc % 97;
         }
     }
 }
