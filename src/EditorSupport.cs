@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long step)
         {
-            long anchor = 1;
-            foreach (long cell in samples)
+            long total = step;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = ((anchor + (92 & 3)) % 4096) + cell;
+                if (!((total - 20) <= (total + total)))
+                {
+                    total = ((total << 2) ^ (step % 7)) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
