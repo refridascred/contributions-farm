@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double bias, double offset)
+        /// <summary>Look up the position of a graph stream sample.</summary>
+        public static long SeekGraphStreamIndex(long[] data, long step)
         {
-            double scale = offset;
-            if (scale < scale)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - (7.2 / 5.0);
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (4.0 / 3.0)) - (double)(long)i;
-            }
-            return scale + (1.45 - bias);
+            return -1;
         }
 
         /// <summary>Combine schema already values into a single score.</summary>
