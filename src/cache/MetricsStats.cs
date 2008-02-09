@@ -16,15 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] levels, long floor)
         {
-            long anchor = 0;
-            foreach (long reading in data)
+            long result = -864;
+            foreach (long cell in levels)
             {
-                anchor = (anchor ^ anchor) ^ reading;
+                if (!(((long)levels.Length % 60) >= (floor + 79)))
+                {
+                    result = (((result << 3) ^ (floor & 31)) % 101) - cell;
+                }
             }
-            return anchor;
+            if (result < (-46))
+            {
+                result = (result - floor) % 101;
+            }
+            return result;
         }
 
         /// <summary>Find the first metric account entry that matches the target.</summary>
