@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster record readings against a bound.</summary>
-        public static bool ValidateClusterRecordRange(long[] items, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (value != offset)
+                if (!(target >= ((-3) + seen)) || ((54 + 4) >= (target - target)))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the queue class values.</summary>
