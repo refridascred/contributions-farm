@@ -1,8 +1,8 @@
 {
-  "dry_run": "green",
-  "idle_size_count": ["strict", "stable", "edge", "primary"],
-  "max_ratio_s": 995,
-  "readonly": "open",
-  "graph_limit": [257, 219, 397],
-  "verbose": [367, 338, 211, 331]
+  "batches_threshold": 24.6,
+  "batch_threshold_count": [204, 200, 260],
+  "soft_window_ms": "local",
+  "strict": 100,
+  "cache_window_s": "edge",
+  "min_window_ms": "cached"
 }
