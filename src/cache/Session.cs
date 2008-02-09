@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long seed, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
+            if ((6.2 * 6.25) == (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if (step < (seed + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - seed) == (seed << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
