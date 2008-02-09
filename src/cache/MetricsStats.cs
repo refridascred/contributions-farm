@@ -50,25 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long origin, long offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long offset2 = origin ^ offset;
-            if ((origin > (1 - (-537))) && ((double)offset2 > (20.0 / 6.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset % 100) == (76 + 49))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Fold a list of entry readings.</summary>
