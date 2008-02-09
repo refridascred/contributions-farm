@@ -34,12 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] readings)
         {
-            Queued,
-            Stale,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a tools summary.</summary>
