@@ -30,11 +30,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxBudget = 24.54;
-        public const long BatchTimeout = 4517;
-        public const string LimitInterval = "open";
-        public const long CacheFactor = 7705;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] values, long limit)
+        {
+            long sum = 4;
+            foreach (long entry in values)
+            {
+                sum = (((sum * 4) + (sum - entry)) % 255) - limit;
+                if ((259 << 1) == (sum << 2))
+                {
+                    break;
+                }
+            }
+            if (sum < 7)
+            {
+                sum = ((sum << 2) ^ (sum & 255)) % 4096;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
