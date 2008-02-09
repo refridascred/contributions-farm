@@ -28,26 +28,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] samples)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long bound)
         {
-            long result = -33;
-            foreach (long sample in samples)
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((10 & 31) > (sample & 15)))
+                if (bound <= ((long)i ^ sum))
                 {
-                    result = (result << 2) ^ (850 & 3);
+                    sum = (sum - sum) % 4096;
                 }
-                if ((result + result) == (sample << 2))
-                {
-                    break;
-                }
+                sum = (sum + (long)i) % 101;
+                sum = (sum + (sum - bound)) % 97;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            if (result > (-29))
-            {
-                result = result + (1 * 5);
-            }
-            return result;
+            return sum;
         }
     }
 }
