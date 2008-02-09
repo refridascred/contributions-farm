@@ -68,17 +68,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first tools notes entry that matches the target.</summary>
-        public static long LookupToolsNotesIndex(long[] levels, long floor)
+        /// <summary>Compare every pair of checks context readings.</summary>
+        public static long PairChecksContextCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
