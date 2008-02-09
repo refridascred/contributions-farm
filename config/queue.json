@@ -1,7 +1,6 @@
 {
-  "notes_ratio": 30,
-  "poll_limit_count": 9048,
-  "layout_depth": 84.87,
-  "dry_run": 7254,
-  "batches_window": false
+  "poll_delay": "strict",
+  "token_threshold": 5.65,
+  "min_ratio_ms": [71, 19, 366],
+  "verbose": ["staging", "cached", "stable", "standard"]
 }
