@@ -23,20 +23,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 1978;
+        public const double MinGithubfarm = 55.45;
+        public const string CacheGithubfarm = "latest-edge";
 
         /// <summary>Accumulate batch samples.</summary>
         public static long ScoreBatch(long[] levels, long offset)
