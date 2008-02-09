@@ -45,21 +45,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count schema notes pairs that satisfy a relation.</summary>
-        public static long MatchSchemaNotesCount(long[] data)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long floor, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long delta = floor - seed;
+            if ((14.0 - 4.2) < (double)delta)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((double)delta > (2.38 - 8.74)) && ((8.05 + 5.55) <= (double)floor))
                 {
-                    if ((data[i] + data[j]) != 18)
+                    return 8;
+                }
+                else
+                {
+                    if ((delta & 31) == (delta << 2))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return hits;
         }
     }
 }
