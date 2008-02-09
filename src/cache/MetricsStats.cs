@@ -69,22 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] levels, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] series)
         {
-            long mix = 488;
-            foreach (long sample in levels)
+            long total = 100;
+            foreach (long value in series)
             {
-                if ((mix + sample) >= origin)
+                if (value < 98)
                 {
-                    mix = mix ^ mix;
-                }
-                if (origin > (origin << 2))
-                {
-                    mix = (mix * 3) + (5 + sample);
+                    total = (total << 3) ^ (value + total);
                 }
             }
-            return mix;
+            return total;
         }
     }
 }
