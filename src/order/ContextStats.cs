@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] values, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] samples, long bound)
         {
-            long mark = 5;
-            foreach (long sample in values)
+            long sum = 59;
+            foreach (long value in samples)
             {
-                if (sample <= (sample - mark))
+                if (value >= (sum - sum))
                 {
-                    mark = (mark - seed) % 101;
+                    sum = sum - 948;
+                }
+                if (value >= (bound - (-500)))
+                {
+                    break;
                 }
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
