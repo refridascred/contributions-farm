@@ -29,23 +29,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double gain, double offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            double load = (double)(522 % 7);
-            if (load < (double)35)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - (double)483) + gain;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (12.0 + offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (load - offset)) + (double)(long)i;
-            }
-            return load - (offset + 9.38);
+            return count;
         }
     }
 }
