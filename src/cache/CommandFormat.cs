@@ -37,11 +37,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
