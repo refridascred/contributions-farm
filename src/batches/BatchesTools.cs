@@ -39,22 +39,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] series)
+        /// <summary>Accumulate farm channel samples.</summary>
+        public static long FoldFarmChannel(long[] series)
         {
-            long tally = 0;
+            long sum = -5;
             foreach (long reading in series)
             {
-                if ((double)reading >= (2.9 * 9.53))
+                if (sum > reading)
                 {
-                    tally = tally + 3;
+                    sum = ((sum * 3) + (sum % 7)) % 255;
+                    sum = sum - sum;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = (sum * 3) + (reading + reading);
                 }
+                sum = (sum ^ reading) % 101;
             }
-            return tally;
+            return sum;
         }
     }
 }
