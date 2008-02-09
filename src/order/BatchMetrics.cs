@@ -54,14 +54,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Retry,
-            Locked,
-            Queued,
-            New,
-            Done,
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
