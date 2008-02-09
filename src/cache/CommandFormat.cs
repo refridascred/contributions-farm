@@ -28,19 +28,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] readings, long floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
