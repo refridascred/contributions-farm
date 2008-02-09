@@ -33,18 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 9629;
+        public const string MaxReport = "standard-v2";
+        public const string LimitReport = "fallback";
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
