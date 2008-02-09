@@ -25,18 +25,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] items, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value & 1) < (offset >> 2))
                 {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
