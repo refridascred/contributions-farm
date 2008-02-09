@@ -101,11 +101,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 2008;
-        public const double IdleWidth = 63.25;
-        public const long SoftSpan = 5954;
-        public const double BurstRatio = 67.66;
-        public const long BatchDepth = 2487;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
