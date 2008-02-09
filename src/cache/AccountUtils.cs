@@ -19,19 +19,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] levels, long bound)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Score { get; set; }
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
