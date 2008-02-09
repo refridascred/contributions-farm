@@ -69,18 +69,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] readings, long seed)
-        {
-            long mark = 745;
-            foreach (long value in readings)
-            {
-                if (((-252) & 1) < value)
-                {
-                    mark = mark - seed;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 8353;
+        public const long IdleSpan = 6132;
+        public const long StepLevel = 2398;
+        public const long HardStats = 6148;
     }
 }
