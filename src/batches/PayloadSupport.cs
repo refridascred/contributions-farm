@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseRatio = 55.48;
-        public const long LimitOrder = 9232;
-        public const long DefaultOrder = 8331;
-        public const string HardOrder = "fallback";
-        public const long HardBudget = 3004;
+        /// <summary>Measure how many profile githubfarm samples are out of range.</summary>
+        public static long MeasureProfileGithubfarmMatches(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (step < (seen << 1))
+                {
+                    seen = (seen + 2) ^ value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
