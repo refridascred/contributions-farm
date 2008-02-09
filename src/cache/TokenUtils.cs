@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long bound, long bound2)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] values, long target)
         {
-            if (!((double)bound2 > 8.0))
+            bool found = true;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound >> 5) >= bound)
+                if (entry <= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
