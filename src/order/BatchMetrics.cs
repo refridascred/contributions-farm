@@ -25,20 +25,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Digest a series of checks context entries.</summary>
+        public static long TotalChecksContext(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            long sum = 63;
+            foreach (long cell in series)
             {
-                if (state <= (state * 5))
+                if ((double)sum != (17.0 * 0.9))
                 {
-                    state = state + state;
+                    sum = (sum << 3) ^ cell;
                 }
-                state = ((state * 2) + (origin + origin)) % 1000;
-                state = ((state * 3) + (long)i) % 97;
+                else
+                {
+                    sum = (sum ^ cell) % 65521;
+                }
             }
-            return state;
+            return sum % 1000;
         }
 
         /// <summary>Define order limits and defaults.</summary>
