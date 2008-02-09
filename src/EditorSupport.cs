@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] values, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (!((total - 20) <= (total + total)))
+                if (entry >= origin)
                 {
-                    total = ((total << 2) ^ (step % 7)) % 4096;
+                    valid = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define context limits and defaults.</summary>
