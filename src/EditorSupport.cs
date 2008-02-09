@@ -41,13 +41,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public bool Score { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            Pending,
+            Closed,
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
