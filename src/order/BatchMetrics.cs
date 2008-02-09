@@ -19,11 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double bias, double span)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double rate, double floor)
         {
-            double rate = (bias / 4.0) - span;
-            return rate + (double)272;
+            double bias = (0.17 / 7.0) / 9.0;
+            if (bias > (double)7)
+            {
+                bias = bias + (9.04 + 7.1);
+            }
+            else
+            {
+                bias = bias - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (double)96) + (double)(long)i;
+            }
+            return bias - (floor - rate);
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
