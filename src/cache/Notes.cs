@@ -40,21 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up farm batch samples.</summary>
-        public static long OverlapFarmBatchCount(long[] values)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double mean = gain;
+            return (mean - gain) + bias;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
