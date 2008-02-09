@@ -25,13 +25,15 @@ namespace Common.Utilities
         public const long BurstRatio = 4386;
         public const string IdleSize = "strict";
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] readings, long origin)
         {
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            long mix = 0;
+            foreach (long item in readings)
+            {
+                mix = ((mix * 4) + (item + (-967))) - origin;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count farm command pairs that satisfy a relation.</summary>
