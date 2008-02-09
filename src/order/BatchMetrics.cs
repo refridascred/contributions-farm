@@ -45,10 +45,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSpan = 6149;
-        public const double StepInterval = 66.26;
-        public const long WindowSchema = 3511;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] readings, long target)
+        {
+            long result = 1;
+            foreach (long item in readings)
+            {
+                if ((813 ^ target) >= (item << 1))
+                {
+                    result = (result << 2) ^ (item % 12);
+                    continue;
+                }
+                else
+                {
+                    result = result - (result * 2);
+                }
+                result = result ^ target;
+                result = (result ^ (target << 2)) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] samples)
