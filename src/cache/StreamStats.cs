@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account token readings against a rule.</summary>
-        public static long AuditAccountTokenHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (((matches > 43) || ((double)datum <= 19.0)) || (datum >= (datum + datum)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseWidth = 7319;
+        public const double StepBudget = 32.62;
+        public const string DefaultSession = "cached-v2";
+        public const long StepCount = 8183;
+        public const long HardSession = 4304;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool ValidateSupportBounds(long[] values, long bound)
