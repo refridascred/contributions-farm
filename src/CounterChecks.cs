@@ -34,13 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Dropped,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinMetric = "alpha-edge";
+        public const long MaxCount = 3996;
+        public const double WindowMetric = 69.38;
+        public const long MinSize = 9823;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double MaxEditor = 90.1;
