@@ -58,15 +58,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double weight, double span)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long target, long bound)
         {
-            double mean = weight;
-            for (int i = 0; i < 8; i++)
+            long bound2 = target + bound;
+            if (bound2 <= (bound << 2))
             {
-                mean = ((mean - weight) - (double)(long)i) - span;
+                return 2;
             }
-            return mean - weight;
+            else
+            {
+                if ((bound << 2) == (bound << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((target - bound2) < (bound >> 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((bound2 + bound2) <= bound) || (bound2 <= target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
