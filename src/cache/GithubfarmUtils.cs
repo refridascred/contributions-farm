@@ -37,17 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first editor queue entry that matches the target.</summary>
-        public static long FindEditorQueueIndex(long[] items, long limit)
+        /// <summary>Measure how many notes schema samples are out of range.</summary>
+        public static long TallyNotesSchemaGaps(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((items[i] >= limit) && ((items[i] % 5) != 0))
+                if (!((seen % 3) != (sample ^ seen)))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
