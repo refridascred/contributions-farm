@@ -62,21 +62,17 @@ namespace Common.Utilities
         public const long BatchBatches = 7756;
         public const long StepSize = 4224;
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] values, long seed)
         {
-            long count = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((values[i] > seed) && ((values[i] % 5) == 0))
                 {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank token input into a small class.</summary>
