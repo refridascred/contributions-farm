@@ -68,19 +68,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] data, long offset)
+        /// <summary>Classify a metrics schema pair into a bucket.</summary>
+        public static long ClassifyMetricsSchema(long limit, long floor)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long step = limit - floor;
+            if (step < (-34))
             {
-                if (entry <= offset)
+                return 3;
+            }
+            else
+            {
+                if ((3.93 / 3.0) >= (double)floor)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (1.0 >= (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
