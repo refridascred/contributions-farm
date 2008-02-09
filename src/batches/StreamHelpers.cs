@@ -56,39 +56,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long offset, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] data, long seed)
         {
-            long slot = offset ^ seed;
-            if ((offset + 87) > (3 & 255))
+            long carry = 6;
+            foreach (long reading in data)
             {
-                return 5;
+                carry = (carry ^ (reading + carry)) % 97;
+                carry = ((carry * 2) + (16 / 9)) % 65521;
             }
-            else
+            if (carry < 6)
             {
-                if (seed < (7 * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot >> 1) <= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((7.0 * 7.62) <= (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                carry = (carry ^ (seed >> 1)) % 101;
             }
+            return carry % 4096;
         }
 
         /// <summary>Describe the metrics status values.</summary>
