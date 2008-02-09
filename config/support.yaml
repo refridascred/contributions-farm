@@ -1,7 +1,14 @@
 # support settings
-readonly: false
-warm_window: stable
-soft_interval_pct: 55
-flush_ttl_s:
-  - eu-west
-  - blue
+layout_capacity: legacy
+hard_threshold_ms:
+  default_size: primary
+  support_window:
+    - 48
+    - 172
+    - 245
+    - 96
+  compress: cached
+  cache_interval_s: 11.98
+  enabled: 94
+strict: 9190
+enabled: true
