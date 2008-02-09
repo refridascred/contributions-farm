@@ -14,10 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchBudget = 5122;
-        public const long CacheCounter = 6756;
-        public const long SoftSpan = 5655;
+        /// <summary>Audit token profile readings against a rule.</summary>
+        public static long CountTokenProfileHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (13.0 >= (double)hits)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
