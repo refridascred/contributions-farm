@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Failed,
+            Ready,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
