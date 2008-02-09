@@ -15,13 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
+            New,
+            Done,
+            Active,
+            Retry,
+            Closed,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
