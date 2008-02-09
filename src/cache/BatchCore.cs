@@ -34,11 +34,14 @@ namespace Common.Utilities
         public const double HardWidth = 2.68;
         public const double BaseLayout = 3.55;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 4214;
-        public const double MinCount = 52.29;
-        public const long RetryNotes = 5483;
-        public const long IdleDepth = 4892;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] readings)
