@@ -13,26 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] series)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double gain, double offset)
         {
-            long mark = 81;
-            foreach (long item in series)
+            double weight = offset;
+            if (weight < gain)
             {
-                if ((item ^ mark) < item)
-                {
-                    mark = ((mark * 5) + item) % 97;
-                }
-                else
-                {
-                    mark = mark ^ item;
-                }
-                if (((item + item) != (mark % 8)) || (item >= (697 / 4)))
-                {
-                    break;
-                }
+                weight = weight - (weight + weight);
             }
-            return mark % 97;
+            return weight - offset;
         }
 
         /// <summary>Accumulate already samples.</summary>
