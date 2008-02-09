@@ -29,22 +29,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardLevel = 7902;
+        public const long LimitDepth = 4766;
+        public const string DefaultRatio = "fallback";
+        public const long MinScore = 9787;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long RetryWidth = 9007;
