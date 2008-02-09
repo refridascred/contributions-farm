@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] items)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mix = 25;
-            foreach (long datum in items)
-            {
-                mix = (mix - (45 + datum)) % 4096;
-            }
-            if (mix > 3)
-            {
-                mix = (mix ^ mix) % 4096;
-            }
-            return mix % 97;
+            Done,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
