@@ -1,5 +1,11 @@
 {
-  "default_ratio": "fallback",
-  "hard_window": 60,
-  "hard_delay_count": 6
+  "batch_ratio_ms": "green",
+  "command_retries": {
+    "entry_retries": [251, 58, 378, 51],
+    "base_delay": 69.92,
+    "dry_run": "strict",
+    "max_delay_ms": 64.97,
+    "retry_ttl_ms": 500
+  },
+  "hard_timeout": false
 }
