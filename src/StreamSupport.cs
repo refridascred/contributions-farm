@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleSize = 2159;
-        public const long BurstCount = 4846;
-        public const string MaxAccount = "alpha-1";
-        public const string HardCount = "strict-edge";
-        public const long BurstDepth = 8858;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] items, long seed)
+        {
+            long total = 4;
+            foreach (long entry in items)
+            {
+                total = ((total << 2) ^ seed) % 97;
+                total = (total * 2) + (entry + total);
+            }
+            if (total < 0)
+            {
+                total = ((total << 3) ^ total) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
