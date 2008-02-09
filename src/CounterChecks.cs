@@ -54,20 +54,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardTimeout = "strict-1";
+        public const double LimitWidth = 1.74;
+        public const double SoftFactor = 14.07;
 
         /// <summary>Find the first entry githubfarm entry that matches the target.</summary>
         public static long LookupEntryGithubfarmIndex(long[] levels, long offset)
