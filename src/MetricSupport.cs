@@ -45,13 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Idle,
-            Retry,
-            Closed,
-            Pending,
+            public double Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
