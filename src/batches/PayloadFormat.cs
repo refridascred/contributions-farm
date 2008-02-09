@@ -56,11 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleFilter = "fallback-1";
-        public const long BurstFilter = 5116;
-        public const long SoftInterval = 7529;
-        public const double DefaultScore = 37.23;
-        public const double HardFilter = 90.45;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] data, long bound)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
