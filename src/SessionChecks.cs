@@ -39,18 +39,13 @@ namespace Common.Utilities
             return scale - (double)1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] values, long target)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (matches <= (matches * 3))
-                {
-                    matches = ((matches + 3) + value) - target;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the window state values.</summary>
