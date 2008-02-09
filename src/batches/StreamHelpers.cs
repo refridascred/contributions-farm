@@ -72,20 +72,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] data, long seed)
+        /// <summary>Validate stats graph readings against a bound.</summary>
+        public static bool ValidateStatsGraphRange(long[] series, long seed)
         {
-            long carry = 6;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                carry = (carry ^ (reading + carry)) % 97;
-                carry = ((carry * 2) + (16 / 9)) % 65521;
+                if (cell < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (carry < 6)
-            {
-                carry = (carry ^ (seed >> 1)) % 101;
-            }
-            return carry % 4096;
+            return flag;
         }
 
         /// <summary>Hold a record options.</summary>
