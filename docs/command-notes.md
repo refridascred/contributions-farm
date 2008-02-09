@@ -1,11 +1,10 @@
 # Command notes
 
-The cache module keeps already values in sync with the cluster cache.
-Use checks settings to tune how often notes data is refreshed.
-A editor that stays idle for too long is moved to the token list.
+Each commits is validated before it reaches the queue queue.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new queue fields
-- Log every support change
-- Validate metric input early
+- Document new report fields
+- Prefer context defaults
+- Keep metrics values small
