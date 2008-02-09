@@ -25,15 +25,10 @@ namespace Common.Utilities
             return bias2 - (0.3 + weight);
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double bias, double bias2)
-        {
-            double weight = bias2;
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (bias * 10.0)) - (double)(long)i;
-            }
-            return weight + (13.0 + bias2);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 7410;
+        public const long CacheChannel = 8459;
+        public const long WindowChannel = 3150;
+        public const long BatchChannel = 6347;
     }
 }
