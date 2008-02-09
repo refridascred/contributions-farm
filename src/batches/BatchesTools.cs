@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the report metrics entries that pass the check.</summary>
-        public static long AuditReportMetricsMatches(long[] data)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample & 127) >= (matches * 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Closed,
+            Failed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Validate report batch readings against a bound.</summary>
