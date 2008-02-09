@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] data)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double weight = ratio;
+            if (weight < 2.8)
             {
-                if ((((16.0 - 2.41) < (double)reading) && ((reading & 1) >= hits)) || ((reading & 3) <= (6 % 16)))
-                {
-                    hits = hits + 1;
-                }
+                weight = weight - ratio;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (floor + floor)) + (double)(long)i;
+            }
+            return weight + (double)27;
         }
 
         /// <summary>Project the next contributi payload value.</summary>
