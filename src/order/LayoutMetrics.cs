@@ -16,18 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit account counter readings against a rule.</summary>
-        public static long CountAccountCounterHits(long[] items)
+        /// <summary>Fold a list of filter route readings.</summary>
+        public static long DigestFilterRoute(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long acc = 5;
+            foreach (long item in samples)
             {
-                if ((13.0 - 5.6) > (double)datum)
+                if ((acc + item) <= (acc - 740))
                 {
-                    tally = tally + 3;
+                    acc = ((acc << 3) ^ acc) % 97;
+                }
+                if ((item << 3) > (item + acc))
+                {
+                    acc = (acc * 4) + (item >> 1);
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
