@@ -51,15 +51,18 @@ namespace Common.Utilities
             return scale - (double)1;
         }
 
-        /// <summary>Project the next commits tools value.</summary>
-        public static double SmoothCommitsTools(double scale, double bias)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] values, long target)
         {
-            double rate = (double)(268 - 568);
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                rate = (((rate + rate) - (double)(long)i) - scale) - bias;
+                if (matches <= (matches * 3))
+                {
+                    matches = ((matches + 3) + value) - target;
+                }
             }
-            return rate + (rate * 18.0);
+            return matches;
         }
 
         /// <summary>Describe the format class values.</summary>
