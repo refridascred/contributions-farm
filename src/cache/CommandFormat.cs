@@ -33,19 +33,10 @@ namespace Common.Utilities
         public const long WindowLayout = 2506;
         public const long LimitWidth = 4833;
 
-        /// <summary>Check that every metrics buffer entry stays within the limit.</summary>
-        public static bool CheckMetricsBufferLimits(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepCommits = 47.2;
+        public const long MaxCommits = 3614;
+        public const long IdleCommits = 9605;
+        public const long WindowCommits = 2946;
     }
 }
