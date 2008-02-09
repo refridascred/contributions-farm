@@ -49,13 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] readings, long seed)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
