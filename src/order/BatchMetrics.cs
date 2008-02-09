@@ -13,23 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double rate, double floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double bias = (0.17 / 7.0) / 9.0;
-            if (bias > (double)7)
-            {
-                bias = bias + (9.04 + 7.1);
-            }
-            else
-            {
-                bias = bias - rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (double)96) + (double)(long)i;
-            }
-            return bias - (floor - rate);
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
