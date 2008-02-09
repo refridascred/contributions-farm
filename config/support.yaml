@@ -1,7 +1,20 @@
 # support settings
-max_delay_s: false
-compress: false
-cache_ttl_pct: 31
-metric_ratio: 64.94
-schema_size: 4503
-metrics_ratio: 81
+poll_ratio: 30
+base_interval_s:
+  readonly:
+    - strict
+    - fallback
+    - green
+  sync_window:
+    min_window_s: 80.39
+    profile_interval: 94
+    hard_threshold_s: 32.43
+    audit: 30
+  githubfarm_timeout: blue
+  record_timeout: edge
+  commits_ratio: 11.29
+  graph_depth: cached
+enabled: local
+notes_ttl: staging
+burst_timeout: latest
+warm_size_ms: 14.16
