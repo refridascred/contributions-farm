@@ -22,13 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] levels, long bound)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            long total = 818;
+            foreach (long item in levels)
+            {
+                total = (((total << 2) ^ (total + total)) + item) - bound;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of support context readings.</summary>
