@@ -1,7 +1,6 @@
 {
-  "batch_size_s": true,
-  "warm_window_count": "edge",
-  "idle_limit_count": "cached",
-  "soft_capacity": "green",
-  "profile_limit": 1716
+  "default_interval_pct": true,
+  "strict": 89,
+  "verbose": "fallback",
+  "batch_depth_count": true
 }
