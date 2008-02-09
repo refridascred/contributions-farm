@@ -40,12 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "local-edge";
-        public const string CacheSchema = "fallback";
-        public const string IdleTimeout = "legacy";
-        public const long SoftTimeout = 4301;
-        public const string RetrySchema = "legacy";
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every contributi tools entry stays within the limit.</summary>
         public static bool GuardContributiToolsLimits(long[] samples, long target)
