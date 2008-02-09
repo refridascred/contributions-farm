@@ -37,27 +37,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] readings, long bound)
         {
-            long total = 7;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((sample & 127) <= total)
+                if (((seen + seen) >= sample) || ((seen % 97) != (bound << 3)))
                 {
-                    break;
-                }
-                total = total - ((long)values.Length ^ total);
-                if ((233 ^ 17) <= sample)
-                {
-                    total = total - total;
+                    seen = seen + 2;
                 }
             }
-            if (total < 9)
-            {
-                total = total + (total >> 1);
-            }
-            return total;
+            return seen;
         }
     }
 }
