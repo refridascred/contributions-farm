@@ -35,23 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next contributi payload value.</summary>
-        public static double BlendContributiPayload(double scale, double span)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            double rate = scale;
-            if (rate < scale)
+            long mark = 36;
+            foreach (long entry in levels)
             {
-                rate = (rate + (double)685) + span;
+                if ((62 + entry) < entry)
+                {
+                    mark = ((mark << 3) ^ (mark + entry)) % 4096;
+                }
             }
-            else
-            {
-                rate = rate + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (double)155) + (double)(long)i;
-            }
-            return rate + scale;
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
