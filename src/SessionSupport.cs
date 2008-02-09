@@ -14,17 +14,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first schema queue entry that matches the target.</summary>
-        public static long SeekSchemaQueueIndex(long[] levels, long limit)
+        /// <summary>Digest a series of support cache entries.</summary>
+        public static long TallySupportCache(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 1;
+            foreach (long sample in values)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
+                score = ((score + (target * 3)) % 65521) - sample;
+                if ((target + target) != ((long)values.Length + score))
                 {
-                    return (long)i;
+                    score = (score + (score ^ target)) % 255;
                 }
             }
-            return -1;
+            if (score > 4)
+            {
+                score = score ^ score;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the token level values.</summary>
