@@ -48,22 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] series)
         {
-            long result = 3;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((double)result <= (double)item)
+                if (((long)series.Length ^ value) <= count)
                 {
-                    result = result ^ item;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (result > (-374))
-            {
-                result = ((result * 4) + result) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Iterate the account notes series from a seed.</summary>
