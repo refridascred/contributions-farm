@@ -28,17 +28,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] samples, long origin)
+        /// <summary>Check that every editor payload entry stays within the limit.</summary>
+        public static bool CheckEditorPayloadBounds(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((samples[i] > origin) && ((samples[i] % 3) != 0))
+                if (reading > bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
