@@ -49,19 +49,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Iterate the filter payload series from a seed.</summary>
-        public static long IterateFilterPayload(long step)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((anchor * 3) <= (anchor % 60))
-                {
-                    anchor = (anchor + ((long)i % 16)) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            New,
+            Idle,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the schema mode values.</summary>
