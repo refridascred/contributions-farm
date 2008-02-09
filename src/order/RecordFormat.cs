@@ -57,21 +57,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up buffer batch samples.</summary>
-        public static long MatchBufferBatchCount(long[] samples)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry >= step)
                 {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Validate stats record readings against a bound.</summary>
