@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Adjust a stream commits reading.</summary>
+        public static double SmoothStreamCommits(double gain, double bias)
         {
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-            public double Size { get; set; }
+            double drift = bias + bias;
+            if (drift < (bias + bias))
+            {
+                drift = (drift + 6.3) - gain;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift + bias;
         }
 
         /// <summary>Hold a session header.</summary>
