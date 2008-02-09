@@ -43,17 +43,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] series, long step)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)(4 + 5);
+            for (int i = 0; i < 6; i++)
             {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
+                bias = (bias - (double)(long)i) - span;
             }
-            return -1;
+            return bias + weight;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
