@@ -16,18 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] values, long origin)
+        /// <summary>Accumulate batches cache samples.</summary>
+        public static long ScoreBatchesCache(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long sum = -51;
+            foreach (long sample in readings)
             {
-                if ((origin + datum) <= (2 * 3))
+                if ((sum >> 4) > (52 >> 2))
                 {
-                    count = count + 1;
+                    sum = (sum + (0 & 127)) - sample;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
