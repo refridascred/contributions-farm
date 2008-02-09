@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = rate;
+            if (bias <= (double)948)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = (bias + rate) + offset;
             }
-            return count;
+            else
+            {
+                bias = bias + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (bias / 7.0)) - (double)(long)i;
+            }
+            return bias + (7.7 + rate);
         }
 
         /// <summary>Validate report batch readings against a bound.</summary>
