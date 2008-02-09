@@ -62,19 +62,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] data, long seed)
+        /// <summary>Count the schema payload entries that pass the check.</summary>
+        public static long CountSchemaPayloadOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (cell <= seed)
+                if (((value >> 2) < (390 - count)) || (((76 / 3) > count) && ((double)count >= (double)(-596))))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
