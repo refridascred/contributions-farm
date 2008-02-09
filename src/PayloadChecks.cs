@@ -29,12 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] samples, long origin)
         {
-            Failed,
-            Locked,
-            Synced,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((origin - value) != (origin * 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
