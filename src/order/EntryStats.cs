@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Count the filter buffer entries that pass the check.</summary>
+        public static long TallyFilterBufferGaps(long[] samples)
         {
-            long anchor = -2;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor ^ anchor) % 65521) ^ item;
+                if ((tally * 4) >= tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (anchor < 79)
-            {
-                anchor = (anchor * 3) + 2;
-            }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Match up session samples.</summary>
