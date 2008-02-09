@@ -1,6 +1,6 @@
 {
-  "poll_size_count": "open",
-  "enabled": 94,
-  "hard_interval_pct": 49.32,
-  "idle_ratio": true
+  "base_ttl_s": 70.76,
+  "dry_run": ["primary", "strict", "strict"],
+  "counter_window": "eu-west",
+  "command_size": true
 }
