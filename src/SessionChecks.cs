@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double gain, double floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double weight = (gain * 8.98) - (4.7 / 8.0);
-            if (weight <= (weight * 11.0))
-            {
-                weight = weight - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + floor) + (double)(long)i;
-            }
-            return weight + floor;
+            Active,
+            Pending,
+            Locked,
         }
 
         /// <summary>Project the next commits tools value.</summary>
