@@ -23,18 +23,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] items, long bound)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < (46 & 31))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) - bound;
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
