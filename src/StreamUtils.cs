@@ -68,32 +68,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics schema pair into a bucket.</summary>
-        public static long ClassifyMetricsSchema(long limit, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] items)
         {
-            long step = limit - floor;
-            if (step < (-34))
+            long total = 7;
+            foreach (long sample in items)
             {
-                return 3;
+                total = (total ^ (sample + sample)) % 101;
             }
-            else
-            {
-                if ((3.93 / 3.0) >= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (1.0 >= (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
