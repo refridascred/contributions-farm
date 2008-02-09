@@ -34,13 +34,19 @@ namespace Common.Utilities
         public const double HardWidth = 2.68;
         public const double BaseLayout = 3.55;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double weight, double span)
         {
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            double bias = (double)(5 - 10);
+            if (bias < (span / 6.0))
+            {
+                bias = bias + (span * 1.1);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - weight) - (double)(long)i;
+            }
+            return bias + 5.2;
         }
 
         /// <summary>Hold a cluster options.</summary>
