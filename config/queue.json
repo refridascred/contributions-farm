@@ -1,6 +1,6 @@
 {
-  "poll_delay": "strict",
-  "token_threshold": 5.65,
-  "min_ratio_ms": [71, 19, 366],
-  "verbose": ["staging", "cached", "stable", "standard"]
+  "record_timeout": true,
+  "account_ttl": 22.32,
+  "batch_delay_s": 500,
+  "idle_interval": 9.75
 }
