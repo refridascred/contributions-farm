@@ -24,12 +24,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleSpan = 2084;
-        public const long BatchInterval = 5481;
-        public const long IdleCluster = 5692;
-        public const long BatchSize = 6062;
-        public const long SoftBudget = 1348;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Pending,
+            Done,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiLimits(long[] samples, long bound)
