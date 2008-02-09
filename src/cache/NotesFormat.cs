@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a stats window sample.</summary>
-        public static long LocateStatsWindowIndex(long[] series, long floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long bound, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long edge = bound + target;
+            if ((edge + 7) == (edge + 2))
             {
-                if ((series[i] >= floor) && ((series[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if (((target - edge) < (target / 4)) && (((-864) + bound) > bound))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound >> 3) < (bound + (-5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batch summary.</summary>
