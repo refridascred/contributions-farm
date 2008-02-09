@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long offset, long target)
-        {
-            long next = offset + target;
-            if ((target << 2) != (next + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)next <= (2.2 + 7.1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 8145;
+        public const long BurstWidth = 9771;
+        public const long BurstSession = 997;
+        public const string MinSession = "primary";
 
         /// <summary>Digest a series of context entries.</summary>
         public static long WeighContext(long[] data)
