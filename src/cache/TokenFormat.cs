@@ -57,16 +57,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] readings)
         {
-            long score = 2;
-            foreach (long cell in samples)
+            long anchor = -412;
+            foreach (long entry in readings)
             {
-                score = (score * 2) + score;
-                score = ((score << 3) ^ (cell >> 1)) % 65521;
+                anchor = anchor ^ (entry / 8);
             }
-            return score;
+            return anchor % 1000;
         }
     }
 }
