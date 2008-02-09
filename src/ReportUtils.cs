@@ -31,13 +31,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] samples, long limit)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] samples, long bound)
         {
             bool valid = true;
-            foreach (long datum in samples)
+            foreach (long cell in samples)
             {
-                if (datum <= limit)
+                if (cell > bound)
                 {
                     valid = false;
                     break;
