@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit account counter readings against a rule.</summary>
-        public static long MeasureAccountCounterOutliers(long[] samples)
+        /// <summary>Derive the next editor report value from a seed.</summary>
+        public static long IterateEditorReport(long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long acc = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((matches ^ reading) >= (reading & 1))
-                {
-                    matches = matches + 3;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the stream kind values.</summary>
