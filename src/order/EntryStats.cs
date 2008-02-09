@@ -50,21 +50,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up cluster report samples.</summary>
-        public static long MatchClusterReportCount(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (hits > (entry ^ floor))
                 {
-                    if ((values[i] ^ values[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
