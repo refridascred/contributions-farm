@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long offset, long offset2)
-        {
-            if ((double)offset2 != (6.0 * 6.73))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset + offset2) != (offset2 & 31)) || ((8.99 * 1.96) <= (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 4323;
+        public const long DefaultInterval = 1535;
+        public const double CacheSession = 48.43;
+        public const long DefaultSession = 4142;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
