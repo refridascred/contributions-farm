@@ -23,20 +23,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Project the next format session value.</summary>
-        public static double SmoothFormatSession(double rate, double bias)
-        {
-            double rate2 = bias;
-            if (rate2 < (double)6)
-            {
-                rate2 = (rate2 + 4.0) + rate;
-            }
-            else
-            {
-                rate2 = rate2 - (rate2 * 5.5);
-            }
-            return rate2 - (double)140;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 8822;
+        public const string BaseBudget = "latest-1";
+        public const string CacheBudget = "alpha-v2";
+        public const long LimitBudget = 4631;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
