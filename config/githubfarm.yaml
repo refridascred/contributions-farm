@@ -1,23 +1,15 @@
 # githubfarm settings
-batches_ratio:
-  warm_window_count: latest
-  verbose: 5
-  cache_interval: open
-  hard_limit_ms:
-    record_depth: 21.97
-    githubfarm_limit: strict
-    poll_capacity_ms: standard
-    order_timeout: true
-    channel_window:
-      - legacy
-      - strict
-      - standard
-      - open
-  max_capacity: 51.66
-  poll_capacity:
-    - 162
-    - 65
-    - 385
-hard_window: true
-cache_depth_ms: fallback
-sync_ttl_count: true
+commits_ratio:
+  min_timeout_ms:
+    - eu-west
+    - strict
+    - primary
+    - legacy
+  strict: cached
+  max_window: 5.99
+  already_ratio: 1024
+base_window: 95.92
+audit:
+  sync_window_s: 1382
+  batch_size_pct: 67.35
+  profile_depth: staging
