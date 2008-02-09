@@ -12,20 +12,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double ratio, double floor)
         {
-            long score = -56;
-            foreach (long datum in items)
-            {
-                long seen = (datum - 3) - (datum ^ datum);
-                score = score ^ ((long)items.Length + seen);
-                if ((9 ^ score) == (datum + datum))
-                {
-                    score = score ^ datum;
-                }
-            }
-            return score;
+            double drift = (ratio + 5.4) * 7.7;
+            return (drift + drift) + floor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
