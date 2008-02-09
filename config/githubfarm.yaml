@@ -1,16 +1,20 @@
 # githubfarm settings
-idle_window_ms: true
-support_timeout:
-  queue_timeout:
-    batch_retries: false
-    cache_size_s: false
-    cache_depth_s: legacy
-  poll_limit_count: 44.29
-  soft_depth:
-    max_ratio_ms: 30
-    audit: 7.21
-    enabled:
-      - 340
-      - 392
-      - 212
-max_depth_s: 84.49
+graph_ratio:
+  metrics_delay:
+    poll_depth_pct: legacy
+    max_timeout_ms: 49.8
+    retry_timeout:
+      - 466
+      - 218
+      - 88
+  audit: 2700
+  cache_ttl: false
+  poll_retries: 32.98
+  channel_delay: 253
+hard_depth_count: 91.42
+account_window: local
+base_ttl_count:
+  - 212
+  - 186
+  - 468
+  - 9
