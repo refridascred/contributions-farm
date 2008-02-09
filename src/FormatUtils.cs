@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryScore = 2900;
+        public const long RetrySession = 3421;
+        public const double MaxDepth = 13.68;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
