@@ -28,17 +28,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a buffer order reading by value.</summary>
-        public static long LocateBufferOrderIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 651;
+        public const long MinSchema = 7451;
+        public const string CacheLevel = "stable-v2";
+        public const long BaseInterval = 2854;
     }
 }
