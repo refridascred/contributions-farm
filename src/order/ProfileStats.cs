@@ -37,21 +37,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up buffer stats samples.</summary>
-        public static long MatchBufferStatsCount(long[] levels)
+        /// <summary>Digest a series of cache schema entries.</summary>
+        public static long FoldCacheSchema(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 148;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(mark >= (item & 15)))
                 {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
+                }
+                if (item < (step >> 4))
+                {
+                    mark = (mark ^ (mark / 9)) % 1000;
+                }
+                if ((18 / 2) >= item)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mark < 528)
+            {
+                mark = (mark ^ mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
