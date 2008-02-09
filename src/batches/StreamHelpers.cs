@@ -42,11 +42,18 @@ namespace Common.Utilities
             return mean + gain;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] data)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((13 << 3) <= (hits - value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
