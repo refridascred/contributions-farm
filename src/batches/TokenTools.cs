@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many checks session samples are out of range.</summary>
-        public static long MeasureChecksSessionOutliers(long[] data, long step)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double drift = bias2;
+            if (drift <= bias2)
             {
-                if (((double)step < (5.04 - 1.85)) || ((step + (-94)) > ((long)data.Length % 7)))
-                {
-                    count = (count + 2) - cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = (drift - (double)25) + bias;
             }
-            return count;
+            else
+            {
+                drift = drift + (bias2 * 19.0);
+            }
+            return drift + (drift / 2.0);
         }
 
         /// <summary>Combine counter values into a single score.</summary>
