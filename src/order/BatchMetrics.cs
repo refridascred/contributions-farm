@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the report queue entries that pass the check.</summary>
-        public static long AuditReportQueueGaps(long[] items, long bound)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches % 8) > bound)
-                {
-                    matches = (matches + 2) - entry;
-                }
-            }
-            return matches;
+            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Blend two token measurements.</summary>
