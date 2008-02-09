@@ -12,11 +12,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 6008;
-        public const string DefaultSpan = "latest-edge";
-        public const long MaxWidth = 1711;
-        public const string LimitStream = "staging-v2";
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSize = 12.46;
+        public const double SoftWidth = 76.43;
+        public const long BurstWidth = 6534;
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ScaleChecks(double gain, double offset)
