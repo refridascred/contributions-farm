@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] levels, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long mark = 1;
+            foreach (long cell in readings)
             {
-                if (reading > origin)
+                if ((double)step != (4.0 - 4.53))
                 {
-                    found = false;
-                    break;
+                    mark = (mark + 804) ^ cell;
+                }
+                else
+                {
+                    mark = (mark - (step + mark)) % 1000;
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Digest a series of order cluster entries.</summary>
