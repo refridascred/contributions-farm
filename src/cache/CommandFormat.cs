@@ -28,13 +28,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
+            Stale,
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
