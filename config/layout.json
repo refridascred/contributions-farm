@@ -1,7 +1,5 @@
 {
-  "burst_delay": 26.46,
-  "audit": 31,
-  "burst_delay_s": 30,
-  "batch_limit_ms": 13.73,
-  "dry_run": [3, 109]
+  "stream_ttl": true,
+  "warm_window_count": 2895,
+  "default_limit_s": 71.37
 }
