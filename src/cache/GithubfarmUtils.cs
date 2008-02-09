@@ -46,12 +46,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] values, long floor)
+        /// <summary>Find the first editor queue entry that matches the target.</summary>
+        public static long FindEditorQueueIndex(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] <= floor)
+                if ((items[i] >= limit) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
