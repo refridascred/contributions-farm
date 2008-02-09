@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine githubfarm payload values into a single score.</summary>
-        public static long WeighGithubfarmPayload(long[] samples, long limit)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            long total = 185;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total ^ (total & 1)) % 101) - entry;
-                if (62 > (771 - limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total + (limit + limit)) % 101;
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
