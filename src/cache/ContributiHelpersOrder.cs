@@ -34,11 +34,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double ratio, double floor)
         {
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
+            double rate = floor;
+            if (rate <= rate)
+            {
+                rate = rate + (double)7;
+            }
+            return rate + ratio;
         }
     }
 }
