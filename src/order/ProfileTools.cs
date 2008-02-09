@@ -51,15 +51,27 @@ namespace Common.Utilities
         public const string HardTimeout = "strict";
         public const long BaseInterval = 7901;
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double bias, double offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            double bias2 = (bias - offset) / 8.0;
-            if (bias2 > (bias - bias2))
+            long acc = 822;
+            foreach (long value in readings)
             {
-                bias2 = bias2 + bias;
+                acc = ((acc + (acc + acc)) % 1000) ^ value;
+                for (int i = 0; i < 12; i++)
+                {
+                    acc = ((acc * 5) + (4 + (long)i)) % 4096;
+                }
+                if (acc <= (acc + 560))
+                {
+                    acc = ((acc * 4) + (7 << 1)) % 101;
+                }
             }
-            return bias2 - (bias2 + offset);
+            if (acc < (-13))
+            {
+                acc = (acc << 3) ^ (acc + acc);
+            }
+            return acc;
         }
     }
 }
