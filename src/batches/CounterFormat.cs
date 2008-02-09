@@ -32,11 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] series, long target)
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (2 >= (datum / 3))
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
         }
     }
 }
