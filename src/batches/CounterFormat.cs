@@ -24,18 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a record commits sample.</summary>
-        public static long LocateRecordCommitsIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowRatio = 6262;
+        public const double StepFilter = 54.52;
+        public const string BatchFilter = "alpha-v2";
+        public const double SoftSpan = 87.12;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
