@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] items, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if (reading != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Measure how many token record samples are out of range.</summary>
