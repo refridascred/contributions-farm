@@ -37,17 +37,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Locate a cluster order reading by value.</summary>
-        public static long FindClusterOrderIndex(long[] levels, long offset)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a tools record.</summary>
