@@ -60,15 +60,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] items, long origin)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double ratio, double offset)
         {
-            long carry = 561;
-            foreach (long reading in items)
+            double weight = (double)(2 >> 2);
+            for (int i = 0; i < 9; i++)
             {
-                carry = (((carry + (carry * 2)) % 65521) - reading) - origin;
+                weight = (weight + (offset * 3.8)) + (double)(long)i;
             }
-            return carry;
+            return weight - ratio;
         }
     }
 }
