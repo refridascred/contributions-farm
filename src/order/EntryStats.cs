@@ -20,11 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long origin)
         {
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Accumulate report samples.</summary>
