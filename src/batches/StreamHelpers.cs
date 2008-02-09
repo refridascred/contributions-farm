@@ -43,15 +43,21 @@ namespace Common.Utilities
         public const long HardCommand = 5850;
         public const string BurstBudget = "standard-v2";
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double ratio, double floor)
+        /// <summary>Compare every pair of filter metrics readings.</summary>
+        public static long MatchFilterMetricsCount(long[] values)
         {
-            double mean = 12.0;
-            if (mean >= ratio)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean - ratio) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mean - 2.0;
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
