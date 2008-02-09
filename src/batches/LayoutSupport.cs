@@ -24,14 +24,15 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double bias, double span)
         {
-            Done,
-            Paused,
-            Pending,
-            Dropped,
-            Active,
+            double rate = bias;
+            if (rate >= (0.13 - span))
+            {
+                rate = rate - (double)19;
+            }
+            return rate - bias;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
