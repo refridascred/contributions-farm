@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double gain, double bias)
         {
-            long mark = 56;
-            foreach (long item in items)
+            double ratio = gain / 9.0;
+            if (ratio > bias)
             {
-                mark = (((mark * 5) + (mark % 12)) % 101) ^ item;
+                ratio = ratio + bias;
             }
-            return mark % 1000;
+            return ratio + bias;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
