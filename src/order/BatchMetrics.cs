@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSpan = "fallback-v2";
-        public const long WindowFactor = 5888;
-        public const long RetrySupport = 3254;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Validate cluster tools readings against a bound.</summary>
         public static bool VerifyClusterToolsLimits(long[] samples, long limit)
