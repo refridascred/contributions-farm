@@ -75,17 +75,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a batch counter sample.</summary>
-        public static long FindBatchCounterIndex(long[] items, long step)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the profile status values.</summary>
