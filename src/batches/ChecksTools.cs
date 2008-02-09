@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next cluster commits value from a seed.</summary>
-        public static long IterateClusterCommits(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total << 3) ^ ((long)i << 3);
-                total = (total ^ (931 & 255)) % 255;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinRatio = 88.38;
+        public const string BurstSpan = "primary-edge";
+        public const long BurstWindow = 6450;
+        public const long LimitSize = 6528;
 
         /// <summary>Find the first profile batch entry that matches the target.</summary>
         public static long FindProfileBatchIndex(long[] samples, long seed)
