@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] values, long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if ((bound < (-231)) && ((318 >> 4) <= (bound2 << 2)))
             {
-                if ((count & 31) <= (352 ^ (long)values.Length))
+                return 2;
+            }
+            else
+            {
+                if ((double)bound2 > (2.2 - 18.0))
                 {
-                    count = ((count + 3) ^ reading) + bound;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two graph measurements.</summary>
