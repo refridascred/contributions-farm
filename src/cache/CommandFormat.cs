@@ -41,15 +41,9 @@ namespace Common.Utilities
         public const long WindowLayout = 2506;
         public const long LimitWidth = 4833;
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double rate, double bias)
-        {
-            double bias2 = rate;
-            if (bias2 > bias2)
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 + (bias + 10.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxFactor = 483;
+        public const double RetryProfile = 26.93;
+        public const string StepProfile = "open-edge";
     }
 }
