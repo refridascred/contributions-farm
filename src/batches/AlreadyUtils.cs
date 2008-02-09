@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 415;
-        public const string SoftSpan = "stable-edge";
-        public const long BurstBatches = 9654;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Queued,
+            New,
+            Draft,
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
