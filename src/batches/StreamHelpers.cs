@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] series, long seed)
         {
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count - seed) <= (seed & 127))
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every contributi tools entry stays within the limit.</summary>
