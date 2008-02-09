@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] series)
+        /// <summary>Audit stream editor readings against a rule.</summary>
+        public static long MeasureStreamEditorHits(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item > (item + item))
                 {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) - bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate metrics counter readings against a bound.</summary>
