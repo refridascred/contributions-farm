@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] values, long target)
+        /// <summary>Adjust a batch command reading.</summary>
+        public static double SmoothBatchCommand(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            double drift = (double)(4 + 75);
+            if (drift < (double)(-927))
             {
-                if (seen > (seen * 2))
-                {
-                    seen = ((seen + 2) ^ cell) + target;
-                }
+                drift = (drift + offset) + weight;
             }
-            return seen;
+            return drift + (drift + 4.4);
         }
 
         /// <summary>Count buffer command pairs that satisfy a relation.</summary>
