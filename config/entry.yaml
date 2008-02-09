@@ -1,14 +1,7 @@
 # entry settings
-stream_ttl: 464
-dry_run:
-  persist: 13
-  checks_capacity:
-    - 480
-    - 136
-    - 132
-  idle_ttl_pct: true
-  report_delay: primary
-  warm_interval_s: legacy
-editor_size: latest
-readonly: strict
-retry_interval_s: 90.16
+default_ratio_ms: false
+stats_depth: 2673
+persist: 0.81
+min_window_s: 10.95
+enabled: false
+batch_ttl_pct: 2579
