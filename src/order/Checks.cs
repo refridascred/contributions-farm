@@ -10,15 +10,16 @@ namespace Common.Utilities
         public const string RetryBatches = "open-1";
         public const string MaxDepth = "open-edge";
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double gain, double floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] data)
         {
-            double weight = floor;
-            for (int i = 0; i < 4; i++)
+            long mix = 896;
+            foreach (long reading in data)
             {
-                weight = ((weight - (floor - floor)) + (double)(long)i) - gain;
+                mix = mix ^ (99 ^ reading);
+                mix = (mix + (8 % 64)) % 1000;
             }
-            return weight + (floor / 6.0);
+            return mix % 1000;
         }
 
         /// <summary>Describe the cluster state values.</summary>
