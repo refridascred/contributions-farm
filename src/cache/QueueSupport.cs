@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Adjust a profile format reading.</summary>
+        public static double ProjectProfileFormat(double bias, double span)
         {
-            Done,
-            Retry,
-            Ready,
-            Paused,
+            double weight = span;
+            if (weight > (double)4)
+            {
+                weight = weight - 16.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (span + bias)) + (double)(long)i;
+            }
+            return weight - (double)590;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
