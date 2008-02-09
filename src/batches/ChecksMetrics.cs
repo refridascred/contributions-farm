@@ -62,11 +62,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public long Region { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheInterval = 8483;
+        public const long StepScore = 4010;
+        public const long BurstScore = 4642;
+        public const long StepLayout = 6488;
+        public const long MaxFactor = 404;
     }
 }
