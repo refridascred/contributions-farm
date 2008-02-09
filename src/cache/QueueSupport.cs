@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long seed, long step)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] series, long origin)
         {
-            long offset = seed ^ step;
-            if ((seed + offset) > step)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((82 & 1) < (seed + step))
+                if (reading >= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step < 67)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
