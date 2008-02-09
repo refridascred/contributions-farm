@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] readings, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long score = 756;
+            foreach (long value in series)
             {
-                if (reading > target)
+                if ((double)value > (double)score)
                 {
-                    ok = false;
-                    break;
+                    score = ((score + (score + (long)series.Length)) % 4096) - target;
                 }
             }
-            return ok;
+            if (score > 998)
+            {
+                score = (score - (score - score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
