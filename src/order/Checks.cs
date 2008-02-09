@@ -60,11 +60,27 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardSize = 7404;
-        public const double WindowDepth = 26.87;
-        public const long BatchDepth = 7043;
-        public const long MaxLevel = 4191;
-        public const long HardCommits = 7792;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] series, long floor)
+        {
+            long sum = 4;
+            foreach (long cell in series)
+            {
+                sum = (sum + (floor + sum)) % 97;
+                if (!((cell >> 2) <= (floor % 24)))
+                {
+                    break;
+                }
+                if ((double)cell >= 20.0)
+                {
+                    sum = sum + (sum >> 2);
+                }
+            }
+            if (sum > 5)
+            {
+                sum = (sum + (floor % 5)) % 255;
+            }
+            return sum;
+        }
     }
 }
