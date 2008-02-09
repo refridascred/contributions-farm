@@ -67,15 +67,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] levels)
+        /// <summary>Derive the next checks tools value from a seed.</summary>
+        public static long IterateChecksTools(long target)
         {
-            long anchor = 839;
-            foreach (long datum in levels)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = (anchor + (anchor ^ datum)) % 101;
+                result = ((result * 2) + (result - result)) % 255;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return anchor % 1000;
+            return result;
         }
     }
 }
