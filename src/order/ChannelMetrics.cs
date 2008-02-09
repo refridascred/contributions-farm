@@ -31,13 +31,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long bound)
         {
-            Retry,
-            Idle,
-            Ready,
-            Stale,
+            long result = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
