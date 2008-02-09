@@ -37,13 +37,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Locate a cluster order reading by value.</summary>
+        public static long FindClusterOrderIndex(long[] levels, long offset)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a tools record.</summary>
