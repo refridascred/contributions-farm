@@ -1,8 +1,6 @@
 {
-  "strict": true,
-  "stream_delay": ["standard", "open", "local"],
-  "idle_window_s": 9503,
-  "burst_window_ms": [288, 254, 463],
-  "compress": false,
-  "soft_size_s": "edge"
+  "poll_interval_ms": "eu-west",
+  "hard_depth_ms": 250,
+  "warm_timeout_ms": 500,
+  "min_window": 4
 }
