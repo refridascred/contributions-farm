@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Digest a series of order cluster entries.</summary>
+        public static long FoldOrderCluster(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 29;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sum <= (24 * 5))
                 {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum - (entry + sum)) % 65521;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a stream stats.</summary>
