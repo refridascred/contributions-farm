@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowWidth = 3333;
-        public const long DefaultSpan = 5335;
-        public const long RetryCount = 3210;
+        /// <summary>Locate a channel graph reading by value.</summary>
+        public static long LocateChannelGraphIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
