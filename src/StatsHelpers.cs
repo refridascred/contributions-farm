@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double ratio, double floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] items, long step)
         {
-            double weight = ratio;
-            if (weight < 2.8)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - ratio;
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (floor + floor)) + (double)(long)i;
-            }
-            return weight + (double)27;
+            return -1;
         }
 
         /// <summary>Project the next contributi payload value.</summary>
