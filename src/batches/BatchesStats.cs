@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardFarm = 13.51;
-        public const long SoftFactor = 1811;
-        public const long BaseFarm = 2034;
-        public const long MaxLevel = 6228;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((6.0 - 1.0) > (double)count)
+                {
+                    count = ((count + 3) ^ item) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the notes route series from a seed.</summary>
         public static long RollNotesRoute(long offset)
