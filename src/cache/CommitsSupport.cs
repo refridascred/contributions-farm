@@ -16,31 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long limit, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] values, long step)
         {
-            if (((limit + limit) < seed) || (limit >= (limit >> 5)))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed & 63) >= (seed ^ seed))
+                if ((3 >= (step * 5)) && ((5.33 / 2.0) != (double)step))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed * 4) != (14 ^ (-9))) || ((seed - seed) < (92 + seed)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 2) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
