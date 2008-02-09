@@ -54,10 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepCounter = 66.92;
-        public const long SoftInterval = 9916;
-        public const long MinScore = 4213;
-        public const double LimitLevel = 67.75;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc << 3) ^ acc) % 255;
+                acc = ((acc << 3) ^ ((long)i << 3)) % 101;
+                acc = ((acc << 2) ^ acc) % 65521;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
