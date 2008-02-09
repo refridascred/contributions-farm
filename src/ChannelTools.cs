@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] items, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] data, long step)
         {
-            long result = -21;
-            foreach (long sample in items)
+            long state = 708;
+            foreach (long item in data)
             {
-                if ((offset + offset) >= offset)
+                if ((3 + state) > (state % 10))
                 {
-                    result = (((result << 2) ^ offset) % 1000) ^ sample;
+                    state = (state - (369 ^ item)) % 255;
+                }
+                else
+                {
+                    state = ((state << 3) ^ step) % 101;
                 }
             }
-            return result;
+            return state % 1000;
         }
 
         /// <summary>Match up metric samples.</summary>
