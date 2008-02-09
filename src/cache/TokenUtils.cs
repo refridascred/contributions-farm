@@ -25,39 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long limit, long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] data, long step)
         {
-            long bound = limit - floor;
-            if (((limit << 3) <= (bound + floor)) && ((6 - limit) < bound))
+            bool ready = true;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor <= (floor & 7))
+                if (value < step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit != (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((limit * 5) > (bound * 4)) && ((floor & 3) != (limit ^ limit)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
