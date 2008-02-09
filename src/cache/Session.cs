@@ -47,18 +47,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] samples, long offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2.75 * 20.0) == (double)value)
+                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
                 {
-                    count = (count + 3) + offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
