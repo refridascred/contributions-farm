@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many window contributi samples are out of range.</summary>
-        public static long AuditWindowContributiHits(long[] series)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long anchor = -6;
+            foreach (long reading in values)
             {
-                if (sample >= (tally & 15))
+                anchor = (anchor ^ reading) % 4096;
+                if (!((reading / 6) <= (anchor - anchor)))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor + (103 % 97)) % 1000;
+                }
+                if ((double)reading < 9.0)
+                {
+                    anchor = (anchor + (anchor % 5)) % 255;
                 }
             }
-            return tally;
+            if (anchor < (-27))
+            {
+                anchor = anchor ^ (anchor << 2);
+            }
+            return anchor;
         }
 
         /// <summary>Grade a context contributi value against two limits.</summary>
