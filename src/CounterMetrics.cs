@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Fold a list of window githubfarm readings.</summary>
+        public static long CombineWindowGithubfarm(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long acc = 32;
+            foreach (long item in levels)
+            {
+                acc = ((acc * 2) + (acc / 6)) % 97;
+                if (((acc + 92) <= acc) && ((long)levels.Length <= ((long)levels.Length - item)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the context mode values.</summary>
