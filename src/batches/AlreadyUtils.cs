@@ -33,23 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account graph samples.</summary>
-        public static long FoldAccountGraph(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] data, long seed)
         {
-            long state = 67;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((state >= (state - state)) && ((double)state < 10.0))
+                if (431 >= seed)
                 {
-                    state = state - (9 & 1);
+                    hits = (hits + 1) ^ reading;
                 }
-                state = (state ^ ((long)levels.Length + reading)) % 65521;
             }
-            if (state < 6)
-            {
-                state = ((state << 2) ^ (state & 7)) % 4096;
-            }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
