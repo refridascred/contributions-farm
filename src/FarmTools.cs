@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] readings)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)tally < (6.02 - 6.8))
-                {
-                    tally = (tally + 3) ^ item;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
