@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                result = (result ^ result) % 65521;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
