@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinDepth = "standard-v2";
-        public const string IdleWidth = "staging-edge";
-        public const long HardRecord = 2018;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftSpan = 95.06;
+        public const long LimitCache = 7582;
+        public const long IdleLevel = 2943;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long CountClusterGaps(long[] levels)
