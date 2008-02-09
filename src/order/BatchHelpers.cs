@@ -18,20 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((score >> 5) >= (limit - (long)i))
+                if ((double)matches <= (double)(-8))
                 {
-                    score = (score << 2) ^ (limit + score);
-                    score = ((score * 5) + (long)i) % 97;
+                    matches = (matches + 2) + item;
                 }
-                score = ((score * 2) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
