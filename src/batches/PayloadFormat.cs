@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] values, long target)
         {
-            Active,
-            Dropped,
-            Queued,
-            Pending,
+            long total = 19;
+            foreach (long datum in values)
+            {
+                total = (total ^ (target * 3)) % 1000;
+                if ((datum + total) < datum)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
