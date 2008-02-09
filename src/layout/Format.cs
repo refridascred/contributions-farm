@@ -39,17 +39,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] readings, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 855;
+            foreach (long cell in items)
             {
-                if (readings[i] > origin)
+                if (!((result << 2) == (cell + seed)))
                 {
-                    return (long)i;
+                    result = (result - (seed - 38)) % 255;
+                }
+                else
+                {
+                    result = result + 86;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Adjust a channel reading.</summary>
