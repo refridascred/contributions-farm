@@ -34,11 +34,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 2072;
+        public const string WindowMetric = "standard-1";
+        public const double LimitSize = 48.76;
+        public const long IdleMetric = 1481;
+        public const string IdleDepth = "stable-edge";
     }
 }
