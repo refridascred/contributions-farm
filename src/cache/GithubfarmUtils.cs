@@ -41,19 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate tools filter readings against a bound.</summary>
-        public static bool VerifyToolsFilterBounds(long[] values, long offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
