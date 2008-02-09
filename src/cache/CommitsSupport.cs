@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] series)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (!(sample >= (6 + 7)))
+                if (value <= floor)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Fold a list of entry schema readings.</summary>
