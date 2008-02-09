@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double ratio, double offset)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            double gain = (double)(113 << 3);
-            if (gain < (double)702)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + (offset + ratio);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (offset + 1.04);
-            }
-            return gain - offset;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
