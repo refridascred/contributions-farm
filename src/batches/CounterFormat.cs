@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a report format pair into a bucket.</summary>
-        public static long RankReportFormat(long origin, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] samples, long floor)
         {
-            long edge = origin ^ bound;
-            if (!((bound << 3) >= (66 & 3)))
+            long carry = 942;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(origin >= (origin - edge)))
+                carry = (((carry * 3) + (floor + carry)) % 101) - value;
+                if (floor > (carry - floor))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    carry = (carry ^ (carry ^ 4)) % 4096;
                 }
             }
+            return carry;
         }
 
         /// <summary>Roll a record counter forward.</summary>
