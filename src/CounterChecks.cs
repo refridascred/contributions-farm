@@ -39,11 +39,20 @@ namespace Common.Utilities
         public const double WindowMetric = 69.38;
         public const long MinSize = 9823;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxEditor = 90.1;
-        public const long MaxSpan = 5183;
-        public const long MinLevel = 3784;
-        public const string BaseTimeout = "local-v2";
+        /// <summary>Check that every contributi graph entry stays within the limit.</summary>
+        public static bool ValidateContributiGraphRange(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphBounds(long[] items, long limit)
