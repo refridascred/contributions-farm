@@ -39,14 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Failed,
-            Done,
-            Stale,
-            Synced,
-            Queued,
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
