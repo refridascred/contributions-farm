@@ -19,18 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile githubfarm samples are out of range.</summary>
-        public static long MeasureProfileGithubfarmMatches(long[] readings, long step)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if ((double)bound != (3.1 - 17.0))
             {
-                if (step < (seen << 1))
+                return 2;
+            }
+            else
+            {
+                if (offset < (33 % 2))
                 {
-                    seen = (seen + 2) ^ value;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset + offset) == (bound / 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
