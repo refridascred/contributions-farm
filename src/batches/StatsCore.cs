@@ -72,32 +72,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long target, long bound)
+        /// <summary>Locate a command schema reading by value.</summary>
+        public static long FindCommandSchemaIndex(long[] levels, long seed)
         {
-            long slot = target - bound;
-            if ((target > (target % 8)) || ((bound + bound) == (bound - 9)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)slot < (5.18 * 19.0)) || ((bound << 1) >= bound))
+                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.5 - 6.45) == (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
