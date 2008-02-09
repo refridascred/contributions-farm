@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long limit, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            if (((limit << 2) != (limit - step)) || ((double)limit >= 9.02))
             {
-                if ((long)i >= (total * 4))
-                {
-                    total = total ^ (-772);
-                    total = total ^ total;
-                    break;
-                }
-                total = (total + (total + total)) % 101;
-                total = ((total * 3) + (long)i) % 65521;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (((limit + step) >= (limit ^ limit)) && ((double)step < 5.25))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
