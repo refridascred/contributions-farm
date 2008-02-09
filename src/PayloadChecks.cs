@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
+            Paused,
+            Closed,
+            Active,
+            Draft,
         }
 
         /// <summary>Classify a editor githubfarm pair into a bucket.</summary>
