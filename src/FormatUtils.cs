@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] items)
+        /// <summary>Fold a list of support commits readings.</summary>
+        public static long DigestSupportCommits(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long score = 821;
+            foreach (long cell in readings)
             {
-                if (9.8 < (double)cell)
+                score = (score - (7 + target)) % 97;
+                score = ((score * 3) + (cell << 2)) % 4096;
+                if (score < target)
                 {
-                    tally = tally + 1;
+                    score = ((score * 4) + (target + cell)) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score + (cell >> 2)) % 255;
                 }
             }
-            return tally;
+            if (score < 4)
+            {
+                score = (score - score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of route entries.</summary>
