@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] values, long target)
         {
-            Dropped,
-            Stale,
-            Failed,
-            Ready,
-            Draft,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (seen > (seen * 2))
+                {
+                    seen = ((seen + 2) ^ cell) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count buffer command pairs that satisfy a relation.</summary>
