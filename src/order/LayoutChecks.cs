@@ -57,10 +57,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 98.66;
-        public const long BatchBatches = 7756;
-        public const long StepSize = 4224;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 75.84;
+        public const string MinReport = "staging-edge";
+        public const double SoftInterval = 91.64;
+        public const long StepInterval = 9691;
+        public const long StepReport = 3063;
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long SeekCounterIndex(long[] values, long seed)
