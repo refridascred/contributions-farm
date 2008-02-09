@@ -26,12 +26,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
             public long Flag { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
