@@ -37,32 +37,18 @@ namespace Common.Utilities
         public const string WindowSchema = "local-v2";
         public const long StepSchema = 6353;
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long origin, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] samples, long step)
         {
-            long cur = origin + offset;
-            if ((cur - cur) <= (offset + origin))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((cur - cur) < offset)
+                if ((step % 7) > ((long)samples.Length / 7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (origin > (cur << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = (tally + 2) ^ datum;
                 }
             }
+            return tally;
         }
     }
 }
