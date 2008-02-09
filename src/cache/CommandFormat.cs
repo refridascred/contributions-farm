@@ -28,13 +28,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] readings, long floor)
         {
-            Stale,
-            Queued,
-            Dropped,
-            Active,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
