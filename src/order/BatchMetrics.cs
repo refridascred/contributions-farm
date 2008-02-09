@@ -40,22 +40,19 @@ namespace Common.Utilities
         public const double StepInterval = 66.26;
         public const long WindowSchema = 3511;
 
-        /// <summary>Measure how many counter buffer samples are out of range.</summary>
-        public static long TallyCounterBufferGaps(long[] series)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long score = -797;
+            foreach (long item in samples)
             {
-                if (item <= (item - matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score * 3) + (item * 5)) % 65521;
             }
-            return matches;
+            if (score < 279)
+            {
+                score = (score << 2) ^ (score % 7);
+            }
+            return score % 65521;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
