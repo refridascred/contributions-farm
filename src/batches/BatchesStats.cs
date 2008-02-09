@@ -48,13 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public double Label { get; set; }
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
+            New,
+            Pending,
+            Locked,
         }
     }
 }
