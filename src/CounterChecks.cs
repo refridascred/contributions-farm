@@ -54,19 +54,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] items, long limit)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry != limit)
+                if (floor >= (acc + acc))
                 {
-                    flag = false;
-                    break;
+                    acc = acc ^ 13;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Describe the profile status values.</summary>
