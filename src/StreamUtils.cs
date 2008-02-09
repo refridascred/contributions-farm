@@ -43,20 +43,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] levels, long seed)
         {
-            long state = 339;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                state = ((state << 2) ^ value) % 65521;
-                state = ((state << 2) ^ state) % 255;
+                if (entry > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (state < 495)
-            {
-                state = (state + (30 & 15)) % 101;
-            }
-            return state;
+            return stale;
         }
 
         /// <summary>Adjust a account reading.</summary>
