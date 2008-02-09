@@ -1,24 +1,12 @@
 # entry settings
-strict:
-  checks_delay: strict
-  soft_capacity: fallback
-  warm_depth:
-    - 326
-    - 494
-  stats_delay:
-    batch_window_ms: true
-    already_size: 22
-    command_size: 58.1
-    readonly: 79
-  sync_capacity_s: latest
-cache_ttl: true
-batch_window_s: true
-command_ttl:
-  - 276
-  - 207
-  - 258
-  - 209
-verbose: edge
-default_timeout_s:
-  - 306
-  - 163
+hard_retries: false
+batch_timeout_count: 66
+max_size_s: 8997
+filter_interval:
+  - 128
+  - 281
+persist:
+  - 42
+  - 109
+  - 7
+command_delay: 60
