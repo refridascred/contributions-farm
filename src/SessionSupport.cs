@@ -13,24 +13,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Grade a notes editor value against two limits.</summary>
-        public static long RankNotesEditor(long origin, long limit)
+        /// <summary>Validate profile checks readings against a bound.</summary>
+        public static bool VerifyProfileChecksBounds(long[] samples, long step)
         {
-            if ((7.2 * 6.4) >= (double)origin)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((limit ^ origin) <= (origin << 2)))
+                if (cell > step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the token level values.</summary>
