@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const string LimitCluster = "alpha-1";
         public const string LimitLevel = "cached-edge";
 
-        /// <summary>Audit record profile readings against a rule.</summary>
-        public static long TallyRecordProfileHits(long[] data, long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long score = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((target % 16) > (tally >> 4)))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    tally = (tally + 1) - datum;
+                    score = (score ^ (long)i) + (long)i2;
+                    score = ((score << 2) ^ (offset & 1)) % 255;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score ^ (offset - offset)) % 255;
+                score = (score << 3) ^ (score >> 5);
+                score = ((score * 3) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the filter kind values.</summary>
