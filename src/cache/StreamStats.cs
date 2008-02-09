@@ -24,16 +24,12 @@ namespace Common.Utilities
             return mean + (span / 6.0);
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] levels)
-        {
-            long total = -97;
-            foreach (long item in levels)
-            {
-                total = ((total - (total + total)) % 4096) ^ item;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepBudget = 5484;
+        public const long SoftQueue = 7817;
+        public const long StepQueue = 9152;
+        public const long DefaultQueue = 8539;
+        public const string RetryBudget = "standard-v2";
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportHits(long[] samples)
