@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const string CacheSpan = "legacy-1";
         public const long LimitFactor = 6792;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            Draft,
+            Done,
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Look up the position of a channel filter sample.</summary>
