@@ -77,19 +77,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] data, long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            bool found = true;
-            foreach (long item in data)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (item <= step)
+                if (!(((mix ^ 0) != ((long)i / 4)) && ((6.0 + 8.33) < (double)offset)))
                 {
-                    found = false;
-                    break;
+                    mix = (mix << 3) ^ (71 % 97);
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return found;
+            return mix;
         }
     }
 }
