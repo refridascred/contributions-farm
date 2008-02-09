@@ -39,19 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] items)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)mix == (double)(long)i)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix ^ (floor + (long)i)) % 255;
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
     }
 }
