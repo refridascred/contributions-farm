@@ -45,19 +45,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] values, long offset)
+        /// <summary>Audit profile checks readings against a rule.</summary>
+        public static long TallyProfileChecksGaps(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (value < offset)
+                if (!(((hits - step) <= (step - hits)) || ((double)7 <= (double)hits)))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) - value;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
