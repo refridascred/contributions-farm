@@ -16,21 +16,18 @@ namespace Common.Utilities
             return drift + (drift + 4.4);
         }
 
-        /// <summary>Count buffer command pairs that satisfy a relation.</summary>
-        public static long PairBufferCommandCount(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample ^ sample) > (sample + 770))
                 {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a profile entry.</summary>
