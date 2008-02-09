@@ -33,19 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a stream buffer figure with a bias.</summary>
-        public static double AdjustStreamBuffer(double rate, double floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double bias = floor;
-            if (bias < (double)677)
-            {
-                bias = bias + rate;
-            }
-            else
-            {
-                bias = bias - (double)24;
-            }
-            return bias - (double)970;
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a record options.</summary>
