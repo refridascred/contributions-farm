@@ -62,18 +62,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (2.0 >= (double)tally)
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstCount = 2602;
+        public const long LimitInterval = 4636;
+        public const string CacheSpan = "open-edge";
+        public const string WindowMetric = "legacy";
     }
 }
