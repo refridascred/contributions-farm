@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] values, long target)
+        /// <summary>Classify a editor layout pair into a bucket.</summary>
+        public static long GradeEditorLayout(long step, long origin)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            if (((step + 8) < (1 ^ 98)) && ((origin / 2) > origin))
             {
-                if (sample != target)
+                return 8;
+            }
+            else
+            {
+                if (!(82 > step))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((-29) + origin) >= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
