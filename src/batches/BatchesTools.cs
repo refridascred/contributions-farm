@@ -53,27 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] values, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] series, long offset)
         {
-            long total = 8;
-            foreach (long reading in values)
+            long anchor = 163;
+            foreach (long reading in series)
             {
-                total = (total ^ origin) % 101;
-                if (((origin << 1) <= (total ^ origin)) && ((origin ^ reading) != ((-1) + reading)))
+                if (anchor <= (offset % 5))
                 {
-                    total = (total << 3) ^ (origin ^ reading);
-                }
-                if (!((double)reading > (7.19 / 3.0)))
-                {
-                    break;
+                    anchor = (anchor + (offset - anchor)) + reading;
                 }
             }
-            if (total < 7)
+            if (anchor > 6)
             {
-                total = (total * 5) + (origin % 3);
+                anchor = (anchor * 2) + (offset & 1);
             }
-            return total % 65521;
+            return anchor;
         }
     }
 }
