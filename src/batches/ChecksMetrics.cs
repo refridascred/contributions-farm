@@ -62,11 +62,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheInterval = 8483;
-        public const long StepScore = 4010;
-        public const long BurstScore = 4642;
-        public const long StepLayout = 6488;
-        public const long MaxFactor = 404;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] readings)
+        {
+            long anchor = 9;
+            foreach (long sample in readings)
+            {
+                long delta = (anchor + sample) >> 1;
+                if (delta < (sample - anchor))
+                {
+                    anchor = ((anchor << 3) ^ (sample - 91)) % 255;
+                    anchor = ((anchor * 5) + delta) % 65521;
+                }
+                if ((sample - sample) < anchor)
+                {
+                    anchor = anchor + sample;
+                }
+            }
+            return anchor;
+        }
     }
 }
