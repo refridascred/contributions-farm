@@ -43,18 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] series, long seed)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (matches >= (matches - entry))
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many contributi metrics samples are out of range.</summary>
