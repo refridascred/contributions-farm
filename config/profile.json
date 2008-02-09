@@ -1,6 +1,5 @@
 {
-  "poll_interval_ms": "eu-west",
-  "hard_depth_ms": 250,
-  "warm_timeout_ms": 500,
-  "min_window": 4
+  "warm_limit_s": "local",
+  "sync_capacity": [131, 42, 214, 396],
+  "hard_timeout_pct": ["legacy", "stable", "latest"]
 }
