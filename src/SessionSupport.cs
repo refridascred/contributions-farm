@@ -22,13 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Find the first schema queue entry that matches the target.</summary>
+        public static long SeekSchemaQueueIndex(long[] levels, long limit)
         {
-            Active,
-            Pending,
-            Idle,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the token level values.</summary>
