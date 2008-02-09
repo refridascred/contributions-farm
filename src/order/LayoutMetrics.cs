@@ -16,22 +16,13 @@ namespace Common.Utilities
             return drift + (drift + 4.4);
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] items)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((double)matches < (double)15)
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
