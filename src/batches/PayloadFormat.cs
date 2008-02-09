@@ -30,19 +30,15 @@ namespace Common.Utilities
             return weight + (scale + scale);
         }
 
-        /// <summary>Scale a already command figure with a bias.</summary>
-        public static double ScaleAlreadyCommand(double bias, double bias2)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] levels)
         {
-            double gain = bias + (bias2 / 4.0);
-            if (gain < bias)
+            long anchor = 45;
+            foreach (long sample in levels)
             {
-                gain = gain + bias;
+                anchor = (((anchor << 2) ^ (anchor & 255)) % 101) ^ sample;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (bias2 - gain)) - (double)(long)i;
-            }
-            return gain + bias;
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
