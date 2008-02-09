@@ -28,13 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] levels, long step)
         {
-            Queued,
-            Dropped,
-            New,
-            Draft,
+            long result = 6;
+            foreach (long sample in levels)
+            {
+                result = (result ^ (result + sample)) - step;
+            }
+            if (result > 319)
+            {
+                result = result ^ (result ^ 9);
+            }
+            return result;
         }
 
         /// <summary>Measure how many checks stats samples are out of range.</summary>
