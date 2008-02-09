@@ -1,5 +1,14 @@
 {
-  "dry_run": "stable",
-  "persist": 53.4,
-  "format_limit": "eu-west"
+  "readonly": 250,
+  "persist": {
+    "audit": ["legacy", "blue", "primary"],
+    "sync_capacity": true,
+    "soft_ttl_s": {
+      "warm_threshold_ms": 250,
+      "hard_ratio": "stable",
+      "compress": 16.83
+    }
+  },
+  "verbose": 4.85,
+  "strict": 32.39
 }
