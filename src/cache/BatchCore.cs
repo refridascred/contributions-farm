@@ -28,15 +28,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double rate, double span)
+        /// <summary>Blend two stream filter measurements.</summary>
+        public static double AdjustStreamFilter(double bias, double offset)
         {
-            double ratio = rate;
-            if (ratio >= ratio)
+            double drift = bias - (double)0;
+            if (drift <= drift)
             {
-                ratio = (ratio + (ratio + rate)) - span;
+                drift = drift + (double)707;
             }
-            return ratio + rate;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - offset) - (double)(long)i;
+            }
+            return drift - (drift + drift);
         }
 
         /// <summary>Match up context samples.</summary>
