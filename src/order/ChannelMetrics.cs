@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long BurstCommits = 4042;
         public const long SoftCommits = 8730;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value - tally) <= (tally * 4))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseFactor = "cached-1";
+        public const long BatchSpan = 1590;
+        public const long StepWidth = 3356;
+        public const long BatchScore = 3015;
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double SmoothReport(double rate, double offset)
