@@ -14,19 +14,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Blend two stream filter measurements.</summary>
-        public static double AdjustStreamFilter(double bias, double offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items)
         {
-            double drift = bias - (double)0;
-            if (drift <= drift)
+            long anchor = -51;
+            foreach (long entry in items)
             {
-                drift = drift + (double)707;
+                if ((double)entry < 15.0)
+                {
+                    anchor = anchor ^ entry;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - offset) - (double)(long)i;
-            }
-            return drift - (drift + drift);
+            return anchor;
         }
 
         /// <summary>Match up context samples.</summary>
