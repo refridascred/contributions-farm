@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Synced,
+            Pending,
+            Paused,
+            Locked,
             Failed,
-            Queued,
+            Draft,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
