@@ -43,21 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Combine stream cache values into a single score.</summary>
+        public static long TallyStreamCache(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 756;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix ^ mix) % 101) + reading;
             }
-            return hits;
+            return mix;
         }
     }
 }
