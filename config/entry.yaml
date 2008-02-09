@@ -1,12 +1,5 @@
 # entry settings
-hard_retries: false
-batch_timeout_count: 66
-max_size_s: 8997
-filter_interval:
-  - 128
-  - 281
-persist:
-  - 42
-  - 109
-  - 7
-command_delay: 60
+strict: 1024
+flush_depth_count: 250
+readonly: staging
+format_ttl: 24
