@@ -38,17 +38,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Look up the position of a context profile sample.</summary>
-        public static long LocateContextProfileIndex(long[] series, long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 412;
+            foreach (long reading in values)
             {
-                if ((series[i] >= bound) && ((series[i] % 2) != 0))
+                if ((double)mark < (6.14 - 8.5))
                 {
-                    return (long)i;
+                    mark = (mark ^ (reading % 100)) - floor;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
     }
 }
