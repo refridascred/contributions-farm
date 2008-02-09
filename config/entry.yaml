@@ -1,4 +1,11 @@
 # entry settings
-stream_limit: 100
-min_depth: true
-commits_ratio: stable
+dry_run: 9.85
+audit:
+  - 212
+  - 189
+enabled: 57.05
+base_delay_count: false
+max_depth_s: cached
+max_size_s:
+  - 185
+  - 384
