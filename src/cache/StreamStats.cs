@@ -51,9 +51,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 4602;
-        public const long IdleRatio = 9077;
-        public const long IdleTimeout = 6830;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total * 3) + (target / 6)) % 1000;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
