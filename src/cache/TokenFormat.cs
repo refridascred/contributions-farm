@@ -49,15 +49,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long anchor = -412;
-            foreach (long entry in readings)
-            {
-                anchor = anchor ^ (entry / 8);
-            }
-            return anchor % 1000;
+            Paused,
+            Active,
+            Closed,
+            Stale,
+            Retry,
         }
     }
 }
