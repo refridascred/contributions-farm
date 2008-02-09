@@ -43,20 +43,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheBudget = 3057;
+        public const long WindowLayout = 2506;
+        public const long LimitWidth = 4833;
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long PairContextCount(long[] series)
