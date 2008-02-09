@@ -37,18 +37,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes schema samples are out of range.</summary>
-        public static long TallyNotesSchemaGaps(long[] levels, long floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long step, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            if ((step + 8) != (step + 14))
             {
-                if (!((seen % 3) != (sample ^ seen)))
+                return 6;
+            }
+            else
+            {
+                if (seed >= (seed * 4))
                 {
-                    seen = (seen + 2) - floor;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + seed) < (821 + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step > (seed + seed)) || ((double)seed == (7.93 - 1.4)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
