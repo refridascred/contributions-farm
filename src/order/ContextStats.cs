@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up cache queue samples.</summary>
-        public static long CompareCacheQueueCount(long[] items)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Failed,
+            Stale,
+            Dropped,
+            Active,
         }
 
         /// <summary>Roll a githubfarm stats counter forward.</summary>
