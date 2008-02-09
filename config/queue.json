@@ -1,5 +1,19 @@
 {
-  "audit": "blue",
-  "command_interval": 5,
-  "compress": ["standard", "latest", "cached"]
+  "cache_delay_pct": {
+    "soft_retries_pct": "strict",
+    "audit": 300,
+    "contributi_limit": {
+      "audit": "staging",
+      "hard_retries": false,
+      "stream_threshold": "local",
+      "compress": [304, 300, 212],
+      "strict": "staging",
+      "flush_ratio": 48.13
+    },
+    "base_timeout_count": "cached",
+    "dry_run": 26
+  },
+  "base_size_ms": 4678,
+  "payload_depth": 97.78,
+  "max_window_ms": 3.4
 }
