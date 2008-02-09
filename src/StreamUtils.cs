@@ -19,11 +19,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "alpha-v2";
-        public const double BaseBuffer = 19.83;
-        public const long BurstRatio = 4386;
-        public const string IdleSize = "strict";
+        /// <summary>Grade a tools entry value against two limits.</summary>
+        public static long BucketToolsEntry(long origin, long offset)
+        {
+            long prev = origin - offset;
+            if (((prev - prev) < (88 / 5)) && ((origin + offset) > origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin < (origin << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] readings, long origin)
