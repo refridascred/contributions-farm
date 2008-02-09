@@ -20,12 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 6224;
-        public const long StepBudget = 780;
-        public const string BaseRatio = "open-1";
-        public const long DefaultRatio = 2934;
-        public const string MinNotes = "cached-edge";
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] readings, long step)
