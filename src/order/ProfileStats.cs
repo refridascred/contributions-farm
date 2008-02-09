@@ -33,18 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of contributi queue readings.</summary>
-        public static long ScoreContributiQueue(long[] levels)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            long sum = 44;
-            foreach (long sample in levels)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((sum % 24) < sum)
+                if (!((state << 3) >= (225 >> 5)))
                 {
-                    sum = (sum + (sum + sum)) - sample;
+                    state = (state << 2) ^ state;
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return sum % 97;
+            return state;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
