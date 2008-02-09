@@ -20,14 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Retry,
-            Idle,
-            Stale,
-            Draft,
-            New,
+            Failed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
