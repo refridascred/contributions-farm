@@ -1,5 +1,5 @@
 {
-  "flush_delay": "primary",
-  "payload_retries": 47.22,
-  "warm_depth_s": true
+  "audit": 80.8,
+  "support_ratio": true,
+  "metrics_window": 8.83
 }
