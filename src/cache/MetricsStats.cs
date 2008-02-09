@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] items, long floor)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Roll a window counter forward.</summary>
