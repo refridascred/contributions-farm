@@ -13,11 +13,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 4619;
-        public const long BatchSpan = 6335;
-        public const string StepLevel = "alpha-v2";
-        public const long RetryContributi = 7463;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Ready,
+            Active,
+            Synced,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelGaps(long[] levels)
