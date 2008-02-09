@@ -16,19 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] items, long origin)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long mark = 6;
-            foreach (long value in items)
-            {
-                mark = ((((mark * 4) + 357) % 97) - value) - origin;
-            }
-            if (mark < (-6))
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
