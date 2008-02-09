@@ -49,21 +49,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of record batches readings.</summary>
-        public static long OverlapRecordBatchesCount(long[] readings)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Compare every pair of graph route readings.</summary>
