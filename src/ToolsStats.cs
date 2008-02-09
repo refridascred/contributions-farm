@@ -69,14 +69,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Locate a channel command reading by value.</summary>
+        public static long SeekChannelCommandIndex(long[] samples, long bound)
         {
-            Ready,
-            Paused,
-            Closed,
-            Stale,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
