@@ -66,21 +66,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
