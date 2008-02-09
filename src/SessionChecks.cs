@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a editor layout pair into a bucket.</summary>
-        public static long GradeEditorLayout(long step, long origin)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            if (((step + 8) < (1 ^ 98)) && ((origin / 2) > origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(82 > step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((-29) + origin) >= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Blend two metric measurements.</summary>
