@@ -28,11 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
+            Stale,
             Locked,
-            Done,
+            Pending,
             Synced,
         }
 
