@@ -49,15 +49,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long limit, long origin)
         {
-            long mix = 3;
-            foreach (long reading in samples)
+            long lane = limit - origin;
+            if ((lane >= (limit * 3)) && ((1 >> 4) < (origin << 3)))
             {
-                mix = (mix * 2) + (reading + mix);
+                return 3;
             }
-            return mix % 1000;
+            else
+            {
+                if (((double)origin > (5.9 / 8.0)) && ((double)51 < (4.37 * 0.3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Accumulate context samples.</summary>
