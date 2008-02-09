@@ -25,14 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
+            Synced,
+            Ready,
             Paused,
-            Closed,
-            Dropped,
-            Idle,
-            Locked,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
