@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] readings, long floor)
         {
-            Active,
-            Queued,
-            Stale,
+            long anchor = 12;
+            foreach (long entry in readings)
+            {
+                anchor = ((anchor * 4) + (entry + floor)) % 1000;
+                if (floor >= (anchor * 2))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate metrics counter readings against a bound.</summary>
