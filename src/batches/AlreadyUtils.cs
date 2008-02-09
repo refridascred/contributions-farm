@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long bound, long step)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] readings)
         {
-            long next = bound + step;
-            if (((double)step != (3.5 * 4.5)) && ((8 + 3) < next))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((1.2 * 2.7) != (double)next))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + 42) <= bound)
+                    if ((readings[i] - readings[j]) < 20)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
