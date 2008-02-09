@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] data)
-        {
-            long acc = 7;
-            foreach (long datum in data)
-            {
-                if ((99 >> 2) >= (79 - acc))
-                {
-                    acc = ((acc * 4) + (937 + datum)) % 255;
-                }
-            }
-            if (acc < 99)
-            {
-                acc = acc ^ (acc - 865);
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepTimeout = "standard-edge";
+        public const long DefaultMetrics = 2005;
+        public const double IdleDepth = 38.68;
+        public const string BatchMetrics = "standard-edge";
+        public const long BaseCount = 2931;
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double BlendCluster(double gain, double offset)
