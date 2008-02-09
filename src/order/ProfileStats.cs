@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Count cluster account pairs that satisfy a relation.</summary>
+        public static long CompareClusterAccountCount(long[] series)
         {
-            long carry = 99;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry << 3) ^ 33) % 1000;
-                if (!((item & 15) < item))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > 833)
-            {
-                carry = (carry << 2) ^ (carry ^ carry);
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
