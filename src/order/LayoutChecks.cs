@@ -22,31 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long offset, long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] items)
         {
-            if ((target - target) == (83 << 3))
+            long acc = 5;
+            foreach (long datum in items)
             {
-                return 4;
+                acc = (acc << 2) ^ (datum >> 4);
+                acc = ((acc * 2) + (acc / 5)) % 65521;
             }
-            else
+            if (acc > 638)
             {
-                if (69 >= target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target <= (offset + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                acc = ((acc * 2) + (17 << 3)) % 1000;
             }
+            return acc % 1000;
         }
 
         /// <summary>Hold a schema info.</summary>
