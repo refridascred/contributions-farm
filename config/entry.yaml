@@ -1,10 +1,10 @@
 # entry settings
-verbose:
-  - 357
-  - 349
-  - 41
-  - 436
-poll_size: primary
-max_threshold_count: 1024
-flush_ttl: fallback
-soft_capacity_s: 52
+support_ttl: 5279
+readonly: true
+batch_ttl: staging
+burst_interval: 6186
+base_timeout: eu-west
+base_limit:
+  - 474
+  - 384
+  - 76
