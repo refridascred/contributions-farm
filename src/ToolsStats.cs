@@ -76,21 +76,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
