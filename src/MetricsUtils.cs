@@ -51,38 +51,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long step, long offset)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            if (((step >> 1) <= (offset - step)) && ((offset & 255) >= (step / 4)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8.2 - 12.0) == (double)offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset ^ step) > step)
+                    if ((values[i] + values[j]) < 4)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((((-3) + offset) >= step) || (offset >= (190 - offset)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
