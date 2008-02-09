@@ -1,11 +1,11 @@
 # Command notes
 
-Run the order check before changing any format limits.
-Run the format check before changing any farm limits.
-Each commits is validated before it reaches the editor queue.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The commits module keeps command values in sync with the entry cache.
 
 ## Guidelines
 
-- Validate commits input early
-- Keep account values small
-- Document new context fields
+- Document new payload fields
+- Review schema limits each release
+- Prefer metrics defaults
+- Keep contributi values small
