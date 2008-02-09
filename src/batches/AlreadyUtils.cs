@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] levels)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long bound, long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long next = bound + step;
+            if (((double)step != (3.5 * 4.5)) && ((8 + 3) < next))
             {
-                if ((count - (long)levels.Length) >= 5)
+                return 4;
+            }
+            else
+            {
+                if (!((1.2 * 2.7) != (double)next))
                 {
-                    count = (count + 3) + cell;
+                    return 8;
+                }
+                else
+                {
+                    if ((step + 42) <= bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
