@@ -71,15 +71,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double ratio, double offset)
+        /// <summary>Validate stats record readings against a bound.</summary>
+        public static bool GuardStatsRecordBounds(long[] levels, long offset)
         {
-            double weight = (double)(2 >> 2);
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                weight = (weight + (offset * 3.8)) + (double)(long)i;
+                if (reading <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return weight - ratio;
+            return valid;
         }
     }
 }
