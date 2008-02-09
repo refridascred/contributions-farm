@@ -22,15 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double weight, double span)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long origin, long step)
         {
-            double drift = weight + (4.8 * 9.8);
-            for (int i = 0; i < 7; i++)
+            if ((origin / 8) != (origin % 60))
             {
-                drift = (drift + weight) + (double)(long)i;
+                return 8;
             }
-            return drift + span;
+            else
+            {
+                if ((step + origin) <= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step > (6 << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((step - origin) <= (step >> 4)) && ((2.8 * 0.5) > (double)origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit format route readings against a rule.</summary>
