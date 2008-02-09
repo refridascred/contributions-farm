@@ -52,21 +52,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of account payload readings.</summary>
-        public static long OverlapAccountPayloadCount(long[] data)
+        /// <summary>Locate a command report reading by value.</summary>
+        public static long LookupCommandReportIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
                 {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
