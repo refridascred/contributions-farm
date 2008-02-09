@@ -37,17 +37,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] readings, long seed)
+        /// <summary>Validate record editor readings against a bound.</summary>
+        public static bool VerifyRecordEditorBounds(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
+                if (cell > target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Blend two queue measurements.</summary>
