@@ -16,19 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] values, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long result = 328;
+            foreach (long cell in items)
             {
-                if (entry >= origin)
+                if (cell <= (cell & 15))
                 {
-                    valid = false;
-                    break;
+                    result = (result - (result << 1)) % 65521;
+                }
+                else
+                {
+                    result = result + (result + result);
                 }
             }
-            return valid;
+            return result % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
