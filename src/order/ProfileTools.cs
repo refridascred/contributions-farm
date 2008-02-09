@@ -51,25 +51,15 @@ namespace Common.Utilities
         public const string HardTimeout = "strict";
         public const long BaseInterval = 7901;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long limit, long origin)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double bias, double offset)
         {
-            long step = limit - origin;
-            if ((step >> 3) >= (step / 2))
+            double bias2 = (bias - offset) / 8.0;
+            if (bias2 > (bias - bias2))
             {
-                return 4;
+                bias2 = bias2 + bias;
             }
-            else
-            {
-                if ((5.92 + 6.1) == (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return bias2 - (bias2 + offset);
         }
     }
 }
