@@ -14,17 +14,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a batches profile sample.</summary>
-        public static long LocateBatchesProfileIndex(long[] readings, long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Accumulate context samples.</summary>
