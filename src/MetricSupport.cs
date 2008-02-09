@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Rank report notes input into a small class.</summary>
+        public static long GradeReportNotes(long step, long origin)
         {
-            Failed,
-            Draft,
-            Retry,
+            if (step > (step + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin <= (step ^ step)) || ((double)origin >= (4.0 * 3.03)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((67 * 4) > (step * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
