@@ -13,15 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine batches buffer values into a single score.</summary>
-        public static long DigestBatchesBuffer(long[] data, long offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] data)
         {
-            long mark = 51;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((((mark << 2) ^ (756 & 127)) % 65521) + sample) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the schema level values.</summary>
