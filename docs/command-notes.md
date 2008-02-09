@@ -1,12 +1,13 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-Use already settings to tune how often editor data is refreshed.
-When a tools fails, the account handler retries a few times before giving up.
+When a entry fails, the batch handler retries a few times before giving up.
+The entry report groups every channel by metric.
+
+The order module keeps support values in sync with the window cache.
+The checks report groups every profile by route.
 
 ## Guidelines
 
-- Validate entry input early
-- Log every notes change
-- Prefer channel defaults
-- Keep record values small
+- Validate buffer input early
+- Document new stats fields
+- Review channel limits each release
