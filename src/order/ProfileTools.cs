@@ -12,23 +12,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long floor, long bound)
         {
-            long score = 618;
-            foreach (long reading in data)
+            long diff = floor + bound;
+            if (((bound - diff) > diff) || (bound <= (floor + floor)))
             {
-                score = (score << 3) ^ (score * 4);
-                if (658 > (reading + (-730)))
+                return 8;
+            }
+            else
+            {
+                if ((2 - floor) >= (bound - 2))
                 {
-                    score = ((score * 2) + reading) % 4096;
+                    return 4;
                 }
-                if ((score % 100) == (reading + score))
+                else
                 {
-                    break;
+                    if ((diff * 5) >= floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor & 63) > bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
