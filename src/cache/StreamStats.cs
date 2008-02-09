@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
