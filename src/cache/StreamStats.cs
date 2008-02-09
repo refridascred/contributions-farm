@@ -22,12 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepBudget = 5484;
-        public const long SoftQueue = 7817;
-        public const long StepQueue = 9152;
-        public const long DefaultQueue = 8539;
-        public const string RetryBudget = "standard-v2";
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] items, long origin)
+        {
+            long mark = 6;
+            foreach (long value in items)
+            {
+                mark = ((((mark * 4) + 357) % 97) - value) - origin;
+            }
+            if (mark < (-6))
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportHits(long[] samples)
