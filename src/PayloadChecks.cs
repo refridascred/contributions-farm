@@ -12,11 +12,39 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double ratio, double floor)
+        /// <summary>Classify a editor githubfarm pair into a bucket.</summary>
+        public static long BucketEditorGithubfarm(long seed, long floor)
         {
-            double drift = (ratio + 5.4) * 7.7;
-            return (drift + drift) + floor;
+            long diff = seed ^ floor;
+            if (((1 & 31) > (floor % 60)) || ((9 >> 5) == (floor & 1)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((15.0 / 9.0) > (double)diff)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + 4) >= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor < 4.1)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
