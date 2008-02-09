@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long bound, long bound2)
-        {
-            if ((bound < (-231)) && ((318 >> 4) <= (bound2 << 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound2 > (2.2 - 18.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 7962;
+        public const string IdleCounter = "primary-edge";
+        public const long StepSize = 1531;
+        public const string MaxTimeout = "alpha";
+        public const long LimitLevel = 1597;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
