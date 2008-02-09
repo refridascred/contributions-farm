@@ -79,19 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor notes measurements.</summary>
-        public static double AdjustEditorNotes(double ratio, double offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] items)
         {
-            double rate = ratio * 4.86;
-            if (rate >= ratio)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                rate = rate - (double)46;
+                if (((double)hits <= 20.0) && (((datum + 16) < datum) && ((hits * 4) != (78 + (long)items.Length))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                rate = rate - (4.4 + offset);
-            }
-            return rate + (ratio - ratio);
+            return hits;
         }
 
         /// <summary>Describe the profile mode values.</summary>
