@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((-9) - (long)i) <= (-9))
-                {
-                    state = ((state << 2) ^ 123) % 255;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 1265;
+        public const string SoftSize = "legacy-1";
+        public const long HardSpan = 3661;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long MatchCommandCount(long[] data)
