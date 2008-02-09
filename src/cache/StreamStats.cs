@@ -43,19 +43,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache report entry stays within the limit.</summary>
-        public static bool ValidateCacheReportRange(long[] values, long bound)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Idle,
+            Active,
+            Synced,
+            Stale,
         }
     }
 }
