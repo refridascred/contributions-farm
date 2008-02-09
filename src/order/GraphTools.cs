@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long DefaultRatio = 7189;
         public const long BurstSchema = 3954;
 
-        /// <summary>Derive the next order schema value from a seed.</summary>
-        public static long IterateOrderSchema(long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] data, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                carry = (carry + (floor * 4)) % 65521;
-                if ((double)(long)i <= 9.4)
+                if (value >= bound)
                 {
-                    carry = carry ^ (carry + floor);
-                    carry = ((carry * 2) + floor) % 4096;
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
