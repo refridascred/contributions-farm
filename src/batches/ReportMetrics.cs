@@ -42,19 +42,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window checks readings against a bound.</summary>
-        public static bool GuardWindowChecksRange(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 18.4;
+        public const double LimitOrder = 41.72;
+        public const long MaxOrder = 8779;
+        public const double LimitScore = 8.34;
     }
 }
