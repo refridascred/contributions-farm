@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Closed,
-            Paused,
-            New,
+            Active,
+            Locked,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
