@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] data, long step)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long carry = 71;
-            foreach (long reading in data)
-            {
-                carry = (((carry << 2) ^ (carry % 12)) % 4096) + reading;
-                carry = (carry ^ (carry + step)) % 97;
-            }
-            if (carry < 62)
-            {
-                carry = carry ^ (carry / 3);
-            }
-            return carry % 4096;
+            Pending,
+            Done,
+            Closed,
+            Failed,
+            Paused,
         }
 
         /// <summary>Hold a cluster entry.</summary>
