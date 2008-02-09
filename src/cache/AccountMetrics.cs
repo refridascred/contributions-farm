@@ -42,11 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the filter payload series from a seed.</summary>
