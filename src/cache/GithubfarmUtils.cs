@@ -15,31 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long bound, long origin)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            if (origin < (bound + origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin - 857) <= 675)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin + 723) <= (489 - origin)) || ((11.0 / 6.0) >= (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
