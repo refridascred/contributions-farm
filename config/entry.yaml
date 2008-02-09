@@ -1,15 +1,14 @@
 # entry settings
-report_delay: 4
-strict: 586
-entry_ttl:
-  burst_depth_count: false
-  soft_threshold_pct: open
-  retry_threshold: 58.57
-  warm_capacity: 100
-  enabled: open
-  flush_interval:
-    - latest
-    - stable
-    - blue
-    - open
-retry_ratio_ms: 4.45
+metric_depth:
+  - fallback
+  - stable
+  - blue
+  - primary
+notes_interval: 1024
+audit: latest
+metrics_size:
+  - open
+  - blue
+  - stable
+  - primary
+warm_interval_s: true
