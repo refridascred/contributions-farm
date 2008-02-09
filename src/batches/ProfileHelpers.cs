@@ -93,13 +93,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Idle,
-            Ready,
-            New,
-            Retry,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 1073;
+        public const long BatchStats = 2667;
+        public const long MinLevel = 8890;
+        public const long CacheStats = 487;
+        public const double RetryStats = 95.62;
     }
 }
