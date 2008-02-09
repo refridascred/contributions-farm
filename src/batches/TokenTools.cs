@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of commits filter readings.</summary>
-        public static long TallyCommitsFilter(long[] items)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] series)
         {
-            long mark = 2;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int i = 0; i < 2; i++)
+                if ((double)tally > (7.0 * 7.0))
                 {
-                    mark = ((mark + (740 << 1)) % 65521) - (long)i;
+                    tally = (tally + 2) + cell;
                 }
-                if (((mark + mark) < ((-854) - reading)) && (reading < (reading & 127)))
-                {
-                    mark = mark + (228 & 15);
-                    continue;
-                }
-                mark = ((mark << 2) ^ 332) % 101;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
