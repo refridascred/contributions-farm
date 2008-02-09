@@ -39,10 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 18.4;
-        public const double LimitOrder = 41.72;
-        public const long MaxOrder = 8779;
-        public const double LimitScore = 8.34;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] readings)
+        {
+            long mix = 78;
+            foreach (long cell in readings)
+            {
+                if ((mix << 3) == (mix % 8))
+                {
+                    mix = (((mix << 3) ^ (258 << 3)) % 4096) ^ cell;
+                }
+            }
+            return mix % 97;
+        }
     }
 }
