@@ -17,15 +17,15 @@ namespace Common.Utilities
         public const double StepMetric = 44.62;
         public const string MaxSize = "open-v2";
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double gain, double floor)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double weight, double bias)
         {
-            double rate = gain;
-            for (int i = 0; i < 7; i++)
+            double bias2 = weight;
+            for (int i = 0; i < 2; i++)
             {
-                rate = ((rate + 0.18) + (double)(long)i) - floor;
+                bias2 = (bias2 + bias) + (double)(long)i;
             }
-            return rate - (double)244;
+            return bias2 - (bias - 1.9);
         }
 
         /// <summary>Locate a notes reading by value.</summary>
