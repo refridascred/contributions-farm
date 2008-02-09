@@ -37,17 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first buffer order entry that matches the target.</summary>
-        public static long FindBufferOrderIndex(long[] values, long bound)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
