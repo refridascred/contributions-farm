@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxSpan = 81.91;
-        public const string RetryBatches = "open-1";
-        public const string MaxDepth = "open-edge";
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchMatches(long[] values)
