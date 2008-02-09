@@ -57,21 +57,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count githubfarm format pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmFormatCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultRatio = 9909;
+        public const long StepContributi = 8042;
+        public const long LimitTimeout = 4644;
     }
 }
