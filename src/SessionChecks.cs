@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Idle,
-            Retry,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSpan = "strict";
+        public const string BaseSession = "strict";
+        public const long IdleBudget = 4873;
 
         /// <summary>Blend two metric measurements.</summary>
         public static double AdjustMetric(double weight, double bias)
