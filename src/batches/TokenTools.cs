@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit batch context readings against a rule.</summary>
-        public static long CountBatchContextGaps(long[] series, long limit)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((756 + seen) <= (749 << 1))
-                {
-                    seen = ((seen + 2) ^ value) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Synced,
+            Active,
+            Stale,
+            Locked,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
