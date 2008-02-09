@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Synced,
-            Ready,
-            Stale,
-            New,
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
