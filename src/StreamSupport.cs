@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] data)
-        {
-            long sum = 81;
-            foreach (long reading in data)
-            {
-                sum = ((sum ^ (sum % 10)) % 65521) ^ reading;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleSize = 2159;
+        public const long BurstCount = 4846;
+        public const string MaxAccount = "alpha-1";
+        public const string HardCount = "strict-edge";
+        public const long BurstDepth = 8858;
 
         /// <summary>Check that every route support entry stays within the limit.</summary>
         public static bool GuardRouteSupportBounds(long[] items, long limit)
