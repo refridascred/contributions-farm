@@ -35,18 +35,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
-        public static long AuditClusterGithubfarmGaps(long[] levels)
+        /// <summary>Project the next contributi payload value.</summary>
+        public static double BlendContributiPayload(double scale, double span)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double rate = scale;
+            if (rate < scale)
             {
-                if ((hits >= (hits + reading)) && (reading < hits))
-                {
-                    hits = hits + 3;
-                }
+                rate = (rate + (double)685) + span;
             }
-            return hits;
+            else
+            {
+                rate = rate + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (double)155) + (double)(long)i;
+            }
+            return rate + scale;
         }
 
         /// <summary>Hold a checks entry.</summary>
