@@ -59,18 +59,31 @@ namespace Common.Utilities
         public const long CacheProfile = 2300;
         public const long BatchLevel = 7176;
 
-        /// <summary>Audit stats cache readings against a rule.</summary>
-        public static long TallyStatsCacheMatches(long[] items)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long mix = 4;
+            foreach (long sample in readings)
             {
-                if ((entry + (long)items.Length) == (entry + 15))
+                if (6 <= (sample << 1))
                 {
-                    count = count + 3;
+                    mix = (mix - (727 + sample)) % 255;
+                    break;
+                }
+                if ((sample - sample) >= (mix + sample))
+                {
+                    mix = (mix - mix) % 97;
+                }
+                else
+                {
+                    mix = mix + mix;
                 }
             }
-            return count;
+            if (mix > (-74))
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
     }
 }
