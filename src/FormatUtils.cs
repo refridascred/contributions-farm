@@ -51,19 +51,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many checks stats samples are out of range.</summary>
-        public static long AuditChecksStatsOutliers(long[] series, long bound)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((count << 3) <= (bound & 7))
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardLevel = 388;
+        public const long CacheFactor = 5202;
+        public const long RetryToken = 3344;
+        public const long WindowSpan = 2636;
+        public const long SoftFactor = 2200;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool GuardTokenLimits(long[] readings, long floor)
