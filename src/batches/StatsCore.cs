@@ -61,17 +61,12 @@ namespace Common.Utilities
         public const double BatchTimeout = 21.87;
         public const long RetryInterval = 3212;
 
-        /// <summary>Look up the position of a layout profile sample.</summary>
-        public static long LocateLayoutProfileIndex(long[] samples, long step)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Rank support input into a small class.</summary>
