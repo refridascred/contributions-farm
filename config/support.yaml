@@ -1,7 +1,4 @@
 # support settings
-entry_depth: open
-idle_capacity: 3144
-warm_timeout: latest
-counter_limit:
-  - eu-west
-  - blue
+soft_ratio_ms: true
+base_limit: false
+context_window: latest
