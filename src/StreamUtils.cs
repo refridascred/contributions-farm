@@ -51,16 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] items)
-        {
-            long total = 7;
-            foreach (long sample in items)
-            {
-                total = (total ^ (sample + sample)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxChecks = 29.36;
+        public const string LimitChecks = "fallback-edge";
+        public const double MinDepth = 42.07;
+        public const string RetryChecks = "strict-v2";
+        public const double WindowFactor = 44.59;
 
         /// <summary>Adjust a account reading.</summary>
         public static double ScaleAccount(double weight, double span)
