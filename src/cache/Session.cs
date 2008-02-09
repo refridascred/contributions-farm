@@ -41,13 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Locked,
-            Pending,
-            Synced,
-            Stale,
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
