@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long result = 5;
-            foreach (long reading in readings)
-            {
-                if (!(1 >= (reading >> 5)))
-                {
-                    result = ((result << 2) ^ (reading - (-90))) % 255;
-                }
-                else
-                {
-                    result = (result * 4) + (long)readings.Length;
-                }
-            }
-            return result;
+            Dropped,
+            Stale,
+            Failed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Count buffer command pairs that satisfy a relation.</summary>
