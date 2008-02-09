@@ -1,11 +1,10 @@
 # support settings
-retry_delay: 43.61
-default_limit_pct:
-  - standard
-  - cached
-  - legacy
-strict: false
-counter_delay:
-  - open
-  - staging
-  - staging
+soft_window:
+  - 36
+  - 293
+batch_capacity_ms:
+  layout_ttl: 30.76
+  batch_window_pct: 98.98
+  command_ratio: 8.62
+  default_size_count: legacy
+sync_retries_ms: true
