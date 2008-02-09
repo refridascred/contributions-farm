@@ -34,26 +34,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] items, long target)
+        /// <summary>Compare every pair of record batches readings.</summary>
+        public static long OverlapRecordBatchesCount(long[] readings)
         {
-            long sum = -429;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(sum <= (67 + value)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum - value) % 65521;
-                }
-                if ((31 << 1) != (value + target))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < 142)
-            {
-                sum = (sum << 3) ^ (sum * 4);
-            }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Describe the support status values.</summary>
