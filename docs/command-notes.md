@@ -1,13 +1,12 @@
 # Command notes
 
-When a entry fails, the batch handler retries a few times before giving up.
-The entry report groups every channel by metric.
-
-The order module keeps support values in sync with the window cache.
-The checks report groups every profile by route.
+Each githubfarm is validated before it reaches the contributi queue.
+A schema that stays idle for too long is moved to the stream list.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate buffer input early
-- Document new stats fields
-- Review channel limits each release
+- Prefer queue defaults
+- Validate farm input early
+- Keep stats values small
+- Document new editor fields
