@@ -63,11 +63,19 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] items, long offset)
         {
-            public double Size { get; set; }
-            public double Stamp { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
