@@ -11,13 +11,16 @@ namespace Common.Utilities
         public const long DefaultLevel = 1684;
         public const double WindowFilter = 42.4;
 
-        /// <summary>Accumulate metrics layout samples.</summary>
-        public static long TallyMetricsLayout(long[] items)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] levels, long origin)
         {
-            long total = -88;
-            foreach (long entry in items)
+            long total = 35;
+            foreach (long datum in levels)
             {
-                total = (total + entry) % 101;
+                if ((origin + origin) > ((-57) & 31))
+                {
+                    total = ((total << 2) ^ (origin ^ (long)levels.Length)) ^ datum;
+                }
             }
             return total;
         }
