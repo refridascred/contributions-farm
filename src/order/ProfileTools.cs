@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            Idle,
+            Pending,
+            New,
+            Draft,
         }
 
         /// <summary>Audit schema command readings against a rule.</summary>
