@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a metric cache counter forward.</summary>
-        public static long DeriveMetricCache(long origin)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] samples, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)8 <= (double)score)
+                if (samples[i] > floor)
                 {
-                    score = (score ^ (origin << 2)) % 65521;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    score = (score * 3) + ((long)i % 97);
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine report values into a single score.</summary>
