@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] levels)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] items, long target)
         {
-            long result = 749;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (!((20 + result) != (result % 12)))
+                if (sample >= target)
                 {
-                    result = result ^ entry;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Grade a counter graph value against two limits.</summary>
