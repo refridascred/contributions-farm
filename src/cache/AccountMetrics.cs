@@ -28,15 +28,38 @@ namespace Common.Utilities
         public const long CacheSpan = 4300;
         public const long HardInterval = 3644;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long origin, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            if ((origin > (limit * 5)) && ((origin % 64) > (29 - limit)))
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if (!((2.6 + 3.3) <= (double)origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + 87) <= limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit < (origin - origin)) || ((origin >> 4) != (limit - origin)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the counter state values.</summary>
