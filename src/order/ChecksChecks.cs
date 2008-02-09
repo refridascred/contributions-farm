@@ -20,24 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next notes tools value.</summary>
-        public static double ProjectNotesTools(double gain, double span)
-        {
-            double bias = 5.17;
-            if (bias >= (double)0)
-            {
-                bias = bias - gain;
-            }
-            else
-            {
-                bias = bias - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (double)4) - (double)(long)i;
-            }
-            return bias - (7.2 - span);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 3280;
+        public const string HardFactor = "strict-1";
+        public const long IdleTimeout = 2643;
+        public const long MinLevel = 8293;
+        public const long StepRatio = 9973;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MaxSchema = 651;
