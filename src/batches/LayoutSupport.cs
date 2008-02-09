@@ -23,19 +23,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (bound < (tally ^ tally))
-                {
-                    tally = (tally + 3) - datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 5560;
+        public const string StepTools = "latest-v2";
+        public const long LimitCount = 982;
+        public const long RetryTools = 5643;
+        public const long IdleSpan = 228;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
