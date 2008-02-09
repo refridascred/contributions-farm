@@ -72,22 +72,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] series)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            long result = 132;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell >> 2) >= cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result * 5) + result) % 1000;
-                }
-                if ((cell % 2) <= (result + 89))
-                {
-                    break;
+                    if ((items[i] + items[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Hold a record options.</summary>
