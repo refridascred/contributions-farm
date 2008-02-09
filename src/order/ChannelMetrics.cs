@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardInterval = 9364;
-        public const long IdleInterval = 4852;
-        public const long RetryWidth = 8392;
-        public const long SoftBuffer = 9042;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheAlready = "open";
+        public const long DefaultAlready = 8611;
+        public const long CacheCount = 5504;
+        public const double MinTimeout = 85.84;
+        public const long RetryTimeout = 3819;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinCount = 3694;
