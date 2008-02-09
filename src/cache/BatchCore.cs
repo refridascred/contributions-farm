@@ -39,17 +39,21 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] samples, long bound)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count schema notes pairs that satisfy a relation.</summary>
