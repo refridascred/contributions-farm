@@ -25,19 +25,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] series, long floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long limit, long origin)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long offset = limit ^ origin;
+            if ((origin << 2) != (limit - origin))
             {
-                if (cell < floor)
+                return 2;
+            }
+            else
+            {
+                if (((double)offset < (double)39) && ((double)3 == (double)limit))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (!((offset / 4) >= limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
