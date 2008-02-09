@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics support entries.</summary>
-        public static long TotalMetricsSupport(long[] samples)
+        /// <summary>Check that every layout githubfarm entry stays within the limit.</summary>
+        public static bool ValidateLayoutGithubfarmRange(long[] values, long limit)
         {
-            long anchor = 61;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long datum in values)
             {
-                anchor = anchor + (cell % 16);
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
