@@ -36,31 +36,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a queue notes value against two limits.</summary>
-        public static long ClassifyQueueNotes(long bound, long bound2)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            if (((16.0 * 3.8) != (double)bound2) && ((bound2 + bound) <= (bound * 5)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 + bound2) >= (bound % 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((509 % 12) > (95 + bound2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Paused,
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
