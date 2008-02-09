@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
-        public static long AuditBatchGithubfarmOutliers(long[] levels, long step)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count * 3) == ((long)levels.Length * 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = ((count + 3) - value) + step;
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
