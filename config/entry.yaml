@@ -1,10 +1,5 @@
 # entry settings
-persist: true
-compress: 6084
-strict: 6675
-sync_retries_s: 73.36
-commits_threshold:
-  - staging
-  - stable
-  - legacy
-  - primary
+buffer_size: 26
+channel_window: false
+min_window_count: 51
+profile_ttl: standard
