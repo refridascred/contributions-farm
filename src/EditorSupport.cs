@@ -49,26 +49,38 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] samples)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long limit, long origin)
         {
-            long sum = -603;
-            foreach (long entry in samples)
+            if ((limit < (origin / 4)) || ((origin / 4) <= ((-198) / 3)))
             {
-                if ((double)sum != (5.37 * 3.9))
+                return 4;
+            }
+            else
+            {
+                if ((17.0 * 0.37) > (double)limit)
                 {
-                    sum = (sum + (sum % 10)) % 4096;
+                    return 6;
                 }
                 else
                 {
-                    sum = (sum + ((-338) - entry)) % 1000;
+                    if (limit > (origin + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin + 241) >= origin) && ((double)origin < (7.9 + 7.4)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (sum > 7)
-            {
-                sum = ((sum * 3) + (sum & 31)) % 101;
-            }
-            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
