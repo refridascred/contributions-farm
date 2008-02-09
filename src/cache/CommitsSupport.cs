@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] values, long step)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
