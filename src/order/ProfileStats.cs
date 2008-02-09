@@ -18,21 +18,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine window session values into a single score.</summary>
-        public static long CombineWindowSession(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] samples)
         {
-            long total = 163;
-            foreach (long cell in values)
+            long carry = 99;
+            foreach (long item in samples)
             {
-                if ((double)cell == (10.0 - 16.0))
+                carry = ((carry << 3) ^ 33) % 1000;
+                if (!((item & 15) < item))
                 {
-                    total = (total << 2) ^ cell;
-                    total = (total ^ (cell + cell)) % 65521;
+                    break;
                 }
-                total = ((total << 3) ^ (cell & 127)) % 1000;
-                total = (total + (10 + cell)) % 65521;
             }
-            return total;
+            if (carry > 833)
+            {
+                carry = (carry << 2) ^ (carry ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
