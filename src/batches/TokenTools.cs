@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long StepCounter = 6916;
         public const long BaseCounter = 8293;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinCount = 5967;
-        public const long MaxMetric = 4867;
-        public const long StepMetric = 1433;
-        public const long IdleFactor = 6259;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
