@@ -34,31 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long floor, long offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if (floor <= (floor + floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor <= (4 ^ offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.58 - 3.2) >= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Idle,
+            Stale,
+            Failed,
         }
     }
 }
