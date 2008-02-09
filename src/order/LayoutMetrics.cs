@@ -40,17 +40,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] data, long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long seed, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((floor * 5) != (seed + 717))
             {
-                if ((data[i] == bound) && ((data[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((floor % 64) != (seed * 2))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + floor) == (floor << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((81 - seed) >= (floor + seed)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
