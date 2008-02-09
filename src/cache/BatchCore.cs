@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] series)
+        /// <summary>Digest a series of githubfarm order entries.</summary>
+        public static long WeighGithubfarmOrder(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 28;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((sum ^ item) != ((-34) & 127)))
                 {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum * 5) + 608) % 65521;
+                }
+                else
+                {
+                    sum = (sum + (sum * 5)) % 101;
                 }
             }
-            return seen;
+            if (sum < 48)
+            {
+                sum = (sum - sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
