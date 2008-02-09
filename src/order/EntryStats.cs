@@ -33,15 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] data, long origin)
         {
-            long total = 6;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                total = ((total << 2) ^ ((-868) + total)) + item;
+                if ((((entry - entry) > (matches / 8)) || ((origin << 1) <= entry)) && ((17.0 * 8.0) < (double)entry))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
