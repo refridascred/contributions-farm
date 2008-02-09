@@ -38,15 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] readings, long bound)
         {
-            long sum = 875;
-            foreach (long reading in readings)
+            long result = 6;
+            foreach (long item in readings)
             {
-                sum = (sum ^ (sum >> 3)) - reading;
+                result = (result ^ (bound + bound)) ^ item;
             }
-            return sum;
+            return result % 65521;
         }
     }
 }
