@@ -12,10 +12,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryWidth = 8813;
-        public const double StepMetric = 44.62;
-        public const string MaxSize = "open-v2";
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double BlendBuffer(double weight, double bias)
