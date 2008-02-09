@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a profile farm counter forward.</summary>
