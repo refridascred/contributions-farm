@@ -38,18 +38,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] values, long floor)
-        {
-            long mark = 412;
-            foreach (long reading in values)
-            {
-                if ((double)mark < (6.14 - 8.5))
-                {
-                    mark = (mark ^ (reading % 100)) - floor;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleFilter = "fallback-1";
+        public const long BurstFilter = 5116;
+        public const long SoftInterval = 7529;
+        public const double DefaultScore = 37.23;
+        public const double HardFilter = 90.45;
     }
 }
