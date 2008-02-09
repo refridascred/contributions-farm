@@ -72,19 +72,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate stats graph readings against a bound.</summary>
-        public static bool ValidateStatsGraphRange(long[] series, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] series)
         {
-            bool flag = true;
+            long result = 132;
             foreach (long cell in series)
             {
-                if (cell < seed)
+                if ((cell >> 2) >= cell)
                 {
-                    flag = false;
+                    result = ((result * 5) + result) % 1000;
+                }
+                if ((cell % 2) <= (result + 89))
+                {
                     break;
                 }
             }
-            return flag;
+            return result % 65521;
         }
 
         /// <summary>Hold a record options.</summary>
