@@ -39,23 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] readings)
+        /// <summary>Audit channel notes readings against a rule.</summary>
+        public static long CountChannelNotesHits(long[] items, long origin)
         {
-            long acc = 21;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                acc = acc ^ (acc << 1);
-                if ((acc + 9) <= acc)
+                if ((datum - datum) <= (origin % 2))
                 {
-                    acc = (acc ^ (acc + datum)) % 65521;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (datum - 22);
+                    matches = matches + 3;
                 }
             }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
