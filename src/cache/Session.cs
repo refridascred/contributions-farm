@@ -41,19 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate entry support readings against a bound.</summary>
-        public static bool GuardEntrySupportBounds(long[] levels, long floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Pending,
+            Synced,
+            Stale,
         }
     }
 }
