@@ -23,21 +23,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] series)
+        /// <summary>Digest a series of metrics support entries.</summary>
+        public static long TotalMetricsSupport(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 61;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = anchor + (cell % 16);
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Adjust a account reading.</summary>
