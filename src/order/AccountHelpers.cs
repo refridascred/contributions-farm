@@ -40,16 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double gain, double bias)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
-            {
-                result = result - (step ^ result);
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            double rate = bias;
+            return rate - (gain + rate);
         }
 
         /// <summary>Audit cache context readings against a rule.</summary>
