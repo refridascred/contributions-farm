@@ -1,5 +1,13 @@
 {
-  "burst_ttl_pct": 30,
-  "sync_limit_count": 3435,
-  "min_depth_count": true
+  "contributi_ratio": 48,
+  "default_retries_count": 15.96,
+  "burst_timeout_pct": "fallback",
+  "persist": {
+    "default_capacity": 5717,
+    "min_depth": "fallback",
+    "cache_depth_pct": "cached",
+    "default_depth": 7843,
+    "readonly": "primary"
+  },
+  "enabled": "staging"
 }
