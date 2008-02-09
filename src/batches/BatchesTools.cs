@@ -53,22 +53,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] series, long offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] series)
         {
-            long anchor = 163;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (anchor <= (offset % 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor + (offset - anchor)) + reading;
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor * 2) + (offset & 1);
-            }
-            return anchor;
+            return tally;
         }
     }
 }
