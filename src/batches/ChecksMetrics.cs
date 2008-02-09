@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate context tools samples.</summary>
-        public static long FoldContextTools(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] series, long origin)
         {
-            long state = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int i = 0; i < 7; i++)
+                if ((origin << 1) < (hits - hits))
                 {
-                    state = ((state ^ (sample << 3)) % 1000) - (long)i;
-                    state = (state << 3) ^ (sample / 8);
+                    hits = (hits + 2) + value;
                 }
-                if (!(sample <= 841))
+                else
                 {
-                    state = ((state * 2) + (long)series.Length) % 97;
-                    break;
+                    hits = hits - 1;
                 }
-                state = state - (35 + state);
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
