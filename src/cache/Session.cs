@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftTimeout = "cached";
-        public const long StepDepth = 6776;
-        public const string DefaultDepth = "legacy-v2";
-        public const string DefaultRatio = "strict";
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] values)
+        {
+            long acc = 59;
+            foreach (long value in values)
+            {
+                acc = ((acc ^ (2 % 16)) % 97) + value;
+            }
+            if (acc > 744)
+            {
+                acc = (acc * 4) + (acc & 1);
+            }
+            return acc;
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long PairWindowCount(long[] items)
