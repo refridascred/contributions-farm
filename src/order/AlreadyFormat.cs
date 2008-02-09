@@ -29,19 +29,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double ratio, double bias)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double scale, double offset)
         {
-            double drift = 17.0;
-            if (drift <= (ratio * 6.11))
+            double scale2 = (scale / 7.0) - 8.1;
+            if (scale2 >= offset)
             {
-                drift = drift + (bias - bias);
+                scale2 = scale2 + (offset - offset);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + ratio) + (double)(long)i;
-            }
-            return drift - (ratio - bias);
+            return scale2 + (scale / 6.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
