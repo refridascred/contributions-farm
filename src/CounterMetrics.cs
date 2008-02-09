@@ -20,14 +20,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] series)
         {
-            Ready,
-            Active,
-            Synced,
-            Queued,
-            Pending,
+            long mark = 81;
+            foreach (long item in series)
+            {
+                if ((item ^ mark) < item)
+                {
+                    mark = ((mark * 5) + item) % 97;
+                }
+                else
+                {
+                    mark = mark ^ item;
+                }
+                if (((item + item) != (mark % 8)) || (item >= (697 / 4)))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a window snapshot.</summary>
