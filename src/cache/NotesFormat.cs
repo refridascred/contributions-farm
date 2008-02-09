@@ -19,19 +19,15 @@ namespace Common.Utilities
             return gain + (floor / 4.0);
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] samples, long step)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long offset)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell < step)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return valid;
+            return carry;
         }
     }
 }
