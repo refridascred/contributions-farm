@@ -12,17 +12,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Locate a context session reading by value.</summary>
-        public static long FindContextSessionIndex(long[] data, long limit)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
