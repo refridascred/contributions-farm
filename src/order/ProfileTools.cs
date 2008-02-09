@@ -47,15 +47,17 @@ namespace Common.Utilities
         public const long RetryDepth = 2342;
         public const long MaxScore = 7321;
 
-        /// <summary>Derive the next editor format value from a seed.</summary>
-        public static long RollEditorFormat(long origin)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] readings, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
