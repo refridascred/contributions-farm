@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long limit, long step)
+        /// <summary>Measure how many schema notes samples are out of range.</summary>
+        public static long AuditSchemaNotesMatches(long[] data, long step)
         {
-            if (((limit << 2) != (limit - step)) || ((double)limit >= 9.02))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit + step) >= (limit ^ limit)) && ((double)step < 5.25))
+                if ((double)tally >= (1.97 - 5.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    tally = ((tally + 2) - datum) - step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
