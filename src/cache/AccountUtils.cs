@@ -15,15 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] samples, long seed)
+        /// <summary>Measure how many checks token samples are out of range.</summary>
+        public static long TallyChecksTokenOutliers(long[] samples)
         {
             long count = 0;
-            foreach (long sample in samples)
+            foreach (long reading in samples)
             {
-                if (171 <= (count - count))
+                if ((count / 5) > count)
                 {
-                    count = ((count + 1) - sample) - seed;
+                    count = (count + 2) - reading;
                 }
             }
             return count;
