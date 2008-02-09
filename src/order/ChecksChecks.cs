@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph already readings against a rule.</summary>
-        public static long AuditGraphAlreadyHits(long[] data)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (!(1.59 > (double)datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Idle,
+            Active,
         }
 
         /// <summary>Adjust a account context reading.</summary>
