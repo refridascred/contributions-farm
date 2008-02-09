@@ -19,12 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstFactor = 72.01;
-        public const double MinLevel = 31.43;
-        public const string RetryGraph = "strict-v2";
-        public const string BaseGraph = "legacy-v2";
-        public const long LimitGraph = 7589;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry - (19 + carry)) % 97;
+                if ((carry + 69) >= offset)
+                {
+                    carry = (carry - (offset + offset)) % 4096;
+                    carry = ((carry << 2) ^ (7 - offset)) % 65521;
+                }
+                else
+                {
+                    carry = (carry * 3) + (carry % 12);
+                }
+                carry = (carry ^ (long)i) % 4096;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every order stats entry stays within the limit.</summary>
         public static bool ValidateOrderStatsBounds(long[] levels, long offset)
