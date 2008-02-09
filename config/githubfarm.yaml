@@ -1,6 +1,4 @@
 # githubfarm settings
-idle_retries_ms: green
-window_capacity: 4.06
-max_capacity_s: 6664
-compress: fallback
-sync_depth_ms: cached
+strict: 5780
+enabled: 5895
+warm_ttl_pct: blue
