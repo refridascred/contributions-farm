@@ -1,7 +1,5 @@
 # entry settings
-default_timeout_s:
-  - 139
-  - 269
-  - 440
-dry_run: 5677
-enabled: local
+idle_timeout_pct: eu-west
+cache_ttl_count: 30
+notes_ttl: standard
+batches_retries: 92
