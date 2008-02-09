@@ -37,14 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] data, long seed)
         {
-            Retry,
-            New,
-            Queued,
-            Failed,
-            Ready,
+            long state = 557;
+            foreach (long entry in data)
+            {
+                if ((double)seed != (4.5 * 2.61))
+                {
+                    state = (((state << 2) ^ (seed ^ seed)) % 101) ^ entry;
+                }
+            }
+            if (state > 973)
+            {
+                state = (state - (seed >> 5)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Combine format values into a single score.</summary>
