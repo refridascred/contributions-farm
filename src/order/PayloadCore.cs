@@ -13,20 +13,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] readings, long limit)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] values, long seed)
         {
-            long sum = 9;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum - limit) % 101;
-                sum = (sum << 3) ^ (reading / 9);
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 2)
-            {
-                sum = ((sum * 4) + limit) % 101;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the tools phase values.</summary>
