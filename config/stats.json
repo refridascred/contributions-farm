@@ -1,6 +1,5 @@
 {
-  "cache_delay": 13.29,
-  "poll_retries_pct": false,
-  "soft_size_count": "local",
-  "report_ttl": false
+  "poll_delay_pct": "blue",
+  "base_timeout": 100,
+  "min_interval": 500
 }
