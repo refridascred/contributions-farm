@@ -32,23 +32,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of stream buffer entries.</summary>
-        public static long DigestStreamBuffer(long[] levels, long origin)
-        {
-            long state = 2;
-            foreach (long entry in levels)
-            {
-                if ((entry / 2) > (state + 56))
-                {
-                    state = (state * 2) + origin;
-                }
-            }
-            if (state < 92)
-            {
-                state = (state << 2) ^ (origin - state);
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxEditor = 90.1;
+        public const long MaxSpan = 5183;
+        public const long MinLevel = 3784;
+        public const string BaseTimeout = "local-v2";
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long RankQueue(long step, long seed)
