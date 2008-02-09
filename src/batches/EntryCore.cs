@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit payload githubfarm readings against a rule.</summary>
-        public static long CountPayloadGithubfarmHits(long[] data, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((sample % 5) > (hits * 3))
+                if (((tally << 2) < (origin / 7)) && ((779 >= (datum + origin)) && ((datum * 5) == (datum + datum))))
                 {
-                    hits = (hits + 3) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
