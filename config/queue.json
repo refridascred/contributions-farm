@@ -1,10 +1,7 @@
 {
-  "filter_retries": {
-    "compress": 1775,
-    "soft_size_ms": 5847,
-    "format_ratio": "blue"
-  },
-  "idle_capacity": 21.52,
-  "strict": 5530,
-  "editor_capacity": 69
+  "strict": true,
+  "warm_ratio_ms": "legacy",
+  "idle_ttl_pct": 7993,
+  "flush_capacity_pct": [422, 382, 493, 438],
+  "cache_ttl_pct": "local"
 }
