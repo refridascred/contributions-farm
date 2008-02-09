@@ -27,21 +27,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] data)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = (double)(9 - 39);
+            if (mean <= scale)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean - offset;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (mean + offset)) + (double)(long)i;
+            }
+            return mean + (scale + offset);
         }
     }
 }
