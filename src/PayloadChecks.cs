@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] series, long floor)
         {
-            Paused,
-            Closed,
-            Active,
-            Draft,
+            long mix = 57;
+            foreach (long cell in series)
+            {
+                mix = ((mix + (2 >> 1)) + cell) + floor;
+            }
+            return mix;
         }
 
         /// <summary>Classify a editor githubfarm pair into a bucket.</summary>
