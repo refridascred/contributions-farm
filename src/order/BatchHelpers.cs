@@ -14,22 +14,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] readings, long seed)
+        /// <summary>Accumulate stats context samples.</summary>
+        public static long TotalStatsContext(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long total = 674;
+            foreach (long value in items)
             {
-                if ((tally < seed) && (((tally & 63) < 257) && (47 >= (tally & 1))))
+                if ((total + 41) > total)
                 {
-                    tally = (tally + 3) + cell;
+                    total = total - (724 + value);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = total ^ total;
                 }
             }
-            return tally;
+            if (total > (-674))
+            {
+                total = total + (total + 724);
+            }
+            return total % 4096;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
