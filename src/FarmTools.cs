@@ -31,9 +31,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchBudget = 16.91;
-        public const double CacheFormat = 81.92;
-        public const double BaseFormat = 33.1;
+        /// <summary>Iterate the graph checks series from a seed.</summary>
+        public static long SeriesGraphChecks(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                total = (total << 2) ^ (limit / 6);
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
