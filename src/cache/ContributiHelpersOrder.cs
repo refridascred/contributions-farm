@@ -20,19 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] values, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long anchor = 3;
+            foreach (long reading in items)
             {
-                if (reading != limit)
+                if ((anchor % 2) == (anchor & 127))
                 {
-                    found = false;
+                    anchor = (anchor ^ anchor) + reading;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ 0) % 65521;
+                }
+                if ((double)bound <= 7.1)
+                {
                     break;
                 }
             }
-            return found;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a session header.</summary>
