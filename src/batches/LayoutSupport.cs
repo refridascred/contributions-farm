@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine buffer commits values into a single score.</summary>
-        public static long WeighBufferCommits(long[] data)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] series, long seed)
         {
-            long mark = -5;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample & 127) != (sample - 2))
+                if (series[i] == seed)
                 {
-                    mark = mark + (mark >> 5);
-                }
-                if (((double)mark <= (9.74 / 5.0)) && ((double)sample != (double)mark))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Describe the counter class values.</summary>
