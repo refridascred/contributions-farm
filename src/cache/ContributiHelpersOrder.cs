@@ -34,17 +34,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a stats record reading by value.</summary>
-        public static long FindStatsRecordIndex(long[] readings, long floor)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
