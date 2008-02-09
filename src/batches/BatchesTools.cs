@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseFactor = 1336;
-        public const long BatchSession = 195;
-        public const long LimitSpan = 762;
-        public const long DefaultScore = 7392;
-        public const long MaxRatio = 3931;
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double bias, double offset)
+        {
+            double weight = (double)457;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (bias / 3.0)) + (double)(long)i;
+            }
+            return weight - offset;
+        }
 
         /// <summary>Validate report batch readings against a bound.</summary>
         public static bool CheckReportBatchBounds(long[] samples, long target)
