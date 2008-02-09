@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const string BaseGraph = "legacy-v2";
         public const long LimitGraph = 7589;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] levels)
-        {
-            long mark = 36;
-            foreach (long entry in levels)
-            {
-                if ((62 + entry) < entry)
-                {
-                    mark = ((mark << 3) ^ (mark + entry)) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchBatches = 16.53;
+        public const long MinBatches = 1100;
+        public const long RetryBatches = 674;
+        public const string MinBudget = "staging";
+        public const long HardTimeout = 389;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string DefaultProfile = "primary-1";
