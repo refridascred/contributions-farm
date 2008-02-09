@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const long RetryBatches = 8447;
         public const double HardBatches = 98.75;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Count route githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapRouteGithubfarmCount(long[] readings)
         {
-            Done,
-            Synced,
-            Retry,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a notes options.</summary>
