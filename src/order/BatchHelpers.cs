@@ -33,19 +33,24 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long origin)
         {
-            long mark = 3;
-            foreach (long reading in samples)
+            long score = origin;
+            for (int i = 0; i < 4; i++)
             {
-                mark = (mark ^ (reading >> 4)) % 101;
+                if ((origin & 255) == (score & 63))
+                {
+                    score = (score << 2) ^ ((long)i / 4);
+                }
+                if (((665 - score) != (11 + origin)) || ((score + 399) < (origin - (long)i)))
+                {
+                    score = (score ^ (origin / 8)) % 65521;
+                }
+                score = score + ((long)i / 7);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            if (mark > 30)
-            {
-                mark = mark ^ (36 & 127);
-            }
-            return mark % 97;
+            return score;
         }
     }
 }
