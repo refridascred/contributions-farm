@@ -75,13 +75,39 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Rank batches entry input into a small class.</summary>
+        public static long GradeBatchesEntry(long target, long step)
         {
-            Paused,
-            Queued,
-            Closed,
-            Retry,
+            long delta = target - step;
+            if (!((target << 2) < (step << 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9 ^ target) < 1)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((delta < step) && (64 <= step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)target <= (6.9 * 16.0)) || ((target << 3) < (step ^ target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
