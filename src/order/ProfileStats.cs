@@ -26,15 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits editor series from a seed.</summary>
-        public static long StepCommitsEditor(long target)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
