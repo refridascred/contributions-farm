@@ -1,6 +1,6 @@
 {
-  "base_ttl_s": 70.76,
-  "dry_run": ["primary", "strict", "strict"],
-  "counter_window": "eu-west",
-  "command_size": true
+  "route_ratio": "stable",
+  "idle_depth_count": true,
+  "command_ttl": 84,
+  "cluster_depth": true
 }
