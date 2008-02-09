@@ -1,10 +1,12 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-The counter module keeps support values in sync with the record cache.
+Run the cluster check before changing any stream limits.
+Defaults for filter live in the config folder and can be overridden per environment.
+Keep counter and account names short and lowercase.
 
 ## Guidelines
 
-- Validate token input early
-- Document new editor fields
-- Log every order change
+- Prefer buffer defaults
+- Keep cluster values small
+- Validate window input early
+- Log every farm change
