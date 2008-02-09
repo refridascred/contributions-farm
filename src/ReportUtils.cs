@@ -48,21 +48,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] readings)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -429;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(sum <= (67 + value)))
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum - value) % 65521;
+                }
+                if ((31 << 1) != (value + target))
+                {
+                    break;
                 }
             }
-            return count;
+            if (sum < 142)
+            {
+                sum = (sum << 3) ^ (sum * 4);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the support status values.</summary>
