@@ -1,7 +1,11 @@
 {
-  "enabled": false,
-  "sync_limit_pct": "open",
-  "layout_threshold": 41.04,
-  "order_depth": true,
-  "idle_threshold_count": 80.24
+  "warm_size": 17,
+  "batch_threshold": [364, 386, 357, 358],
+  "hard_interval": 15.79,
+  "stats_retries": {
+    "burst_timeout_count": [379, 214],
+    "cache_delay_count": "standard",
+    "account_size": 91.02,
+    "enabled": "edge"
+  }
 }
