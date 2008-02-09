@@ -23,18 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] samples, long floor)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample << 2) > (matches + floor))
                 {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
