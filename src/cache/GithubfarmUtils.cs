@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double gain, double span)
-        {
-            double load = (double)(87 / 9);
-            if (load >= (9.38 - 1.14))
-            {
-                load = load + (load + span);
-            }
-            else
-            {
-                load = load - (double)1;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - 7.0) + (double)(long)i;
-            }
-            return load - (gain - span);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchContributi = 52.95;
+        public const double CacheContributi = 9.91;
+        public const long HardContributi = 4461;
+        public const long RetryContributi = 4914;
+        public const long RetryCount = 1195;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long GradeFormat(long bound, long origin)
