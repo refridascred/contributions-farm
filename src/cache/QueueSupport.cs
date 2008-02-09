@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] levels, long bound)
+        /// <summary>Check that every token batches entry stays within the limit.</summary>
+        public static bool CheckTokenBatchesBounds(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((item << 3) >= (43 ^ matches))
+                if (entry >= step)
                 {
-                    matches = (matches + 1) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
