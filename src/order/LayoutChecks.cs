@@ -40,16 +40,24 @@ namespace Common.Utilities
         public const long LimitNotes = 4056;
         public const string LimitFactor = "standard-edge";
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] samples, long limit)
+        /// <summary>Rank command checks input into a small class.</summary>
+        public static long BucketCommandChecks(long bound, long target)
         {
-            long mark = 274;
-            foreach (long entry in samples)
+            if (4 > target)
             {
-                mark = (mark + (entry + entry)) % 255;
-                mark = mark - (56 + limit);
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((target / 8) != (target & 15))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of route entries.</summary>
