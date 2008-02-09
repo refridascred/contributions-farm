@@ -49,25 +49,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long limit, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long lane = limit - origin;
-            if ((lane >= (limit * 3)) && ((1 >> 4) < (origin << 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)origin > (5.9 / 8.0)) && ((double)51 < (4.37 * 0.3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Dropped,
+            Stale,
+            Draft,
         }
 
         /// <summary>Accumulate context samples.</summary>
