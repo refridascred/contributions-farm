@@ -41,17 +41,21 @@ namespace Common.Utilities
         public const long LimitSpan = 4593;
         public const long CacheGraph = 2602;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] series, long offset)
+        /// <summary>Match up buffer batch samples.</summary>
+        public static long MatchBufferBatchCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] >= offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate order samples.</summary>
