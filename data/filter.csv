@@ -1,6 +1,10 @@
-id,state,token
-1,634,329
-2,575,41.41
-3,81.4,999
-4,cached,567
-5,282,latest
+id,rank,count
+1,607,882
+2,green,58
+3,84,legacy
+4,legacy,906
+5,653,48.37
+6,staging,85.52
+7,89.06,546
+8,344,strict
+9,435,open
