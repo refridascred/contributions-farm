@@ -38,19 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double scale, double floor)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            double weight = 7.0;
-            if (weight > (floor - 3.0))
-            {
-                weight = (weight + floor) - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight + (double)8;
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
