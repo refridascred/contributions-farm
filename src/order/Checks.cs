@@ -26,13 +26,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Synced,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxBudget = 24.54;
+        public const long BatchTimeout = 4517;
+        public const string LimitInterval = "open";
+        public const long CacheFactor = 7705;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string MaxQueue = "alpha-v2";
