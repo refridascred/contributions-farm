@@ -51,19 +51,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Paused,
+            Active,
         }
     }
 }
