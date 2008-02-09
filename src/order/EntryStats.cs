@@ -67,18 +67,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (2.0 >= (double)tally)
                 {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) + reading;
                 }
             }
             return tally;
