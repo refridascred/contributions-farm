@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] items, long bound)
         {
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (cell < (46 & 31))
+                {
+                    matches = (matches + 2) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first editor queue entry that matches the target.</summary>
