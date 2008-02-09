@@ -34,12 +34,18 @@ namespace Common.Utilities
         public const double DefaultDepth = 57.81;
         public const long DefaultScore = 1407;
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Count the editor token entries that pass the check.</summary>
+        public static long TallyEditorTokenMatches(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item <= (3.71 + 8.38))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
