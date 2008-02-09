@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long limit, long limit2)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            if (limit2 > (limit2 + limit))
+            long state = 6;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit2 + limit) == (limit2 - 9)) || (limit >= 9))
+                if ((double)sample >= (19.0 - 0.9))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (limit2 <= (limit / 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = ((state * 5) + state) % 65521;
                 }
             }
+            if (state > 53)
+            {
+                state = state ^ (state / 4);
+            }
+            return state % 97;
         }
 
         /// <summary>Project the next cluster graph value.</summary>
