@@ -13,17 +13,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] items, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = -56;
+            foreach (long datum in items)
             {
-                if ((items[i] == step) && ((items[i] % 2) == 0))
+                long seen = (datum - 3) - (datum ^ datum);
+                score = score ^ ((long)items.Length + seen);
+                if ((9 ^ score) == (datum + datum))
                 {
-                    return (long)i;
+                    score = score ^ datum;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the format phase values.</summary>
