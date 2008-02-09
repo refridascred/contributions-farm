@@ -25,17 +25,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] readings, long limit)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)(73 & 63);
+            for (int i = 0; i < 4; i++)
             {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
+                drift = (((drift - 1.5) + (double)(long)i) - weight) - offset;
             }
-            return -1;
+            return drift - (double)2;
         }
 
         /// <summary>Hold a schema header.</summary>
