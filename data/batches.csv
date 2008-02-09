@@ -1,7 +1,7 @@
-id,state,rank
-1,977,902
-2,33.78,299
-3,30,580
-4,legacy,244
-5,861,standard
-6,250,16.9
+id,state,owner,rank
+1,eu-west,777,882
+2,341,legacy,764
+3,639,staging,325
+4,531,89.58,597
+5,2.38,724,4.68
+6,831,514,standard
