@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Measure how many graph entry samples are out of range.</summary>
+        public static long CountGraphEntryHits(long[] items, long origin)
         {
-            Retry,
-            Locked,
-            Ready,
-            Pending,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count + 92) <= (origin << 2))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
