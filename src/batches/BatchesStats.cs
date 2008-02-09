@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] values)
-        {
-            long mix = 4;
-            foreach (long entry in values)
-            {
-                if (!((mix % 60) < entry))
-                {
-                    mix = mix - mix;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxScore = 3766;
+        public const string IdleAlready = "strict-v2";
+        public const double RetryWidth = 30.24;
+        public const long WindowAlready = 6139;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long StepTimeout = 9453;
