@@ -57,18 +57,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long total = 103;
-            foreach (long datum in data)
-            {
-                if (((total + datum) == (datum % 64)) && (((long)data.Length << 3) < (datum >> 4)))
-                {
-                    total = total ^ (datum % 7);
-                }
-            }
-            return total % 65521;
+            public bool Count { get; set; }
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
