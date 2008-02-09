@@ -24,15 +24,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Synced,
-            Closed,
-            Ready,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowSpan = 4456;
+        public const string IdleInterval = "latest";
+        public const long BurstGithubfarm = 9762;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long SoftNotes = 8954;
