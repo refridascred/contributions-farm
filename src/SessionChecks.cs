@@ -65,13 +65,32 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long origin, long offset)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            long cur = origin + offset;
+            if ((cur - cur) <= (offset + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((cur - cur) < offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin > (cur << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
