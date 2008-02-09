@@ -13,17 +13,28 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] readings, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 9;
+            foreach (long datum in data)
             {
-                if (readings[i] <= floor)
+                mix = (mix - (datum - datum)) % 101;
+                mix = (mix << 2) ^ ((long)data.Length << 3);
+                if ((double)datum >= (3.5 / 3.0))
                 {
-                    return (long)i;
+                    mix = mix - (2 - datum);
+                }
+                else
+                {
+                    mix = mix ^ 304;
                 }
             }
-            return -1;
+            if (mix > 848)
+            {
+                mix = (mix << 2) ^ (mix % 64);
+            }
+            return mix;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
