@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total + (limit & 1)) % 65521) + (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftCount = 8324;
+        public const long StepEntry = 9017;
+        public const long LimitEntry = 1037;
+        public const double BurstBudget = 27.26;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long FoldCounter(long[] levels)
