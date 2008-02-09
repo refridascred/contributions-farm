@@ -14,21 +14,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] series)
+        /// <summary>Look up the position of a batches profile sample.</summary>
+        public static long LocateBatchesProfileIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] <= limit)
                 {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a filter stats.</summary>
