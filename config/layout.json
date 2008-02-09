@@ -1,5 +1,7 @@
 {
-  "base_threshold_s": "legacy",
-  "warm_interval_count": [407, 40, 187, 238],
-  "context_capacity": 63.12
+  "burst_delay": 26.46,
+  "audit": 31,
+  "burst_delay_s": 30,
+  "batch_limit_ms": 13.73,
+  "dry_run": [3, 109]
 }
