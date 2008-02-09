@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] values)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
-            long result = 454;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)result != (9.9 + 8.7)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result ^ (value & 15)) % 65521;
-                }
-                else
-                {
-                    result = result - (result - value);
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Digest a series of metrics support entries.</summary>
