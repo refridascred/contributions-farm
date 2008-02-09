@@ -10,17 +10,39 @@ namespace Common.Utilities
         public const long BurstCommits = 4042;
         public const long SoftCommits = 8730;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] samples, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long offset, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long delta = offset ^ origin;
+            if ((delta + origin) < delta)
             {
-                if ((samples[i] < origin) && ((samples[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)5 >= (double)delta)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset > (double)delta)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin / 2) == (delta * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
