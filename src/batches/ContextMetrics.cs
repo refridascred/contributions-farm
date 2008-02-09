@@ -50,22 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine graph format values into a single score.</summary>
-        public static long DigestGraphFormat(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] values)
         {
-            long result = 4;
-            foreach (long sample in series)
+            long mix = 898;
+            foreach (long value in values)
             {
-                if ((result << 2) > (sample ^ sample))
+                if ((double)mix <= (18.0 - 8.0))
                 {
-                    result = (result ^ (sample - 668)) % 1000;
+                    mix = mix - (29 / 9);
+                }
+                else
+                {
+                    mix = ((mix * 5) + (value << 2)) % 1000;
                 }
             }
-            if (result > 64)
-            {
-                result = (result ^ (result & 63)) % 97;
-            }
-            return result % 1000;
+            return mix;
         }
 
         /// <summary>Describe the queue state values.</summary>
