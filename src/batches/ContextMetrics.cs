@@ -16,25 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long bound, long seed)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long delta = bound ^ seed;
-            if (bound >= (delta % 100))
-            {
-                return 3;
-            }
-            else
-            {
-                if (3.3 >= (double)delta)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
