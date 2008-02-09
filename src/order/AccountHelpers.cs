@@ -51,19 +51,18 @@ namespace Common.Utilities
             return load - (double)48;
         }
 
-        /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmEditorLimits(long[] items, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] levels)
         {
-            bool found = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (value >= step)
+                if (((entry - 59) == (8 / 5)) && ((entry << 3) != (hits + hits)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
