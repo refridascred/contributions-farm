@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Scale a batch cluster figure with a bias.</summary>
