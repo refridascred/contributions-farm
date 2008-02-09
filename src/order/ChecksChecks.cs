@@ -27,10 +27,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 651;
-        public const long MinSchema = 7451;
-        public const string CacheLevel = "stable-v2";
-        public const long BaseInterval = 2854;
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double scale, double bias)
+        {
+            double gain = scale;
+            if (gain > bias)
+            {
+                gain = gain + (double)8;
+            }
+            return gain + scale;
+        }
     }
 }
