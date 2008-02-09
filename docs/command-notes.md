@@ -1,11 +1,15 @@
 # Command notes
 
-The payload module keeps cache values in sync with the tools cache.
-Keep editor and cache names short and lowercase.
+A report that stays idle for too long is moved to the counter list.
+Keep stats and buffer names short and lowercase.
+
+Use metrics settings to tune how often notes data is refreshed.
+A metrics that stays idle for too long is moved to the graph list.
+Run the entry check before changing any farm limits.
 
 ## Guidelines
 
-- Log every counter change
-- Prefer counter defaults
-- Document new support fields
-- Validate notes input early
+- Keep order values small
+- Validate cache input early
+- Prefer checks defaults
+- Document new queue fields
