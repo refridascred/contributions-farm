@@ -27,11 +27,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long origin, long limit)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long delta = origin ^ limit;
+            if ((54 + limit) > (delta + limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit >= (7.7 + 18.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a queue header.</summary>
