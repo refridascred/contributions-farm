@@ -70,13 +70,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
+            Synced,
+            Locked,
+            Draft,
         }
     }
 }
