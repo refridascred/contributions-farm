@@ -28,17 +28,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] data, long step)
+        /// <summary>Measure how many order profile samples are out of range.</summary>
+        public static long AuditOrderProfileHits(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((data[i] < step) && ((data[i] % 3) != 0))
+                if ((double)reading <= (8.2 - 4.34))
                 {
-                    return (long)i;
+                    count = (count + 3) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
