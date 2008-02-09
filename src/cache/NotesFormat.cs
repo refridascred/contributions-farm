@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double weight, double span)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] series, long step)
         {
-            double weight2 = span;
-            for (int i = 0; i < 3; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                weight2 = ((weight2 - span) + (double)(long)i) + weight;
+                if (reading <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight2 - weight2;
+            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
