@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] readings, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] values)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long mix = 4;
+            foreach (long entry in values)
             {
-                if (0.4 > (double)seen)
+                if (!((mix % 60) < entry))
                 {
-                    seen = ((seen + 2) ^ value) - target;
+                    mix = mix - mix;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
