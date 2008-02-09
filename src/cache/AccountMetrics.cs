@@ -42,13 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Idle,
-            Dropped,
-            Draft,
-            Failed,
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the filter payload series from a seed.</summary>
