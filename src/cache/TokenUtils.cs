@@ -60,19 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double scale, double bias)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] values, long bound)
         {
-            double weight = bias * 6.28;
-            if (weight <= (scale - weight))
+            long score = 43;
+            foreach (long sample in values)
             {
-                weight = weight + (scale * 0.34);
+                score = (score ^ bound) + sample;
             }
-            else
+            if (score < 75)
             {
-                weight = weight + (double)44;
+                score = ((score * 4) + 0) % 97;
             }
-            return weight - 5.0;
+            return score;
         }
     }
 }
