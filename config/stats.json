@@ -1,5 +1,6 @@
 {
-  "max_limit_count": ["legacy", "cached", "green", "stable"],
-  "verbose": true,
-  "soft_interval": "local"
+  "checks_interval": "green",
+  "min_threshold_s": 26.28,
+  "batch_size": "blue",
+  "soft_size": 48
 }
