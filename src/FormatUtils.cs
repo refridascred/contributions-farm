@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryScore = 2900;
-        public const long RetrySession = 3421;
-        public const double MaxDepth = 13.68;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
