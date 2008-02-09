@@ -33,13 +33,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] data, long offset)
         {
-            Stale,
-            Locked,
-            Paused,
-            Queued,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((11.0 <= (double)offset) && (5.63 < (double)datum)) || ((978 ^ offset) > (tally - datum)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a filter summary.</summary>
