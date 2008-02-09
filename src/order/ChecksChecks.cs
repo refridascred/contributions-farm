@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] samples, long offset)
+        /// <summary>Validate stats githubfarm readings against a bound.</summary>
+        public static bool ValidateStatsGithubfarmBounds(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((tally + datum) >= 1)
+                if (reading >= target)
                 {
-                    tally = (tally + 2) + offset;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the commits status values.</summary>
