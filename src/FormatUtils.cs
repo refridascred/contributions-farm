@@ -19,24 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a graph schema value against two limits.</summary>
-        public static long BucketGraphSchema(long target, long bound)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            if (bound >= 77)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound / 9) <= (bound + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a commits entry.</summary>
