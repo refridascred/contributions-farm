@@ -34,11 +34,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 5923;
-        public const double HardSupport = 44.64;
-        public const long MaxInterval = 7538;
-        public const long SoftSupport = 6348;
-        public const double SoftInterval = 9.05;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long offset, long bound)
+        {
+            long delta = offset + bound;
+            if ((7.6 + 8.2) >= (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound ^ bound) <= (4 + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset & 31) > (delta ^ offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
