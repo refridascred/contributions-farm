@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks token samples are out of range.</summary>
-        public static long TallyChecksTokenOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count / 5) > count)
-                {
-                    count = (count + 2) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "legacy-1";
+        public const double HardTools = 78.93;
+        public const long LimitTools = 1941;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
