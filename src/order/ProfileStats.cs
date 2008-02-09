@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long target, long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long floor)
         {
-            long edge = target ^ limit;
-            if ((76 + edge) == (limit ^ target))
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                total = (total ^ (floor - floor)) % 65521;
+                total = (total * 4) + (floor << 3);
+                total = ((total * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((target << 2) >= (target + limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a stream header.</summary>
