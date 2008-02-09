@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] data, long floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= floor)
+                if (levels[i] == bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Fold a list of already readings.</summary>
