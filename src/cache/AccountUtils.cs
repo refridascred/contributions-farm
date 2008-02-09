@@ -14,19 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] readings)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long anchor = -6;
-            foreach (long entry in readings)
-            {
-                anchor = anchor + (entry + anchor);
-                if ((1.3 * 2.0) > (double)entry)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Done,
+            Retry,
+            Active,
+            Synced,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
