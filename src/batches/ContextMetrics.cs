@@ -51,22 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Find the first buffer order entry that matches the target.</summary>
+        public static long FindBufferOrderIndex(long[] values, long bound)
         {
-            long mix = 898;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)mix <= (18.0 - 8.0))
+                if (values[i] >= bound)
                 {
-                    mix = mix - (29 / 9);
-                }
-                else
-                {
-                    mix = ((mix * 5) + (value << 2)) % 1000;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
