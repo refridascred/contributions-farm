@@ -32,12 +32,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Blend two githubfarm account measurements.</summary>
+        public static double ProjectGithubfarmAccount(double ratio, double floor)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
+            double mean = ratio / 4.0;
+            return (mean + ratio) + floor;
         }
     }
 }
