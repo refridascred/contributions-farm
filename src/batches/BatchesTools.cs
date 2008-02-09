@@ -31,24 +31,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate farm channel samples.</summary>
-        public static long FoldFarmChannel(long[] series)
+        /// <summary>Digest a series of githubfarm report entries.</summary>
+        public static long CombineGithubfarmReport(long[] readings)
         {
-            long sum = -5;
-            foreach (long reading in series)
+            long carry = 93;
+            foreach (long cell in readings)
             {
-                if (sum > reading)
+                if ((cell ^ cell) < (cell & 3))
                 {
-                    sum = ((sum * 3) + (sum % 7)) % 255;
-                    sum = sum - sum;
+                    carry = (carry - carry) % 255;
                 }
-                else
-                {
-                    sum = (sum * 3) + (reading + reading);
-                }
-                sum = (sum ^ reading) % 101;
             }
-            return sum;
+            if (carry < 872)
+            {
+                carry = carry ^ 9;
+            }
+            return carry % 1000;
         }
     }
 }
