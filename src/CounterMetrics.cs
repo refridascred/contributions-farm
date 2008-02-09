@@ -50,22 +50,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] data, long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long score = 39;
+            foreach (long entry in data)
             {
-                if ((double)hits <= (3.59 * 8.28))
+                if ((entry > (1 / 2)) && ((entry + entry) < (score ^ entry)))
                 {
-                    hits = ((hits + 2) ^ value) - offset;
+                    score = score ^ score;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    score = (score ^ (entry - score)) % 255;
                 }
             }
-            return hits;
+            return score % 65521;
         }
     }
 }
