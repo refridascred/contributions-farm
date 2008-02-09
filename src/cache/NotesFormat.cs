@@ -14,11 +14,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Blend two profile farm measurements.</summary>
-        public static double ScaleProfileFarm(double rate, double floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] levels)
         {
-            double gain = rate;
-            return gain + (floor / 4.0);
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (((long)levels.Length - sample) == (sample - seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
