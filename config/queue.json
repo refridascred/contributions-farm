@@ -1,5 +1,7 @@
 {
-  "burst_threshold": [273, 340, 206],
-  "audit": 66,
-  "layout_size": true
+  "notes_ratio": 30,
+  "poll_limit_count": 9048,
+  "layout_depth": 84.87,
+  "dry_run": 7254,
+  "batches_window": false
 }
