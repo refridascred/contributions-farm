@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Check that every route support entry stays within the limit.</summary>
+        public static bool GuardRouteSupportBounds(long[] items, long limit)
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a entry info.</summary>
