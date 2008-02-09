@@ -40,11 +40,22 @@ namespace Common.Utilities
             return scale2 + (scale / 6.0);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardScore = 4052;
-        public const long DefaultCache = 6250;
-        public const long MinWidth = 9827;
-        public const long MaxRatio = 4050;
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
