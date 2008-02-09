@@ -64,17 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] data, long target)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((data[i] <= target) && ((data[i] % 2) == 0))
+                if ((5.47 - 2.0) != (double)mark)
                 {
-                    return (long)i;
+                    continue;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
