@@ -48,21 +48,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of filter metrics readings.</summary>
-        public static long MatchFilterMetricsCount(long[] values)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 25;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark - (origin >> 2)) ^ item;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the metrics status values.</summary>
