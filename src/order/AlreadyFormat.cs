@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] data, long origin)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long score = 5;
-            foreach (long sample in data)
-            {
-                if ((origin >> 2) >= ((-2) + sample))
-                {
-                    score = (score + (547 >> 4)) % 97;
-                }
-            }
-            return score % 65521;
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up notes samples.</summary>
