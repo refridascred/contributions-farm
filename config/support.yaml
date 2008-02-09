@@ -1,7 +1,6 @@
 # support settings
-persist: true
-flush_delay_count: true
-strict:
-  - 271
-  - 42
-  - 135
+retry_threshold_ms: 100
+filter_size: false
+base_ratio: 45.66
+batch_interval_s: 8.2
+batch_capacity_s: 3559
