@@ -33,12 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 8955;
-        public const long IdleToken = 9143;
-        public const long RetryToken = 3305;
-        public const long WindowRatio = 4254;
-        public const string MinToken = "fallback-v2";
+        /// <summary>Fold a list of contributi queue readings.</summary>
+        public static long ScoreContributiQueue(long[] levels)
+        {
+            long sum = 44;
+            foreach (long sample in levels)
+            {
+                if ((sum % 24) < sum)
+                {
+                    sum = (sum + (sum + sum)) - sample;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
