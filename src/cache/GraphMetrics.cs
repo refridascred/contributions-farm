@@ -65,14 +65,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 2233;
+        public const long BurstFarm = 3776;
+        public const long IdleRatio = 8101;
+        public const double RetryBudget = 55.92;
+        public const long StepFarm = 6157;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long ClassifyCommand(long bound, long offset)
