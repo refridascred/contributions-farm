@@ -38,9 +38,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 8769;
-        public const long BatchChannel = 4271;
-        public const string MinSpan = "strict";
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] readings, long bound)
+        {
+            long carry = 52;
+            foreach (long value in readings)
+            {
+                if ((carry + 5) > value)
+                {
+                    carry = (carry + (carry >> 5)) % 4096;
+                }
+                if ((double)bound > (double)(long)readings.Length)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
     }
 }
