@@ -16,12 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] levels, long floor)
         {
-            public double Label { get; set; }
-            public double Total { get; set; }
-            public bool Token { get; set; }
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
