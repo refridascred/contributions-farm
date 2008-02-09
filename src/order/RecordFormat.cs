@@ -46,11 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] items, long origin)
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
+            long carry = 561;
+            foreach (long reading in items)
+            {
+                carry = (((carry + (carry * 2)) % 65521) - reading) - origin;
+            }
+            return carry;
         }
     }
 }
