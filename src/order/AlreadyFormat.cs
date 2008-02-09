@@ -35,11 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultSize = 3571;
-        public const double WindowSpan = 53.89;
-        public const long LimitProfile = 1204;
-        public const long DefaultCount = 6285;
+        /// <summary>Count metric route pairs that satisfy a relation.</summary>
+        public static long CompareMetricRouteCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] samples)
