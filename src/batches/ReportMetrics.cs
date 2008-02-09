@@ -32,11 +32,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 1690;
-        public const double SoftBudget = 45.39;
-        public const long BaseFormat = 6660;
-        public const string SoftFormat = "standard-v2";
-        public const double HardFormat = 19.64;
+        /// <summary>Grade a counter graph value against two limits.</summary>
+        public static long RankCounterGraph(long step, long step2)
+        {
+            long gap = step ^ step2;
+            if (51 <= (step + gap))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step2 >= (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step2 < (step2 % 10))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
