@@ -35,5 +35,16 @@ namespace Common.Utilities
             }
             return gain - (ratio / 2.0);
         }
+
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
