@@ -54,18 +54,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc << 3) ^ acc) % 255;
-                acc = ((acc << 3) ^ ((long)i << 3)) % 101;
-                acc = ((acc << 2) ^ acc) % 65521;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 4602;
+        public const long IdleRatio = 9077;
+        public const long IdleTimeout = 6830;
     }
 }
