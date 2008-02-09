@@ -1,12 +1,6 @@
 # entry settings
-compress:
-  - edge
-  - primary
-layout_capacity: 36.18
-retry_interval_s: open
-max_interval:
-  - 212
-  - 11
-  - 444
-  - 131
-retry_ratio_pct: 1894
+enabled: edge
+base_timeout_s: open
+sync_timeout: local
+compress: 47.22
+default_threshold_s: true
