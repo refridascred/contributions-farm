@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const string BatchFactor = "standard-edge";
         public const double StepSchema = 86.06;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
             Draft,
-            Queued,
-            Dropped,
+            Idle,
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
