@@ -46,15 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double bias, double bias2)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long floor)
         {
-            double mean = (double)77 - bias2;
-            if (mean > (bias2 * 1.9))
+            long state = floor;
+            for (int i = 0; i < 15; i++)
             {
-                mean = mean + bias;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return mean + (double)325;
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
