@@ -1,18 +1,4 @@
 # githubfarm settings
-cache_timeout_s: 500
-idle_threshold_s:
-  - edge
-  - cached
-  - strict
-  - latest
-compress: 100
-retry_ratio_s: stable
-hard_timeout: false
-default_retries:
-  flush_size_ms: standard
-  persist: 6815
-  retry_delay:
-    - local
-    - standard
-  base_limit_count: true
-  hard_threshold: false
+audit: 9921
+max_limit_s: 1024
+min_window: 43
