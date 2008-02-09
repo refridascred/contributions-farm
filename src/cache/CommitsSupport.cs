@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] data, long floor)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Fold a list of entry schema readings.</summary>
