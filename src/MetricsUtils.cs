@@ -51,26 +51,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long bound, long origin)
-        {
-            long gap = bound - origin;
-            if (((bound + bound) != (gap ^ gap)) || ((5.0 - 16.0) <= (double)bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((origin ^ 5) < (gap + 13)) || ((origin + origin) <= (gap + origin)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultRatio = 558;
+        public const string LimitScore = "strict-v2";
+        public const long MaxBuffer = 9269;
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long StepSchema(long seed)
