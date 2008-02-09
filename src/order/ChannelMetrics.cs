@@ -10,40 +10,10 @@ namespace Common.Utilities
         public const long BurstCommits = 4042;
         public const long SoftCommits = 8730;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long offset, long origin)
-        {
-            long delta = offset ^ origin;
-            if ((delta + origin) < delta)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)5 >= (double)delta)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset > (double)delta)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin / 2) == (delta * 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinCount = 3694;
+        public const long MaxScore = 9386;
+        public const long DefaultMetric = 2458;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long ClassifyCounter(long offset, long origin)
