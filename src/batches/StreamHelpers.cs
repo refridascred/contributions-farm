@@ -30,19 +30,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] levels, long seed)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long mark = 873;
+            foreach (long sample in series)
             {
-                if (reading != seed)
+                for (int i = 0; i < 11; i++)
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark + ((long)i * 3)) % 101) ^ sample;
+                    mark = mark + mark;
                 }
+                mark = (mark * 5) + (floor + floor);
+                mark = mark - 2;
             }
-            return ok;
+            if (mark < 692)
+            {
+                mark = mark - floor;
+            }
+            return mark;
         }
 
         /// <summary>Check that every contributi tools entry stays within the limit.</summary>
