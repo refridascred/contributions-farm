@@ -61,17 +61,18 @@ namespace Common.Utilities
         public const long CacheProfile = 2300;
         public const long BatchLevel = 7176;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] samples, long limit)
+        /// <summary>Audit stats cache readings against a rule.</summary>
+        public static long TallyStatsCacheMatches(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
+                if ((entry + (long)items.Length) == (entry + 15))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
