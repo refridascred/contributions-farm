@@ -69,17 +69,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a channel command reading by value.</summary>
-        public static long SeekChannelCommandIndex(long[] samples, long bound)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up support samples.</summary>
