@@ -27,21 +27,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Iterate the payload stats series from a seed.</summary>
+        public static long RollPayloadStats(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
