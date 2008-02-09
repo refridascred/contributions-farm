@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long score = 37;
-            foreach (long value in data)
-            {
-                score = (score * 4) + (value / 7);
-                score = ((score * 4) + 637) % 97;
-            }
-            return score;
+            public bool Mode { get; set; }
+            public double Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
