@@ -40,9 +40,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowScore = 0.5;
-        public const long MinNotes = 7017;
-        public const long CacheBudget = 2894;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepTimeout = 8638;
+        public const long MaxAccount = 9357;
+        public const long LimitFactor = 9785;
+        public const long WindowScore = 8335;
+        public const long CacheAccount = 8119;
     }
 }
