@@ -1,12 +1,5 @@
 {
-  "editor_window": 3962,
-  "idle_interval": 71.81,
-  "warm_depth": {
-    "base_delay_ms": "local",
-    "audit": [333, 162],
-    "order_ratio": 18,
-    "cluster_timeout": "green",
-    "metrics_limit": "blue"
-  },
-  "retry_window_pct": 53.61
+  "verbose": 18,
+  "audit": "strict",
+  "cache_ttl_s": 250
 }
