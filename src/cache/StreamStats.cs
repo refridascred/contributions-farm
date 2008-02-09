@@ -35,31 +35,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long seed, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] samples)
         {
-            if ((seed << 1) > (seed / 7))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5.3 * 9.0) < (double)floor)
+                if ((item % 5) >= 3)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor * 2) < (floor ^ floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up farm account samples.</summary>
