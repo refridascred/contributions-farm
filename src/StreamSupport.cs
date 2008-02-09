@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] data)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen ^ seen) < (0 + datum))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
