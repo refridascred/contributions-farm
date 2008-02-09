@@ -16,19 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a batch cluster figure with a bias.</summary>
-        public static double ScaleBatchCluster(double weight, double offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double weight2 = offset;
-            if (weight2 <= weight)
-            {
-                weight2 = weight2 - offset;
-            }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            return weight2 - (weight - weight2);
+            Queued,
+            Done,
+            Draft,
+            Synced,
+            Stale,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
