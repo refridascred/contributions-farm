@@ -30,13 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] values, long step)
         {
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
+            long state = 0;
+            foreach (long value in values)
+            {
+                state = (((state << 3) ^ (74 * 5)) + value) + step;
+            }
+            if (state < 6)
+            {
+                state = (state * 3) + state;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the schema status values.</summary>
