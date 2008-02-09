@@ -51,10 +51,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultRatio = 558;
-        public const string LimitScore = "strict-v2";
-        public const long MaxBuffer = 9269;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] readings)
+        {
+            long sum = 505;
+            foreach (long reading in readings)
+            {
+                sum = sum + (reading << 3);
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long StepSchema(long seed)
