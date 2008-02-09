@@ -1,21 +1,13 @@
 # entry settings
-soft_window_s: 84.19
-audit:
-  - 12
-  - 251
-  - 328
-  - 434
-cache_delay: 55.59
-editor_timeout:
-  base_size_s:
-    idle_interval_pct: 8060
-    hard_retries_s: 500
-    route_delay: cached
-    sync_interval_pct: 8648
-  readonly: true
-  retry_interval:
-    - 84
-    - 403
-    - 389
-  support_ttl: false
-  retry_retries_s: 250
+enabled:
+  - latest
+  - staging
+  - blue
+  - standard
+checks_timeout: 26.23
+batch_timeout_pct:
+  - 164
+  - 239
+poll_interval_pct: 3131
+support_capacity: open
+verbose: 8117
