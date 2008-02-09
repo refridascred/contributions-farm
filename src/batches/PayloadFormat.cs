@@ -18,11 +18,19 @@ namespace Common.Utilities
         public const string LimitBudget = "standard-1";
         public const string IdleSession = "cached-1";
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Scale a already command figure with a bias.</summary>
+        public static double ScaleAlreadyCommand(double bias, double bias2)
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
+            double gain = bias + (bias2 / 4.0);
+            if (gain < bias)
+            {
+                gain = gain + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (bias2 - gain)) - (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Describe the metric class values.</summary>
