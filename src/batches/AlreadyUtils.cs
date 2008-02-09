@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many window record samples are out of range.</summary>
-        public static long TallyWindowRecordHits(long[] levels, long bound)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long origin, long origin2)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long edge = origin + origin2;
+            if (((52 * 3) < origin2) && ((edge >> 1) > (origin2 - origin)))
             {
-                if (!((2.3 + 4.99) >= (double)matches) && ((bound << 3) > (bound << 2)))
+                return 7;
+            }
+            else
+            {
+                if ((origin * 2) <= (239 << 2))
                 {
-                    matches = (matches + 1) + reading;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin2 == (6.3 * 7.73))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the notes class values.</summary>
