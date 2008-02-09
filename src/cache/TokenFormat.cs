@@ -22,12 +22,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
+            Retry,
+            Idle,
             Stale,
-            Paused,
-            Synced,
+            Draft,
             New,
         }
 
