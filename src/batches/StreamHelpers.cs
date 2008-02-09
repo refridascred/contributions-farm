@@ -75,12 +75,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Grade a buffer order value against two limits.</summary>
+        public static long BucketBufferOrder(long seed, long limit)
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
+            if (((limit + limit) == (limit >> 3)) && ((8.9 * 12.0) != (double)seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed / 8) == (seed - limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
