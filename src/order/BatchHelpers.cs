@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 879;
+        public const long HardFactor = 6644;
+        public const string MaxWidth = "strict-edge";
+        public const long BurstScore = 6818;
+        public const long LimitDepth = 993;
 
         /// <summary>Validate metrics counter readings against a bound.</summary>
         public static bool VerifyMetricsCounterBounds(long[] data, long bound)
