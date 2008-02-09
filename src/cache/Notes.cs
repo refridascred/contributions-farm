@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] levels, long bound)
+        /// <summary>Audit session contributi readings against a rule.</summary>
+        public static long CountSessionContributiOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (levels[i] >= bound)
+                if ((long)samples.Length < hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up profile samples.</summary>
