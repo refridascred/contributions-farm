@@ -31,18 +31,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] series)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long origin, long bound)
         {
-            long count = 0;
-            foreach (long value in series)
+            if ((origin >> 1) <= bound)
             {
-                if ((double)count < 1.4)
+                return 8;
+            }
+            else
+            {
+                if (((bound - origin) == (bound << 3)) || ((bound + bound) <= 17))
                 {
-                    count = (count + 2) + value;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of stats counter readings.</summary>
