@@ -47,10 +47,20 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardAccount = 53.77;
-        public const string WindowAccount = "open-1";
-        public const long StepBudget = 4640;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double ScaleBatch(double rate, double bias)
