@@ -13,21 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Audit layout route readings against a rule.</summary>
+        public static long TallyLayoutRouteHits(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((-6) + matches) >= matches)
                 {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = ((matches + 3) + item) + step;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate counter samples.</summary>
