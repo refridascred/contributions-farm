@@ -20,12 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 3280;
-        public const string HardFactor = "strict-1";
-        public const long IdleTimeout = 2643;
-        public const long MinLevel = 8293;
-        public const long StepRatio = 9973;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MaxSchema = 651;
