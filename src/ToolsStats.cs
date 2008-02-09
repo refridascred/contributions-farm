@@ -29,27 +29,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine stream token values into a single score.</summary>
-        public static long ScoreStreamToken(long[] samples, long target)
-        {
-            long total = 266;
-            foreach (long reading in samples)
-            {
-                if (((reading * 4) < (74 % 16)) || ((target << 3) < (target * 4)))
-                {
-                    total = total - (total >> 4);
-                }
-                else
-                {
-                    total = (total ^ (target + total)) % 255;
-                }
-            }
-            if (total > 60)
-            {
-                total = ((total * 2) + (4 % 5)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheTimeout = 5476;
+        public const long MaxInterval = 1904;
+        public const long MaxFormat = 5507;
+        public const long IdleFormat = 5671;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string IdleBuffer = "cached-v2";
