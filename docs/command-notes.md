@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-The commits module keeps command values in sync with the entry cache.
+Use payload settings to tune how often cache data is refreshed.
+Keep channel and record names short and lowercase.
+When a counter fails, the command handler retries a few times before giving up.
+
+Each command is validated before it reaches the format queue.
+A entry that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Document new payload fields
-- Review schema limits each release
-- Prefer metrics defaults
-- Keep contributi values small
+- Review metrics limits each release
+- Log every filter change
+- Validate command input early
+- Keep buffer values small
