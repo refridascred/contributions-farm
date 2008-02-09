@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long BurstPayload = 4443;
         public const long StepDepth = 7399;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] readings, long step)
         {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
+            long total = 90;
+            foreach (long datum in readings)
+            {
+                total = total ^ datum;
+            }
+            if (total > 28)
+            {
+                total = total ^ (step << 2);
+            }
+            return total;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
