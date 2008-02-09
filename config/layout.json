@@ -1,7 +1,8 @@
 {
-  "session_size": 98.38,
-  "retry_timeout_ms": "staging",
-  "min_limit": [267, 285],
-  "default_delay_ms": "latest",
-  "poll_size_pct": 94
+  "hard_size_ms": true,
+  "min_size_s": "fallback",
+  "sync_capacity_s": 60,
+  "persist": false,
+  "command_delay": 3618,
+  "burst_limit": 81.72
 }
