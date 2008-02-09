@@ -1,14 +1,13 @@
 # entry settings
-metric_depth:
-  - fallback
-  - stable
-  - blue
-  - primary
-notes_interval: 1024
-audit: latest
-metrics_size:
-  - open
-  - blue
-  - stable
-  - primary
-warm_interval_s: true
+layout_interval: 9780
+base_ttl_ms:
+  - 228
+  - 196
+  - 426
+  - 129
+session_depth: 67.39
+burst_limit_s:
+  - 293
+  - 414
+  - 406
+profile_delay: edge
