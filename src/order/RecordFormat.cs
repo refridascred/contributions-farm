@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseDepth = 9970;
-        public const long BatchTools = 2304;
-        public const double MaxTools = 14.64;
-        public const long IdleTools = 2944;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((-69) << 3) > hits)
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double BlendToken(double ratio, double offset)
