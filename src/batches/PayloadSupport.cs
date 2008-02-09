@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long BurstPayload = 4443;
         public const long StepDepth = 7399;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Locate a route already reading by value.</summary>
+        public static long LocateRouteAlreadyIndex(long[] series, long bound)
         {
-            public bool Token { get; set; }
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
