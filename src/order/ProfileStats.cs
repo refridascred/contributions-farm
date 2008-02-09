@@ -33,26 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate queue cluster samples.</summary>
-        public static long ScoreQueueCluster(long[] levels)
+        /// <summary>Match up buffer stats samples.</summary>
+        public static long MatchBufferStatsCount(long[] levels)
         {
-            long mark = 18;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((mark / 5) != (560 - mark)) && ((9 - mark) == (66 - (-79))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (((mark << 2) ^ 139) % 255) - value;
-                }
-                else
-                {
-                    mark = (mark - 39) % 101;
+                    if ((levels[i] ^ levels[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark < 52)
-            {
-                mark = ((mark << 2) ^ mark) % 101;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
