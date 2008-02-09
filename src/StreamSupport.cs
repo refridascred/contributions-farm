@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((value >> 3) <= (tally - value))
+                if (((cell + step) <= (cell + count)) && ((step ^ count) > (count - count)))
                 {
-                    tally = tally + 3;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
