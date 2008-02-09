@@ -37,12 +37,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Derive the next editor format value from a seed.</summary>
+        public static long RollEditorFormat(long origin)
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Audit profile checks readings against a rule.</summary>
