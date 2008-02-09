@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] items, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((items[i] == step) && ((items[i] % 2) == 0))
                 {
-                    score = (((score * 3) + (bound + bound)) % 97) ^ (long)i2;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
