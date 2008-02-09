@@ -1,8 +1,8 @@
-id,active,score,token
-1,38.72,strict,9.74
-2,6.96,754,latest
-3,edge,82.0,83.5
-4,strict,cached,24
-5,22.43,226,stable
-6,open,644,staging
-7,932,986,green
+id,ratio,weight
+1,717,primary
+2,33.39,246
+3,793,147
+4,861,56.68
+5,primary,14.4
+6,41.56,stable
+7,62.65,16.47
