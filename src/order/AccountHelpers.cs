@@ -30,19 +30,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((entry - 59) == (8 / 5)) && ((entry << 3) != (hits + hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardFactor = 4025;
+        public const long MaxStream = 5300;
+        public const long BatchStream = 9036;
 
         /// <summary>Rank githubfarm channel input into a small class.</summary>
         public static long ClassifyGithubfarmChannel(long offset, long limit)
