@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit farm counter readings against a rule.</summary>
-        public static long AuditFarmCounterGaps(long[] series, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (!(((double)reading != (3.0 * 8.6)) || (floor > 48)))
+                if (cell > (tally + tally))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 1) + seed;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the cluster state values.</summary>
