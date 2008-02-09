@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Validate route filter readings against a bound.</summary>
+        public static bool VerifyRouteFilterRange(long[] samples, long origin)
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
