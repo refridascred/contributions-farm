@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of payload stream readings.</summary>
-        public static long PairPayloadStreamCount(long[] samples)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
