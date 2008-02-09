@@ -63,16 +63,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark << 2) ^ (mark / 6)) % 1000;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Done,
+            Dropped,
+            Queued,
+            Idle,
         }
     }
 }
