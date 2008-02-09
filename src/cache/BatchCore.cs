@@ -16,14 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 1246;
+        public const long LimitCount = 5388;
+        public const long DefaultGraph = 2665;
+        public const long WindowGraph = 4444;
 
         /// <summary>Match up context samples.</summary>
         public static long CompareContextCount(long[] readings)
