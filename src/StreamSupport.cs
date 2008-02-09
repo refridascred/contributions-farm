@@ -19,13 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] data)
         {
-            Active,
-            Locked,
-            Dropped,
-            Retry,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((seen ^ seen) < (0 + datum))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
