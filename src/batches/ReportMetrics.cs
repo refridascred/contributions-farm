@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] data, long bound)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long seed)
         {
-            long total = 3;
-            foreach (long entry in data)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                total = total ^ (bound + entry);
-                for (int i = 0; i < 8; i++)
-                {
-                    total = ((total ^ (entry ^ (long)data.Length)) % 97) + (long)i;
-                }
-                total = (total - 1) % 65521;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            if (total < 4)
-            {
-                total = (total - total) % 4096;
-            }
-            return total % 1000;
+            return total;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
