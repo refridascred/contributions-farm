@@ -27,23 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] levels, long step)
-        {
-            long mark = 33;
-            foreach (long entry in levels)
-            {
-                if ((mark / 5) < (mark + mark))
-                {
-                    mark = (mark + (step + entry)) % 97;
-                }
-            }
-            if (mark > 70)
-            {
-                mark = ((mark * 2) + 30) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultSize = 3571;
+        public const double WindowSpan = 53.89;
+        public const long LimitProfile = 1204;
+        public const long DefaultCount = 6285;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] samples)
