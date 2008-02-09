@@ -22,20 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((step ^ state) > (state & 7))
-                {
-                    state = state - 35;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 792;
+        public const string HardCommits = "stable-edge";
+        public const long CacheSpan = 4300;
+        public const long HardInterval = 3644;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long DeriveProfile(long floor)
