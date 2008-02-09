@@ -1,4 +1,14 @@
 # support settings
-persist: latest
-sync_interval_pct: 44
-retry_retries_ms: 30
+batch_depth_count:
+  cache_depth: true
+  default_limit_ms: fallback
+  idle_depth:
+    - 307
+    - 299
+    - 230
+    - 437
+  base_interval_ms: true
+batches_depth: 68.78
+entry_depth: eu-west
+cache_limit_count: edge
+persist: 18
