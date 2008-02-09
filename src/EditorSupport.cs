@@ -34,10 +34,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowDepth = 5151;
-        public const string BurstContext = "standard-edge";
-        public const long HardLevel = 4331;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many channel format samples are out of range.</summary>
         public static long AuditChannelFormatMatches(long[] readings, long origin)
