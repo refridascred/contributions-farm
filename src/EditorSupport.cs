@@ -36,11 +36,18 @@ namespace Common.Utilities
         public const string BurstContext = "standard-edge";
         public const long HardLevel = 4331;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Measure how many channel format samples are out of range.</summary>
+        public static long AuditChannelFormatMatches(long[] readings, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((matches ^ (long)readings.Length) != (6 + matches))
+                {
+                    matches = ((matches + 2) - item) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metrics level values.</summary>
