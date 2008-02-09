@@ -15,12 +15,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstBudget = 5021;
-        public const long LimitSession = 9644;
-        public const string MinSession = "staging-v2";
-        public const string LimitBudget = "standard-1";
-        public const string IdleSession = "cached-1";
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double scale, double offset)
+        {
+            double weight = (double)400;
+            if (weight < (double)39)
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - 6.0) + (double)(long)i;
+            }
+            return weight + (scale + scale);
+        }
 
         /// <summary>Scale a already command figure with a bias.</summary>
         public static double ScaleAlreadyCommand(double bias, double bias2)
