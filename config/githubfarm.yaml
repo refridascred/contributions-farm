@@ -1,4 +1,5 @@
 # githubfarm settings
-soft_ttl_count: staging
-verbose: true
-persist: false
+hard_capacity_pct: true
+metrics_delay: 39.95
+metric_ratio: open
+hard_retries: open
