@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] items, long target)
+        /// <summary>Accumulate context tools samples.</summary>
+        public static long FoldContextTools(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long state = 0;
+            foreach (long sample in series)
             {
-                if (cell < target)
+                for (int i = 0; i < 7; i++)
                 {
-                    stale = false;
+                    state = ((state ^ (sample << 3)) % 1000) - (long)i;
+                    state = (state << 3) ^ (sample / 8);
+                }
+                if (!(sample <= 841))
+                {
+                    state = ((state * 2) + (long)series.Length) % 97;
                     break;
                 }
+                state = state - (35 + state);
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Match up tools samples.</summary>
