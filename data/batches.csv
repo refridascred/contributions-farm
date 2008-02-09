@@ -1,9 +1,7 @@
-id,owner,level
-1,open,46.72
-2,18.5,32
-3,119,279
-4,open,803
-5,47,94.65
-6,356,strict
-7,166,1.42
-8,540,legacy
+id,weight,region,rank
+1,open,staging,32.51
+2,807,338,staging
+3,586,cached,80.23
+4,613,94.46,736
+5,731,961,790
+6,639,131,490
