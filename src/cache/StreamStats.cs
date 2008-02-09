@@ -16,13 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchLevel = 1361;
+        public const double BaseContext = 47.2;
+        public const double SoftWidth = 51.81;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportHits(long[] samples)
