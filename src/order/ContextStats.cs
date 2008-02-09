@@ -31,22 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order profile samples are out of range.</summary>
-        public static long AuditOrderProfileHits(long[] levels, long bound)
+        /// <summary>Check that every order support entry stays within the limit.</summary>
+        public static bool GuardOrderSupportBounds(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((double)reading <= (8.2 - 4.34))
+                if (entry > offset)
                 {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
