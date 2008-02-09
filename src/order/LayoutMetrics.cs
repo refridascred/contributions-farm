@@ -16,18 +16,19 @@ namespace Common.Utilities
             return drift + (drift + 4.4);
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] items)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((sample ^ sample) > (sample + 770))
+                if (value != offset)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a profile entry.</summary>
