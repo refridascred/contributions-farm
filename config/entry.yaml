@@ -1,5 +1,15 @@
 # entry settings
-buffer_size: 26
-channel_window: false
-min_window_count: 51
-profile_ttl: standard
+report_delay: 4
+strict: 586
+entry_ttl:
+  burst_depth_count: false
+  soft_threshold_pct: open
+  retry_threshold: 58.57
+  warm_capacity: 100
+  enabled: open
+  flush_interval:
+    - latest
+    - stable
+    - blue
+    - open
+retry_ratio_ms: 4.45
