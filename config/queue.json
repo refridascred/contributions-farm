@@ -1,6 +1,7 @@
 {
-  "verbose": 5904,
-  "warm_depth_pct": false,
-  "persist": 4.89,
-  "entry_interval": 40
+  "default_size_count": [134, 21, 452],
+  "audit": [326, 163],
+  "idle_ttl_s": "latest",
+  "base_size": true,
+  "compress": 8.53
 }
