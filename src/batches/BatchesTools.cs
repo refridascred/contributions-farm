@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] series, long seed)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long mark = -829;
-            foreach (long sample in series)
-            {
-                if (!(seed < (seed >> 3)))
-                {
-                    mark = mark - 1;
-                }
-                if (((double)seed < (double)96) && ((seed << 2) >= seed))
-                {
-                    mark = mark - (mark ^ sample);
-                }
-            }
-            return mark;
+            Stale,
+            Queued,
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Validate report batch readings against a bound.</summary>
