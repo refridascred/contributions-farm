@@ -19,28 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] items, long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double bias, double span)
         {
-            long mark = 3;
-            foreach (long entry in items)
-            {
-                if ((entry / 3) <= entry)
-                {
-                    mark = mark ^ 614;
-                }
-                else
-                {
-                    mark = (mark ^ (entry >> 2)) % 4096;
-                    mark = ((mark * 5) + (61 & 31)) % 1000;
-                }
-                mark = mark + (153 + (-24));
-            }
-            if (mark < 889)
-            {
-                mark = mark - ((-660) - offset);
-            }
-            return mark % 65521;
+            double rate = (bias / 4.0) - span;
+            return rate + (double)272;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
