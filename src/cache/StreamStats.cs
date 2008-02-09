@@ -12,21 +12,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((step + (long)i) >= (carry * 4)))
-                {
-                    carry = (carry ^ (330 & 15)) % 101;
-                    carry = ((carry << 2) ^ (step >> 1)) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 6008;
+        public const string DefaultSpan = "latest-edge";
+        public const long MaxWidth = 1711;
+        public const string LimitStream = "staging-v2";
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ScaleChecks(double gain, double offset)
