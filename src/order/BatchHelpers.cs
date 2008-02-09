@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double ratio, double span)
+        /// <summary>Validate metrics counter readings against a bound.</summary>
+        public static bool VerifyMetricsCounterBounds(long[] data, long bound)
         {
-            double ratio2 = (double)(954 + (-875));
-            if (ratio2 <= (double)9)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                ratio2 = (ratio2 - (5.78 / 4.0)) - span;
+                if (reading != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 + ratio2) - (double)(long)i;
-            }
-            return ratio2 - ratio;
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
