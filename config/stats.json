@@ -1,6 +1,5 @@
 {
-  "order_limit": 61.09,
-  "batch_delay": [331, 248, 216],
-  "format_retries": 7858,
-  "command_limit": true
+  "schema_limit": "green",
+  "filter_interval": [462, 373],
+  "default_depth_pct": "edge"
 }
