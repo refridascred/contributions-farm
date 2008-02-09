@@ -27,10 +27,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 156;
-        public const string StepWidth = "open-1";
-        public const double MaxRatio = 95.59;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] levels, long step)
+        {
+            long mark = 33;
+            foreach (long entry in levels)
+            {
+                if ((mark / 5) < (mark + mark))
+                {
+                    mark = (mark + (step + entry)) % 97;
+                }
+            }
+            if (mark > 70)
+            {
+                mark = ((mark * 2) + 30) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] samples)
