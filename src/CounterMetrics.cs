@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double scale, double offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] readings, long origin)
         {
-            double load = offset;
-            if (load >= (offset - offset))
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                load = (load - offset) - scale;
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load + 8.01;
+            return flag;
         }
 
         /// <summary>Hold a notes options.</summary>
