@@ -72,24 +72,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long bound, long bound2)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double rate, double offset)
         {
-            if ((bound2 - bound) > (1 & 127))
+            double mean = rate - (double)63;
+            if (mean < (mean - 8.0))
             {
-                return 1;
+                mean = (mean + rate) - offset;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((27 + bound) == (bound << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
+                mean = (mean + rate) - (double)(long)i;
             }
+            return mean + (double)80;
         }
     }
 }
