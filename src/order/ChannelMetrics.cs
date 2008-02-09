@@ -12,25 +12,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long origin, long limit)
-        {
-            if (4.0 <= (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((limit >> 4) <= (limit * 5)) || ((7.0 * 3.2) == (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepLevel = 57.28;
+        public const long LimitSession = 5223;
+        public const long RetrySession = 5497;
+        public const long MinSession = 2626;
+        public const long IdleSession = 3473;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long LimitProfile = 4182;
