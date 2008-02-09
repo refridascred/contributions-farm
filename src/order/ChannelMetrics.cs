@@ -45,15 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double rate, double offset)
-        {
-            double mean = (double)406 * 7.7;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean - (double)43) + (double)(long)i) - rate;
-            }
-            return mean + offset;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 4285;
+        public const double LimitInterval = 65.28;
+        public const long MinSize = 1879;
+        public const long SoftSchema = 2459;
+        public const string DefaultRatio = "standard-edge";
     }
 }
