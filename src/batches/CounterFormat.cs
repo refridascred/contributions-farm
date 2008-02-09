@@ -19,14 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Look up the position of a record commits sample.</summary>
+        public static long LocateRecordCommitsIndex(long[] samples, long floor)
         {
-            Draft,
-            Idle,
-            Closed,
-            Failed,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up filter samples.</summary>
