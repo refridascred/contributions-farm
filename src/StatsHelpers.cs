@@ -61,15 +61,24 @@ namespace Common.Utilities
         public const long CacheProfile = 2300;
         public const long BatchLevel = 7176;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long step, long seed)
         {
-            long state = 221;
-            foreach (long reading in levels)
+            if (((seed + seed) <= (step / 9)) && ((seed - seed) <= (2 - step)))
             {
-                state = state - (reading / 5);
+                return 8;
             }
-            return state % 97;
+            else
+            {
+                if ((0.92 + 8.31) > (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
