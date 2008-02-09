@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank entry channel input into a small class.</summary>
-        public static long SortEntryChannel(long offset, long origin)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            if (0 >= (origin - origin))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin * 2) < (origin + origin))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    if ((series[i] + series[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a context contributi value against two limits.</summary>
