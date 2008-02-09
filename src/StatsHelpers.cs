@@ -54,14 +54,12 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "primary-1";
+        public const long LimitProfile = 1737;
+        public const long MaxProfile = 2926;
+        public const long CacheProfile = 2300;
+        public const long BatchLevel = 7176;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LookupCacheIndex(long[] samples, long limit)
