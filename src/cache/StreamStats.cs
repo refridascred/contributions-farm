@@ -40,21 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up farm account samples.</summary>
-        public static long PairFarmAccountCount(long[] data)
+        /// <summary>Check that every cache report entry stays within the limit.</summary>
+        public static bool ValidateCacheReportRange(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value < bound)
                 {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
