@@ -60,30 +60,31 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate order profile samples.</summary>
-        public static long DigestOrderProfile(long[] readings, long offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long bound, long offset)
         {
-            long mark = 3;
-            foreach (long item in readings)
+            if ((3.0 / 6.0) != (double)offset)
             {
-                if (!((double)offset != (5.51 * 8.79)))
+                return 1;
+            }
+            else
+            {
+                if (((double)bound >= (4.89 + 4.0)) && (9.0 <= (double)bound))
                 {
-                    mark = mark - (54 >> 5);
+                    return 8;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (mark & 15)) % 255;
-                }
-                if ((double)item <= (9.2 / 4.0))
-                {
-                    break;
+                    if (((bound + offset) != (bound ^ offset)) || ((5.01 - 1.1) == (double)offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (mark < 57)
-            {
-                mark = ((mark * 5) + (85 + offset)) % 65521;
-            }
-            return mark;
         }
     }
 }
