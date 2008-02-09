@@ -1,6 +1,6 @@
 {
-  "batch_window_pct": ["blue", "open", "blue", "strict"],
-  "poll_interval_count": 250,
-  "poll_size": false,
-  "queue_capacity": 54
+  "base_threshold": "local",
+  "flush_window": 91.33,
+  "strict": 73,
+  "hard_depth": 39.9
 }
