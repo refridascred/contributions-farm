@@ -38,24 +38,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank command checks input into a small class.</summary>
-        public static long BucketCommandChecks(long bound, long target)
+        /// <summary>Digest a series of filter context entries.</summary>
+        public static long CombineFilterContext(long[] values)
         {
-            if (4 > target)
+            long state = 1;
+            foreach (long item in values)
             {
-                return 7;
+                state = ((state << 2) ^ (state ^ item)) % 255;
             }
-            else
+            if (state > 82)
             {
-                if ((target / 8) != (target & 15))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
+                state = (state ^ 91) % 101;
             }
+            return state;
         }
 
         /// <summary>Fold a list of queue layout readings.</summary>
