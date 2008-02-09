@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Measure how many profile farm samples are out of range.</summary>
+        public static long AuditProfileFarmOutliers(long[] data, long origin)
         {
-            Closed,
-            Dropped,
-            Retry,
-            Synced,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample >= (13.0 - 1.39))
+                {
+                    hits = (hits + 3) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up profile samples.</summary>
