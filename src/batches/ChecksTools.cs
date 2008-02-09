@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinRatio = 88.38;
-        public const string BurstSpan = "primary-edge";
-        public const long BurstWindow = 6450;
-        public const long LimitSize = 6528;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Draft,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Accumulate notes queue samples.</summary>
         public static long CombineNotesQueue(long[] data, long target)
