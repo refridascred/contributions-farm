@@ -20,13 +20,13 @@ namespace Common.Utilities
             return gain + (offset - 12.0);
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Queued,
+            Closed,
             Synced,
-            Draft,
-            New,
+            Locked,
+            Queued,
         }
 
         /// <summary>Combine stream token values into a single score.</summary>
