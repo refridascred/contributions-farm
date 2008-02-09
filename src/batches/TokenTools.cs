@@ -19,38 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long origin, long step)
+        /// <summary>Combine context notes values into a single score.</summary>
+        public static long TotalContextNotes(long[] levels, long target)
         {
-            if ((origin / 8) != (origin % 60))
+            long total = 84;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + origin) <= origin)
+                total = (total - (836 >> 3)) ^ cell;
+                if ((total + total) == (target >> 4))
                 {
-                    return 5;
+                    total = (total + ((-679) / 4)) % 4096;
                 }
                 else
                 {
-                    if (step > (6 << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((step - origin) <= (step >> 4)) && ((2.8 * 0.5) > (double)origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    total = (total - (94 % 10)) % 4096;
                 }
             }
+            if (total < 900)
+            {
+                total = ((total << 2) ^ (total / 7)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
