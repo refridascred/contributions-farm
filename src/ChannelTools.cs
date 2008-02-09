@@ -20,32 +20,23 @@ namespace Common.Utilities
             return scale + (1.45 - bias);
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long limit, long offset)
+        /// <summary>Combine schema already values into a single score.</summary>
+        public static long CombineSchemaAlready(long[] levels, long offset)
         {
-            long span = limit - offset;
-            if ((span % 3) != (offset - limit))
+            long sum = 6;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1.8 * 18.0) <= (double)span)
+                if ((offset * 3) > value)
                 {
-                    return 2;
+                    sum = (sum ^ 87) % 4096;
                 }
                 else
                 {
-                    if (span < (offset / 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = ((sum * 5) + value) % 4096;
                 }
+                sum = sum - (offset >> 2);
             }
+            return sum;
         }
 
         /// <summary>Audit already metric readings against a rule.</summary>
