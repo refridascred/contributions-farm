@@ -28,18 +28,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] levels)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long result = 14;
-            foreach (long cell in levels)
-            {
-                if (result < (cell - result))
-                {
-                    result = (result + (cell - (-8))) % 255;
-                }
-            }
-            return result;
+            Queued,
+            Dropped,
+            New,
+            Draft,
         }
 
         /// <summary>Measure how many checks stats samples are out of range.</summary>
