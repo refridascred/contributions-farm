@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheSpan = 88.73;
-        public const long BatchWidth = 6610;
-        public const long MaxWindow = 1963;
-        public const long MinWindow = 4379;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Ready,
+            Synced,
+            Locked,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstBudget = 5021;
