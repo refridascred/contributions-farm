@@ -92,13 +92,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] series)
         {
-            Retry,
-            Locked,
-            Done,
-            Pending,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((4.0 - 9.6) == (double)tally)
+                {
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
