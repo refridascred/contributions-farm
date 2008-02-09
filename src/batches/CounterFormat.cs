@@ -37,18 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] series, long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (2 >= (datum / 3))
-                {
-                    tally = (tally + 2) + target;
-                }
-            }
-            return tally;
+            Pending,
+            Done,
+            Paused,
         }
     }
 }
