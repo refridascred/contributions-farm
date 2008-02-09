@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a graph window pair into a bucket.</summary>
-        public static long RankGraphWindow(long offset, long floor)
-        {
-            long step = offset ^ floor;
-            if (step > (step << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((floor & 127) < offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor - floor) >= (floor / 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultSpan = 874;
+        public const long BurstCommits = 4042;
+        public const long SoftCommits = 8730;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmHits(long[] data)
