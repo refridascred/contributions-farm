@@ -67,17 +67,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] values, long floor)
+        /// <summary>Count context payload pairs that satisfy a relation.</summary>
+        public static long OverlapContextPayloadCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] < floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the profile status values.</summary>
