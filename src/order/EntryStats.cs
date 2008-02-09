@@ -16,19 +16,39 @@ namespace Common.Utilities
             return weight - 17.0;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] data, long bound)
+        /// <summary>Rank channel tools input into a small class.</summary>
+        public static long BucketChannelTools(long limit, long limit2)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long span = limit - limit2;
+            if ((limit2 + 814) < (limit2 - 69))
             {
-                if (cell != bound)
+                return 2;
+            }
+            else
+            {
+                if (limit2 <= (limit + limit2))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (limit2 >= 5)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit >= (limit ^ span)) || ((span ^ 3) == (7 + span)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Match up route samples.</summary>
