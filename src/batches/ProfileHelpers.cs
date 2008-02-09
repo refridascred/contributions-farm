@@ -30,16 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] series, long origin)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long bound)
         {
-            long result = 2;
-            foreach (long item in series)
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                result = ((result + (item + result)) % 255) + origin;
-                result = (result << 2) ^ (53 + result);
+                if (!(((long)i < (mix >> 5)) || ((long)i > (85 * 3))))
+                {
+                    mix = (mix ^ mix) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return result % 97;
+            return mix;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
