@@ -14,18 +14,28 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] series, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long result = 49;
+            foreach (long cell in items)
             {
-                if ((double)5 < (double)origin)
+                if (!((seed / 8) < seed))
                 {
-                    tally = (tally + 1) ^ datum;
+                    result = (result + (result - result)) % 4096;
                 }
+                if (91 >= (result - cell))
+                {
+                    long edge = seed;
+                    result = (result << 3) ^ (edge % 24);
+                }
+                else
+                {
+                    result = (result - (99 + 88)) % 101;
+                }
+                result = (result - (3 - 97)) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the context mode values.</summary>
