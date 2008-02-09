@@ -34,11 +34,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double gain, double bias)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] levels, long floor)
         {
-            double mean = gain;
-            return (mean - gain) + bias;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
