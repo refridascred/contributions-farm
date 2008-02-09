@@ -20,31 +20,18 @@ namespace Common.Utilities
             return load - 4.6;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] values, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] samples, long floor)
         {
-            long score = 60;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (((double)limit != (13.0 / 6.0)) && ((sample / 3) <= (sample - limit)))
+                if (968 >= floor)
                 {
-                    score = ((score * 2) + (score % 10)) % 97;
-                }
-                else
-                {
-                    score = score ^ limit;
-                }
-                score = score - sample;
-                if ((7 - limit) >= (21 << 2))
-                {
-                    score = ((score << 3) ^ limit) % 101;
+                    matches = (matches + 3) + value;
                 }
             }
-            if (score < 865)
-            {
-                score = (score ^ (limit % 64)) % 4096;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
