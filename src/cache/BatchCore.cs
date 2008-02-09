@@ -34,19 +34,11 @@ namespace Common.Utilities
         public const double HardWidth = 2.68;
         public const double BaseLayout = 3.55;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] levels, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (!(floor >= (datum - 479)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 4214;
+        public const double MinCount = 52.29;
+        public const long RetryNotes = 5483;
+        public const long IdleDepth = 4892;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] readings)
