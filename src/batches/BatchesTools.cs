@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long offset, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] items, long origin)
         {
-            if ((bound - offset) >= (bound + offset))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((8.0 - 7.0) > (double)bound) && ((offset + offset) > (bound << 2)))
+                if (((16.0 * 5.6) > (double)value) && ((count << 2) < origin))
                 {
-                    return 2;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (((1.7 - 13.0) < (double)offset) && (offset > (bound >> 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset != (9.0 * 0.5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
