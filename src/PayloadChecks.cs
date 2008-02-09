@@ -67,18 +67,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel notes readings against a rule.</summary>
-        public static long CountChannelNotesHits(long[] items, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((datum - datum) <= (origin % 2))
+                if (reading != step)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
