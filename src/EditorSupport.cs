@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long floor)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
