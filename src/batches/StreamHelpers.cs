@@ -19,12 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryWidth = 4507;
-        public const long CacheFactor = 975;
-        public const long BatchInterval = 1467;
-        public const long BurstAccount = 5522;
-        public const long RetryTimeout = 9409;
+        /// <summary>Classify a checks layout pair into a bucket.</summary>
+        public static long GradeChecksLayout(long limit, long target)
+        {
+            long diff = limit - target;
+            if (((limit + limit) <= (target / 9)) || ((double)4 == (double)diff))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((diff << 1) <= ((-169) - (-545)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string HardSchema = "local-edge";
