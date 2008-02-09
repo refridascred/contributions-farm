@@ -30,15 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double ratio, double floor)
+        /// <summary>Blend two tools stats measurements.</summary>
+        public static double ScaleToolsStats(double scale, double floor)
         {
-            double rate = floor;
-            if (rate <= rate)
+            double weight = floor;
+            if (weight < (double)2)
             {
-                rate = rate + (double)7;
+                weight = (weight - (weight - weight)) + scale;
             }
-            return rate + ratio;
+            return weight + (weight / 7.0);
         }
     }
 }
