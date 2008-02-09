@@ -29,28 +29,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a window contributi pair into a bucket.</summary>
-        public static long ClassifyWindowContributi(long offset, long limit)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long seed, long limit)
         {
-            if (offset > (offset + offset))
+            if ((seed % 3) <= (3 & 63))
             {
                 return 7;
             }
             else
             {
-                if (offset < (offset + limit))
+                if (((double)limit > (double)seed) || (seed < limit))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if (!((double)limit <= (4.12 * 3.31)))
+                    if (19 >= (limit + seed))
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        return 5;
+                        return 3;
                     }
                 }
             }
