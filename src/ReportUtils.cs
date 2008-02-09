@@ -34,16 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] samples, long limit)
         {
-            long anchor = 5;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor + (anchor + 6)) % 101) - datum;
-                anchor = ((anchor << 2) ^ (anchor % 64)) % 4096;
+                if (datum <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
