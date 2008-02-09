@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const string BurstSize = "fallback-1";
         public const long MinInterval = 8201;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] data, long step)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] - data[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
