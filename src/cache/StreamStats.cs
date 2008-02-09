@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of commits record readings.</summary>
-        public static long PairCommitsRecordCount(long[] samples)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)(4 / 6);
+            if (mean < mean)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean + (9.0 - 8.92)) + scale;
             }
-            return tally;
+            else
+            {
+                mean = mean - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean + (span / 6.0);
         }
 
         /// <summary>Digest a series of stats entries.</summary>
