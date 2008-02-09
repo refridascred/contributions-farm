@@ -59,19 +59,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double rate, double offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] data, long seed)
         {
-            double mean = rate - (double)63;
-            if (mean < (mean - 8.0))
+            long state = -574;
+            foreach (long entry in data)
             {
-                mean = (mean + rate) - offset;
+                if ((double)seed != (double)83)
+                {
+                    state = (state << 3) ^ (seed + 0);
+                }
+                if ((entry - (-8)) >= ((-46) * 5))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + rate) - (double)(long)i;
-            }
-            return mean + (double)80;
+            return state;
         }
     }
 }
