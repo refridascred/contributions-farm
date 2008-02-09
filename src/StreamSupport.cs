@@ -37,18 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] series, long target)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!((0.11 - 8.45) >= (double)tally) && (target > 1))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
