@@ -25,15 +25,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double rate, double floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] series)
         {
-            double bias = (double)((-991) * 4);
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                bias = ((bias + rate) - (double)(long)i) - floor;
+                if (7.0 > (double)entry)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return bias - 2.1;
+            return matches;
         }
 
         /// <summary>Accumulate window samples.</summary>
