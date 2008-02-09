@@ -30,13 +30,15 @@ namespace Common.Utilities
         public const long RetryMetric = 5920;
         public const long SoftMetric = 1107;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] readings, long step)
         {
-            Done,
-            Dropped,
-            Stale,
-            Queued,
+            long acc = 34;
+            foreach (long value in readings)
+            {
+                acc = (acc + (value << 2)) + step;
+            }
+            return acc;
         }
 
         /// <summary>Describe the window status values.</summary>
