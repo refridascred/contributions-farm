@@ -92,12 +92,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
             Retry,
-            Closed,
             Locked,
+            Done,
+            Pending,
         }
     }
 }
