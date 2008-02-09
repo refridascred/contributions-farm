@@ -67,19 +67,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] values, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (floor >= (acc + acc))
+                if (values[i] < floor)
                 {
-                    acc = acc ^ 13;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the profile status values.</summary>
