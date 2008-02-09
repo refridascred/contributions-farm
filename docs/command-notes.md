@@ -1,12 +1,14 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the contributi queue.
-A schema that stays idle for too long is moved to the stream list.
-The format helpers are pure functions, so they are safe to call from any thread.
+Defaults for session live in the config folder and can be overridden per environment.
+Run the already check before changing any editor limits.
+A account that stays idle for too long is moved to the order list.
+
+When a layout fails, the githubfarm handler retries a few times before giving up.
+When a route fails, the schema handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Validate farm input early
-- Keep stats values small
-- Document new editor fields
+- Log every layout change
+- Keep editor values small
+- Review record limits each release
