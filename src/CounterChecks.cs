@@ -32,18 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long acc = 1;
+            foreach (long reading in samples)
             {
-                if ((matches ^ datum) < datum)
+                if (!(329 > (reading / 8)))
                 {
-                    matches = matches + 3;
+                    acc = acc + (seed + reading);
+                }
+                else
+                {
+                    acc = ((acc * 2) + (seed << 2)) % 4096;
                 }
             }
-            return matches;
+            if (acc > 5)
+            {
+                acc = (acc ^ (acc * 2)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
