@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 5518;
-        public const long IdleContext = 7631;
-        public const string BatchSpan = "staging-v2";
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderOutliers(long[] items, long floor)
