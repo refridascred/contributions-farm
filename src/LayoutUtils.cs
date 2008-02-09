@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long StepWidth = 6356;
         public const long DefaultStats = 5442;
 
-        /// <summary>Count the record command entries that pass the check.</summary>
-        public static long MeasureRecordCommandGaps(long[] samples, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long anchor = 34;
+            foreach (long cell in levels)
             {
-                if ((item + tally) > (73 + item))
-                {
-                    tally = (tally + 2) - bound;
-                }
+                anchor = (anchor ^ 977) ^ cell;
             }
-            return tally;
+            if (anchor < 6)
+            {
+                anchor = anchor - (62 + anchor);
+            }
+            return anchor;
         }
     }
 }
