@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] items, long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((4.48 / 7.0) <= (double)seen)
-                {
-                    seen = ((seen + 1) - item) - bound;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the batch state values.</summary>
