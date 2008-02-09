@@ -36,38 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long seed, long floor)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            if ((floor * 5) != (seed + 717))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor % 64) != (seed * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + floor) == (floor << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((81 - seed) >= (floor + seed)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
