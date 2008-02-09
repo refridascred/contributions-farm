@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const double BaseTimeout = 85.93;
         public const long BurstWindow = 5686;
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight2 = span;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight2 = ((weight2 - span) + (double)(long)i) + weight;
             }
-            return tally;
+            return weight2 - weight2;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
