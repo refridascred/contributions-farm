@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftScore = "local-edge";
-        public const long HardWindow = 1865;
-        public const long MinWindow = 5377;
-        public const double BaseTimeout = 85.93;
-        public const long BurstWindow = 5686;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((count & 31) <= (352 ^ (long)values.Length))
+                {
+                    count = ((count + 3) ^ reading) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double AdjustGraph(double weight, double span)
