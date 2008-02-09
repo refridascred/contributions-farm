@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] series)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (reading < (hits / 8))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine context notes values into a single score.</summary>
