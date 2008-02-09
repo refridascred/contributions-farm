@@ -1,7 +1,6 @@
 {
-  "default_window_s": "eu-west",
-  "max_capacity": [235, 196, 461, 11],
-  "batch_threshold": ["local", "blue", "fallback"],
-  "flush_timeout_count": "staging",
-  "verbose": 1049
+  "order_limit": 61.09,
+  "batch_delay": [331, 248, 216],
+  "format_retries": 7858,
+  "command_limit": true
 }
