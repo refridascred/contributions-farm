@@ -43,27 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] samples)
-        {
-            long carry = 36;
-            foreach (long datum in samples)
-            {
-                if ((16.0 + 0.86) != (double)carry)
-                {
-                    carry = (carry ^ 48) % 101;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ 1;
-                }
-                if (((1.13 * 9.8) > (double)carry) || ((datum / 2) != (carry % 97)))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleSchema = "staging-1";
+        public const double SoftSchema = 29.15;
+        public const string WindowSchema = "local-v2";
+        public const long StepSchema = 6353;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long SortCounter(long origin, long offset)
