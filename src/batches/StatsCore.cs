@@ -19,18 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter profile samples are out of range.</summary>
-        public static long TallyCounterProfileOutliers(long[] values)
+        /// <summary>Grade a context contributi value against two limits.</summary>
+        public static long RankContextContributi(long step, long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            long lane = step + limit;
+            if (!(879 > (3 - step)))
             {
-                if ((value + value) != (count + value))
+                return 5;
+            }
+            else
+            {
+                if ((lane << 1) >= step)
                 {
-                    count = count + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a notes header.</summary>
