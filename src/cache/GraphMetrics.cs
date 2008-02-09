@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleContext = 7.18;
-        public const string StepSize = "legacy";
-        public const string CacheCount = "fallback-1";
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long target, long seed)
+        {
+            if ((seed + seed) != (target + seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed > (52 >> 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8 / 2) != (target / 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((0 + target) != (seed ^ 37))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long ScorePayload(long[] values)
