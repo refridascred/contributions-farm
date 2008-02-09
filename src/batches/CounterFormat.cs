@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryFactor = 3095;
-        public const long RetryRatio = 2705;
-        public const string BurstCluster = "staging-v2";
-        public const string LimitCluster = "alpha-1";
-        public const string LimitLevel = "cached-edge";
+        /// <summary>Classify a report format pair into a bucket.</summary>
+        public static long RankReportFormat(long origin, long bound)
+        {
+            long edge = origin ^ bound;
+            if (!((bound << 3) >= (66 & 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(origin >= (origin - edge)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Roll a record counter forward.</summary>
         public static long SeriesRecord(long offset)
