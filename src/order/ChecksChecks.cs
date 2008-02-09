@@ -40,19 +40,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a account context reading.</summary>
-        public static double BlendAccountContext(double gain, double floor)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            double bias = gain;
-            if (bias >= (bias - bias))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias - (bias - floor);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - gain) - (double)(long)i;
-            }
-            return bias - 7.64;
+            return count;
         }
     }
 }
