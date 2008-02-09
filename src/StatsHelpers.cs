@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            Queued,
-            Locked,
-            Closed,
-            Idle,
-            New,
+            long sum = -769;
+            foreach (long value in items)
+            {
+                sum = ((sum + (sum + (-3))) % 101) ^ value;
+            }
+            if (sum < 481)
+            {
+                sum = (sum - (sum / 3)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
