@@ -1,6 +1,5 @@
 {
-  "retry_capacity_count": false,
-  "warm_limit_ms": 58.31,
-  "burst_size": "staging",
-  "flush_ratio": "cached"
+  "retry_retries_s": true,
+  "compress": "eu-west",
+  "verbose": 16.5
 }
