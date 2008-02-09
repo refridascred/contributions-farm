@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long BurstPayload = 4443;
         public const long StepDepth = 7399;
 
-        /// <summary>Locate a route already reading by value.</summary>
-        public static long LocateRouteAlreadyIndex(long[] series, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((series[i] >= bound) && ((series[i] % 2) != 0))
+                if (sample > origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
