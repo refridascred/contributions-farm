@@ -1,13 +1,15 @@
 # Command notes
 
-Use batch settings to tune how often payload data is refreshed.
-Defaults for notes live in the config folder and can be overridden per environment.
+Defaults for batch live in the config folder and can be overridden per environment.
+The contributi report groups every filter by cluster.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Use account settings to tune how often order data is refreshed.
+Keep token and command names short and lowercase.
+A channel that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Log every payload change
-- Prefer session defaults
-- Review format limits each release
+- Keep command values small
+- Validate filter input early
+- Document new cluster fields
+- Prefer context defaults
