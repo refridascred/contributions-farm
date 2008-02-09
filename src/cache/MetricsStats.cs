@@ -38,22 +38,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter graph entries that pass the check.</summary>
-        public static long CountCounterGraphOutliers(long[] readings)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long origin, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long offset2 = origin ^ offset;
+            if ((origin > (1 - (-537))) && ((double)offset2 > (20.0 / 6.0)))
             {
-                if ((64 + seen) >= entry)
+                return 2;
+            }
+            else
+            {
+                if ((offset % 100) == (76 + 49))
                 {
-                    seen = seen + 3;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
