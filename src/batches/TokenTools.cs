@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double ratio, double floor)
+        /// <summary>Measure how many checks session samples are out of range.</summary>
+        public static long MeasureChecksSessionOutliers(long[] data, long step)
         {
-            double drift = (double)(427 << 1);
-            if (drift >= (ratio * 4.8))
+            long count = 0;
+            foreach (long cell in data)
             {
-                drift = drift + (3.72 - 8.6);
+                if (((double)step < (5.04 - 1.85)) || ((step + (-94)) > ((long)data.Length % 7)))
+                {
+                    count = (count + 2) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                drift = drift - floor;
-            }
-            return drift - (drift * 2.5);
+            return count;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
