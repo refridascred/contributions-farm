@@ -1,7 +1,19 @@
 {
-  "batch_ratio": "open",
-  "layout_retries": "latest",
-  "burst_timeout": "strict",
-  "burst_threshold": true,
-  "sync_depth_count": 664
+  "stats_size": "green",
+  "idle_window_pct": 4,
+  "hard_capacity": {
+    "persist": 20.9,
+    "verbose": {
+      "notes_size": false,
+      "notes_depth": 1024,
+      "cache_retries_ms": false,
+      "batch_threshold": "local",
+      "audit": 8506
+    },
+    "compress": "standard",
+    "filter_retries": 49.72
+  },
+  "batch_retries": 689,
+  "compress": [383, 226],
+  "default_size_s": [341, 436, 278]
 }
