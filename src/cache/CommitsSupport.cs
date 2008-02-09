@@ -14,20 +14,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] data)
-        {
-            long total = 729;
-            foreach (long value in data)
-            {
-                total = total ^ total;
-                if ((value ^ total) < total)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 5216;
+        public const string BurstInterval = "latest";
+        public const long IdleAlready = 2848;
+        public const double HardAlready = 38.37;
+        public const long BaseAlready = 5827;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardLevel = 7902;
