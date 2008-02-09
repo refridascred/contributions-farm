@@ -96,11 +96,24 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long floor, long seed)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            if ((93 / 6) < floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((((-3) % 24) > (floor >> 5)) && (((-461) ^ floor) < seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
