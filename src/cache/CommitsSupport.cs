@@ -71,21 +71,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Count counter stats pairs that satisfy a relation.</summary>
+        public static long PairCounterStatsCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 17)
+                    if ((data[i] + data[j]) < 11)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
