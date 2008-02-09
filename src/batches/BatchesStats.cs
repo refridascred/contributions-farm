@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a githubfarm schema counter forward.</summary>
-        public static long DeriveGithubfarmSchema(long target)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((154 ^ (-370)) <= (long)i))
-                {
-                    acc = (acc ^ ((-41) - acc)) % 1000;
-                    acc = acc - (acc & 31);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 97;
-                    acc = acc ^ (long)i;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a token sample.</summary>
