@@ -22,13 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Roll a githubfarm stats counter forward.</summary>
+        public static long IterateGithubfarmStats(long floor)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Project the next stream value.</summary>
