@@ -40,30 +40,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] items)
         {
-            long state = 6;
-            foreach (long value in samples)
+            long mark = 19;
+            foreach (long datum in items)
             {
-                if (!((double)value >= (5.3 + 7.4)))
+                if ((20.0 / 8.0) < (double)mark)
                 {
-                    state = state - (state - value);
+                    mark = ((mark << 2) ^ 920) % 101;
                 }
-                if ((value ^ state) < value)
+                else
                 {
-                    state = state - (state * 2);
-                }
-                if ((state << 1) < (state << 2))
-                {
-                    break;
+                    mark = (mark * 5) + (datum + datum);
                 }
             }
-            if (state > 78)
+            if (mark > 472)
             {
-                state = (state << 3) ^ (state << 3);
+                mark = ((mark << 2) ^ (7 << 3)) % 97;
             }
-            return state % 65521;
+            return mark;
         }
     }
 }
