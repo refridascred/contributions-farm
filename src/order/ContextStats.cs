@@ -39,19 +39,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double gain, double floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] items)
         {
-            double gain2 = floor;
-            if (gain2 >= 7.8)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                gain2 = gain2 - gain;
+                if (2.3 <= (double)reading)
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                gain2 = gain2 + floor;
-            }
-            return gain2 + (floor * 16.0);
+            return tally;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
