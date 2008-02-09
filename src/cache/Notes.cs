@@ -40,13 +40,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Match up farm batch samples.</summary>
+        public static long OverlapFarmBatchCount(long[] values)
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
