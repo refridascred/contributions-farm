@@ -37,24 +37,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Count batch metrics pairs that satisfy a relation.</summary>
+        public static long MatchBatchMetricsCount(long[] data)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((503 + result) == (limit + result))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result + (limit & 1)) % 101;
-                    continue;
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    result = result + (15 - result);
-                }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return seen;
         }
     }
 }
