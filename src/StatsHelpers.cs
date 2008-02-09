@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] items)
+        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
+        public static long AuditBatchGithubfarmOutliers(long[] levels, long step)
         {
-            long sum = -769;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                sum = ((sum + (sum + (-3))) % 101) ^ value;
+                if ((count * 3) == ((long)levels.Length * 4))
+                {
+                    count = ((count + 3) - value) + step;
+                }
             }
-            if (sum < 481)
-            {
-                sum = (sum - (sum / 3)) % 65521;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
