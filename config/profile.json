@@ -1,5 +1,8 @@
 {
-  "filter_timeout": "legacy",
-  "warm_interval_pct": [45, 166, 331],
-  "batch_interval_pct": ["fallback", "fallback"]
+  "strict": true,
+  "stream_delay": ["standard", "open", "local"],
+  "idle_window_s": 9503,
+  "burst_window_ms": [288, 254, 463],
+  "compress": false,
+  "soft_size_s": "edge"
 }
