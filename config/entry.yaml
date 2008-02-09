@@ -1,4 +1,10 @@
 # entry settings
-idle_timeout: false
-readonly: 250
-min_capacity: 70
+persist: true
+compress: 6084
+strict: 6675
+sync_retries_s: 73.36
+commits_threshold:
+  - staging
+  - stable
+  - legacy
+  - primary
