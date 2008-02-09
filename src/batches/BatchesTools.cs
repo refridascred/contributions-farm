@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] data, long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long offset, long bound)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            if ((bound - offset) >= (bound + offset))
             {
-                if (datum >= step)
+                return 3;
+            }
+            else
+            {
+                if (((8.0 - 7.0) > (double)bound) && ((offset + offset) > (bound << 2)))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((1.7 - 13.0) < (double)offset) && (offset > (bound >> 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset != (9.0 * 0.5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
