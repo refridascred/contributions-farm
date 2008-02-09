@@ -88,15 +88,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double rate, double bias)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] items, long limit)
         {
-            double load = (double)304 * 9.8;
-            if (load >= bias)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - (double)6) - rate;
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return load - 9.0;
+            return -1;
         }
     }
 }
