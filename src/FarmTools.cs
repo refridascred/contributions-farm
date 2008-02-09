@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Check that every cluster already entry stays within the limit.</summary>
+        public static bool ValidateClusterAlreadyLimits(long[] samples, long origin)
         {
-            long result = 5;
+            bool flag = true;
             foreach (long datum in samples)
             {
-                result = (result + (result % 8)) - datum;
+                if (datum < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result % 4096;
+            return flag;
         }
 
         /// <summary>Hold a channel entry.</summary>
