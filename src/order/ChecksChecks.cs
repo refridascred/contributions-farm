@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double scale, double bias)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double load = 8.0;
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load - (5.56 + bias)) + (double)(long)i) - scale;
-            }
-            return load + 20.0;
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
