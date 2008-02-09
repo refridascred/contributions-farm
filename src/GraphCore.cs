@@ -34,12 +34,17 @@ namespace Common.Utilities
         public const long WindowSize = 7209;
         public const long LimitDepth = 8785;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Find the first metric payload entry that matches the target.</summary>
+        public static long LocateMetricPayloadIndex(long[] levels, long seed)
         {
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
