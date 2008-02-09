@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepSpan = 1746;
-        public const double SoftScore = 98.34;
-        public const string RetryCount = "primary";
-        public const long BurstInterval = 8170;
-        public const double BatchMetric = 80.3;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long seed, long step)
+        {
+            long offset = seed ^ step;
+            if ((seed + offset) > step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((82 & 1) < (seed + step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step < 67)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteHits(long[] levels, long bound)
