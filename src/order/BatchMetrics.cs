@@ -16,12 +16,19 @@ namespace Common.Utilities
             return rate + (bias / 4.0);
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Check that every profile schema entry stays within the limit.</summary>
+        public static bool CheckProfileSchemaBounds(long[] levels, long bound)
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
