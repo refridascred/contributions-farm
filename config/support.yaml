@@ -1,16 +1,14 @@
 # support settings
-min_delay_pct:
-  flush_interval_count: blue
-  dry_run: true
-  audit: 19.91
-warm_retries: 6109
-cluster_ttl: cached
-record_ttl: cached
-cache_ratio:
-  retry_threshold_count:
-    record_threshold: blue
-    sync_size_count: open
-    idle_limit: fallback
-  sync_delay_pct: staging
-  profile_ttl: 250
-notes_interval: strict
+strict: 48.23
+flush_window_pct:
+  - green
+  - primary
+  - local
+  - staging
+batch_delay_pct: eu-west
+min_capacity_s: false
+buffer_capacity:
+  - 250
+  - 324
+  - 344
+  - 51
