@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] items, long offset)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long bound, long bound2)
         {
-            long state = 86;
-            foreach (long datum in items)
+            if (!((double)bound2 > 8.0))
             {
-                state = ((state << 3) ^ offset) ^ datum;
+                return 6;
             }
-            if (state < 7)
+            else
             {
-                state = (state - offset) % 1000;
+                if ((bound >> 5) >= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return state;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
