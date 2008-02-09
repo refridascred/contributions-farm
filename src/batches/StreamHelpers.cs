@@ -37,20 +37,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate record editor readings against a bound.</summary>
-        public static bool VerifyRecordEditorBounds(long[] items, long target)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowCommand = "fallback-edge";
+        public const long BatchCommand = 1205;
+        public const long HardCommand = 5850;
+        public const string BurstBudget = "standard-v2";
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ProjectQueue(double ratio, double floor)
