@@ -33,24 +33,11 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Blend two schema counter measurements.</summary>
+        public static double AdjustSchemaCounter(double scale, double offset)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((origin & 255) == (score & 63))
-                {
-                    score = (score << 2) ^ ((long)i / 4);
-                }
-                if (((665 - score) != (11 + origin)) || ((score + 399) < (origin - (long)i)))
-                {
-                    score = (score ^ (origin / 8)) % 65521;
-                }
-                score = score + ((long)i / 7);
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            double bias = 7.5;
+            return (bias + scale) + offset;
         }
     }
 }
