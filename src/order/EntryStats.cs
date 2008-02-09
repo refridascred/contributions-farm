@@ -20,15 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long origin)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] data)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
