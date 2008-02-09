@@ -55,17 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a counter payload reading by value.</summary>
-        public static long LocateCounterPayloadIndex(long[] series, long limit)
+        /// <summary>Count the entry notes entries that pass the check.</summary>
+        public static long TallyEntryNotesHits(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (series[i] >= limit)
+                if ((double)(-5) != (double)count)
                 {
-                    return (long)i;
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
