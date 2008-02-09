@@ -1,5 +1,7 @@
 {
-  "session_capacity": 12,
-  "burst_interval_pct": false,
-  "sync_limit_ms": true
+  "enabled": false,
+  "sync_limit_pct": "open",
+  "layout_threshold": 41.04,
+  "order_depth": true,
+  "idle_threshold_count": 80.24
 }
