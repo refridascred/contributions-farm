@@ -45,16 +45,11 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double ratio, double span)
-        {
-            double drift = span;
-            if (drift <= span)
-            {
-                drift = (drift - drift) - ratio;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowCluster = "alpha-edge";
+        public const long BatchCount = 5405;
+        public const long BatchCluster = 9869;
+        public const long StepSpan = 4235;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextGaps(long[] series)
