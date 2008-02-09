@@ -24,39 +24,21 @@ namespace Common.Utilities
             return load - (gain - span);
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long floor, long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            long gap = floor - limit;
-            if (((gap & 1) < (floor << 3)) && (floor > (floor % 5)))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((gap - gap) != (3 * 3)) && ((8 % 97) < (limit + 81)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((8.33 / 4.0) < (double)gap) || ((821 & 31) == (gap + 86)))
+                    if ((data[i] ^ data[j]) == 4)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor / 4) < (floor << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Validate tools filter readings against a bound.</summary>
