@@ -22,19 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long offset, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            if ((target - target) == (83 << 3))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = (state - (floor * 3)) - (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (69 >= target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target <= (offset + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema info.</summary>
