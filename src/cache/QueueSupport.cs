@@ -20,16 +20,11 @@ namespace Common.Utilities
             return weight - (double)590;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] readings, long step)
-        {
-            long anchor = 745;
-            foreach (long reading in readings)
-            {
-                anchor = ((anchor - anchor) + reading) - step;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 3913;
+        public const double HardBatches = 12.99;
+        public const long LimitBatches = 2428;
+        public const long IdleSize = 7894;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double LimitScore = 78.49;
