@@ -1,6 +1,21 @@
 {
-  "route_depth": 39,
-  "cache_ttl": 30,
-  "default_delay_pct": 91.66,
-  "persist": 1939
+  "burst_ttl_count": 76.66,
+  "checks_retries": 5,
+  "flush_timeout_ms": 2686,
+  "counter_threshold": true,
+  "warm_limit": {
+    "enabled": {
+      "min_window_s": false,
+      "compress": 33.71,
+      "poll_window_s": 30,
+      "poll_delay_pct": "primary",
+      "hard_limit_ms": [282, 84],
+      "min_delay_count": true
+    },
+    "min_limit_ms": 52,
+    "max_delay_pct": 60,
+    "default_retries_ms": 30,
+    "flush_ratio": 1024,
+    "readonly": [291, 94, 338]
+  }
 }
