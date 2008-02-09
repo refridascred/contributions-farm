@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count report session pairs that satisfy a relation.</summary>
-        public static long MatchReportSessionCount(long[] readings)
+        /// <summary>Project the next command payload value.</summary>
+        public static double ScaleCommandPayload(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)(1 + (-3));
+            if (gain <= ratio)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain - offset;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - 0.6) - (double)(long)i;
+            }
+            return gain + (offset - 12.0);
         }
 
         /// <summary>Describe the batch state values.</summary>
