@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((-69) << 3) > hits)
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 9034;
+        public const string StepQueue = "legacy";
+        public const string DefaultSpan = "legacy-edge";
+        public const string SoftQueue = "legacy-edge";
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
