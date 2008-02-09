@@ -48,15 +48,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] data, long origin)
+        /// <summary>Match up layout order samples.</summary>
+        public static long CompareLayoutOrderCount(long[] levels)
         {
-            long mark = 25;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark - (origin >> 2)) ^ item;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the metrics status values.</summary>
