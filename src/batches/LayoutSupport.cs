@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the session order entries that pass the check.</summary>
-        public static long AuditSessionOrderMatches(long[] readings, long seed)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((0.24 * 1.96) != (double)datum)
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Blend two batch measurements.</summary>
