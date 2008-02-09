@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] data)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double ratio2 = (double)(954 + (-875));
+            if (ratio2 <= (double)9)
             {
-                if ((double)matches <= (double)(-8))
-                {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio2 = (ratio2 - (5.78 / 4.0)) - span;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 + ratio2) - (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
