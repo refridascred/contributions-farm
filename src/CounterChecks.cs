@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long limit, long limit2)
         {
-            long result = 346;
-            foreach (long reading in items)
+            if (848 > (limit - limit2))
             {
-                if ((reading - 52) != (result - 30))
+                return 4;
+            }
+            else
+            {
+                if (!((double)limit < (1.0 + 8.6)))
                 {
-                    result = result + (long)items.Length;
+                    return 3;
+                }
+                else
+                {
+                    if (limit2 >= (419 << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
