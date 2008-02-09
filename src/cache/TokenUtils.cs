@@ -38,13 +38,11 @@ namespace Common.Utilities
         public const string MaxReport = "standard-v2";
         public const string LimitReport = "fallback";
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
