@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long BurstWindow = 6450;
         public const long LimitSize = 6528;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Accumulate notes queue samples.</summary>
+        public static long CombineNotesQueue(long[] data, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            long acc = 16;
+            foreach (long entry in data)
             {
-                if (((long)i >> 1) == ((long)i ^ mix))
-                {
-                    mix = ((mix << 2) ^ (seed / 2)) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                acc = (acc ^ entry) % 97;
+                acc = acc ^ target;
+                acc = acc + (880 / 7);
             }
-            return mix;
+            return acc % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
