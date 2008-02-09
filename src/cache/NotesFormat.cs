@@ -21,12 +21,12 @@ namespace Common.Utilities
             return gain + (floor / 4.0);
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] readings, long step)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] < step)
+                if (items[i] > bound)
                 {
                     return (long)i;
                 }
