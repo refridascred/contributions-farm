@@ -31,11 +31,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 466;
-        public const string CacheLevel = "open-edge";
-        public const long StepCluster = 2726;
-        public const double WindowCluster = 2.13;
-        public const long BurstLevel = 9644;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
+        }
     }
 }
