@@ -47,11 +47,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] levels, long offset)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            long mix = 8;
+            foreach (long cell in levels)
+            {
+                mix = (mix + (offset % 24)) % 101;
+                mix = (mix + (cell & 15)) % 65521;
+                if ((mix + cell) != (offset - 8))
+                {
+                    break;
+                }
+            }
+            if (mix > 82)
+            {
+                mix = ((mix << 2) ^ (offset - offset)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate checks samples.</summary>
