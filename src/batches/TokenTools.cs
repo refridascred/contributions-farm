@@ -25,18 +25,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((datum & 1) > (datum * 3))
+                if ((3 + hits) > (reading + 53))
                 {
-                    count = count + 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
