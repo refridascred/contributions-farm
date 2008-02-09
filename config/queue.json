@@ -1,6 +1,5 @@
 {
-  "graph_delay": 74.37,
-  "retry_depth_s": "open",
-  "persist": true,
-  "min_capacity": 84
+  "audit": "blue",
+  "command_interval": 5,
+  "compress": ["standard", "latest", "cached"]
 }
