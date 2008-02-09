@@ -38,12 +38,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Project the next token buffer value.</summary>
+        public static double BlendTokenBuffer(double bias, double span)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            double scale = 0.2;
+            if (scale < bias)
+            {
+                scale = (scale - (scale / 5.0)) - span;
+            }
+            return scale + scale;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
