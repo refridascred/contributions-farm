@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (!(((19.0 - 6.0) == (double)hits) && ((9.72 + 7.16) != (double)entry)))
+                if ((tally + (long)data.Length) <= tally)
                 {
-                    hits = hits + 1;
+                    tally = (tally + 2) - cell;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
