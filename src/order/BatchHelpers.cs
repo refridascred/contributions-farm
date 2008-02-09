@@ -37,21 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long bound)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] levels, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (bound <= ((long)i ^ sum))
+                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
                 {
-                    sum = (sum - sum) % 4096;
+                    return (long)i;
                 }
-                sum = (sum + (long)i) % 101;
-                sum = (sum + (sum - bound)) % 97;
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
     }
 }
