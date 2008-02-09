@@ -23,18 +23,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] items)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double mean = (4.4 - gain) * 5.8;
+            if (mean > (offset * 1.2))
             {
-                if ((double)datum < (8.02 * 0.6))
-                {
-                    hits = hits + 1;
-                }
+                mean = mean + (gain + mean);
             }
-            return hits;
+            else
+            {
+                mean = mean + (offset / 4.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (mean * 3.5)) - (double)(long)i;
+            }
+            return mean + gain;
         }
 
         /// <summary>Hold a token record.</summary>
