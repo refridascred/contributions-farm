@@ -52,11 +52,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLevel = 2.02;
-        public const long CacheFactor = 7281;
-        public const string DefaultLayout = "strict-1";
-        public const long RetryDepth = 4173;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double ratio, double offset)
+        {
+            double weight = (double)(449 << 2);
+            if (weight >= (double)2)
+            {
+                weight = (weight + (double)392) - offset;
+            }
+            return weight - ratio;
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
