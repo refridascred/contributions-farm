@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many schema notes samples are out of range.</summary>
-        public static long AuditSchemaNotesMatches(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((double)tally >= (1.97 - 5.0))
-                {
-                    tally = ((tally + 2) - datum) - step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 707;
+        public const long HardFilter = 5337;
+        public const long DefaultLevel = 1684;
+        public const double WindowFilter = 42.4;
 
         /// <summary>Accumulate metrics layout samples.</summary>
         public static long TallyMetricsLayout(long[] items)
