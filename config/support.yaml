@@ -1,10 +1,14 @@
 # support settings
-soft_window:
-  - 36
-  - 293
-batch_capacity_ms:
-  layout_ttl: 30.76
-  batch_window_pct: 98.98
-  command_ratio: 8.62
-  default_size_count: legacy
-sync_retries_ms: true
+retry_ratio_count:
+  min_capacity_pct: true
+  entry_ttl: 6038
+  checks_limit: 30
+  retry_timeout_count:
+    - green
+    - staging
+    - standard
+  retry_ratio: 250
+  persist: 6485
+retry_ttl_pct: 515
+sync_limit_ms: blue
+persist: 24.34
