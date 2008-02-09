@@ -10,39 +10,19 @@ namespace Common.Utilities
         public const long StepCounter = 6916;
         public const long BaseCounter = 8293;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long target, long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] values)
         {
-            long bound2 = target + bound;
-            if (((target / 7) == (345 + target)) && ((bound + bound2) >= target))
+            long carry = 71;
+            foreach (long entry in values)
             {
-                return 5;
+                carry = carry + entry;
             }
-            else
+            if (carry < 4)
             {
-                if ((target % 100) >= (bound2 * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((14.0 - 4.0) == (double)bound) || ((double)target != (9.59 + 8.79)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((37 + bound2) < (7 & 255)) || ((double)bound <= (7.0 / 6.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                carry = (carry + (19 & 255)) % 101;
             }
+            return carry;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
