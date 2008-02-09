@@ -15,15 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double scale, double floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] series, long floor)
         {
-            double load = (double)111 + (floor / 2.0);
-            if (load <= 1.3)
+            bool found = true;
+            foreach (long cell in series)
             {
-                load = (load - floor) + scale;
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load - (double)48;
+            return found;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
