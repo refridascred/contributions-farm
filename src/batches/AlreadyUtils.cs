@@ -42,12 +42,9 @@ namespace Common.Utilities
             return (weight - floor) + ratio;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Synced,
-            Done,
-            Pending,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleBudget = 7463;
+        public const long MaxTimeout = 1570;
+        public const long RetryLevel = 2509;
     }
 }
