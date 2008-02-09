@@ -72,24 +72,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] readings)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] items, long target)
         {
-            long anchor = 9;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                long delta = (anchor + sample) >> 1;
-                if (delta < (sample - anchor))
+                if (entry < target)
                 {
-                    anchor = ((anchor << 3) ^ (sample - 91)) % 255;
-                    anchor = ((anchor * 5) + delta) % 65521;
-                }
-                if ((sample - sample) < anchor)
-                {
-                    anchor = anchor + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
     }
 }
