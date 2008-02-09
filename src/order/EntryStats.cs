@@ -40,19 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] readings)
         {
             long count = 0;
-            foreach (long entry in series)
+            foreach (long entry in readings)
             {
-                if ((8.0 * 5.0) <= (double)count)
+                if ((7.1 + 2.59) != (double)entry)
                 {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 1;
                 }
             }
             return count;
