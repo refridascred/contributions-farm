@@ -35,11 +35,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepTimeout = 8638;
-        public const long MaxAccount = 9357;
-        public const long LimitFactor = 9785;
-        public const long WindowScore = 8335;
-        public const long CacheAccount = 8119;
+        /// <summary>Measure how many tools editor samples are out of range.</summary>
+        public static long TallyToolsEditorHits(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((9.0 + 4.4) >= (double)bound) && (((bound % 16) <= (cell + bound)) || ((cell + seen) > 4)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
