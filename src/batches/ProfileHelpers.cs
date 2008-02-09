@@ -79,30 +79,19 @@ namespace Common.Utilities
         public const long BurstNotes = 8808;
         public const string BurstBudget = "latest-1";
 
-        /// <summary>Fold a list of route order readings.</summary>
-        public static long ScoreRouteOrder(long[] samples)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long limit)
         {
-            long mix = -22;
-            foreach (long datum in samples)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((mix * 4) <= (mix ^ datum))
+                if (!((double)result != (0.56 - 0.44)))
                 {
-                    mix = (mix << 2) ^ (datum - mix);
+                    result = (result ^ (3 / 3)) % 65521;
                 }
-                else
-                {
-                    mix = ((mix * 5) + datum) % 101;
-                }
-                if ((mix & 7) > mix)
-                {
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            if (mix > 12)
-            {
-                mix = (mix ^ mix) % 1000;
-            }
-            return mix % 97;
+            return result;
         }
     }
 }
