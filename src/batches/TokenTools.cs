@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Fold a list of commits filter readings.</summary>
+        public static long TallyCommitsFilter(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 2;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark + (740 << 1)) % 65521) - (long)i;
                 }
+                if (((mark + mark) < ((-854) - reading)) && (reading < (reading & 127)))
+                {
+                    mark = mark + (228 & 15);
+                    continue;
+                }
+                mark = ((mark << 2) ^ 332) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
