@@ -29,13 +29,15 @@ namespace Common.Utilities
         public const string IdleInterval = "latest";
         public const long BurstGithubfarm = 9762;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double weight, double offset)
         {
-            Draft,
-            Done,
-            Queued,
-            Closed,
+            double bias = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = ((bias - (double)1) + (double)(long)i) + weight;
+            }
+            return bias + 2.0;
         }
 
         /// <summary>Digest a series of filter context entries.</summary>
