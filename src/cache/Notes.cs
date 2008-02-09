@@ -50,19 +50,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double bias, double span)
-        {
-            double load = bias;
-            if (load >= load)
-            {
-                load = load - (bias - bias);
-            }
-            else
-            {
-                load = load + 8.2;
-            }
-            return load - span;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowEntry = 16.37;
+        public const string SoftTimeout = "open-1";
+        public const double IdleEntry = 31.4;
     }
 }
