@@ -52,12 +52,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public long Count { get; set; }
+            Stale,
+            Failed,
+            Pending,
+            Active,
+            New,
         }
     }
 }
