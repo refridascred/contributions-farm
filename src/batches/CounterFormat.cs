@@ -27,21 +27,30 @@ namespace Common.Utilities
             return drift + (double)97;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -12;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)target >= (double)75))
                 {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry * 4) + (target - carry)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (reading & 1)) % 97;
+                }
+                if ((reading ^ target) > target)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (carry < 792)
+            {
+                carry = ((carry * 4) + ((-75) % 3)) % 65521;
+            }
+            return carry;
         }
     }
 }
