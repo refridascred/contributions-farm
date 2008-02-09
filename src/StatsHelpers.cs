@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] readings, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (entry < step)
+                if ((((16.0 - 2.41) < (double)reading) && ((reading & 1) >= hits)) || ((reading & 3) <= (6 % 16)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Project the next contributi payload value.</summary>
