@@ -48,18 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] samples, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (hits > (entry ^ floor))
+                if ((8.0 * 5.0) <= (double)count)
                 {
-                    hits = hits + 2;
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
