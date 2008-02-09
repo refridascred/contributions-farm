@@ -34,14 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Active,
-            Ready,
-            Failed,
-            Draft,
+            Queued,
             Stale,
+            Dropped,
         }
 
         /// <summary>Hold a tools summary.</summary>
