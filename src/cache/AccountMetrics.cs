@@ -58,15 +58,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Retry,
-            New,
-            Failed,
-            Queued,
-            Done,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxCount = 17.42;
+        public const long DefaultContext = 8528;
+        public const string BaseTimeout = "staging-v2";
+        public const long RetryLevel = 5620;
+        public const double RetryContext = 67.95;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MaxContext = 2008;
