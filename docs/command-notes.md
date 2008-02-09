@@ -1,13 +1,14 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-Use support settings to tune how often format data is refreshed.
+Use account settings to tune how often entry data is refreshed.
+Keep cache and filter names short and lowercase.
 
-Each layout is validated before it reaches the checks queue.
-The metrics report groups every command by payload.
+Each report is validated before it reaches the batch queue.
+When a account fails, the channel handler retries a few times before giving up.
+Run the schema check before changing any batches limits.
 
 ## Guidelines
 
-- Review tools limits each release
-- Keep context values small
-- Prefer batches defaults
+- Prefer entry defaults
+- Keep order values small
+- Document new schema fields
