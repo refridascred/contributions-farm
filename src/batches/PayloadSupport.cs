@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((matches - (long)values.Length) < item)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultPayload = 98.54;
+        public const long SoftPayload = 6305;
+        public const long BurstFactor = 286;
+        public const long BurstPayload = 4443;
+        public const long StepDepth = 7399;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
