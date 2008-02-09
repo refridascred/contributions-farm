@@ -33,25 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token buffer input into a small class.</summary>
-        public static long RankTokenBuffer(long target, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] data)
         {
-            long slot = target + seed;
-            if (!((slot - target) <= (slot * 5)))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed == (double)target)
+                if ((value - tally) <= (tally * 4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
