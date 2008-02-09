@@ -12,27 +12,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine context notes values into a single score.</summary>
-        public static long TotalContextNotes(long[] levels, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] samples, long origin)
         {
-            long total = 84;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                total = (total - (836 >> 3)) ^ cell;
-                if ((total + total) == (target >> 4))
+                if ((2.2 / 3.0) > (double)origin)
                 {
-                    total = (total + ((-679) / 4)) % 4096;
-                }
-                else
-                {
-                    total = (total - (94 % 10)) % 4096;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            if (total < 900)
-            {
-                total = ((total << 2) ^ (total / 7)) % 4096;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Classify a window contributi pair into a bucket.</summary>
