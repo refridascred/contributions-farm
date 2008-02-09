@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] samples, long target)
         {
-            long mix = 25;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (!((mix * 2) >= mix))
+                if (sample != target)
                 {
-                    mix = ((mix * 3) + (reading + mix)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix > 106)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Hold a payload info.</summary>
