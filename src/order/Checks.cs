@@ -34,13 +34,17 @@ namespace Common.Utilities
         public const long StepFactor = 7378;
         public const double IdleDepth = 37.12;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Look up the position of a session command sample.</summary>
+        public static long SeekSessionCommandIndex(long[] series, long bound)
         {
-            Idle,
-            Locked,
-            Closed,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
