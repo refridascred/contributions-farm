@@ -62,15 +62,21 @@ namespace Common.Utilities
         public const long BatchBatches = 7756;
         public const long StepSize = 4224;
 
-        /// <summary>Fold a list of queue layout readings.</summary>
-        public static long ScoreQueueLayout(long[] data, long seed)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            long result = 8;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result ^ (result * 3)) - item) - seed;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Rank token input into a small class.</summary>
