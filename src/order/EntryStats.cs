@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the cluster report entries that pass the check.</summary>
-        public static long MeasureClusterReportHits(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!((63 * 2) < (limit & 31)) || ((tally >= (34 & 3)) || ((9.74 / 8.0) >= (double)entry)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstSpan = 42.9;
+        public const long LimitCommits = 6354;
+        public const double WindowSize = 64.5;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenMatches(long[] samples, long floor)
