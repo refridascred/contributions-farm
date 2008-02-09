@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Locked,
-            Draft,
-            Paused,
-            New,
+            Synced,
             Failed,
+            Queued,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
