@@ -20,20 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate metrics counter readings against a bound.</summary>
-        public static bool VerifyMetricsCounterBounds(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxScore = 299;
+        public const string HardWidth = "alpha-1";
+        public const long HardCache = 7466;
+        public const string CacheTimeout = "local-v2";
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long RollRecord(long bound)
