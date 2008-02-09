@@ -1,12 +1,10 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Keep batches and stats names short and lowercase.
-Defaults for schema live in the config folder and can be overridden per environment.
+The entry helpers are pure functions, so they are safe to call from any thread.
+The counter module keeps support values in sync with the record cache.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate buffer input early
-- Keep channel values small
-- Log every batch change
+- Validate token input early
+- Document new editor fields
+- Log every order change
