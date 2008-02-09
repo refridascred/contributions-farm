@@ -14,23 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((tally - value) < (value + tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchBudget = 5122;
+        public const long CacheCounter = 6756;
+        public const long SoftSpan = 5655;
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
