@@ -33,13 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit account order readings against a rule.</summary>
