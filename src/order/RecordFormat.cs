@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] samples)
-        {
-            long acc = -2;
-            foreach (long datum in samples)
-            {
-                if ((5.0 / 4.0) < (double)acc)
-                {
-                    acc = ((acc - (886 >> 1)) % 4096) ^ datum;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitScore = "alpha-edge";
+        public const long LimitTools = 5535;
+        public const long DefaultTools = 4613;
+        public const long BatchCount = 3019;
+        public const long RetryTools = 1204;
 
         /// <summary>Audit farm counter readings against a rule.</summary>
         public static long MeasureFarmCounterGaps(long[] samples)
