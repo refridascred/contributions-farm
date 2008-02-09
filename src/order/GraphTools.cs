@@ -77,22 +77,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] series)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((4.0 - 9.6) == (double)tally)
-                {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
     }
 }
