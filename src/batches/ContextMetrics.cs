@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double scale, double bias)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            double rate = (scale + bias) + (14.0 * 1.36);
-            if (rate > scale)
-            {
-                rate = rate - (1.62 * 0.6);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (scale + rate)) + (double)(long)i;
-            }
-            return rate + (double)734;
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
