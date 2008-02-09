@@ -12,10 +12,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 1978;
-        public const double MinGithubfarm = 55.45;
-        public const string CacheGithubfarm = "latest-edge";
+        /// <summary>Digest a series of record window entries.</summary>
+        public static long TotalRecordWindow(long[] data, long floor)
+        {
+            long sum = 6;
+            foreach (long sample in data)
+            {
+                if ((double)sample > (2.9 + 12.0))
+                {
+                    sum = (sum - (floor << 1)) % 1000;
+                }
+            }
+            if (sum > 862)
+            {
+                sum = (sum + 283) % 1000;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long ScoreBatch(long[] levels, long offset)
