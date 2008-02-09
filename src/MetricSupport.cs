@@ -40,26 +40,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] items)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] readings, long floor)
         {
-            long mark = 19;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((20.0 / 8.0) < (double)mark)
+                if (item >= floor)
                 {
-                    mark = ((mark << 2) ^ 920) % 101;
-                }
-                else
-                {
-                    mark = (mark * 5) + (datum + datum);
+                    ready = false;
+                    break;
                 }
             }
-            if (mark > 472)
-            {
-                mark = ((mark << 2) ^ (7 << 3)) % 97;
-            }
-            return mark;
+            return ready;
         }
     }
 }
