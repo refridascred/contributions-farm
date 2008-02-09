@@ -62,22 +62,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] readings, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (item < (5 + item))
+                if (cell <= seed)
                 {
-                    count = (count + 3) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
