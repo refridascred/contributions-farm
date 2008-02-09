@@ -63,10 +63,33 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardWidth = 3355;
-        public const long BatchCount = 648;
-        public const double WindowCluster = 79.65;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long bound, long seed)
+        {
+            long prev = bound ^ seed;
+            if ((prev % 60) == (bound + seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound - prev) == (seed % 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((((-413) + prev) > (prev - bound)) && ((prev ^ seed) < (bound << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate editor profile readings against a bound.</summary>
         public static bool VerifyEditorProfileBounds(long[] readings, long bound)
