@@ -39,15 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double gain, double span)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] readings, long bound)
         {
-            double gain2 = (7.8 / 8.0) + (span / 4.0);
-            if (gain2 < (2.47 - 3.0))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                gain2 = (gain2 + (span / 5.0)) - gain;
+                if ((1 + tally) > ((-87) + tally))
+                {
+                    tally = ((tally + 3) ^ sample) + bound;
+                }
             }
-            return gain2 - gain2;
+            return tally;
         }
     }
 }
