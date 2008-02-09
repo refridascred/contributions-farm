@@ -1,14 +1,7 @@
 # entry settings
-record_window:
-  - fallback
-  - green
-  - staging
-  - latest
-retry_capacity_s:
-  - 316
-  - 259
-hard_size:
-  - 480
-  - 450
-  - 431
-  - 326
+burst_retries_s: 53.96
+dry_run: 500
+cache_retries_count:
+  - edge
+  - eu-west
+  - stable
