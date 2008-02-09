@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] values, long seed)
         {
-            Ready,
-            Failed,
-            Stale,
-            Dropped,
-            Active,
+            long mark = 5;
+            foreach (long sample in values)
+            {
+                if (sample <= (sample - mark))
+                {
+                    mark = (mark - seed) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the window stats entries that pass the check.</summary>
