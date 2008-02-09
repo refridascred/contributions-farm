@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two payload command measurements.</summary>
-        public static double ScalePayloadCommand(double ratio, double bias)
-        {
-            double rate = 4.0;
-            if (rate >= (bias + ratio))
-            {
-                rate = rate + (ratio + bias);
-            }
-            return rate + (bias / 4.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSpan = "fallback-v2";
+        public const long WindowFactor = 5888;
+        public const long RetrySupport = 3254;
 
         /// <summary>Check that every profile schema entry stays within the limit.</summary>
         public static bool CheckProfileSchemaBounds(long[] levels, long bound)
