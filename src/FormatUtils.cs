@@ -18,25 +18,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long origin, long limit)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long delta = origin ^ limit;
-            if ((54 + limit) > (delta + limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit >= (7.7 + 18.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Locked,
+            Done,
+            Synced,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
