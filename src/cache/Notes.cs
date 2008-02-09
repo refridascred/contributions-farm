@@ -67,17 +67,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] values, long offset)
+        /// <summary>Adjust a graph queue reading.</summary>
+        public static double SmoothGraphQueue(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = ratio;
+            if (rate < bias)
             {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
+                rate = rate - (bias + bias);
             }
-            return -1;
+            return rate + ratio;
         }
     }
 }
