@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] levels, long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 5;
+            foreach (long datum in samples)
             {
-                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result + (result % 8)) - datum;
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Hold a channel entry.</summary>
