@@ -55,11 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Validate entry support readings against a bound.</summary>
+        public static bool GuardEntrySupportBounds(long[] levels, long floor)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
