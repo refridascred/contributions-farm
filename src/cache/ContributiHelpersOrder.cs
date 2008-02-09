@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many graph entry samples are out of range.</summary>
-        public static long CountGraphEntryHits(long[] items, long origin)
+        /// <summary>Validate context support readings against a bound.</summary>
+        public static bool VerifyContextSupportBounds(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((count + 92) <= (origin << 2))
+                if (sample > floor)
                 {
-                    count = (count + 3) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
