@@ -33,14 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Paused,
-            Retry,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 5936;
+        public const long DefaultTools = 181;
+        public const string DefaultTimeout = "legacy";
 
         /// <summary>Audit account order readings against a rule.</summary>
         public static long CountAccountOrderOutliers(long[] samples, long bound)
