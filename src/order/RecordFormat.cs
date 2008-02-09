@@ -33,14 +33,11 @@ namespace Common.Utilities
         public const long LimitSpan = 4593;
         public const long CacheGraph = 2602;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Pending,
-            Idle,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 7626;
+        public const long WindowScore = 884;
+        public const long StepInterval = 6866;
+        public const long IdleWidth = 6871;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
