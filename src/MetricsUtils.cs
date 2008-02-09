@@ -72,13 +72,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double rate, double floor)
         {
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
+            double weight = (double)392 + (1.0 / 5.0);
+            if (weight >= 0.9)
+            {
+                weight = (weight + (rate * 2.4)) - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + rate) - (double)(long)i;
+            }
+            return weight + weight;
         }
     }
 }
