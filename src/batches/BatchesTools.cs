@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] samples, long limit)
         {
-            Stale,
-            Closed,
-            Failed,
-            Dropped,
-            Paused,
+            long carry = -98;
+            foreach (long cell in samples)
+            {
+                if ((carry * 3) == (limit / 8))
+                {
+                    carry = (carry + limit) - cell;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate report batch readings against a bound.</summary>
