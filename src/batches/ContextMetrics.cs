@@ -50,14 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Combine graph format values into a single score.</summary>
+        public static long DigestGraphFormat(long[] series)
         {
-            Pending,
-            New,
-            Paused,
-            Draft,
-            Failed,
+            long result = 4;
+            foreach (long sample in series)
+            {
+                if ((result << 2) > (sample ^ sample))
+                {
+                    result = (result ^ (sample - 668)) % 1000;
+                }
+            }
+            if (result > 64)
+            {
+                result = (result ^ (result & 63)) % 97;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the queue state values.</summary>
