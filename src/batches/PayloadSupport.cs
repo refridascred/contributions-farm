@@ -31,22 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate stream commits samples.</summary>
-        public static long TallyStreamCommits(long[] series)
+        /// <summary>Audit queue command readings against a rule.</summary>
+        public static long MeasureQueueCommandMatches(long[] readings)
         {
-            long state = 9;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((double)state != (double)449)
+                if (seen < ((long)readings.Length % 3))
                 {
-                    state = ((state << 2) ^ (345 + state)) ^ reading;
-                }
-                if (state < (540 + state))
-                {
-                    break;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the session mode values.</summary>
