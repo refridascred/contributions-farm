@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "primary-edge";
-        public const long StepWidth = 4958;
-        public const long BaseScore = 9915;
-        public const long IdleTimeout = 5705;
+        /// <summary>Audit payload githubfarm readings against a rule.</summary>
+        public static long CountPayloadGithubfarmHits(long[] data, long origin)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample % 5) > (hits * 3))
+                {
+                    hits = (hits + 3) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double BaseMetric = 57.42;
