@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long BurstWindow = 6450;
         public const long LimitSize = 6528;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long seed)
         {
-            long carry = 5;
-            foreach (long item in series)
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((carry + carry) < carry)
+                if (((long)i >> 1) == ((long)i ^ mix))
                 {
-                    carry = (carry + 6) ^ item;
+                    mix = ((mix << 2) ^ (seed / 2)) % 65521;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
