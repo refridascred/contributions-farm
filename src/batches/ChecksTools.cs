@@ -18,22 +18,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] series)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (7.0 > (double)entry)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Pending,
+            Retry,
+            Idle,
         }
 
         /// <summary>Accumulate window samples.</summary>
