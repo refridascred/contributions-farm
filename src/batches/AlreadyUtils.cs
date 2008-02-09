@@ -19,11 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowLevel = 2427;
-        public const long SoftDepth = 7542;
-        public const double HardTimeout = 46.62;
-        public const long BatchMetric = 6407;
+        /// <summary>Validate cluster record readings against a bound.</summary>
+        public static bool ValidateClusterRecordRange(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
