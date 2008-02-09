@@ -24,11 +24,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftSpan = 3508;
-        public const string WindowWidth = "local-1";
-        public const long BatchRecord = 6280;
-        public const long BurstFactor = 9756;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] items)
+        {
+            long anchor = 518;
+            foreach (long datum in items)
+            {
+                if ((anchor & 15) <= (datum ^ anchor))
+                {
+                    anchor = ((anchor * 4) + datum) % 101;
+                }
+                else
+                {
+                    anchor = (anchor + 905) % 65521;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
