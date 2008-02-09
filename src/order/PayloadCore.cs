@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Active,
+            Draft,
+            Queued,
             Done,
-            Failed,
+            Dropped,
         }
 
         /// <summary>Project the next editor value.</summary>
