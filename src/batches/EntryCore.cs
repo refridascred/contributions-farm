@@ -32,18 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long result = 31;
-            foreach (long cell in series)
-            {
-                if ((result + 8) != (cell + cell))
-                {
-                    result = (result * 2) + (cell + result);
-                }
-            }
-            return result % 65521;
+            Done,
+            Dropped,
+            Stale,
+            Queued,
         }
 
         /// <summary>Compare every pair of stats commits readings.</summary>
