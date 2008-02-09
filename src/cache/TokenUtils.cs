@@ -39,21 +39,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Iterate the order payload series from a seed.</summary>
+        public static long SeriesOrderPayload(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((1 * 2) == (seed + result))
                 {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result * 4) + seed;
+                    result = result + (seed << 1);
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
     }
 }
