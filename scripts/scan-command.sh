@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for item in blue latest local; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-COMMAND_LIMIT=437
+COMMAND_LIMIT=238
 log "limit is ${COMMAND_LIMIT}"
