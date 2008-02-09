@@ -90,38 +90,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a already stats pair into a bucket.</summary>
-        public static long BucketAlreadyStats(long seed, long limit)
-        {
-            if ((seed >> 2) >= (seed + seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((limit % 16) > (seed << 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed << 1) < (seed & 3)) && ((-643) > limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed + seed) >= (seed * 3)) && ((limit - 57) < limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 4197;
+        public const long DefaultBudget = 849;
+        public const long LimitRecord = 2736;
     }
 }
