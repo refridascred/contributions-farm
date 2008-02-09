@@ -14,12 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] readings, long origin)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] > origin) && ((readings[i] % 2) != 0))
+                if ((values[i] == bound) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
