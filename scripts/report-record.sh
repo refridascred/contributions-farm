@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached green staging; do
+for item in staging latest; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
