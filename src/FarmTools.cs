@@ -16,17 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] levels)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long offset)
         {
-            long acc = 47;
-            foreach (long reading in levels)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                acc = ((acc - (acc ^ acc)) % 97) ^ reading;
-            }
-            if (acc < 949)
-            {
-                acc = (acc ^ (acc << 1)) % 1000;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
             return acc;
         }
