@@ -62,14 +62,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Retry,
-            Pending,
-            Done,
-            Synced,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardFactor = "fallback";
+        public const long StepAlready = 9535;
+        public const long DefaultAlready = 2594;
+        public const double RetryAlready = 17.2;
 
         /// <summary>Count counter stats pairs that satisfy a relation.</summary>
         public static long PairCounterStatsCount(long[] data)
