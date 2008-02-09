@@ -25,18 +25,14 @@ namespace Common.Utilities
         public const double HardTimeout = 46.62;
         public const long BatchMetric = 6407;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] readings)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((7 + datum) < (datum & 15)) && (datum <= (count % 97)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Ready,
+            Active,
+            Locked,
+            Paused,
         }
 
         /// <summary>Blend two format filter measurements.</summary>
