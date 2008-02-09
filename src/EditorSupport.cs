@@ -58,19 +58,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate queue cache readings against a bound.</summary>
-        public static bool GuardQueueCacheBounds(long[] series, long step)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Score { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
