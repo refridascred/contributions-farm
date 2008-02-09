@@ -1,8 +1,6 @@
 # githubfarm settings
-dry_run: false
-sync_delay_ms: 500
-default_delay_pct:
-  - cached
-  - edge
-  - eu-west
-  - eu-west
+idle_retries_ms: green
+window_capacity: 4.06
+max_capacity_s: 6664
+compress: fallback
+sync_depth_ms: cached
