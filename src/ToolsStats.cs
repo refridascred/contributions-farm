@@ -33,32 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long floor, long origin)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double gain, double floor)
         {
-            long lane = floor ^ origin;
-            if ((133 << 3) <= (lane - floor))
+            double drift = floor;
+            if (drift < gain)
             {
-                return 7;
+                drift = drift - (drift + gain);
             }
             else
             {
-                if ((27 + 31) > lane)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor >= (floor - origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                drift = drift + gain;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (floor - drift)) + (double)(long)i;
+            }
+            return drift + 4.6;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
