@@ -58,18 +58,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] series)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] series, long seed)
         {
-            long total = 100;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < 98)
+                if (series[i] <= seed)
                 {
-                    total = (total << 3) ^ (value + total);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
