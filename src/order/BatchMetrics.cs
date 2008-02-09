@@ -28,12 +28,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] series, long floor)
         {
-            New,
-            Ready,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
