@@ -20,15 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next editor report value from a seed.</summary>
-        public static long IterateEditorReport(long target)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double ratio, double span)
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
+            double bias = (double)480 * 1.1;
+            if (bias <= span)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                bias = bias - (double)6;
             }
-            return acc;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + ratio) - (double)(long)i;
+            }
+            return bias - (double)20;
         }
 
         /// <summary>Audit command queue readings against a rule.</summary>
