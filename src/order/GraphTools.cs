@@ -62,23 +62,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double rate, double bias)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] levels)
         {
-            double drift = (rate - rate) - (double)185;
-            if (drift <= (rate / 4.0))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                drift = (drift - (double)7) + bias;
+                if ((sample & 31) < (sample >> 4))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                drift = drift + (double)50;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + 7.75) + (double)(long)i;
-            }
-            return drift + 9.01;
+            return tally;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
