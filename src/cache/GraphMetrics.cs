@@ -51,18 +51,30 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] readings, long bound)
+        /// <summary>Accumulate order profile samples.</summary>
+        public static long DigestOrderProfile(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long mark = 3;
+            foreach (long item in readings)
             {
-                if (((seen + seen) >= sample) || ((seen % 97) != (bound << 3)))
+                if (!((double)offset != (5.51 * 8.79)))
                 {
-                    seen = seen + 2;
+                    mark = mark - (54 >> 5);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark & 15)) % 255;
+                }
+                if ((double)item <= (9.2 / 4.0))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mark < 57)
+            {
+                mark = ((mark * 5) + (85 + offset)) % 65521;
+            }
+            return mark;
         }
     }
 }
