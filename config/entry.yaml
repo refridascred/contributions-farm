@@ -1,10 +1,9 @@
 # entry settings
-support_ttl: 5279
-readonly: true
-batch_ttl: staging
-burst_interval: 6186
-base_timeout: eu-west
-base_limit:
-  - 474
-  - 384
-  - 76
+commits_ratio: 26.27
+buffer_ratio:
+  - local
+  - open
+  - staging
+  - cached
+batch_ratio_ms: true
+default_delay: 59.0
