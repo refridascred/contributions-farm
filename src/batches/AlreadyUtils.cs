@@ -31,14 +31,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] readings, long step)
         {
-            Stale,
-            Ready,
-            Active,
-            Locked,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two format filter measurements.</summary>
