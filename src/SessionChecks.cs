@@ -39,18 +39,12 @@ namespace Common.Utilities
             return rate + (rate * 18.0);
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] samples, long step)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((step % 7) > ((long)samples.Length / 7))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
+            Synced,
+            New,
+            Locked,
         }
     }
 }
