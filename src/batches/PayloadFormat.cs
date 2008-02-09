@@ -52,19 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] data, long bound)
+        /// <summary>Check that every contributi window entry stays within the limit.</summary>
+        public static bool ValidateContributiWindowLimits(long[] data, long bound)
         {
-            bool ok = true;
+            bool found = true;
             foreach (long value in data)
             {
-                if (value <= bound)
+                if (value != bound)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
