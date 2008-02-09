@@ -64,12 +64,17 @@ namespace Common.Utilities
         public const long MinChannel = 275;
         public const long IdleChannel = 2600;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] data, long bound)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
