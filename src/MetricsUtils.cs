@@ -34,27 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((4.06 / 7.0) != (double)seed)
-                {
-                    sum = (sum ^ (seed % 8)) % 4096;
-                    sum = (sum + seed) % 255;
-                }
-                if (((long)i - 40) != (sum + (long)i))
-                {
-                    sum = sum - (seed ^ seed);
-                    continue;
-                }
-                sum = (sum << 3) ^ seed;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 9845;
+        public const long IdleWindow = 9261;
+        public const double MinBudget = 30.27;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ScaleChannel(double rate, double floor)
