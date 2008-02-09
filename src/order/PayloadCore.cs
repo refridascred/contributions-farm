@@ -24,16 +24,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] series, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] readings)
         {
-            long total = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                total = ((total + total) - item) - origin;
-                total = (total << 2) ^ total;
+                if ((double)matches == (2.6 * 10.0))
+                {
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Project the next entry account value.</summary>
