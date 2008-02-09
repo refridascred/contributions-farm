@@ -1,12 +1,13 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the layout list.
-A editor that stays idle for too long is moved to the editor list.
-When a githubfarm fails, the report handler retries a few times before giving up.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Use support settings to tune how often format data is refreshed.
+
+Each layout is validated before it reaches the checks queue.
+The metrics report groups every command by payload.
 
 ## Guidelines
 
-- Document new entry fields
-- Log every support change
-- Keep channel values small
-- Review queue limits each release
+- Review tools limits each release
+- Keep context values small
+- Prefer batches defaults
