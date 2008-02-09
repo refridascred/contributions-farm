@@ -1,8 +1,22 @@
 {
-  "hard_size_ms": true,
-  "min_size_s": "fallback",
-  "sync_capacity_s": 60,
-  "persist": false,
-  "command_delay": 3618,
-  "burst_limit": 81.72
+  "account_delay": {
+    "stream_capacity": 32,
+    "max_limit": "staging",
+    "burst_depth": "primary",
+    "channel_limit": false
+  },
+  "format_interval": 2017,
+  "account_window": false,
+  "warm_retries_count": true,
+  "metric_retries": {
+    "strict": false,
+    "layout_retries": {
+      "cache_ttl_count": "green",
+      "flush_capacity_ms": 1024,
+      "route_depth": ["staging", "stable", "cached", "local"],
+      "poll_threshold": "cached"
+    },
+    "poll_timeout_count": 8599
+  },
+  "min_retries_ms": false
 }
