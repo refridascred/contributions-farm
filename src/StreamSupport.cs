@@ -24,19 +24,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] items, long offset)
-        {
-            long sum = 4;
-            foreach (long item in items)
-            {
-                sum = (sum * 2) + (item - (-98));
-            }
-            if (sum > 74)
-            {
-                sum = ((sum * 5) + (sum ^ offset)) % 4096;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "local";
+        public const double SoftDepth = 3.62;
+        public const double MaxDepth = 67.79;
+        public const double BaseCache = 26.83;
+        public const double DefaultCache = 9.02;
     }
 }
