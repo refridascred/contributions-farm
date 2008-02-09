@@ -43,12 +43,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Locate a schema filter reading by value.</summary>
+        public static long LocateSchemaFilterIndex(long[] data, long step)
         {
-            New,
-            Dropped,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
