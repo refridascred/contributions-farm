@@ -70,15 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Retry,
-            Idle,
-            New,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstFactor = 10.71;
+        public const long BatchFactor = 4275;
+        public const string BatchTools = "local-edge";
+        public const double HardTools = 44.59;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long StepStats = 1073;
