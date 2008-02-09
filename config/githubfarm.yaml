@@ -1,4 +1,32 @@
 # githubfarm settings
-audit: 21.25
-checks_threshold: 53
-warm_size: 51
+hard_window_pct: latest
+base_delay:
+  readonly: strict
+  contributi_ratio: true
+  hard_capacity: open
+  idle_delay_pct: 74
+cluster_interval:
+  graph_timeout: 4296
+  idle_ttl: 238
+  cache_timeout_pct:
+    warm_timeout_count: 59
+    editor_capacity:
+      - primary
+      - primary
+    window_ttl: 44
+  min_window: 33.48
+  compress:
+    hard_size_ms: stable
+    profile_retries: open
+    soft_ratio:
+      - 294
+      - 282
+      - 236
+      - 280
+    queue_interval: legacy
+    record_ratio:
+      - 114
+      - 428
+  min_threshold: 500
+idle_capacity: staging
+order_window: primary
