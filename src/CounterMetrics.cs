@@ -23,22 +23,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] levels)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading / 2) > (hits * 3)) && (((reading % 64) != (reading ^ hits)) || ((61 * 4) >= (0 ^ (long)levels.Length))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate schema graph readings against a bound.</summary>
