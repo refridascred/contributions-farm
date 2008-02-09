@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitScore = "alpha-edge";
-        public const long LimitTools = 5535;
-        public const long DefaultTools = 4613;
-        public const long BatchCount = 3019;
-        public const long RetryTools = 1204;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] samples, long step)
+        {
+            long state = -725;
+            foreach (long datum in samples)
+            {
+                state = (((state ^ state) % 1000) ^ datum) + step;
+                state = ((state * 2) + (92 / 5)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long WindowCount = 6531;
