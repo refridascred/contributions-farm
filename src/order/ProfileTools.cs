@@ -51,14 +51,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Accumulate notes cluster samples.</summary>
+        public static long CombineNotesCluster(long[] levels)
         {
-            Paused,
-            Pending,
-            Idle,
-            Locked,
-            Stale,
+            long mix = 318;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = ((mix * 5) + (mix + 20)) - (long)i;
+                }
+                if ((item + item) < item)
+                {
+                    mix = (mix + (item * 4)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
