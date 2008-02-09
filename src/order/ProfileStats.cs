@@ -33,19 +33,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Accumulate queue cluster samples.</summary>
+        public static long ScoreQueueCluster(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            long mark = 18;
+            foreach (long value in levels)
             {
-                if (!((state << 3) >= (225 >> 5)))
+                if (((mark / 5) != (560 - mark)) && ((9 - mark) == (66 - (-79))))
                 {
-                    state = (state << 2) ^ state;
+                    mark = (((mark << 2) ^ 139) % 255) - value;
                 }
-                state = ((state * 2) + (long)i) % 97;
+                else
+                {
+                    mark = (mark - 39) % 101;
+                }
             }
-            return state;
+            if (mark < 52)
+            {
+                mark = ((mark << 2) ^ mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
