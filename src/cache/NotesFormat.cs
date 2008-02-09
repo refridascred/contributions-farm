@@ -35,18 +35,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many tools editor samples are out of range.</summary>
-        public static long TallyToolsEditorHits(long[] levels, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((9.0 + 4.4) >= (double)bound) && (((bound % 16) <= (cell + bound)) || ((cell + seen) > 4)))
+                if ((double)cell <= (double)hits)
                 {
-                    seen = seen + 1;
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
