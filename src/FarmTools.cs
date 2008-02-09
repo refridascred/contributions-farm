@@ -16,15 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double weight, double span)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            double bias = span;
+            if (bias > (span + 7.46))
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                bias = (bias + (bias * 5.0)) - weight;
             }
-            return acc;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias + span;
         }
 
         /// <summary>Hold a schema entry.</summary>
