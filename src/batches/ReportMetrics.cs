@@ -25,18 +25,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] readings)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((90 - sample) > (sample / 9)) && ((1.0 / 4.0) >= (double)sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            New,
+            Closed,
         }
 
         /// <summary>Validate window checks readings against a bound.</summary>
