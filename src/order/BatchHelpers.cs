@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] readings, long seed)
         {
-            Idle,
-            Retry,
-            Synced,
-            Queued,
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a buffer stats.</summary>
