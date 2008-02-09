@@ -51,27 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats counter readings.</summary>
-        public static long DigestStatsCounter(long[] readings)
-        {
-            long mark = 34;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mark = ((mark - mark) % 101) + (long)i;
-                }
-                if (((entry + mark) >= 55) || ((entry - mark) != (mark + entry)))
-                {
-                    mark = (mark ^ (entry >> 4)) % 65521;
-                }
-            }
-            if (mark > (-992))
-            {
-                mark = ((mark * 5) + (mark % 7)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 3074;
+        public const string MinTimeout = "alpha-v2";
+        public const long LimitWidth = 430;
+        public const string MaxSpan = "stable-edge";
+        public const long CacheOrder = 341;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] samples)
