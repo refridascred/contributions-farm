@@ -1,14 +1,22 @@
 {
-  "cache_threshold": 26.01,
-  "retry_timeout": [22, 500],
-  "notes_threshold": {
-    "burst_depth_ms": [314, 496],
-    "compress": 5.77,
-    "poll_delay": true,
-    "dry_run": 27.51,
-    "readonly": 75.29
+  "schema_timeout": false,
+  "default_threshold_count": {
+    "readonly": {
+      "poll_threshold": 32.27,
+      "sync_window_s": 2708,
+      "persist": ["fallback", "staging"]
+    },
+    "hard_ttl": {
+      "hard_size_ms": ["stable", "green"],
+      "flush_window_s": true,
+      "enabled": [437, 407, 473, 63],
+      "hard_threshold_s": "strict"
+    },
+    "batch_size_count": 62.75,
+    "compress": "cached"
   },
-  "context_threshold": ["fallback", "local"],
-  "batches_retries": false,
-  "base_interval": "strict"
+  "soft_delay_s": 250,
+  "readonly": "open",
+  "persist": 2366,
+  "enabled": 23
 }
