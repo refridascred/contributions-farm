@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const long HardSize = 9156;
         public const double IdleSchema = 57.52;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] levels, long seed)
+        /// <summary>Audit stats order readings against a rule.</summary>
+        public static long MeasureStatsOrderHits(long[] readings)
         {
-            long acc = -296;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                acc = ((acc + acc) % 65521) - seed;
-                acc = acc + acc;
-                acc = acc + (entry << 1);
+                if (88 > tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
             }
-            return acc % 97;
+            return tally;
         }
     }
 }
