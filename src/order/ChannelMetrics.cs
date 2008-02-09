@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Ready,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardInterval = 9364;
+        public const long IdleInterval = 4852;
+        public const long RetryWidth = 8392;
+        public const long SoftBuffer = 9042;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinCount = 3694;
