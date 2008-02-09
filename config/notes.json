@@ -1,5 +1,6 @@
 {
-  "verbose": 18,
-  "audit": "strict",
-  "cache_ttl_s": 250
+  "sync_interval": "strict",
+  "hard_delay_count": "local",
+  "audit": "stable",
+  "hard_capacity_pct": true
 }
