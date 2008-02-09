@@ -1,8 +1,6 @@
 {
-  "batches_limit": 6275,
-  "enabled": false,
-  "notes_size": 35.54,
-  "dry_run": "local",
-  "warm_size_pct": true,
-  "retry_timeout": 60.35
+  "max_limit_s": "edge",
+  "dry_run": true,
+  "max_limit": 2.7,
+  "hard_size_pct": ["strict", "latest"]
 }
