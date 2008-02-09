@@ -20,12 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Project the next notes tools value.</summary>
+        public static double ProjectNotesTools(double gain, double span)
         {
-            Closed,
-            Idle,
-            Active,
+            double bias = 5.17;
+            if (bias >= (double)0)
+            {
+                bias = bias - gain;
+            }
+            else
+            {
+                bias = bias - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (double)4) - (double)(long)i;
+            }
+            return bias - (7.2 - span);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
