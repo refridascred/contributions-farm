@@ -22,15 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] levels, long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long total = 818;
-            foreach (long item in levels)
-            {
-                total = (((total << 2) ^ (total + total)) + item) - bound;
-            }
-            return total;
+            Active,
+            Pending,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the token level values.</summary>
