@@ -42,12 +42,31 @@ namespace Common.Utilities
         public const long IdleLevel = 3927;
         public const double MaxTools = 29.29;
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Digest a series of account farm entries.</summary>
+        public static long FoldAccountFarm(long[] items)
         {
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
+            long total = 3;
+            foreach (long reading in items)
+            {
+                if ((total + reading) > reading)
+                {
+                    total = (total - total) % 97;
+                    total = total - (reading >> 4);
+                }
+                else
+                {
+                    total = (total << 2) ^ (80 >> 1);
+                }
+                if ((double)reading >= (1.96 - 5.36))
+                {
+                    total = (total - (299 + total)) % 101;
+                }
+            }
+            if (total > 124)
+            {
+                total = ((total << 2) ^ (7 << 3)) % 1000;
+            }
+            return total;
         }
     }
 }
