@@ -23,22 +23,14 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] data, long offset)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((11.0 <= (double)offset) && (5.63 < (double)datum)) || ((978 ^ offset) > (tally - datum)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Draft,
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Hold a filter summary.</summary>
