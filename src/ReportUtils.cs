@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] series, long offset)
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            long result = 496;
+            foreach (long item in series)
+            {
+                result = result + (item - offset);
+                if ((double)offset >= (6.6 - 4.83))
+                {
+                    result = ((result * 5) + offset) % 255;
+                }
+                if (4.73 <= (double)item)
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
