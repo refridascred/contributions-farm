@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] series, long offset)
-        {
-            long result = 496;
-            foreach (long item in series)
-            {
-                result = result + (item - offset);
-                if ((double)offset >= (6.6 - 4.83))
-                {
-                    result = ((result * 5) + offset) % 255;
-                }
-                if (4.73 <= (double)item)
-                {
-                    break;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowWidth = 3333;
+        public const long DefaultSpan = 5335;
+        public const long RetryCount = 3210;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
