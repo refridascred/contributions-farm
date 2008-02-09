@@ -1,31 +1,8 @@
 # support settings
-default_retries_ms: strict
-commits_interval:
-  - 163
-  - 478
-  - 411
-  - 457
-batches_window: 37.22
-default_timeout_ms: 9893
-contributi_size: stable
-persist:
-  githubfarm_depth: true
-  cache_limit_count:
-    - staging
-    - primary
-    - fallback
-    - staging
-  idle_timeout_count: 250
-  warm_delay_s: strict
-  poll_timeout_count: 44
-  warm_limit_pct:
-    strict: legacy
-    audit:
-      - 78
-      - 398
-      - 475
-    readonly: cached
-    min_capacity_pct:
-      - stable
-      - green
-    warm_delay_count: 1.71
+flush_delay_count:
+  - 253
+  - 96
+  - 253
+readonly: 1024
+batch_timeout: latest
+flush_ttl: true
