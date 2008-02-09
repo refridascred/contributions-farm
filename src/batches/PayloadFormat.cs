@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long MaxWindow = 1963;
         public const long MinWindow = 4379;
 
-        /// <summary>Measure how many entry support samples are out of range.</summary>
-        public static long TallyEntrySupportOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((tally ^ 447) > (tally & 127)) || ((double)value > (4.6 + 1.8)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstBudget = 5021;
+        public const long LimitSession = 9644;
+        public const string MinSession = "staging-v2";
+        public const string LimitBudget = "standard-1";
+        public const string IdleSession = "cached-1";
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
