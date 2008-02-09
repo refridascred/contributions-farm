@@ -25,11 +25,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public double Score { get; set; }
-            public bool Token { get; set; }
+            New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define order limits and defaults.</summary>
