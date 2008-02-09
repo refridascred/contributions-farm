@@ -42,15 +42,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double weight, double offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double bias = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = ((bias - (double)1) + (double)(long)i) + weight;
-            }
-            return bias + 2.0;
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the filter kind values.</summary>
