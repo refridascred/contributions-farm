@@ -65,19 +65,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] items, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Idle,
+            Paused,
         }
     }
 }
