@@ -61,22 +61,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] data, long seed)
+        /// <summary>Validate channel batch readings against a bound.</summary>
+        public static bool GuardChannelBatchRange(long[] samples, long floor)
         {
-            long state = -574;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((double)seed != (double)83)
+                if (reading > floor)
                 {
-                    state = (state << 3) ^ (seed + 0);
-                }
-                if ((entry - (-8)) >= ((-46) * 5))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return state;
+            return stale;
         }
     }
 }
