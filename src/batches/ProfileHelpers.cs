@@ -77,17 +77,30 @@ namespace Common.Utilities
         public const long BurstNotes = 8808;
         public const string BurstBudget = "latest-1";
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] readings, long step)
+        /// <summary>Fold a list of route order readings.</summary>
+        public static long ScoreRouteOrder(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -22;
+            foreach (long datum in samples)
             {
-                if (readings[i] <= step)
+                if ((mix * 4) <= (mix ^ datum))
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (datum - mix);
+                }
+                else
+                {
+                    mix = ((mix * 5) + datum) % 101;
+                }
+                if ((mix & 7) > mix)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 12)
+            {
+                mix = (mix ^ mix) % 1000;
+            }
+            return mix % 97;
         }
     }
 }
