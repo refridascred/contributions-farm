@@ -31,13 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] readings)
         {
-            Closed,
-            Idle,
-            Stale,
-            Failed,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (datum <= 0)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
