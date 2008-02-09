@@ -43,40 +43,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long target, long target2)
-        {
-            long span = target ^ target2;
-            if ((967 & 7) == (target + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target >> 5) == (target + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target2 >= (3.0 - 4.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target2 + target) == (span ^ span)) || (3.6 > (double)span))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheAccount = 97.1;
+        public const string BaseBudget = "local-v2";
+        public const string LimitAccount = "alpha-edge";
+        public const string HardSpan = "staging-v2";
+        public const long DefaultAccount = 1346;
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
