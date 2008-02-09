@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route schema entries that pass the check.</summary>
-        public static long TallyRouteSchemaMatches(long[] samples)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)hits < (5.14 + 9.5))
-                {
-                    hits = (hits + 3) - cell;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Project the next githubfarm value.</summary>
