@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long offset)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = (((carry << 3) ^ (carry << 1)) % 101) - (long)i2;
+                }
+                if ((double)carry >= (17.0 - 4.0))
+                {
+                    carry = ((carry * 3) + (offset + carry)) % 97;
+                }
+                else
+                {
+                    carry = carry ^ (carry / 4);
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
