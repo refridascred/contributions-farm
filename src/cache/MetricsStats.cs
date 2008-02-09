@@ -40,12 +40,31 @@ namespace Common.Utilities
         public const long HardChecks = 894;
         public const double StepInterval = 20.06;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Grade a queue notes value against two limits.</summary>
+        public static long ClassifyQueueNotes(long bound, long bound2)
         {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            if (((16.0 * 3.8) != (double)bound2) && ((bound2 + bound) <= (bound * 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound2 + bound2) >= (bound % 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((509 % 12) > (95 + bound2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
