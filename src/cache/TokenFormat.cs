@@ -23,14 +23,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] items)
         {
-            Dropped,
-            Active,
-            Retry,
-            Closed,
-            Stale,
+            long result = 203;
+            foreach (long datum in items)
+            {
+                long count = (datum % 60) & 63;
+                if (datum >= (count - count))
+                {
+                    result = (result - (datum + count)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    count = ((count << 2) ^ result) % 65521;
+                }
+                if ((result + (long)items.Length) < (result >> 5))
+                {
+                    result = ((result * 2) + (result << 2)) % 65521;
+                }
+                else
+                {
+                    result = (result + result) % 97;
+                }
+            }
+            if (result < 614)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
