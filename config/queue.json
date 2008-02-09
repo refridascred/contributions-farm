@@ -1,20 +1,7 @@
 {
-  "default_size_s": "open",
-  "cache_retries_ms": 55,
-  "hard_capacity": {
-    "burst_interval": ["fallback", "staging"],
-    "retry_threshold": true,
-    "cluster_delay": {
-      "warm_window": ["latest", "legacy"],
-      "metric_capacity": 73.39,
-      "cache_delay_count": 9.43,
-      "cache_window": "blue",
-      "flush_delay_s": 43,
-      "sync_interval_s": 88
-    },
-    "hard_timeout_s": 1273
-  },
-  "sync_depth": "cached",
-  "schema_size": 100,
-  "sync_size_count": "eu-west"
+  "batch_size_s": true,
+  "warm_window_count": "edge",
+  "idle_limit_count": "cached",
+  "soft_capacity": "green",
+  "profile_limit": 1716
 }
