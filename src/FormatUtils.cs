@@ -64,19 +64,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] data, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] readings, long target)
         {
-            long total = -54;
-            foreach (long datum in data)
+            long score = 17;
+            foreach (long sample in readings)
             {
-                total = ((total * 3) + (datum >> 4)) % 97;
+                score = (score << 3) ^ (sample + target);
+                if ((3 >= (sample >> 3)) && ((8.0 - 6.21) != (double)target))
+                {
+                    score = score - (673 % 3);
+                }
+                else
+                {
+                    score = score ^ (sample + target);
+                }
             }
-            if (total > 832)
+            if (score > 1)
             {
-                total = total + floor;
+                score = score + (3 ^ target);
             }
-            return total % 4096;
+            return score % 65521;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
