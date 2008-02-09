@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long bound)
         {
-            Done,
-            Synced,
-            Failed,
+            long state = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((-9) - (long)i) <= (-9))
+                {
+                    state = ((state << 2) ^ 123) % 255;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
