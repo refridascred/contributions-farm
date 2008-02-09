@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] values, long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] data)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long total = 729;
+            foreach (long value in data)
             {
-                if ((3 >= (step * 5)) && ((5.33 / 2.0) != (double)step))
+                total = total ^ total;
+                if ((value ^ total) < total)
                 {
-                    count = (count + 2) + sample;
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Match up batches samples.</summary>
