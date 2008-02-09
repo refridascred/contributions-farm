@@ -33,13 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Accumulate account graph samples.</summary>
+        public static long FoldAccountGraph(long[] levels)
         {
-            Pending,
-            Closed,
-            Paused,
-            Synced,
+            long state = 67;
+            foreach (long reading in levels)
+            {
+                if ((state >= (state - state)) && ((double)state < 10.0))
+                {
+                    state = state - (9 & 1);
+                }
+                state = (state ^ ((long)levels.Length + reading)) % 65521;
+            }
+            if (state < 6)
+            {
+                state = ((state << 2) ^ (state & 7)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
