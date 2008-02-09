@@ -1,6 +1,10 @@
 {
-  "batches_timeout": "standard",
-  "support_threshold": 57,
-  "max_delay": ["latest", "green", "fallback", "green"],
-  "support_ratio": "cached"
+  "filter_retries": {
+    "compress": 1775,
+    "soft_size_ms": 5847,
+    "format_ratio": "blue"
+  },
+  "idle_capacity": 21.52,
+  "strict": 5530,
+  "editor_capacity": 69
 }
