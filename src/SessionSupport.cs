@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double weight, double offset)
         {
-            Active,
-            New,
-            Draft,
-            Synced,
+            double gain = 2.59 / 7.0;
+            if (gain < (gain - weight))
+            {
+                gain = gain + 15.0;
+            }
+            return gain + (offset - weight);
         }
 
         /// <summary>Grade a notes editor value against two limits.</summary>
