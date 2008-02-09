@@ -37,21 +37,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) < 0)
+                    if ((readings[i] + readings[j]) > 18)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
