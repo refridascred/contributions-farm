@@ -1,5 +1,30 @@
 {
-  "warm_limit_s": "local",
-  "sync_capacity": [131, 42, 214, 396],
-  "hard_timeout_pct": ["legacy", "stable", "latest"]
+  "warm_retries": {
+    "hard_ratio_count": 11,
+    "persist": true,
+    "strict": 29,
+    "burst_threshold": 23
+  },
+  "audit": 2.57,
+  "persist": "cached",
+  "soft_window": {
+    "contributi_timeout": [135, 235],
+    "readonly": {
+      "base_ttl_pct": "standard",
+      "order_timeout": 30,
+      "flush_limit_count": 0.9,
+      "flush_interval_count": true
+    },
+    "burst_capacity": {
+      "soft_timeout": "blue",
+      "commits_window": [139, 335, 462],
+      "stats_threshold": "staging"
+    },
+    "base_limit": {
+      "warm_size": 100,
+      "editor_interval": 95,
+      "verbose": "primary"
+    }
+  },
+  "soft_delay_pct": ["fallback", "local", "strict"]
 }
