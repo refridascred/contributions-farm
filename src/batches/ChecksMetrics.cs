@@ -60,18 +60,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 4770;
+        public const long BatchBudget = 7091;
+        public const long RetrySupport = 2095;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long BucketSession(long bound, long seed)
