@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            Dropped,
-            Synced,
-            Active,
-            Stale,
-            Locked,
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
