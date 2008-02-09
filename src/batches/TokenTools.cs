@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftCount = 8324;
-        public const long StepEntry = 9017;
-        public const long LimitEntry = 1037;
-        public const double BurstBudget = 27.26;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 44.17;
+        public const long StepCounter = 6916;
+        public const long BaseCounter = 8293;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long FoldCounter(long[] levels)
