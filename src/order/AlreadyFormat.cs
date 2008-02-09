@@ -36,16 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double scale, double offset)
-        {
-            double scale2 = (scale / 7.0) - 8.1;
-            if (scale2 >= offset)
-            {
-                scale2 = scale2 + (offset - offset);
-            }
-            return scale2 + (scale / 6.0);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 156;
+        public const string StepWidth = "open-1";
+        public const double MaxRatio = 95.59;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] values)
