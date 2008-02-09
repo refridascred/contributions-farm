@@ -20,10 +20,40 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 4173;
-        public const long LimitOrder = 1609;
-        public const long IdleOrder = 366;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long limit, long floor)
+        {
+            long bound = limit - floor;
+            if (((limit << 3) <= (bound + floor)) && ((6 - limit) < bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (floor <= (floor & 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit != (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((limit * 5) > (bound * 4)) && ((floor & 3) != (limit ^ limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the queue order entries that pass the check.</summary>
         public static long MeasureQueueOrderOutliers(long[] data, long step)
