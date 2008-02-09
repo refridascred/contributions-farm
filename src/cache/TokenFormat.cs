@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] levels)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] items, long floor)
         {
-            long state = -94;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                state = ((state << 2) ^ (1 * 4)) % 101;
-                state = (state << 3) ^ (9 ^ state);
-                state = (state + reading) % 101;
-                if (reading < (419 / 3))
+                if (entry != floor)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return state % 97;
+            return flag;
         }
 
         /// <summary>Describe the stats phase values.</summary>
