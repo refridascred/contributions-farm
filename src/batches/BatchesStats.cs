@@ -39,13 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] items, long target)
         {
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((matches >> 2) <= (matches << 1))
+                {
+                    matches = ((matches + 1) ^ reading) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
