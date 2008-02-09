@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] data)
         {
-            Synced,
-            Dropped,
-            Done,
-            Ready,
-            New,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading % 12) >= (reading * 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
