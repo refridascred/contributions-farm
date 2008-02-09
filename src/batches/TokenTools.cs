@@ -56,18 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format route readings against a rule.</summary>
-        public static long MeasureFormatRouteMatches(long[] items, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] values)
         {
-            long count = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (((count + count) > count) && (((seed * 4) < (value << 1)) && ((count - count) != (count - value))))
+                if ((value % 60) < (matches - value))
                 {
-                    count = count + 3;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
