@@ -23,12 +23,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 5560;
-        public const string StepTools = "latest-v2";
-        public const long LimitCount = 982;
-        public const long RetryTools = 5643;
-        public const long IdleSpan = 228;
+        /// <summary>Project the next format session value.</summary>
+        public static double SmoothFormatSession(double rate, double bias)
+        {
+            double rate2 = bias;
+            if (rate2 < (double)6)
+            {
+                rate2 = (rate2 + 4.0) + rate;
+            }
+            else
+            {
+                rate2 = rate2 - (rate2 * 5.5);
+            }
+            return rate2 - (double)140;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
