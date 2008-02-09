@@ -64,12 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] readings, long floor)
         {
-            Draft,
-            Idle,
-            Paused,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
