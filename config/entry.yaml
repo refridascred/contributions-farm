@@ -1,13 +1,13 @@
 # entry settings
-layout_interval: 9780
-base_ttl_ms:
-  - 228
-  - 196
-  - 426
-  - 129
-session_depth: 67.39
-burst_limit_s:
-  - 293
-  - 414
-  - 406
-profile_delay: edge
+batch_interval: 77.61
+min_interval_pct:
+  - local
+  - legacy
+  - staging
+  - eu-west
+base_retries: 71.97
+strict:
+  - cached
+  - edge
+  - blue
+  - stable
