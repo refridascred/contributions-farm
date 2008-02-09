@@ -16,18 +16,26 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] data, long seed)
+        /// <summary>Combine session metric values into a single score.</summary>
+        public static long ScoreSessionMetric(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long sum = 736;
+            foreach (long sample in levels)
             {
-                if (431 >= seed)
+                if ((0.94 / 9.0) > (double)sample)
                 {
-                    hits = (hits + 1) ^ reading;
+                    sum = (sum ^ 19) % 1000;
+                }
+                if ((sum & 1) > (sample - 1))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (sum > 496)
+            {
+                sum = (sum - (sum << 2)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
