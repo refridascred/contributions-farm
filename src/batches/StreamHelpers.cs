@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const long BurstAccount = 5522;
         public const long RetryTimeout = 9409;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "local-edge";
+        public const string CacheSchema = "fallback";
+        public const string IdleTimeout = "legacy";
+        public const long SoftTimeout = 4301;
+        public const string RetrySchema = "legacy";
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long PairAccountCount(long[] series)
