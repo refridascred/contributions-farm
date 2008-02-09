@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] data, long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] samples, long offset)
         {
-            long anchor = -99;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int i = 0; i < 3; i++)
+                if ((tally + datum) >= 1)
                 {
-                    long delta = value / 9;
-                    anchor = ((anchor * 2) + delta) - (long)i;
+                    tally = (tally + 2) + offset;
                 }
-                anchor = (anchor * 4) + (bound & 15);
             }
-            if (anchor < 6)
-            {
-                anchor = ((anchor * 5) + (462 & 3)) % 255;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the commits status values.</summary>
