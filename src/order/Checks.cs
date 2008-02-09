@@ -27,12 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Paused,
-            Locked,
-            Closed,
+            Synced,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define report limits and defaults.</summary>
