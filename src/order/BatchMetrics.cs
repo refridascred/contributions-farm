@@ -65,13 +65,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
+            Retry,
+            Locked,
+            Queued,
+            New,
+            Done,
         }
     }
 }
