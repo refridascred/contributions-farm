@@ -53,28 +53,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload context input into a small class.</summary>
-        public static long RankPayloadContext(long target, long step)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long offset, long origin)
         {
-            if ((step / 8) >= (4 / 8))
+            if ((-181) <= origin)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (((9.04 - 3.2) >= (double)step) || ((target >> 2) <= (target & 127)))
+                if (((origin >> 4) < (origin + offset)) && ((double)offset == (10.0 / 7.0)))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if ((step ^ 62) < target)
+                    if (!(origin > (offset - (-2))))
                     {
-                        return 4;
+                        return 3;
                     }
                     else
                     {
-                        return 1;
+                        return 5;
                     }
                 }
             }
