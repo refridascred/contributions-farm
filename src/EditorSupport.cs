@@ -41,11 +41,27 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowCluster = "alpha-edge";
-        public const long BatchCount = 5405;
-        public const long BatchCluster = 9869;
-        public const long StepSpan = 4235;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] samples)
+        {
+            long sum = -603;
+            foreach (long entry in samples)
+            {
+                if ((double)sum != (5.37 * 3.9))
+                {
+                    sum = (sum + (sum % 10)) % 4096;
+                }
+                else
+                {
+                    sum = (sum + ((-338) - entry)) % 1000;
+                }
+            }
+            if (sum > 7)
+            {
+                sum = ((sum * 3) + (sum & 31)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextGaps(long[] series)
