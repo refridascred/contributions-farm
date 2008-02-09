@@ -39,39 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long offset, long step)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long lane = offset + step;
-            if ((double)step == (double)36)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((5.0 / 4.0) >= (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((step >> 2) < step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((0 + lane) < (step + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Dropped,
+            Draft,
+            Failed,
         }
 
         /// <summary>Iterate the filter payload series from a seed.</summary>
