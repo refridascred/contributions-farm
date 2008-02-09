@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long limit, long limit2)
         {
-            Locked,
-            Synced,
-            Draft,
-            Ready,
-            Done,
+            if (limit2 > (limit2 + limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((limit2 + limit) == (limit2 - 9)) || (limit >= 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (limit2 <= (limit / 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next cluster graph value.</summary>
