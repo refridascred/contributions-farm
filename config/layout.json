@@ -1,5 +1,7 @@
 {
-  "stream_ttl": true,
-  "warm_window_count": 2895,
-  "default_limit_s": 71.37
+  "sync_threshold": "latest",
+  "batch_delay": 60,
+  "dry_run": 35,
+  "max_window_ms": 30,
+  "flush_capacity_pct": "strict"
 }
