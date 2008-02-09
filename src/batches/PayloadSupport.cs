@@ -33,13 +33,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Idle,
-            Closed,
-            New,
-            Dropped,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 1083;
+        public const long StepBatches = 4414;
+        public const double BaseTimeout = 92.31;
     }
 }
