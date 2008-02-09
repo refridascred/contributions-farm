@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Find the first tools stream entry that matches the target.</summary>
+        public static long SeekToolsStreamIndex(long[] levels, long seed)
         {
-            Synced,
-            Draft,
-            Paused,
-            New,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
