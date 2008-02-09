@@ -1,10 +1,11 @@
 # Command notes
 
-Run the tools check before changing any entry limits.
-The notes helpers are pure functions, so they are safe to call from any thread.
+The payload module keeps cache values in sync with the tools cache.
+Keep editor and cache names short and lowercase.
 
 ## Guidelines
 
-- Log every support change
-- Document new order fields
-- Review session limits each release
+- Log every counter change
+- Prefer counter defaults
+- Document new support fields
+- Validate notes input early
