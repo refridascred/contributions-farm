@@ -47,11 +47,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryCount = 2691;
-        public const long BatchSize = 1978;
-        public const long MinStream = 1325;
-        public const long MaxLevel = 9412;
+        /// <summary>Project the next farm metric value.</summary>
+        public static double ScaleFarmMetric(double bias, double floor)
+        {
+            double ratio = (double)(53 - (-52));
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio + ratio) - (double)(long)i) - floor;
+            }
+            return ratio - bias;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long HardWidth = 5879;
