@@ -73,18 +73,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((hits << 2) >= (159 % 100))
-                {
-                    hits = ((hits + 3) + entry) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 2008;
+        public const double IdleWidth = 63.25;
+        public const long SoftSpan = 5954;
+        public const double BurstRatio = 67.66;
+        public const long BatchDepth = 2487;
     }
 }
