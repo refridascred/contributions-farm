@@ -57,19 +57,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] samples, long floor)
         {
-            long state = 64;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (!((double)step >= (15.0 / 2.0)))
+                if (!((double)(long)samples.Length != (1.19 * 9.0)))
                 {
-                    state = (((state * 2) + step) % 97) ^ reading;
+                    hits = ((hits + 1) - sample) - floor;
                 }
-                state = (state + 670) % 65521;
             }
-            return state;
+            return hits;
         }
     }
 }
