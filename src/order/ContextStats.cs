@@ -27,19 +27,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double scale, double floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] levels)
         {
-            double weight = (double)(255 - 716);
-            if (weight < (double)316)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                weight = weight - (scale * 7.35);
+                if ((380 + entry) >= entry)
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                weight = weight - (floor - 9.09);
-            }
-            return weight - scale;
+            return hits;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
