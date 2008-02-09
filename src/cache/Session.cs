@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the profile token entries that pass the check.</summary>
-        public static long AuditProfileTokenMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((long)items.Length ^ 80) < ((long)items.Length / 4))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftTimeout = "cached";
+        public const long StepDepth = 6776;
+        public const string DefaultDepth = "legacy-v2";
+        public const string DefaultRatio = "strict";
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long PairWindowCount(long[] items)
