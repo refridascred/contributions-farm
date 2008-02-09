@@ -1,8 +1,7 @@
-id,ratio,weight
-1,717,primary
-2,33.39,246
-3,793,147
-4,861,56.68
-5,primary,14.4
-6,41.56,stable
-7,62.65,16.47
+id,rank,weight,active
+1,555,858,67.31
+2,697,53.77,146
+3,local,53.55,69
+4,748,legacy,green
+5,764,856,staging
+6,eu-west,70.66,122
