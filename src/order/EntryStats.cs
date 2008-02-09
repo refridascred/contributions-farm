@@ -62,10 +62,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstCount = 2602;
-        public const long LimitInterval = 4636;
-        public const string CacheSpan = "open-edge";
-        public const string WindowMetric = "legacy";
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
