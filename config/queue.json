@@ -1,8 +1,7 @@
 {
-  "base_ttl": "fallback",
-  "soft_retries_count": 74,
-  "order_limit": "primary",
-  "retry_ratio": false,
-  "support_interval": 82.03,
-  "hard_delay_s": "staging"
+  "batch_ratio": "open",
+  "layout_retries": "latest",
+  "burst_timeout": "strict",
+  "burst_threshold": true,
+  "sync_depth_count": 664
 }
