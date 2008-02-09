@@ -1,4 +1,5 @@
 # support settings
-retry_size: fallback
-sync_interval: 97.3
-cache_window_ms: false
+dry_run: staging
+flush_capacity_s: green
+hard_delay_ms: false
+retry_interval: false
