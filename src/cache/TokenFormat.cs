@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit account counter readings against a rule.</summary>
+        public static long MeasureAccountCounterOutliers(long[] samples)
         {
-            Failed,
-            Active,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches ^ reading) >= (reading & 1))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
