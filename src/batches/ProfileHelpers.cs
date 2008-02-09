@@ -19,21 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] items)
+        /// <summary>Accumulate metrics layout samples.</summary>
+        public static long TallyMetricsLayout(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -88;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total + entry) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Match up command report samples.</summary>
