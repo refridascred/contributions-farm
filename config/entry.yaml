@@ -1,13 +1,4 @@
 # entry settings
-base_delay:
-  min_depth: false
-  verbose: 3490
-  readonly: 60
-account_size: blue
-hard_capacity_count: 89.45
-warm_threshold_s: fallback
-poll_delay:
-  - 6
-  - 192
-  - 283
-poll_delay_ms: true
+idle_timeout: false
+readonly: 250
+min_capacity: 70
