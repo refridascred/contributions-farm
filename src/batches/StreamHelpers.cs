@@ -69,10 +69,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstWidth = "stable-1";
-        public const long LimitDepth = 4589;
-        public const string MaxCommand = "legacy";
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                long bound = ((long)i / 6) / 5;
+                if ((origin - (long)i) <= bound)
+                {
+                    score = ((score * 5) + (bound * 3)) % 4096;
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
