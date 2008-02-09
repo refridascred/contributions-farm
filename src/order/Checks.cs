@@ -13,23 +13,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] samples, long step)
+        /// <summary>Audit farm counter readings against a rule.</summary>
+        public static long AuditFarmCounterGaps(long[] series, long floor)
         {
-            long acc = 956;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                acc = acc - (datum & 127);
-                if ((1.0 * 0.5) == (double)step)
+                if (!(((double)reading != (3.0 * 8.6)) || (floor > 48)))
                 {
-                    acc = (acc * 5) + (step * 5);
+                    hits = hits + 1;
                 }
             }
-            if (acc < 200)
-            {
-                acc = acc - (step + acc);
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Describe the cluster state values.</summary>
