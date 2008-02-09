@@ -17,11 +17,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitToken = "stable-edge";
-        public const double StepToken = 45.99;
-        public const long SoftCount = 7541;
-        public const long DefaultTimeout = 7843;
-        public const string CacheToken = "local-edge";
+        /// <summary>Audit filter already readings against a rule.</summary>
+        public static long TallyFilterAlreadyOutliers(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value - value) <= (step + (long)data.Length))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
