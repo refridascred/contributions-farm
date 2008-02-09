@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long MaxWindow = 1963;
         public const long MinWindow = 4379;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] levels)
+        /// <summary>Measure how many entry support samples are out of range.</summary>
+        public static long TallyEntrySupportOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (((77 + cell) > (4 >> 5)) || ((double)cell < (15.0 + 0.3)))
+                if (((tally ^ 447) > (tally & 127)) || ((double)value > (4.6 + 1.8)))
                 {
-                    count = count + 3;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a contributi entry.</summary>
