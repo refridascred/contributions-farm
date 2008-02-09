@@ -39,18 +39,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many cluster counter samples are out of range.</summary>
-        public static long MeasureClusterCounterHits(long[] data)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry - entry) > (300 ^ entry))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
