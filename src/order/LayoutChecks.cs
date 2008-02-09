@@ -58,19 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] items, long bound)
+        /// <summary>Fold a list of queue layout readings.</summary>
+        public static long ScoreQueueLayout(long[] data, long seed)
         {
-            long anchor = 7;
-            foreach (long value in items)
+            long result = 8;
+            foreach (long item in data)
             {
-                anchor = (anchor - anchor) ^ value;
+                result = ((result ^ (result * 3)) - item) - seed;
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor << 3) ^ bound;
-            }
-            return anchor % 65521;
+            return result % 1000;
         }
 
         /// <summary>Derive the next checks tools value from a seed.</summary>
