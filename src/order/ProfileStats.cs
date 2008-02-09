@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long seed)
         {
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mark = (mark - (seed & 1)) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Count cluster account pairs that satisfy a relation.</summary>
