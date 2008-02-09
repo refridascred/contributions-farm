@@ -31,19 +31,21 @@ namespace Common.Utilities
         public const long BatchRecord = 6280;
         public const long BurstFactor = 9756;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] series)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((offset / 2) != (carry + (long)i)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = carry - (offset & 3);
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return count;
         }
     }
 }
