@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count report counter pairs that satisfy a relation.</summary>
-        public static long PairReportCounterCount(long[] data)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
