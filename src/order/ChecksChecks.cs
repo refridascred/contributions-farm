@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] samples, long seed)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long floor)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Describe the format phase values.</summary>
