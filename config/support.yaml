@@ -1,6 +1,7 @@
 # support settings
-retry_threshold_ms: 100
-filter_size: false
-base_ratio: 45.66
-batch_interval_s: 8.2
-batch_capacity_s: 3559
+max_delay_s: false
+compress: false
+cache_ttl_pct: 31
+metric_ratio: 64.94
+schema_size: 4503
+metrics_ratio: 81
