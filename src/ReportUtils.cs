@@ -65,21 +65,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Stale,
+            Dropped,
+            Idle,
         }
     }
 }
