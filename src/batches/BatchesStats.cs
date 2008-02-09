@@ -31,21 +31,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] series)
+        /// <summary>Combine metric graph values into a single score.</summary>
+        public static long ScoreMetricGraph(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 73;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((score & 31) > (score % 12))
                 {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score - (seed ^ seed)) % 65521) + item;
                 }
             }
-            return hits;
+            if (score < 49)
+            {
+                score = score + (177 * 4);
+            }
+            return score % 65521;
         }
     }
 }
