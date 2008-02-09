@@ -30,18 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 7013;
+        public const long MinFormat = 124;
+        public const long CacheBudget = 647;
+        public const double SoftFormat = 93.79;
+        public const long LimitInterval = 9462;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long FindLayoutIndex(long[] series, long bound)
