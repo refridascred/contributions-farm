@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double scale, double floor)
-        {
-            double mean = floor / 3.0;
-            if (mean <= (scale * 9.9))
-            {
-                mean = mean - (double)2;
-            }
-            else
-            {
-                mean = mean - (floor - floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (scale - scale)) + (double)(long)i;
-            }
-            return mean - scale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstSize = "stable";
+        public const string SoftProfile = "latest-v2";
+        public const long RetryProfile = 2077;
+        public const string WindowProfile = "standard-v2";
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
