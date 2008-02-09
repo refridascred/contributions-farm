@@ -40,12 +40,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Fold a list of queue readings.</summary>
