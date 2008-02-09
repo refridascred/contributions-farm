@@ -35,18 +35,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] levels)
+        /// <summary>Locate a metric buffer reading by value.</summary>
+        public static long LocateMetricBufferIndex(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((380 + entry) >= entry)
+                if (items[i] == offset)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
