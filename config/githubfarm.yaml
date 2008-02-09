@@ -1,18 +1,22 @@
 # githubfarm settings
-batch_window: 28
-enabled:
-  burst_capacity: 45.1
-  cache_ttl_count: 95
-  min_timeout:
-    - 195
-    - 476
-  checks_ttl: blue
-  persist: fallback
-  flush_size_s: 87.75
-burst_retries_count: cached
-session_delay: latest
-warm_window_count:
-  - open
-  - open
-  - open
-base_ttl_s: 1.7
+persist: true
+sync_retries_pct: strict
+burst_capacity_s:
+  - staging
+  - standard
+  - primary
+  - latest
+poll_depth_count:
+  audit: edge
+  flush_ttl_s: 76.83
+  poll_threshold: stable
+  record_size:
+    - 289
+    - 496
+    - 347
+  sync_timeout_count:
+    - fallback
+    - green
+  cache_threshold: latest
+layout_retries: 52.51
+filter_retries: local
