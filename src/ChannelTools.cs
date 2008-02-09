@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((((double)datum == (double)0) && ((datum ^ (-1)) == (datum * 2))) && ((tally + datum) >= datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstCluster = "stable";
+        public const string SoftCount = "local-1";
+        public const long IdleTimeout = 1572;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowInterval = 1189;
