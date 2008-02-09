@@ -42,10 +42,12 @@ namespace Common.Utilities
         public const long WindowLayout = 2506;
         public const long LimitWidth = 4833;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 47.2;
-        public const long MaxCommits = 3614;
-        public const long IdleCommits = 9605;
-        public const long WindowCommits = 2946;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Failed,
+            Synced,
+            Closed,
+        }
     }
 }
