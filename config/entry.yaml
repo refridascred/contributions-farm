@@ -1,13 +1,4 @@
 # entry settings
-enabled:
-  - latest
-  - staging
-  - blue
-  - standard
-checks_timeout: 26.23
-batch_timeout_pct:
-  - 164
-  - 239
-poll_interval_pct: 3131
-support_capacity: open
-verbose: 8117
+base_timeout_s: 6
+persist: blue
+base_window_pct: local
