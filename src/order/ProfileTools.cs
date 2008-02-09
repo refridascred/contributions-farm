@@ -20,25 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long floor, long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] samples, long bound)
         {
-            long delta = floor + limit;
-            if (3.7 < (double)limit)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((11.0 - 1.9) <= (double)delta)
+                if (item > bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
