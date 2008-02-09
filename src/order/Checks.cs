@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitRatio = "strict";
-        public const string DefaultFarm = "latest-1";
-        public const long HardDepth = 4838;
-        public const double BaseLevel = 43.73;
-        public const long BaseDepth = 6745;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxSpan = 81.91;
+        public const string RetryBatches = "open-1";
+        public const string MaxDepth = "open-edge";
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double ScaleAlready(double gain, double floor)
