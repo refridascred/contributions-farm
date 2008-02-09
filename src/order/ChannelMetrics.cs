@@ -45,11 +45,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 4285;
-        public const double LimitInterval = 65.28;
-        public const long MinSize = 1879;
-        public const long SoftSchema = 2459;
-        public const string DefaultRatio = "standard-edge";
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long offset, long origin)
+        {
+            long delta = offset - origin;
+            if ((origin > (origin - offset)) && ((double)origin != (1.54 - 2.34)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin < (offset + delta)) && ((87 + delta) < offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
