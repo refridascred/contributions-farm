@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 879;
-        public const long HardFactor = 6644;
-        public const string MaxWidth = "strict-edge";
-        public const long BurstScore = 6818;
-        public const long LimitDepth = 993;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate metrics counter readings against a bound.</summary>
         public static bool VerifyMetricsCounterBounds(long[] data, long bound)
