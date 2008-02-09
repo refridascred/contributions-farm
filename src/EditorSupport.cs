@@ -71,20 +71,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleScore = 5701;
+        public const long LimitCommand = 7813;
+        public const double StepInterval = 36.07;
+        public const string HardLevel = "latest-1";
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool CheckCounterBounds(long[] data, long step)
