@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Active,
+            Paused,
+            New,
         }
 
         /// <summary>Project the next context value.</summary>
