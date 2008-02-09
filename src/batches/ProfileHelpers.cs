@@ -36,38 +36,15 @@ namespace Common.Utilities
             return gain - (8.1 + gain);
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long limit, long floor)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long seed)
         {
-            if (((floor * 2) == (3 << 2)) && ((floor >> 3) < (limit / 9)))
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((971 / 6) <= (limit + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.9 * 0.79) <= (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit >> 2) == (9 ^ floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
