@@ -14,22 +14,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] items, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long anchor = 1;
+            foreach (long cell in samples)
             {
-                if ((sample ^ seed) >= (seed + sample))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor + (92 & 3)) % 4096) + cell;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
