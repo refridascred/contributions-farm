@@ -91,19 +91,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate editor profile readings against a bound.</summary>
-        public static bool VerifyEditorProfileBounds(long[] readings, long bound)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Offset { get; set; }
+            public bool Limit { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
