@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] levels, long floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long mix = 411;
-            foreach (long cell in levels)
-            {
-                if ((mix / 8) < mix)
-                {
-                    mix = ((mix - (floor ^ floor)) % 255) ^ cell;
-                }
-            }
-            if (mix < 13)
-            {
-                mix = (mix - (mix / 8)) % 1000;
-            }
-            return mix;
+            Done,
+            Retry,
+            New,
+            Stale,
+            Ready,
         }
 
         /// <summary>Rank commits graph input into a small class.</summary>
