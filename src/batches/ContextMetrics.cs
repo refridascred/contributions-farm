@@ -50,14 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] samples)
         {
-            Stale,
-            Idle,
-            Done,
-            Draft,
-            Ready,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!!((datum >> 1) > (datum / 5)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
