@@ -1,14 +1,12 @@
 # githubfarm settings
-idle_interval:
-  - latest
-  - edge
-  - eu-west
-  - strict
-default_ratio_ms: eu-west
-cache_ratio: local
-idle_limit_ms:
-  buffer_interval: true
-  retry_capacity_pct: local
-  warm_window_s: 82
-  enabled: standard
-sync_window_ms: 8.95
+hard_size_pct: staging
+poll_timeout_pct:
+  poll_capacity_count: 58.83
+  counter_ratio: standard
+  burst_size: 8516
+  retry_depth_pct:
+    - local
+    - fallback
+  flush_capacity: true
+default_ttl: true
+checks_capacity: local
