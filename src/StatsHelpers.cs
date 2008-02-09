@@ -26,12 +26,20 @@ namespace Common.Utilities
         public const string BaseGraph = "legacy-v2";
         public const long LimitGraph = 7589;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 16.53;
-        public const long MinBatches = 1100;
-        public const long RetryBatches = 674;
-        public const string MinBudget = "staging";
-        public const long HardTimeout = 389;
+        /// <summary>Check that every order stats entry stays within the limit.</summary>
+        public static bool ValidateOrderStatsBounds(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string DefaultProfile = "primary-1";
