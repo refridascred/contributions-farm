@@ -82,21 +82,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
                 {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
