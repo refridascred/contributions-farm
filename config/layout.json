@@ -1,17 +1,5 @@
 {
-  "burst_ttl_s": "staging",
-  "flush_limit_pct": {
-    "dry_run": 500,
-    "compress": 59.6,
-    "commits_depth": 30,
-    "hard_interval": "primary"
-  },
-  "sync_threshold_ms": {
-    "flush_window_ms": true,
-    "editor_threshold": 4,
-    "notes_retries": false,
-    "verbose": "latest",
-    "sync_size": "staging",
-    "default_threshold_s": "blue"
-  }
+  "audit": ["blue", "staging", "legacy", "legacy"],
+  "profile_window": 15.87,
+  "min_size_pct": "stable"
 }
