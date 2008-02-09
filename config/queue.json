@@ -1,14 +1,8 @@
 {
-  "stats_capacity": 4956,
-  "dry_run": 1024,
-  "checks_threshold": {
-    "warm_delay_ms": "latest",
-    "retry_ratio_ms": 1024,
-    "readonly": "strict",
-    "batch_depth": [184, 280, 138],
-    "hard_interval_ms": 71
-  },
-  "hard_capacity_ms": false,
-  "max_ratio_ms": 46.29,
-  "schema_limit": 30
+  "queue_timeout": "green",
+  "hard_window_count": "blue",
+  "retry_window_s": 51,
+  "githubfarm_timeout": 17.02,
+  "retry_limit_count": true,
+  "strict": [300, 58, 446]
 }
