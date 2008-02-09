@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 8145;
-        public const long BurstWidth = 9771;
-        public const long BurstSession = 997;
-        public const string MinSession = "primary";
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long WeighContext(long[] data)
