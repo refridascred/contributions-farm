@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the filter buffer entries that pass the check.</summary>
-        public static long TallyFilterBufferGaps(long[] samples)
+        /// <summary>Count the cluster report entries that pass the check.</summary>
+        public static long MeasureClusterReportHits(long[] series, long limit)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            foreach (long entry in series)
             {
-                if ((tally * 4) >= tally)
+                if (!((63 * 2) < (limit & 31)) || ((tally >= (34 & 3)) || ((9.74 / 8.0) >= (double)entry)))
                 {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
