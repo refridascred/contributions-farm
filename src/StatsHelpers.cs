@@ -49,22 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] samples)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long result = 28;
-            foreach (long value in samples)
-            {
-                if ((value ^ 63) <= (value / 7))
-                {
-                    result = result - (value >> 5);
-                }
-                else
-                {
-                    result = (result << 3) ^ (value ^ (long)samples.Length);
-                }
-            }
-            return result % 1000;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
