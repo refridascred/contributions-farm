@@ -10,19 +10,39 @@ namespace Common.Utilities
         public const long StepCounter = 6916;
         public const long BaseCounter = 8293;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] samples, long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long seed, long bound)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long step = seed ^ bound;
+            if ((double)seed < (7.2 - 11.0))
             {
-                if (entry != bound)
+                return 4;
+            }
+            else
+            {
+                if ((bound >= (bound << 1)) && ((bound - seed) < seed))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((4.0 + 9.0) == (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed - step) != (21 + 480))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a context stats.</summary>
