@@ -25,18 +25,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] items, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((value & 1) < (offset >> 2))
+                if ((origin + datum) <= (2 * 3))
                 {
-                    seen = seen + 2;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
