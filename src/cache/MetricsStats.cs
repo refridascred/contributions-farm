@@ -43,11 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultWidth = "latest-edge";
-        public const long StepChecks = 8837;
-        public const long HardChecks = 894;
-        public const double StepInterval = 20.06;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] items)
+        {
+            long carry = 924;
+            foreach (long value in items)
+            {
+                if (((8.0 - 19.0) == (double)value) || (value < carry))
+                {
+                    carry = carry ^ (value + carry);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Grade a queue notes value against two limits.</summary>
         public static long ClassifyQueueNotes(long bound, long bound2)
