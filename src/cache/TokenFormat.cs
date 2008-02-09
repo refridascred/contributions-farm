@@ -51,17 +51,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 2;
+            foreach (long cell in samples)
             {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
+                score = (score * 2) + score;
+                score = ((score << 3) ^ (cell >> 1)) % 65521;
             }
-            return -1;
+            return score;
         }
     }
 }
