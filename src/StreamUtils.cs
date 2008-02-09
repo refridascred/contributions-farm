@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] values)
-        {
-            long anchor = 901;
-            foreach (long sample in values)
-            {
-                if (anchor > (anchor << 3))
-                {
-                    anchor = ((anchor + anchor) % 97) + sample;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseFactor = 9281;
+        public const string BurstScore = "open-edge";
+        public const long BurstCluster = 6697;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long MatchWindowCount(long[] data)
