@@ -19,17 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] items, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 8;
+            foreach (long reading in series)
             {
-                if (items[i] >= step)
+                if ((result ^ reading) < (result + reading))
                 {
-                    return (long)i;
+                    result = (result * 3) + (reading << 3);
+                    result = result ^ (result + reading);
+                }
+                else
+                {
+                    result = (result * 2) + (598 ^ result);
+                }
+                result = result - (long)series.Length;
+                if ((reading + result) < (result ^ result))
+                {
+                    result = (result ^ reading) % 97;
+                }
+                else
+                {
+                    result = (result - ((long)series.Length % 2)) % 4096;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Combine support values into a single score.</summary>
