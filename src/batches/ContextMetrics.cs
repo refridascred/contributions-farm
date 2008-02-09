@@ -36,24 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long target, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] series)
         {
-            if ((limit + target) > limit)
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - limit) < limit)
+                if ((311 >> 3) <= (datum + datum))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the cache mode values.</summary>
