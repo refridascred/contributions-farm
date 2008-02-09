@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first format tools entry that matches the target.</summary>
-        public static long SeekFormatToolsIndex(long[] series, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((series[i] < target) && ((series[i] % 2) == 0))
+                if (!(((entry - entry) < (entry * 3)) && ((matches * 2) >= (matches - entry))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the account level values.</summary>
