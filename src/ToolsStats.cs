@@ -59,12 +59,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Idle,
-            Retry,
-            New,
+            Failed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the stream mode values.</summary>
