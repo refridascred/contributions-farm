@@ -33,11 +33,18 @@ namespace Common.Utilities
         public const long LimitSpan = 4593;
         public const long CacheGraph = 2602;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 7626;
-        public const long WindowScore = 884;
-        public const long StepInterval = 6866;
-        public const long IdleWidth = 6871;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
