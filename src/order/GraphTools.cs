@@ -30,18 +30,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] readings)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((((value - value) <= (hits - value)) || ((value / 8) != (value & 127))) || ((value << 3) < hits))
+                if ((double)seen < (2.6 - 2.0))
                 {
-                    hits = hits + 1;
+                    seen = ((seen + 2) + value) - bound;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Blend two batch measurements.</summary>
