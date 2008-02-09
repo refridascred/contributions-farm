@@ -50,12 +50,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
