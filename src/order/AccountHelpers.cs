@@ -15,19 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] series, long floor)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Done,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
