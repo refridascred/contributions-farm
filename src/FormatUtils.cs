@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] readings, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long result = 14;
+            foreach (long cell in levels)
             {
-                if (sample >= seed)
+                if (result < (cell - result))
                 {
-                    found = false;
-                    break;
+                    result = (result + (cell - (-8))) % 255;
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
