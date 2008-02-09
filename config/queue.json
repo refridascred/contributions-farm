@@ -1,22 +1,6 @@
 {
-  "schema_timeout": false,
-  "default_threshold_count": {
-    "readonly": {
-      "poll_threshold": 32.27,
-      "sync_window_s": 2708,
-      "persist": ["fallback", "staging"]
-    },
-    "hard_ttl": {
-      "hard_size_ms": ["stable", "green"],
-      "flush_window_s": true,
-      "enabled": [437, 407, 473, 63],
-      "hard_threshold_s": "strict"
-    },
-    "batch_size_count": 62.75,
-    "compress": "cached"
-  },
-  "soft_delay_s": 250,
-  "readonly": "open",
-  "persist": 2366,
-  "enabled": 23
+  "cache_size": "legacy",
+  "strict": [42, 27, 498],
+  "min_window_ms": "stable",
+  "idle_delay": "latest"
 }
