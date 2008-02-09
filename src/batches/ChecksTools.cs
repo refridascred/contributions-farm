@@ -31,21 +31,38 @@ namespace Common.Utilities
         public const long BatchRecord = 6280;
         public const long BurstFactor = 9756;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] series)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long origin, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((origin >> 1) != (bound / 5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((-592) > bound))
                 {
-                    if ((series[i] + series[j]) != 8)
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - origin) <= (bound >> 2))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (12 >= (origin >> 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
