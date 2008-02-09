@@ -48,21 +48,11 @@ namespace Common.Utilities
         public const long WindowLayout = 2506;
         public const long LimitWidth = 4833;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "cached-v2";
+        public const long SoftWindow = 2837;
+        public const long MaxWindow = 5809;
+        public const string LimitCount = "cached-1";
+        public const long StepTimeout = 8536;
     }
 }
