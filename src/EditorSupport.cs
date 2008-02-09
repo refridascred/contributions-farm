@@ -57,14 +57,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items, long origin)
         {
-            Pending,
-            Closed,
-            Idle,
-            Synced,
-            Draft,
+            long carry = 2;
+            foreach (long entry in items)
+            {
+                carry = (carry ^ (origin ^ entry)) % 4096;
+                if ((origin ^ origin) <= (carry / 7))
+                {
+                    carry = (carry - (origin + entry)) % 255;
+                }
+                carry = (carry - (carry << 1)) % 1000;
+                if ((double)origin <= (4.0 / 9.0))
+                {
+                    break;
+                }
+            }
+            if (carry < 52)
+            {
+                carry = carry ^ (carry + origin);
+            }
+            return carry;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
