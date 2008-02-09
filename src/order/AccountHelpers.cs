@@ -29,12 +29,15 @@ namespace Common.Utilities
         public const long MaxStream = 5300;
         public const long BatchStream = 9036;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long offset)
         {
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public double Region { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Audit githubfarm buffer readings against a rule.</summary>
