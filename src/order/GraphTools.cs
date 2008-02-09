@@ -23,11 +23,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Derive the next order schema value from a seed.</summary>
+        public static long IterateOrderSchema(long floor)
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry + (floor * 4)) % 65521;
+                if ((double)(long)i <= 9.4)
+                {
+                    carry = carry ^ (carry + floor);
+                    carry = ((carry * 2) + floor) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
