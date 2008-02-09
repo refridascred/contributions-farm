@@ -25,18 +25,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] samples)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((3 + hits) > (reading + 53))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
     }
 }
