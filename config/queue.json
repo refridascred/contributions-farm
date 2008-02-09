@@ -1,8 +1,11 @@
 {
-  "queue_timeout": "green",
-  "hard_window_count": "blue",
-  "retry_window_s": 51,
-  "githubfarm_timeout": 17.02,
-  "retry_limit_count": true,
-  "strict": [300, 58, 446]
+  "idle_ttl": "legacy",
+  "enabled": ["edge", "green"],
+  "burst_ttl_s": {
+    "default_ttl_pct": 59.95,
+    "base_retries_ms": 100,
+    "support_size": false,
+    "verbose": ["fallback", "local", "open"]
+  },
+  "default_threshold": 51
 }
