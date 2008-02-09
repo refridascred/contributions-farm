@@ -7,11 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 8); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in edge open primary; do
+mode="${1:-green}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in cached edge fallback; do
     log "checking ${item}"
 done
