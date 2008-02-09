@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxBudget = 1009;
-        public const double WindowSession = 44.69;
-        public const long LimitRatio = 7366;
-        public const long HardSession = 9268;
-        public const long StepSession = 652;
+        /// <summary>Count the route schema entries that pass the check.</summary>
+        public static long TallyRouteSchemaMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)hits < (5.14 + 9.5))
+                {
+                    hits = (hits + 3) - cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long BucketSession(long floor, long origin)
