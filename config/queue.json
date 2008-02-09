@@ -1,7 +1,6 @@
 {
-  "strict": 2,
-  "compress": 72,
-  "flush_ratio_count": "eu-west",
-  "sync_limit": "standard",
-  "min_retries_count": true
+  "strict": 0.51,
+  "min_timeout_s": 24.93,
+  "graph_delay": "legacy",
+  "tools_threshold": [203, 67, 240]
 }
