@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] readings, long target)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!(target >= ((-3) + seen)) || ((54 + 4) >= (target - target)))
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
+            Pending,
+            Closed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the queue class values.</summary>
