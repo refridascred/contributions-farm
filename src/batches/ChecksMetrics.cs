@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] items, long step)
         {
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
