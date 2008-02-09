@@ -78,17 +78,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] data, long bound)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
