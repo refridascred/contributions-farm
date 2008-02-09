@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseScore = 49.63;
-        public const long BurstSize = 7511;
-        public const long SoftBudget = 8254;
-        public const long WindowLevel = 1028;
-        public const long IdleSize = 9321;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Grade a notes editor value against two limits.</summary>
         public static long RankNotesEditor(long origin, long limit)
