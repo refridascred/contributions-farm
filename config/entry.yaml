@@ -1,4 +1,14 @@
 # entry settings
-persist: true
-max_timeout_ms: 60
-idle_ratio_pct: standard
+record_window:
+  - fallback
+  - green
+  - staging
+  - latest
+retry_capacity_s:
+  - 316
+  - 259
+hard_size:
+  - 480
+  - 450
+  - 431
+  - 326
