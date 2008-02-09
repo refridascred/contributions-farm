@@ -37,15 +37,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double gain, double bias)
+        /// <summary>Find the first metric account entry that matches the target.</summary>
+        public static long FindMetricAccountIndex(long[] levels, long origin)
         {
-            double rate = 9.73;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (((rate + (rate / 4.0)) - (double)(long)i) - gain) + bias;
+                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + rate;
+            return -1;
         }
 
         /// <summary>Rank report input into a small class.</summary>
