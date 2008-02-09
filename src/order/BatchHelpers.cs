@@ -29,19 +29,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] values, long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Dropped,
+            Idle,
+            Closed,
         }
     }
 }
