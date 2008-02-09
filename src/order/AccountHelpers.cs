@@ -61,19 +61,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long floor, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            if ((double)origin != (double)floor)
             {
-                if ((5.47 - 2.0) != (double)mark)
-                {
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((floor % 97) >= 5)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor <= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
