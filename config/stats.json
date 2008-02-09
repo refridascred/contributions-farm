@@ -1,6 +1,7 @@
 {
-  "burst_ratio": [433, 82],
-  "soft_ttl_ms": false,
-  "warm_ttl": "cached",
-  "burst_delay_ms": "cached"
+  "compress": "open",
+  "readonly": "primary",
+  "batch_size_pct": 30,
+  "flush_depth_pct": ["open", "eu-west", "strict"],
+  "sync_depth_count": 90.58
 }
