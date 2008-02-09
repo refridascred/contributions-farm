@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const double CacheSession = 48.43;
         public const long DefaultSession = 4142;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] data, long origin)
         {
-            Locked,
-            Paused,
-            Pending,
-            Ready,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit stats order readings against a rule.</summary>
