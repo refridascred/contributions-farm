@@ -25,17 +25,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] items, long bound)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Locked,
+            Synced,
+            Dropped,
         }
     }
 }
