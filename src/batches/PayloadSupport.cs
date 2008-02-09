@@ -43,9 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 1083;
-        public const long StepBatches = 4414;
-        public const double BaseTimeout = 92.31;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] levels, long step)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
