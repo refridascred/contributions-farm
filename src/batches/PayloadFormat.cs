@@ -33,26 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] levels, long bound)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long mix = 4;
-            foreach (long sample in levels)
-            {
-                if (((long)levels.Length - sample) > sample)
-                {
-                    mix = (mix * 5) + (sample ^ sample);
-                }
-                else
-                {
-                    mix = (mix * 3) + (sample - bound);
-                }
-            }
-            if (mix < 87)
-            {
-                mix = ((mix * 2) + bound) % 97;
-            }
-            return mix % 4096;
+            public long Score { get; set; }
+            public bool Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
