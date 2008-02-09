@@ -19,22 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] data, long step)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] data, long origin)
         {
-            long state = 708;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3 + state) > (state % 10))
+                if ((data[i] >= origin) && ((data[i] % 5) == 0))
                 {
-                    state = (state - (369 ^ item)) % 255;
-                }
-                else
-                {
-                    state = ((state << 3) ^ step) % 101;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
