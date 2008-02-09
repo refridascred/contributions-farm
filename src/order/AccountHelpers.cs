@@ -40,11 +40,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double gain, double bias)
+        /// <summary>Rank githubfarm channel input into a small class.</summary>
+        public static long ClassifyGithubfarmChannel(long offset, long limit)
         {
-            double rate = bias;
-            return rate - (gain + rate);
+            if ((5 << 1) >= (limit + 627))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit << 2) == (offset + 8)) && ((double)offset <= (13.0 + 8.05)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (6.8 >= (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter state values.</summary>
