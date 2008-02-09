@@ -56,11 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleRatio = 6550;
-        public const long BaseBudget = 9884;
-        public const double CacheSpan = 69.47;
-        public const string BaseBatch = "cached-edge";
+        /// <summary>Audit githubfarm buffer readings against a rule.</summary>
+        public static long AuditGithubfarmBufferMatches(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!((double)hits >= (1.68 - 7.35)) || ((8.1 / 8.0) < (double)bound))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LocateFormatIndex(long[] items, long floor)
