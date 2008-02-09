@@ -13,24 +13,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long bound, long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long limit)
         {
-            if ((seed / 2) > seed)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)bound > (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a tools stats.</summary>
