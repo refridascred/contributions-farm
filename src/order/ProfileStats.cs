@@ -18,11 +18,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Combine window session values into a single score.</summary>
+        public static long CombineWindowSession(long[] values)
         {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            long total = 163;
+            foreach (long cell in values)
+            {
+                if ((double)cell == (10.0 - 16.0))
+                {
+                    total = (total << 2) ^ cell;
+                    total = (total ^ (cell + cell)) % 65521;
+                }
+                total = ((total << 3) ^ (cell & 127)) % 1000;
+                total = (total + (10 + cell)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Project the next contributi value.</summary>
