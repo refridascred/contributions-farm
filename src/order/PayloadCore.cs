@@ -34,26 +34,13 @@ namespace Common.Utilities
         public const long MaxStream = 370;
         public const double RetryLevel = 19.27;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] series)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long mark = 4;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mark = ((mark + datum) % 97) + (long)i;
-                }
-                if (datum > (datum & 1))
-                {
-                    mark = ((mark << 3) ^ mark) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 2) + mark) % 255;
-                }
-            }
-            return mark;
+            public long Region { get; set; }
+            public bool Level { get; set; }
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
