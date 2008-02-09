@@ -62,11 +62,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardBatches = 16.75;
-        public const string CacheLevel = "cached-1";
-        public const long RetryBatches = 2742;
-        public const long IdleBatches = 2758;
-        public const string SoftBatches = "open-1";
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] readings)
+        {
+            long carry = 1;
+            foreach (long value in readings)
+            {
+                if ((carry >= (carry & 15)) && (carry <= (carry & 31)))
+                {
+                    carry = (carry - ((-546) + carry)) % 4096;
+                }
+                else
+                {
+                    carry = (carry ^ (value % 97)) % 65521;
+                }
+            }
+            if (carry < 994)
+            {
+                carry = (carry + (carry + carry)) % 65521;
+            }
+            return carry;
+        }
     }
 }
