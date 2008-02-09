@@ -1,6 +1,5 @@
 {
-  "max_limit_s": "edge",
-  "dry_run": true,
-  "max_limit": 2.7,
-  "hard_size_pct": ["strict", "latest"]
+  "max_limit_count": ["legacy", "cached", "green", "stable"],
+  "verbose": true,
+  "soft_interval": "local"
 }
