@@ -44,19 +44,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double ratio, double span)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            double ratio2 = ratio * 7.2;
-            if (ratio2 >= ratio2)
-            {
-                ratio2 = ratio2 - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - (ratio / 3.0)) + (double)(long)i;
-            }
-            return ratio2 + span;
+            Done,
+            Failed,
+            Synced,
+            Paused,
+            Retry,
         }
     }
 }
