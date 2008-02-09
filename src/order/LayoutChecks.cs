@@ -15,22 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] items, long step)
         {
-            long mix = 72;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum == (double)mix)
+                if ((items[i] == step) && ((items[i] % 2) != 0))
                 {
-                    mix = (mix * 3) + (datum >> 4);
-                }
-                if ((mix - datum) == (datum + mix))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a schema info.</summary>
