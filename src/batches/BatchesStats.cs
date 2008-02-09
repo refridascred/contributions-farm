@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Synced,
-            Done,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 4372;
+        public const double StepCount = 83.39;
+        public const string BatchFactor = "alpha-v2";
+        public const long MaxTimeout = 9455;
+        public const string BatchCount = "standard";
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
