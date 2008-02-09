@@ -1,5 +1,5 @@
 # entry settings
-strict: 1024
-flush_depth_count: 250
-readonly: staging
-format_ttl: 24
+soft_retries_count: true
+dry_run: true
+flush_delay: 48.71
+max_ratio_count: 250
