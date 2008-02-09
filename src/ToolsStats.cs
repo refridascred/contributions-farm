@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] readings, long seed)
+        /// <summary>Count report session pairs that satisfy a relation.</summary>
+        public static long MatchReportSessionCount(long[] readings)
         {
-            long total = 61;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total ^ (56 - 1)) % 255) + seed;
-                if ((value + total) < (value & 127))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the batch state values.</summary>
