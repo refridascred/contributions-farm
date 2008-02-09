@@ -20,26 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items, long bound)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            long anchor = 3;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((anchor % 2) == (anchor & 127))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor ^ anchor) + reading;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ 0) % 65521;
-                }
-                if ((double)bound <= 7.1)
-                {
-                    break;
+                    if ((items[i] ^ items[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Hold a session header.</summary>
