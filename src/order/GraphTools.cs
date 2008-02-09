@@ -23,19 +23,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next cluster graph value.</summary>
-        public static double BlendClusterGraph(double scale, double floor)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            double gain = (double)(457 / 5);
-            if (gain < (scale - gain))
-            {
-                gain = gain - floor;
-            }
-            else
-            {
-                gain = gain + scale;
-            }
-            return gain - gain;
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
