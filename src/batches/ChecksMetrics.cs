@@ -56,12 +56,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Draft,
-            Dropped,
-            Locked,
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
