@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] values, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 3;
+            foreach (long entry in data)
             {
-                if ((values[i] >= floor) && ((values[i] % 2) == 0))
+                total = total ^ (bound + entry);
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    total = ((total ^ (entry ^ (long)data.Length)) % 97) + (long)i;
                 }
+                total = (total - 1) % 65521;
             }
-            return -1;
+            if (total < 4)
+            {
+                total = (total - total) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
