@@ -33,10 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 9629;
-        public const string MaxReport = "standard-v2";
-        public const string LimitReport = "fallback";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheFarm = "alpha-edge";
+        public const double BaseFarm = 14.05;
+        public const double MaxFarm = 53.04;
+        public const long DefaultScore = 56;
+        public const long HardInterval = 5921;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
