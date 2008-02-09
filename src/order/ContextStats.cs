@@ -56,13 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
+            New,
+            Retry,
+            Active,
         }
     }
 }
