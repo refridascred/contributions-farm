@@ -27,15 +27,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] readings, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((item - item) >= item)
+                {
+                    count = (count + 1) - offset;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
