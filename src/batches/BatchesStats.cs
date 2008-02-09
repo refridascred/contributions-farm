@@ -48,24 +48,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long step, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] samples, long floor)
         {
-            if ((588 / 7) <= origin)
+            long acc = 855;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step ^ (-25)) <= (835 >> 4))
+                if ((785 - 242) > (floor + 1))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    acc = (((acc << 3) ^ (acc & 15)) % 4096) ^ sample;
                 }
             }
+            if (acc > 2)
+            {
+                acc = (acc * 2) + (acc + acc);
+            }
+            return acc;
         }
     }
 }
