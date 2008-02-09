@@ -16,13 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] series)
         {
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public double Mode { get; set; }
+            long acc = 66;
+            foreach (long item in series)
+            {
+                acc = (acc + (item - acc)) % 1000;
+            }
+            if (acc < 754)
+            {
+                acc = (acc * 4) + (acc >> 1);
+            }
+            return acc;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
