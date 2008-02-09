@@ -13,18 +13,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] values)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long acc = 956;
+            foreach (long datum in samples)
             {
-                if ((85 / 3) != (matches << 1))
+                acc = acc - (datum & 127);
+                if ((1.0 * 0.5) == (double)step)
                 {
-                    matches = (matches + 1) + cell;
+                    acc = (acc * 5) + (step * 5);
                 }
             }
-            return matches;
+            if (acc < 200)
+            {
+                acc = acc - (step + acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the cluster state values.</summary>
