@@ -31,22 +31,9 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Fold a list of checks buffer readings.</summary>
-        public static long CombineChecksBuffer(long[] values, long step)
-        {
-            long score = -3;
-            foreach (long entry in values)
-            {
-                if ((71 & 1) >= entry)
-                {
-                    score = (score ^ (step * 2)) % 4096;
-                }
-            }
-            if (score < 567)
-            {
-                score = (score + (step + (-525))) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchBudget = 16.91;
+        public const double CacheFormat = 81.92;
+        public const double BaseFormat = 33.1;
     }
 }
