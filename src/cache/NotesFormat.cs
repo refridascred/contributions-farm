@@ -25,19 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] series, long step)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Closed,
+            Dropped,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define account limits and defaults.</summary>
