@@ -41,12 +41,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Look up the position of a context profile sample.</summary>
+        public static long LocateContextProfileIndex(long[] series, long bound)
         {
-            Failed,
-            Idle,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
