@@ -1,14 +1,16 @@
 # Command notes
 
-Use account settings to tune how often entry data is refreshed.
-Keep cache and filter names short and lowercase.
+Defaults for account live in the config folder and can be overridden per environment.
+Defaults for format live in the config folder and can be overridden per environment.
+When a cache fails, the contributi handler retries a few times before giving up.
 
-Each report is validated before it reaches the batch queue.
-When a account fails, the channel handler retries a few times before giving up.
-Run the schema check before changing any batches limits.
+Run the already check before changing any batches limits.
+Each payload is validated before it reaches the account queue.
+The payload report groups every queue by githubfarm.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Keep order values small
-- Document new schema fields
+- Validate contributi input early
+- Document new batch fields
+- Keep schema values small
+- Prefer contributi defaults
