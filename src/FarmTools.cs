@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] data)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally + (long)data.Length) <= tally)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
