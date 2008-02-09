@@ -19,22 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] series, long offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item + hits) >= (hits << 1))
-                {
-                    hits = (hits + 3) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
