@@ -23,16 +23,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] readings, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                sum = (sum + (sum & 1)) % 4096;
-                sum = ((sum * 2) + (long)i) % 65521;
+                if ((tally < seed) && (((tally & 63) < 257) && (47 >= (tally & 1))))
+                {
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
