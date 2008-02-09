@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleTimeout = 8397;
-        public const double StepOrder = 93.55;
-        public const long MaxLevel = 23;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = (acc + ((long)i ^ (long)i)) % 101;
+                if (!!((acc - acc) > ((long)i % 12)))
+                {
+                    acc = ((acc * 4) + (bound / 2)) % 4096;
+                }
+                if (!((bound << 1) < ((long)i * 2)))
+                {
+                    acc = acc - (16 + acc);
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of batches cache entries.</summary>
         public static long ScoreBatchesCache(long[] samples, long origin)
