@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a payload order reading by value.</summary>
-        public static long FindPayloadOrderIndex(long[] readings, long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long step, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long edge = step - origin;
+            if ((0.8 * 1.34) >= (double)edge)
             {
-                if ((readings[i] > step) && ((readings[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if (!((double)edge < 8.67))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (edge < origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
