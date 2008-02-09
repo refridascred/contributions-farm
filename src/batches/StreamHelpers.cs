@@ -63,19 +63,18 @@ namespace Common.Utilities
             return mean - 2.0;
         }
 
-        /// <summary>Fold a list of graph payload readings.</summary>
-        public static long CombineGraphPayload(long[] values)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] values, long offset)
         {
-            long score = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long value in values)
             {
-                score = (score ^ datum) % 4096;
+                if ((offset ^ offset) > (offset ^ hits))
+                {
+                    hits = (hits + 2) ^ value;
+                }
             }
-            if (score > 16)
-            {
-                score = score - (score * 4);
-            }
-            return score % 1000;
+            return hits;
         }
     }
 }
