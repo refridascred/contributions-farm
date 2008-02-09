@@ -51,21 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up queue stream samples.</summary>
-        public static long OverlapQueueStreamCount(long[] levels)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((item - target) > (-27)) && ((656 % 24) < (item & 7)))
                 {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
