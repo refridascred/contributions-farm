@@ -19,30 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long offset, long limit)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long bound, long bound2)
         {
-            long next = offset + limit;
-            if (((offset % 7) <= (limit << 3)) || ((double)offset < 6.9))
+            if ((6.6 / 6.0) == (double)bound)
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((230 & 31) != (limit % 97))
+                if (4.07 <= (double)bound2)
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if (offset > (next - next))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 0;
                 }
             }
         }
