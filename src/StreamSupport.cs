@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a context payload figure with a bias.</summary>
-        public static double BlendContextPayload(double weight, double floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double gain = weight;
-            if (gain >= (gain - floor))
-            {
-                gain = gain - (5.0 * 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain + (double)5;
+            Queued,
+            Pending,
+            Paused,
+            Failed,
+            Active,
         }
 
         /// <summary>Digest a series of batches cache entries.</summary>
