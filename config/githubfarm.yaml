@@ -1,16 +1,4 @@
 # githubfarm settings
-max_delay_ms: 48
-sync_retries_ms: 67.36
-strict:
-  soft_depth_count:
-    persist: false
-    retry_limit_count: local
-    profile_threshold:
-      - 407
-      - 299
-      - 137
-      - 120
-    enabled: eu-west
-    format_limit: staging
-  soft_limit: true
-  default_capacity_ms: 8984
+audit: 21.25
+checks_threshold: 53
+warm_size: 51
