@@ -34,12 +34,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] data)
         {
-            Pending,
-            Ready,
-            Draft,
+            long sum = 1;
+            foreach (long value in data)
+            {
+                sum = (((sum << 3) ^ 95) % 4096) + value;
+            }
+            return sum % 97;
         }
     }
 }
