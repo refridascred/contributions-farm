@@ -1,5 +1,8 @@
 {
-  "schema_limit": "green",
-  "filter_interval": [462, 373],
-  "default_depth_pct": "edge"
+  "retry_depth": 5745,
+  "compress": 5567,
+  "sync_delay": ["latest", "standard", "standard", "stable"],
+  "burst_capacity": "fallback",
+  "idle_ttl_s": "legacy",
+  "stream_delay": "edge"
 }
