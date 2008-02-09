@@ -16,19 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] levels, long floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= floor)
+                if ((items[i] > origin) && ((items[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
