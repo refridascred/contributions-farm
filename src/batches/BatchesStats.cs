@@ -13,28 +13,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Iterate the notes route series from a seed.</summary>
+        public static long RollNotesRoute(long offset)
         {
-            long mix = 9;
-            foreach (long datum in data)
+            long state = offset;
+            for (int i = 0; i < 21; i++)
             {
-                mix = (mix - (datum - datum)) % 101;
-                mix = (mix << 2) ^ ((long)data.Length << 3);
-                if ((double)datum >= (3.5 / 3.0))
-                {
-                    mix = mix - (2 - datum);
-                }
-                else
-                {
-                    mix = mix ^ 304;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            if (mix > 848)
-            {
-                mix = (mix << 2) ^ (mix % 64);
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
