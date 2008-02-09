@@ -14,18 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 1789;
+        public const long MinTools = 4453;
+        public const double HardTools = 85.75;
+        public const long SoftFactor = 9390;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
