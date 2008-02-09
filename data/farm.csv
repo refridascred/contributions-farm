@@ -1,7 +1,9 @@
-id,owner,active
-1,75.63,eu-west
-2,11.01,88.6
-3,72.93,97.66
-4,54.97,752
-5,394,666
-6,478,18.88
+id,state,weight,rank,count
+1,2.52,631,83.09,69.95
+2,127,latest,61.59,staging
+3,51.13,23,8.71,507
+4,edge,653,62.34,12.04
+5,90.32,17.07,stable,556
+6,blue,38.6,48.2,620
+7,42.96,staging,fallback,502
+8,staging,58.43,blue,primary
