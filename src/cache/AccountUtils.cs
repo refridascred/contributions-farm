@@ -12,12 +12,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] samples, long seed)
         {
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (171 <= (count - count))
+                {
+                    count = ((count + 1) - sample) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate editor samples.</summary>
