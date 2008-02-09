@@ -62,14 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long floor)
         {
-            New,
-            Idle,
-            Ready,
-            Active,
-            Dropped,
+            long state = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((floor ^ 3) < state)
+                {
+                    state = ((state * 5) + (state << 3)) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of route entries.</summary>
