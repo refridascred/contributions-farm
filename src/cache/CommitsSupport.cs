@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of token queue entries.</summary>
-        public static long DigestTokenQueue(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] values)
         {
-            long anchor = 389;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                anchor = ((anchor ^ (anchor - 563)) % 101) - cell;
+                if (((double)entry != (3.2 + 2.5)) && (70 <= entry))
+                {
+                    matches = matches + 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
