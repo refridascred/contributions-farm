@@ -1,15 +1,4 @@
 # entry settings
-poll_capacity: edge
-dry_run:
-  - staging
-  - stable
-  - local
-cache_ratio_pct:
-  compress: 17.88
-  warm_limit: 7885
-  context_interval:
-    - 18
-    - 260
-    - 77
-    - 319
-githubfarm_limit: latest
+persist: true
+max_timeout_ms: 60
+idle_ratio_pct: standard
