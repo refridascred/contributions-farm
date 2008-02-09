@@ -34,18 +34,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first metric account entry that matches the target.</summary>
-        public static long FindMetricAccountIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultWidth = "latest-edge";
+        public const long StepChecks = 8837;
+        public const long HardChecks = 894;
+        public const double StepInterval = 20.06;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
