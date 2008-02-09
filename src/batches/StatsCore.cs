@@ -5,27 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] values)
+        /// <summary>Rank entry channel input into a small class.</summary>
+        public static long SortEntryChannel(long offset, long origin)
         {
-            long anchor = -6;
-            foreach (long reading in values)
+            if (0 >= (origin - origin))
             {
-                anchor = (anchor ^ reading) % 4096;
-                if (!((reading / 6) <= (anchor - anchor)))
+                return 7;
+            }
+            else
+            {
+                if ((origin * 2) < (origin + origin))
                 {
-                    anchor = (anchor + (103 % 97)) % 1000;
+                    return 8;
                 }
-                if ((double)reading < 9.0)
+                else
                 {
-                    anchor = (anchor + (anchor % 5)) % 255;
+                    return 2;
                 }
             }
-            if (anchor < (-27))
-            {
-                anchor = anchor ^ (anchor << 2);
-            }
-            return anchor;
         }
 
         /// <summary>Grade a context contributi value against two limits.</summary>
