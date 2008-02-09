@@ -34,21 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Combine window stream values into a single score.</summary>
+        public static long CombineWindowStream(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -807;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((acc <= (entry % 5)) && ((double)acc > (7.78 - 8.0)))
                 {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc + entry) - limit;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a tools summary.</summary>
