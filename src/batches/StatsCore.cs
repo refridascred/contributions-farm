@@ -72,17 +72,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a command schema reading by value.</summary>
-        public static long FindCommandSchemaIndex(long[] levels, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
+                if (((double)value > (double)6) || ((value + (long)readings.Length) >= value))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
