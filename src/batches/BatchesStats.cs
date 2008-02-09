@@ -33,22 +33,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] series, long step)
-        {
-            long anchor = 5;
-            foreach (long value in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = ((anchor - anchor) % 4096) + (long)i;
-                }
-                if (value >= step)
-                {
-                    anchor = (anchor + (value & 127)) % 65521;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepSpan = "cached-edge";
+        public const string IdleInterval = "local-v2";
+        public const long SoftLevel = 4680;
     }
 }
