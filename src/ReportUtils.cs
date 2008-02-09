@@ -72,15 +72,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] readings, long target)
+        /// <summary>Compare every pair of graph route readings.</summary>
+        public static long CompareGraphRouteCount(long[] values)
         {
             long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((item - target) > (-27)) && ((656 % 24) < (item & 7)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
