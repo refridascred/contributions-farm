@@ -76,21 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Blend two editor notes measurements.</summary>
+        public static double AdjustEditorNotes(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = ratio * 4.86;
+            if (rate >= ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - (double)46;
             }
-            return matches;
+            else
+            {
+                rate = rate - (4.4 + offset);
+            }
+            return rate + (ratio - ratio);
         }
 
         /// <summary>Describe the profile mode values.</summary>
