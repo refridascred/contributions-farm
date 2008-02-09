@@ -62,22 +62,11 @@ namespace Common.Utilities
         public const double MaxStream = 75.99;
         public const string DefaultStream = "open-1";
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long state = 98;
-            foreach (long sample in data)
-            {
-                if (8.0 >= (double)sample)
-                {
-                    state = ((state << 2) ^ (state - 901)) % 1000;
-                }
-            }
-            if (state < 3)
-            {
-                state = ((state << 3) ^ (state ^ state)) % 255;
-            }
-            return state % 65521;
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
