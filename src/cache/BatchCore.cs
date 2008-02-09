@@ -43,12 +43,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheAccount = 97.1;
-        public const string BaseBudget = "local-v2";
-        public const string LimitAccount = "alpha-edge";
-        public const string HardSpan = "staging-v2";
-        public const long DefaultAccount = 1346;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Draft,
+            Locked,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
