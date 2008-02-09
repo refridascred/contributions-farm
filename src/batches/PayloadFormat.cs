@@ -33,10 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 50.88;
-        public const long BurstSchema = 7134;
-        public const double WindowFactor = 81.99;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] levels, long bound)
+        {
+            long mix = 4;
+            foreach (long sample in levels)
+            {
+                if (((long)levels.Length - sample) > sample)
+                {
+                    mix = (mix * 5) + (sample ^ sample);
+                }
+                else
+                {
+                    mix = (mix * 3) + (sample - bound);
+                }
+            }
+            if (mix < 87)
+            {
+                mix = ((mix * 2) + bound) % 97;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftQueue = 9151;
