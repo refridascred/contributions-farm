@@ -16,13 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Combine githubfarm batch values into a single score.</summary>
+        public static long FoldGithubfarmBatch(long[] data, long bound)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
+            long carry = 13;
+            foreach (long reading in data)
+            {
+                if ((double)bound > 8.1)
+                {
+                    carry = (carry - carry) - reading;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate context channel samples.</summary>
