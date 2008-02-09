@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many filter already samples are out of range.</summary>
-        public static long AuditFilterAlreadyGaps(long[] values)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((seen % 97) >= seen)
+                if (cell != bound)
                 {
-                    seen = (seen + 1) - datum;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the counter level values.</summary>
