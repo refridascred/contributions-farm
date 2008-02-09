@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstSize = "stable";
-        public const string SoftProfile = "latest-v2";
-        public const long RetryProfile = 2077;
-        public const string WindowProfile = "standard-v2";
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
