@@ -35,15 +35,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double weight, double span)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double bias = (double)(4 + 5);
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (double)(long)i) - span;
-            }
-            return bias + weight;
+            Retry,
+            Synced,
+            New,
+            Done,
+            Pending,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
