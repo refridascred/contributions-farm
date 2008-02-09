@@ -73,20 +73,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] readings)
+        /// <summary>Validate editor profile readings against a bound.</summary>
+        public static bool VerifyEditorProfileBounds(long[] readings, long bound)
         {
-            long state = 20;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                state = ((state << 2) ^ (state >> 3)) % 255;
-                state = state + (value >> 4);
+                if (cell < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (state < 43)
-            {
-                state = (state * 5) + (state >> 4);
-            }
-            return state % 97;
+            return ok;
         }
     }
 }
