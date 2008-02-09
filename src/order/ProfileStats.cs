@@ -59,31 +59,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of account farm entries.</summary>
-        public static long FoldAccountFarm(long[] items)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long total = 3;
-            foreach (long reading in items)
-            {
-                if ((total + reading) > reading)
-                {
-                    total = (total - total) % 97;
-                    total = total - (reading >> 4);
-                }
-                else
-                {
-                    total = (total << 2) ^ (80 >> 1);
-                }
-                if ((double)reading >= (1.96 - 5.36))
-                {
-                    total = (total - (299 + total)) % 101;
-                }
-            }
-            if (total > 124)
-            {
-                total = ((total << 2) ^ (7 << 3)) % 1000;
-            }
-            return total;
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
