@@ -22,14 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] readings)
         {
-            Paused,
-            Done,
-            New,
-            Queued,
-            Failed,
+            long anchor = -6;
+            foreach (long entry in readings)
+            {
+                anchor = anchor + (entry + anchor);
+                if ((1.3 * 2.0) > (double)entry)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
