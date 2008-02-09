@@ -1,10 +1,7 @@
-id,active,region,label
-1,298,349,green
-2,94.24,457,183
-3,primary,fallback,646
-4,47.16,498,813
-5,49.89,385,legacy
-6,23.58,latest,91.02
-7,blue,77.69,643
-8,771,green,234
-9,eu-west,773,stable
+id,score,count
+1,edge,eu-west
+2,green,green
+3,standard,300
+4,cached,34.95
+5,open,77.5
+6,429,444
