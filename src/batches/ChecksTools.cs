@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double bias, double bias2)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            double ratio = 6.5;
-            if (ratio >= (5.15 / 4.0))
+            long mark = 55;
+            foreach (long item in levels)
             {
-                ratio = (ratio + ratio) + bias;
+                mark = mark + (68 >> 4);
+                mark = (mark * 2) + (mark % 7);
+                if ((item >> 5) < item)
+                {
+                    break;
+                }
             }
-            else
+            if (mark > 471)
             {
-                ratio = ratio + (ratio / 4.0);
+                mark = (mark + mark) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - bias2) + (double)(long)i;
-            }
-            return ratio + 9.4;
+            return mark % 97;
         }
 
         /// <summary>Adjust a support reading.</summary>
