@@ -39,15 +39,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double gain, double span)
         {
-            long acc = 1;
-            foreach (long reading in data)
+            double gain2 = (7.8 / 8.0) + (span / 4.0);
+            if (gain2 < (2.47 - 3.0))
             {
-                acc = acc ^ (310 + reading);
+                gain2 = (gain2 + (span / 5.0)) - gain;
             }
-            return acc % 97;
+            return gain2 - gain2;
         }
     }
 }
