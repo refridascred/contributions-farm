@@ -1,14 +1,4 @@
 # support settings
-max_capacity: 4609
-session_retries: 500
-retry_delay_s: true
-max_depth:
-  format_timeout: 5973
-  filter_limit: 11.21
-  contributi_depth: 500
-  cache_interval_count:
-    - 320
-    - 32
-  compress: latest
-  counter_capacity: 33.01
-idle_window: cached
+warm_size_s: 72.09
+default_ratio: 91.67
+context_depth: 8854
