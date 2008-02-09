@@ -13,16 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double gain, double offset)
-        {
-            double weight = offset;
-            if (weight < gain)
-            {
-                weight = weight - (weight + weight);
-            }
-            return weight - offset;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 6211;
+        public const string WindowWidth = "standard-edge";
+        public const long IdleWidth = 2670;
 
         /// <summary>Accumulate already samples.</summary>
         public static long DigestAlready(long[] readings, long step)
