@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSpan = "strict";
-        public const string BaseSession = "strict";
-        public const long IdleBudget = 4873;
+        /// <summary>Accumulate editor stream samples.</summary>
+        public static long WeighEditorStream(long[] items, long target)
+        {
+            long score = 883;
+            foreach (long entry in items)
+            {
+                score = ((score * 4) + (886 + target)) - entry;
+            }
+            if (score > 38)
+            {
+                score = (score + (score & 63)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Blend two metric measurements.</summary>
         public static double AdjustMetric(double weight, double bias)
