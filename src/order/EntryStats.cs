@@ -16,19 +16,12 @@ namespace Common.Utilities
             return weight - 17.0;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample << 2) > (matches + floor))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseStream = "open-1";
+        public const long BaseRatio = 4325;
+        public const string IdleStream = "open";
+        public const double LimitSize = 51.3;
+        public const long BurstRatio = 4338;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportHits(long[] data, long origin)
