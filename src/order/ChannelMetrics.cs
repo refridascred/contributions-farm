@@ -19,26 +19,13 @@ namespace Common.Utilities
         public const long HardSupport = 7510;
         public const long BaseSupport = 6567;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] items, long target)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long result = 994;
-            foreach (long sample in items)
-            {
-                if (!((410 + result) <= 98))
-                {
-                    result = ((result + target) % 65521) ^ sample;
-                }
-                else
-                {
-                    result = (result - 272) % 1000;
-                }
-                if ((result / 8) < (4 / 8))
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            Retry,
+            Idle,
+            Ready,
+            Stale,
         }
     }
 }
