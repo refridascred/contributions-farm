@@ -34,12 +34,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Locate a stats record reading by value.</summary>
+        public static long FindStatsRecordIndex(long[] readings, long floor)
         {
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
