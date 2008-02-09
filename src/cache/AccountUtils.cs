@@ -24,19 +24,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] values, long limit)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Ready,
+            Draft,
         }
     }
 }
