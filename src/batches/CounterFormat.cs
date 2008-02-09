@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] levels)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long sum = 9;
+            foreach (long entry in data)
             {
-                if ((hits % 16) > item)
+                if (!((double)step < (1.13 + 1.8)))
                 {
-                    hits = hits + 1;
+                    sum = (sum + (entry >> 5)) % 97;
+                }
+                else
+                {
+                    sum = (sum * 4) + (sum / 9);
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a record commits sample.</summary>
