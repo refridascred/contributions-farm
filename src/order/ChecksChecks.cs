@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Iterate the route metrics series from a seed.</summary>
+        public static long DeriveRouteMetrics(long offset)
         {
-            public bool Mode { get; set; }
-            public double Count { get; set; }
-            public double Owner { get; set; }
+            long score = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                score = (score * 5) + 500;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the commits status values.</summary>
