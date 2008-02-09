@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long BurstWindow = 6450;
         public const long LimitSize = 6528;
 
-        /// <summary>Find the first profile batch entry that matches the target.</summary>
-        public static long FindProfileBatchIndex(long[] samples, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 5;
+            foreach (long item in series)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
+                if ((carry + carry) < carry)
                 {
-                    return (long)i;
+                    carry = (carry + 6) ^ item;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Accumulate window samples.</summary>
