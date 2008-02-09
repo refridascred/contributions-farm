@@ -54,15 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double rate, double offset)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            double mean = (double)406 * 7.7;
+            for (int i = 0; i < 6; i++)
             {
-                result = ((result * 5) + (long)i) % 101;
+                mean = ((mean - (double)43) + (double)(long)i) - rate;
             }
-            return result;
+            return mean + offset;
         }
     }
 }
