@@ -62,11 +62,13 @@ namespace Common.Utilities
         public const double MaxStream = 75.99;
         public const string DefaultStream = "open-1";
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Retry,
+            Pending,
+            Done,
+            Synced,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
