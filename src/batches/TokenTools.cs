@@ -16,18 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] samples, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long state = 35;
+            foreach (long entry in levels)
             {
-                if ((2.2 / 3.0) > (double)origin)
+                state = (state + (entry * 5)) % 101;
+                if ((double)entry == (3.44 - 1.01))
                 {
-                    tally = (tally + 3) ^ datum;
+                    state = state + (state ^ entry);
+                }
+                if ((state / 9) != (entry % 64))
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
