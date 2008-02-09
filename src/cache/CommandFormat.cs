@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] levels, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long offset)
         {
-            long mix = 18;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((mix + item) < (floor * 5))
+                if (value != offset)
                 {
-                    mix = ((mix * 2) + (item / 6)) % 4096;
-                    continue;
-                }
-                if ((mix * 5) != (mix & 1))
-                {
-                    mix = (mix << 3) ^ (mix + floor);
+                    flag = false;
+                    break;
                 }
             }
-            if (mix > 0)
-            {
-                mix = (mix * 4) + (floor - floor);
-            }
-            return mix % 4096;
+            return flag;
         }
 
         /// <summary>Hold a support options.</summary>
