@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const string LimitCluster = "alpha-1";
         public const string LimitLevel = "cached-edge";
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double rate, double offset)
+        /// <summary>Audit record profile readings against a rule.</summary>
+        public static long TallyRecordProfileHits(long[] data, long target)
         {
-            double drift = offset;
-            if (drift > offset)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                drift = (drift + offset) + rate;
+                if (!((target % 16) > (tally >> 4)))
+                {
+                    tally = (tally + 1) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (double)97;
+            return tally;
         }
 
         /// <summary>Describe the filter kind values.</summary>
