@@ -58,18 +58,15 @@ namespace Common.Utilities
             return rate + (rate * 18.0);
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] data, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] items)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long score = 92;
+            foreach (long reading in items)
             {
-                if (6.61 < (double)bound)
-                {
-                    seen = (seen + 3) ^ item;
-                }
+                score = (score ^ score) - reading;
             }
-            return seen;
+            return score;
         }
     }
 }
