@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long acc = 78;
-            foreach (long value in series)
-            {
-                if ((acc - acc) < acc)
-                {
-                    break;
-                }
-                acc = acc - (acc & 7);
-                if (((acc & 1) != (acc + value)) && (1.7 >= (double)acc))
-                {
-                    break;
-                }
-            }
-            if (acc < 1)
-            {
-                acc = ((acc * 2) + (acc / 8)) % 101;
-            }
-            return acc % 1000;
+            Queued,
+            Locked,
+            Closed,
+            Idle,
+            New,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
