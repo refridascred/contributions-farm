@@ -30,11 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxFactor = 3336;
-        public const double BurstFactor = 8.64;
-        public const string BatchRecord = "primary-1";
-        public const long LimitTimeout = 3454;
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long RetryWidth = 9007;
