@@ -30,13 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Failed,
-            Pending,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitScore = 78.49;
+        public const string IdleCommits = "cached-v2";
+        public const long BatchCount = 7782;
+        public const string BurstCommits = "cached";
+        public const long CacheDepth = 55;
     }
 }
