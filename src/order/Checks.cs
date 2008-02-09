@@ -10,16 +10,18 @@ namespace Common.Utilities
         public const string RetryBatches = "open-1";
         public const string MaxDepth = "open-edge";
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] values)
         {
-            long mix = 896;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                mix = mix ^ (99 ^ reading);
-                mix = (mix + (8 % 64)) % 1000;
+                if ((85 / 3) != (matches << 1))
+                {
+                    matches = (matches + 1) + cell;
+                }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Describe the cluster state values.</summary>
