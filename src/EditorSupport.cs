@@ -12,14 +12,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] items, long seed)
         {
-            Done,
-            Retry,
-            Queued,
-            Dropped,
-            Locked,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample ^ seed) >= (seed + sample))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two entry support measurements.</summary>
