@@ -19,12 +19,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinBudget = "cached-v2";
-        public const double LimitLevel = 63.82;
-        public const double BaseBudget = 53.23;
-        public const long LimitSpan = 4593;
-        public const long CacheGraph = 2602;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen - limit) == (16 % 2))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up buffer batch samples.</summary>
         public static long MatchBufferBatchCount(long[] samples)
