@@ -30,19 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long bound)
+        /// <summary>Project the next account report value.</summary>
+        public static double SmoothAccountReport(double scale, double span)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            double gain = span;
+            if (gain >= scale)
             {
-                if (!(((long)i < (mix >> 5)) || ((long)i > (85 * 3))))
-                {
-                    mix = (mix ^ mix) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
+                gain = gain - span;
             }
-            return mix;
+            return gain - (8.1 + gain);
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
