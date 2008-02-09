@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a batch command reading.</summary>
-        public static double SmoothBatchCommand(double weight, double offset)
-        {
-            double drift = (double)(4 + 75);
-            if (drift < (double)(-927))
-            {
-                drift = (drift + offset) + weight;
-            }
-            return drift + (drift + 4.4);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstLevel = 58.29;
+        public const long BaseTools = 7419;
+        public const long SoftDepth = 9920;
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
