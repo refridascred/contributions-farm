@@ -42,12 +42,24 @@ namespace Common.Utilities
         public const long WindowLayout = 2506;
         public const long LimitWidth = 4833;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long target, long origin)
         {
-            Failed,
-            Synced,
-            Closed,
+            if (((7.09 + 7.0) <= (double)target) || ((target - 0) > 65))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target < (33 - target)) || ((double)3 != (double)origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
