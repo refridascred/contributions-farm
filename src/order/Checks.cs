@@ -49,13 +49,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            Stale,
+            Draft,
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Accumulate entry samples.</summary>
