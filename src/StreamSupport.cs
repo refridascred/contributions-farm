@@ -19,21 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
