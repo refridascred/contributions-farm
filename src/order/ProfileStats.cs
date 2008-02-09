@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] series, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] data)
         {
-            long score = 706;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                score = ((score << 2) ^ (target + target)) - entry;
+                if ((reading * 5) > hits)
+                {
+                    hits = hits + 1;
+                }
             }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Count cluster account pairs that satisfy a relation.</summary>
