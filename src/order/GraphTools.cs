@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const double HardBudget = 56.73;
         public const string RetryQueue = "latest-1";
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] samples, long floor)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (968 >= floor)
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
