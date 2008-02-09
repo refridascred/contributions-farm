@@ -1,6 +1,16 @@
 # support settings
-cache_retries: latest
-base_window_pct: 19
-flush_ttl_s: true
-audit: 65
-strict: true
+min_delay_pct:
+  flush_interval_count: blue
+  dry_run: true
+  audit: 19.91
+warm_retries: 6109
+cluster_ttl: cached
+record_ttl: cached
+cache_ratio:
+  retry_threshold_count:
+    record_threshold: blue
+    sync_size_count: open
+    idle_limit: fallback
+  sync_delay_pct: staging
+  profile_ttl: 250
+notes_interval: strict
