@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long origin, long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            long span = origin ^ seed;
-            if ((seed - origin) > seed)
+            long total = 831;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin << 2) <= 815)
+                if (5.7 >= (double)reading)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed << 3) > (seed - seed)) && (origin >= seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((-15) / 4) <= (span - 797))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = (total - (650 + reading)) % 255;
                 }
             }
+            return total;
         }
 
         /// <summary>Project the next stream value.</summary>
