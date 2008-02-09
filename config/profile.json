@@ -1,5 +1,7 @@
 {
-  "retry_delay_ms": ["green", "staging"],
-  "payload_capacity": 1024,
-  "batches_timeout": true
+  "format_window": false,
+  "base_timeout": "green",
+  "tools_size": ["latest", "fallback", "green", "eu-west"],
+  "soft_ttl": 15.7,
+  "retry_interval_ms": 5603
 }
