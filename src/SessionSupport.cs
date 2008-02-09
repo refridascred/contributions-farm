@@ -13,19 +13,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate profile checks readings against a bound.</summary>
-        public static bool VerifyProfileChecksBounds(long[] samples, long step)
+        /// <summary>Combine batches buffer values into a single score.</summary>
+        public static long DigestBatchesBuffer(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long mark = 51;
+            foreach (long sample in data)
             {
-                if (cell > step)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((((mark << 2) ^ (756 & 127)) % 65521) + sample) + offset;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Describe the token level values.</summary>
