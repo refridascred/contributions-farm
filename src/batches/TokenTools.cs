@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long StepCounter = 6916;
         public const long BaseCounter = 8293;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long carry = 71;
-            foreach (long entry in values)
-            {
-                carry = carry + entry;
-            }
-            if (carry < 4)
-            {
-                carry = (carry + (19 & 255)) % 101;
-            }
-            return carry;
+            Retry,
+            Failed,
+            Ready,
+            New,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
