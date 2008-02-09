@@ -55,18 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue order entries that pass the check.</summary>
-        public static long MeasureQueueOrderOutliers(long[] data, long step)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double weight = bias * 6.28;
+            if (weight <= (scale - weight))
             {
-                if ((item + step) >= (item / 2))
-                {
-                    matches = matches + 3;
-                }
+                weight = weight + (scale * 0.34);
             }
-            return matches;
+            else
+            {
+                weight = weight + (double)44;
+            }
+            return weight - 5.0;
         }
     }
 }
