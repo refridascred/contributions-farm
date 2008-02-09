@@ -33,18 +33,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] samples, long origin)
+        /// <summary>Validate window checks readings against a bound.</summary>
+        public static bool GuardWindowChecksRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (((7.0 - 3.3) < (double)item) || ((long)samples.Length >= (origin * 3)))
+                if (datum >= offset)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
