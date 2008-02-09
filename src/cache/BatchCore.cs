@@ -56,13 +56,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count schema notes pairs that satisfy a relation.</summary>
+        public static long MatchSchemaNotesCount(long[] data)
         {
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
