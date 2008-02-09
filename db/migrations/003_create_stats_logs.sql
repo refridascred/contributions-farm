@@ -2,11 +2,13 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    ratio REAL,
-    weight REAL,
-    token TEXT
+    token TEXT,
+    created_at TIMESTAMP,
+    score REAL NOT NULL DEFAULT 0,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
 
-INSERT INTO stats_logs (label, ratio, weight, token) VALUES ('cached', 93.4, 48.85, 'staging');
+INSERT INTO stats_logs (label, token, score, count) VALUES ('primary', 'legacy', 66.32, 69);
+INSERT INTO stats_logs (label, token, score, count) VALUES ('cached', 'stable', 46.21, 42);
