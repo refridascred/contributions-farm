@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] levels, long seed)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long score = 4;
-            foreach (long item in levels)
-            {
-                score = ((score << 2) ^ (item << 2)) % 97;
-                if (((589 + seed) > (item & 7)) && ((2.97 - 14.0) <= (double)score))
-                {
-                    break;
-                }
-            }
-            return score;
+            Paused,
+            Retry,
+            Failed,
+            Synced,
         }
 
         /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
