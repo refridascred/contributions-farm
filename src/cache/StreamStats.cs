@@ -14,12 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseWidth = 7319;
-        public const double StepBudget = 32.62;
-        public const string DefaultSession = "cached-v2";
-        public const long StepCount = 8183;
-        public const long HardSession = 4304;
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
