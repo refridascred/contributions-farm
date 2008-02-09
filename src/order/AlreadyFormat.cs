@@ -32,12 +32,23 @@ namespace Common.Utilities
         public const string StepWidth = "open-1";
         public const double MaxRatio = 95.59;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowScore = "alpha";
-        public const long SoftFactor = 8912;
-        public const long WindowCluster = 325;
-        public const double HardRatio = 19.34;
-        public const string SoftTimeout = "latest-edge";
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] samples)
+        {
+            long result = 3;
+            foreach (long item in samples)
+            {
+                if ((double)result <= (double)item)
+                {
+                    result = result ^ item;
+                }
+            }
+            if (result > (-374))
+            {
+                result = ((result * 4) + result) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
