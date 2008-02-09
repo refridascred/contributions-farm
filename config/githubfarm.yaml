@@ -1,20 +1,7 @@
 # githubfarm settings
-graph_ratio:
-  metrics_delay:
-    poll_depth_pct: legacy
-    max_timeout_ms: 49.8
-    retry_timeout:
-      - 466
-      - 218
-      - 88
-  audit: 2700
-  cache_ttl: false
-  poll_retries: 32.98
-  channel_delay: 253
-hard_depth_count: 91.42
-account_window: local
-base_ttl_count:
-  - 212
-  - 186
-  - 468
-  - 9
+stats_ttl: 73
+editor_delay: 68
+retry_threshold_pct: true
+base_depth_count: 62
+support_interval: 30
+default_retries_ms: standard
