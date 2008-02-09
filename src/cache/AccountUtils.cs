@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate token batch samples.</summary>
+        public static long TotalTokenBatch(long[] readings, long seed)
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
+            long sum = 48;
+            foreach (long entry in readings)
+            {
+                if (entry <= (seed / 4))
+                {
+                    sum = ((sum * 4) + (entry - sum)) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
