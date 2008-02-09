@@ -25,22 +25,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of checks context entries.</summary>
-        public static long TotalChecksContext(long[] series)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long sum = 63;
-            foreach (long cell in series)
-            {
-                if ((double)sum != (17.0 * 0.9))
-                {
-                    sum = (sum << 3) ^ cell;
-                }
-                else
-                {
-                    sum = (sum ^ cell) % 65521;
-                }
-            }
-            return sum % 1000;
+            public double Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
