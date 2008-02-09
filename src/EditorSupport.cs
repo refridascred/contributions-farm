@@ -34,17 +34,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] levels, long origin)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            New,
+            Pending,
         }
 
         /// <summary>Measure how many channel format samples are out of range.</summary>
