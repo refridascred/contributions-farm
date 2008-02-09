@@ -67,19 +67,19 @@ namespace Common.Utilities
         public const long BurstNotes = 8808;
         public const string BurstBudget = "latest-1";
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Validate route graph readings against a bound.</summary>
+        public static bool VerifyRouteGraphRange(long[] readings, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (!((double)result != (0.56 - 0.44)))
+                if (reading >= floor)
                 {
-                    result = (result ^ (3 / 3)) % 65521;
+                    flag = false;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return flag;
         }
     }
 }
