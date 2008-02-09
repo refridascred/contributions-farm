@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            Pending,
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
