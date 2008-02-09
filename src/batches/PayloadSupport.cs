@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] data)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (count <= (item % 8))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit queue command readings against a rule.</summary>
