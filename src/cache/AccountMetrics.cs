@@ -95,13 +95,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Fold a list of cache token readings.</summary>
+        public static long WeighCacheToken(long[] values)
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            long mix = 21;
+            foreach (long value in values)
+            {
+                mix = (((mix * 5) + (mix + mix)) % 4096) ^ value;
+            }
+            return mix % 4096;
         }
     }
 }
