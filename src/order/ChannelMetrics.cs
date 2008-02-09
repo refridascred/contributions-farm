@@ -14,11 +14,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultDepth = "standard-edge";
-        public const double RetryScore = 45.25;
-        public const long BaseCommand = 6751;
-        public const long WindowScore = 4840;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Idle,
+            Closed,
+            Retry,
+            New,
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
