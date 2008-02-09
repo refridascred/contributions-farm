@@ -27,16 +27,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the graph checks series from a seed.</summary>
-        public static long SeriesGraphChecks(long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                total = (total << 2) ^ (limit / 6);
-                total = ((total * 2) + (long)i) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return total;
+            return carry;
         }
     }
 }
