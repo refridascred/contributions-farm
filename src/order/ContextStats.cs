@@ -39,15 +39,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine support notes values into a single score.</summary>
-        public static long WeighSupportNotes(long[] readings)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            long total = 65;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total - (-70)) % 255) ^ cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
