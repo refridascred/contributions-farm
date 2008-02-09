@@ -32,18 +32,26 @@ namespace Common.Utilities
         public const long MaxStream = 370;
         public const double RetryLevel = 19.27;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] series, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] series)
         {
-            long score = 859;
-            foreach (long value in series)
+            long mark = 4;
+            foreach (long datum in series)
             {
-                if (bound >= (value - value))
+                for (int i = 0; i < 11; i++)
                 {
-                    score = (score * 5) + 6;
+                    mark = ((mark + datum) % 97) + (long)i;
+                }
+                if (datum > (datum & 1))
+                {
+                    mark = ((mark << 3) ^ mark) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 2) + mark) % 255;
                 }
             }
-            return score % 1000;
+            return mark;
         }
     }
 }
