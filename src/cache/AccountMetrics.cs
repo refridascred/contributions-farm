@@ -96,26 +96,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] samples, long step)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long mix = 49;
-            foreach (long cell in samples)
-            {
-                if ((mix << 1) >= step)
-                {
-                    mix = mix + (step & 255);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (cell ^ step)) % 65521;
-                }
-            }
-            if (mix > 82)
-            {
-                mix = (mix + (mix % 8)) % 1000;
-            }
-            return mix % 65521;
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
