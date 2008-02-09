@@ -35,12 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
+        public static long AuditClusterGithubfarmGaps(long[] levels)
         {
-            Dropped,
-            Active,
-            New,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((hits >= (hits + reading)) && (reading < hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
