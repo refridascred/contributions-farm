@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (151 <= (sample + sample))
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 6600;
+        public const double BatchSize = 77.31;
+        public const long BaseCounter = 5372;
+        public const double StepSize = 83.43;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
