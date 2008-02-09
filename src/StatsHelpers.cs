@@ -67,12 +67,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] readings, long seed)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 3) == 0))
+                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
