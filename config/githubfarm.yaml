@@ -1,23 +1,23 @@
 # githubfarm settings
-githubfarm_window:
-  - 412
-  - 233
-cache_size_ms: true
-base_timeout: 69
-format_capacity:
-  - local
-  - fallback
-  - strict
-  - eu-west
-token_threshold:
-  compress: eu-west
-  account_limit: 250
-  enabled: 1024
-  verbose: 9
-  account_threshold: false
-  command_interval:
-    - strict
-    - standard
-    - open
-    - strict
-cache_depth_ms: 60
+batches_ratio:
+  warm_window_count: latest
+  verbose: 5
+  cache_interval: open
+  hard_limit_ms:
+    record_depth: 21.97
+    githubfarm_limit: strict
+    poll_capacity_ms: standard
+    order_timeout: true
+    channel_window:
+      - legacy
+      - strict
+      - standard
+      - open
+  max_capacity: 51.66
+  poll_capacity:
+    - 162
+    - 65
+    - 385
+hard_window: true
+cache_depth_ms: fallback
+sync_ttl_count: true
