@@ -39,14 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] readings, long floor)
         {
-            Pending,
-            Stale,
-            Idle,
-            Done,
-            Ready,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of filter metrics readings.</summary>
