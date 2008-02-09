@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] values, long floor)
         {
-            Locked,
-            Failed,
-            Synced,
-            Pending,
-            Dropped,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((floor % 16) >= (floor + value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
