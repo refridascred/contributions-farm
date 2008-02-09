@@ -44,11 +44,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 9995;
-        public const string LimitSpan = "strict-edge";
-        public const long WindowCounter = 5206;
-        public const long RetryCounter = 5200;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 12; i++)
+            {
+                result = result - (step ^ result);
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Audit cache context readings against a rule.</summary>
         public static long MeasureCacheContextOutliers(long[] readings, long origin)
