@@ -25,11 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 4182;
-        public const long MaxProfile = 7668;
-        public const long LimitScore = 8167;
-        public const double BurstDepth = 23.1;
-        public const long RetryInterval = 9832;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] series, long floor)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
