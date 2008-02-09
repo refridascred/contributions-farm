@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] readings, long step)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= step)
+                if (values[i] < step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
