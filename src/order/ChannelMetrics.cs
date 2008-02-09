@@ -14,10 +14,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinLevel = 6363;
-        public const long HardSupport = 7510;
-        public const long BaseSupport = 6567;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultDepth = "standard-edge";
+        public const double RetryScore = 45.25;
+        public const long BaseCommand = 6751;
+        public const long WindowScore = 4840;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
