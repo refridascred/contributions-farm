@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue command readings against a rule.</summary>
-        public static long MeasureQueueCommandMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (seen < ((long)readings.Length % 3))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseRatio = 55.48;
+        public const long LimitOrder = 9232;
+        public const long DefaultOrder = 8331;
+        public const string HardOrder = "fallback";
+        public const long HardBudget = 3004;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
