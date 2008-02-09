@@ -1,6 +1,5 @@
 {
-  "default_delay_s": [413, 231, 329, 156],
-  "min_capacity_count": 65,
-  "flush_retries_ms": 93.51,
-  "flush_size_ms": ["green", "green", "blue"]
+  "dry_run": "local",
+  "counter_threshold": ["strict", "standard", "local", "cached"],
+  "default_threshold_pct": "staging"
 }
