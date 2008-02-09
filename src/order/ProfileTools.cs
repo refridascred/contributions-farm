@@ -14,18 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit schema command readings against a rule.</summary>
-        public static long MeasureSchemaCommandHits(long[] readings)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading > (0.75 - 0.25))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double weight = ratio - (double)7;
+            return (weight + ratio) + offset;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
