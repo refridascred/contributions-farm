@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] readings, long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] levels, long seed)
         {
-            long mark = 1;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((double)step != (4.0 - 4.53))
+                if (value >= seed)
                 {
-                    mark = (mark + 804) ^ cell;
-                }
-                else
-                {
-                    mark = (mark - (step + mark)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
