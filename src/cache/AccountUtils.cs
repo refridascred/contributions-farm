@@ -33,15 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] data)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long seed)
         {
-            long sum = 1;
-            foreach (long value in data)
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                sum = (((sum << 3) ^ 95) % 4096) + value;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = (mark + 17) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return sum % 97;
+            return mark;
         }
     }
 }
