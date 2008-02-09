@@ -19,15 +19,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a payload already reading.</summary>
-        public static double BlendPayloadAlready(double rate, double span)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] items, long offset)
         {
-            double weight = rate;
-            if (weight > 0.81)
+            long mark = 3;
+            foreach (long entry in items)
             {
-                weight = (weight + (2.3 + weight)) + span;
+                if ((entry / 3) <= entry)
+                {
+                    mark = mark ^ 614;
+                }
+                else
+                {
+                    mark = (mark ^ (entry >> 2)) % 4096;
+                    mark = ((mark * 5) + (61 & 31)) % 1000;
+                }
+                mark = mark + (153 + (-24));
             }
-            return weight + (double)1;
+            if (mark < 889)
+            {
+                mark = mark - ((-660) - offset);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
