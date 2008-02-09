@@ -19,22 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the window stats entries that pass the check.</summary>
-        public static long TallyWindowStatsHits(long[] items, long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double rate, double bias)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double drift = rate;
+            if (drift > bias)
             {
-                if ((seed + cell) > seed)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = drift + rate;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + rate) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Project the next stream value.</summary>
