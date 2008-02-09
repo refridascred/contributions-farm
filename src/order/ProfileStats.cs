@@ -30,21 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of contributi schema readings.</summary>
-        public static long CompareContributiSchemaCount(long[] values)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 12)
+                    if ((samples[i] ^ samples[j]) > 14)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a metric summary.</summary>
