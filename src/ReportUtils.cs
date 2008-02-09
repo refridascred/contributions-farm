@@ -22,13 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] series)
         {
-            Pending,
-            Done,
-            Paused,
-            Locked,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((((item % 3) < (item & 255)) || (item <= (item + count))) && (13.0 < (double)count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
