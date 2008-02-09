@@ -50,14 +50,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Find the first context account entry that matches the target.</summary>
+        public static long FindContextAccountIndex(long[] data, long limit)
         {
-            Stale,
-            Failed,
-            Pending,
-            Active,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
