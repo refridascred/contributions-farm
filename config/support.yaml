@@ -1,4 +1,16 @@
 # support settings
-soft_ratio_ms: true
-base_limit: false
-context_window: latest
+poll_depth_pct: open
+soft_depth_count: blue
+support_size: 7
+warm_capacity:
+  metric_ratio: 1024
+  default_depth_pct: strict
+  warm_delay_ms: 28
+  idle_ttl: green
+  checks_timeout:
+    - primary
+    - blue
+    - stable
+    - green
+persist: 250
+idle_limit: true
