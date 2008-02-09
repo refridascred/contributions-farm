@@ -26,21 +26,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long bound, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((seed / 2) > seed)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound > (double)seed)
                 {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a tools stats.</summary>
