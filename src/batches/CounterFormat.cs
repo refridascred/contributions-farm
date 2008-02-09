@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheCount = 6605;
-        public const long HardTimeout = 6401;
-        public const double IdleWidth = 50.43;
-        public const string BatchFactor = "standard-edge";
-        public const double StepSchema = 86.06;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits % 16) > item)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
