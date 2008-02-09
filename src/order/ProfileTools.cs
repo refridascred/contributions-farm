@@ -61,11 +61,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheScore = 8108;
-        public const double StepBudget = 30.5;
-        public const string HardTimeout = "strict";
-        public const long BaseInterval = 7901;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteLimits(long[] samples, long floor)
