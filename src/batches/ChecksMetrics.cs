@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] items, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (value > step)
+                if (((double)hits != (1.1 * 1.47)) || ((cell + hits) <= (cell >> 3)))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) - origin;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
