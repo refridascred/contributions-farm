@@ -74,18 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] items, long target)
+        /// <summary>Iterate the filter payload series from a seed.</summary>
+        public static long IterateFilterPayload(long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (((393 - reading) < seen) || (((double)target <= (10.0 + 5.7)) || (12.0 > (1.0 + 7.0))))
+                if ((anchor * 3) <= (anchor % 60))
                 {
-                    seen = seen + 3;
+                    anchor = (anchor + ((long)i % 16)) % 97;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Audit order command readings against a rule.</summary>
