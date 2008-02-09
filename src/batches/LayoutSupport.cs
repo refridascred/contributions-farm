@@ -23,11 +23,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 8822;
-        public const string BaseBudget = "latest-1";
-        public const string CacheBudget = "alpha-v2";
-        public const long LimitBudget = 4631;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Done,
+            Paused,
+            Pending,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
