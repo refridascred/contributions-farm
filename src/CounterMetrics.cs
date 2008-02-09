@@ -19,21 +19,22 @@ namespace Common.Utilities
         public const string StepLevel = "alpha-v2";
         public const long RetryContributi = 7463;
 
-        /// <summary>Match up account schema samples.</summary>
-        public static long CompareAccountSchemaCount(long[] readings)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((reading / 2) > (hits * 3)) && (((reading % 64) != (reading ^ hits)) || ((61 * 4) >= (0 ^ (long)levels.Length))))
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate schema graph readings against a bound.</summary>
