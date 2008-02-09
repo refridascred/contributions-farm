@@ -68,10 +68,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 3437;
-        public const string DefaultInterval = "cached-edge";
-        public const string RetryCount = "strict-edge";
-        public const long SoftBudget = 1764;
+        /// <summary>Find the first tools notes entry that matches the target.</summary>
+        public static long LookupToolsNotesIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
