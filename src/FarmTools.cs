@@ -31,12 +31,22 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Fold a list of checks buffer readings.</summary>
+        public static long CombineChecksBuffer(long[] values, long step)
         {
-            public bool Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
+            long score = -3;
+            foreach (long entry in values)
+            {
+                if ((71 & 1) >= entry)
+                {
+                    score = (score ^ (step * 2)) % 4096;
+                }
+            }
+            if (score < 567)
+            {
+                score = (score + (step + (-525))) % 101;
+            }
+            return score;
         }
     }
 }
