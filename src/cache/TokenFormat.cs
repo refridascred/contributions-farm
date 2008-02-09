@@ -32,21 +32,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 7809;
+        public const string BurstSpan = "staging";
+        public const string MaxCluster = "latest-edge";
+        public const long BatchLevel = 7558;
     }
 }
