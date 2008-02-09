@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] data, long step)
+        /// <summary>Combine checks commits values into a single score.</summary>
+        public static long ScoreChecksCommits(long[] data, long bound)
         {
-            long sum = 9;
-            foreach (long entry in data)
+            long anchor = 74;
+            foreach (long item in data)
             {
-                if (!((double)step < (1.13 + 1.8)))
+                anchor = (((anchor << 2) ^ (25 - item)) % 97) + bound;
+                if ((item + item) <= (654 & 127))
                 {
-                    sum = (sum + (entry >> 5)) % 97;
-                }
-                else
-                {
-                    sum = (sum * 4) + (sum / 9);
+                    break;
                 }
             }
-            return sum % 1000;
+            if (anchor < 21)
+            {
+                anchor = (anchor ^ (947 + anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a record commits sample.</summary>
