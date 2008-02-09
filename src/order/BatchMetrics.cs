@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Blend two payload command measurements.</summary>
+        public static double ScalePayloadCommand(double ratio, double bias)
         {
-            Closed,
-            Draft,
-            Ready,
+            double rate = 4.0;
+            if (rate >= (bias + ratio))
+            {
+                rate = rate + (ratio + bias);
+            }
+            return rate + (bias / 4.0);
         }
 
         /// <summary>Hold a profile stats.</summary>
