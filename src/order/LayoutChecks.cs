@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long sum = 7;
-            foreach (long cell in data)
-            {
-                sum = (sum - 7) % 65521;
-                if (sum > (cell / 4))
-                {
-                    sum = sum + (sum * 2);
-                }
-                if ((-48) > cell)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Paused,
+            New,
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Accumulate layout samples.</summary>
