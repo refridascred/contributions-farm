@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long limit, long bound)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] values, long floor)
         {
-            if ((662 ^ limit) >= (limit + 4))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound & 1) < 3) && ((64 / 4) >= (bound >> 3)))
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((842 >> 2) == (limit + bound)) && ((2 - limit) < (53 - bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((38 % 64) == (bound + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
