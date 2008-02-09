@@ -51,20 +51,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] data, long limit)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "cached-v2";
+        public const double BaseDepth = 2.91;
+        public const string BurstBuffer = "legacy-edge";
+        public const double MaxBuffer = 65.7;
+        public const long HardBuffer = 8953;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long CombineContext(long[] items, long floor)
