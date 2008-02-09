@@ -32,21 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the channel class values.</summary>
