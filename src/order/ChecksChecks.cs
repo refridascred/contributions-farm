@@ -46,13 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Adjust a account context reading.</summary>
+        public static double BlendAccountContext(double gain, double floor)
         {
-            Active,
-            Pending,
-            Paused,
-            Dropped,
+            double bias = gain;
+            if (bias >= (bias - bias))
+            {
+                bias = bias - (bias - floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - gain) - (double)(long)i;
+            }
+            return bias - 7.64;
         }
     }
 }
