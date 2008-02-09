@@ -23,11 +23,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxScore = 299;
-        public const string HardWidth = "alpha-1";
-        public const long HardCache = 7466;
-        public const string CacheTimeout = "local-v2";
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum + (sum & 1)) % 4096;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long RollRecord(long bound)
