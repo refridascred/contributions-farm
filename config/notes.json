@@ -1,8 +1,20 @@
 {
-  "max_limit": "local",
-  "cache_depth_pct": true,
-  "batch_limit": "local",
-  "warm_ratio_count": ["stable", "latest", "latest"],
-  "soft_limit_pct": 47,
-  "audit": 68.88
+  "verbose": [395, 272, 155],
+  "sync_size_pct": "local",
+  "max_size_count": {
+    "idle_size": {
+      "burst_size": "eu-west",
+      "dry_run": 3533,
+      "stats_threshold": 61,
+      "strict": "legacy",
+      "account_retries": "open",
+      "max_window": ["cached", "strict", "primary"]
+    },
+    "max_size_ms": 22,
+    "token_depth": "local",
+    "command_delay": "latest",
+    "poll_limit": 12,
+    "audit": "green"
+  },
+  "soft_depth_pct": 92
 }
