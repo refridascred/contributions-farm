@@ -59,17 +59,32 @@ namespace Common.Utilities
         public const double LimitWidth = 1.74;
         public const double SoftFactor = 14.07;
 
-        /// <summary>Find the first entry githubfarm entry that matches the target.</summary>
-        public static long LookupEntryGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long seed, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = seed - limit;
+            if ((double)limit <= (4.0 - 4.9))
             {
-                if ((levels[i] > offset) && ((levels[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if (!((double)slot > (5.0 / 6.0)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed << 1) >= slot)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the profile status values.</summary>
