@@ -35,12 +35,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitTools = 85.87;
-        public const long StepTools = 5120;
-        public const long HardCount = 8328;
-        public const long IdleLevel = 3927;
-        public const double MaxTools = 29.29;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 6448;
+        public const long BurstAlready = 8423;
+        public const double HardSize = 54.38;
 
         /// <summary>Digest a series of account farm entries.</summary>
         public static long FoldAccountFarm(long[] items)
