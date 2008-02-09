@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double scale, double offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double weight = (double)400;
-            if (weight < (double)39)
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - 6.0) + (double)(long)i;
-            }
-            return weight + (scale + scale);
+            Active,
+            Dropped,
+            Queued,
+            Pending,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
