@@ -71,18 +71,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long target)
         {
-            long carry = 5;
-            foreach (long entry in readings)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((carry ^ 829) != (carry / 3))
+                total = (total << 3) ^ total;
+                if ((4.0 + 0.46) >= (double)total)
                 {
-                    carry = carry ^ entry;
+                    total = total - 1;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return carry % 97;
+            return total;
         }
 
         /// <summary>Find the first metrics buffer entry that matches the target.</summary>
