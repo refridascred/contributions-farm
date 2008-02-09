@@ -83,14 +83,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Pending,
-            Active,
-            Dropped,
-            Paused,
-            Ready,
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
