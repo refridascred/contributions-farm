@@ -45,18 +45,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the schema payload entries that pass the check.</summary>
-        public static long CountSchemaPayloadOutliers(long[] readings)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (((value >> 2) < (390 - count)) || (((76 / 3) > count) && ((double)count >= (double)(-596))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Dropped,
+            Stale,
+            Queued,
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
