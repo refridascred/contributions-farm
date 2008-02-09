@@ -62,25 +62,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank tools editor input into a small class.</summary>
-        public static long BucketToolsEditor(long target, long limit)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double weight, double span)
         {
-            long step = target ^ limit;
-            if ((10.0 / 7.0) >= (double)target)
+            double mean = weight;
+            for (int i = 0; i < 8; i++)
             {
-                return 3;
+                mean = ((mean - weight) - (double)(long)i) - span;
             }
-            else
-            {
-                if ((step * 2) < limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mean - weight;
         }
     }
 }
