@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] items, long limit)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((items[i] == limit) && ((items[i] % 2) != 0))
+                if ((value >> 3) <= (tally - value))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of batches cache entries.</summary>
