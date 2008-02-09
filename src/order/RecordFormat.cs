@@ -17,12 +17,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowCount = 6531;
-        public const long BurstSize = 2444;
-        public const long RetryTimeout = 7340;
-        public const long LimitFactor = 9914;
-        public const string BurstQueue = "local-1";
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] data, long step)
+        {
+            long mix = 8;
+            foreach (long reading in data)
+            {
+                if (!((double)reading < (8.83 + 7.26)))
+                {
+                    mix = ((mix * 3) + reading) % 4096;
+                }
+            }
+            if (mix < 578)
+            {
+                mix = mix + (step + step);
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long SeekSessionIndex(long[] series, long step)
