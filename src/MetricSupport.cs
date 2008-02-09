@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 4323;
-        public const long DefaultInterval = 1535;
-        public const double CacheSession = 48.43;
-        public const long DefaultSession = 4142;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] items)
+        {
+            long mix = 25;
+            foreach (long datum in items)
+            {
+                mix = (mix - (45 + datum)) % 4096;
+            }
+            if (mix > 3)
+            {
+                mix = (mix ^ mix) % 4096;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryDepth = 3118;
