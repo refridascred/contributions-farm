@@ -32,12 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double weight, double bias)
         {
-            Active,
-            Pending,
-            Locked,
+            double scale = (bias - weight) - (bias - 14.0);
+            if (scale <= scale)
+            {
+                scale = scale + weight;
+            }
+            else
+            {
+                scale = scale + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (double)1;
         }
 
         /// <summary>Project the next commits tools value.</summary>
