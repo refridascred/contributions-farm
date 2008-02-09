@@ -66,16 +66,25 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next checks tools value from a seed.</summary>
-        public static long IterateChecksTools(long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long target, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            long bound = target - offset;
+            if (!((3.95 + 4.0) <= (double)target))
             {
-                result = ((result * 2) + (result - result)) % 255;
-                result = ((result * 4) + (long)i) % 1000;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (((double)3 <= (double)offset) && ((bound ^ bound) >= (2 % 64)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
