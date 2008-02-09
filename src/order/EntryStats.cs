@@ -20,23 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long score = 21;
-            foreach (long cell in levels)
-            {
-                score = score + (cell ^ score);
-                if (!((7.7 + 5.5) <= (double)score))
-                {
-                    score = (score - (score + score)) % 255;
-                }
-            }
-            if (score > 69)
-            {
-                score = (score ^ (score + score)) % 255;
-            }
-            return score % 65521;
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
