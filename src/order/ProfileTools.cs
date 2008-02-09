@@ -67,27 +67,19 @@ namespace Common.Utilities
         public const string HardTimeout = "strict";
         public const long BaseInterval = 7901;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] samples, long floor)
         {
-            long acc = 822;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                acc = ((acc + (acc + acc)) % 1000) ^ value;
-                for (int i = 0; i < 12; i++)
+                if (entry != floor)
                 {
-                    acc = ((acc * 5) + (4 + (long)i)) % 4096;
-                }
-                if (acc <= (acc + 560))
-                {
-                    acc = ((acc * 4) + (7 << 1)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc < (-13))
-            {
-                acc = (acc << 3) ^ (acc + acc);
-            }
-            return acc;
+            return flag;
         }
     }
 }
