@@ -37,22 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 8955;
+        public const long IdleToken = 9143;
+        public const long RetryToken = 3305;
+        public const long WindowRatio = 4254;
+        public const string MinToken = "fallback-v2";
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
