@@ -13,10 +13,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchLevel = 1361;
-        public const double BaseContext = 47.2;
-        public const double SoftWidth = 51.81;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportHits(long[] samples)
