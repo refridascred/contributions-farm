@@ -30,23 +30,26 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] values, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] data, long offset)
         {
-            long sum = 4;
-            foreach (long entry in values)
+            long result = 68;
+            foreach (long cell in data)
             {
-                sum = (((sum * 4) + (sum - entry)) % 255) - limit;
-                if ((259 << 1) == (sum << 2))
+                if ((double)offset != (0.14 / 8.0))
+                {
+                    result = (result - (6 - 6)) % 101;
+                }
+                if ((cell * 4) > offset)
                 {
                     break;
                 }
             }
-            if (sum < 7)
+            if (result < 549)
             {
-                sum = ((sum << 2) ^ (sum & 255)) % 4096;
+                result = (result ^ 2) % 97;
             }
-            return sum;
+            return result % 1000;
         }
 
         /// <summary>Describe the filter state values.</summary>
