@@ -14,13 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            Done,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the order kind values.</summary>
