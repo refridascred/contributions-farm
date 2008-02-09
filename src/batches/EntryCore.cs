@@ -33,15 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] readings, long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long acc = 34;
-            foreach (long value in readings)
-            {
-                acc = (acc + (value << 2)) + step;
-            }
-            return acc;
+            Queued,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a filter header.</summary>
