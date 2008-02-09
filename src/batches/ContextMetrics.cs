@@ -31,39 +31,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long floor, long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long seed)
         {
-            long span = floor ^ bound;
-            if (span >= (span * 2))
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
+                mix = mix ^ (mix / 4);
+                mix = (mix + (seed ^ seed)) % 4096;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound << 3) >= (203 - bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor + bound) == (bound << 2)) || ((floor % 100) >= (span % 97)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (731 <= (bound + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Count the entry notes entries that pass the check.</summary>
