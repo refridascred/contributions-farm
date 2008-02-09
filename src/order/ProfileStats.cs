@@ -35,16 +35,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double weight, double offset)
-        {
-            double drift = (double)(73 & 63);
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (((drift - 1.5) + (double)(long)i) - weight) - offset;
-            }
-            return drift - (double)2;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitTools = 85.87;
+        public const long StepTools = 5120;
+        public const long HardCount = 8328;
+        public const long IdleLevel = 3927;
+        public const double MaxTools = 29.29;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
