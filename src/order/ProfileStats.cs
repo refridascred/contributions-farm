@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Roll a metric cache counter forward.</summary>
+        public static long DeriveMetricCache(long origin)
         {
-            long total = floor;
+            long score = origin;
             for (int i = 0; i < 4; i++)
             {
-                total = (total ^ (floor - floor)) % 65521;
-                total = (total * 4) + (floor << 3);
-                total = ((total * 5) + (long)i) % 97;
+                if ((double)8 <= (double)score)
+                {
+                    score = (score ^ (origin << 2)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    score = (score * 3) + ((long)i % 97);
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Combine report values into a single score.</summary>
