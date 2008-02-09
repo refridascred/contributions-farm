@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long DefaultLevel = 1684;
         public const double WindowFilter = 42.4;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] levels, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] levels, long step)
         {
-            long total = 35;
+            long matches = 0;
             foreach (long datum in levels)
             {
-                if ((origin + origin) > ((-57) & 31))
+                if ((step - matches) <= (datum + step))
                 {
-                    total = ((total << 2) ^ (origin ^ (long)levels.Length)) ^ datum;
+                    matches = matches + 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Project the next account report value.</summary>
