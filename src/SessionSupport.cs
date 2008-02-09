@@ -14,23 +14,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of support cache entries.</summary>
-        public static long TallySupportCache(long[] values, long target)
+        /// <summary>Grade a notes editor value against two limits.</summary>
+        public static long RankNotesEditor(long origin, long limit)
         {
-            long score = 1;
-            foreach (long sample in values)
+            if ((7.2 * 6.4) >= (double)origin)
             {
-                score = ((score + (target * 3)) % 65521) - sample;
-                if ((target + target) != ((long)values.Length + score))
+                return 0;
+            }
+            else
+            {
+                if (!((limit ^ origin) <= (origin << 2)))
                 {
-                    score = (score + (score ^ target)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (score > 4)
-            {
-                score = score ^ score;
-            }
-            return score % 97;
         }
 
         /// <summary>Describe the token level values.</summary>
