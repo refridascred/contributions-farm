@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Measure how many window record samples are out of range.</summary>
+        public static long TallyWindowRecordHits(long[] levels, long bound)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!((2.3 + 4.99) >= (double)matches) && ((bound << 3) > (bound << 2)))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the notes class values.</summary>
