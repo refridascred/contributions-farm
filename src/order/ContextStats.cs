@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] values, long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long limit, long offset)
         {
-            long carry = 6;
-            foreach (long reading in values)
+            if (((15.0 - 15.0) > (double)limit) || ((offset % 12) <= limit))
             {
-                if ((offset >> 5) >= (reading >> 5))
+                return 5;
+            }
+            else
+            {
+                if ((0.06 * 7.48) == (double)limit)
                 {
-                    carry = carry ^ (reading + 816);
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry << 3) ^ 35;
-                }
-                if ((double)5 > (double)reading)
-                {
-                    break;
+                    return 1;
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
