@@ -36,12 +36,14 @@ namespace Common.Utilities
         public const string LimitInterval = "open";
         public const long CacheFactor = 7705;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "alpha-v2";
-        public const long CacheSpan = 9165;
-        public const string StepQueue = "stable-1";
-        public const long StepTimeout = 2113;
-        public const string MinScore = "fallback-edge";
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long FoldEntry(long[] series, long floor)
