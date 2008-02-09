@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] data)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading % 12) >= (reading * 3))
+                if (readings[i] < floor)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a order header.</summary>
