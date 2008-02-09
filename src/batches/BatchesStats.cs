@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count githubfarm profile pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmProfileCount(long[] series)
+        /// <summary>Adjust a metric filter reading.</summary>
+        public static double AdjustMetricFilter(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = bias;
+            if (drift >= (double)29)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift - drift;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - rate) - (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Describe the schema state values.</summary>
