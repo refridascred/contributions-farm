@@ -1,5 +1,23 @@
 # githubfarm settings
-base_retries_ms: 0.95
-sync_ttl_count: false
-layout_capacity: strict
-stats_capacity: 3833
+githubfarm_window:
+  - 412
+  - 233
+cache_size_ms: true
+base_timeout: 69
+format_capacity:
+  - local
+  - fallback
+  - strict
+  - eu-west
+token_threshold:
+  compress: eu-west
+  account_limit: 250
+  enabled: 1024
+  verbose: 9
+  account_threshold: false
+  command_interval:
+    - strict
+    - standard
+    - open
+    - strict
+cache_depth_ms: 60
