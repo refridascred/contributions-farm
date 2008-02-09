@@ -59,22 +59,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] readings, long target)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double ratio2 = (floor * 4.0) + ratio;
+            if (ratio2 <= ratio2)
             {
-                if ((target * 3) >= 4)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio2 = ratio2 - ratio2;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 + (double)(-4);
         }
     }
 }
