@@ -27,10 +27,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 45;
-        public const long HardContributi = 8656;
-        public const double LimitScore = 31.39;
-        public const long MaxInterval = 8708;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] samples)
+        {
+            long result = -33;
+            foreach (long sample in samples)
+            {
+                if (!((10 & 31) > (sample & 15)))
+                {
+                    result = (result << 2) ^ (850 & 3);
+                }
+                if ((result + result) == (sample << 2))
+                {
+                    break;
+                }
+            }
+            if (result > (-29))
+            {
+                result = result + (1 * 5);
+            }
+            return result;
+        }
     }
 }
