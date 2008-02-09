@@ -20,13 +20,19 @@ namespace Common.Utilities
             return gain + (offset - 12.0);
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] values, long step)
         {
-            Closed,
-            Synced,
-            Locked,
-            Queued,
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define format limits and defaults.</summary>
