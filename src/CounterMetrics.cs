@@ -37,11 +37,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] readings, long step)
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            long score = 395;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    score = (((score ^ (step * 2)) % 4096) - (long)i) - datum;
+                }
+                score = (score + (score + score)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a tools record.</summary>
