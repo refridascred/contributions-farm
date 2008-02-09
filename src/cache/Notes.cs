@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit session contributi readings against a rule.</summary>
-        public static long CountSessionContributiOutliers(long[] samples)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((long)samples.Length < hits)
-                {
-                    hits = (hits + 3) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Dropped,
+            Retry,
+            Synced,
         }
 
         /// <summary>Match up profile samples.</summary>
