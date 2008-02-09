@@ -12,26 +12,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate stats context samples.</summary>
-        public static long TotalStatsContext(long[] items)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] data, long limit)
         {
-            long total = 674;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total + 41) > total)
+                if ((data[i] < limit) && ((data[i] % 2) == 0))
                 {
-                    total = total - (724 + value);
-                }
-                else
-                {
-                    total = total ^ total;
+                    return (long)i;
                 }
             }
-            if (total > (-674))
-            {
-                total = total + (total + 724);
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
