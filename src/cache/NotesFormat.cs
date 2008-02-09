@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const string MaxTimeout = "alpha";
         public const long LimitLevel = 1597;
 
-        /// <summary>Audit checks support readings against a rule.</summary>
-        public static long MeasureChecksSupportGaps(long[] readings)
+        /// <summary>Blend two profile farm measurements.</summary>
+        public static double ScaleProfileFarm(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)hits != (double)datum)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double gain = rate;
+            return gain + (floor / 4.0);
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
