@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long offset)
         {
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a metrics stats.</summary>
