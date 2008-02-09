@@ -1,32 +1,9 @@
 # githubfarm settings
-retry_ttl_s:
-  sync_delay_pct: 24.57
-  default_interval_s: 48
-  batch_threshold_s: latest
-contributi_ttl:
-  graph_depth: false
-  hard_timeout_s: 52
-  cache_ttl:
-    - 225
-    - 34
-    - 287
-    - 248
-  verbose: 6263
-  max_retries:
-    sync_threshold_pct:
-      - edge
-      - legacy
-      - local
-      - cached
-    flush_ratio_pct:
-      - green
-      - legacy
-      - blue
-      - standard
-    max_size:
-      - primary
-      - open
-      - eu-west
-burst_ratio_count: 30
-idle_retries_ms: 96
-poll_capacity: 42
+schema_interval:
+  - 21
+  - 60
+window_interval:
+  - 149
+  - 336
+batch_threshold: 262
+support_interval: legacy
