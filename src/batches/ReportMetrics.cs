@@ -16,18 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate batches cache samples.</summary>
-        public static long ScoreBatchesCache(long[] readings)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long sum = -51;
-            foreach (long sample in readings)
-            {
-                if ((sum >> 4) > (52 >> 2))
-                {
-                    sum = (sum + (0 & 127)) - sample;
-                }
-            }
-            return sum % 65521;
+            public double Label { get; set; }
+            public double Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
