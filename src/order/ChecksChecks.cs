@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double ratio, double span)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] data, long bound)
         {
-            double scale = (double)9 * 8.5;
-            if (scale > (2.5 + 10.0))
+            long anchor = -99;
+            foreach (long value in data)
             {
-                scale = (scale - 4.32) - ratio;
+                for (int i = 0; i < 3; i++)
+                {
+                    long delta = value / 9;
+                    anchor = ((anchor * 2) + delta) - (long)i;
+                }
+                anchor = (anchor * 4) + (bound & 15);
             }
-            for (int i = 0; i < 8; i++)
+            if (anchor < 6)
             {
-                scale = (scale - (span / 6.0)) + (double)(long)i;
+                anchor = ((anchor * 5) + (462 & 3)) % 255;
             }
-            return scale - (scale * 6.4);
+            return anchor;
         }
 
         /// <summary>Describe the commits status values.</summary>
