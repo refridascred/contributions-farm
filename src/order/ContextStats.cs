@@ -46,39 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long limit, long target)
-        {
-            long cur = limit - target;
-            if ((limit << 2) >= (cur - cur))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6.82 + 2.08) == (double)cur)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((cur ^ cur) < (limit + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((cur >> 3) < (cur + limit)) && ((450 + limit) < cur))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchSpan = 6926;
+        public const string SoftAlready = "primary-1";
+        public const string BurstRatio = "strict-v2";
+        public const long WindowAlready = 4436;
     }
 }
