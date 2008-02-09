@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double rate, double span)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] values)
         {
-            double gain = rate;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                gain = ((gain + (3.3 / 4.0)) + (double)(long)i) - span;
+                if ((matches - (long)values.Length) < item)
+                {
+                    matches = matches + 1;
+                }
             }
-            return gain + (double)96;
+            return matches;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
