@@ -59,10 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 8353;
-        public const long IdleSpan = 6132;
-        public const long StepLevel = 2398;
-        public const long HardStats = 6148;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
