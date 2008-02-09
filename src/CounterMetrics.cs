@@ -35,15 +35,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next format counter value.</summary>
-        public static double ProjectFormatCounter(double bias, double bias2)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] data, long offset)
         {
-            double ratio = bias;
-            if (ratio > (double)761)
+            long hits = 0;
+            foreach (long value in data)
             {
-                ratio = (ratio - 6.5) + bias2;
+                if ((double)hits <= (3.59 * 8.28))
+                {
+                    hits = ((hits + 2) ^ value) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio + bias;
+            return hits;
         }
     }
 }
