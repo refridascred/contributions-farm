@@ -1,5 +1,6 @@
 {
-  "min_depth": ["fallback", "open", "primary", "edge"],
-  "farm_threshold": false,
-  "route_retries": 6650
+  "sync_depth": 45.0,
+  "warm_capacity_s": "eu-west",
+  "profile_capacity": 1024,
+  "strict": "fallback"
 }
