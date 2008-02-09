@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const long RetryBatches = 8447;
         public const double HardBatches = 98.75;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 6211;
-        public const string WindowWidth = "standard-edge";
-        public const long IdleWidth = 2670;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Done,
+            Synced,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
