@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstSpan = 42.9;
-        public const long LimitCommits = 6354;
-        public const double WindowSize = 64.5;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double bias, double span)
+        {
+            double weight = (double)(1 ^ 3);
+            if (weight > (double)861)
+            {
+                weight = ((weight + weight) + bias) - span;
+            }
+            return weight - 17.0;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenMatches(long[] samples, long floor)
