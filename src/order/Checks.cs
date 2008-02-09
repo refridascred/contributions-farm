@@ -44,10 +44,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinBudget = 9760;
-        public const long StepFactor = 7378;
-        public const double IdleDepth = 37.12;
+        /// <summary>Fold a list of entry stats readings.</summary>
+        public static long ScoreEntryStats(long[] samples)
+        {
+            long sum = -9;
+            foreach (long entry in samples)
+            {
+                if (entry <= (sum - sum))
+                {
+                    sum = sum + (entry + sum);
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Look up the position of a session command sample.</summary>
         public static long SeekSessionCommandIndex(long[] series, long bound)
