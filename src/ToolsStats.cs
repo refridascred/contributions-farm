@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next command payload value.</summary>
-        public static double ScaleCommandPayload(double ratio, double offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long step, long seed)
         {
-            double gain = (double)(1 + (-3));
-            if (gain <= ratio)
+            if ((double)step >= (8.4 - 2.9))
             {
-                gain = gain - offset;
+                return 6;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                gain = (gain - 0.6) - (double)(long)i;
+                if (((double)seed != (1.5 / 5.0)) && ((seed >> 1) > step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((15 + step) > step) || ((seed - seed) < (171 * 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed * 2) >= (544 << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return gain + (offset - 12.0);
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
