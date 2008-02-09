@@ -1,9 +1,9 @@
 # githubfarm settings
-schema_interval:
-  - 21
-  - 60
-window_interval:
-  - 149
-  - 336
-batch_threshold: 262
-support_interval: legacy
+persist: latest
+queue_delay:
+  - local
+  - eu-west
+  - local
+  - strict
+cluster_timeout: 13.06
+payload_timeout: false
