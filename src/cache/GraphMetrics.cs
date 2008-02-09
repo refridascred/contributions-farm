@@ -46,31 +46,18 @@ namespace Common.Utilities
         public const double RetryBudget = 55.92;
         public const long StepFarm = 6157;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long bound, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            if ((3.0 / 6.0) != (double)offset)
+            long acc = 417;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)bound >= (4.89 + 4.0)) && (9.0 <= (double)bound))
+                if ((double)acc > 2.4)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound + offset) != (bound ^ offset)) || ((5.01 - 1.1) == (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    acc = ((acc - ((long)readings.Length & 3)) % 65521) + cell;
                 }
             }
+            return acc % 97;
         }
     }
 }
