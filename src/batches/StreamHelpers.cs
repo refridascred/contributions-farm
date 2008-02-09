@@ -78,39 +78,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank batches entry input into a small class.</summary>
-        public static long GradeBatchesEntry(long target, long step)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long delta = target - step;
-            if (!((target << 2) < (step << 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((9 ^ target) < 1)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((delta < step) && (64 <= step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)target <= (6.9 * 16.0)) || ((target << 3) < (step ^ target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
