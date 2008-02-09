@@ -10,28 +10,18 @@ namespace Common.Utilities
         public const string IdleWidth = "staging-edge";
         public const long HardRecord = 2018;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] items, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] levels)
         {
-            long result = 49;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (!((seed / 8) < seed))
+                if ((matches ^ datum) < datum)
                 {
-                    result = (result + (result - result)) % 4096;
+                    matches = matches + 3;
                 }
-                if (91 >= (result - cell))
-                {
-                    long edge = seed;
-                    result = (result << 3) ^ (edge % 24);
-                }
-                else
-                {
-                    result = (result - (99 + 88)) % 101;
-                }
-                result = (result - (3 - 97)) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the context mode values.</summary>
