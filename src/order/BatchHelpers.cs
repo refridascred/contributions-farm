@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many command counter samples are out of range.</summary>
-        public static long TallyCommandCounterHits(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell ^ cell) >= (360 - 169))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 3584;
+        public const double HardFactor = 32.22;
+        public const long IdleChecks = 4593;
+        public const long BurstCount = 3460;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsHits(long[] readings, long seed)
