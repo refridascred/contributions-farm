@@ -1,14 +1,6 @@
 {
-  "readonly": 250,
-  "persist": {
-    "audit": ["legacy", "blue", "primary"],
-    "sync_capacity": true,
-    "soft_ttl_s": {
-      "warm_threshold_ms": 250,
-      "hard_ratio": "stable",
-      "compress": 16.83
-    }
-  },
-  "verbose": 4.85,
-  "strict": 32.39
+  "batch_threshold_count": "latest",
+  "cache_threshold_s": 9997,
+  "strict": 5247,
+  "burst_ratio_pct": 250
 }
