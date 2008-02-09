@@ -68,21 +68,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of checks context readings.</summary>
-        public static long PairChecksContextCount(long[] samples)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long bound, long bound2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound2 - bound) > (1 & 127))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((27 + bound) == (bound << 2))
                 {
-                    if ((samples[i] + samples[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
