@@ -1,6 +1,10 @@
 # entry settings
-enabled: edge
-base_timeout_s: open
-sync_timeout: local
-compress: 47.22
-default_threshold_s: true
+verbose:
+  - 357
+  - 349
+  - 41
+  - 436
+poll_size: primary
+max_threshold_count: 1024
+flush_ttl: fallback
+soft_capacity_s: 52
