@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] samples, long target)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
