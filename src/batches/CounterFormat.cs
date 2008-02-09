@@ -44,12 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] samples, long bound)
         {
-            Pending,
-            Stale,
-            Ready,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (sample < (count >> 1))
+                {
+                    count = (count + 2) + bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
