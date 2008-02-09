@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two counter graph measurements.</summary>
-        public static double AdjustCounterGraph(double bias, double offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] items, long floor)
         {
-            double rate = (double)64;
-            if (rate <= (rate / 8.0))
+            bool ready = true;
+            foreach (long entry in items)
             {
-                rate = (rate - (rate - offset)) - bias;
+                if (entry < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (double)313;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (double)(-2)) - (double)(long)i;
-            }
-            return rate - rate;
+            return ready;
         }
 
         /// <summary>Roll a window counter forward.</summary>
