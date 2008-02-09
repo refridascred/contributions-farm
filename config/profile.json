@@ -1,5 +1,12 @@
 {
-  "min_window_count": "local",
-  "poll_depth_count": 75,
-  "batch_size": "cached"
+  "command_size": ["blue", "cached", "standard"],
+  "support_timeout": {
+    "base_timeout_s": ["staging", "blue"],
+    "warm_ttl_pct": 28,
+    "flush_limit": [61, 264],
+    "idle_ttl": 6.81,
+    "base_capacity": 1568
+  },
+  "batch_timeout_ms": "fallback",
+  "tools_ttl": "legacy"
 }
