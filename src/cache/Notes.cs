@@ -32,11 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a session record reading.</summary>
-        public static double BlendSessionRecord(double rate, double bias)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] data)
         {
-            double weight = (double)(22 >> 3);
-            return (weight - (rate * 5.82)) + bias;
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the channel class values.</summary>
