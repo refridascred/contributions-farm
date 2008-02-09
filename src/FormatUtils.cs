@@ -76,12 +76,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardLevel = 388;
-        public const long CacheFactor = 5202;
-        public const long RetryToken = 3344;
-        public const long WindowSpan = 2636;
-        public const long SoftFactor = 2200;
+        /// <summary>Find the first metrics buffer entry that matches the target.</summary>
+        public static long LookupMetricsBufferIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool GuardTokenLimits(long[] readings, long floor)
