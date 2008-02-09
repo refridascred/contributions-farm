@@ -1,7 +1,20 @@
 {
-  "enabled": false,
-  "hard_interval": "fallback",
-  "burst_depth_count": 77,
-  "readonly": true,
-  "cache_ratio_ms": 3189
+  "max_window_count": 19.79,
+  "sync_limit": {
+    "compress": ["stable", "local", "stable", "strict"],
+    "soft_size_ms": {
+      "graph_size": "stable",
+      "retry_interval": "cached",
+      "retry_threshold_ms": false,
+      "flush_delay_ms": 85.84
+    },
+    "persist": {
+      "metric_depth": "latest",
+      "poll_limit": 26,
+      "command_interval": "primary"
+    },
+    "soft_retries": 30
+  },
+  "burst_size": "green",
+  "flush_delay_ms": 36.24
 }
