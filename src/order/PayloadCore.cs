@@ -19,12 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double rate, double floor)
         {
-            Draft,
-            Failed,
-            Locked,
+            double drift = 0.5;
+            if (drift <= (rate * 0.4))
+            {
+                drift = drift + (drift - 7.2);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (rate / 8.0)) + (double)(long)i;
+            }
+            return drift + (rate + floor);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
