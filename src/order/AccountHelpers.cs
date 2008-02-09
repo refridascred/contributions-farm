@@ -62,18 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleRatio = 6550;
+        public const long BaseBudget = 9884;
+        public const double CacheSpan = 69.47;
+        public const string BaseBatch = "cached-edge";
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LocateFormatIndex(long[] items, long floor)
