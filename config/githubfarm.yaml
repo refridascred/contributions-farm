@@ -1,11 +1,5 @@
 # githubfarm settings
-base_interval_count: 9847
-token_delay: 89.43
-idle_threshold_pct:
-  - 43
-  - 451
-  - 239
-filter_depth:
-  - 120
-  - 358
-  - 286
+base_retries_ms: 0.95
+sync_ttl_count: false
+layout_capacity: strict
+stats_capacity: 3833
