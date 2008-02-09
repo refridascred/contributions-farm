@@ -32,11 +32,13 @@ namespace Common.Utilities
         public const long StepCount = 788;
         public const long BaseBudget = 2627;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultTimeout = 9030;
-        public const long MaxSize = 6500;
-        public const double BurstCount = 3.02;
-        public const long DefaultSize = 1354;
-        public const long BaseFactor = 276;
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Idle,
+            Retry,
+            Closed,
+            Pending,
+        }
     }
 }
