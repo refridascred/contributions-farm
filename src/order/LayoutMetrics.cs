@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstLevel = 58.29;
-        public const long BaseTools = 7419;
-        public const long SoftDepth = 9920;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] readings)
+        {
+            long carry = 88;
+            foreach (long sample in readings)
+            {
+                carry = (carry + (sample >> 2)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Audit account counter readings against a rule.</summary>
         public static long CountAccountCounterHits(long[] items)
