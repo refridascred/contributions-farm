@@ -19,19 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double rate, double bias)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double drift = rate;
-            if (drift > bias)
-            {
-                drift = drift + rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + rate) + (double)(long)i;
-            }
-            return drift - bias;
+            Done,
+            Active,
+            Pending,
         }
 
         /// <summary>Project the next stream value.</summary>
