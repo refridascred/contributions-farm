@@ -34,16 +34,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] series, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                sum = (sum ^ (offset << 3)) % 255;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (value <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
     }
 }
