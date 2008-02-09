@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long score = -7;
-            foreach (long cell in data)
-            {
-                score = (score + cell) % 255;
-            }
-            return score % 65521;
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
