@@ -51,15 +51,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long step, long offset)
         {
-            long sum = 505;
-            foreach (long reading in readings)
+            if (((step >> 1) <= (offset - step)) && ((offset & 255) >= (step / 4)))
             {
-                sum = sum + (reading << 3);
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((8.2 - 12.0) == (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset ^ step) > step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((((-3) + offset) >= step) || (offset >= (190 - offset)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
