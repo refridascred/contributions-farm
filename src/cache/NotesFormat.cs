@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 7962;
-        public const string IdleCounter = "primary-edge";
-        public const long StepSize = 1531;
-        public const string MaxTimeout = "alpha";
-        public const long LimitLevel = 1597;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Blend two profile farm measurements.</summary>
         public static double ScaleProfileFarm(double rate, double floor)
