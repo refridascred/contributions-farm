@@ -24,14 +24,18 @@ namespace Common.Utilities
         public const double HardTools = 78.93;
         public const long LimitTools = 1941;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] readings, long bound)
         {
-            Idle,
-            Stale,
-            Locked,
-            Queued,
-            Dropped,
+            long result = -25;
+            foreach (long value in readings)
+            {
+                if (((value / 8) != (result - value)) || (((-3) << 2) < bound))
+                {
+                    result = result + (789 >> 1);
+                }
+            }
+            return result;
         }
     }
 }
