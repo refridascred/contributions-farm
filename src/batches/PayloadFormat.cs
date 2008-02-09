@@ -42,10 +42,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 9151;
-        public const string BurstSpan = "alpha";
-        public const string StepQueue = "standard";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryScore = 9182;
+        public const string IdleProfile = "stable-edge";
+        public const long CacheSize = 528;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string IdleFilter = "fallback-1";
