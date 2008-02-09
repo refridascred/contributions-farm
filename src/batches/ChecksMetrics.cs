@@ -65,20 +65,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] samples, long origin)
         {
-            long score = 809;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score + (score - sample)) % 101;
-                score = (score << 2) ^ (sample * 5);
-                if ((6.3 + 4.2) < (double)score)
+                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
