@@ -15,12 +15,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long step, long bound)
         {
-            Closed,
-            Paused,
-            New,
+            if (9.6 >= (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound - step) <= bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound / 4) >= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound - bound) >= (bound ^ step)) && (step > bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
