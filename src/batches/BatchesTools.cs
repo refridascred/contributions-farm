@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] samples)
+        /// <summary>Validate report batch readings against a bound.</summary>
+        public static bool CheckReportBatchBounds(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((((tally ^ tally) <= (tally - (long)samples.Length)) || ((7 % 10) == (tally - tally))) || (((sample % 100) > (tally >> 2)) || ((sample << 2) <= sample)))
+                if (datum != target)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
