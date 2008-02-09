@@ -37,24 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long limit, long bound)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double scale, double floor)
         {
-            if ((bound << 3) < (bound - bound))
+            double weight = (double)(255 - 716);
+            if (weight < (double)316)
             {
-                return 1;
+                weight = weight - (scale * 7.35);
             }
             else
             {
-                if ((limit / 8) > (339 & 31))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
+                weight = weight - (floor - 9.09);
             }
+            return weight - scale;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
