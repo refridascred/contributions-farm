@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Compare every pair of batch notes readings.</summary>
+        public static long CompareBatchNotesCount(long[] data)
         {
-            long acc = 59;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc ^ (2 % 16)) % 97) + value;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (acc > 744)
-            {
-                acc = (acc * 4) + (acc & 1);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
