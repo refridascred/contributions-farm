@@ -25,22 +25,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] readings, long origin)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long acc = 80;
-            foreach (long entry in readings)
-            {
-                if ((-69) < acc)
-                {
-                    acc = ((acc << 2) ^ (entry + acc)) % 1000;
-                }
-            }
-            if (acc > (-23))
-            {
-                acc = (acc + (origin >> 4)) % 101;
-            }
-            return acc % 4096;
+            Pending,
+            Done,
+            Synced,
+            Stale,
+            New,
         }
     }
 }
