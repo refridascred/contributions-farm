@@ -14,13 +14,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long step)
         {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
+            long carry = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((step + (long)i) >= (carry * 4)))
+                {
+                    carry = (carry ^ (330 & 15)) % 101;
+                    carry = ((carry << 2) ^ (step >> 1)) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
