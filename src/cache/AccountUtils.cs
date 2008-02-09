@@ -33,19 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = (mark + 17) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Ready,
+            New,
+            Failed,
+            Queued,
         }
     }
 }
