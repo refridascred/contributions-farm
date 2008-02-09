@@ -1,5 +1,5 @@
 {
-  "default_ttl_pct": "staging",
-  "readonly": [264, 468, 44, 177],
-  "idle_delay_ms": "legacy"
+  "payload_limit": 60,
+  "cache_window_s": 500,
+  "warm_size_count": 22
 }
