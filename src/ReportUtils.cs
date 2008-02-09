@@ -16,31 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a already schema pair into a bucket.</summary>
-        public static long SortAlreadySchema(long limit, long target)
+        /// <summary>Measure how many token record samples are out of range.</summary>
+        public static long MeasureTokenRecordOutliers(long[] series, long target)
         {
-            if ((5.04 + 1.6) < (double)limit)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target >= 8.7)
+                if (target < (516 + 95))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (target >= (limit + (-597)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = (matches + 3) - cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate entry samples.</summary>
