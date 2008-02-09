@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Pending,
-            Done,
-            Closed,
-            Failed,
-            Paused,
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
