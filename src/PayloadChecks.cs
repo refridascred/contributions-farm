@@ -37,19 +37,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double ratio, double floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] series, long seed)
         {
-            double mean = floor + (floor * 4.0);
-            if (mean <= floor)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                mean = mean + (double)94;
+                if (matches >= (matches - entry))
+                {
+                    matches = (matches + 2) - seed;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (ratio / 9.0)) - (double)(long)i;
-            }
-            return mean + (17.0 - ratio);
+            return matches;
         }
 
         /// <summary>Measure how many contributi metrics samples are out of range.</summary>
