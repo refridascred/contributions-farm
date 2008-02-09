@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Draft,
-            Queued,
-            Done,
-            Dropped,
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the batches state values.</summary>
