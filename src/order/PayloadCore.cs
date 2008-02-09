@@ -26,12 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
+            Done,
             Synced,
-            Ready,
-            Active,
+            Paused,
+            Queued,
         }
 
         /// <summary>Blend two format profile measurements.</summary>
