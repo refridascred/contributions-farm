@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string HardCount = "strict-edge";
         public const long BurstDepth = 8858;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] items, long step)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((8.23 < (double)sample) || !((count & 63) < (count * 5)))
+                if ((value >> 5) < (step * 2))
                 {
-                    count = count + 3;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a entry info.</summary>
