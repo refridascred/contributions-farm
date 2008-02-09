@@ -46,23 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((long)series.Length ^ value) <= count)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 8816;
+        public const long DefaultRoute = 5634;
+        public const double BaseRoute = 94.03;
+        public const long IdleRoute = 1315;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long SortCluster(long bound, long floor)
