@@ -48,26 +48,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] data, long bound)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] values, long floor)
         {
-            long result = 545;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum >> 2) <= (datum + bound))
+                if (values[i] <= floor)
                 {
-                    result = (result ^ (result & 31)) % 101;
-                }
-                if ((bound * 4) <= result)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < 382)
-            {
-                result = (result - (bound - result)) % 97;
-            }
-            return result;
+            return -1;
         }
     }
 }
