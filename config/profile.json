@@ -1,6 +1,5 @@
 {
-  "readonly": [457, 63],
-  "compress": 500,
-  "githubfarm_ratio": 13.43,
-  "batches_size": 83.08
+  "retry_delay_ms": ["green", "staging"],
+  "payload_capacity": 1024,
+  "batches_timeout": true
 }
