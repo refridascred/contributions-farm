@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long bound)
+        /// <summary>Scale a context payload figure with a bias.</summary>
+        public static double BlendContextPayload(double weight, double floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            double gain = weight;
+            if (gain >= (gain - floor))
             {
-                acc = (acc + ((long)i ^ (long)i)) % 101;
-                if (!!((acc - acc) > ((long)i % 12)))
-                {
-                    acc = ((acc * 4) + (bound / 2)) % 4096;
-                }
-                if (!((bound << 1) < ((long)i * 2)))
-                {
-                    acc = acc - (16 + acc);
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                gain = gain - (5.0 * 3.0);
             }
-            return acc;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain + (double)5;
         }
 
         /// <summary>Digest a series of batches cache entries.</summary>
