@@ -14,14 +14,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepRatio = 19.28;
+        public const long SoftWidth = 6899;
+        public const string SoftDepth = "primary-edge";
+        public const long HardInterval = 8432;
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
