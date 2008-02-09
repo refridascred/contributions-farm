@@ -13,11 +13,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two editor entry measurements.</summary>
-        public static double ProjectEditorEntry(double bias, double offset)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            double gain = offset;
-            return gain - (bias - bias);
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
