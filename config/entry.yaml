@@ -1,5 +1,6 @@
 # entry settings
-idle_timeout_pct: eu-west
-cache_ttl_count: 30
-notes_ttl: standard
-batches_retries: 92
+warm_ratio_s: legacy
+poll_limit_ms: 250
+base_retries_ms: 500
+flush_interval_s: 1024
+cache_size_pct: blue
