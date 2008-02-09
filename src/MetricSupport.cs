@@ -20,10 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 7011;
-        public const long HardSize = 9156;
-        public const double IdleSchema = 57.52;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Pending,
+            Closed,
+            Ready,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Audit stats order readings against a rule.</summary>
         public static long MeasureStatsOrderHits(long[] readings)
