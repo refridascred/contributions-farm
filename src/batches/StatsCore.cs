@@ -64,13 +64,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long target, long bound)
         {
-            Failed,
-            Idle,
-            Queued,
-            Active,
+            long slot = target - bound;
+            if ((target > (target % 8)) || ((bound + bound) == (bound - 9)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)slot < (5.18 * 19.0)) || ((bound << 1) >= bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4.5 - 6.45) == (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
