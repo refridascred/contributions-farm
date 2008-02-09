@@ -1,5 +1,13 @@
 {
-  "payload_limit": 60,
-  "cache_window_s": 500,
-  "warm_size_count": 22
+  "max_window_s": 250,
+  "soft_ratio": 100,
+  "entry_size": 30,
+  "max_size_ms": {
+    "base_size_s": "latest",
+    "enabled": 100,
+    "dry_run": 59,
+    "cache_capacity_count": 32.87,
+    "max_limit": 46
+  },
+  "flush_threshold_s": false
 }
