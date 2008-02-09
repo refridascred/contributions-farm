@@ -1,15 +1,18 @@
 # githubfarm settings
-commits_ratio:
-  min_timeout_ms:
-    - eu-west
-    - strict
-    - primary
-    - legacy
-  strict: cached
-  max_window: 5.99
-  already_ratio: 1024
-base_window: 95.92
-audit:
-  sync_window_s: 1382
-  batch_size_pct: 67.35
-  profile_depth: staging
+hard_delay_s: green
+format_window:
+  - local
+  - cached
+  - edge
+  - green
+flush_ttl:
+  batch_ttl: 6927
+  hard_size_s:
+    - 265
+    - 187
+    - 105
+    - 174
+  tools_timeout: false
+hard_delay_pct: 79
+soft_delay: cached
+hard_delay_ms: true
