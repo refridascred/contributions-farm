@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] items, long origin)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
             long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((16.0 * 5.6) > (double)value) && ((count << 2) < origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
