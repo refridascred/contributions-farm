@@ -1,5 +1,13 @@
 {
-  "max_retries": 88,
-  "max_interval": "green",
-  "audit": 55.79
+  "strict": [301, 27, 38, 206],
+  "burst_threshold_count": "strict",
+  "sync_depth_count": {
+    "cache_delay": 17,
+    "checks_capacity": 23,
+    "base_retries": 250,
+    "audit": [95, 360, 208],
+    "compress": false,
+    "batch_timeout": 500
+  },
+  "sync_size": 4196
 }
