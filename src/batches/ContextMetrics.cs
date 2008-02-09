@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "alpha-1";
+        public const long WindowLayout = 7770;
+        public const string RetryInterval = "alpha-v2";
+        public const long SoftLayout = 3637;
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
