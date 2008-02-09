@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long BurstPayload = 4443;
         public const long StepDepth = 7399;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] readings, long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate session readings against a bound.</summary>
