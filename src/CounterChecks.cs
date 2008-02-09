@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinDepth = "standard-v2";
+        public const string IdleWidth = "staging-edge";
+        public const long HardRecord = 2018;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long WeighCounter(long[] items, long seed)
