@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const long StepCount = 788;
         public const long BaseBudget = 2627;
 
-        /// <summary>Audit stats order readings against a rule.</summary>
-        public static long MeasureStatsOrderHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (88 > tally)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultTimeout = 9030;
+        public const long MaxSize = 6500;
+        public const double BurstCount = 3.02;
+        public const long DefaultSize = 1354;
+        public const long BaseFactor = 276;
     }
 }
