@@ -1,6 +1,28 @@
 {
-  "flush_limit_ms": 50,
-  "batch_ratio_count": "edge",
-  "readonly": "cached",
-  "layout_size": false
+  "flush_threshold": "standard",
+  "sync_delay_pct": {
+    "soft_size_s": 1423,
+    "soft_timeout_s": "stable",
+    "metrics_capacity": "edge",
+    "retry_capacity": {
+      "dry_run": 1,
+      "cache_capacity_count": true,
+      "warm_depth_s": 98.49
+    },
+    "buffer_retries": 80.39,
+    "hard_timeout": 85.58
+  },
+  "audit": {
+    "verbose": {
+      "sync_timeout_s": "stable",
+      "layout_retries": "blue",
+      "cache_delay": 500,
+      "commits_retries": "legacy",
+      "token_depth": 61
+    },
+    "compress": [93, 44, 361, 301],
+    "soft_timeout": "fallback"
+  },
+  "default_threshold_count": true,
+  "flush_limit": "latest"
 }
