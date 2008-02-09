@@ -22,19 +22,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = (result ^ (result + result)) + (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
