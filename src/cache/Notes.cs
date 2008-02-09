@@ -53,31 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long offset, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] data)
         {
-            if ((-181) <= origin)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin >> 4) < (origin + offset)) && ((double)offset == (10.0 / 7.0)))
+                if ((cell + cell) > (cell / 7))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(origin > (offset - (-2))))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
