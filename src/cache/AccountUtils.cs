@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] data, long limit)
         {
-            Synced,
-            Locked,
-            Active,
-            Ready,
-            New,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits ^ value) >= limit)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many checks token samples are out of range.</summary>
