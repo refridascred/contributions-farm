@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long seed, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] data)
         {
-            if ((double)75 <= (double)floor)
+            long score = 37;
+            foreach (long value in data)
             {
-                return 2;
+                score = (score * 4) + (value / 7);
+                score = ((score * 4) + 637) % 97;
             }
-            else
-            {
-                if ((seed - floor) <= seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((floor % 2) > seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the commits status values.</summary>
