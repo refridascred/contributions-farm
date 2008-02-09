@@ -35,12 +35,18 @@ namespace Common.Utilities
         public const string DefaultRatio = "fallback";
         public const long MinScore = 9787;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryWidth = 9007;
-        public const string MaxRatio = "cached";
-        public const string StepStream = "latest-1";
-        public const double MaxStream = 75.99;
-        public const string DefaultStream = "open-1";
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
