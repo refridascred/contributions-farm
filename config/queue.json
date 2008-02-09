@@ -1,8 +1,5 @@
 {
-  "enabled": 4309,
-  "format_capacity": 60,
-  "verbose": "standard",
-  "persist": [375, 11],
-  "audit": "cached",
-  "batch_timeout_count": ["standard", "edge", "blue"]
+  "strict": "edge",
+  "base_delay_ms": 500,
+  "audit": [62, 237]
 }
