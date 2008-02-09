@@ -14,21 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the metrics kind values.</summary>
