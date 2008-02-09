@@ -21,13 +21,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Failed,
+            Idle,
             Done,
-            Stale,
-            Paused,
+            Synced,
             Retry,
         }
 
