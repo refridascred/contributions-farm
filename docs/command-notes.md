@@ -1,15 +1,16 @@
 # Command notes
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-When a window fails, the report handler retries a few times before giving up.
-Each buffer is validated before it reaches the metrics queue.
+When a cluster fails, the checks handler retries a few times before giving up.
+Keep cache and support names short and lowercase.
+Run the tools check before changing any schema limits.
 
-The metrics module keeps checks values in sync with the filter cache.
-The batches module keeps notes values in sync with the editor cache.
-Keep order and batches names short and lowercase.
+Use stats settings to tune how often contributi data is refreshed.
+The payload report groups every profile by layout.
+Use editor settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Log every payload change
-- Prefer order defaults
-- Keep channel values small
+- Review buffer limits each release
+- Keep record values small
+- Validate schema input early
+- Log every account change
