@@ -41,21 +41,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm format samples.</summary>
-        public static long CompareFarmFormatCount(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long limit, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = limit - target;
+            if ((limit << 2) >= (cur - cur))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((6.82 + 2.08) == (double)cur)
                 {
-                    if ((readings[i] + readings[j]) > 3)
+                    return 7;
+                }
+                else
+                {
+                    if ((cur ^ cur) < (limit + target))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((cur >> 3) < (cur + limit)) && ((450 + limit) < cur))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
