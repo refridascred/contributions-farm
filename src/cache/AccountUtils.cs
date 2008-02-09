@@ -19,14 +19,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] levels, long bound)
         {
-            Draft,
-            Idle,
-            Dropped,
-            Retry,
-            Paused,
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the checks status values.</summary>
