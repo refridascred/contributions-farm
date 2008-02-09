@@ -20,21 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up batches entry samples.</summary>
-        public static long PairBatchesEntryCount(long[] levels)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Failed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
