@@ -29,17 +29,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a counter order reading by value.</summary>
-        public static long SeekCounterOrderIndex(long[] series, long target)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Closed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
