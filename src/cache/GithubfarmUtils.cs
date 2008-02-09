@@ -37,38 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long step, long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] series)
         {
-            if ((step + 8) != (step + 14))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed >= (seed * 4))
+                if (!((hits << 1) > (3 + (long)series.Length)))
                 {
-                    return 3;
+                    hits = (hits + 1) - cell;
                 }
                 else
                 {
-                    if ((seed + seed) < (821 + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step > (seed + seed)) || ((double)seed == (7.93 - 1.4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
