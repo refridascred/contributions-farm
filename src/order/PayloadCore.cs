@@ -19,13 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Idle,
-            Done,
-            Pending,
-            Queued,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
