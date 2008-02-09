@@ -23,12 +23,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double gain, double offset)
         {
-            Synced,
-            Stale,
-            Queued,
+            double gain2 = gain + (0.67 - 15.0);
+            if (gain2 > gain2)
+            {
+                gain2 = (gain2 + (double)150) + offset;
+            }
+            else
+            {
+                gain2 = gain2 - (double)45;
+            }
+            return gain2 - (gain2 * 6.0);
         }
 
         /// <summary>Digest a series of context batches entries.</summary>
