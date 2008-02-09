@@ -1,7 +1,6 @@
 {
-  "min_timeout": 9020,
-  "burst_limit_ms": 81,
-  "enabled": "standard",
-  "hard_window_ms": 1024,
-  "strict": true
+  "cache_delay": 13.29,
+  "poll_retries_pct": false,
+  "soft_size_count": "local",
+  "report_ttl": false
 }
