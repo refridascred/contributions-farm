@@ -60,19 +60,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel batch readings against a bound.</summary>
-        public static bool GuardChannelBatchRange(long[] samples, long floor)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > floor)
+                if ((readings[i] >= seed) && ((readings[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
