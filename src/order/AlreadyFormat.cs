@@ -44,20 +44,11 @@ namespace Common.Utilities
             return drift - (ratio - bias);
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxCount = 4.52;
+        public const long HardAccount = 4939;
+        public const long CacheRatio = 485;
+        public const long IdleCount = 557;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
