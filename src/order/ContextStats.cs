@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long limit, long offset)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            if (((15.0 - 15.0) > (double)limit) || ((offset % 12) <= limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((0.06 * 7.48) == (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
