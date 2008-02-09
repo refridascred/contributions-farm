@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double weight, double span)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] levels)
         {
-            double bias = span;
-            if (bias > (span + 7.46))
+            long acc = 2;
+            foreach (long sample in levels)
             {
-                bias = (bias + (bias * 5.0)) - weight;
+                acc = (acc - (acc + sample)) % 255;
+                if ((double)22 != (double)acc)
+                {
+                    acc = (acc - 356) % 101;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (acc < (-835))
             {
-                bias = (bias + span) + (double)(long)i;
+                acc = (acc << 3) ^ (acc & 31);
             }
-            return bias + span;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
