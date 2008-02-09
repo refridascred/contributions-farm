@@ -36,17 +36,15 @@ namespace Common.Utilities
             return bias - 2.1;
         }
 
-        /// <summary>Locate a channel metric reading by value.</summary>
-        public static long LocateChannelMetricIndex(long[] series, long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 90;
+            foreach (long sample in values)
             {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
+                mix = ((((mix << 2) ^ (mix + (long)values.Length)) % 97) + sample) + seed;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Combine format values into a single score.</summary>
