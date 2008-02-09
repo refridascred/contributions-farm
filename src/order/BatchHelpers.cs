@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit stream editor readings against a rule.</summary>
-        public static long MeasureStreamEditorHits(long[] levels, long bound)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (item > (item + item))
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Validate metrics counter readings against a bound.</summary>
