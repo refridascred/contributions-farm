@@ -1,13 +1,11 @@
 # entry settings
-batch_interval: 77.61
-min_interval_pct:
-  - local
-  - legacy
-  - staging
-  - eu-west
-base_retries: 71.97
-strict:
-  - cached
-  - edge
-  - blue
-  - stable
+verbose: open
+contributi_delay: cached
+cluster_threshold: 1509
+default_size_s:
+  dry_run: 15.45
+  editor_capacity: 100
+  min_threshold: true
+  schema_size: 20.33
+  compress: open
+  window_size: 60
