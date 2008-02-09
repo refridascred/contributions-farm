@@ -60,21 +60,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Blend two layout format measurements.</summary>
+        public static double BlendLayoutFormat(double gain, double floor)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            double drift = (floor - floor) * 2.4;
+            if (drift >= floor)
             {
-                long bound = ((long)i / 6) / 5;
-                if ((origin - (long)i) <= bound)
-                {
-                    score = ((score * 5) + (bound * 3)) % 4096;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 65521;
+                drift = drift + (drift - floor);
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + 8.8) - (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Grade a buffer order value against two limits.</summary>
