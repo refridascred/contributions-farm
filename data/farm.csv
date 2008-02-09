@@ -1,6 +1,11 @@
-id,count,ratio,state
-1,cached,658,green
-2,open,70,3
-3,95.9,257,latest
-4,68.8,729,974
-5,95,blue,961
+id,active,state
+1,90.13,888
+2,standard,29.66
+3,11.06,stable
+4,221,edge
+5,43.64,127
+6,984,257
+7,open,24.48
+8,767,85.53
+9,legacy,386
+10,cached,local
