@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] samples, long bound)
-        {
-            long sum = 59;
-            foreach (long value in samples)
-            {
-                if (value >= (sum - sum))
-                {
-                    sum = sum - 948;
-                }
-                if (value >= (bound - (-500)))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 704;
+        public const long BurstScore = 648;
+        public const string BatchInterval = "alpha-v2";
+        public const double CacheRecord = 54.75;
+        public const long LimitCount = 2824;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] items, long seed)
