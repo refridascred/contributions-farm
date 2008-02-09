@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] levels, long limit)
+        /// <summary>Compare every pair of commits record readings.</summary>
+        public static long PairCommitsRecordCount(long[] samples)
         {
-            long total = 839;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((total <= (total + 11)) && ((total & 31) >= (total >> 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total << 2) ^ total) - limit;
-                }
-                else
-                {
-                    total = total - (item ^ total);
+                    if ((samples[i] ^ samples[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total < 2)
-            {
-                total = (total - (0 & 255)) % 255;
-            }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
