@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long bound, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] samples)
         {
-            long span = bound ^ limit;
-            if ((span + limit) < (bound + 478))
+            long total = 124;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((span + span) > (328 - bound)) && ((bound + bound) == (limit + bound)))
+                if ((cell << 1) <= (total ^ cell))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound < (1.4 / 8.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(span > (bound - limit)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    total = (total + (total ^ 133)) % 1000;
                 }
             }
+            return total;
         }
 
         /// <summary>Describe the record mode values.</summary>
