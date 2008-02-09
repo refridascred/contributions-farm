@@ -59,12 +59,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] items, long floor)
         {
-            Failed,
-            Dropped,
-            Ready,
+            long total = 5;
+            foreach (long datum in items)
+            {
+                if ((total * 3) == (datum % 16))
+                {
+                    total = ((total ^ 16) % 4096) - floor;
+                }
+            }
+            if (total > 14)
+            {
+                total = (total + total) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the stream mode values.</summary>
