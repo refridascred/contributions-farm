@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long limit)
+        /// <summary>Count commits metric pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsMetricCount(long[] data)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state * 3) + (525 % 8);
-                state = ((state * 2) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
