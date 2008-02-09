@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] levels)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mix = 25;
+            foreach (long reading in values)
             {
-                if ((double)matches != (3.7 + 16.0))
+                if (!((mix * 2) >= mix))
                 {
-                    matches = (matches + 1) ^ reading;
+                    mix = ((mix * 3) + (reading + mix)) % 97;
                 }
             }
-            return matches;
+            if (mix > 106)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Hold a payload info.</summary>
