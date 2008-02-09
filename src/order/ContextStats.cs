@@ -22,19 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] samples, long step)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Project the next stream value.</summary>
