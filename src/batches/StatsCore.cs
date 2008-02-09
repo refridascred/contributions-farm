@@ -58,14 +58,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "strict-v2";
+        public const long IdleScore = 6798;
+        public const double BatchTimeout = 21.87;
+        public const long RetryInterval = 3212;
 
         /// <summary>Look up the position of a layout profile sample.</summary>
         public static long LocateLayoutProfileIndex(long[] samples, long step)
