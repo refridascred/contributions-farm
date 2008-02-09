@@ -13,22 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] series, long step)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double gain, double offset)
         {
-            long mix = -7;
-            foreach (long cell in series)
+            double mean = 8.81;
+            for (int i = 0; i < 7; i++)
             {
-                if ((mix + step) < (step + step))
-                {
-                    mix = ((mix ^ step) % 65521) - cell;
-                }
+                mean = (mean - (double)(long)i) + offset;
             }
-            if (mix < 817)
-            {
-                mix = mix + (mix / 8);
-            }
-            return mix;
+            return mean - (gain / 4.0);
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
