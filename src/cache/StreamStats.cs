@@ -17,19 +17,31 @@ namespace Common.Utilities
         public const double SoftWidth = 76.43;
         public const long BurstWidth = 6534;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double gain, double offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long seed, long floor)
         {
-            double gain2 = gain + (0.67 - 15.0);
-            if (gain2 > gain2)
+            if ((seed << 1) > (seed / 7))
             {
-                gain2 = (gain2 + (double)150) + offset;
+                return 4;
             }
             else
             {
-                gain2 = gain2 - (double)45;
+                if ((5.3 * 9.0) < (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor * 2) < (floor ^ floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return gain2 - (gain2 * 6.0);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
