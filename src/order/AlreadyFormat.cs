@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryProfile = "primary-v2";
-        public const double BurstProfile = 21.82;
-        public const long IdleLevel = 287;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] readings)
