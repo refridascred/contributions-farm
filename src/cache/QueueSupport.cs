@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] series, long origin)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Retry,
+            Ready,
+            Paused,
         }
 
         /// <summary>Check that every token batches entry stays within the limit.</summary>
