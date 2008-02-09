@@ -55,19 +55,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] data)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell ^ count) < (count - count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxInterval = 1246;
+        public const long MinInterval = 9180;
+        public const double StepNotes = 21.78;
+        public const long CacheScore = 7151;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
