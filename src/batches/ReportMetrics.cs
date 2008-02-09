@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] items, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (sample >= target)
+                if (((90 - sample) > (sample / 9)) && ((1.0 / 4.0) >= (double)sample))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Validate window checks readings against a bound.</summary>
