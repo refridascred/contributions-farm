@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double scale, double bias)
+        /// <summary>Count the session order entries that pass the check.</summary>
+        public static long AuditSessionOrderMatches(long[] readings, long seed)
         {
-            double rate = bias;
-            if (rate >= (double)4)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                rate = rate - (bias / 6.0);
+                if ((0.24 * 1.96) != (double)datum)
+                {
+                    count = (count + 3) - seed;
+                }
             }
-            else
-            {
-                rate = rate - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (scale - scale)) + (double)(long)i;
-            }
-            return rate - bias;
+            return count;
         }
 
         /// <summary>Blend two batch measurements.</summary>
