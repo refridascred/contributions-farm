@@ -28,17 +28,19 @@ namespace Common.Utilities
         public const string RetryScore = "open";
         public const long BatchContributi = 8570;
 
-        /// <summary>Locate a channel checks reading by value.</summary>
-        public static long LocateChannelChecksIndex(long[] values, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = floor;
+            if (drift > (drift / 8.0))
             {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
+                drift = (drift - floor) - bias;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (10.0 * 16.0)) + (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
