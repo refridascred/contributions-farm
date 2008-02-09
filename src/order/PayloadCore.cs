@@ -13,13 +13,20 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] readings, long limit)
         {
-            Stale,
-            Done,
-            Draft,
-            Retry,
+            long sum = 9;
+            foreach (long reading in readings)
+            {
+                sum = (sum - limit) % 101;
+                sum = (sum << 3) ^ (reading / 9);
+            }
+            if (sum < 2)
+            {
+                sum = ((sum * 4) + limit) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
