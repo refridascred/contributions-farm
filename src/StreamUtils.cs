@@ -19,25 +19,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a tools entry value against two limits.</summary>
-        public static long BucketToolsEntry(long origin, long offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long prev = origin - offset;
-            if (((prev - prev) < (88 / 5)) && ((origin + offset) > origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin < (origin << 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            Dropped,
+            Done,
+            Ready,
+            Queued,
         }
 
         /// <summary>Digest a series of support entries.</summary>
