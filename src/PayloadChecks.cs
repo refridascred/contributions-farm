@@ -29,19 +29,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((origin - value) != (origin * 5))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheOrder = 97.05;
+        public const double StepOrder = 78.91;
+        public const double DefaultDepth = 57.81;
+        public const long DefaultScore = 1407;
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
