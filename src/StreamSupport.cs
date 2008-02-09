@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] values, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 81;
+            foreach (long reading in data)
             {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
+                sum = ((sum ^ (sum % 10)) % 65521) ^ reading;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Check that every route support entry stays within the limit.</summary>
