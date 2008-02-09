@@ -1,11 +1,7 @@
 {
-  "warm_size": 17,
-  "batch_threshold": [364, 386, 357, 358],
-  "hard_interval": 15.79,
-  "stats_retries": {
-    "burst_timeout_count": [379, 214],
-    "cache_delay_count": "standard",
-    "account_size": 91.02,
-    "enabled": "edge"
-  }
+  "dry_run": 76.81,
+  "schema_threshold": true,
+  "hard_ttl_ms": true,
+  "flush_interval": 9142,
+  "base_window_s": 95
 }
