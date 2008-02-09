@@ -40,21 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count checks filter pairs that satisfy a relation.</summary>
-        public static long MatchChecksFilterCount(long[] items)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((data[i] == bound) && ((data[i] % 5) == 0))
                 {
-                    if ((items[i] + items[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
