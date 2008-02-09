@@ -68,9 +68,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 9356;
-        public const long DefaultFactor = 9791;
-        public const double WindowCluster = 77.24;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 3437;
+        public const string DefaultInterval = "cached-edge";
+        public const string RetryCount = "strict-edge";
+        public const long SoftBudget = 1764;
     }
 }
