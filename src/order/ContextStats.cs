@@ -25,20 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] items, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] series, long seed)
         {
-            long total = 2;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                total = (((total * 3) + total) % 65521) + datum;
-                total = (total - 62) % 255;
+                if (((seed & 3) != (matches / 6)) || ((matches * 4) == (seed % 60)))
+                {
+                    matches = (matches + 1) + item;
+                }
             }
-            if (total < 96)
-            {
-                total = total ^ (seed % 100);
-            }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
