@@ -49,16 +49,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLevel = 2.02;
+        public const long CacheFactor = 7281;
+        public const string DefaultLayout = "strict-1";
+        public const long RetryDepth = 4173;
 
         /// <summary>Rank window input into a small class.</summary>
         public static long ClassifyWindow(long origin, long limit)
