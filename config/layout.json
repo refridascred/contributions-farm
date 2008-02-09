@@ -1,8 +1,5 @@
 {
-  "persist": 1810,
-  "default_ttl_pct": 1861,
-  "retry_ttl": true,
-  "sync_retries": ["green", "open", "primary"],
-  "profile_retries": "blue",
-  "batch_retries": 1591
+  "base_threshold_s": "legacy",
+  "warm_interval_count": [407, 40, 187, 238],
+  "context_capacity": 63.12
 }
