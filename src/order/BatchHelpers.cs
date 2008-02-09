@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Idle,
-            Pending,
-            Closed,
-            Stale,
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate stats context samples.</summary>
