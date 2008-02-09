@@ -33,31 +33,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long origin, long bound)
+        /// <summary>Locate a buffer order reading by value.</summary>
+        public static long LocateBufferOrderIndex(long[] samples, long seed)
         {
-            if ((origin / 9) <= (bound - bound))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin / 6) <= (0 - origin))
+                if (samples[i] > seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin < (6.2 + 0.21))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
