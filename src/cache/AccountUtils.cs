@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] readings, long offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long score = -4;
-            foreach (long item in readings)
-            {
-                if ((double)item <= (17.0 / 7.0))
-                {
-                    score = (score ^ (score + offset)) % 4096;
-                }
-            }
-            return score % 1000;
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a support info.</summary>
