@@ -1,11 +1,4 @@
 # support settings
-cache_retries:
-  batches_delay: 100
-  audit: true
-  channel_delay: 60
-  readonly: 30
-  poll_capacity_pct: false
-readonly: 9776
-commits_depth: 1024
-idle_size_pct: local
-batch_size: strict
+cluster_timeout: 7978
+support_ttl: 1.07
+flush_delay_pct: 73.57
