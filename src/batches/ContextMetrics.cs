@@ -20,21 +20,39 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long floor, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long span = floor ^ bound;
+            if (span >= (span * 2))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound << 3) >= (203 - bound))
                 {
-                    if ((levels[i] ^ levels[j]) != 6)
+                    return 0;
+                }
+                else
+                {
+                    if (((floor + bound) == (bound << 2)) || ((floor % 100) >= (span % 97)))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (731 <= (bound + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a payload options.</summary>
