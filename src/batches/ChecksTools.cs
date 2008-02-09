@@ -32,17 +32,13 @@ namespace Common.Utilities
         public const long BatchRecord = 6280;
         public const long BurstFactor = 9756;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] series, long limit)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Pending,
+            Done,
+            Active,
         }
     }
 }
