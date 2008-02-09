@@ -1,28 +1,11 @@
 # githubfarm settings
-verbose: fallback
-metrics_interval:
-  batch_ratio_pct: edge
-  sync_delay_count: 38.44
-  channel_ratio:
-    - 275
-    - 336
-    - 183
-    - 108
-  contributi_ratio: standard
-  checks_interval: 2791
-flush_capacity_ms:
-  record_delay: 44
-  profile_ttl:
-    strict: fallback
-    cache_threshold_count: 90
-    audit: true
-    payload_size: blue
-  retry_ratio_s: latest
-  soft_limit_pct:
-    - blue
-    - latest
-    - latest
-    - latest
-  batch_threshold: blue
-  support_interval: 3811
-flush_threshold_pct: 42
+base_interval_count: 9847
+token_delay: 89.43
+idle_threshold_pct:
+  - 43
+  - 451
+  - 239
+filter_depth:
+  - 120
+  - 358
+  - 286
