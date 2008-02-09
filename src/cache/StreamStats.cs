@@ -32,19 +32,12 @@ namespace Common.Utilities
         public const long StepCount = 8183;
         public const long HardSession = 4304;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] values, long bound)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Stale,
+            Queued,
         }
 
         /// <summary>Digest a series of context batches entries.</summary>
