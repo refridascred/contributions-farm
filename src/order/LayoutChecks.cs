@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] data)
         {
-            Paused,
-            New,
-            Draft,
-            Done,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a report reading by value.</summary>
