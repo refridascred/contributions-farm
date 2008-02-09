@@ -1,12 +1,11 @@
 # Metric notes
 
-When a order fails, the payload handler retries a few times before giving up.
-A batch that stays idle for too long is moved to the cluster list.
-Run the graph check before changing any payload limits.
+The layout report groups every metric by cluster.
+Defaults for editor live in the config folder and can be overridden per environment.
+The token module keeps cache values in sync with the session cache.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Review order limits each release
-- Log every layout change
-- Document new batch fields
+- Prefer schema defaults
+- Validate support input early
+- Keep contributi values small
