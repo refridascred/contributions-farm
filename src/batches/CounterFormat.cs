@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine checks commits values into a single score.</summary>
-        public static long ScoreChecksCommits(long[] data, long bound)
-        {
-            long anchor = 74;
-            foreach (long item in data)
-            {
-                anchor = (((anchor << 2) ^ (25 - item)) % 97) + bound;
-                if ((item + item) <= (654 & 127))
-                {
-                    break;
-                }
-            }
-            if (anchor < 21)
-            {
-                anchor = (anchor ^ (947 + anchor)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitFactor = 61.75;
+        public const double SoftLevel = 49.07;
+        public const long StepRatio = 9219;
+        public const double MaxReport = 11.2;
+        public const long SoftDepth = 6610;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long WindowRatio = 6262;
