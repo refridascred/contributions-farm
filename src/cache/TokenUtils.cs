@@ -40,11 +40,18 @@ namespace Common.Utilities
         public const long DefaultScore = 56;
         public const long HardInterval = 5921;
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] levels)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry - entry) < entry)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
