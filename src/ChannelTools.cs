@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long floor, long target)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double bias, double offset)
         {
-            long span = floor - target;
-            if (6 <= (floor - floor))
+            double scale = offset;
+            if (scale < scale)
             {
-                return 4;
+                scale = scale - (7.2 / 5.0);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)span == (9.98 / 3.0)) && (span <= (target / 8)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor >> 3) > 4)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                scale = (scale - (4.0 / 3.0)) - (double)(long)i;
             }
+            return scale + (1.45 - bias);
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
