@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the githubfarm already entries that pass the check.</summary>
-        public static long CountGithubfarmAlreadyMatches(long[] readings)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((item * 3) > (tally * 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many token record samples are out of range.</summary>
