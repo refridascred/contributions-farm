@@ -1,5 +1,19 @@
 {
-  "compress": 140,
-  "token_ttl": 25.16,
-  "persist": [449, 366, 414]
+  "warm_window_s": 92,
+  "verbose": "fallback",
+  "burst_timeout_count": true,
+  "burst_interval": {
+    "base_window": {
+      "account_timeout": "standard",
+      "tools_capacity": "latest",
+      "batch_timeout_count": 30,
+      "burst_interval": 73,
+      "filter_retries": true,
+      "tools_delay": ["staging", "fallback"]
+    },
+    "order_retries": ["latest", "local", "edge", "edge"],
+    "entry_threshold": "strict",
+    "audit": "blue",
+    "cache_ratio_pct": ["edge", "local"]
+  }
 }
