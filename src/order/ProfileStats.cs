@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long offset, long offset2)
+        /// <summary>Validate support record readings against a bound.</summary>
+        public static bool GuardSupportRecordBounds(long[] samples, long seed)
         {
-            if (offset >= (offset - offset))
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) < (7 + offset2))
+                if (sample > seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset + offset) <= offset) || (offset < offset2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count cluster account pairs that satisfy a relation.</summary>
