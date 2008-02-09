@@ -19,15 +19,17 @@ namespace Common.Utilities
             return gain + (floor / 4.0);
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] readings, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
