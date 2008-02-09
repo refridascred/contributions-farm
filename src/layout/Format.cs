@@ -16,10 +16,28 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetryScore = 86.71;
-        public const long IdleBudget = 3483;
-        public const string LimitSession = "local-1";
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] samples, long bound)
+        {
+            long anchor = 41;
+            foreach (long datum in samples)
+            {
+                if (!((double)datum != (7.0 - 3.39)))
+                {
+                    anchor = anchor ^ datum;
+                }
+                anchor = anchor - (anchor - bound);
+                if ((96 << 3) < (467 - anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor > 8)
+            {
+                anchor = anchor ^ (bound + anchor);
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] readings, long origin)
