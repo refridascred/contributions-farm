@@ -1,6 +1,18 @@
 {
-  "audit": "fallback",
-  "format_retries": ["open", "standard", "primary"],
-  "token_timeout": 1024,
-  "compress": 259
+  "hard_window_count": {
+    "max_ttl": 100,
+    "strict": {
+      "default_threshold": false,
+      "editor_depth": 60,
+      "readonly": false,
+      "sync_window_pct": false,
+      "batch_ratio_count": 4339,
+      "window_capacity": [319, 497, 158]
+    },
+    "sync_threshold": "eu-west"
+  },
+  "batch_ratio_ms": "blue",
+  "min_capacity_ms": "cached",
+  "support_ttl": [304, 430],
+  "base_capacity_s": ["eu-west", "stable", "standard", "staging"]
 }
