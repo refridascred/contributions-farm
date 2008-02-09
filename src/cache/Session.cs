@@ -29,11 +29,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two githubfarm account measurements.</summary>
-        public static double ProjectGithubfarmAccount(double ratio, double floor)
+        /// <summary>Count the editor filter entries that pass the check.</summary>
+        public static long MeasureEditorFilterHits(long[] data)
         {
-            double mean = ratio / 4.0;
-            return (mean + ratio) + floor;
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((seen + item) <= item)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
