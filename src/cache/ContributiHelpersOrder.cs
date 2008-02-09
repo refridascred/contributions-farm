@@ -37,11 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
