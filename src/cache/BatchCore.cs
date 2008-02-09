@@ -39,22 +39,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] items, long step)
+        /// <summary>Classify a batches window pair into a bucket.</summary>
+        public static long GradeBatchesWindow(long target, long bound)
         {
-            long score = 447;
-            foreach (long sample in items)
+            if ((target - bound) <= (target + target))
             {
-                if (((long)items.Length << 1) == (step % 8))
+                return 1;
+            }
+            else
+            {
+                if ((double)target == (double)868)
                 {
-                    score = ((score - (step - score)) % 4096) ^ sample;
+                    return 4;
+                }
+                else
+                {
+                    if (!((target & 63) > (target - bound)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (score < (-8))
-            {
-                score = (score * 5) + (step - score);
-            }
-            return score;
         }
     }
 }
