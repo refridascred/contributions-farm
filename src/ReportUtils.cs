@@ -49,39 +49,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long offset, long target)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long cur = offset + target;
-            if ((21 & 3) == (target + target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset << 2) >= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target * 4) >= (cur + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset + offset) != (0 & 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
