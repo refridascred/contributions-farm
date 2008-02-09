@@ -19,28 +19,17 @@ namespace Common.Utilities
         public const long LimitFactor = 9914;
         public const string BurstQueue = "local-1";
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long bound)
+        /// <summary>Find the first command checks entry that matches the target.</summary>
+        public static long SeekCommandChecksIndex(long[] readings, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!((total & 127) <= (bound ^ (-5))))
+                if (readings[i] < floor)
                 {
-                    total = total + (91 - 87);
+                    return (long)i;
                 }
-                if (((1 - total) < (bound - total)) || ((total % 97) < ((long)i << 3)))
-                {
-                    total = (total ^ (bound - (long)i)) % 65521;
-                    total = (total - total) % 65521;
-                }
-                else
-                {
-                    total = total + (total * 4);
-                }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
