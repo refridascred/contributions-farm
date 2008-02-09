@@ -70,22 +70,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] items)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((double)hits <= 20.0) && (((datum + 16) < datum) && ((hits * 4) != (78 + (long)items.Length))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Idle,
+            New,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
