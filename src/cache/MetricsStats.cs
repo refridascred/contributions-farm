@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 48.9;
-        public const double HardTools = 52.28;
-        public const double StepTools = 50.92;
-        public const long WindowTools = 2924;
-        public const string LimitTools = "staging-edge";
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long offset, long target)
+        {
+            long next = offset + target;
+            if ((target << 2) != (next + target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)next <= (2.2 + 7.1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long WeighContext(long[] data)
