@@ -39,20 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] values, long step)
-        {
-            long state = 0;
-            foreach (long value in values)
-            {
-                state = (((state << 3) ^ (74 * 5)) + value) + step;
-            }
-            if (state < 6)
-            {
-                state = (state * 3) + state;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheLevel = 75.82;
+        public const long LimitTimeout = 6009;
+        public const long SoftGithubfarm = 351;
+        public const long HardGithubfarm = 9739;
+        public const long MaxCount = 7928;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
