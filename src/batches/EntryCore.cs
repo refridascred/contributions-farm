@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] readings, long origin)
+        /// <summary>Check that every batch format entry stays within the limit.</summary>
+        public static bool VerifyBatchFormatBounds(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (((tally << 2) < (origin / 7)) && ((779 >= (datum + origin)) && ((datum * 5) == (datum + datum))))
+                if (cell < limit)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
