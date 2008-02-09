@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] values, long bound)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(837 + 62);
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
+                load = (((load - (3.37 + load)) + (double)(long)i) + gain) + bias;
             }
-            return -1;
+            return load + (10.0 - load);
         }
 
         /// <summary>Adjust a batch reading.</summary>
