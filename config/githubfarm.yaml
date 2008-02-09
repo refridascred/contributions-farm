@@ -1,12 +1,8 @@
 # githubfarm settings
-hard_size_pct: staging
-poll_timeout_pct:
-  poll_capacity_count: 58.83
-  counter_ratio: standard
-  burst_size: 8516
-  retry_depth_pct:
-    - local
-    - fallback
-  flush_capacity: true
-default_ttl: true
-checks_capacity: local
+dry_run: false
+sync_delay_ms: 500
+default_delay_pct:
+  - cached
+  - edge
+  - eu-west
+  - eu-west
