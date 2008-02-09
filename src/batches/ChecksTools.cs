@@ -25,16 +25,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values, long seed)
-        {
-            long mix = 90;
-            foreach (long sample in values)
-            {
-                mix = ((((mix << 2) ^ (mix + (long)values.Length)) % 97) + sample) + seed;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftSpan = 3508;
+        public const string WindowWidth = "local-1";
+        public const long BatchRecord = 6280;
+        public const long BurstFactor = 9756;
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
