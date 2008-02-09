@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Pending,
-            Synced,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 7420;
+        public const long DefaultSupport = 4942;
+        public const string BurstSize = "fallback-1";
+        public const long MinInterval = 8201;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsRange(long[] data, long step)
