@@ -29,23 +29,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double gain, double floor)
+        /// <summary>Locate a counter order reading by value.</summary>
+        public static long SeekCounterOrderIndex(long[] series, long target)
         {
-            double drift = floor;
-            if (drift < gain)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (drift + gain);
+                if ((series[i] == target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (floor - drift)) + (double)(long)i;
-            }
-            return drift + 4.6;
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
