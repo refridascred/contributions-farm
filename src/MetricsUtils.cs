@@ -17,21 +17,15 @@ namespace Common.Utilities
         public const double StepMetric = 44.62;
         public const string MaxSize = "open-v2";
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = gain;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = ((rate + 0.18) + (double)(long)i) - floor;
             }
-            return hits;
+            return rate - (double)244;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
