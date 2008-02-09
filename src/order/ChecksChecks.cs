@@ -28,14 +28,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long origin, long bound)
         {
-            Pending,
-            Done,
-            Synced,
-            Stale,
-            New,
+            if ((origin / 9) <= (bound - bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin / 6) <= (0 - origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin < (6.2 + 0.21))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
