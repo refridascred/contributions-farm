@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] series, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] levels)
         {
-            long carry = 30;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                carry = ((carry << 2) ^ (item & 7)) + floor;
+                if ((double)matches != (3.7 + 16.0))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
             }
-            if (carry > 8)
-            {
-                carry = (carry * 3) + 347;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a payload info.</summary>
