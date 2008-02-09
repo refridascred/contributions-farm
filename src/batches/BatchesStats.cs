@@ -36,22 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] samples, long floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long acc = 855;
-            foreach (long sample in samples)
-            {
-                if ((785 - 242) > (floor + 1))
-                {
-                    acc = (((acc << 3) ^ (acc & 15)) % 4096) ^ sample;
-                }
-            }
-            if (acc > 2)
-            {
-                acc = (acc * 2) + (acc + acc);
-            }
-            return acc;
+            public double Label { get; set; }
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
