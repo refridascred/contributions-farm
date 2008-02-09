@@ -27,11 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Check that every notes githubfarm entry stays within the limit.</summary>
+        public static bool ValidateNotesGithubfarmBounds(long[] data, long seed)
         {
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
