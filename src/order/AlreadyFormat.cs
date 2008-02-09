@@ -41,22 +41,12 @@ namespace Common.Utilities
         public const string StepWidth = "open-1";
         public const double MaxRatio = 95.59;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowScore = "alpha";
+        public const long SoftFactor = 8912;
+        public const long WindowCluster = 325;
+        public const double HardRatio = 19.34;
+        public const string SoftTimeout = "latest-edge";
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
