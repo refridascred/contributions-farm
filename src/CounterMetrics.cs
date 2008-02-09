@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const long RetryBatches = 8447;
         public const double HardBatches = 98.75;
 
-        /// <summary>Count route githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapRouteGithubfarmCount(long[] readings)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = offset;
+            if (load >= (offset - offset))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load - offset) - scale;
             }
-            return count;
+            return load + 8.01;
         }
 
         /// <summary>Hold a notes options.</summary>
