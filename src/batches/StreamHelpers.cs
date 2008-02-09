@@ -56,11 +56,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowCommand = "fallback-edge";
-        public const long BatchCommand = 1205;
-        public const long HardCommand = 5850;
-        public const string BurstBudget = "standard-v2";
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Pending,
+            Stale,
+            Idle,
+            Done,
+            Ready,
+        }
 
         /// <summary>Compare every pair of filter metrics readings.</summary>
         public static long MatchFilterMetricsCount(long[] values)
