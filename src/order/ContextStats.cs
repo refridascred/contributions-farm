@@ -6,11 +6,9 @@ namespace Common.Utilities
     public static class ContextStats
     {
         /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 704;
-        public const long BurstScore = 648;
-        public const string BatchInterval = "alpha-v2";
-        public const double CacheRecord = 54.75;
-        public const long LimitCount = 2824;
+        public const string RetryInterval = "legacy";
+        public const long BurstFactor = 5462;
+        public const long MinRecord = 6356;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] items, long seed)
