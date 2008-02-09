@@ -29,11 +29,14 @@ namespace Common.Utilities
         public const string IdleInterval = "latest";
         public const long BurstGithubfarm = 9762;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 8954;
-        public const double DefaultNotes = 80.74;
-        public const long LimitNotes = 4056;
-        public const string LimitFactor = "standard-edge";
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Draft,
+            Done,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Rank command checks input into a small class.</summary>
         public static long BucketCommandChecks(long bound, long target)
