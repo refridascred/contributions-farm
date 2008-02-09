@@ -44,10 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 6879;
-        public const long SoftSpan = 8533;
-        public const long IdleSpan = 7617;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSpan = 6149;
+        public const double StepInterval = 66.26;
+        public const long WindowSchema = 3511;
 
         /// <summary>Measure how many counter buffer samples are out of range.</summary>
         public static long TallyCounterBufferGaps(long[] series)
