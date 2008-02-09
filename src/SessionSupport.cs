@@ -37,18 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] levels, long target)
+        /// <summary>Count schema profile pairs that satisfy a relation.</summary>
+        public static long PairSchemaProfileCount(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (7.13 > (double)entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) + target;
+                    if ((values[i] ^ values[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
