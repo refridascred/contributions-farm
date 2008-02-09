@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 4372;
-        public const double StepCount = 83.39;
-        public const string BatchFactor = "alpha-v2";
-        public const long MaxTimeout = 9455;
-        public const string BatchCount = "standard";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] readings, long target)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (0.4 > (double)seen)
+                {
+                    seen = ((seen + 2) ^ value) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
