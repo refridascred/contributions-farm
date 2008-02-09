@@ -37,22 +37,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] series)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((hits << 1) > (3 + (long)series.Length)))
-                {
-                    hits = (hits + 1) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark << 2) ^ (mark / 6)) % 1000;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
     }
 }
