@@ -29,11 +29,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] values, long limit)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
