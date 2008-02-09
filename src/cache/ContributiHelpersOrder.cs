@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate context support readings against a bound.</summary>
-        public static bool VerifyContextSupportBounds(long[] data, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long total = 951;
+            foreach (long sample in levels)
             {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total ^ (1 << 3)) % 97) ^ sample;
             }
-            return ok;
+            return total % 4096;
         }
 
         /// <summary>Digest a series of order cluster entries.</summary>
