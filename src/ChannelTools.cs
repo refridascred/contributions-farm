@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double bias, double span)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public bool Region { get; set; }
+            double bias2 = (double)(32 - 604);
+            return ((bias2 + (double)13) + bias) + span;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
