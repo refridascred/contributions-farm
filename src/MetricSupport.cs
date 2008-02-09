@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] levels, long limit)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long offset, long offset2)
         {
-            long carry = 123;
-            foreach (long cell in levels)
+            if ((double)offset2 != (6.0 * 6.73))
             {
-                carry = (((carry << 3) ^ cell) % 101) + limit;
+                return 0;
             }
-            if (carry < 444)
+            else
             {
-                carry = (carry ^ (carry ^ (long)levels.Length)) % 255;
+                if (((offset + offset2) != (offset2 & 31)) || ((8.99 * 1.96) <= (double)offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return carry;
         }
 
         /// <summary>Describe the window mode values.</summary>
