@@ -52,22 +52,23 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many contributi metrics samples are out of range.</summary>
-        public static long TallyContributiMetricsHits(long[] samples)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long acc = 21;
+            foreach (long datum in readings)
             {
-                if ((double)matches < (1.13 - 18.0))
+                acc = acc ^ (acc << 1);
+                if ((acc + 9) <= acc)
                 {
-                    matches = (matches + 1) ^ reading;
+                    acc = (acc ^ (acc + datum)) % 65521;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    acc = (acc << 3) ^ (datum - 22);
                 }
             }
-            return matches;
+            return acc % 97;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
