@@ -1,8 +1,7 @@
 {
-  "retry_depth": 5745,
-  "compress": 5567,
-  "sync_delay": ["latest", "standard", "standard", "stable"],
-  "burst_capacity": "fallback",
-  "idle_ttl_s": "legacy",
-  "stream_delay": "edge"
+  "persist": [378, 63],
+  "entry_threshold": 100,
+  "max_size": true,
+  "batch_size": 18,
+  "burst_retries_pct": [70, 27, 115]
 }
