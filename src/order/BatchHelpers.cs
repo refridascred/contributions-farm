@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 3584;
-        public const double HardFactor = 32.22;
-        public const long IdleChecks = 4593;
-        public const long BurstCount = 3460;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Idle,
+            Pending,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsHits(long[] readings, long seed)
