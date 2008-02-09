@@ -28,19 +28,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate layout token readings against a bound.</summary>
-        public static bool GuardLayoutTokenBounds(long[] samples, long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double rate, double span)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            double ratio = rate;
+            if (ratio >= ratio)
             {
-                if (cell < step)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = (ratio + (ratio + rate)) - span;
             }
-            return ok;
+            return ratio + rate;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
