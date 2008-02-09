@@ -21,21 +21,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 80;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((-69) < acc)
                 {
-                    if ((series[i] + series[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc << 2) ^ (entry + acc)) % 1000;
                 }
             }
-            return count;
+            if (acc > (-23))
+            {
+                acc = (acc + (origin >> 4)) % 101;
+            }
+            return acc % 4096;
         }
     }
 }
