@@ -39,19 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] values, long bound)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long floor)
         {
-            long score = 43;
-            foreach (long sample in values)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                score = (score ^ bound) + sample;
+                if ((double)mix == (double)(long)i)
+                {
+                    mix = (mix ^ (floor + (long)i)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (score < 75)
-            {
-                score = ((score * 4) + 0) % 97;
-            }
-            return score;
+            return mix;
         }
     }
 }
