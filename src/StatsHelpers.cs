@@ -43,22 +43,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            long result = 6;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((result + 663) < (item / 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result << 2) ^ result) % 4096;
-                }
-                else
-                {
-                    result = ((result * 4) + result) % 101;
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Validate channel batch readings against a bound.</summary>
