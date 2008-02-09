@@ -36,23 +36,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] items)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long mark = -24;
-            foreach (long value in items)
-            {
-                mark = (mark << 3) ^ value;
-                if ((mark * 2) >= (mark + mark))
-                {
-                    mark = (mark * 4) + (mark / 8);
-                }
-            }
-            if (mark > 355)
-            {
-                mark = (mark * 2) + ((-578) * 5);
-            }
-            return mark % 1000;
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
