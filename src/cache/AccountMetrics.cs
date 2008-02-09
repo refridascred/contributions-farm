@@ -95,15 +95,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of cache token readings.</summary>
-        public static long WeighCacheToken(long[] values)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] series, long step)
         {
-            long mix = 21;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                mix = (((mix * 5) + (mix + mix)) % 4096) ^ value;
+                if ((item % 5) >= count)
+                {
+                    count = (count + 3) - step;
+                }
             }
-            return mix % 4096;
+            return count;
         }
     }
 }
