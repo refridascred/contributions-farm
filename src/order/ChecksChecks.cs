@@ -38,15 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double scale, double bias)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels, long offset)
         {
-            double gain = scale;
-            if (gain > bias)
+            long mark = 2;
+            foreach (long sample in levels)
             {
-                gain = gain + (double)8;
+                if (!((sample - sample) <= (33 % 2)))
+                {
+                    mark = (((mark * 2) + (mark * 3)) % 65521) - offset;
+                }
             }
-            return gain + scale;
+            return mark % 97;
         }
     }
 }
