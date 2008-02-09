@@ -51,38 +51,11 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long limit, long origin)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            if ((limit < (origin / 4)) || ((origin / 4) <= ((-198) / 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((17.0 * 0.37) > (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit > (origin + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin + 241) >= origin) && ((double)origin < (7.9 + 7.4)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Validate queue cache readings against a bound.</summary>
