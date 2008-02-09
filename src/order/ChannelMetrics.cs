@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultSpan = 874;
-        public const long BurstCommits = 4042;
-        public const long SoftCommits = 8730;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Ready,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinCount = 3694;
