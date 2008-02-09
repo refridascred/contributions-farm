@@ -23,19 +23,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] series, long limit)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (value <= limit)
+                if (datum != seed)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
