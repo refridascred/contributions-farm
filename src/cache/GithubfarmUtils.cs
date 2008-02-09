@@ -18,35 +18,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long step, long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long step, long seed)
         {
-            if (9.6 >= (double)step)
+            long edge = step + seed;
+            if ((seed - step) > (seed / 2))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((bound - step) <= bound)
+                if ((0.3 - 1.7) < (double)edge)
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if ((bound / 4) >= bound)
+                    if ((step << 3) >= (edge - edge))
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        if (((bound - bound) >= (bound ^ step)) && (step > bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 6;
                     }
                 }
             }
