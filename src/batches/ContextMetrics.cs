@@ -55,12 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Locate a counter payload reading by value.</summary>
+        public static long LocateCounterPayloadIndex(long[] series, long limit)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
