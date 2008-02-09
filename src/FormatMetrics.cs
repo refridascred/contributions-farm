@@ -22,22 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] items, long floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long total = 1;
-            foreach (long item in items)
-            {
-                if (!(5 >= (floor << 1)))
-                {
-                    total = (total - (floor - item)) % 97;
-                }
-            }
-            if (total > 38)
-            {
-                total = (total ^ (floor << 3)) % 255;
-            }
-            return total;
+            Idle,
+            Draft,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a checks record.</summary>
