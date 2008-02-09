@@ -58,12 +58,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxCount = 17.42;
-        public const long DefaultContext = 8528;
-        public const string BaseTimeout = "staging-v2";
-        public const long RetryLevel = 5620;
-        public const double RetryContext = 67.95;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] samples)
+        {
+            long acc = 33;
+            foreach (long cell in samples)
+            {
+                acc = (acc ^ (cell + acc)) % 101;
+            }
+            if (acc < 62)
+            {
+                acc = (acc + acc) % 65521;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MaxContext = 2008;
