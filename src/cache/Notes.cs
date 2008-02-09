@@ -32,13 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
             public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
