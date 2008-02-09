@@ -58,19 +58,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] data, long target)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
