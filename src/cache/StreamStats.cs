@@ -13,10 +13,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstSpan = 1792;
-        public const string WindowFactor = "stable";
-        public const long DefaultRatio = 7108;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] levels)
+        {
+            long total = -97;
+            foreach (long item in levels)
+            {
+                total = ((total - (total + total)) % 4096) ^ item;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long seed, long floor)
