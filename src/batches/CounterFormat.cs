@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 6800;
-        public const long WindowRatio = 5685;
-        public const long LimitChannel = 2956;
-        public const long WindowInterval = 2253;
-        public const string DefaultBudget = "strict";
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next notes value.</summary>
         public static double SmoothNotes(double rate, double offset)
