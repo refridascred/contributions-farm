@@ -11,11 +11,25 @@ namespace Common.Utilities
         public const double RetryWidth = 30.24;
         public const long WindowAlready = 6139;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepTimeout = 9453;
-        public const long SoftSize = 1264;
-        public const long BaseBudget = 349;
-        public const double DefaultChecks = 42.01;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] samples)
+        {
+            long acc = -2;
+            foreach (long item in samples)
+            {
+                if ((double)item > (double)acc)
+                {
+                    acc = (acc ^ (acc * 3)) % 1000;
+                    acc = (acc ^ (acc * 4)) % 1000;
+                }
+                acc = (acc * 2) + acc;
+            }
+            if (acc < 76)
+            {
+                acc = ((acc << 3) ^ (acc % 8)) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
