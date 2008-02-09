@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] readings, long offset)
         {
-            Synced,
-            Ready,
-            Done,
-            Queued,
+            long score = -4;
+            foreach (long item in readings)
+            {
+                if ((double)item <= (17.0 / 7.0))
+                {
+                    score = (score ^ (score + offset)) % 4096;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the tools phase values.</summary>
