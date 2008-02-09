@@ -27,15 +27,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double gain, double bias)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long step, long offset)
         {
-            double ratio = gain / 9.0;
-            if (ratio > bias)
+            long bound = step ^ offset;
+            if ((step << 2) >= (bound - bound))
             {
-                ratio = ratio + bias;
+                return 7;
             }
-            return ratio + bias;
+            else
+            {
+                if ((double)bound < (7.0 / 2.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the stats phase values.</summary>
