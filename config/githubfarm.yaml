@@ -1,6 +1,18 @@
 # githubfarm settings
-max_timeout: 72
-support_threshold: false
-idle_ttl_pct: true
-checks_threshold: 76.5
-poll_interval_pct: 1024
+batch_window: 28
+enabled:
+  burst_capacity: 45.1
+  cache_ttl_count: 95
+  min_timeout:
+    - 195
+    - 476
+  checks_ttl: blue
+  persist: fallback
+  flush_size_s: 87.75
+burst_retries_count: cached
+session_delay: latest
+warm_window_count:
+  - open
+  - open
+  - open
+base_ttl_s: 1.7
