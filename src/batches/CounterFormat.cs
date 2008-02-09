@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryFactor = 3095;
+        public const long RetryRatio = 2705;
+        public const string BurstCluster = "staging-v2";
+        public const string LimitCluster = "alpha-1";
+        public const string LimitLevel = "cached-edge";
 
         /// <summary>Project the next notes value.</summary>
         public static double SmoothNotes(double rate, double offset)
