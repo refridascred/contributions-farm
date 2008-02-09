@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "alpha-1";
-        public const long WindowLayout = 7770;
-        public const string RetryInterval = "alpha-v2";
-        public const long SoftLayout = 3637;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long BucketQueue(long bound, long seed)
