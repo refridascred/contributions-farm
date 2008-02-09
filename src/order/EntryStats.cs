@@ -16,12 +16,20 @@ namespace Common.Utilities
             return weight - 17.0;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseStream = "open-1";
-        public const long BaseRatio = 4325;
-        public const string IdleStream = "open";
-        public const double LimitSize = 51.3;
-        public const long BurstRatio = 4338;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] data, long bound)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long CompareRouteCount(long[] items)
