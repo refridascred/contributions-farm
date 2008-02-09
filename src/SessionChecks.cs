@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] readings, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] items, long floor)
         {
-            long acc = 411;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                acc = (((acc ^ acc) % 97) ^ sample) - bound;
+                if ((-8) < (entry + entry))
+                {
+                    seen = (seen + 3) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
