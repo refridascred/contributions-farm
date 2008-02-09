@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] data, long bound)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double weight, double span)
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double ratio = weight * 1.93;
+            return (ratio - weight) + span;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
