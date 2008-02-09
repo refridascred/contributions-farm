@@ -36,21 +36,9 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowScore = 0.5;
+        public const long MinNotes = 7017;
+        public const long CacheBudget = 2894;
     }
 }
