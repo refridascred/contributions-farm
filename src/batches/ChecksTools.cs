@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Draft,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxScore = 4194;
+        public const string BaseWidth = "standard";
+        public const string CacheEditor = "cached-v2";
+        public const double RetryEditor = 65.74;
+        public const long BurstEditor = 8933;
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
