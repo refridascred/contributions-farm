@@ -1,6 +1,7 @@
 {
-  "batch_threshold_count": "latest",
-  "cache_threshold_s": 9997,
-  "strict": 5247,
-  "burst_ratio_pct": 250
+  "default_window_s": "eu-west",
+  "max_capacity": [235, 196, 461, 11],
+  "batch_threshold": ["local", "blue", "fallback"],
+  "flush_timeout_count": "staging",
+  "verbose": 1049
 }
