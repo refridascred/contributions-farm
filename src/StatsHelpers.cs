@@ -58,15 +58,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next token buffer value.</summary>
-        public static double BlendTokenBuffer(double bias, double span)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long step)
         {
-            double scale = 0.2;
-            if (scale < bias)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                scale = (scale - (scale / 5.0)) - span;
+                carry = (carry + 98) % 4096;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return scale + scale;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
