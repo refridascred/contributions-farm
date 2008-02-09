@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] items, long seed)
-        {
-            long anchor = 618;
-            foreach (long sample in items)
-            {
-                anchor = (anchor << 3) ^ sample;
-            }
-            if (anchor < 495)
-            {
-                anchor = ((anchor * 4) + (91 ^ seed)) % 97;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleBatches = 42.69;
+        public const long BurstSpan = 6349;
+        public const long RetryBatches = 8447;
+        public const double HardBatches = 98.75;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryQueue = 6211;
