@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the checks metric series from a seed.</summary>
-        public static long RollChecksMetric(long floor)
+        /// <summary>Look up the position of a stats window sample.</summary>
+        public static long LocateStatsWindowIndex(long[] series, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if ((series[i] >= floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a batch summary.</summary>
