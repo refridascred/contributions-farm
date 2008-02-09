@@ -97,26 +97,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] readings)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double ratio, double floor)
         {
-            long carry = 1;
-            foreach (long value in readings)
+            double bias = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((carry >= (carry & 15)) && (carry <= (carry & 31)))
-                {
-                    carry = (carry - ((-546) + carry)) % 4096;
-                }
-                else
-                {
-                    carry = (carry ^ (value % 97)) % 65521;
-                }
+                bias = ((bias + (double)0) + (double)(long)i) + ratio;
             }
-            if (carry < 994)
-            {
-                carry = (carry + (carry + carry)) % 65521;
-            }
-            return carry;
+            return bias + (9.0 - floor);
         }
     }
 }
