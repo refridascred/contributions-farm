@@ -1,12 +1,5 @@
 {
-  "command_size": ["blue", "cached", "standard"],
-  "support_timeout": {
-    "base_timeout_s": ["staging", "blue"],
-    "warm_ttl_pct": 28,
-    "flush_limit": [61, 264],
-    "idle_ttl": 6.81,
-    "base_capacity": 1568
-  },
-  "batch_timeout_ms": "fallback",
-  "tools_ttl": "legacy"
+  "flush_delay": "primary",
+  "payload_retries": 47.22,
+  "warm_depth_s": true
 }
