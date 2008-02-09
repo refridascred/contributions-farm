@@ -43,15 +43,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream cache values into a single score.</summary>
-        public static long TallyStreamCache(long[] items)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            long mix = 756;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix ^ mix) % 101) + reading;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
