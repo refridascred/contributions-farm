@@ -14,16 +14,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinLevel = 6363;
+        public const long HardSupport = 7510;
+        public const long BaseSupport = 6567;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long DigestRoute(long[] items, long target)
