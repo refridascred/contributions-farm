@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const string HardCount = "strict-edge";
         public const long BurstDepth = 8858;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] items, long step)
+        /// <summary>Look up the position of a filter contributi sample.</summary>
+        public static long SeekFilterContributiIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value >> 5) < (step * 2))
+                if (series[i] < offset)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
