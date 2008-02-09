@@ -61,31 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long floor, long origin)
+        /// <summary>Audit command schema readings against a rule.</summary>
+        public static long MeasureCommandSchemaMatches(long[] readings)
         {
-            if ((double)origin != (double)floor)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor % 97) >= 5)
+                if ((double)seen == (double)(long)readings.Length)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (floor <= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = (seen + 3) - datum;
                 }
             }
+            return seen;
         }
     }
 }
