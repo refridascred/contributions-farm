@@ -1,5 +1,16 @@
 # githubfarm settings
-hard_capacity_pct: true
-metrics_delay: 39.95
-metric_ratio: open
-hard_retries: open
+idle_window_ms: true
+support_timeout:
+  queue_timeout:
+    batch_retries: false
+    cache_size_s: false
+    cache_depth_s: legacy
+  poll_limit_count: 44.29
+  soft_depth:
+    max_ratio_ms: 30
+    audit: 7.21
+    enabled:
+      - 340
+      - 392
+      - 212
+max_depth_s: 84.49
