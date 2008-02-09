@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long target, long seed)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            if ((seed + seed) != (target + seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed > (52 >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8 / 2) != (target / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((0 + target) != (seed ^ 37))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Accumulate payload samples.</summary>
