@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every layout githubfarm entry stays within the limit.</summary>
-        public static bool ValidateLayoutGithubfarmRange(long[] values, long limit)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
