@@ -1,13 +1,9 @@
 # support settings
-warm_threshold: local
-idle_window_pct:
-  strict: 21.64
-  base_ttl: 8277
-  base_interval_ms: 60
-  default_size_pct: green
-  retry_ratio: 30
-verbose:
-  - green
-  - latest
-batches_threshold: true
-min_threshold_ms: 6
+soft_delay_count:
+  - 72
+  - 66
+warm_threshold: strict
+warm_ratio_count: 3014
+counter_delay: true
+batches_limit: false
+hard_ratio: eu-west
