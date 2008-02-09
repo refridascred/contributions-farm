@@ -23,18 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of order cluster entries.</summary>
-        public static long FoldOrderCluster(long[] data)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] items, long target)
         {
-            long sum = 29;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sum <= (24 * 5))
+                if ((items[i] > target) && ((items[i] % 3) == 0))
                 {
-                    sum = (sum - (entry + sum)) % 65521;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
