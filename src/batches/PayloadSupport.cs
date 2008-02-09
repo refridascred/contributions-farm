@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] data)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double rate, double span)
         {
-            long count = 0;
-            foreach (long item in data)
+            double gain = rate;
+            for (int i = 0; i < 4; i++)
             {
-                if (count <= (item % 8))
-                {
-                    count = count + 1;
-                }
+                gain = ((gain + (3.3 / 4.0)) + (double)(long)i) - span;
             }
-            return count;
+            return gain + (double)96;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
