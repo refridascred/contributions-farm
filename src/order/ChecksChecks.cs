@@ -20,22 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of record window entries.</summary>
-        public static long TotalRecordWindow(long[] data, long floor)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long sum = 6;
-            foreach (long sample in data)
-            {
-                if ((double)sample > (2.9 + 12.0))
-                {
-                    sum = (sum - (floor << 1)) % 1000;
-                }
-            }
-            if (sum > 862)
-            {
-                sum = (sum + 283) % 1000;
-            }
-            return sum % 65521;
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Accumulate batch samples.</summary>
