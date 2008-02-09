@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] items)
+        /// <summary>Validate cluster batches readings against a bound.</summary>
+        public static bool CheckClusterBatchesBounds(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum != step)
                 {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Check that every layout githubfarm entry stays within the limit.</summary>
