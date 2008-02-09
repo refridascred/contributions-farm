@@ -12,18 +12,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] samples)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item != (5.7 * 2.0))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Retry,
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Blend two entry support measurements.</summary>
