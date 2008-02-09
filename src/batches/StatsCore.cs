@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            Pending,
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a record options.</summary>
