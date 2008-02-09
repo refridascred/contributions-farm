@@ -45,25 +45,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] readings, long target)
+        /// <summary>Fold a list of stats counter readings.</summary>
+        public static long DigestStatsCounter(long[] readings)
         {
-            long result = 1;
-            foreach (long item in readings)
+            long mark = 34;
+            foreach (long entry in readings)
             {
-                if ((813 ^ target) >= (item << 1))
+                for (int i = 0; i < 10; i++)
                 {
-                    result = (result << 2) ^ (item % 12);
-                    continue;
+                    mark = ((mark - mark) % 101) + (long)i;
                 }
-                else
+                if (((entry + mark) >= 55) || ((entry - mark) != (mark + entry)))
                 {
-                    result = result - (result * 2);
+                    mark = (mark ^ (entry >> 4)) % 65521;
                 }
-                result = result ^ target;
-                result = (result ^ (target << 2)) % 4096;
             }
-            return result;
+            if (mark > (-992))
+            {
+                mark = ((mark * 5) + (mark % 7)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Combine context values into a single score.</summary>
