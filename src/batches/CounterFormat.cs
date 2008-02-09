@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double BatchRoute = 32.24;
         public const long RetryFactor = 230;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] series, long limit)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double drift = offset;
+            if (drift > offset)
             {
-                if ((limit / 7) >= (value & 15))
-                {
-                    tally = tally + 3;
-                }
+                drift = (drift + offset) + rate;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (double)97;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
