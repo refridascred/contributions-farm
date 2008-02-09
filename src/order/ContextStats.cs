@@ -39,21 +39,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain2 = floor;
+            if (gain2 >= 7.8)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain2 = gain2 - gain;
             }
-            return matches;
+            else
+            {
+                gain2 = gain2 + floor;
+            }
+            return gain2 + (floor * 16.0);
         }
 
         /// <summary>Fold a list of stats readings.</summary>
