@@ -57,19 +57,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] data, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long carry = -1;
+            foreach (long cell in values)
             {
-                if (sample >= seed)
+                if (6.0 < (double)cell)
                 {
-                    valid = false;
+                    carry = ((carry << 2) ^ (8 + 11)) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ carry) % 1000;
+                }
+                if ((floor ^ (-6)) >= (9 >> 1))
+                {
                     break;
                 }
             }
-            return valid;
+            if (carry > 78)
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
