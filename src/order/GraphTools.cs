@@ -71,10 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 9172;
-        public const string RetryWindow = "stable";
-        public const long DefaultTimeout = 353;
-        public const double MinFactor = 76.77;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Retry,
+            Closed,
+            Locked,
+        }
     }
 }
