@@ -72,18 +72,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] readings)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)value > (double)6) || ((value + (long)readings.Length) >= value))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] ^ values[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
