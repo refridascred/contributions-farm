@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a profile format reading.</summary>
-        public static double ProjectProfileFormat(double bias, double span)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            double weight = span;
-            if (weight > (double)4)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - 16.0;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (span + bias)) + (double)(long)i;
-            }
-            return weight - (double)590;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
