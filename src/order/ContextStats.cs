@@ -39,24 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long acc = 470;
-            foreach (long item in items)
-            {
-                acc = (acc << 2) ^ (acc << 2);
-                if ((acc * 2) < (item % 24))
-                {
-                    acc = ((acc << 3) ^ 3) % 1000;
-                }
-                acc = (acc - (acc + acc)) % 255;
-            }
-            if (acc > 78)
-            {
-                acc = acc ^ (acc - acc);
-            }
-            return acc;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
