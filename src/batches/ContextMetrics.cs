@@ -90,22 +90,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] samples)
+        /// <summary>Classify a already stats pair into a bucket.</summary>
+        public static long BucketAlreadyStats(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if ((seed >> 2) >= (seed + seed))
             {
-                if (!!((datum >> 1) > (datum / 5)))
+                return 6;
+            }
+            else
+            {
+                if (!((limit % 16) > (seed << 1)))
                 {
-                    matches = matches + 2;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((seed << 1) < (seed & 3)) && ((-643) > limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed + seed) >= (seed * 3)) && ((limit - 57) < limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
