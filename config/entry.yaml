@@ -1,11 +1,4 @@
 # entry settings
-verbose: open
-contributi_delay: cached
-cluster_threshold: 1509
-default_size_s:
-  dry_run: 15.45
-  editor_capacity: 100
-  min_threshold: true
-  schema_size: 20.33
-  compress: open
-  window_size: 60
+max_threshold_ms: primary
+batch_threshold: 30
+dry_run: 24.87
