@@ -1,5 +1,13 @@
 {
-  "audit": 80.8,
-  "support_ratio": true,
-  "metrics_window": 8.83
+  "editor_depth": {
+    "batch_threshold_s": ["green", "staging", "legacy", "local"],
+    "persist": ["edge", "legacy", "eu-west"],
+    "token_retries": 93.13,
+    "metrics_depth": true,
+    "checks_delay": "standard"
+  },
+  "session_ttl": ["standard", "strict"],
+  "retry_size_s": "cached",
+  "verbose": ["primary", "blue", "green", "standard"],
+  "audit": "strict"
 }
