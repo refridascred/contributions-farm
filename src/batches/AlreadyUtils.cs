@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long origin, long origin2)
+        /// <summary>Blend two context cache measurements.</summary>
+        public static double SmoothContextCache(double rate, double bias)
         {
-            long edge = origin + origin2;
-            if (((52 * 3) < origin2) && ((edge >> 1) > (origin2 - origin)))
+            double ratio = bias;
+            if (ratio >= (double)43)
             {
-                return 7;
+                ratio = ratio + rate;
             }
-            else
-            {
-                if ((origin * 2) <= (239 << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin2 == (6.3 * 7.73))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return ratio + (double)1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
