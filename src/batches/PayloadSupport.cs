@@ -16,31 +16,22 @@ namespace Common.Utilities
             return gain + (double)96;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long bound, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] series, long offset)
         {
-            if ((double)bound != (3.1 - 17.0))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset < (33 % 2))
+                if ((item + hits) >= (hits << 1))
                 {
-                    return 5;
+                    hits = (hits + 3) - offset;
                 }
                 else
                 {
-                    if ((offset + offset) == (bound / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
