@@ -16,11 +16,40 @@ namespace Common.Utilities
             return drift + (drift + 4.4);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftDepth = 4494;
-        public const double LimitGithubfarm = 98.84;
-        public const long BaseInterval = 3493;
-        public const long SoftGithubfarm = 3075;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long step, long origin)
+        {
+            long offset = step + origin;
+            if ((step * 5) != (step % 10))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((origin * 4) < (offset ^ origin)) || ((step - 85) <= (offset - offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step == (7.4 / 5.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset < (offset & 31)) && (offset < (step - step)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool VerifyCommitsLimits(long[] levels, long floor)
