@@ -77,15 +77,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
