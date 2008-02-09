@@ -34,10 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinScore = "cached-1";
-        public const long WindowCount = 5312;
-        public const long BaseTimeout = 4032;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ScaleChannel(double rate, double floor)
