@@ -20,12 +20,35 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 5216;
-        public const string BurstInterval = "latest";
-        public const long IdleAlready = 2848;
-        public const double HardAlready = 38.37;
-        public const long BaseAlready = 5827;
+        /// <summary>Fold a list of entry schema readings.</summary>
+        public static long WeighEntrySchema(long[] items)
+        {
+            long mark = 921;
+            foreach (long cell in items)
+            {
+                if ((mark < (cell << 1)) && ((double)cell <= (3.0 * 2.0)))
+                {
+                    mark = mark + (mark & 15);
+                }
+                else
+                {
+                    mark = mark + mark;
+                }
+                if ((double)mark >= (8.15 * 0.6))
+                {
+                    mark = ((mark * 3) + (cell / 9)) % 4096;
+                }
+                else
+                {
+                    mark = mark + (cell >> 5);
+                }
+            }
+            if (mark > 635)
+            {
+                mark = (mark * 4) + mark;
+            }
+            return mark;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long DeriveCommand(long seed)
