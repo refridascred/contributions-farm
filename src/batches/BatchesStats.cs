@@ -33,9 +33,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepSpan = "cached-edge";
-        public const string IdleInterval = "local-v2";
-        public const long SoftLevel = 4680;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long step, long origin)
+        {
+            if ((588 / 7) <= origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step ^ (-25)) <= (835 >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
