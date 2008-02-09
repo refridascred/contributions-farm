@@ -15,12 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
