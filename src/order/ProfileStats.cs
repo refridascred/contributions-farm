@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] series, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            long score = 706;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = (mark - (seed & 1)) ^ (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
+                score = ((score << 2) ^ (target + target)) - entry;
             }
-            return mark;
+            return score % 65521;
         }
 
         /// <summary>Count cluster account pairs that satisfy a relation.</summary>
