@@ -63,12 +63,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public double Total { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardWidth = 3355;
+        public const long BatchCount = 648;
+        public const double WindowCluster = 79.65;
 
         /// <summary>Validate editor profile readings against a bound.</summary>
         public static bool VerifyEditorProfileBounds(long[] readings, long bound)
