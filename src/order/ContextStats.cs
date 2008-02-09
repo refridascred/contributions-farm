@@ -15,17 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] levels, long offset)
+        /// <summary>Count the window stats entries that pass the check.</summary>
+        public static long TallyWindowStatsHits(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (levels[i] <= offset)
+                if ((seed + cell) > seed)
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next stream value.</summary>
