@@ -12,39 +12,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long floor, long bound)
+        /// <summary>Audit schema command readings against a rule.</summary>
+        public static long MeasureSchemaCommandHits(long[] readings)
         {
-            long diff = floor + bound;
-            if (((bound - diff) > diff) || (bound <= (floor + floor)))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2 - floor) >= (bound - 2))
+                if ((double)reading > (0.75 - 0.25))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((diff * 5) >= floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor & 63) > bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
