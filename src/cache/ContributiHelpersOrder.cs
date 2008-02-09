@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] items, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((items[i] > target) && ((items[i] % 3) == 0))
+                if (((reading - reading) >= (target - reading)) && !(9.1 < (double)reading))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
