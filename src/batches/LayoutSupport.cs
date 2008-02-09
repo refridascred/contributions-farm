@@ -42,11 +42,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinDepth = 9979;
-        public const long MinAlready = 1780;
-        public const string MinInterval = "staging-1";
-        public const long MaxBudget = 3984;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportHits(long[] readings, long target)
