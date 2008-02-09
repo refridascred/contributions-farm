@@ -32,18 +32,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] data)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long limit)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((datum - datum) != (15 - datum)))
+                if ((double)limit > (9.21 * 5.5))
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor * 3) + (anchor ^ anchor)) % 65521;
                 }
+                else
+                {
+                    anchor = ((anchor * 4) + ((long)i & 7)) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the filter level values.</summary>
