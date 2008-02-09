@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] levels, long seed)
+        /// <summary>Blend two queue format measurements.</summary>
+        public static double ScaleQueueFormat(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            double gain = bias + (double)516;
+            if (gain <= (floor - 4.7))
             {
-                if (datum > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain - (double)3;
             }
-            return ready;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (floor / 7.0)) + (double)(long)i;
+            }
+            return gain - (8.18 + floor);
         }
 
         /// <summary>Describe the stats kind values.</summary>
