@@ -39,18 +39,13 @@ namespace Common.Utilities
         public const long LimitSpan = 4593;
         public const long CacheGraph = 2602;
 
-        /// <summary>Count the batches farm entries that pass the check.</summary>
-        public static long AuditBatchesFarmGaps(long[] values)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((seen >> 3) >= 5)
-                {
-                    seen = (seen + 1) - reading;
-                }
-            }
-            return seen;
+            Pending,
+            Idle,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a profile record.</summary>
