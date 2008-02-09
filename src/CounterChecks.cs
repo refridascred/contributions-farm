@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long limit, long limit2)
+        /// <summary>Match up queue buffer samples.</summary>
+        public static long OverlapQueueBufferCount(long[] items)
         {
-            if (848 > (limit - limit2))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)limit < (1.0 + 8.6)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (limit2 >= (419 << 1))
+                    if ((items[i] - items[j]) == 3)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
