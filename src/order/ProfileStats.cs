@@ -52,12 +52,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
