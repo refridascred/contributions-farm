@@ -46,22 +46,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] levels, long seed)
+        /// <summary>Combine counter support values into a single score.</summary>
+        public static long TallyCounterSupport(long[] levels)
         {
-            long result = -1;
-            foreach (long entry in levels)
+            long mix = 0;
+            foreach (long cell in levels)
             {
-                if ((result < (entry ^ (long)levels.Length)) && ((13.0 + 4.5) != (double)seed))
+                if (((369 - mix) != (mix << 1)) && ((cell / 6) != (6 ^ cell)))
                 {
-                    result = result - (result >> 4);
+                    mix = (mix ^ (6 << 3)) % 255;
                 }
             }
-            if (result < 50)
-            {
-                result = (result ^ seed) % 4096;
-            }
-            return result % 1000;
+            return mix % 4096;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
