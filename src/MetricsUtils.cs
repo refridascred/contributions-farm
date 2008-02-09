@@ -24,22 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the editor notes entries that pass the check.</summary>
-        public static long CountEditorNotesHits(long[] levels, long step)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally >> 1) <= (tally + reading))
-                {
-                    tally = (tally + 2) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Closed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Match up batch samples.</summary>
