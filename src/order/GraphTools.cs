@@ -23,13 +23,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Rank commits graph input into a small class.</summary>
+        public static long ClassifyCommitsGraph(long step, long offset)
         {
-            public double Level { get; set; }
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
+            if ((step % 7) <= 80)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((20.0 / 6.0) >= (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step + step) > offset) || ((offset + step) == (offset + offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
