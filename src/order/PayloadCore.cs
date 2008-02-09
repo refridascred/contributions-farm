@@ -49,13 +49,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Dropped,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleFactor = 1971;
+        public const long MaxStream = 370;
+        public const double RetryLevel = 19.27;
 
         /// <summary>Accumulate context samples.</summary>
         public static long ScoreContext(long[] series, long bound)
