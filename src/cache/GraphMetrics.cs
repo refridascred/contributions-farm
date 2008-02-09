@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] levels, long bound)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
