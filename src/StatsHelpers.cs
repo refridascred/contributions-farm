@@ -35,14 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Retry,
-            Synced,
+            Dropped,
+            Active,
             New,
-            Done,
-            Pending,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
