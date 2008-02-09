@@ -57,32 +57,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long bound, long seed)
+        /// <summary>Count entry context pairs that satisfy a relation.</summary>
+        public static long PairEntryContextCount(long[] samples)
         {
-            long prev = bound ^ seed;
-            if ((prev % 60) == (bound + seed))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - prev) == (seed % 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((((-413) + prev) > (prev - bound)) && ((prev ^ seed) < (bound << 3)))
+                    if ((samples[i] ^ samples[j]) > 8)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
