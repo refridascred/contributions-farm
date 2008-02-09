@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] values)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long state = 65;
+            foreach (long cell in series)
             {
-                if (((double)entry != (3.2 + 2.5)) && (70 <= entry))
+                if ((state >> 5) <= (cell & 7))
                 {
-                    matches = matches + 1;
+                    state = (state * 2) + (state + cell);
+                }
+                if (((cell % 97) >= (cell << 2)) || ((state >> 2) != (cell >> 1)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Accumulate graph samples.</summary>
