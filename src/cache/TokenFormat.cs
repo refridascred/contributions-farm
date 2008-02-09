@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] series, long target)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long limit)
         {
-            long mix = 25;
-            foreach (long item in series)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                mix = mix + (target / 8);
-                mix = (mix << 2) ^ (337 - item);
-                if (target <= (item - mix))
-                {
-                    mix = (mix ^ (item << 3)) % 101;
-                }
+                state = (state * 3) + (525 % 8);
+                state = ((state * 2) + (long)i) % 65521;
             }
-            if (mix > 77)
-            {
-                mix = ((mix * 2) + mix) % 4096;
-            }
-            return mix % 65521;
+            return state;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
