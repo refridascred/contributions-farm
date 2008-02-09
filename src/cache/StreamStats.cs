@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up batches channel samples.</summary>
-        public static long PairBatchesChannelCount(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Accumulate batch samples.</summary>
