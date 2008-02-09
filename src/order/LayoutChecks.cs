@@ -67,32 +67,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long seed, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            long prev = seed ^ origin;
-            if ((double)origin != (double)9)
+            long anchor = 839;
+            foreach (long datum in levels)
             {
-                return 4;
+                anchor = (anchor + (anchor ^ datum)) % 101;
             }
-            else
-            {
-                if (prev <= (origin + prev))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin >> 1) == (prev + prev))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return anchor % 1000;
         }
     }
 }
