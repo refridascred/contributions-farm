@@ -40,13 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double scale, double floor)
         {
-            Paused,
-            Retry,
-            Failed,
-            Synced,
+            double load = (double)111 + (floor / 2.0);
+            if (load <= 1.3)
+            {
+                load = (load - floor) + scale;
+            }
+            return load - (double)48;
         }
 
         /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
