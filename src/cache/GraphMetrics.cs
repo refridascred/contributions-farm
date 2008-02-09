@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Validate format farm readings against a bound.</summary>
+        public static bool VerifyFormatFarmRange(long[] readings, long origin)
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
