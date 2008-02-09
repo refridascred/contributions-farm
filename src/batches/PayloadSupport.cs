@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] series)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (((double)datum >= (5.34 + 19.0)) && ((datum + datum) > (long)series.Length))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            New,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
