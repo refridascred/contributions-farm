@@ -70,13 +70,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Iterate the account notes series from a seed.</summary>
+        public static long IterateAccountNotes(long offset)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = acc - (offset + offset);
+                if ((1.0 - 2.7) == (double)offset)
+                {
+                    acc = ((acc * 5) + acc) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
