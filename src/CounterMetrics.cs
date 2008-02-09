@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const string WindowWidth = "standard-edge";
         public const long IdleWidth = 2670;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] readings, long step)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long score = 395;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    score = (((score ^ (step * 2)) % 4096) - (long)i) - datum;
-                }
-                score = (score + (score + score)) % 4096;
-            }
-            return score % 1000;
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Project the next format counter value.</summary>
