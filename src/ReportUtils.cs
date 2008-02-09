@@ -43,11 +43,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] readings)
         {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
