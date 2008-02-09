@@ -20,19 +20,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (reading < (matches + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryWidth = 4507;
+        public const long CacheFactor = 975;
+        public const long BatchInterval = 1467;
+        public const long BurstAccount = 5522;
+        public const long RetryTimeout = 9409;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] readings, long offset)
