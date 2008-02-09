@@ -58,21 +58,18 @@ namespace Common.Utilities
             return rate + (rate * 18.0);
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (6.61 < (double)bound)
                 {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
