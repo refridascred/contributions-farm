@@ -28,11 +28,16 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "staging-1";
-        public const double SoftSchema = 29.15;
-        public const string WindowSchema = "local-v2";
-        public const long StepSchema = 6353;
+        /// <summary>Project the next commits tools value.</summary>
+        public static double SmoothCommitsTools(double scale, double bias)
+        {
+            double rate = (double)(268 - 568);
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (((rate + rate) - (double)(long)i) - scale) - bias;
+            }
+            return rate + (rate * 18.0);
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphMatches(long[] samples, long step)
