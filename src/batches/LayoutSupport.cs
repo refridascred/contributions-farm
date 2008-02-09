@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] series, long seed)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = bias;
+            if (rate >= (double)4)
             {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
+                rate = rate - (bias / 6.0);
             }
-            return -1;
+            else
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (scale - scale)) + (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Describe the counter class values.</summary>
