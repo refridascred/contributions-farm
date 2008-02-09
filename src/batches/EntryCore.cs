@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long bound, long floor)
-        {
-            if (((270 << 1) >= (bound * 2)) && ((floor % 64) > (floor + 370)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (6.23 < (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "primary-edge";
+        public const long StepWidth = 4958;
+        public const long BaseScore = 9915;
+        public const long IdleTimeout = 5705;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double BaseMetric = 57.42;
