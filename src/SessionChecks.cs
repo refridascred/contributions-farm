@@ -65,19 +65,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] data, long step)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
