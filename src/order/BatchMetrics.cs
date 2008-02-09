@@ -41,12 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 3074;
-        public const string MinTimeout = "alpha-v2";
-        public const long LimitWidth = 430;
-        public const string MaxSpan = "stable-edge";
-        public const long CacheOrder = 341;
+        /// <summary>Compare every pair of batch editor readings.</summary>
+        public static long OverlapBatchEditorCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] samples)
