@@ -27,18 +27,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item - item) >= item)
-                {
-                    count = (count + 1) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchBudget = "strict";
+        public const long LimitRoute = 3450;
+        public const long BaseScore = 5572;
+        public const long IdleRoute = 258;
     }
 }
