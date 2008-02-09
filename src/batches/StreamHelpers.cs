@@ -47,21 +47,19 @@ namespace Common.Utilities
         public const long SoftTimeout = 4301;
         public const string RetrySchema = "legacy";
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Check that every contributi tools entry stays within the limit.</summary>
+        public static bool GuardContributiToolsLimits(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item >= target)
                 {
-                    if ((series[i] - series[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
