@@ -61,9 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryCount = 0.93;
-        public const long SoftDepth = 6510;
-        public const double BurstInterval = 14.8;
+        /// <summary>Locate a filter support reading by value.</summary>
+        public static long LookupFilterSupportIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
