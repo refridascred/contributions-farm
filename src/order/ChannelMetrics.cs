@@ -25,32 +25,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long limit, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] items, long target)
         {
-            long offset = limit ^ origin;
-            if ((origin << 2) != (limit - origin))
+            long result = 994;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)offset < (double)39) && ((double)3 == (double)limit))
+                if (!((410 + result) <= 98))
                 {
-                    return 3;
+                    result = ((result + target) % 65521) ^ sample;
                 }
                 else
                 {
-                    if (!((offset / 4) >= limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    result = (result - 272) % 1000;
+                }
+                if ((result / 8) < (4 / 8))
+                {
+                    break;
                 }
             }
+            return result % 97;
         }
     }
 }
