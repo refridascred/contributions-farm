@@ -59,19 +59,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] readings, long target)
+        /// <summary>Rank tools editor input into a small class.</summary>
+        public static long BucketToolsEditor(long target, long limit)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long step = target ^ limit;
+            if ((10.0 / 7.0) >= (double)target)
             {
-                if (reading != target)
+                return 3;
+            }
+            else
+            {
+                if ((step * 2) < limit)
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return found;
         }
     }
 }
