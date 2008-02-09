@@ -55,14 +55,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] readings, long seed)
         {
-            New,
-            Stale,
-            Closed,
-            Idle,
-            Active,
+            long mark = 745;
+            foreach (long value in readings)
+            {
+                if (((-252) & 1) < value)
+                {
+                    mark = mark - seed;
+                }
+            }
+            return mark;
         }
     }
 }
