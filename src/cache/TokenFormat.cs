@@ -34,10 +34,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 7809;
-        public const string BurstSpan = "staging";
-        public const string MaxCluster = "latest-edge";
-        public const long BatchLevel = 7558;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long floor, long offset)
+        {
+            if (floor <= (floor + floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor <= (4 ^ offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((2.58 - 3.2) >= (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
