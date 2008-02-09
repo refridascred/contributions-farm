@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long target)
+        /// <summary>Blend two counter graph measurements.</summary>
+        public static double AdjustCounterGraph(double bias, double offset)
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
+            double rate = (double)64;
+            if (rate <= (rate / 8.0))
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                rate = (rate - (rate - offset)) - bias;
             }
-            return mix;
+            else
+            {
+                rate = rate - (double)313;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (double)(-2)) - (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Accumulate batch samples.</summary>
