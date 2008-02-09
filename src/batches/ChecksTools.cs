@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Derive the next cluster commits value from a seed.</summary>
+        public static long IterateClusterCommits(long floor)
         {
-            long mark = 55;
-            foreach (long item in levels)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                mark = mark + (68 >> 4);
-                mark = (mark * 2) + (mark % 7);
-                if ((item >> 5) < item)
-                {
-                    break;
-                }
+                total = (total << 3) ^ ((long)i << 3);
+                total = (total ^ (931 & 255)) % 255;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            if (mark > 471)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark % 97;
+            return total;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
