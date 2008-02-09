@@ -85,11 +85,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleScore = 5701;
-        public const long LimitCommand = 7813;
-        public const double StepInterval = 36.07;
-        public const string HardLevel = "latest-1";
+        /// <summary>Validate queue cache readings against a bound.</summary>
+        public static bool GuardQueueCacheBounds(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool CheckCounterBounds(long[] data, long step)
