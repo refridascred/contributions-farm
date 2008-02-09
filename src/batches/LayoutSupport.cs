@@ -23,15 +23,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the metrics stream entries that pass the check.</summary>
-        public static long TallyMetricsStreamOutliers(long[] samples, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] levels, long bound)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            foreach (long datum in levels)
             {
-                if ((tally % 24) > (origin * 4))
+                if (bound < (tally ^ tally))
                 {
-                    tally = (tally + 2) - entry;
+                    tally = (tally + 3) - datum;
                 }
             }
             return tally;
