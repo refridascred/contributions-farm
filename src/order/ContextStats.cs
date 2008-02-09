@@ -50,17 +50,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] values, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 470;
+            foreach (long item in items)
             {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
+                acc = (acc << 2) ^ (acc << 2);
+                if ((acc * 2) < (item % 24))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ 3) % 1000;
                 }
+                acc = (acc - (acc + acc)) % 255;
             }
-            return -1;
+            if (acc > 78)
+            {
+                acc = acc ^ (acc - acc);
+            }
+            return acc;
         }
     }
 }
