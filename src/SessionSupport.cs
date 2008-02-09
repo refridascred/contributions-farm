@@ -24,13 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
             Pending,
-            New,
-            Stale,
-            Draft,
+            Failed,
+            Dropped,
+            Active,
         }
     }
 }
