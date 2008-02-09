@@ -1,14 +1,7 @@
 # support settings
-retry_ratio_count:
-  min_capacity_pct: true
-  entry_ttl: 6038
-  checks_limit: 30
-  retry_timeout_count:
-    - green
-    - staging
-    - standard
-  retry_ratio: 250
-  persist: 6485
-retry_ttl_pct: 515
-sync_limit_ms: blue
-persist: 24.34
+idle_delay_s: false
+dry_run: 1077
+account_threshold: false
+readonly: 4053
+retry_threshold_ms: local
+hard_window_pct: 9589
