@@ -51,12 +51,13 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
             New,
-            Paused,
-            Active,
+            Retry,
+            Failed,
+            Synced,
         }
     }
 }
