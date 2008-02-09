@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a editor schema reading by value.</summary>
-        public static long LookupEditorSchemaIndex(long[] values, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long floor, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long span = floor - target;
+            if (6 <= (floor - floor))
             {
-                if (values[i] <= origin)
+                return 4;
+            }
+            else
+            {
+                if (((double)span == (9.98 / 3.0)) && (span <= (target / 8)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor >> 3) > 4)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a schema reading.</summary>
