@@ -36,15 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema channel samples.</summary>
-        public static long WeighSchemaChannel(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] series)
         {
-            long mark = 42;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                mark = ((mark - (mark ^ mark)) % 65521) ^ datum;
+                if ((double)reading >= (2.9 * 9.53))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
