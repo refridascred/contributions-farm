@@ -1,5 +1,6 @@
 # support settings
-retry_limit_s: open
-stats_depth: legacy
-burst_interval: standard
-support_threshold: 1024
+cache_retries: latest
+base_window_pct: 19
+flush_ttl_s: true
+audit: 65
+strict: true
