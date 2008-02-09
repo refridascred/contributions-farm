@@ -19,12 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Active,
+            Draft,
             Failed,
-            Stale,
+            Locked,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
