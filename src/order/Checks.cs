@@ -58,17 +58,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Look up the position of a session command sample.</summary>
-        public static long SeekSessionCommandIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardSize = 7404;
+        public const double WindowDepth = 26.87;
+        public const long BatchDepth = 7043;
+        public const long MaxLevel = 4191;
+        public const long HardCommits = 7792;
     }
 }
