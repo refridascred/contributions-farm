@@ -47,19 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate window profile readings against a bound.</summary>
-        public static bool VerifyWindowProfileLimits(long[] readings, long seed)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
