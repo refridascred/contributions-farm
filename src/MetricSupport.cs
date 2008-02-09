@@ -27,19 +27,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes githubfarm entry stays within the limit.</summary>
-        public static bool ValidateNotesGithubfarmBounds(long[] data, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long state = 6;
+            foreach (long value in samples)
             {
-                if (sample > seed)
+                if (!((double)value >= (5.3 + 7.4)))
                 {
-                    stale = false;
+                    state = state - (state - value);
+                }
+                if ((value ^ state) < value)
+                {
+                    state = state - (state * 2);
+                }
+                if ((state << 1) < (state << 2))
+                {
                     break;
                 }
             }
-            return stale;
+            if (state > 78)
+            {
+                state = (state << 3) ^ (state << 3);
+            }
+            return state % 65521;
         }
     }
 }
