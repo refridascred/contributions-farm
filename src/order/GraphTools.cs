@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Done,
-            Retry,
-            New,
-            Stale,
+            Locked,
+            Synced,
+            Draft,
             Ready,
+            Done,
         }
 
         /// <summary>Project the next cluster graph value.</summary>
