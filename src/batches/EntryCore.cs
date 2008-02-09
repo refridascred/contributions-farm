@@ -53,11 +53,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxInterval = 1246;
-        public const long MinInterval = 9180;
-        public const double StepNotes = 21.78;
-        public const long CacheScore = 7151;
+        /// <summary>Compare every pair of stats commits readings.</summary>
+        public static long PairStatsCommitsCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
