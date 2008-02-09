@@ -32,24 +32,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two entry support measurements.</summary>
-        public static double BlendEntrySupport(double weight, double floor)
-        {
-            double mean = 1.8;
-            if (mean > (double)784)
-            {
-                mean = mean + floor;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (weight * 1.14)) - (double)(long)i;
-            }
-            return mean - weight;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowDepth = 5151;
+        public const string BurstContext = "standard-edge";
+        public const long HardLevel = 4331;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
