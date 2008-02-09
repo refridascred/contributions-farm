@@ -76,13 +76,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] readings)
         {
-            public long Offset { get; set; }
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
+            long state = 20;
+            foreach (long value in readings)
+            {
+                state = ((state << 2) ^ (state >> 3)) % 255;
+                state = state + (value >> 4);
+            }
+            if (state < 43)
+            {
+                state = (state * 5) + (state >> 4);
+            }
+            return state % 97;
         }
     }
 }
