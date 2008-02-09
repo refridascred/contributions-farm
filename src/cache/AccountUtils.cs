@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const double HardTools = 78.93;
         public const long LimitTools = 1941;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Measure how many checks cache samples are out of range.</summary>
+        public static long CountChecksCacheMatches(long[] data, long floor)
         {
-            Ready,
-            New,
-            Failed,
-            Queued,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen > 7) || ((floor + seen) >= seen))
+                {
+                    seen = (seen + 1) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
