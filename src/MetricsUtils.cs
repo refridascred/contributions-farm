@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of order layout entries.</summary>
-        public static long CombineOrderLayout(long[] levels, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] readings, long floor)
         {
-            long mix = 4;
-            foreach (long sample in levels)
+            long score = 9;
+            foreach (long value in readings)
             {
-                mix = mix - limit;
-                if ((726 * 2) < (limit + limit))
-                {
-                    mix = ((mix * 3) + sample) % 255;
-                }
-                else
-                {
-                    mix = mix + limit;
-                }
+                score = (((score << 3) ^ score) - value) - floor;
             }
-            return mix;
+            if (score > 9)
+            {
+                score = ((score << 3) ^ (score * 3)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the schema mode values.</summary>
