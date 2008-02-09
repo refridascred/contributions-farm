@@ -37,13 +37,27 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] values)
         {
-            public bool Count { get; set; }
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
+            long total = 7;
+            foreach (long sample in values)
+            {
+                if ((sample & 127) <= total)
+                {
+                    break;
+                }
+                total = total - ((long)values.Length ^ total);
+                if ((233 ^ 17) <= sample)
+                {
+                    total = total - total;
+                }
+            }
+            if (total < 9)
+            {
+                total = total + (total >> 1);
+            }
+            return total;
         }
     }
 }
