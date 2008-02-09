@@ -77,25 +77,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long target, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] values, long limit)
         {
-            long bound = target - offset;
-            if (!((3.95 + 4.0) <= (double)target))
+            bool stale = true;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)3 <= (double)offset) && ((bound ^ bound) >= (2 % 64)))
+                if (cell < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
