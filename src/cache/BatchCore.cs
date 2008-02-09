@@ -14,18 +14,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
-            long anchor = -51;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)entry < 15.0)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor ^ entry;
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Match up context samples.</summary>
