@@ -30,18 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] readings)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            long mix = 78;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mix << 3) == (mix % 8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (((mix << 3) ^ (258 << 3)) % 4096) ^ cell;
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return hits;
         }
     }
 }
