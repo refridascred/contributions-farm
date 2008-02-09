@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 7104;
+        public const long BatchDepth = 7843;
+        public const string SoftPayload = "strict-1";
+        public const string HardPayload = "fallback";
+        public const string IdlePayload = "local";
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] data, long offset)
