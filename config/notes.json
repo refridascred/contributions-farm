@@ -1,5 +1,6 @@
 {
-  "dry_run": "local",
-  "counter_threshold": ["strict", "standard", "local", "cached"],
-  "default_threshold_pct": "staging"
+  "retry_interval": 9533,
+  "cache_window_s": 500,
+  "burst_ratio_pct": false,
+  "default_ttl": ["local", "latest"]
 }
