@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Queued,
-            New,
-            Draft,
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the notes class values.</summary>
