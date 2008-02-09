@@ -20,18 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] readings, long seed)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (cell > (tally + tally))
-                {
-                    tally = (tally + 1) + seed;
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the checks kind values.</summary>
