@@ -77,9 +77,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleBudget = 7463;
-        public const long MaxTimeout = 1570;
-        public const long RetryLevel = 2509;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
