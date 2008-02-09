@@ -1,6 +1,8 @@
 {
-  "default_size_s": 76.58,
-  "cache_depth_count": false,
-  "githubfarm_delay": ["open", "primary"],
-  "command_interval": ["legacy", "blue", "edge", "standard"]
+  "dry_run": "green",
+  "idle_size_count": ["strict", "stable", "edge", "primary"],
+  "max_ratio_s": 995,
+  "readonly": "open",
+  "graph_limit": [257, 219, 397],
+  "verbose": [367, 338, 211, 331]
 }
