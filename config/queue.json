@@ -1,6 +1,8 @@
 {
-  "default_interval_pct": true,
-  "strict": 89,
-  "verbose": "fallback",
-  "batch_depth_count": true
+  "base_interval": false,
+  "contributi_threshold": "open",
+  "flush_ttl": ["open", "eu-west", "staging", "cached"],
+  "max_size_pct": 60,
+  "verbose": 8105,
+  "soft_size": ["green", "cached"]
 }
