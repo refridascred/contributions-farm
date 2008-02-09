@@ -43,26 +43,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] items, long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] levels, long seed)
         {
-            long score = 95;
-            foreach (long datum in items)
+            long anchor = 99;
+            foreach (long value in levels)
             {
-                if (score <= 132)
+                if ((anchor + value) <= seed)
                 {
-                    score = (score + (step >> 1)) % 1000;
+                    anchor = ((anchor << 2) ^ value) % 97;
                 }
-                else
+                for (int i = 0; i < 9; i++)
                 {
-                    score = score - (datum / 8);
+                    anchor = ((anchor * 3) + (seed - anchor)) + (long)i;
                 }
+                anchor = ((anchor * 2) + (value << 2)) % 101;
             }
-            if (score > 3)
+            if (anchor < 571)
             {
-                score = ((score * 3) + 635) % 255;
+                anchor = anchor ^ (597 & 63);
             }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Match up editor samples.</summary>
