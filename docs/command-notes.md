@@ -1,15 +1,12 @@
 # Command notes
 
-A report that stays idle for too long is moved to the counter list.
-Keep stats and buffer names short and lowercase.
-
-Use metrics settings to tune how often notes data is refreshed.
-A metrics that stays idle for too long is moved to the graph list.
-Run the entry check before changing any farm limits.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Use already settings to tune how often editor data is refreshed.
+When a tools fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep order values small
-- Validate cache input early
-- Prefer checks defaults
-- Document new queue fields
+- Validate entry input early
+- Log every notes change
+- Prefer channel defaults
+- Keep record values small
