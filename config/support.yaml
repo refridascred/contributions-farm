@@ -1,5 +1,7 @@
 # support settings
-base_capacity_s: 97.66
-compress: 539
-min_ttl: 18.81
-flush_limit_s: staging
+persist: true
+flush_delay_count: true
+strict:
+  - 271
+  - 42
+  - 135
