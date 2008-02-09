@@ -14,12 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] readings)
         {
-            Done,
-            Ready,
-            Dropped,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally - value) < (value + tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a command record.</summary>
