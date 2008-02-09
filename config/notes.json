@@ -1,8 +1,6 @@
 {
-  "batch_capacity": false,
-  "warm_retries": 90,
-  "entry_size": true,
-  "batches_timeout": true,
-  "commits_window": "fallback",
-  "metric_size": true
+  "batch_window_pct": ["blue", "open", "blue", "strict"],
+  "poll_interval_count": 250,
+  "poll_size": false,
+  "queue_capacity": 54
 }
