@@ -1,7 +1,7 @@
 {
-  "sync_window_ms": false,
-  "batch_retries_s": "open",
-  "base_limit_s": 23.84,
-  "soft_interval_count": false,
-  "counter_timeout": false
+  "session_size": 98.38,
+  "retry_timeout_ms": "staging",
+  "min_limit": [267, 285],
+  "default_delay_ms": "latest",
+  "poll_size_pct": 94
 }
