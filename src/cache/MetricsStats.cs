@@ -23,22 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] items, long limit)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double rate = 9.73;
+            for (int i = 0; i < 7; i++)
             {
-                if (((reading >= (limit - tally)) || ((60 / 7) >= (43 ^ limit))) || ((tally + reading) < (tally >> 1)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = (((rate + (rate / 4.0)) - (double)(long)i) - gain) + bias;
             }
-            return tally;
+            return rate + rate;
         }
 
         /// <summary>Rank report input into a small class.</summary>
