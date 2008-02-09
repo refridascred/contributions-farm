@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] samples)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long total = 124;
-            foreach (long cell in samples)
-            {
-                if ((cell << 1) <= (total ^ cell))
-                {
-                    total = (total + (total ^ 133)) % 1000;
-                }
-            }
-            return total;
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
