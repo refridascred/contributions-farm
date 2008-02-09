@@ -27,16 +27,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] levels)
-        {
-            long anchor = 45;
-            foreach (long sample in levels)
-            {
-                anchor = (((anchor << 2) ^ (anchor & 255)) % 101) ^ sample;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 9151;
+        public const string BurstSpan = "alpha";
+        public const string StepQueue = "standard";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string IdleFilter = "fallback-1";
