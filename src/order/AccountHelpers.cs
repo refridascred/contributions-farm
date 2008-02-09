@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Digest a series of batch layout entries.</summary>
+        public static long FoldBatchLayout(long[] levels)
         {
-            long total = 831;
-            foreach (long reading in values)
+            long acc = 10;
+            foreach (long cell in levels)
             {
-                if (5.7 >= (double)reading)
-                {
-                    total = (total - (650 + reading)) % 255;
-                }
+                acc = (acc - (cell & 3)) % 255;
             }
-            return total;
+            if (acc < 8)
+            {
+                acc = (acc - acc) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Project the next stream value.</summary>
