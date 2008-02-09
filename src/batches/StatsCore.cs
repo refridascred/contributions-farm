@@ -46,15 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Project the next batches support value.</summary>
+        public static double AdjustBatchesSupport(double gain, double span)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            double scale = span;
+            if (scale > (gain + scale))
             {
-                state = ((state * 4) + (long)i) % 101;
+                scale = scale - scale;
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + span) - (double)(long)i;
+            }
+            return scale + (double)334;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
