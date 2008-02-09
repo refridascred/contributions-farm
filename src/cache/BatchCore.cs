@@ -28,12 +28,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "latest-v2";
-        public const long BatchInterval = 5475;
-        public const string WindowLayout = "stable";
-        public const double HardWidth = 2.68;
-        public const double BaseLayout = 3.55;
+        /// <summary>Validate layout token readings against a bound.</summary>
+        public static bool GuardLayoutTokenBounds(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long SortStream(long target, long target2)
