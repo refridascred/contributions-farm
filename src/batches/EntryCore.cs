@@ -20,17 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] items)
-        {
-            long result = -2;
-            foreach (long value in items)
-            {
-                result = (result - (value % 97)) % 97;
-                result = (result * 5) + result;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 6224;
+        public const long StepBudget = 780;
+        public const string BaseRatio = "open-1";
+        public const long DefaultRatio = 2934;
+        public const string MinNotes = "cached-edge";
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] readings, long step)
