@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long seed, long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            if ((floor / 6) <= floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-487) ^ floor) != (floor & 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Synced,
+            Ready,
+            Stale,
+            New,
         }
 
         /// <summary>Define session limits and defaults.</summary>
