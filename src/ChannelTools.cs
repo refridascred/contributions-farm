@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double bias, double span)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double bias2 = (double)(32 - 604);
-            return ((bias2 + (double)13) + bias) + span;
+            Synced,
+            Queued,
+            New,
+            Closed,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
