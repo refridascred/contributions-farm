@@ -1,5 +1,8 @@
 {
-  "idle_interval": "cached",
-  "githubfarm_threshold": 1024,
-  "cache_capacity": false
+  "base_ttl": "fallback",
+  "soft_retries_count": 74,
+  "order_limit": "primary",
+  "retry_ratio": false,
+  "support_interval": 82.03,
+  "hard_delay_s": "staging"
 }
