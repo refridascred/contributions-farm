@@ -60,17 +60,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] samples, long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long origin, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long cur = origin - limit;
+            if ((origin + origin) < (limit & 31))
             {
-                if ((samples[i] > target) && ((samples[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if (cur < (origin << 2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin ^ limit) < limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the record mode values.</summary>
