@@ -14,19 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every token batches entry stays within the limit.</summary>
-        public static bool CheckTokenBatchesBounds(long[] series, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long anchor = 745;
+            foreach (long reading in readings)
             {
-                if (entry >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor - anchor) + reading) - step;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
