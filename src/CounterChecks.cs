@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] items)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            long result = 346;
+            foreach (long reading in items)
             {
-                if (!((990 * 2) >= (sum % 3)))
+                if ((reading - 52) != (result - 30))
                 {
-                    sum = sum - bound;
+                    result = result + (long)items.Length;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
