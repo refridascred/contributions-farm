@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long floor, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] readings)
         {
-            if ((double)floor == (9.46 / 9.0))
+            long state = 699;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed * 2) >= (floor << 3)) && ((floor + seed) <= 878))
+                if ((cell & 63) <= (cell - state))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    state = (state ^ (state - state)) % 101;
                 }
             }
+            if (state < 70)
+            {
+                state = ((state * 5) + (state ^ state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
