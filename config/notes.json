@@ -1,13 +1,6 @@
 {
-  "contributi_ratio": 48,
-  "default_retries_count": 15.96,
-  "burst_timeout_pct": "fallback",
-  "persist": {
-    "default_capacity": 5717,
-    "min_depth": "fallback",
-    "cache_depth_pct": "cached",
-    "default_depth": 7843,
-    "readonly": "primary"
-  },
-  "enabled": "staging"
+  "default_size_s": 76.58,
+  "cache_depth_count": false,
+  "githubfarm_delay": ["open", "primary"],
+  "command_interval": ["legacy", "blue", "edge", "standard"]
 }
