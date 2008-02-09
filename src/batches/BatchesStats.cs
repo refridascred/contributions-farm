@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metric filter reading.</summary>
-        public static double AdjustMetricFilter(double rate, double bias)
-        {
-            double drift = bias;
-            if (drift >= (double)29)
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - rate) - (double)(long)i;
-            }
-            return drift + bias;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepTimeout = 9453;
+        public const long SoftSize = 1264;
+        public const long BaseBudget = 349;
+        public const double DefaultChecks = 42.01;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
