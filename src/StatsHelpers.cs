@@ -49,21 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] levels)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 28;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value ^ 63) <= (value / 7))
                 {
-                    if ((levels[i] - levels[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result - (value >> 5);
+                }
+                else
+                {
+                    result = (result << 3) ^ (value ^ (long)samples.Length);
                 }
             }
-            return seen;
+            return result % 1000;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
