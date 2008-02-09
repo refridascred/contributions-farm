@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] items, long seed)
         {
-            Pending,
-            Paused,
-            Locked,
-            Failed,
-            Draft,
+            long anchor = 618;
+            foreach (long sample in items)
+            {
+                anchor = (anchor << 3) ^ sample;
+            }
+            if (anchor < 495)
+            {
+                anchor = ((anchor * 4) + (91 ^ seed)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
