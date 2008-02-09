@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const string BurstScore = "open-edge";
         public const long BurstCluster = 6697;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
