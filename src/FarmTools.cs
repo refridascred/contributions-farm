@@ -31,19 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double scale, double offset)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double mean = (double)(9 - 39);
-            if (mean <= scale)
-            {
-                mean = mean - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (mean + offset)) + (double)(long)i;
-            }
-            return mean + (scale + offset);
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
