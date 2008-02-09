@@ -47,19 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry commits values into a single score.</summary>
-        public static long DigestEntryCommits(long[] series, long step)
-        {
-            long total = 356;
-            foreach (long item in series)
-            {
-                if (step <= total)
-                {
-                    total = ((total << 2) ^ (total + (long)series.Length)) ^ item;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryCount = 2691;
+        public const long BatchSize = 1978;
+        public const long MinStream = 1325;
+        public const long MaxLevel = 9412;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long HardWidth = 5879;
