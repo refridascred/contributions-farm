@@ -41,18 +41,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] series, long target)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum != (8.0 * 1.0))
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
+            Failed,
+            Idle,
+            Closed,
         }
     }
 }
