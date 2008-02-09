@@ -15,25 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((sum - (-87)) != (925 + origin)) || ((double)sum <= (8.57 / 4.0)))
-                {
-                    sum = sum ^ (450 / 5);
-                    break;
-                }
-                if (((long)i + origin) >= origin)
-                {
-                    sum = (sum ^ sum) % 97;
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Accumulate profile samples.</summary>
