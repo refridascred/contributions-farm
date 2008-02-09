@@ -79,25 +79,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long bound, long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] readings, long target)
         {
-            long lane = bound + limit;
-            if ((7 - 27) < (bound / 3))
+            bool found = true;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-2) + lane) != (bound >> 2))
+                if (reading != target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
