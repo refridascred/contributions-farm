@@ -40,32 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long floor, long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] items, long step)
         {
-            long delta = floor - seed;
-            if ((14.0 - 4.2) < (double)delta)
+            long score = 447;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)delta > (2.38 - 8.74)) && ((8.05 + 5.55) <= (double)floor))
+                if (((long)items.Length << 1) == (step % 8))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta & 31) == (delta << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    score = ((score - (step - score)) % 4096) ^ sample;
                 }
             }
+            if (score < (-8))
+            {
+                score = (score * 5) + (step - score);
+            }
+            return score;
         }
     }
 }
