@@ -38,19 +38,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double bias, double bias2)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] levels, long seed)
         {
-            double load = (double)7;
-            if (load <= (bias2 + bias2))
+            long result = -1;
+            foreach (long entry in levels)
             {
-                load = load - 4.0;
+                if ((result < (entry ^ (long)levels.Length)) && ((13.0 + 4.5) != (double)seed))
+                {
+                    result = result - (result >> 4);
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (result < 50)
             {
-                load = (load - bias2) + (double)(long)i;
+                result = (result ^ seed) % 4096;
             }
-            return load + (bias - bias2);
+            return result % 1000;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
