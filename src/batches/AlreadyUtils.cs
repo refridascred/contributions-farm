@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardCounter = "fallback-edge";
-        public const long RetryCounter = 7683;
-        public const long BurstFactor = 2127;
-        public const long IdleCounter = 9538;
-        public const long CacheScore = 9962;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowLevel = 2427;
+        public const long SoftDepth = 7542;
+        public const double HardTimeout = 46.62;
+        public const long BatchMetric = 6407;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsGaps(long[] readings)
