@@ -44,18 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine counter support values into a single score.</summary>
-        public static long TallyCounterSupport(long[] levels)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long mix = 0;
-            foreach (long cell in levels)
-            {
-                if (((369 - mix) != (mix << 1)) && ((cell / 6) != (6 ^ cell)))
-                {
-                    mix = (mix ^ (6 << 3)) % 255;
-                }
-            }
-            return mix % 4096;
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the checks class values.</summary>
