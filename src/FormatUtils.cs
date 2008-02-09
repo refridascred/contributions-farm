@@ -19,12 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Grade a graph schema value against two limits.</summary>
+        public static long BucketGraphSchema(long target, long bound)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            if (bound >= 77)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound / 9) <= (bound + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a commits entry.</summary>
