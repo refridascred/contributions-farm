@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long BurstPayload = 4443;
         public const long StepDepth = 7399;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] readings, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] series, long target)
         {
-            long total = 90;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                total = total ^ datum;
+                if (29 <= matches)
+                {
+                    matches = ((matches + 1) - sample) - target;
+                }
             }
-            if (total > 28)
-            {
-                total = total ^ (step << 2);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
