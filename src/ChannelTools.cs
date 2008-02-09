@@ -39,18 +39,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit already metric readings against a rule.</summary>
-        public static long MeasureAlreadyMetricGaps(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((556 <= (bound - entry)) || ((bound + entry) == (tally + entry)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 7723;
+        public const double CacheLevel = 29.78;
+        public const long LimitSupport = 1374;
     }
 }
