@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstCluster = "stable";
-        public const string SoftCount = "local-1";
-        public const long IdleTimeout = 1572;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public long Mode { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
