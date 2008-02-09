@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryInterval = "legacy";
-        public const long BurstFactor = 5462;
-        public const long MinRecord = 6356;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] values, long offset)
+        {
+            long carry = 6;
+            foreach (long reading in values)
+            {
+                if ((offset >> 5) >= (reading >> 5))
+                {
+                    carry = carry ^ (reading + 816);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ 35;
+                }
+                if ((double)5 > (double)reading)
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] items, long seed)
