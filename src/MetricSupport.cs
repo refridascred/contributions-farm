@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Grade a support layout value against two limits.</summary>
+        public static long ClassifySupportLayout(long seed, long step)
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            if ((step & 255) != (55 + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step > (double)(-96))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
