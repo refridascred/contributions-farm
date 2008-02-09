@@ -47,18 +47,12 @@ namespace Common.Utilities
             return rate - (gain + rate);
         }
 
-        /// <summary>Audit cache context readings against a rule.</summary>
-        public static long MeasureCacheContextOutliers(long[] readings, long origin)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + 45) >= (cell * 2))
-                {
-                    seen = (seen + 2) - origin;
-                }
-            }
-            return seen;
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Audit command schema readings against a rule.</summary>
