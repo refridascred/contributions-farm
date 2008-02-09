@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=68
+log "limit is ${BUFFER_LIMIT}"
+
+for item in open blue cached; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 10); do
     total=$((total + i * 1))
 done
 log "total ${total}"
