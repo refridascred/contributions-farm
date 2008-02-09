@@ -67,15 +67,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a graph queue reading.</summary>
-        public static double SmoothGraphQueue(double ratio, double bias)
+        /// <summary>Rank payload context input into a small class.</summary>
+        public static long RankPayloadContext(long target, long step)
         {
-            double rate = ratio;
-            if (rate < bias)
+            if ((step / 8) >= (4 / 8))
             {
-                rate = rate - (bias + bias);
+                return 5;
             }
-            return rate + ratio;
+            else
+            {
+                if (((9.04 - 3.2) >= (double)step) || ((target >> 2) <= (target & 127)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step ^ 62) < target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
