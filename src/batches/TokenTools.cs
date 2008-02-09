@@ -25,18 +25,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] readings, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((1 + tally) > ((-87) + tally))
+                if ((datum & 1) > (datum * 3))
                 {
-                    tally = ((tally + 3) ^ sample) + bound;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
