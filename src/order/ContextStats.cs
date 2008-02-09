@@ -52,19 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] readings, long bound)
+        /// <summary>Match up farm format samples.</summary>
+        public static long CompareFarmFormatCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
