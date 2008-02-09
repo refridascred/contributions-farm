@@ -55,32 +55,11 @@ namespace Common.Utilities
         public const string DefaultLayout = "strict-1";
         public const long RetryDepth = 4173;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long origin, long limit)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long cur = origin - limit;
-            if ((origin + origin) < (limit & 31))
-            {
-                return 5;
-            }
-            else
-            {
-                if (cur < (origin << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin ^ limit) < limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
