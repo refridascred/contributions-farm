@@ -1,6 +1,8 @@
 {
-  "route_threshold": 8,
-  "burst_size_pct": 500,
-  "cache_interval_pct": true,
-  "already_interval": 60
+  "min_threshold_ms": 60,
+  "retry_delay_s": "stable",
+  "audit": "eu-west",
+  "cache_ttl_count": "latest",
+  "contributi_threshold": "local",
+  "route_size": 79.23
 }
