@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] samples)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading - tally) != (reading ^ reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Match up editor samples.</summary>
