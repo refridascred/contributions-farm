@@ -20,10 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 7775;
-        public const long StepLevel = 4757;
-        public const long DefaultFactor = 5256;
+        /// <summary>Audit layout batches readings against a rule.</summary>
+        public static long AuditLayoutBatchesOutliers(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((9 - origin) > 310)
+                {
+                    count = (count + 2) - datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
