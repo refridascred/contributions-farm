@@ -13,17 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate notes queue samples.</summary>
-        public static long CombineNotesQueue(long[] data, long target)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long acc = 16;
-            foreach (long entry in data)
-            {
-                acc = (acc ^ entry) % 97;
-                acc = acc ^ target;
-                acc = acc + (880 / 7);
-            }
-            return acc % 97;
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
