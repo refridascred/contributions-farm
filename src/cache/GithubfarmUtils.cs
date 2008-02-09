@@ -46,19 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] readings, long offset)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((offset <= (2 ^ matches)) || !((offset + offset) < ((long)readings.Length + item)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepContributi = "cached-1";
+        public const string RetryScore = "open";
+        public const long BatchContributi = 8570;
 
         /// <summary>Locate a channel checks reading by value.</summary>
         public static long LocateChannelChecksIndex(long[] values, long offset)
