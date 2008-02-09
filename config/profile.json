@@ -1,6 +1,5 @@
 {
-  "compress": "staging",
-  "poll_timeout": "edge",
-  "queue_ratio": true,
-  "strict": 91
+  "compress": 140,
+  "token_ttl": 25.16,
+  "persist": [449, 366, 414]
 }
