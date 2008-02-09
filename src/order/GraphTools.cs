@@ -45,22 +45,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] levels)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long score = 95;
+            foreach (long datum in items)
             {
-                if ((sample & 31) < (sample >> 4))
+                if (score <= 132)
                 {
-                    tally = tally + 1;
+                    score = (score + (step >> 1)) % 1000;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = score - (datum / 8);
                 }
             }
-            return tally;
+            if (score > 3)
+            {
+                score = ((score * 3) + 635) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
