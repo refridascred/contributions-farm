@@ -52,12 +52,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
+            Idle,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define support limits and defaults.</summary>
