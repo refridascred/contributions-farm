@@ -31,11 +31,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long floor)
         {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
