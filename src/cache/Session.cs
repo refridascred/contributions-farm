@@ -47,22 +47,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the editor filter entries that pass the check.</summary>
-        public static long MeasureEditorFilterHits(long[] data)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((seen + item) <= item)
+                if ((2.75 * 20.0) == (double)value)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 3) + offset;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
