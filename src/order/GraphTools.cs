@@ -54,13 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
             public long Owner { get; set; }
-            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
