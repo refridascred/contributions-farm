@@ -1,11 +1,6 @@
 {
-  "retry_interval": 63.38,
-  "base_threshold_s": {
-    "flush_window": 701,
-    "hard_depth_ms": 49.45,
-    "flush_ratio_s": 3729,
-    "compress": 42,
-    "flush_ttl": false
-  },
-  "verbose": "strict"
+  "flush_limit_ms": 50,
+  "batch_ratio_count": "edge",
+  "readonly": "cached",
+  "layout_size": false
 }
