@@ -1,14 +1,7 @@
 {
-  "idle_ratio": [225, 95, 212],
-  "base_threshold_count": "edge",
-  "verbose": 68.01,
-  "soft_ratio": 62.0,
-  "min_threshold": {
-    "sync_size": 45.67,
-    "report_timeout": "standard",
-    "verbose": 33,
-    "soft_capacity": "open",
-    "compress": ["fallback", "legacy", "local"]
-  },
-  "counter_depth": "legacy"
+  "min_timeout": 9020,
+  "burst_limit_ms": 81,
+  "enabled": "standard",
+  "hard_window_ms": 1024,
+  "strict": true
 }
