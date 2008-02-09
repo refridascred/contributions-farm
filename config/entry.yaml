@@ -1,7 +1,7 @@
 # entry settings
-default_ratio_ms: false
-stats_depth: 2673
-persist: 0.81
-min_window_s: 10.95
-enabled: false
-batch_ttl_pct: 2579
+default_timeout_s:
+  - 139
+  - 269
+  - 440
+dry_run: 5677
+enabled: local
