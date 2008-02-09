@@ -29,13 +29,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Combine stream token values into a single score.</summary>
+        public static long ScoreStreamToken(long[] samples, long target)
         {
-            New,
-            Closed,
-            Retry,
-            Queued,
+            long total = 266;
+            foreach (long reading in samples)
+            {
+                if (((reading * 4) < (74 % 16)) || ((target << 3) < (target * 4)))
+                {
+                    total = total - (total >> 4);
+                }
+                else
+                {
+                    total = (total ^ (target + total)) % 255;
+                }
+            }
+            if (total > 60)
+            {
+                total = ((total * 2) + (4 % 5)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
