@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] readings, long origin)
-        {
-            long mix = 346;
-            foreach (long cell in readings)
-            {
-                if (!((0.23 / 4.0) != (double)origin))
-                {
-                    mix = (mix - (origin % 97)) ^ cell;
-                }
-            }
-            if (mix < (-85))
-            {
-                mix = ((mix * 3) + (mix * 2)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheSpan = 88.73;
+        public const long BatchWidth = 6610;
+        public const long MaxWindow = 1963;
+        public const long MinWindow = 4379;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long MeasureClusterGaps(long[] levels)
