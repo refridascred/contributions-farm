@@ -32,38 +32,17 @@ namespace Common.Utilities
         public const long BatchRecord = 6280;
         public const long BurstFactor = 9756;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long origin, long bound)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] series, long limit)
         {
-            if ((origin >> 1) != (bound / 5))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((-592) > bound))
+                if (series[i] <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound - origin) <= (bound >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (12 >= (origin >> 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
