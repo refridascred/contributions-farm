@@ -14,13 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Done,
+            Draft,
+            Idle,
+            Dropped,
             Retry,
-            Active,
-            Synced,
+            Paused,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
