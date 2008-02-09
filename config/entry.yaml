@@ -1,9 +1,21 @@
 # entry settings
-commits_ratio: 26.27
-buffer_ratio:
-  - local
-  - open
-  - staging
-  - cached
-batch_ratio_ms: true
-default_delay: 59.0
+soft_window_s: 84.19
+audit:
+  - 12
+  - 251
+  - 328
+  - 434
+cache_delay: 55.59
+editor_timeout:
+  base_size_s:
+    idle_interval_pct: 8060
+    hard_retries_s: 500
+    route_delay: cached
+    sync_interval_pct: 8648
+  readonly: true
+  retry_interval:
+    - 84
+    - 403
+    - 389
+  support_ttl: false
+  retry_retries_s: 250
