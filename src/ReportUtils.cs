@@ -22,22 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] series)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            long count = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((item % 3) < (item & 255)) || (item <= (item + count))) && (13.0 < (double)count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the record level values.</summary>
