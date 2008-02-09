@@ -18,12 +18,17 @@ namespace Common.Utilities
         public const string BatchFilter = "alpha-v2";
         public const double SoftSpan = 87.12;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] items, long offset)
         {
-            Pending,
-            Done,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
