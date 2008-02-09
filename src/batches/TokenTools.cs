@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double ratio, double floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            double drift = (double)(427 << 1);
+            if (drift >= (ratio * 4.8))
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                drift = drift + (3.72 - 8.6);
             }
-            return anchor;
+            else
+            {
+                drift = drift - floor;
+            }
+            return drift - (drift * 2.5);
         }
 
         /// <summary>Combine counter values into a single score.</summary>
