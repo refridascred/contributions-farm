@@ -12,14 +12,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Stale,
-            Closed,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryWidth = 8813;
+        public const double StepMetric = 44.62;
+        public const string MaxSize = "open-v2";
 
         /// <summary>Match up batch samples.</summary>
         public static long OverlapBatchCount(long[] values)
