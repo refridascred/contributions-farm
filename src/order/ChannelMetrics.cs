@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Classify a graph window pair into a bucket.</summary>
+        public static long RankGraphWindow(long offset, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step = offset ^ floor;
+            if (step > (step << 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((floor & 127) < offset))
                 {
-                    if ((series[i] ^ series[j]) > 8)
+                    return 2;
+                }
+                else
+                {
+                    if ((floor - floor) >= (floor / 4))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank token buffer input into a small class.</summary>
