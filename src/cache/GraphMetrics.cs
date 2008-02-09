@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
