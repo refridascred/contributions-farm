@@ -39,11 +39,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "local";
-        public const double SoftDepth = 3.62;
-        public const double MaxDepth = 67.79;
-        public const double BaseCache = 26.83;
-        public const double DefaultCache = 9.02;
+        /// <summary>Count route already pairs that satisfy a relation.</summary>
+        public static long PairRouteAlreadyCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
