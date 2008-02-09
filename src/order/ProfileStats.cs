@@ -44,11 +44,11 @@ namespace Common.Utilities
         public const long WindowRatio = 4254;
         public const string MinToken = "fallback-v2";
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
