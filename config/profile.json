@@ -1,13 +1,30 @@
 {
-  "editor_depth": {
-    "batch_threshold_s": ["green", "staging", "legacy", "local"],
-    "persist": ["edge", "legacy", "eu-west"],
-    "token_retries": 93.13,
-    "metrics_depth": true,
-    "checks_delay": "standard"
+  "enabled": 60,
+  "soft_timeout_ms": 6767,
+  "account_size": {
+    "batch_capacity_count": "eu-west",
+    "min_timeout_ms": 8757,
+    "hard_threshold": 65.37
   },
-  "session_ttl": ["standard", "strict"],
-  "retry_size_s": "cached",
-  "verbose": ["primary", "blue", "green", "standard"],
-  "audit": "strict"
+  "strict": [248, 195, 324],
+  "max_depth": {
+    "filter_delay": 73,
+    "buffer_ratio": false,
+    "audit": 71
+  },
+  "schema_interval": {
+    "cache_depth": 500,
+    "batch_ttl_ms": {
+      "checks_limit": 9886,
+      "base_threshold": 1024,
+      "verbose": "standard",
+      "session_timeout": "latest"
+    },
+    "cache_timeout": {
+      "strict": "edge",
+      "dry_run": 60,
+      "layout_interval": true
+    },
+    "verbose": false
+  }
 }
