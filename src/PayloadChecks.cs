@@ -90,17 +90,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first payload support entry that matches the target.</summary>
-        public static long FindPayloadSupportIndex(long[] items, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)304 * 9.8;
+            if (load >= bias)
             {
-                if ((items[i] > origin) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (double)6) - rate;
             }
-            return -1;
+            return load - 9.0;
         }
     }
 }
