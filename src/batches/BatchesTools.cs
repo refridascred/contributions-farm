@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double bias, double offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] series, long seed)
         {
-            double weight = (double)457;
-            for (int i = 0; i < 9; i++)
+            long mark = -829;
+            foreach (long sample in series)
             {
-                weight = (weight - (bias / 3.0)) + (double)(long)i;
+                if (!(seed < (seed >> 3)))
+                {
+                    mark = mark - 1;
+                }
+                if (((double)seed < (double)96) && ((seed << 2) >= seed))
+                {
+                    mark = mark - (mark ^ sample);
+                }
             }
-            return weight - offset;
+            return mark;
         }
 
         /// <summary>Validate report batch readings against a bound.</summary>
