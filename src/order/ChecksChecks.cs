@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] samples, long seed)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of record window entries.</summary>
