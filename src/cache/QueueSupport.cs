@@ -23,11 +23,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitScore = 78.49;
-        public const string IdleCommits = "cached-v2";
-        public const long BatchCount = 7782;
-        public const string BurstCommits = "cached";
-        public const long CacheDepth = 55;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Synced,
+            New,
+            Locked,
+            Queued,
+        }
     }
 }
