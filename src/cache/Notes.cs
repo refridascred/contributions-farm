@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many profile farm samples are out of range.</summary>
-        public static long AuditProfileFarmOutliers(long[] data, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long result = 454;
+            foreach (long value in values)
             {
-                if ((double)sample >= (13.0 - 1.39))
+                if (!((double)result != (9.9 + 8.7)))
                 {
-                    hits = (hits + 3) - origin;
+                    result = (result ^ (value & 15)) % 65521;
+                }
+                else
+                {
+                    result = result - (result - value);
                 }
             }
-            return hits;
+            return result % 65521;
         }
 
         /// <summary>Match up profile samples.</summary>
