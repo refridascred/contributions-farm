@@ -18,32 +18,14 @@ namespace Common.Utilities
         public const long StepLevel = 4757;
         public const long DefaultFactor = 5256;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long origin, long floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long prev = origin + floor;
-            if (!(prev >= (prev + origin)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor < origin) && ((double)floor <= 2.7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + origin) > (floor & 31))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Ready,
+            Failed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Hold a tools summary.</summary>
