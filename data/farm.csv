@@ -1,7 +1,9 @@
-id,score,active,weight
-1,239,87.57,771
-2,293,58.03,strict
-3,fallback,legacy,blue
-4,6.59,primary,855
-5,70.12,257,eu-west
-6,staging,616,948
+id,token,label,score,state
+1,44.28,990,98.91,649
+2,91.24,180,legacy,standard
+3,57.05,17.75,84.86,150
+4,591,836,42.64,942
+5,269,18.19,eu-west,286
+6,951,standard,54.52,14
+7,63.74,56.26,local,672
+8,769,blue,green,primary
