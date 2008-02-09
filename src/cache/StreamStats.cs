@@ -13,10 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSize = 12.46;
-        public const double SoftWidth = 76.43;
-        public const long BurstWidth = 6534;
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long seed, long floor)
