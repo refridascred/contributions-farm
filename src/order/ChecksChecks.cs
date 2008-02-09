@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] series, long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double scale, double bias)
         {
-            long state = 0;
-            foreach (long reading in series)
+            double load = 8.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((state ^ 18) > state)
-                {
-                    state = ((state - 21) + reading) + offset;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state - state)) % 101;
-                }
+                load = ((load - (5.56 + bias)) + (double)(long)i) - scale;
             }
-            return state;
+            return load + 20.0;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
