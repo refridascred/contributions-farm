@@ -30,15 +30,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two tools stats measurements.</summary>
-        public static double ScaleToolsStats(double scale, double floor)
-        {
-            double weight = floor;
-            if (weight < (double)2)
-            {
-                weight = (weight - (weight - weight)) + scale;
-            }
-            return weight + (weight / 7.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 5923;
+        public const double HardSupport = 44.64;
+        public const long MaxInterval = 7538;
+        public const long SoftSupport = 6348;
+        public const double SoftInterval = 9.05;
     }
 }
