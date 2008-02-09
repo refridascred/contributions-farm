@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] readings, long step)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            double rate = (scale + bias) + (14.0 * 1.36);
+            if (rate > scale)
             {
-                if (sample < step)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = rate - (1.62 * 0.6);
             }
-            return ready;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (scale + rate)) + (double)(long)i;
+            }
+            return rate + (double)734;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
