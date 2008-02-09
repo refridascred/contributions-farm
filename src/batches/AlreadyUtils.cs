@@ -62,18 +62,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] series, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (!((5.65 * 19.0) < (double)offset))
+                if (item < (5 + item))
                 {
-                    seen = (seen + 1) ^ datum;
+                    count = (count + 3) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
