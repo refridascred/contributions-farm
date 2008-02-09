@@ -23,10 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 57.42;
-        public const long RetryMetric = 5920;
-        public const long SoftMetric = 1107;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] items)
+        {
+            long result = -2;
+            foreach (long value in items)
+            {
+                result = (result - (value % 97)) % 97;
+                result = (result * 5) + result;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] readings, long step)
