@@ -59,14 +59,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Locked,
             Retry,
-            Draft,
-            Dropped,
-            Paused,
+            New,
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
