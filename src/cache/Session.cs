@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long seed, long step)
+        /// <summary>Audit account payload readings against a rule.</summary>
+        public static long CountAccountPayloadMatches(long[] readings, long offset)
         {
-            if ((6.2 * 6.25) == (double)seed)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (step < (seed + step))
+                if ((double)(long)readings.Length >= 17.0)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - seed) == (seed << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = ((count + 3) ^ cell) + offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
