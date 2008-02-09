@@ -78,26 +78,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] samples)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long bound, long seed)
         {
-            long state = 170;
-            foreach (long datum in samples)
+            if ((78 / 6) >= (15 - bound))
             {
-                for (int i = 0; i < 6; i++)
+                return 1;
+            }
+            else
+            {
+                if (seed <= (bound << 2))
                 {
-                    state = ((state - (state / 9)) % 4096) ^ (long)i;
+                    return 3;
                 }
-                if (((datum ^ (long)samples.Length) <= (state * 5)) || (54 >= datum))
+                else
                 {
-                    state = state ^ datum;
+                    return 8;
                 }
             }
-            if (state < 886)
-            {
-                state = (state + (state - state)) % 1000;
-            }
-            return state;
         }
     }
 }
