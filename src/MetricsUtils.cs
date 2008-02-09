@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] readings, long floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long score = 9;
-            foreach (long value in readings)
-            {
-                score = (((score << 3) ^ score) - value) - floor;
-            }
-            if (score > 9)
-            {
-                score = ((score << 3) ^ (score * 3)) % 65521;
-            }
-            return score;
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the schema mode values.</summary>
