@@ -27,17 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] samples, long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 725;
+            foreach (long entry in levels)
             {
-                if (samples[i] > seed)
+                if (((entry + acc) > entry) && ((acc << 1) < acc))
                 {
-                    return (long)i;
+                    acc = acc ^ ((long)levels.Length - 79);
                 }
             }
-            return -1;
+            return acc % 97;
         }
     }
 }
