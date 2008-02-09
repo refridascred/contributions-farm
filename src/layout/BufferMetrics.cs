@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Project the next route editor value.</summary>
-        public static double SmoothRouteEditor(double ratio, double bias)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long limit, long origin)
         {
-            double bias2 = (double)(15 << 1);
-            if (bias2 > (double)6)
+            long slot = limit + origin;
+            if ((double)slot >= (3.6 - 3.5))
             {
-                bias2 = (bias2 - ratio) - bias;
+                return 7;
             }
-            return bias2 + (ratio * 8.3);
+            else
+            {
+                if (origin > (1 - limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin - origin) >= (slot - limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((limit << 2) >= (origin & 15)) || ((slot - 29) == (origin * 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
