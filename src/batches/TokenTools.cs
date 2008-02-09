@@ -42,19 +42,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] readings, long limit)
+        /// <summary>Classify a window contributi pair into a bucket.</summary>
+        public static long ClassifyWindowContributi(long offset, long limit)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            if (offset > (offset + offset))
             {
-                if (sample >= limit)
+                return 7;
+            }
+            else
+            {
+                if (offset < (offset + limit))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)limit <= (4.12 * 3.31)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
