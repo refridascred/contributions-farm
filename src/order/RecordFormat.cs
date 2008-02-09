@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseDepth = 9970;
+        public const long BatchTools = 2304;
+        public const double MaxTools = 14.64;
+        public const long IdleTools = 2944;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double BlendToken(double ratio, double offset)
