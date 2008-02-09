@@ -28,19 +28,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] levels, long step)
+        /// <summary>Classify a account context pair into a bucket.</summary>
+        public static long BucketAccountContext(long bound, long step)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            if ((6.0 - 7.0) != (double)bound)
             {
-                if (datum >= step)
+                return 7;
+            }
+            else
+            {
+                if ((9.1 - 9.64) != (double)bound)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((133 + bound) == (step + bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
