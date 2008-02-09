@@ -42,15 +42,38 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next farm metric value.</summary>
-        public static double ScaleFarmMetric(double bias, double floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long limit, long floor)
         {
-            double ratio = (double)(53 - (-52));
-            for (int i = 0; i < 7; i++)
+            if (((floor * 2) == (3 << 2)) && ((floor >> 3) < (limit / 9)))
             {
-                ratio = ((ratio + ratio) - (double)(long)i) - floor;
+                return 5;
             }
-            return ratio - bias;
+            else
+            {
+                if ((971 / 6) <= (limit + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3.9 * 0.79) <= (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit >> 2) == (9 ^ floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
