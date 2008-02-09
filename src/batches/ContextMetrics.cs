@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate route filter readings against a bound.</summary>
-        public static bool VerifyRouteFilterRange(long[] samples, long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (value >= origin)
+                if (sample < step)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
