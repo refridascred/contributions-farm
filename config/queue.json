@@ -1,39 +1,7 @@
 {
-  "batch_threshold": 9869,
-  "idle_delay": "fallback",
-  "max_depth_pct": {
-    "channel_size": "eu-west",
-    "channel_ttl": 3255,
-    "record_size": "open",
-    "stats_retries": [339, 63]
-  },
-  "stats_ratio": {
-    "persist": 250,
-    "default_limit_s": [397, 428, 493],
-    "max_retries": false,
-    "default_ttl": {
-      "editor_capacity": false,
-      "readonly": true,
-      "warm_interval": false,
-      "burst_delay": "fallback",
-      "enabled": "legacy"
-    },
-    "idle_limit_ms": [370, 149, 104, 150],
-    "checks_interval": {
-      "idle_delay": "standard",
-      "filter_timeout": "blue",
-      "checks_depth": 1
-    }
-  },
-  "hard_size_ms": 1024,
-  "soft_capacity": {
-    "soft_interval_s": {
-      "poll_limit": false,
-      "default_ttl_pct": true,
-      "checks_delay": ["latest", "standard", "stable", "edge"]
-    },
-    "checks_size": "cached",
-    "strict": 65.31,
-    "compress": 60
-  }
+  "enabled": false,
+  "hard_interval": "fallback",
+  "burst_depth_count": 77,
+  "readonly": true,
+  "cache_ratio_ms": 3189
 }
