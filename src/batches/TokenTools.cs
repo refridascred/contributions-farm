@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record githubfarm entry stays within the limit.</summary>
-        public static bool CheckRecordGithubfarmLimits(long[] series, long floor)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double weight, double span)
         {
-            bool found = true;
-            foreach (long item in series)
+            double drift = weight + (4.8 * 9.8);
+            for (int i = 0; i < 7; i++)
             {
-                if (item != floor)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift + weight) + (double)(long)i;
             }
-            return found;
+            return drift + span;
         }
 
         /// <summary>Audit format route readings against a rule.</summary>
