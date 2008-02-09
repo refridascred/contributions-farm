@@ -1,4 +1,6 @@
 # githubfarm settings
-audit: 9921
-max_limit_s: 1024
-min_window: 43
+max_timeout: 72
+support_threshold: false
+idle_ttl_pct: true
+checks_threshold: 76.5
+poll_interval_pct: 1024
