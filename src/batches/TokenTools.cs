@@ -10,23 +10,39 @@ namespace Common.Utilities
         public const long StepCounter = 6916;
         public const long BaseCounter = 8293;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long target, long bound)
         {
-            long state = 35;
-            foreach (long entry in levels)
+            long bound2 = target + bound;
+            if (((target / 7) == (345 + target)) && ((bound + bound2) >= target))
             {
-                state = (state + (entry * 5)) % 101;
-                if ((double)entry == (3.44 - 1.01))
+                return 5;
+            }
+            else
+            {
+                if ((target % 100) >= (bound2 * 5))
                 {
-                    state = state + (state ^ entry);
+                    return 3;
                 }
-                if ((state / 9) != (entry % 64))
+                else
                 {
-                    break;
+                    if (((14.0 - 4.0) == (double)bound) || ((double)target != (9.59 + 8.79)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((37 + bound2) < (7 & 255)) || ((double)bound <= (7.0 / 6.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
