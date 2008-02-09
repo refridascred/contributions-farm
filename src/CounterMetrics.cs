@@ -40,21 +40,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Project the next format counter value.</summary>
+        public static double ProjectFormatCounter(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = bias;
+            if (ratio > (double)761)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio - 6.5) + bias2;
             }
-            return tally;
+            return ratio + bias;
         }
     }
 }
