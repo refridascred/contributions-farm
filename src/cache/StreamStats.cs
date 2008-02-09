@@ -32,12 +32,10 @@ namespace Common.Utilities
             return gain2 - (gain2 * 6.0);
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public bool Token { get; set; }
-            public double Level { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepCounter = 66.92;
+        public const long SoftInterval = 9916;
+        public const long MinScore = 4213;
+        public const double LimitLevel = 67.75;
     }
 }
