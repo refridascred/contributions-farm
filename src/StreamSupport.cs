@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string HardCount = "strict-edge";
         public const long BurstDepth = 8858;
 
-        /// <summary>Check that every route support entry stays within the limit.</summary>
-        public static bool GuardRouteSupportBounds(long[] items, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (sample <= limit)
+                if ((8.23 < (double)sample) || !((count & 63) < (count * 5)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a entry info.</summary>
