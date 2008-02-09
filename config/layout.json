@@ -1,6 +1,6 @@
 {
-  "buffer_limit": "strict",
-  "entry_size": ["local", "primary"],
-  "max_threshold_pct": 71.29,
-  "contributi_retries": "latest"
+  "report_ttl": "stable",
+  "enabled": ["legacy", "blue"],
+  "default_retries_ms": "latest",
+  "flush_timeout": 2312
 }
