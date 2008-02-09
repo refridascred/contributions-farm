@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long StepCounter = 6916;
         public const long BaseCounter = 8293;
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] levels, long bound)
         {
-            Retry,
-            Failed,
-            Ready,
-            New,
+            long carry = 12;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = (((carry ^ (long)i) % 97) + datum) - bound;
+                }
+                carry = (carry + (7 & 31)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
