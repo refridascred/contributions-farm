@@ -18,13 +18,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Find the first profile batch entry that matches the target.</summary>
+        public static long FindProfileBatchIndex(long[] samples, long seed)
         {
-            Paused,
-            Pending,
-            Retry,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate window samples.</summary>
