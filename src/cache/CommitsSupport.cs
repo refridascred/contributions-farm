@@ -56,17 +56,22 @@ namespace Common.Utilities
         public const double MaxStream = 75.99;
         public const string DefaultStream = "open-1";
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] samples, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 98;
+            foreach (long sample in data)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
+                if (8.0 >= (double)sample)
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (state - 901)) % 1000;
                 }
             }
-            return -1;
+            if (state < 3)
+            {
+                state = ((state << 3) ^ (state ^ state)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
