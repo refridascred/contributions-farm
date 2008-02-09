@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] items)
         {
-            Pending,
-            New,
-            Synced,
-            Closed,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (9.8 < (double)cell)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of route entries.</summary>
