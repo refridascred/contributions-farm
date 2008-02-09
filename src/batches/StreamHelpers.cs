@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long acc = 7;
+            foreach (long datum in data)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if ((99 >> 2) >= (79 - acc))
+                {
+                    acc = ((acc * 4) + (937 + datum)) % 255;
+                }
             }
-            return result;
+            if (acc < 99)
+            {
+                acc = acc ^ (acc - 865);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
