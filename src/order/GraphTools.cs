@@ -43,27 +43,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] levels, long seed)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] readings, long floor)
         {
-            long anchor = 99;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((anchor + value) <= seed)
+                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
                 {
-                    anchor = ((anchor << 2) ^ value) % 97;
+                    return (long)i;
                 }
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = ((anchor * 3) + (seed - anchor)) + (long)i;
-                }
-                anchor = ((anchor * 2) + (value << 2)) % 101;
             }
-            if (anchor < 571)
-            {
-                anchor = anchor ^ (597 & 63);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a context options.</summary>
