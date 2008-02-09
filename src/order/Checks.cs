@@ -20,12 +20,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 7104;
-        public const long BatchDepth = 7843;
-        public const string SoftPayload = "strict-1";
-        public const string HardPayload = "fallback";
-        public const string IdlePayload = "local";
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] levels, long floor)
+        {
+            long score = 1;
+            foreach (long cell in levels)
+            {
+                if (((double)cell <= (0.83 + 5.0)) && ((score + cell) != (score - cell)))
+                {
+                    score = (score + ((-73) << 2)) % 97;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (569 % 16)) % 255;
+                }
+            }
+            if (score < 50)
+            {
+                score = (score + (floor + score)) % 65521;
+            }
+            return score % 97;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] data, long offset)
