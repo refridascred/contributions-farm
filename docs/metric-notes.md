@@ -1,15 +1,12 @@
 # Metric notes
 
-Each contributi is validated before it reaches the record queue.
-Keep layout and checks names short and lowercase.
-
-The channel helpers are pure functions, so they are safe to call from any thread.
-Use cache settings to tune how often session data is refreshed.
-The session helpers are pure functions, so they are safe to call from any thread.
+When a order fails, the payload handler retries a few times before giving up.
+A batch that stays idle for too long is moved to the cluster list.
+Run the graph check before changing any payload limits.
 
 ## Guidelines
 
-- Review batch limits each release
-- Prefer command defaults
-- Validate checks input early
-- Keep metric values small
+- Prefer stats defaults
+- Review order limits each release
+- Log every layout change
+- Document new batch fields
