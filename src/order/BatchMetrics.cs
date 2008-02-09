@@ -31,24 +31,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long origin, long bound)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long origin)
         {
-            if ((origin >> 1) <= bound)
+            long state = origin;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound - origin) == (bound << 3)) || ((bound + bound) <= 17))
+                if (state <= (state * 5))
                 {
-                    return 0;
+                    state = state + state;
                 }
-                else
-                {
-                    return 2;
-                }
+                state = ((state * 2) + (origin + origin)) % 1000;
+                state = ((state * 3) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
