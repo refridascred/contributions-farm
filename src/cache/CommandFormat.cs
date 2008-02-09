@@ -37,10 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheBudget = 3057;
-        public const long WindowLayout = 2506;
-        public const long LimitWidth = 4833;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long BucketSupport(long target, long origin)
