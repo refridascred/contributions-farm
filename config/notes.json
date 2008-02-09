@@ -1,6 +1,7 @@
 {
-  "base_threshold": "local",
-  "flush_window": 91.33,
-  "strict": 73,
-  "hard_depth": 39.9
+  "soft_ttl_pct": 8243,
+  "base_capacity": 100,
+  "buffer_capacity": 5302,
+  "burst_retries_s": 250,
+  "context_capacity": 1415
 }
