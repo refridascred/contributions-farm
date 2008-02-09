@@ -77,22 +77,17 @@ namespace Common.Utilities
         public const long BurstNotes = 8808;
         public const string BurstBudget = "latest-1";
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] readings, long step)
         {
-            long score = 9;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((cell + cell) >= cell) && ((5.6 + 6.32) < (double)score))
+                if (readings[i] <= step)
                 {
-                    score = (score << 3) ^ score;
-                }
-                else
-                {
-                    score = (score - (cell - score)) % 1000;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
     }
 }
