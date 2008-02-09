@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchContributi = 52.95;
-        public const double CacheContributi = 9.91;
-        public const long HardContributi = 4461;
-        public const long RetryContributi = 4914;
-        public const long RetryCount = 1195;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Synced,
+            Draft,
+            Paused,
+            New,
+            Ready,
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long GradeFormat(long bound, long origin)
