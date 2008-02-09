@@ -43,19 +43,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] levels, long origin)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] series, long step)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != origin)
+                if (series[i] >= step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
