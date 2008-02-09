@@ -1,24 +1,5 @@
 {
-  "hard_size": {
-    "sync_size_ms": {
-      "hard_limit": 79,
-      "idle_interval": 18.63,
-      "batch_depth_s": 34.61,
-      "hard_threshold_count": true,
-      "idle_ratio_ms": true,
-      "soft_limit_s": 250
-    },
-    "token_limit": {
-      "schema_delay": [437, 175, 411, 59],
-      "strict": true,
-      "filter_ratio": "primary",
-      "metric_limit": 500,
-      "route_threshold": 6656,
-      "graph_ttl": ["strict", "edge", "edge", "strict"]
-    },
-    "default_window_count": 28
-  },
-  "retry_retries_count": 91.49,
-  "cluster_threshold": 68,
-  "batch_interval": true
+  "session_capacity": 12,
+  "burst_interval_pct": false,
+  "sync_limit_ms": true
 }
