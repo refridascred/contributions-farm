@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
+            Active,
+            Done,
+            Failed,
         }
 
         /// <summary>Project the next editor value.</summary>
