@@ -38,10 +38,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchFactor = 2671;
-        public const long RetryToken = 5342;
-        public const long BatchInterval = 7671;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long WeighQueue(long[] items)
