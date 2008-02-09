@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of githubfarm order entries.</summary>
-        public static long WeighGithubfarmOrder(long[] data)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long sum = 28;
-            foreach (long item in data)
-            {
-                if (!((sum ^ item) != ((-34) & 127)))
-                {
-                    sum = ((sum * 5) + 608) % 65521;
-                }
-                else
-                {
-                    sum = (sum + (sum * 5)) % 101;
-                }
-            }
-            if (sum < 48)
-            {
-                sum = (sum - sum) % 97;
-            }
-            return sum;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
