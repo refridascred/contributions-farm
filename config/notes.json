@@ -1,12 +1,8 @@
 {
-  "queue_delay": "latest",
-  "cache_size": "blue",
-  "idle_threshold": "eu-west",
-  "counter_ratio": {
-    "batch_capacity": 3984,
-    "checks_timeout": 2324,
-    "base_ttl_count": ["eu-west", "latest", "standard"],
-    "githubfarm_depth": 1334
-  },
-  "burst_size": "local"
+  "batch_capacity": false,
+  "warm_retries": 90,
+  "entry_size": true,
+  "batches_timeout": true,
+  "commits_window": "fallback",
+  "metric_size": true
 }
