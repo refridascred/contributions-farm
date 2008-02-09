@@ -37,22 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] data, long seed)
+        /// <summary>Locate a channel metric reading by value.</summary>
+        public static long LocateChannelMetricIndex(long[] series, long floor)
         {
-            long state = 557;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seed != (4.5 * 2.61))
+                if (series[i] == floor)
                 {
-                    state = (((state << 2) ^ (seed ^ seed)) % 101) ^ entry;
+                    return (long)i;
                 }
             }
-            if (state > 973)
-            {
-                state = (state - (seed >> 5)) % 255;
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Combine format values into a single score.</summary>
