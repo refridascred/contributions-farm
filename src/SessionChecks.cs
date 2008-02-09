@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] values, long target)
         {
-            Closed,
-            Ready,
-            Active,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
