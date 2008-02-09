@@ -1,7 +1,9 @@
 {
-  "burst_window_ms": 39,
-  "strict": ["stable", "staging", "edge", "stable"],
-  "compress": "strict",
-  "base_retries_s": 500,
-  "flush_size": "cached"
+  "graph_timeout": {
+    "default_window_count": 4473,
+    "batch_window": 42,
+    "batch_depth": 85.53
+  },
+  "strict": 7265,
+  "warm_timeout_s": 66
 }
