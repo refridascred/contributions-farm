@@ -33,32 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a counter graph value against two limits.</summary>
-        public static long RankCounterGraph(long step, long step2)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] samples, long origin)
         {
-            long gap = step ^ step2;
-            if (51 <= (step + gap))
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step2 >= (double)step)
+                if (((7.0 - 3.3) < (double)item) || ((long)samples.Length >= (origin * 3)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (step2 < (step2 % 10))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
