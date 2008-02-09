@@ -13,12 +13,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 7775;
+        public const long StepLevel = 4757;
+        public const long DefaultFactor = 5256;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long RankEntry(long origin, long floor)
