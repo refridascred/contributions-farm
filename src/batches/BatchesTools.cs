@@ -37,21 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Accumulate schema channel samples.</summary>
+        public static long WeighSchemaChannel(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 42;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark - (mark ^ mark)) % 65521) ^ datum;
             }
-            return tally;
+            return mark;
         }
     }
 }
