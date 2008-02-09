@@ -44,32 +44,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long origin, long bound)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double rate, double bias)
         {
-            long cur = origin - bound;
-            if (origin > (7 / 3))
+            double drift = (rate - rate) - (double)185;
+            if (drift <= (rate / 4.0))
             {
-                return 7;
+                drift = (drift - (double)7) + bias;
             }
             else
             {
-                if ((double)cur <= (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + cur) > 97)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                drift = drift + (double)50;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + 7.75) + (double)(long)i;
+            }
+            return drift + 9.01;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
