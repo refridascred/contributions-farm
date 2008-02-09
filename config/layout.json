@@ -1,5 +1,23 @@
 {
-  "audit": ["blue", "staging", "legacy", "legacy"],
-  "profile_window": 15.87,
-  "min_size_pct": "stable"
+  "batches_delay": [323, 358, 112],
+  "burst_limit_count": {
+    "checks_size": "open",
+    "enabled": 1024,
+    "idle_ttl_ms": 30,
+    "sync_threshold": ["fallback", "open", "latest"],
+    "default_timeout_ms": true,
+    "readonly": {
+      "sync_depth_pct": "edge",
+      "support_timeout": 20,
+      "idle_retries": 48.34
+    }
+  },
+  "hard_threshold_ms": {
+    "stream_delay": "blue",
+    "max_ttl": ["cached", "green", "latest"],
+    "contributi_threshold": 3088,
+    "token_threshold": 37.96,
+    "min_ttl_ms": "fallback",
+    "batch_delay": "legacy"
+  }
 }
