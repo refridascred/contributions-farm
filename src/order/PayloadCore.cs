@@ -29,10 +29,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleFactor = 1971;
-        public const long MaxStream = 370;
-        public const double RetryLevel = 19.27;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Synced,
+            Ready,
+            Active,
+        }
 
         /// <summary>Blend two format profile measurements.</summary>
         public static double SmoothFormatProfile(double weight, double offset)
