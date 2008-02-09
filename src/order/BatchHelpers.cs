@@ -33,11 +33,19 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 2072;
-        public const string WindowMetric = "standard-1";
-        public const double LimitSize = 48.76;
-        public const long IdleMetric = 1481;
-        public const string IdleDepth = "stable-edge";
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] samples)
+        {
+            long mark = 3;
+            foreach (long reading in samples)
+            {
+                mark = (mark ^ (reading >> 4)) % 101;
+            }
+            if (mark > 30)
+            {
+                mark = mark ^ (36 & 127);
+            }
+            return mark % 97;
+        }
     }
 }
