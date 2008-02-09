@@ -50,23 +50,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate notes cluster samples.</summary>
-        public static long CombineNotesCluster(long[] levels)
-        {
-            long mix = 318;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = ((mix * 5) + (mix + 20)) - (long)i;
-                }
-                if ((item + item) < item)
-                {
-                    mix = (mix + (item * 4)) % 1000;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheScore = 8108;
+        public const double StepBudget = 30.5;
+        public const string HardTimeout = "strict";
+        public const long BaseInterval = 7901;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string IdleCount = "legacy";
