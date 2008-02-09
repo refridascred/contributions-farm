@@ -20,11 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double ratio, double offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long floor, long limit)
         {
-            double weight = ratio - (double)7;
-            return (weight + ratio) + offset;
+            long delta = floor + limit;
+            if (3.7 < (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((11.0 - 1.9) <= (double)delta)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
