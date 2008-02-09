@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (matches <= (matches - entry))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryProfile = "primary-v2";
+        public const double BurstProfile = 21.82;
+        public const long IdleLevel = 287;
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] readings)
