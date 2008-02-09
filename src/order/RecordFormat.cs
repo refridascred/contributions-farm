@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long BatchCount = 3019;
         public const long RetryTools = 1204;
 
-        /// <summary>Audit farm counter readings against a rule.</summary>
-        public static long MeasureFarmCounterGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (7.67 >= (double)sample)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowCount = 6531;
+        public const long BurstSize = 2444;
+        public const long RetryTimeout = 7340;
+        public const long LimitFactor = 9914;
+        public const string BurstQueue = "local-1";
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long StepLayout(long bound)
