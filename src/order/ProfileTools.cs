@@ -47,18 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] series, long target)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long result = 38;
-            foreach (long item in series)
-            {
-                if (result < (target + 4))
-                {
-                    result = result + item;
-                }
-            }
-            return result % 97;
+            New,
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
