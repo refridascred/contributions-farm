@@ -1,7 +1,6 @@
 {
-  "format_window": false,
-  "base_timeout": "green",
-  "tools_size": ["latest", "fallback", "green", "eu-west"],
-  "soft_ttl": 15.7,
-  "retry_interval_ms": 5603
+  "sync_limit_ms": 28,
+  "stream_ratio": "blue",
+  "compress": [345, 64, 292, 15],
+  "flush_depth": "cached"
 }
