@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] data)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long offset, long offset2)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if (offset >= (offset - offset))
             {
-                if ((reading * 5) > hits)
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset) < (7 + offset2))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (((offset + offset) <= offset) || (offset < offset2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count cluster account pairs that satisfy a relation.</summary>
