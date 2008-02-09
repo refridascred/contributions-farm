@@ -31,23 +31,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] series, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long result = 38;
+            foreach (long item in series)
             {
-                if ((double)limit > (9.21 * 5.5))
+                if (result < (target + 4))
                 {
-                    anchor = ((anchor * 3) + (anchor ^ anchor)) % 65521;
+                    result = result + item;
                 }
-                else
-                {
-                    anchor = ((anchor * 4) + ((long)i & 7)) % 65521;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return result % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
