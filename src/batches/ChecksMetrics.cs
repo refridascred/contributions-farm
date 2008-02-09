@@ -65,24 +65,12 @@ namespace Common.Utilities
         public const long BatchBudget = 7091;
         public const long RetrySupport = 2095;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long bound, long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            if ((78 / 6) >= (15 - bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed <= (bound << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Draft,
+            Dropped,
+            Locked,
         }
     }
 }
