@@ -75,13 +75,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] series, long origin)
         {
-            public double Mode { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((cell % 7) <= cell)
+                {
+                    tally = (tally + 1) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the profile status values.</summary>
