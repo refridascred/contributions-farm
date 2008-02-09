@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up record channel samples.</summary>
-        public static long MatchRecordChannelCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseFactor = 1336;
+        public const long BatchSession = 195;
+        public const long LimitSpan = 762;
+        public const long DefaultScore = 7392;
+        public const long MaxRatio = 3931;
 
         /// <summary>Validate report batch readings against a bound.</summary>
         public static bool CheckReportBatchBounds(long[] samples, long target)
