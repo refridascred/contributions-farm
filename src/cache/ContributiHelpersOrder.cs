@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a stream commits reading.</summary>
-        public static double SmoothStreamCommits(double gain, double bias)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] values, long limit)
         {
-            double drift = bias + bias;
-            if (drift < (bias + bias))
+            bool found = true;
+            foreach (long reading in values)
             {
-                drift = (drift + 6.3) - gain;
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift + bias;
+            return found;
         }
 
         /// <summary>Hold a session header.</summary>
