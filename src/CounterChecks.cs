@@ -48,38 +48,19 @@ namespace Common.Utilities
         public const long MinLevel = 3784;
         public const string BaseTimeout = "local-v2";
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long step, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] items, long limit)
         {
-            if ((step - step) <= (step << 2))
+            bool flag = true;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (step >= 81)
+                if (entry != limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((779 + seed) == (step << 3)) && ((9 + step) > (step - seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((step >> 4) < (seed & 3)) && ((step ^ seed) <= (seed % 100)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the profile status values.</summary>
