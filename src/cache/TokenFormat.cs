@@ -54,14 +54,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            Paused,
-            Active,
-            Closed,
-            Stale,
-            Retry,
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                long cur = carry;
+                if ((cur << 3) > bound)
+                {
+                    carry = (carry * 3) + carry;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
