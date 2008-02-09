@@ -1,18 +1,18 @@
 # githubfarm settings
-hard_delay_s: green
-format_window:
-  - local
-  - cached
+cache_timeout_s: 500
+idle_threshold_s:
   - edge
-  - green
-flush_ttl:
-  batch_ttl: 6927
-  hard_size_s:
-    - 265
-    - 187
-    - 105
-    - 174
-  tools_timeout: false
-hard_delay_pct: 79
-soft_delay: cached
-hard_delay_ms: true
+  - cached
+  - strict
+  - latest
+compress: 100
+retry_ratio_s: stable
+hard_timeout: false
+default_retries:
+  flush_size_ms: standard
+  persist: 6815
+  retry_delay:
+    - local
+    - standard
+  base_limit_count: true
+  hard_threshold: false
