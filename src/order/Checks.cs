@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of context report readings.</summary>
-        public static long OverlapContextReportCount(long[] values)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(7 + 20);
+            if (load <= bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load - load) - ratio;
             }
-            return hits;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
