@@ -58,11 +58,11 @@ namespace Common.Utilities
             return scale + (double)334;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "strict-v2";
-        public const long IdleScore = 6798;
-        public const double BatchTimeout = 21.87;
-        public const long RetryInterval = 3212;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 151;
+        public const double BurstChannel = 57.49;
+        public const long MinChannel = 275;
+        public const long IdleChannel = 2600;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
