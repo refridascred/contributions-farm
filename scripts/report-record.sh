@@ -6,7 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+RECORD_LIMIT=390
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-blue}"
 case "${mode}" in
     latest)
         log "fast path"
@@ -16,8 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 1))
+for item in primary latest staging open; do
+    log "checking ${item}"
 done
-log "total ${total}"
