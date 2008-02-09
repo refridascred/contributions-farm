@@ -34,10 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 9845;
-        public const long IdleWindow = 9261;
-        public const double MinBudget = 30.27;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinScore = "cached-1";
+        public const long WindowCount = 5312;
+        public const long BaseTimeout = 4032;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ScaleChannel(double rate, double floor)
