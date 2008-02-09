@@ -52,14 +52,22 @@ namespace Common.Utilities
         public const string MinInterval = "staging-1";
         public const long MaxBudget = 3984;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] readings, long target)
         {
-            Idle,
-            Pending,
-            Failed,
-            Draft,
-            Retry,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((target * 3) >= 4)
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
