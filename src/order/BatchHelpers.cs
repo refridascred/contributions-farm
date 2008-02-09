@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] items, long origin)
+        /// <summary>Measure how many command counter samples are out of range.</summary>
+        public static long TallyCommandCounterHits(long[] values)
         {
-            long score = 852;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (69 >= (origin >> 2))
+                if ((cell ^ cell) >= (360 - 169))
                 {
-                    score = ((score + (origin & 1)) % 1000) + datum;
+                    count = count + 1;
                 }
             }
-            if (score < 225)
-            {
-                score = ((score * 5) + (score ^ origin)) % 101;
-            }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
