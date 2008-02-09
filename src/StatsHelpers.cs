@@ -54,16 +54,22 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] data)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long result = 6;
+            foreach (long item in data)
             {
-                carry = (carry + 98) % 4096;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (!((result + 663) < (item / 2)))
+                {
+                    result = ((result << 2) ^ result) % 4096;
+                }
+                else
+                {
+                    result = ((result * 4) + result) % 101;
+                }
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
