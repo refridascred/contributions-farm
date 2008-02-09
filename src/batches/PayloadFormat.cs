@@ -33,14 +33,18 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] series, long target)
         {
-            Retry,
-            Draft,
-            Done,
-            Active,
-            Stale,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum != (8.0 * 1.0))
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
         }
     }
 }
