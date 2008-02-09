@@ -51,12 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxChecks = 29.36;
-        public const string LimitChecks = "fallback-edge";
-        public const double MinDepth = 42.07;
-        public const string RetryChecks = "strict-v2";
-        public const double WindowFactor = 44.59;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            New,
+            Pending,
+            Dropped,
+            Active,
+            Ready,
+        }
 
         /// <summary>Adjust a account reading.</summary>
         public static double ScaleAccount(double weight, double span)
