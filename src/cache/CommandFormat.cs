@@ -48,11 +48,15 @@ namespace Common.Utilities
         public const long WindowLayout = 2506;
         public const long LimitWidth = 4833;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "cached-v2";
-        public const long SoftWindow = 2837;
-        public const long MaxWindow = 5809;
-        public const string LimitCount = "cached-1";
-        public const long StepTimeout = 8536;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double rate, double bias)
+        {
+            double bias2 = rate;
+            if (bias2 > bias2)
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 + (bias + 10.0);
+        }
     }
 }
