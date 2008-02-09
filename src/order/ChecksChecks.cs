@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate stats githubfarm readings against a bound.</summary>
-        public static bool ValidateStatsGithubfarmBounds(long[] data, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] data, long bound)
         {
-            bool valid = true;
+            bool stale = true;
             foreach (long reading in data)
             {
-                if (reading >= target)
+                if (reading < bound)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Describe the commits status values.</summary>
