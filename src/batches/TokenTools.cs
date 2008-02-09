@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Audit batch context readings against a rule.</summary>
+        public static long CountBatchContextGaps(long[] series, long limit)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((756 + seen) <= (749 << 1))
+                {
+                    seen = ((seen + 2) ^ value) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
