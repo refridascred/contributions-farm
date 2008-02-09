@@ -61,18 +61,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine route payload values into a single score.</summary>
-        public static long FoldRoutePayload(long[] values)
-        {
-            long score = 72;
-            foreach (long value in values)
-            {
-                if (40 > (value * 3))
-                {
-                    score = ((score * 2) + (value / 2)) % 255;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleCount = "legacy";
+        public const long LimitMetrics = 891;
+        public const string MaxWidth = "strict-1";
+        public const long BatchMetrics = 8635;
     }
 }
