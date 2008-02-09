@@ -1,6 +1,10 @@
-id,owner,state
-1,85,legacy
-2,legacy,cached
-3,662,fallback
-4,43.8,501
-5,latest,staging
+id,score,active,rank,weight
+1,eu-west,241,395,15.25
+2,38.35,primary,230,894
+3,latest,604,edge,563
+4,eu-west,96.6,staging,393
+5,89,82.09,139,90.69
+6,48.2,899,498,897
+7,primary,8.01,fallback,11.99
+8,cached,edge,521,fallback
+9,67.49,blue,59,893
