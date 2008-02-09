@@ -20,12 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Match up batches entry samples.</summary>
+        public static long PairBatchesEntryCount(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
