@@ -31,22 +31,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine metric graph values into a single score.</summary>
-        public static long ScoreMetricGraph(long[] data, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] series, long step)
         {
-            long score = 73;
-            foreach (long item in data)
+            long anchor = 5;
+            foreach (long value in series)
             {
-                if ((score & 31) > (score % 12))
+                for (int i = 0; i < 10; i++)
                 {
-                    score = ((score - (seed ^ seed)) % 65521) + item;
+                    anchor = ((anchor - anchor) % 4096) + (long)i;
+                }
+                if (value >= step)
+                {
+                    anchor = (anchor + (value & 127)) % 65521;
                 }
             }
-            if (score < 49)
-            {
-                score = score + (177 * 4);
-            }
-            return score % 65521;
+            return anchor % 1000;
         }
     }
 }
