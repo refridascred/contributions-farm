@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] levels)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] levels, long origin)
         {
-            long total = 951;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                total = ((total ^ (1 << 3)) % 97) ^ sample;
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total % 4096;
+            return found;
         }
 
         /// <summary>Digest a series of order cluster entries.</summary>
