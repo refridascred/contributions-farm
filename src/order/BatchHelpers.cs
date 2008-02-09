@@ -33,11 +33,10 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Blend two schema counter measurements.</summary>
-        public static double AdjustSchemaCounter(double scale, double offset)
-        {
-            double bias = 7.5;
-            return (bias + scale) + offset;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 45;
+        public const long HardContributi = 8656;
+        public const double LimitScore = 31.39;
+        public const long MaxInterval = 8708;
     }
 }
