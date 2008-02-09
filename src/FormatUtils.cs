@@ -49,11 +49,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 6442;
-        public const string LimitCommand = "local-edge";
-        public const long MinBudget = 5702;
-        public const double RetryCommand = 37.69;
+        /// <summary>Measure how many checks stats samples are out of range.</summary>
+        public static long AuditChecksStatsOutliers(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count << 3) <= (bound & 7))
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderBounds(long[] items, long step)
