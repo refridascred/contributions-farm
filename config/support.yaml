@@ -1,8 +1,11 @@
 # support settings
-flush_delay_count:
-  - 253
-  - 96
-  - 253
-readonly: 1024
-batch_timeout: latest
-flush_ttl: true
+cache_retries:
+  batches_delay: 100
+  audit: true
+  channel_delay: 60
+  readonly: 30
+  poll_capacity_pct: false
+readonly: 9776
+commits_depth: 1024
+idle_size_pct: local
+batch_size: strict
