@@ -51,10 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepWidth = 23.01;
-        public const string DefaultWidth = "strict-v2";
-        public const long SoftGithubfarm = 972;
-        public const string RetryGithubfarm = "strict-v2";
+        /// <summary>Validate window profile readings against a bound.</summary>
+        public static bool VerifyWindowProfileLimits(long[] readings, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
