@@ -93,18 +93,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] series, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mix = 49;
+            foreach (long cell in samples)
             {
-                if ((item % 5) >= count)
+                if ((mix << 1) >= step)
                 {
-                    count = (count + 3) - step;
+                    mix = mix + (step & 255);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (cell ^ step)) % 65521;
                 }
             }
-            return count;
+            if (mix > 82)
+            {
+                mix = (mix + (mix % 8)) % 1000;
+            }
+            return mix % 65521;
         }
     }
 }
