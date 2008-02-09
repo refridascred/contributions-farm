@@ -1,5 +1,4 @@
 # entry settings
-poll_threshold_count: edge
-graph_interval: eu-west
-sync_timeout_ms: false
-readonly: 87
+stream_limit: 100
+min_depth: true
+commits_ratio: stable
