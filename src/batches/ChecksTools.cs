@@ -36,11 +36,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
     }
 }
