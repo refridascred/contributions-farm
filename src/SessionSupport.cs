@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double weight, double offset)
-        {
-            double gain = 2.59 / 7.0;
-            if (gain < (gain - weight))
-            {
-                gain = gain + 15.0;
-            }
-            return gain + (offset - weight);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseScore = 49.63;
+        public const long BurstSize = 7511;
+        public const long SoftBudget = 8254;
+        public const long WindowLevel = 1028;
+        public const long IdleSize = 9321;
 
         /// <summary>Grade a notes editor value against two limits.</summary>
         public static long RankNotesEditor(long origin, long limit)
