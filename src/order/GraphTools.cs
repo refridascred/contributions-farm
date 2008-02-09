@@ -30,19 +30,10 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)seen < (2.6 - 2.0))
-                {
-                    seen = ((seen + 2) + value) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardAccount = 53.77;
+        public const string WindowAccount = "open-1";
+        public const long StepBudget = 4640;
 
         /// <summary>Blend two batch measurements.</summary>
         public static double ScaleBatch(double rate, double bias)
