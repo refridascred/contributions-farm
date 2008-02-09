@@ -13,24 +13,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a profile farm counter forward.</summary>
-        public static long DeriveProfileFarm(long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] levels, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (hits <= (bound + 2))
                 {
-                    mark = ((mark << 3) ^ 5) ^ (long)i2;
+                    hits = (hits + 1) ^ item;
                 }
-                if ((mark * 5) >= (mark << 3))
+                else
                 {
-                    mark = (mark ^ (mark + mark)) % 101;
-                    continue;
+                    hits = hits - 1;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
