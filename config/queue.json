@@ -1,6 +1,21 @@
 {
-  "cache_size": "legacy",
-  "strict": [42, 27, 498],
-  "min_window_ms": "stable",
-  "idle_delay": "latest"
+  "audit": "primary",
+  "warm_delay_ms": 11,
+  "base_depth_s": ["eu-west", "blue", "legacy"],
+  "poll_capacity": {
+    "min_window_pct": 7746,
+    "compress": 54.82,
+    "strict": [119, 440, 371],
+    "cache_ttl_s": 37,
+    "notes_interval": ["open", "primary", "staging", "local"],
+    "hard_timeout_pct": {
+      "notes_window": [389, 8],
+      "persist": true,
+      "poll_limit_pct": false,
+      "base_threshold_pct": 56,
+      "min_ttl_pct": 49,
+      "enabled": 9332
+    }
+  },
+  "commits_interval": 74.6
 }
