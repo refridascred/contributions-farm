@@ -27,15 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the payload stats series from a seed.</summary>
-        public static long RollPayloadStats(long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] levels, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if (datum != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Project the next token buffer value.</summary>
