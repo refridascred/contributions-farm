@@ -41,12 +41,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultProfile = "primary-1";
-        public const long LimitProfile = 1737;
-        public const long MaxProfile = 2926;
-        public const long CacheProfile = 2300;
-        public const long BatchLevel = 7176;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((double)floor < (4.0 + 3.7)) && ((31 << 1) <= (sample - sample)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long GradeFilter(long target, long limit)
