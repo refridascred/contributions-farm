@@ -1,9 +1,4 @@
 # support settings
-soft_delay_count:
-  - 72
-  - 66
-warm_threshold: strict
-warm_ratio_count: 3014
-counter_delay: true
-batches_limit: false
-hard_ratio: eu-west
+persist: latest
+sync_interval_pct: 44
+retry_retries_ms: 30
