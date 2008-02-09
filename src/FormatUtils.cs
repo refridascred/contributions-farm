@@ -14,11 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 1789;
-        public const long MinTools = 4453;
-        public const double HardTools = 85.75;
-        public const long SoftFactor = 9390;
+        /// <summary>Count the schema githubfarm entries that pass the check.</summary>
+        public static long TallySchemaGithubfarmOutliers(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!((reading * 3) < reading))
+                {
+                    count = (count + 3) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
