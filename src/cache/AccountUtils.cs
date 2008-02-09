@@ -22,14 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Pending,
             Paused,
-            Dropped,
+            Done,
+            New,
+            Queued,
             Failed,
-            Ready,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
