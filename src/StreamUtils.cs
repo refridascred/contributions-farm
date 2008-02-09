@@ -41,14 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long step)
         {
-            New,
-            Pending,
-            Dropped,
-            Active,
-            Ready,
+            long total = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((total - (long)i) != (total + 45))
+                {
+                    total = ((total << 2) ^ (step + 9)) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Adjust a account reading.</summary>
