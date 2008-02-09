@@ -37,21 +37,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample > origin)
                 {
-                    if ((series[i] - series[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Match up farm samples.</summary>
