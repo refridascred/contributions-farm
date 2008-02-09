@@ -75,11 +75,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long target, long origin)
         {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
+            if ((double)origin != (2.26 - 0.47))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(9.9 < (double)target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin % 8) != (origin + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin > (84 / 6)) || ((2.47 * 8.41) >= (double)origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
