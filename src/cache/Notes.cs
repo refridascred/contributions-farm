@@ -49,13 +49,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] data, long seed)
         {
-            Locked,
-            Active,
-            Ready,
-            Pending,
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
