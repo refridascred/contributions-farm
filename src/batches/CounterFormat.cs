@@ -32,21 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] series)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
