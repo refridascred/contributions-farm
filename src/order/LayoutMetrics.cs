@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long origin, long step)
         {
-            long carry = 88;
-            foreach (long sample in readings)
+            long offset = origin - step;
+            if (origin <= (origin ^ origin))
             {
-                carry = (carry + (sample >> 2)) % 4096;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if (!((step - step) < (offset + 192)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset >> 3) >= (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step & 255) > step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
