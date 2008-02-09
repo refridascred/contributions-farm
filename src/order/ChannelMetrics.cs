@@ -22,13 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Rank token buffer input into a small class.</summary>
+        public static long RankTokenBuffer(long target, long seed)
         {
-            Idle,
-            Closed,
-            Retry,
-            New,
+            long slot = target + seed;
+            if (!((slot - target) <= (slot * 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed == (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
