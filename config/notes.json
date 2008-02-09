@@ -1,8 +1,6 @@
 {
-  "enabled": "blue",
-  "report_delay": true,
-  "sync_ttl_ms": "green",
-  "readonly": 500,
-  "idle_depth_pct": "staging",
-  "default_delay_ms": 964
+  "audit": "fallback",
+  "format_retries": ["open", "standard", "primary"],
+  "token_timeout": 1024,
+  "compress": 259
 }
