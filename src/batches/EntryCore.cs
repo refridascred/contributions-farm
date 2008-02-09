@@ -22,23 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] data, long target)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            long result = 31;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (target < (target * 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result - (result / 5);
-                    break;
-                }
-                if ((6.3 - 3.8) != (double)result)
-                {
-                    result = result - (93 ^ value);
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Accumulate counter samples.</summary>
