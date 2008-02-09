@@ -1,4 +1,5 @@
 # support settings
-warm_size_s: 72.09
-default_ratio: 91.67
-context_depth: 8854
+base_capacity_s: 97.66
+compress: 539
+min_ttl: 18.81
+flush_limit_s: staging
