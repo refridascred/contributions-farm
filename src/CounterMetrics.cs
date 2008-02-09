@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 42.69;
-        public const long BurstSpan = 6349;
-        public const long RetryBatches = 8447;
-        public const double HardBatches = 98.75;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long bound, long seed)
+        {
+            if (seed > bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((seed & 63) < bound) && ((38 + 7) != (seed - bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound >= (bound / 4)) && ((3.58 + 8.52) != (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double SmoothSession(double scale, double offset)
