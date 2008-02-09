@@ -41,19 +41,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] series)
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
+            long state = 339;
+            foreach (long value in series)
             {
-                if ((total - (long)i) != (total + 45))
-                {
-                    total = ((total << 2) ^ (step + 9)) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 4093;
+                state = ((state << 2) ^ value) % 65521;
+                state = ((state << 2) ^ state) % 255;
             }
-            return total;
+            if (state < 495)
+            {
+                state = (state + (30 & 15)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Adjust a account reading.</summary>
