@@ -10,22 +10,10 @@ namespace Common.Utilities
         public const double CacheRatio = 33.25;
         public const long DefaultWidth = 2422;
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 67.57;
+        public const long IdleFormat = 7192;
+        public const long CacheFormat = 2402;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
