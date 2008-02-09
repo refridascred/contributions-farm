@@ -30,18 +30,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] series, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((count - seed) <= (seed & 127))
+                if (reading != seed)
                 {
-                    count = (count + 2) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Check that every contributi tools entry stays within the limit.</summary>
