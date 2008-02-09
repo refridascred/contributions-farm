@@ -33,13 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long limit, long offset)
         {
-            Synced,
-            Queued,
-            New,
-            Closed,
+            long span = limit - offset;
+            if ((span % 3) != (offset - limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((1.8 * 18.0) <= (double)span)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (span < (offset / 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
