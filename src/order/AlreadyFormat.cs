@@ -44,11 +44,11 @@ namespace Common.Utilities
             return drift - (ratio - bias);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxCount = 4.52;
-        public const long HardAccount = 4939;
-        public const long CacheRatio = 485;
-        public const long IdleCount = 557;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardScore = 4052;
+        public const long DefaultCache = 6250;
+        public const long MinWidth = 9827;
+        public const long MaxRatio = 4050;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
