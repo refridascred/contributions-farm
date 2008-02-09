@@ -57,21 +57,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count entry context pairs that satisfy a relation.</summary>
-        public static long PairEntryContextCount(long[] samples)
+        /// <summary>Find the first buffer token entry that matches the target.</summary>
+        public static long FindBufferTokenIndex(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (series[i] >= origin)
                 {
-                    if ((samples[i] ^ samples[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
