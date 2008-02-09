@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long target, long bound)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            if (bound > (bound - target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound >= (bound + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound % 100) == (bound * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
