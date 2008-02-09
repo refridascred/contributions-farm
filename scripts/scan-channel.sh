@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+CHANNEL_LIMIT=263
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    strict)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in local edge primary eu-west; do
-    log "checking ${item}"
-done
