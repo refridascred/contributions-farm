@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two counter channel measurements.</summary>
-        public static double ScaleCounterChannel(double weight, double bias)
-        {
-            double load = 11.0 - 8.38;
-            if (load < 1.0)
-            {
-                load = ((load - 1.2) + weight) + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load - 4.6;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstQueue = 27.35;
+        public const double BurstRatio = 31.16;
+        public const string DefaultQueue = "alpha-1";
+        public const double HardBudget = 56.73;
+        public const string RetryQueue = "latest-1";
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandOutliers(long[] samples, long floor)
