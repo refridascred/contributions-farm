@@ -24,10 +24,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowSpan = 4456;
-        public const string IdleInterval = "latest";
-        public const long BurstGithubfarm = 9762;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] data)
+        {
+            long mix = 72;
+            foreach (long datum in data)
+            {
+                if ((double)datum == (double)mix)
+                {
+                    mix = (mix * 3) + (datum >> 4);
+                }
+                if ((mix - datum) == (datum + mix))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ProjectStream(double weight, double offset)
