@@ -1,13 +1,23 @@
 {
-  "max_window_s": 250,
-  "soft_ratio": 100,
-  "entry_size": 30,
-  "max_size_ms": {
-    "base_size_s": "latest",
-    "enabled": 100,
-    "dry_run": 59,
-    "cache_capacity_count": 32.87,
-    "max_limit": 46
+  "strict": {
+    "verbose": ["edge", "staging"],
+    "idle_window_count": [207, 207, 98, 216],
+    "warm_threshold_ms": false
   },
-  "flush_threshold_s": false
+  "base_depth_ms": "legacy",
+  "idle_capacity_s": {
+    "min_size": 2.2,
+    "strict": 91.84,
+    "dry_run": [70, 106, 468],
+    "min_delay_s": "latest",
+    "flush_threshold": {
+      "commits_window": [119, 405],
+      "compress": "standard",
+      "report_retries": 100,
+      "persist": 30
+    }
+  },
+  "graph_depth": "open",
+  "compress": false,
+  "sync_timeout_pct": true
 }
