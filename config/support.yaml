@@ -1,5 +1,7 @@
 # support settings
-dry_run: staging
-flush_capacity_s: green
-hard_delay_ms: false
-retry_interval: false
+readonly: false
+warm_window: stable
+soft_interval_pct: 55
+flush_ttl_s:
+  - eu-west
+  - blue
