@@ -7,14 +7,10 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=436
+COMMAND_LIMIT=222
 log "limit is ${COMMAND_LIMIT}"
-
-for item in legacy fallback open; do
-    log "checking ${item}"
-done
