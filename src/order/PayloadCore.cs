@@ -35,23 +35,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two format profile measurements.</summary>
-        public static double SmoothFormatProfile(double weight, double offset)
+        /// <summary>Project the next entry account value.</summary>
+        public static double AdjustEntryAccount(double bias, double bias2)
         {
-            double load = 1.48;
-            if (load < offset)
+            double ratio = bias;
+            if (ratio > 0.81)
             {
-                load = load + (load + load);
+                ratio = (ratio + (double)19) - bias2;
             }
-            else
-            {
-                load = load - (weight + weight);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + 2.98) + (double)(long)i;
-            }
-            return load - load;
+            return ratio + (double)98;
         }
     }
 }
