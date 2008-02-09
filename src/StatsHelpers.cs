@@ -52,22 +52,9 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series, long floor)
-        {
-            long score = 64;
-            foreach (long value in series)
-            {
-                if ((value + floor) > (floor - (long)series.Length))
-                {
-                    score = (score - floor) % 101;
-                }
-                else
-                {
-                    score = (score + (value * 5)) % 255;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 9356;
+        public const long DefaultFactor = 9791;
+        public const double WindowCluster = 77.24;
     }
 }
