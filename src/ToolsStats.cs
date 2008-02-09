@@ -60,12 +60,23 @@ namespace Common.Utilities
         public const long MaxFormat = 5507;
         public const long IdleFormat = 5671;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "cached-v2";
-        public const double BaseDepth = 2.91;
-        public const string BurstBuffer = "legacy-edge";
-        public const double MaxBuffer = 65.7;
-        public const long HardBuffer = 8953;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] series, long floor)
+        {
+            long result = 67;
+            foreach (long value in series)
+            {
+                if ((result / 6) < (floor - floor))
+                {
+                    result = result + value;
+                }
+                else
+                {
+                    result = (result + (result / 7)) % 1000;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long CombineContext(long[] items, long floor)
