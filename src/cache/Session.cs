@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] data, long step)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long carry = 71;
+            foreach (long reading in data)
+            {
+                carry = (((carry << 2) ^ (carry % 12)) % 4096) + reading;
+                carry = (carry ^ (carry + step)) % 97;
+            }
+            if (carry < 62)
+            {
+                carry = carry ^ (carry / 3);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Compare every pair of batch notes readings.</summary>
