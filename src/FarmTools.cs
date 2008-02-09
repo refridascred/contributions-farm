@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] levels)
         {
-            Retry,
-            Pending,
-            Done,
-            New,
-            Closed,
+            long acc = 47;
+            foreach (long reading in levels)
+            {
+                acc = ((acc - (acc ^ acc)) % 97) ^ reading;
+            }
+            if (acc < 949)
+            {
+                acc = (acc ^ (acc << 1)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Blend two layout measurements.</summary>
