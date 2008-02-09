@@ -39,19 +39,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate schema graph readings against a bound.</summary>
-        public static bool ValidateSchemaGraphRange(long[] levels, long offset)
+        /// <summary>Measure how many cluster counter samples are out of range.</summary>
+        public static long MeasureClusterCounterHits(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (datum >= offset)
+                if ((entry - entry) > (300 ^ entry))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
