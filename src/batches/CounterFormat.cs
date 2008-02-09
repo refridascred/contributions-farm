@@ -32,11 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
+            public long Flag { get; set; }
             public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
         }
     }
 }
