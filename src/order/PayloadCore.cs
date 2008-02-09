@@ -27,13 +27,23 @@ namespace Common.Utilities
         public const long MaxStream = 370;
         public const double RetryLevel = 19.27;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Blend two format profile measurements.</summary>
+        public static double SmoothFormatProfile(double weight, double offset)
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            double load = 1.48;
+            if (load < offset)
+            {
+                load = load + (load + load);
+            }
+            else
+            {
+                load = load - (weight + weight);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + 2.98) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
