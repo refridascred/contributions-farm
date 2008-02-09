@@ -22,24 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank tools session input into a small class.</summary>
-        public static long RankToolsSession(long seed, long offset)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long step)
         {
-            if (16.0 > (double)offset)
+            long state = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)seed != (double)5))
+                if ((step ^ state) > (state & 7))
                 {
-                    return 4;
+                    state = state - 35;
                 }
-                else
-                {
-                    return 0;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
