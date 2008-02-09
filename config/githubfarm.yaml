@@ -1,9 +1,15 @@
 # githubfarm settings
-persist: latest
-queue_delay:
-  - local
+dry_run: cached
+layout_capacity:
+  idle_capacity_s: 495
+  persist: eu-west
+  batch_ttl_pct: green
+  enabled: 9638
+  order_retries: true
+  burst_size_ms: 27
+hard_timeout: 250
+warm_window:
+  - primary
+  - open
   - eu-west
-  - local
-  - strict
-cluster_timeout: 13.06
-payload_timeout: false
+  - stable
