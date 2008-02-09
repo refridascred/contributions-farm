@@ -17,10 +17,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchBudget = "strict";
-        public const long LimitRoute = 3450;
-        public const long BaseScore = 5572;
-        public const long IdleRoute = 258;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitToken = "stable-edge";
+        public const double StepToken = 45.99;
+        public const long SoftCount = 7541;
+        public const long DefaultTimeout = 7843;
+        public const string CacheToken = "local-edge";
     }
 }
