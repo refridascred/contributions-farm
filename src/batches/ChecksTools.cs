@@ -37,11 +37,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            Retry,
+            New,
+            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Combine format values into a single score.</summary>
