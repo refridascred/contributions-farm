@@ -42,11 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the counter state values.</summary>
