@@ -1,4 +1,9 @@
 # support settings
-cluster_timeout: 7978
-support_ttl: 1.07
-flush_delay_pct: 73.57
+batch_interval: 12.37
+persist: local
+contributi_timeout:
+  enabled: primary
+  hard_ratio_pct: false
+  audit: 68
+graph_size: stable
+warm_threshold_s: legacy
