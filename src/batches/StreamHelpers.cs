@@ -83,18 +83,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] values, long offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((offset ^ offset) > (offset ^ hits))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            Closed,
+            Retry,
         }
     }
 }
