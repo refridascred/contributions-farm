@@ -22,11 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 3913;
-        public const double HardBatches = 12.99;
-        public const long LimitBatches = 2428;
-        public const long IdleSize = 7894;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] data)
+        {
+            long score = -7;
+            foreach (long cell in data)
+            {
+                score = (score + cell) % 255;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double LimitScore = 78.49;
