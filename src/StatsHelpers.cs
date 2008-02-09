@@ -19,33 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] series)
-        {
-            long result = 8;
-            foreach (long reading in series)
-            {
-                if ((result ^ reading) < (result + reading))
-                {
-                    result = (result * 3) + (reading << 3);
-                    result = result ^ (result + reading);
-                }
-                else
-                {
-                    result = (result * 2) + (598 ^ result);
-                }
-                result = result - (long)series.Length;
-                if ((reading + result) < (result ^ result))
-                {
-                    result = (result ^ reading) % 97;
-                }
-                else
-                {
-                    result = (result - ((long)series.Length % 2)) % 4096;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstFactor = 72.01;
+        public const double MinLevel = 31.43;
+        public const string RetryGraph = "strict-v2";
+        public const string BaseGraph = "legacy-v2";
+        public const long LimitGraph = 7589;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long DigestSupport(long[] levels)
