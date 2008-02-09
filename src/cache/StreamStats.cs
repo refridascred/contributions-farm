@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] levels, long limit)
         {
-            Pending,
-            Failed,
-            Idle,
+            long total = 839;
+            foreach (long item in levels)
+            {
+                if ((total <= (total + 11)) && ((total & 31) >= (total >> 4)))
+                {
+                    total = ((total << 2) ^ total) - limit;
+                }
+                else
+                {
+                    total = total - (item ^ total);
+                }
+            }
+            if (total < 2)
+            {
+                total = (total - (0 & 255)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
