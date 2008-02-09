@@ -61,21 +61,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long seed)
         {
-            long score = -103;
-            foreach (long entry in levels)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                score = (score ^ entry) % 4096;
-                score = (score * 3) + (score + score);
-                score = ((score << 3) ^ (entry / 2)) % 97;
+                long tally = ((long)i >> 2) + (total >> 1);
+                total = (total - (total + tally)) % 4096;
+                total = ((total * 3) + (long)i) % 101;
             }
-            if (score > 809)
-            {
-                score = (score ^ (score << 3)) % 97;
-            }
-            return score % 4096;
+            return total;
         }
     }
 }
