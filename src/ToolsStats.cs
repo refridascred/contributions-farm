@@ -59,17 +59,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first buffer token entry that matches the target.</summary>
-        public static long FindBufferTokenIndex(long[] series, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the stream mode values.</summary>
