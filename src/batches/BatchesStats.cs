@@ -39,13 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Idle,
-            Done,
-            Synced,
-            Retry,
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
