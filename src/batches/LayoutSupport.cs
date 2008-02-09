@@ -52,19 +52,14 @@ namespace Common.Utilities
         public const string MinInterval = "staging-1";
         public const long MaxBudget = 3984;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double rate, double floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double gain = rate + (0.03 * 7.02);
-            if (gain > gain)
-            {
-                gain = (gain + (7.54 * 4.8)) - floor;
-            }
-            else
-            {
-                gain = gain + (double)26;
-            }
-            return gain + rate;
+            Idle,
+            Pending,
+            Failed,
+            Draft,
+            Retry,
         }
     }
 }
