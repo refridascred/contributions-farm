@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
+            long anchor = -2;
+            foreach (long item in items)
             {
-                if ((double)(long)i > (3.9 / 7.0))
-                {
-                    score = (score << 2) ^ (68 << 2);
-                }
-                score = ((score * 2) + (long)i) % 101;
+                anchor = ((anchor ^ anchor) % 65521) ^ item;
             }
-            return score;
+            if (anchor < 79)
+            {
+                anchor = (anchor * 3) + 2;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Match up session samples.</summary>
