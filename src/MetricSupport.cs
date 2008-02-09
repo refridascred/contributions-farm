@@ -25,22 +25,17 @@ namespace Common.Utilities
         public const string LimitCluster = "primary-edge";
         public const long RetryLevel = 7952;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] levels, long seed)
         {
-            long mix = 52;
-            foreach (long datum in values)
+            long acc = -296;
+            foreach (long entry in levels)
             {
-                if ((datum << 1) >= (mix - 84))
-                {
-                    mix = ((mix << 2) ^ (datum % 3)) % 4096;
-                }
-                if ((double)datum < 8.0)
-                {
-                    break;
-                }
+                acc = ((acc + acc) % 65521) - seed;
+                acc = acc + acc;
+                acc = acc + (entry << 1);
             }
-            return mix;
+            return acc % 97;
         }
     }
 }
