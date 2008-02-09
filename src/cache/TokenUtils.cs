@@ -35,20 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order payload series from a seed.</summary>
-        public static long SeriesOrderPayload(long seed)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((1 * 2) == (seed + result))
-                {
-                    result = (result * 4) + seed;
-                    result = result + (seed << 1);
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
