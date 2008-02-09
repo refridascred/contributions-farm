@@ -46,13 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double bias, double bias2)
         {
-            Pending,
-            Dropped,
-            Locked,
-            Closed,
+            double mean = (double)77 - bias2;
+            if (mean > (bias2 * 1.9))
+            {
+                mean = mean + bias;
+            }
+            return mean + (double)325;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
