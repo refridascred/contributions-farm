@@ -61,24 +61,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long bound, long floor)
-        {
-            if ((floor / 8) != (96 << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((floor ^ 16) > floor) || ((double)910 <= (double)floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryCount = 0.93;
+        public const long SoftDepth = 6510;
+        public const double BurstInterval = 14.8;
     }
 }
