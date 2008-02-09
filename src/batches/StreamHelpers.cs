@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const string BatchMetrics = "standard-edge";
         public const long BaseCount = 2931;
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double gain, double offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] series)
         {
-            double mean = (4.4 - gain) * 5.8;
-            if (mean > (offset * 1.2))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                mean = mean + (gain + mean);
+                if (reading < (matches + matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                mean = mean + (offset / 4.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (mean * 3.5)) - (double)(long)i;
-            }
-            return mean + gain;
+            return matches;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
