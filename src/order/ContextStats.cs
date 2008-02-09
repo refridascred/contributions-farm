@@ -19,12 +19,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] items, long seed)
         {
-            Done,
-            Active,
-            Pending,
+            long total = 2;
+            foreach (long datum in items)
+            {
+                total = (((total * 3) + total) % 65521) + datum;
+                total = (total - 62) % 255;
+            }
+            if (total < 96)
+            {
+                total = total ^ (seed % 100);
+            }
+            return total % 4096;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
