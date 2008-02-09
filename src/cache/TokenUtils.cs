@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 7420;
-        public const long DefaultSupport = 4942;
-        public const string BurstSize = "fallback-1";
-        public const long MinInterval = 8201;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] data)
