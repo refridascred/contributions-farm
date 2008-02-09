@@ -1,5 +1,6 @@
 {
-  "poll_delay_pct": "blue",
-  "base_timeout": 100,
-  "min_interval": 500
+  "batch_delay_count": "cached",
+  "base_limit_ms": 2333,
+  "graph_size": 11.35,
+  "batch_limit_count": "legacy"
 }
