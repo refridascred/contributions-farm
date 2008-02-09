@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxScore = 3766;
-        public const string IdleAlready = "strict-v2";
-        public const double RetryWidth = 30.24;
-        public const long WindowAlready = 6139;
+        /// <summary>Roll a githubfarm schema counter forward.</summary>
+        public static long DeriveGithubfarmSchema(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((154 ^ (-370)) <= (long)i))
+                {
+                    acc = (acc ^ ((-41) - acc)) % 1000;
+                    acc = acc - (acc & 31);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 97;
+                    acc = acc ^ (long)i;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LocateTokenIndex(long[] readings, long floor)
