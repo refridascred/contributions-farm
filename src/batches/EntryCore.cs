@@ -39,13 +39,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double bias, double bias2)
         {
-            Stale,
-            Pending,
-            Failed,
-            Queued,
+            double load = (double)7;
+            if (load <= (bias2 + bias2))
+            {
+                load = load - 4.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - bias2) + (double)(long)i;
+            }
+            return load + (bias - bias2);
         }
 
         /// <summary>Look up the position of a account sample.</summary>
