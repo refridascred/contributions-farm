@@ -89,19 +89,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit order command readings against a rule.</summary>
-        public static long CountOrderCommandGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits + hits) <= (hits >> 5))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowBudget = 92.92;
+        public const long CacheStream = 8179;
+        public const long DefaultStream = 1343;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionHits(long[] values, long seed)
