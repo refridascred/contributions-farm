@@ -35,11 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchScore = 2842;
-        public const long MaxBatch = 6730;
-        public const string DefaultSpan = "staging-edge";
-        public const long HardBatch = 4735;
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] samples)
