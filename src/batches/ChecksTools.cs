@@ -24,17 +24,15 @@ namespace Common.Utilities
             return ratio + 9.4;
         }
 
-        /// <summary>Find the first already entry entry that matches the target.</summary>
-        public static long FindAlreadyEntryIndex(long[] values, long bound)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)((-991) * 4);
+            for (int i = 0; i < 3; i++)
             {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
+                bias = ((bias + rate) - (double)(long)i) - floor;
             }
-            return -1;
+            return bias - 2.1;
         }
 
         /// <summary>Locate a channel metric reading by value.</summary>
