@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const double BaseTimeout = 85.93;
         public const long BurstWindow = 5686;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] items, long floor)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
