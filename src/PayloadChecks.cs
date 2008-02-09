@@ -35,24 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long step, long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if (!((7 % 7) < limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((2.35 - 3.0) != (double)step) && ((step ^ 6) > (208 + step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Adjust a order reading.</summary>
