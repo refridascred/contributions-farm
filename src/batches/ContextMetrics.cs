@@ -13,18 +13,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] samples)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((tally - reading) <= reading)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
