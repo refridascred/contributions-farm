@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate token batch samples.</summary>
-        public static long TotalTokenBatch(long[] readings, long seed)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long sum = 48;
-            foreach (long entry in readings)
-            {
-                if (entry <= (seed / 4))
-                {
-                    sum = ((sum * 4) + (entry - sum)) % 97;
-                }
-            }
-            return sum;
+            Synced,
+            Locked,
+            Active,
+            Ready,
+            New,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
