@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Iterate the checks metric series from a seed.</summary>
+        public static long RollChecksMetric(long floor)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
