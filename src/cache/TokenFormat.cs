@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] readings)
+        /// <summary>Count the githubfarm cluster entries that pass the check.</summary>
+        public static long CountGithubfarmClusterOutliers(long[] samples)
         {
-            long state = 699;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((cell & 63) <= (cell - state))
+                if (count >= 638)
                 {
-                    state = (state ^ (state - state)) % 101;
+                    count = (count + 3) - sample;
                 }
             }
-            if (state < 70)
-            {
-                state = ((state * 5) + (state ^ state)) % 4096;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
