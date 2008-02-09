@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] values, long target)
-        {
-            long total = 19;
-            foreach (long datum in values)
-            {
-                total = (total ^ (target * 3)) % 1000;
-                if ((datum + total) < datum)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 50.88;
+        public const long BurstSchema = 7134;
+        public const double WindowFactor = 81.99;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftQueue = 9151;
