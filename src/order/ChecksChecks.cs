@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double weight, double span)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] data)
         {
-            double ratio = weight * 1.93;
-            return (ratio - weight) + span;
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen << 3) > (reading + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
