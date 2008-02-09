@@ -66,20 +66,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the account notes series from a seed.</summary>
-        public static long IterateAccountNotes(long offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long bound, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
+            if (bound < (bound & 1))
             {
-                acc = acc - (offset + offset);
-                if ((1.0 - 2.7) == (double)offset)
-                {
-                    acc = ((acc * 5) + acc) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((floor + bound) != (9 * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
