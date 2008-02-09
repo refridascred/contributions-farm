@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const double CacheSession = 48.43;
         public const long DefaultSession = 4142;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryDepth = 3118;
+        public const long StepCount = 788;
+        public const long BaseBudget = 2627;
 
         /// <summary>Audit stats order readings against a rule.</summary>
         public static long MeasureStatsOrderHits(long[] readings)
