@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of window githubfarm readings.</summary>
-        public static long CombineWindowGithubfarm(long[] levels)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long acc = 32;
-            foreach (long item in levels)
-            {
-                acc = ((acc * 2) + (acc / 6)) % 97;
-                if (((acc + 92) <= acc) && ((long)levels.Length <= ((long)levels.Length - item)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Locked,
+            Draft,
+            Paused,
+            New,
+            Failed,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
