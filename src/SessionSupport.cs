@@ -33,22 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] levels, long bound)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (hits <= (bound + 2))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
