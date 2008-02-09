@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] samples)
+        /// <summary>Match up batches channel samples.</summary>
+        public static long PairBatchesChannelCount(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample + matches) != ((long)samples.Length * 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
