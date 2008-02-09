@@ -19,27 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long score = 4;
-            foreach (long item in series)
-            {
-                score = ((score * 3) + (score << 1)) % 101;
-                if ((score / 5) > (score + item))
-                {
-                    score = score - (score / 7);
-                }
-                else
-                {
-                    score = ((score * 5) + (score << 2)) % 4096;
-                }
-            }
-            if (score < 85)
-            {
-                score = score ^ (score * 3);
-            }
-            return score;
+            Queued,
+            Synced,
+            Draft,
+            New,
         }
 
         /// <summary>Project the next githubfarm value.</summary>
