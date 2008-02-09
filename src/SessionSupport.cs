@@ -31,12 +31,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            Stale,
+            Dropped,
+            Closed,
+            Ready,
         }
     }
 }
