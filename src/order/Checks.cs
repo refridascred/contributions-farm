@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double ratio, double bias)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            double load = (double)(7 + 20);
-            if (load <= bias)
+            long mark = 439;
+            foreach (long datum in items)
             {
-                load = (load - load) - ratio;
+                for (int i = 0; i < 7; i++)
+                {
+                    mark = (mark - mark) + (long)i;
+                }
+                if ((double)datum != (13.0 + 9.08))
+                {
+                    mark = mark - (mark - datum);
+                }
             }
-            else
+            if (mark < 800)
             {
-                load = load + load;
+                mark = mark ^ mark;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + load;
+            return mark;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
