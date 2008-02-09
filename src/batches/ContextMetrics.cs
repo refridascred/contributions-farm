@@ -36,15 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] series)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] levels)
         {
             long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((311 >> 3) <= (datum + datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
+                    if ((levels[i] ^ levels[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
