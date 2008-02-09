@@ -20,10 +20,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstLevel = "staging-v2";
-        public const long CacheSession = 9264;
-        public const long MinBudget = 489;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((reading >= (limit - tally)) || ((60 / 7) >= (43 ^ limit))) || ((tally + reading) < (tally >> 1)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the counter graph entries that pass the check.</summary>
         public static long CountCounterGraphOutliers(long[] readings)
