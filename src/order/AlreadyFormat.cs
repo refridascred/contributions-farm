@@ -35,22 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metric route pairs that satisfy a relation.</summary>
-        public static long CompareMetricRouteCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchScore = 2842;
+        public const long MaxBatch = 6730;
+        public const string DefaultSpan = "staging-edge";
+        public const long HardBatch = 4735;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] samples)
