@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Grade a notes graph value against two limits.</summary>
+        public static long SortNotesGraph(long seed, long origin)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            long next = seed ^ origin;
+            if (next <= 35)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin * 2) >= (next + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed ^ origin) <= (origin % 64))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
