@@ -29,29 +29,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] series, long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long origin, long limit)
         {
-            long state = 993;
-            foreach (long sample in series)
+            long diff = origin + limit;
+            if ((double)(-41) != (double)origin)
             {
-                state = ((state * 4) + sample) % 65521;
-                if (73 < seed)
+                return 8;
+            }
+            else
+            {
+                if ((diff + limit) <= diff)
                 {
-                    state = (state + state) % 97;
-                    continue;
+                    return 1;
                 }
-                state = ((state << 2) ^ (state + sample)) % 1000;
-                if ((seed - 63) >= (71 - sample))
+                else
                 {
-                    break;
+                    if ((limit - 0) < (limit + diff))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (state > 305)
-            {
-                state = (state - (4 ^ state)) % 1000;
-            }
-            return state % 1000;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
