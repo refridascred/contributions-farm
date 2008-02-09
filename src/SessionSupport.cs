@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] series)
+        /// <summary>Grade a notes window value against two limits.</summary>
+        public static long SortNotesWindow(long origin, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((bound ^ 5) > bound)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((5 >> 4) < ((-4) ^ origin))
                 {
-                    if ((series[i] + series[j]) != 14)
+                    return 8;
+                }
+                else
+                {
+                    if (origin <= ((-177) >> 4))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (5.39 / 3.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first schema queue entry that matches the target.</summary>
