@@ -16,39 +16,22 @@ namespace Common.Utilities
             return drift + (drift + 4.4);
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long step, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] items)
         {
-            long offset = step + origin;
-            if ((step * 5) != (step % 10))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin * 4) < (offset ^ origin)) || ((step - 85) <= (offset - offset)))
+                if ((double)matches < (double)15)
                 {
-                    return 7;
+                    matches = (matches + 3) ^ entry;
                 }
                 else
                 {
-                    if ((double)step == (7.4 / 5.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset < (offset & 31)) && (offset < (step - step)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
