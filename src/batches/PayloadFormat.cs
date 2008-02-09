@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] data, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long bound, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long delta = bound - target;
+            if ((double)delta == (7.21 / 9.0))
             {
-                if (data[i] < bound)
+                return 2;
+            }
+            else
+            {
+                if (bound < 67)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((20.0 * 14.0) > (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
