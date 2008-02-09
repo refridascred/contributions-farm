@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] levels)
         {
-            Locked,
-            Done,
-            Closed,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!(hits < (reading / 5)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit layout route readings against a rule.</summary>
