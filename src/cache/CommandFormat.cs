@@ -41,9 +41,19 @@ namespace Common.Utilities
         public const long WindowLayout = 2506;
         public const long LimitWidth = 4833;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxFactor = 483;
-        public const double RetryProfile = 26.93;
-        public const string StepProfile = "open-edge";
+        /// <summary>Check that every metrics buffer entry stays within the limit.</summary>
+        public static bool CheckMetricsBufferLimits(long[] samples, long floor)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
