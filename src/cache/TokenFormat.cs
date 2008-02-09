@@ -31,18 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] readings)
+        /// <summary>Audit command queue readings against a rule.</summary>
+        public static long MeasureCommandQueueOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (datum <= 0)
+                if (value >= (matches - matches))
                 {
-                    count = count + 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
