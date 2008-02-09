@@ -39,21 +39,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of stats commits readings.</summary>
-        public static long PairStatsCommitsCount(long[] data)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Pending,
+            Failed,
+            Queued,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
