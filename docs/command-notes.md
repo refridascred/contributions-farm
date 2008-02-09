@@ -1,10 +1,11 @@
 # Command notes
 
-Each commits is validated before it reaches the queue queue.
-Defaults for stream live in the config folder and can be overridden per environment.
+Run the order check before changing any format limits.
+Run the format check before changing any farm limits.
+Each commits is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Document new report fields
-- Prefer context defaults
-- Keep metrics values small
+- Validate commits input early
+- Keep account values small
+- Document new context fields
