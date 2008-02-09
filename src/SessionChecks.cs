@@ -16,31 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long step, long offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double gain, double floor)
         {
-            if ((step << 3) == (step / 5))
+            double weight = (gain * 8.98) - (4.7 / 8.0);
+            if (weight <= (weight * 11.0))
             {
-                return 5;
+                weight = weight - floor;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((-870) >= offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset & 31) < (step - step)) || ((step / 6) != (offset - step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                weight = (weight + floor) + (double)(long)i;
             }
+            return weight + floor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
