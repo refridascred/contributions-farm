@@ -16,12 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Idle,
-            Done,
-            Retry,
+            public double Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
