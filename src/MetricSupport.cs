@@ -25,14 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
+            Locked,
+            Paused,
             Pending,
-            Closed,
             Ready,
-            Failed,
-            Idle,
         }
 
         /// <summary>Audit stats order readings against a rule.</summary>
