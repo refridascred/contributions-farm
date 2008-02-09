@@ -38,18 +38,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 98.66;
+        public const long BatchBatches = 7756;
+        public const long StepSize = 4224;
 
         /// <summary>Fold a list of queue layout readings.</summary>
         public static long ScoreQueueLayout(long[] data, long seed)
