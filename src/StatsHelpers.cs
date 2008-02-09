@@ -56,18 +56,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] readings, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long score = 950;
+            foreach (long value in data)
             {
-                if (((double)floor < (4.0 + 3.7)) && ((31 << 1) <= (sample - sample)))
+                score = ((score * 4) + (value + score)) % 1000;
+                if (value <= score)
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
