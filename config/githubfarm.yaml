@@ -1,8 +1,5 @@
 # githubfarm settings
-min_ratio_count: latest
-batch_depth_pct: true
-filter_ttl: 57.91
-enabled:
-  - primary
-  - local
-  - stable
+dry_run: primary
+flush_size: 79.85
+soft_limit: 8372
+poll_depth_pct: 46.94
