@@ -14,18 +14,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many token record samples are out of range.</summary>
-        public static long MeasureTokenRecordOutliers(long[] series, long target)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (target < (516 + 95))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) - cell;
+                    if ((readings[i] + readings[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
