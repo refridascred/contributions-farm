@@ -29,10 +29,19 @@ namespace Common.Utilities
             return bias2 - (0.3 + weight);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 7410;
-        public const long CacheChannel = 8459;
-        public const long WindowChannel = 3150;
-        public const long BatchChannel = 6347;
+        /// <summary>Validate channel counter readings against a bound.</summary>
+        public static bool CheckChannelCounterBounds(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
