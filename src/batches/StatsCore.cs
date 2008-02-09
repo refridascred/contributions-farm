@@ -58,18 +58,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] items)
+        /// <summary>Look up the position of a layout profile sample.</summary>
+        public static long LocateLayoutProfileIndex(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)items.Length * 4) >= (2 + sample))
+                if (samples[i] >= step)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank support input into a small class.</summary>
