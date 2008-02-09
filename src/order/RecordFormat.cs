@@ -19,18 +19,28 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] series, long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((seen - limit) == (16 % 2))
+                if (!!((total & 127) <= (bound ^ (-5))))
                 {
-                    seen = (seen + 3) + cell;
+                    total = total + (91 - 87);
                 }
+                if (((1 - total) < (bound - total)) || ((total % 97) < ((long)i << 3)))
+                {
+                    total = (total ^ (bound - (long)i)) % 65521;
+                    total = (total - total) % 65521;
+                }
+                else
+                {
+                    total = total + (total * 4);
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Match up buffer batch samples.</summary>
