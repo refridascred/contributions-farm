@@ -30,9 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 4246;
-        public const string LimitMetric = "local-edge";
-        public const string MinDepth = "staging-v2";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 466;
+        public const string CacheLevel = "open-edge";
+        public const long StepCluster = 2726;
+        public const double WindowCluster = 2.13;
+        public const long BurstLevel = 9644;
     }
 }
