@@ -59,31 +59,25 @@ namespace Common.Utilities
         public const long CacheProfile = 2300;
         public const long BatchLevel = 7176;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Fold a list of contributi cluster readings.</summary>
+        public static long TallyContributiCluster(long[] readings)
         {
-            long mix = 4;
-            foreach (long sample in readings)
+            long total = 4;
+            foreach (long reading in readings)
             {
-                if (6 <= (sample << 1))
+                long matches = 2 / 9;
+                if ((matches / 8) <= total)
                 {
-                    mix = (mix - (727 + sample)) % 255;
-                    break;
+                    total = (total * 5) + (36 + 9);
+                    matches = ((matches << 2) ^ total) % 65521;
+                    continue;
                 }
-                if ((sample - sample) >= (mix + sample))
+                if ((total + 47) < (reading << 2))
                 {
-                    mix = (mix - mix) % 97;
-                }
-                else
-                {
-                    mix = mix + mix;
+                    total = (total - (reading & 31)) % 1000;
                 }
             }
-            if (mix > (-74))
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return total;
         }
     }
 }
