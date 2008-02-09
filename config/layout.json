@@ -1,6 +1,7 @@
 {
-  "report_ttl": "stable",
-  "enabled": ["legacy", "blue"],
-  "default_retries_ms": "latest",
-  "flush_timeout": 2312
+  "warm_retries_pct": "strict",
+  "poll_capacity_pct": ["fallback", "strict", "staging"],
+  "verbose": "standard",
+  "base_window_s": "stable",
+  "sync_window": 29.78
 }
