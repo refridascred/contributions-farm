@@ -1,7 +1,23 @@
 {
-  "sync_threshold": "latest",
-  "batch_delay": 60,
-  "dry_run": 35,
-  "max_window_ms": 30,
-  "flush_capacity_pct": "strict"
+  "channel_delay": 65,
+  "strict": 63.06,
+  "soft_depth_ms": {
+    "audit": 6.22,
+    "batch_limit": "primary",
+    "session_delay": {
+      "route_ttl": "staging",
+      "stream_size": "fallback",
+      "queue_size": [468, 280, 163],
+      "soft_window_ms": 58.04
+    },
+    "soft_depth": {
+      "dry_run": 48.99,
+      "sync_ttl_s": "stable",
+      "burst_delay": "fallback",
+      "min_ttl_pct": 46.23,
+      "graph_capacity": [39, 146]
+    }
+  },
+  "default_window_s": false,
+  "batch_size": "staging"
 }
