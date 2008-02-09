@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first editor queue entry that matches the target.</summary>
