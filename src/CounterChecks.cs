@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftSpan = 95.06;
-        public const long LimitCache = 7582;
-        public const long IdleLevel = 2943;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((990 * 2) >= (sum % 3)))
+                {
+                    sum = sum - bound;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long CountClusterGaps(long[] levels)
