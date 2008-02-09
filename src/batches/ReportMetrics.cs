@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Look up the position of a order sample.</summary>
