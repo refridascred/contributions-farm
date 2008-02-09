@@ -22,17 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] data, long limit)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
