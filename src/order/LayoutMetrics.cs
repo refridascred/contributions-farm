@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long BaseTools = 7419;
         public const long SoftDepth = 9920;
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] series, long offset)
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (offset <= (matches >> 3))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
