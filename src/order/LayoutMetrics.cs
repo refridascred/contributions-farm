@@ -16,22 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of filter route readings.</summary>
-        public static long DigestFilterRoute(long[] samples)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] items)
         {
-            long acc = 5;
-            foreach (long item in samples)
+            long mark = 56;
+            foreach (long item in items)
             {
-                if ((acc + item) <= (acc - 740))
-                {
-                    acc = ((acc << 3) ^ acc) % 97;
-                }
-                if ((item << 3) > (item + acc))
-                {
-                    acc = (acc * 4) + (item >> 1);
-                }
+                mark = (((mark * 5) + (mark % 12)) % 101) ^ item;
             }
-            return acc;
+            return mark % 1000;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
