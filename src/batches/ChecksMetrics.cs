@@ -60,10 +60,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 4770;
-        public const long BatchBudget = 7091;
-        public const long RetrySupport = 2095;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
