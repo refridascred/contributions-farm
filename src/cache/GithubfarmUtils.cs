@@ -60,12 +60,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Locate a channel checks reading by value.</summary>
+        public static long LocateChannelChecksIndex(long[] values, long offset)
         {
-            Retry,
-            New,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
