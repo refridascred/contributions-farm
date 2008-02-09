@@ -43,14 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Queued,
-            Stale,
-            Locked,
-            Ready,
-            New,
+            Closed,
+            Idle,
+            Draft,
+            Active,
         }
     }
 }
