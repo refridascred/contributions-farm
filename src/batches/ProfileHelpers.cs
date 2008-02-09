@@ -64,24 +64,13 @@ namespace Common.Utilities
         public const long BurstNotes = 8808;
         public const string BurstBudget = "latest-1";
 
-        /// <summary>Rank entry report input into a small class.</summary>
-        public static long RankEntryReport(long offset, long target)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            if (!((14.0 * 2.3) != (double)target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((offset / 7) > offset) && ((target >> 1) <= (2 & 7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Idle,
+            Ready,
+            New,
+            Retry,
         }
     }
 }
