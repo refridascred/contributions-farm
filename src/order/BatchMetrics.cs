@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long WindowFactor = 5888;
         public const long RetrySupport = 3254;
 
-        /// <summary>Check that every profile schema entry stays within the limit.</summary>
-        public static bool CheckProfileSchemaBounds(long[] levels, long bound)
+        /// <summary>Validate cluster tools readings against a bound.</summary>
+        public static bool VerifyClusterToolsLimits(long[] samples, long limit)
         {
             bool flag = true;
-            foreach (long item in levels)
+            foreach (long reading in samples)
             {
-                if (item <= bound)
+                if (reading != limit)
                 {
                     flag = false;
                     break;
