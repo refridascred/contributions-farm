@@ -38,23 +38,12 @@ namespace Common.Utilities
             return gain2 - (gain2 * 6.0);
         }
 
-        /// <summary>Digest a series of context batches entries.</summary>
-        public static long TallyContextBatches(long[] series)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long score = 7;
-            foreach (long entry in series)
-            {
-                score = ((score << 2) ^ (score / 9)) % 97;
-                if ((score < entry) || ((entry / 4) != (score << 1)))
-                {
-                    score = score ^ 5;
-                }
-            }
-            if (score < 7)
-            {
-                score = (score - (score / 3)) % 4096;
-            }
-            return score;
+            public bool Token { get; set; }
+            public double Level { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
