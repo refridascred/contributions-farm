@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long origin, long step)
+        /// <summary>Combine support queue values into a single score.</summary>
+        public static long WeighSupportQueue(long[] levels)
         {
-            long offset = origin - step;
-            if (origin <= (origin ^ origin))
+            long carry = 577;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((step - step) < (offset + 192)))
+                if (carry > (515 % 10))
                 {
-                    return 6;
+                    carry = (carry - (carry - 5)) ^ datum;
                 }
                 else
                 {
-                    if ((offset >> 3) >= (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step & 255) > step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = ((carry * 4) + carry) % 1000;
                 }
             }
+            if (carry > 77)
+            {
+                carry = carry + (carry / 5);
+            }
+            return carry;
         }
 
         /// <summary>Project the next cluster value.</summary>
