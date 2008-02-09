@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches cache entries.</summary>
-        public static long ScoreBatchesCache(long[] samples, long origin)
-        {
-            long mark = 7;
-            foreach (long cell in samples)
-            {
-                if (!((mark - cell) == (1 << 2)))
-                {
-                    mark = ((mark << 2) ^ (cell / 2)) - origin;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstFarm = "staging-v2";
+        public const long MinRatio = 3307;
+        public const long BatchSize = 7394;
+        public const string BatchFarm = "local-edge";
+        public const string HardLevel = "strict-v2";
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelOutliers(long[] series, long target)
