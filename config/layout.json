@@ -1,6 +1,9 @@
 {
-  "sync_depth": 45.0,
-  "warm_capacity_s": "eu-west",
-  "profile_capacity": 1024,
-  "strict": "fallback"
+  "base_retries": {
+    "counter_capacity": 63.08,
+    "default_interval": "fallback",
+    "poll_capacity_pct": "standard"
+  },
+  "verbose": 23.76,
+  "poll_window_ms": 100
 }
