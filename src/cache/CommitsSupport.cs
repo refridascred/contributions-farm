@@ -21,11 +21,16 @@ namespace Common.Utilities
         public const double HardAlready = 38.37;
         public const long BaseAlready = 5827;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardLevel = 7902;
-        public const long LimitDepth = 4766;
-        public const string DefaultRatio = "fallback";
-        public const long MinScore = 9787;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] samples, long target)
