@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double bias, double bias2)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long limit)
         {
-            double drift = bias2;
-            if (drift <= bias2)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                drift = (drift - (double)25) + bias;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = ((total + (limit & 1)) % 65521) + (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift + (bias2 * 19.0);
-            }
-            return drift + (drift / 2.0);
+            return total;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
