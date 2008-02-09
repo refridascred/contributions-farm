@@ -20,22 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = (score ^ (long)i) + (long)i2;
-                    score = ((score << 2) ^ (offset & 1)) % 255;
-                }
-                score = (score ^ (offset - offset)) % 255;
-                score = (score << 3) ^ (score >> 5);
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
