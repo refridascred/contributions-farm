@@ -1,32 +1,21 @@
 # githubfarm settings
-hard_window_pct: latest
-base_delay:
-  readonly: strict
-  contributi_ratio: true
-  hard_capacity: open
-  idle_delay_pct: 74
-cluster_interval:
-  graph_timeout: 4296
-  idle_ttl: 238
-  cache_timeout_pct:
-    warm_timeout_count: 59
-    editor_capacity:
-      - primary
-      - primary
-    window_ttl: 44
-  min_window: 33.48
-  compress:
-    hard_size_ms: stable
-    profile_retries: open
-    soft_ratio:
-      - 294
-      - 282
-      - 236
-      - 280
-    queue_interval: legacy
-    record_ratio:
-      - 114
-      - 428
-  min_threshold: 500
-idle_capacity: staging
-order_window: primary
+commits_ttl: 31.87
+burst_interval:
+  poll_ttl_count:
+    checks_threshold: 50.77
+    base_limit_count: standard
+    flush_delay: 250
+    sync_limit_ms: stable
+    min_interval:
+      - legacy
+      - standard
+  already_delay: 27
+  sync_capacity_ms: false
+  batch_retries_ms: 1024
+  enabled: 5563
+editor_limit: 59.76
+idle_threshold_count: 22
+warm_ratio_ms:
+  warm_limit: 30
+  readonly: legacy
+  max_ttl: 1911
