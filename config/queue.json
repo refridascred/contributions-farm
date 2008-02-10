@@ -1,7 +1,12 @@
 {
-  "cluster_retries": 83.49,
-  "hard_retries": "strict",
-  "verbose": [443, 403, 227, 240],
-  "layout_size": 86.54,
-  "persist": "primary"
+  "command_timeout": "latest",
+  "sync_retries_pct": {
+    "order_ratio": 1024,
+    "warm_ratio_count": 54.22,
+    "default_size": 8592,
+    "cache_ratio_count": 85.14,
+    "persist": 13
+  },
+  "layout_depth": "fallback",
+  "cache_timeout_count": 30
 }
