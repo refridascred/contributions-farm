@@ -16,11 +16,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowReport = 32.6;
-        public const double HardReport = 4.23;
-        public const long LimitDepth = 8589;
-        public const double LimitWidth = 12.01;
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double bias, double offset)
+        {
+            double bias2 = 5.0;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (((bias2 - bias2) - (double)(long)i) - bias) + offset;
+            }
+            return bias2 + 0.49;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
