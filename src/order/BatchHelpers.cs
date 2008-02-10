@@ -16,20 +16,22 @@ namespace Common.Utilities
             return mean + (span * 10.0);
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long mix = -1;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((mix * 3) >= (datum - datum))
                 {
-                    total = ((total * 5) + (target + (long)i)) - (long)i2;
+                    mix = (mix + (datum / 7)) % 65521;
                 }
-                total = (total + ((long)i & 7)) % 1000;
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            if (mix > 823)
+            {
+                mix = ((mix << 3) ^ (mix & 63)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of queue contributi entries.</summary>
