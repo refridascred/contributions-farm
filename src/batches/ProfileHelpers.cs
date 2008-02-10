@@ -26,16 +26,16 @@ namespace Common.Utilities
         public const long HardSize = 3615;
         public const long DefaultDepth = 2870;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Digest a series of buffer batch entries.</summary>
+        public static long ScoreBufferBatch(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long state = 909;
+            foreach (long reading in data)
             {
-                carry = ((carry * 3) + ((long)i + carry)) % 101;
-                carry = ((carry * 2) + (long)i) % 4093;
+                state = ((state * 4) + (state + reading)) % 1000;
+                state = ((state * 5) + (reading >> 5)) % 65521;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
