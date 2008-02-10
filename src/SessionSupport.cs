@@ -19,18 +19,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metrics session samples are out of range.</summary>
-        public static long TallyMetricsSessionMatches(long[] items)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)items.Length ^ value) >= (hits - value))
+                if ((data[i] >= target) && ((data[i] % 5) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a batches info.</summary>
