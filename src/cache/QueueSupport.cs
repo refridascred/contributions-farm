@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double bias, double offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] series)
         {
-            double ratio = (double)801 - (bias + bias);
-            if (ratio < bias)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                ratio = (ratio + (double)771) + offset;
+                if ((12.0 * 7.0) == (double)reading)
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (double)219) + (double)(long)i;
-            }
-            return ratio + (ratio * 16.0);
+            return hits;
         }
     }
 }
