@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long bound, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] samples)
         {
-            long delta = bound - target;
-            if ((double)delta == (7.21 / 9.0))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound < 67)
+                if ((datum + datum) != (count << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((20.0 * 14.0) > (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
