@@ -57,32 +57,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a contributi stats pair into a bucket.</summary>
-        public static long SortContributiStats(long limit, long seed)
+        /// <summary>Combine layout farm values into a single score.</summary>
+        public static long ScoreLayoutFarm(long[] data, long seed)
         {
-            long prev = limit + seed;
-            if (((double)prev > (double)seed) || ((seed - limit) < (prev / 6)))
+            long carry = 679;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (6 < prev)
+                if ((reading <= (reading % 60)) && ((double)carry > (20.0 + 7.74)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit & 127) >= (seed % 100))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = ((carry * 2) + (reading ^ reading)) - seed;
                 }
             }
+            if (carry > 9)
+            {
+                carry = (carry + (0 >> 4)) % 101;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
