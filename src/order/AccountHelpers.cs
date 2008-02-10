@@ -55,40 +55,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long floor, long offset)
-        {
-            long lane = floor + offset;
-            if ((offset % 7) < 7)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((-45) % 5) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset << 1) < (lane * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((lane ^ floor) >= lane)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 4277;
+        public const long StepSpan = 9085;
+        public const long SoftWidth = 9859;
+        public const double DefaultBudget = 36.81;
+        public const string RetryFactor = "alpha-1";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryLevel = 5402;
