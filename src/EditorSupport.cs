@@ -53,19 +53,31 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] data, long step)
+        /// <summary>Grade a commits metrics value against two limits.</summary>
+        public static long SortCommitsMetrics(long origin, long seed)
         {
-            bool found = true;
-            foreach (long entry in data)
+            if (origin >= ((-1) ^ seed))
             {
-                if (entry < step)
+                return 1;
+            }
+            else
+            {
+                if ((origin ^ seed) < origin)
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin / 6) <= (seed % 100))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
     }
 }
