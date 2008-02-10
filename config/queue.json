@@ -1,6 +1,7 @@
 {
-  "max_size_pct": "eu-west",
-  "dry_run": 83.38,
-  "soft_size_s": 6091,
-  "window_threshold": 7025
+  "soft_delay_count": 4556,
+  "strict": "latest",
+  "burst_delay_count": "stable",
+  "metrics_delay": 70.19,
+  "flush_window_s": "green"
 }
