@@ -57,12 +57,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            New,
-            Dropped,
-            Idle,
+            Stale,
+            Queued,
+            Retry,
+            Done,
         }
 
         /// <summary>Digest a series of already entries.</summary>
