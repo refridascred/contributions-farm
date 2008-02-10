@@ -61,21 +61,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardBudget = 9156;
+        public const long WindowStats = 8975;
+        public const string BaseLevel = "legacy-v2";
     }
 }
