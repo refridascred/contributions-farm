@@ -58,11 +58,13 @@ namespace Common.Utilities
             return scale + (double)334;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 151;
-        public const double BurstChannel = 57.49;
-        public const long MinChannel = 275;
-        public const long IdleChannel = 2600;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long SeekContextIndex(long[] data, long bound)
