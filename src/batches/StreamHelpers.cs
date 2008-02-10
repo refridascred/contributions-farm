@@ -47,19 +47,18 @@ namespace Common.Utilities
         public const string BatchDepth = "alpha-1";
         public const double BaseCounter = 23.46;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double rate, double offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] samples)
         {
-            double mean = rate - (rate - rate);
-            if (mean >= rate)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                mean = mean + rate;
+                if (90 >= entry)
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (offset / 7.0);
+            return seen;
         }
 
         /// <summary>Describe the session level values.</summary>
