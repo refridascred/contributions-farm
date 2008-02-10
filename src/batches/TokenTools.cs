@@ -23,13 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] data, long origin)
         {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
