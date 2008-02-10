@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] data, long offset)
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((3.3 + 1.6) < (double)offset)
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
