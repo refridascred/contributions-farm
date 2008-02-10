@@ -1,11 +1,5 @@
 {
-  "payload_timeout": [391, 398, 1],
-  "default_delay_ms": 250,
-  "retry_ttl": {
-    "enabled": "cached",
-    "token_capacity": false,
-    "default_capacity_pct": false,
-    "sync_timeout_s": 85.11
-  },
-  "warm_timeout": [45, 111, 212]
+  "report_ratio": 8756,
+  "route_size": 82,
+  "flush_ratio_s": true
 }
