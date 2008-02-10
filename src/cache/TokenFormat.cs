@@ -24,11 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
