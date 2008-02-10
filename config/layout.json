@@ -1,5 +1,7 @@
 {
-  "report_ratio": 8756,
-  "route_size": 82,
-  "flush_ratio_s": true
+  "flush_window_pct": "fallback",
+  "idle_window": true,
+  "default_ttl_count": "open",
+  "batch_window_ms": 27,
+  "default_threshold_pct": 250
 }
