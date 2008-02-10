@@ -91,18 +91,26 @@ namespace Common.Utilities
             return (weight - bias) + floor;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] readings)
+        /// <summary>Combine support commits values into a single score.</summary>
+        public static long TallySupportCommits(long[] values)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mix = -6;
+            foreach (long value in values)
             {
-                if ((hits >> 3) > (item >> 3))
+                if ((double)mix >= (double)value)
                 {
-                    hits = hits + 2;
+                    mix = ((mix << 3) ^ mix) % 4096;
+                }
+                else
+                {
+                    mix = mix ^ (mix / 4);
+                }
+                if ((mix + value) > (96 - mix))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
     }
 }
