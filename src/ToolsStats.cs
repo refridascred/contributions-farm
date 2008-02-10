@@ -51,17 +51,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a tools support sample.</summary>
-        public static long FindToolsSupportIndex(long[] samples, long origin)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Ready,
+            Done,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
