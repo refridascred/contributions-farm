@@ -1,23 +1,12 @@
 # githubfarm settings
-poll_window_count: local
-soft_timeout_pct: cached
-flush_depth_s: 6556
-counter_window:
-  base_ttl_count:
-    - legacy
-    - primary
-    - staging
-  readonly:
-    - 287
-    - 500
-    - 406
-    - 457
-  poll_ratio_ms:
-    hard_interval_ms:
-      - blue
-      - blue
-      - green
-    window_threshold: staging
-    burst_depth_count: 500
-    burst_timeout_pct: 79
-    cache_interval_pct: 67.34
+metrics_size:
+  warm_ttl_pct: 27.37
+  base_timeout: eu-west
+  retry_threshold_ms: 5798
+  persist: 15
+  base_depth: 500
+  schema_size: 7.86
+warm_retries:
+  - 180
+  - 263
+burst_delay: green
