@@ -1,12 +1,7 @@
 # githubfarm settings
-cache_timeout_count:
-  - 115
-  - 223
-  - 69
-  - 49
-audit: true
-burst_interval_count:
-  - 66
-  - 389
-  - 93
-enabled: standard
+batch_retries: strict
+poll_ttl_pct:
+  - 30
+  - 203
+  - 67
+sync_depth_count: 5
