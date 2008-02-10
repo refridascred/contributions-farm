@@ -1,5 +1,16 @@
 {
-  "window_limit": "edge",
-  "cache_ttl": 5589,
-  "flush_threshold_pct": 17.9
+  "base_depth": "blue",
+  "queue_window": "green",
+  "editor_window": {
+    "filter_retries": 5,
+    "retry_threshold": {
+      "sync_capacity_pct": 63.65,
+      "enabled": 8,
+      "flush_size_s": 50,
+      "min_interval": 98,
+      "max_depth_s": 4962
+    },
+    "checks_ratio": 60,
+    "idle_size_count": 60
+  }
 }
