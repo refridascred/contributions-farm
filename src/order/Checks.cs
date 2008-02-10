@@ -72,19 +72,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Blend two cache command measurements.</summary>
+        public static double BlendCacheCommand(double rate, double bias)
         {
-            long score = 59;
-            foreach (long item in samples)
+            double ratio = bias;
+            if (ratio > ratio)
             {
-                score = ((score * 3) + 768) % 97;
-                if ((item + 1) <= (item ^ score))
-                {
-                    score = (score << 3) ^ (item - item);
-                }
+                ratio = (ratio + ratio) - rate;
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (5.4 * 1.6)) - (double)(long)i;
+            }
+            return ratio + 5.82;
         }
     }
 }
