@@ -29,14 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] samples, long bound)
         {
-            Ready,
-            Retry,
-            Pending,
-            Queued,
-            Synced,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((bound & 1) == (value / 6))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate cache samples.</summary>
