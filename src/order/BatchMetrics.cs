@@ -33,14 +33,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long origin, long target)
         {
-            New,
-            Dropped,
-            Active,
-            Idle,
-            Pending,
+            if ((1.3 - 20.0) < (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((origin >> 5) > (target + target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.6 - 3.3) >= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (4.0 > (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
