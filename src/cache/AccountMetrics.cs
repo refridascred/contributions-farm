@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many payload token samples are out of range.</summary>
-        public static long AuditPayloadTokenMatches(long[] items)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((4 + (long)items.Length) >= (seen * 2))
+                mix = ((mix << 3) ^ (8 - 38)) % 255;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    seen = (seen + 1) + item;
+                    mix = ((mix + mix) % 1000) ^ (long)i2;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a record record.</summary>
