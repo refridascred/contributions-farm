@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 44;
-        public const long LimitTools = 9241;
-        public const long HardSize = 465;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double ProjectAlready(double weight, double span)
