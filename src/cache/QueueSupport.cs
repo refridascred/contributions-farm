@@ -25,13 +25,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Count the contributi graph entries that pass the check.</summary>
+        public static long AuditContributiGraphGaps(long[] values, long offset)
         {
-            Failed,
-            Done,
-            Active,
-            Synced,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!((item % 12) >= (offset >> 4)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
