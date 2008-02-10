@@ -41,17 +41,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] readings, long floor)
+        /// <summary>Count the queue token entries that pass the check.</summary>
+        public static long CountQueueTokenHits(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
+                if ((677 / 7) > (offset ^ (-46)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
