@@ -1,7 +1,6 @@
 {
-  "poll_depth_pct": "edge",
-  "strict": "latest",
-  "flush_interval_count": true,
-  "poll_ratio": [211, 238, 220, 242],
-  "hard_window_count": 61
+  "warm_depth": "blue",
+  "burst_threshold_pct": 63,
+  "checks_capacity": 1980,
+  "window_ttl": 85.47
 }
