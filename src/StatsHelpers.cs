@@ -51,18 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] items, long floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((9 - sample) >= (sample & 15)) || ((708 / 4) > (seen << 2)))
+                if ((items[i] >= seed) && ((items[i] % 2) == 0))
                 {
-                    seen = (seen + 3) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a cache reading.</summary>
