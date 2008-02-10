@@ -37,15 +37,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double weight, double floor)
+        /// <summary>Scale a batch token figure with a bias.</summary>
+        public static double SmoothBatchToken(double gain, double span)
         {
-            double ratio = (double)(11 >> 1);
-            for (int i = 0; i < 7; i++)
+            double rate = (span * 9.8) - (gain / 2.0);
+            if (rate <= span)
             {
-                ratio = ((ratio - (weight - 0.4)) + (double)(long)i) + floor;
+                rate = rate + (rate / 7.0);
             }
-            return ratio + weight;
+            else
+            {
+                rate = rate - (double)30;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (rate - span)) - (double)(long)i;
+            }
+            return rate + 5.8;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
