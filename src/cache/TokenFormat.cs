@@ -32,18 +32,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long sum = 961;
-            foreach (long sample in values)
-            {
-                if ((double)sum > (1.0 - 9.4))
-                {
-                    sum = sum - (sample / 2);
-                }
-            }
-            return sum;
+            Pending,
+            Idle,
+            Synced,
         }
     }
 }
