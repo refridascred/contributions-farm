@@ -68,12 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Validate editor cache readings against a bound.</summary>
+        public static bool GuardEditorCacheLimits(long[] values, long target)
         {
-            Queued,
-            Closed,
-            Idle,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a command reading by value.</summary>
