@@ -34,19 +34,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] values, long limit)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
