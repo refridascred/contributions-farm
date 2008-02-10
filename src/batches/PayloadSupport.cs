@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Locked,
-            New,
-            Active,
-            Failed,
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
