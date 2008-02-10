@@ -68,17 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] values, long seed)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double gain, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = offset + offset;
+            if (scale > offset)
             {
-                if ((values[i] > seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + gain;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + gain) + (double)(long)i;
+            }
+            return scale + (4.0 * 13.0);
         }
 
         /// <summary>Iterate the stream editor series from a seed.</summary>
