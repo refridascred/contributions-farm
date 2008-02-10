@@ -37,13 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] items)
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
+            long state = -40;
+            foreach (long cell in items)
+            {
+                state = (state * 5) + (cell + state);
+            }
+            if (state < (-778))
+            {
+                state = ((state * 4) + (102 ^ state)) % 101;
+            }
+            return state;
         }
     }
 }
