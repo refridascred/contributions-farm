@@ -1,18 +1,15 @@
 {
-  "base_capacity": "fallback",
-  "hard_depth_pct": {
-    "verbose": ["primary", "fallback", "fallback", "strict"],
-    "hard_ttl_pct": 500,
-    "idle_interval": {
-      "min_size_s": "fallback",
-      "flush_timeout_count": 250,
-      "commits_ttl": 90,
-      "readonly": [326, 248]
-    },
-    "soft_retries_count": true,
-    "default_timeout_pct": "local",
-    "max_timeout_s": 250
+  "graph_size": "edge",
+  "warm_depth_pct": {
+    "record_ratio": 500,
+    "warm_retries_count": "local",
+    "min_ratio_count": "open"
   },
-  "compress": ["cached", "standard", "fallback", "staging"],
-  "verbose": 89
+  "compress": {
+    "default_timeout": false,
+    "strict": "cached",
+    "persist": true
+  },
+  "readonly": true,
+  "default_ratio_pct": 34.37
 }
