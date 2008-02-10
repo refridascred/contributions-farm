@@ -40,39 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor githubfarm pair into a bucket.</summary>
-        public static long BucketEditorGithubfarm(long seed, long floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long offset)
         {
-            long diff = seed ^ floor;
-            if (((1 & 31) > (floor % 60)) || ((9 >> 5) == (floor & 1)))
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
+                score = score - (score - (long)i);
+                score = ((score * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((15.0 / 9.0) > (double)diff)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + 4) >= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor < 4.1)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define order limits and defaults.</summary>
