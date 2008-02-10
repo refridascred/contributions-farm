@@ -22,15 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double rate, double offset)
+        /// <summary>Count batch notes pairs that satisfy a relation.</summary>
+        public static long OverlapBatchNotesCount(long[] values)
         {
-            double load = (double)(76 - (-4));
-            if (load <= rate)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + (17.0 - load);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + offset;
+            return seen;
         }
 
         /// <summary>Rank support input into a small class.</summary>
