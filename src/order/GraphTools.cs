@@ -67,19 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] readings, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long state = 137;
+            foreach (long sample in values)
             {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 2) + floor) ^ sample;
             }
-            return flag;
+            if (state > 5)
+            {
+                state = (state ^ (30 & 7)) % 101;
+            }
+            return state % 1000;
         }
     }
 }
