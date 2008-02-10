@@ -79,9 +79,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 5748;
-        public const string IdleBatch = "cached-edge";
-        public const long BurstTimeout = 192;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((reading << 2) < (tally + tally))
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
+        }
     }
 }
