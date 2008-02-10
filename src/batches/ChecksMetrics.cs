@@ -44,18 +44,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] samples)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)matches <= (double)cell)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Queued,
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
