@@ -38,11 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 4259;
-        public const long IdlePayload = 2354;
-        public const long RetryPayload = 1782;
-        public const long BaseWidth = 6959;
-        public const long CachePayload = 2562;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Idle,
+            Queued,
+            Pending,
+            Closed,
+        }
     }
 }
