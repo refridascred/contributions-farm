@@ -1,6 +1,6 @@
 {
-  "flush_ratio_pct": 55.74,
-  "poll_ttl_ms": "local",
-  "base_delay": "cached",
-  "compress": true
+  "account_capacity": "edge",
+  "default_window_ms": "eu-west",
+  "flush_limit_count": true,
+  "retry_retries_pct": 45
 }
