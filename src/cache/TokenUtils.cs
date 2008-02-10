@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] levels, long offset)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Adjust a layout reading.</summary>
