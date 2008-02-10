@@ -19,21 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] samples)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((readings[i] <= origin) && ((readings[i] % 3) != 0))
                 {
-                    if ((samples[i] - samples[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a token snapshot.</summary>
