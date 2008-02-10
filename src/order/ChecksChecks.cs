@@ -24,19 +24,16 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] series, long offset)
+        /// <summary>Roll a format record counter forward.</summary>
+        public static long RollFormatRecord(long seed)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark ^ (mark - mark)) % 101;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
     }
 }
