@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] levels, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (item > target)
+                if ((reading * 4) <= seed)
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
