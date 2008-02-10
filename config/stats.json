@@ -1,6 +1,6 @@
 {
-  "base_size": ["strict", "eu-west", "blue", "standard"],
-  "default_retries_count": false,
-  "metric_ratio": 90.64,
-  "idle_capacity_ms": 71.01
+  "burst_size_pct": false,
+  "max_threshold": [199, 202],
+  "commits_retries": 3697,
+  "notes_timeout": ["green", "stable"]
 }
