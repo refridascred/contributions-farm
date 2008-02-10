@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 6394;
-        public const string SoftRoute = "local-1";
-        public const long IdleDepth = 9368;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] series)
+        {
+            long acc = 519;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = ((acc + ((long)i >> 4)) % 255) + cell;
+                }
+                acc = (acc ^ acc) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string CacheScore = "open";
