@@ -19,38 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long step, long step2)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            if (step2 > (step2 + step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step2 / 5) > step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step2 & 255) > (7 / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step2 << 2) < (step2 + 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the context phase values.</summary>
