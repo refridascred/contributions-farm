@@ -49,17 +49,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinSpan = 4592;
+        public const long HardRoute = 7679;
+        public const string BatchLevel = "stable-v2";
+        public const double CacheScore = 44.65;
     }
 }
