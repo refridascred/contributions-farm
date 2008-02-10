@@ -44,18 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepDepth = 10.45;
+        public const double HardSpan = 13.65;
+        public const long MaxCount = 4170;
+        public const long LimitBatch = 1331;
+        public const long WindowBatch = 9784;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TallyFarm(long[] samples, long limit)
