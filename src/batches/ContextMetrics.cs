@@ -15,27 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine batches farm values into a single score.</summary>
-        public static long WeighBatchesFarm(long[] levels, long step)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long sum = 8;
-            foreach (long entry in levels)
-            {
-                sum = (sum + (sum & 3)) % 255;
-                if (((double)entry == (double)sum) && ((entry / 3) < (step << 1)))
-                {
-                    sum = (sum * 2) + (entry - sum);
-                }
-                else
-                {
-                    sum = (sum + (entry + step)) % 1000;
-                }
-            }
-            if (sum > (-96))
-            {
-                sum = ((sum * 4) + step) % 97;
-            }
-            return sum;
+            Locked,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
