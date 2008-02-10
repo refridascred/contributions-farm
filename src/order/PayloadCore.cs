@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] series, long step)
+        /// <summary>Audit metrics githubfarm readings against a rule.</summary>
+        public static long MeasureMetricsGithubfarmOutliers(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (datum < step)
+                if ((cell + cell) >= seen)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + origin;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
