@@ -22,23 +22,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] series, long bound)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long mix = 66;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    mix = (mix + (bound - datum)) + (long)i;
-                }
-                mix = mix - (datum + datum);
-            }
-            if (mix < 74)
-            {
-                mix = ((mix << 3) ^ (mix * 3)) % 4096;
-            }
-            return mix;
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
