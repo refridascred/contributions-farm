@@ -1,7 +1,14 @@
 {
-  "soft_delay_count": 4556,
-  "strict": "latest",
-  "burst_delay_count": "stable",
-  "metrics_delay": 70.19,
-  "flush_window_s": "green"
+  "idle_delay_count": "green",
+  "default_ratio_count": 56.33,
+  "sync_delay_count": {
+    "verbose": {
+      "buffer_threshold": 33.71,
+      "counter_capacity": 63.43,
+      "enabled": true
+    },
+    "base_limit": 20.98,
+    "report_threshold": ["blue", "local", "green", "primary"]
+  },
+  "compress": "edge"
 }
