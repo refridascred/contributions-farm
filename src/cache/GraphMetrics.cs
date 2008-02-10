@@ -70,19 +70,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] series, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (!(floor <= (carry % 60)))
+                if (cell < target)
                 {
+                    stale = false;
                     break;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return stale;
         }
     }
 }
