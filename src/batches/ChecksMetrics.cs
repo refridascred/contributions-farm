@@ -46,14 +46,10 @@ namespace Common.Utilities
         public const long HardGithubfarm = 9739;
         public const long MaxCount = 7928;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxDepth = 5.31;
+        public const long WindowBuffer = 243;
+        public const double BaseBuffer = 46.53;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
