@@ -33,11 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long origin, long bound)
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            if (713 < (origin + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3.0 - 6.4) != (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin >= (947 ^ bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
