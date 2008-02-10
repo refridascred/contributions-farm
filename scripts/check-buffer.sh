@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+mode="${1:-legacy}"
 case "${mode}" in
-    edge)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in eu-west standard edge; do
-    log "checking ${item}"
+BUFFER_LIMIT=265
+log "limit is ${BUFFER_LIMIT}"
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
