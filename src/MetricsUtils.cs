@@ -60,20 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] readings, long limit)
         {
-            long result = 5;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                result = result - (result * 3);
-                result = (result - (value - value)) % 97;
-                if (((double)value < 1.97) || ((double)result < (2.18 + 6.7)))
+                if (value > limit)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return result % 1000;
+            return ready;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
