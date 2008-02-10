@@ -26,24 +26,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long origin, long offset)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            if ((91 >> 3) <= (origin & 7))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin ^ 81) == (offset * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the token class values.</summary>
