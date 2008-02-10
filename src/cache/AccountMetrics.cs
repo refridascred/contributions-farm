@@ -22,17 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] readings, long limit)
+        /// <summary>Combine command buffer values into a single score.</summary>
+        public static long FoldCommandBuffer(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 215;
+            foreach (long sample in readings)
             {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
+                state = (state ^ (target % 5)) + sample;
             }
-            return -1;
+            if (state < (-5))
+            {
+                state = ((state * 2) + state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
