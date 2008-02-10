@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi format entries that pass the check.</summary>
-        public static long MeasureContributiFormatMatches(long[] data)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] items)
         {
             long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum << 3) != (1 % 16))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
