@@ -13,21 +13,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seed % 2) < seed)
                 {
-                    if ((series[i] ^ series[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
