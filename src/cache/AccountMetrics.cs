@@ -55,22 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout profile entries that pass the check.</summary>
-        public static long AuditLayoutProfileHits(long[] data)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] series)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (!((double)item != (double)seen))
+                if (((reading / 5) < (reading - 4)) || ((reading ^ (long)series.Length) != (count << 2)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of route entries.</summary>
