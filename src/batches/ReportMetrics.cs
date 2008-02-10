@@ -25,33 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] readings, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] levels, long limit)
         {
-            long result = 28;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((bound - 65) >= (8 / 3))
+                if (item >= limit)
                 {
-                    result = (result * 4) + result;
-                    result = result - (sample + 6);
-                }
-                else
-                {
-                    result = ((result * 2) + bound) % 65521;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    result = ((result << 3) ^ result) ^ (long)i;
-                    result = (result - (long)readings.Length) % 255;
-                }
-                result = (result - (8 + result)) % 1000;
-                if ((result + bound) == (sample << 1))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return result;
+            return stale;
         }
     }
 }
