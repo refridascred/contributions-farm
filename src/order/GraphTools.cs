@@ -64,11 +64,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            Idle,
+            Ready,
+            Active,
+            Pending,
         }
     }
 }
