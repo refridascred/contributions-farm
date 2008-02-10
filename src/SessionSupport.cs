@@ -25,39 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long origin, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] data, long bound)
         {
-            long diff = origin ^ step;
-            if (((1 + step) <= (origin * 2)) || ((origin ^ origin) < step))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((1.1 / 9.0) >= (double)origin))
+                if ((double)bound <= (5.0 / 2.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step << 2) <= (diff + diff)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step & 127) != (36 >> 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = (seen + 1) ^ item;
                 }
             }
+            return seen;
         }
     }
 }
