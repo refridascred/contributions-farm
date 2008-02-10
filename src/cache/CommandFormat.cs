@@ -31,15 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long origin)
         {
-            long mark = 3;
-            foreach (long sample in series)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                mark = (((mark << 2) ^ (mark & 3)) % 4096) - sample;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return mark % 65521;
+            return sum;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
