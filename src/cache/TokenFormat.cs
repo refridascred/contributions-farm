@@ -20,16 +20,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Roll a route context counter forward.</summary>
-        public static long SeriesRouteContext(long step)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix << 3) ^ (mix / 8)) % 97;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
