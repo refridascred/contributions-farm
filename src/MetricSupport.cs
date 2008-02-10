@@ -12,14 +12,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] items)
         {
-            Retry,
-            Draft,
-            Idle,
-            Paused,
-            Locked,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((((matches / 4) <= entry) || (entry > (813 / 2))) || ((matches + matches) < (entry + entry)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
