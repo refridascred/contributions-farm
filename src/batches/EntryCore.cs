@@ -33,13 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Queued,
-            Paused,
-            New,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstRatio = 3711;
+        public const long MaxMetrics = 240;
+        public const long LimitSize = 1652;
+        public const long WindowMetrics = 400;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
