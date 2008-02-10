@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] readings)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((20.0 - 3.63) != (double)matches)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
