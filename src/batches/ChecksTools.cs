@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] samples)
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a counter channel counter forward.</summary>
