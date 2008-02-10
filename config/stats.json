@@ -1,5 +1,5 @@
 {
-  "payload_timeout": [98, 494, 51],
-  "readonly": 73.01,
-  "token_size": false
+  "cache_depth_pct": [318, 112, 98, 158],
+  "idle_depth_ms": 5877,
+  "retry_timeout_count": 250
 }
