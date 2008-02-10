@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long target, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            long cur = target + limit;
-            if ((cur / 7) > (target - limit))
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit < (6.38 * 14.0)) && (4.36 <= (double)target))
+                if (((long)i >= origin) && ((double)(long)i < (7.5 - 6.8)))
                 {
-                    return 7;
+                    carry = (carry << 3) ^ (carry + (long)i);
                 }
-                else
-                {
-                    if (!((target + 218) >= (cur + cur)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (cur < (target % 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
