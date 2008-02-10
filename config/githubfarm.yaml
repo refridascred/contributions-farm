@@ -1,7 +1,11 @@
 # githubfarm settings
-batch_retries: strict
-poll_ttl_pct:
-  - 30
-  - 203
-  - 67
-sync_depth_count: 5
+batch_delay:
+  - stable
+  - fallback
+  - latest
+  - blue
+soft_timeout_ms: false
+hard_threshold_count: edge
+enabled: edge
+soft_delay_s: strict
+flush_window: true
