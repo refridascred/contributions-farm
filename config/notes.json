@@ -1,5 +1,10 @@
 {
-  "burst_window_pct": true,
-  "idle_interval": "fallback",
-  "soft_limit_pct": "blue"
+  "already_delay": 32.47,
+  "dry_run": ["staging", "eu-west", "standard", "strict"],
+  "audit": "primary",
+  "flush_depth_s": {
+    "notes_timeout": 66.08,
+    "compress": false,
+    "max_depth_s": "strict"
+  }
 }
