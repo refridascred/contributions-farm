@@ -50,18 +50,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] readings, long bound)
+        /// <summary>Audit route payload readings against a rule.</summary>
+        public static long MeasureRoutePayloadOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((item - 9) >= (947 + bound))
+                if (item > (matches - matches))
                 {
-                    hits = hits + 2;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
