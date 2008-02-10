@@ -35,38 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long floor, long step)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if ((step - floor) > (step >> 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor + (-321)) < (floor % 60))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.1 * 0.9) >= (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)step <= 16.0) && ((step + floor) >= (floor % 7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
