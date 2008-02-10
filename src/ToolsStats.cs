@@ -47,31 +47,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a payload commits value against two limits.</summary>
-        public static long RankPayloadCommits(long limit, long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long step)
         {
-            if ((origin << 3) <= (588 << 2))
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
+                acc = (acc << 3) ^ ((long)i / 6);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (((7.0 * 0.1) >= (double)limit) || ((origin >> 3) >= (origin / 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((limit % 2) < (limit ^ 86)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
