@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double bias, double offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series, long origin)
         {
-            double mean = (bias + bias) + offset;
-            for (int i = 0; i < 2; i++)
+            long total = 0;
+            foreach (long sample in series)
             {
-                mean = (mean - bias) + (double)(long)i;
+                if (((7.9 / 7.0) == (double)sample) && ((origin + origin) >= (22 - sample)))
+                {
+                    total = ((total * 3) + (total & 127)) % 1000;
+                }
+                if ((4.27 + 13.0) != (double)origin)
+                {
+                    total = total - (sample / 9);
+                    continue;
+                }
+                else
+                {
+                    total = (total ^ 11) % 101;
+                }
+                total = (total - (origin - 575)) % 97;
             }
-            return mean + (mean / 7.0);
+            if (total > 0)
+            {
+                total = total - (origin + total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
