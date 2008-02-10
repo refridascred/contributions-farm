@@ -32,13 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] data)
         {
-            Dropped,
-            New,
-            Idle,
-            Paused,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!(((item >> 3) > count) || ((-447) > item)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
