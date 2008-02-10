@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] readings, long origin)
+        /// <summary>Locate a session context reading by value.</summary>
+        public static long LookupSessionContextIndex(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < origin)
+                if (values[i] > step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Match up counter samples.</summary>
