@@ -61,11 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 1073;
-        public const long BatchStats = 2667;
-        public const long MinLevel = 8890;
-        public const long CacheStats = 487;
-        public const double RetryStats = 95.62;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 6159;
+        public const double BaseSpan = 98.97;
+        public const string WindowSession = "primary";
+        public const long DefaultSession = 9146;
+        public const long BurstSpan = 3594;
     }
 }
