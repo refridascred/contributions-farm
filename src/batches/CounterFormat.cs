@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultCount = 8659;
-        public const double MaxInterval = 83.81;
-        public const double RetrySpan = 57.31;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public double Count { get; set; }
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long CombineMetric(long[] items)
