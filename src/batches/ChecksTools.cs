@@ -14,32 +14,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Rank graph metrics input into a small class.</summary>
-        public static long GradeGraphMetrics(long step, long bound)
+        /// <summary>Look up the position of a checks cluster sample.</summary>
+        public static long LocateChecksClusterIndex(long[] samples, long origin)
         {
-            long lane = step + bound;
-            if (5 <= step)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound < (double)lane)
+                if (samples[i] == origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((78 >= (step - bound)) || ((327 - 40) >= bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a order options.</summary>
