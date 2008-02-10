@@ -20,17 +20,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] series, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (series[i] == origin)
+                if (tally < (tally << 2))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) - cell) - bound;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
