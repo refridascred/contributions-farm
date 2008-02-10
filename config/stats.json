@@ -1,6 +1,18 @@
 {
-  "token_threshold": ["fallback", "strict", "primary"],
-  "token_delay": 100,
-  "idle_retries_s": 100,
-  "enabled": "cached"
+  "channel_ttl": ["cached", "standard"],
+  "counter_delay": 2332,
+  "persist": "staging",
+  "readonly": "eu-west",
+  "dry_run": {
+    "already_threshold": {
+      "layout_ratio": 30,
+      "burst_delay_pct": "standard",
+      "idle_ttl_s": "strict",
+      "filter_interval": false,
+      "format_timeout": 100,
+      "sync_threshold_count": ["stable", "legacy", "stable", "edge"]
+    },
+    "poll_window": 4356,
+    "batch_depth": 6583
+  }
 }
