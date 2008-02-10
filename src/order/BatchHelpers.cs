@@ -34,12 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] values, long limit)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
