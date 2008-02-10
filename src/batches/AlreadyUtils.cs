@@ -25,22 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] samples)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long total = 89;
+            foreach (long sample in readings)
             {
-                if ((4.28 * 20.0) >= (double)entry)
+                if (((double)total <= (0.44 * 10.0)) && ((9 - limit) <= (total << 2)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = ((total << 2) ^ (total >> 5)) ^ sample;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Validate support batches readings against a bound.</summary>
