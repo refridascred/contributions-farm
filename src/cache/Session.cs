@@ -25,17 +25,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long floor, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((step - floor) > (step >> 3))
             {
-                if (readings[i] > floor)
+                return 7;
+            }
+            else
+            {
+                if ((floor + (-321)) < (floor % 60))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((7.1 * 0.9) >= (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)step <= 16.0) && ((step + floor) >= (floor % 7)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every buffer batch entry stays within the limit.</summary>
