@@ -77,32 +77,15 @@ namespace Common.Utilities
             return drift + (gain / 2.0);
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long floor, long floor2)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] levels)
         {
-            long edge = floor - floor2;
-            if ((floor - 26) > (floor2 >> 3))
+            long result = 97;
+            foreach (long entry in levels)
             {
-                return 3;
+                result = ((result ^ 7) % 97) ^ entry;
             }
-            else
-            {
-                if (((floor + 70) < (edge + edge)) && ((edge / 8) > (floor ^ edge)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor2 * 2) == (floor2 >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
