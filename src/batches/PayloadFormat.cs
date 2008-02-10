@@ -13,10 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryDepth = 59;
-        public const string BatchScore = "strict-1";
-        public const string LimitReport = "open-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxWidth = 7422;
+        public const long LimitSpan = 568;
+        public const long StepScore = 3721;
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
