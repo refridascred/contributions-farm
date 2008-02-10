@@ -45,15 +45,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((3.3 / 6.0) >= (double)value)
+                {
+                    tally = tally + 3;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a checks summary.</summary>
