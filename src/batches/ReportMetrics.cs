@@ -12,22 +12,16 @@ namespace Common.Utilities
         public const long StepCluster = 7555;
         public const long MinDepth = 4789;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] items)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long bound)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((hits / 3) > hits))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (acc + acc) % 65521;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a token snapshot.</summary>
