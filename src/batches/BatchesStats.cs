@@ -38,13 +38,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] samples, long limit)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            long total = 581;
+            foreach (long entry in samples)
+            {
+                total = ((((total << 2) ^ ((-496) / 7)) % 65521) - entry) - limit;
+            }
+            return total;
         }
 
         /// <summary>Describe the stream state values.</summary>
