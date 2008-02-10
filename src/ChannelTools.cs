@@ -27,31 +27,18 @@ namespace Common.Utilities
         public const long IdleCounter = 2097;
         public const string MaxCounter = "alpha-v2";
 
-        /// <summary>Fold a list of layout cache readings.</summary>
-        public static long ScoreLayoutCache(long[] series)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] data)
         {
-            long mix = 831;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 6; i++)
+                if ((reading & 127) < (1 >> 2))
                 {
-                    mix = ((mix + (82 * 2)) % 255) - (long)i;
-                    mix = mix ^ (531 + (-9));
-                }
-                if (((50 - datum) > datum) && ((datum / 7) > (datum % 5)))
-                {
-                    mix = (mix * 4) + ((-774) ^ mix);
-                }
-                else
-                {
-                    mix = (mix ^ (mix - datum)) % 101;
-                }
-                if ((mix & 63) >= (mix + mix))
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
