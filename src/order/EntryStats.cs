@@ -16,12 +16,39 @@ namespace Common.Utilities
             return weight - 17.0;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinFactor = "cached-1";
-        public const long IdleSize = 598;
-        public const long StepFilter = 7352;
-        public const long BurstDepth = 9496;
-        public const long WindowFilter = 7981;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long seed, long limit)
+        {
+            if ((12.0 / 8.0) == (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit - limit) != (seed / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((limit + limit) <= (seed % 8)) && ((limit / 2) < limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)seed < (8.59 * 14.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long WeighOrder(long[] items, long step)
