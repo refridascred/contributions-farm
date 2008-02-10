@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long floor, long floor2)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double scale, double span)
         {
-            long bound = floor + floor2;
-            if (753 < bound)
+            double mean = 4.6;
+            for (int i = 0; i < 3; i++)
             {
-                return 0;
+                mean = ((mean + (span * 8.8)) - (double)(long)i) - scale;
             }
-            else
-            {
-                if (((bound % 12) <= 4) && (326 >= floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor % 97) > (floor2 << 1)) && (floor > floor2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((3.9 * 15.0) == (double)floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mean + (span * 10.0);
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
