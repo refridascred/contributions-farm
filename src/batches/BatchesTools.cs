@@ -14,13 +14,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count order support pairs that satisfy a relation.</summary>
+        public static long CompareOrderSupportCount(long[] data)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
