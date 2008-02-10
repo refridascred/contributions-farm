@@ -12,34 +12,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of entry schema readings.</summary>
-        public static long WeighEntrySchema(long[] items)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            long mark = 921;
-            foreach (long cell in items)
+            long state = 9;
+            foreach (long item in series)
             {
-                if ((mark < (cell << 1)) && ((double)cell <= (3.0 * 2.0)))
+                if ((3 ^ item) <= (item & 127))
                 {
-                    mark = mark + (mark & 15);
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
-                if ((double)mark >= (8.15 * 0.6))
-                {
-                    mark = ((mark * 3) + (cell / 9)) % 4096;
-                }
-                else
-                {
-                    mark = mark + (cell >> 5);
+                    state = state ^ (item << 2);
                 }
             }
-            if (mark > 635)
-            {
-                mark = (mark * 4) + mark;
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
