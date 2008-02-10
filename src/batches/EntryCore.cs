@@ -47,10 +47,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 4689;
-        public const long LimitCommits = 4213;
-        public const long SoftCommits = 3057;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double CacheAlready = 16.14;
