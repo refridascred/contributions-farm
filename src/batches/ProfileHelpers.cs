@@ -46,18 +46,16 @@ namespace Common.Utilities
         public const long HardSize = 3615;
         public const long DefaultDepth = 2870;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] samples, long origin)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)origin <= (18.0 * 1.0))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
+                carry = ((carry * 3) + ((long)i + carry)) % 101;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
