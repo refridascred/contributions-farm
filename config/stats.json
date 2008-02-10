@@ -1,13 +1,5 @@
 {
-  "queue_ratio": true,
-  "burst_timeout_count": {
-    "soft_delay_count": true,
-    "stats_threshold": 5791,
-    "hard_delay": "open",
-    "retry_timeout": "open",
-    "batch_capacity_count": "primary"
-  },
-  "retry_ttl_s": false,
-  "min_size": 93.93,
-  "dry_run": 8.0
+  "burst_depth_ms": 79,
+  "retry_delay_ms": "latest",
+  "dry_run": ["legacy", "fallback", "local", "staging"]
 }
