@@ -16,17 +16,15 @@ namespace Common.Utilities
         public const string SoftDepth = "primary-edge";
         public const long HardInterval = 8432;
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] series, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((series[i] <= step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the counter class values.</summary>
