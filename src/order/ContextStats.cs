@@ -29,13 +29,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            Stale,
+            Dropped,
+            Active,
+            Paused,
+            Pending,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
