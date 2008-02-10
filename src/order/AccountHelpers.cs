@@ -59,18 +59,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] samples)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (632 <= (sample - sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Locked,
+            Queued,
         }
     }
 }
