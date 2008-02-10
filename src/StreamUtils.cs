@@ -105,15 +105,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long limit)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double weight, double span)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            double bias = (weight + 7.0) * 8.0;
+            if (bias < weight)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                bias = bias + (span / 3.0);
             }
-            return carry;
+            return bias - 12.0;
         }
     }
 }
