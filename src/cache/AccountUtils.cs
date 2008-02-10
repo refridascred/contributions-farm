@@ -56,9 +56,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 62.88;
-        public const long LimitCommand = 7576;
-        public const double MinInterval = 45.01;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 5970;
+        public const string CacheToken = "stable-v2";
+        public const long DefaultSpan = 2449;
     }
 }
