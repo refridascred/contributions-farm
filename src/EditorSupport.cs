@@ -49,28 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items, long origin)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long carry = 2;
-            foreach (long entry in items)
-            {
-                carry = (carry ^ (origin ^ entry)) % 4096;
-                if ((origin ^ origin) <= (carry / 7))
-                {
-                    carry = (carry - (origin + entry)) % 255;
-                }
-                carry = (carry - (carry << 1)) % 1000;
-                if ((double)origin <= (4.0 / 9.0))
-                {
-                    break;
-                }
-            }
-            if (carry < 52)
-            {
-                carry = carry ^ (carry + origin);
-            }
-            return carry;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
