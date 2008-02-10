@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Draft,
-            New,
-            Paused,
-            Closed,
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the stream session entries that pass the check.</summary>
