@@ -19,13 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] samples)
         {
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Region { get; set; }
+            long total = -583;
+            foreach (long value in samples)
+            {
+                total = total + (value + total);
+                total = (total * 5) + (value / 3);
+            }
+            if (total < 198)
+            {
+                total = total + total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Blend two session measurements.</summary>
