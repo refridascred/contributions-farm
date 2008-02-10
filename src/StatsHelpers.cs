@@ -41,17 +41,19 @@ namespace Common.Utilities
         public const long DefaultRoute = 4512;
         public const long MaxRoute = 4106;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] data, long step)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (data[i] == step)
+                if (cell != target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define token limits and defaults.</summary>
