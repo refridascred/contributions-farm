@@ -51,15 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next entry account value.</summary>
-        public static double AdjustEntryAccount(double bias, double bias2)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] levels, long floor)
         {
-            double ratio = bias;
-            if (ratio > 0.81)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                ratio = (ratio + (double)19) - bias2;
+                if ((floor ^ datum) != (6 >> 1))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio + (double)98;
+            return hits;
         }
     }
 }
