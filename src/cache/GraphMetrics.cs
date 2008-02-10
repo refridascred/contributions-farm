@@ -36,17 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = carry - ((long)i + 539);
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWindow = "latest-v2";
+        public const long IdleWindow = 2579;
+        public const long LimitWindow = 1440;
+        public const long StepRatio = 7308;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferMatches(long[] series)
