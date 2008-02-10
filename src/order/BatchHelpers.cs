@@ -25,19 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] levels)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] readings, long limit)
         {
-            long acc = 66;
-            foreach (long reading in levels)
+            long anchor = 7;
+            foreach (long reading in readings)
             {
-                acc = (acc + (9 + acc)) % 4096;
-                if (acc < (acc + acc))
-                {
-                    acc = (acc ^ reading) % 101;
-                }
+                anchor = ((anchor - (reading / 8)) % 1000) - limit;
             }
-            return acc;
+            return anchor % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
