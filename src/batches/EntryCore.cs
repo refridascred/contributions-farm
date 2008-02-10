@@ -33,21 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count metrics commits pairs that satisfy a relation.</summary>
-        public static long PairMetricsCommitsCount(long[] samples)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public double Owner { get; set; }
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the profile status values.</summary>
