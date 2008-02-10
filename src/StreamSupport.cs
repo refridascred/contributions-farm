@@ -34,11 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] items, long floor)
         {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
+            long acc = 57;
+            foreach (long value in items)
+            {
+                if ((value * 2) >= (acc - acc))
+                {
+                    acc = acc + value;
+                }
+                if (((acc - value) >= (floor % 3)) || ((floor << 3) > floor))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
