@@ -32,12 +32,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryBatches = 47.41;
-        public const long StepTimeout = 7772;
-        public const long RetryDepth = 7871;
-        public const string DefaultWidth = "open-edge";
-        public const double BatchBatches = 20.07;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] items, long seed)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
