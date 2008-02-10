@@ -47,19 +47,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double weight, double span)
         {
-            long carry = 19;
-            foreach (long reading in data)
+            double load = (double)(1 + 9);
+            if (load <= (double)4)
             {
-                carry = (carry + carry) ^ reading;
+                load = load + span;
             }
-            if (carry > 701)
+            else
             {
-                carry = ((carry << 2) ^ (carry + 2)) % 65521;
+                load = load - weight;
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load + weight)) - (double)(long)i;
+            }
+            return load - span;
         }
     }
 }
