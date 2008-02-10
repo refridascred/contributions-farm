@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double rate, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] values)
         {
-            double gain = rate;
-            return (gain - (double)(-519)) + floor;
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((double)tally >= 1.1)
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
