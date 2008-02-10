@@ -26,23 +26,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] values, long target)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long anchor = 411;
-            foreach (long reading in values)
-            {
-                if (!(reading >= target))
-                {
-                    anchor = ((anchor << 3) ^ (target - target)) % 255;
-                }
-                anchor = anchor - (target + reading);
-            }
-            if (anchor < 0)
-            {
-                anchor = ((anchor << 3) ^ (target ^ 896)) % 65521;
-            }
-            return anchor;
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
