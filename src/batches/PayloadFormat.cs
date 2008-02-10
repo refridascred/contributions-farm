@@ -26,12 +26,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
-            public double Owner { get; set; }
+            Draft,
+            Paused,
+            Closed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the token class values.</summary>
