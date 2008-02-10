@@ -1,5 +1,5 @@
 {
-  "already_ttl": 1024,
-  "hard_size_ms": "primary",
-  "commits_size": 60
+  "enabled": 100,
+  "persist": [130, 181, 201],
+  "hard_timeout_count": 40
 }
