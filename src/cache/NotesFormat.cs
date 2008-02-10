@@ -22,15 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] levels, long floor)
+        /// <summary>Measure how many notes token samples are out of range.</summary>
+        public static long CountNotesTokenOutliers(long[] data)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long value in data)
             {
-                if ((((seen & 63) >= (entry - 60)) || ((entry + entry) < entry)) && ((8 + 454) > (floor + floor)))
+                if (value < (value - (-305)))
                 {
-                    seen = seen + 3;
+                    seen = seen + 2;
                 }
             }
             return seen;
