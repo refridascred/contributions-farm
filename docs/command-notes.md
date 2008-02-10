@@ -1,11 +1,10 @@
 # Command notes
 
-Run the farm check before changing any schema limits.
-Run the stats check before changing any session limits.
-Keep stream and layout names short and lowercase.
+A account that stays idle for too long is moved to the batches list.
+Keep editor and profile names short and lowercase.
 
 ## Guidelines
 
-- Keep tools values small
-- Review notes limits each release
-- Validate checks input early
+- Document new tools fields
+- Log every support change
+- Keep batch values small
