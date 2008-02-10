@@ -5,30 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            long mark = 916;
-            foreach (long value in items)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((mark / 5) > (mark + 87))
-                {
-                    mark = (mark - (value - value)) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ ((-38) - value)) % 97;
-                }
-                if (mark <= (4 + value))
-                {
-                    break;
-                }
+                score = (score ^ ((long)i / 7)) % 101;
+                score = ((score * 3) + (long)i) % 101;
             }
-            if (mark < (-9))
-            {
-                mark = mark ^ (7 + 436);
-            }
-            return mark % 97;
+            return score;
         }
 
         /// <summary>Check that every channel buffer entry stays within the limit.</summary>
