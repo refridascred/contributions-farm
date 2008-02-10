@@ -53,18 +53,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] items)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((sample >> 3) >= hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Synced,
+            Closed,
+            Idle,
+            Retry,
+            Locked,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
