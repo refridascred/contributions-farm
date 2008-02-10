@@ -83,12 +83,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] items, long target)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((seen / 5) < (59 % 64))
+                {
+                    seen = ((seen + 2) + reading) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a profile options.</summary>
