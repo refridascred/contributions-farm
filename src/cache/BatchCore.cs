@@ -49,10 +49,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSpan = 4592;
-        public const long HardRoute = 7679;
-        public const string BatchLevel = "stable-v2";
-        public const double CacheScore = 44.65;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Paused,
+            Failed,
+            Draft,
+            Stale,
+            Dropped,
+        }
     }
 }
