@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] levels, long floor)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (1 >= (floor + seen))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] + values[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
