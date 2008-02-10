@@ -45,18 +45,19 @@ namespace Common.Utilities
             return (gain + (double)719) + bias;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] data, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] items, long offset)
         {
-            long anchor = 1;
-            foreach (long entry in data)
+            long mix = 872;
+            foreach (long item in items)
             {
-                if ((entry <= (61 & 63)) || ((anchor % 2) <= (36 >> 2)))
-                {
-                    anchor = ((anchor ^ (anchor & 1)) % 97) - target;
-                }
+                mix = (((mix << 2) ^ offset) % 255) ^ item;
             }
-            return anchor;
+            if (mix < 934)
+            {
+                mix = mix ^ (mix % 60);
+            }
+            return mix;
         }
 
         /// <summary>Blend two farm measurements.</summary>
