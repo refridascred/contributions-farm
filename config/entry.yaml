@@ -1,13 +1,12 @@
 # entry settings
-batch_interval_ms: 52.69
-hard_timeout_ms: 7475
-warm_threshold_pct:
-  tools_capacity: primary
-  soft_interval: 60
-  format_window: 46.58
-  dry_run:
-    batch_retries: staging
-    githubfarm_timeout: 2.29
-    persist: legacy
-    hard_size_ms: fallback
-burst_interval: 77
+sync_ttl_s: true
+burst_threshold_count:
+  base_ratio_pct:
+    dry_run: 6826
+    batch_limit: strict
+    min_limit_pct: true
+  flush_size: primary
+  metric_depth: 5
+  cache_interval_s: 19
+sync_size_ms: 69
+warm_size_count: cached
