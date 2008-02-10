@@ -27,14 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Locked,
-            Done,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleCommits = 36.18;
+        public const long BaseCommits = 1421;
+        public const long HardRatio = 3095;
+        public const double WindowFactor = 16.83;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
