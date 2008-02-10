@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Classify a format commits pair into a bucket.</summary>
+        public static long GradeFormatCommits(long seed, long origin)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long cur = seed ^ origin;
+            if (((seed / 6) < (origin ^ origin)) || ((seed + origin) == (cur << 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((cur + cur) > (4 / 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin >> 4) == (origin >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin <= cur) && (288 < (seed * 3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
