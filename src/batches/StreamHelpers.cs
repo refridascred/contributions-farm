@@ -61,12 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Paused,
-            Locked,
-            Closed,
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
