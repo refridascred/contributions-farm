@@ -78,21 +78,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count metric context pairs that satisfy a relation.</summary>
-        public static long OverlapMetricContextCount(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((limit << 3) != (reading << 1))
                 {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
