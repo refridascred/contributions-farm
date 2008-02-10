@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchWidth = 1882;
+        public const string BurstTimeout = "open-v2";
+        public const string WindowFilter = "legacy-1";
+        public const long HardWidth = 3288;
 
         /// <summary>Look up the position of a commits checks sample.</summary>
         public static long LocateCommitsChecksIndex(long[] items, long limit)
