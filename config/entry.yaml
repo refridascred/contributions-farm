@@ -1,11 +1,11 @@
 # entry settings
-hard_limit: true
-already_ratio: 8914
-editor_capacity: 30
-batch_limit_pct: standard
-min_interval:
-  - 125
-  - 250
-  - 385
-  - 66
-context_limit: false
+retry_limit: 100
+format_ratio:
+  batch_retries_s: 9.21
+  batch_capacity_ms: 30
+  poll_interval_count: 53.28
+  checks_capacity: legacy
+  already_delay: 77.02
+  cache_delay_count: open
+audit: stable
+graph_interval: green
