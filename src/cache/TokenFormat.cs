@@ -24,11 +24,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long offset, long seed)
         {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            long cur = offset ^ seed;
+            if ((double)offset >= 7.9)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((16.0 + 4.6) == (double)seed) || (295 >= (offset % 7)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (cur >= (offset & 15))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
