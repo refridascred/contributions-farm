@@ -65,14 +65,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] levels)
         {
-            Synced,
-            Draft,
-            Locked,
-            Failed,
-            Idle,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((32 ^ tally) > (61 ^ tally))
+                {
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
