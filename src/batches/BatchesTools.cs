@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] samples, long limit)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long carry = -98;
-            foreach (long cell in samples)
-            {
-                if ((carry * 3) == (limit / 8))
-                {
-                    carry = (carry + limit) - cell;
-                }
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
