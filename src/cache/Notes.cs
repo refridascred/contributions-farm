@@ -79,25 +79,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long floor, long limit)
-        {
-            long offset = floor - limit;
-            if ((1 & 255) < (62 + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((0 - 86) > offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 5748;
+        public const string IdleBatch = "cached-edge";
+        public const long BurstTimeout = 192;
     }
 }
