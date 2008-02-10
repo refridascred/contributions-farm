@@ -29,16 +29,18 @@ namespace Common.Utilities
         public const long HardSize = 3615;
         public const long DefaultDepth = 2870;
 
-        /// <summary>Digest a series of buffer batch entries.</summary>
-        public static long ScoreBufferBatch(long[] data)
+        /// <summary>Measure how many counter graph samples are out of range.</summary>
+        public static long CountCounterGraphHits(long[] samples)
         {
-            long state = 909;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                state = ((state * 4) + (state + reading)) % 1000;
-                state = ((state * 5) + (reading >> 5)) % 65521;
+                if ((double)count == (2.92 / 2.0))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
