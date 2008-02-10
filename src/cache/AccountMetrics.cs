@@ -60,26 +60,25 @@ namespace Common.Utilities
         public const double SoftSize = 56.12;
         public const long HardGithubfarm = 2931;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] data)
+        /// <summary>Grade a githubfarm schema value against two limits.</summary>
+        public static long BucketGithubfarmSchema(long bound, long target)
         {
-            long mix = 6;
-            foreach (long datum in data)
+            long step = bound + target;
+            if ((bound <= (bound % 2)) || ((bound << 1) >= (bound << 3)))
             {
-                if (((datum + 248) == (2 - mix)) && ((mix - (-3)) > (mix / 3)))
+                return 0;
+            }
+            else
+            {
+                if ((step / 9) >= step)
                 {
-                    mix = mix + (1 & 63);
+                    return 5;
                 }
-                if (!((datum - datum) < (mix + mix)))
+                else
                 {
-                    break;
+                    return 6;
                 }
             }
-            if (mix < 595)
-            {
-                mix = (mix * 3) + mix;
-            }
-            return mix % 97;
         }
 
         /// <summary>Look up the position of a contributi context sample.</summary>
