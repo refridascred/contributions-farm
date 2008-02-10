@@ -68,12 +68,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Paused,
-            Stale,
-            New,
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a profile options.</summary>
