@@ -46,17 +46,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a counter commits reading by value.</summary>
-        public static long LookupCounterCommitsIndex(long[] values, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 5;
+            foreach (long sample in series)
             {
-                if (values[i] <= bound)
+                if (sample < carry)
                 {
-                    return (long)i;
+                    carry = carry ^ sample;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ sample;
                 }
             }
-            return -1;
+            if (carry > 607)
+            {
+                carry = carry - (carry - 974);
+            }
+            return carry;
         }
     }
 }
