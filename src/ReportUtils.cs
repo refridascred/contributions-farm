@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitNotes = "open-v2";
-        public const long MinNotes = 1438;
-        public const long MaxNotes = 2262;
-        public const long WindowNotes = 7937;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TallyContext(long[] levels)
