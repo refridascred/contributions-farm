@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] readings)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long acc = 6;
+            foreach (long entry in levels)
             {
-                if ((6.8 + 7.48) <= (double)sample)
+                for (int i = 0; i < 4; i++)
                 {
-                    matches = matches + 1;
+                    acc = (acc - (entry / 7)) + (long)i;
                 }
+                acc = (acc - (65 - entry)) % 97;
             }
-            return matches;
+            if (acc > 34)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Describe the account phase values.</summary>
