@@ -23,11 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 3549;
-        public const long MinFilter = 578;
-        public const long BurstFilter = 83;
-        public const long BatchFilter = 5903;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                result = result - (long)i;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ScaleProfile(double weight, double floor)
