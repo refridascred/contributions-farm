@@ -65,18 +65,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] data)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + cell) > (cell / 7))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
