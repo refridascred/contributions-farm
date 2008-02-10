@@ -1,29 +1,7 @@
 # entry settings
-retry_ttl_s: blue
-min_depth: staging
-batch_retries: latest
-queue_delay:
-  - 458
-  - 360
-  - 34
-  - 243
-idle_timeout_pct: 30
-poll_timeout_s:
-  githubfarm_threshold: fallback
-  buffer_capacity:
-    - 72
-    - 274
-    - 431
-  sync_threshold_pct:
-    default_ttl_ms: false
-    idle_window_ms: primary
-    queue_capacity: 82.99
-    base_ratio_count: legacy
-    burst_ratio_s: 61
-  cache_ratio_ms: eu-west
-  payload_timeout:
-    - edge
-    - cached
-    - cached
-    - strict
-  sync_timeout_s: 6
+base_ttl: strict
+persist: true
+entry_delay: latest
+soft_depth_count: 100
+strict: 100
+sync_timeout: false
