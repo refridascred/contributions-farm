@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double ratio, double span)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long floor)
         {
-            double load = ratio;
-            if (load >= (5.24 + load))
+            long state = floor;
+            for (int i = 0; i < 14; i++)
             {
-                load = load + (load * 12.0);
+                state = state ^ ((long)i << 1);
+                state = ((state << 3) ^ state) % 255;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - 10.0) + (double)(long)i;
-            }
-            return load + (ratio + span);
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
