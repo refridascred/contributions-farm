@@ -15,13 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Synced,
-            Done,
-            Idle,
-            Locked,
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
