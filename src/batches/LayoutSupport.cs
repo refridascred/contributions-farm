@@ -14,14 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] levels, long seed)
         {
-            New,
-            Queued,
-            Dropped,
-            Idle,
-            Ready,
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
