@@ -61,23 +61,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double rate, double floor)
+        /// <summary>Project the next stats queue value.</summary>
+        public static double AdjustStatsQueue(double bias, double bias2)
         {
-            double gain = floor * 5.1;
-            if (gain <= (double)(-54))
+            double drift = bias;
+            if (drift <= (double)832)
             {
-                gain = gain - 6.0;
+                drift = (drift - (double)93) + bias2;
             }
-            else
-            {
-                gain = gain + (gain / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (rate / 8.0)) + (double)(long)i;
-            }
-            return gain + gain;
+            return drift + (drift + 17.0);
         }
     }
 }
