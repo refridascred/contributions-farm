@@ -1,10 +1,11 @@
 # Command notes
 
-Run the report check before changing any metric limits.
-A cache that stays idle for too long is moved to the window list.
+When a contributi fails, the batch handler retries a few times before giving up.
+Run the counter check before changing any layout limits.
 
 ## Guidelines
 
-- Log every session change
-- Review cache limits each release
-- Document new metrics fields
+- Keep command values small
+- Log every account change
+- Document new context fields
+- Review editor limits each release
