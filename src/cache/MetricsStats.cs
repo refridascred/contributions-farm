@@ -54,25 +54,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Derive the next stats stream value from a seed.</summary>
-        public static long StepStatsStream(long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            long carry = 19;
+            foreach (long reading in data)
             {
-                mix = ((mix << 3) ^ (mix % 60)) % 1000;
-                if (((long)i >> 2) >= ((long)i / 9))
-                {
-                    mix = (mix ^ target) % 1000;
-                    break;
-                }
-                if ((8.8 / 4.0) <= (double)(long)i)
-                {
-                    mix = mix - target;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                carry = (carry + carry) ^ reading;
             }
-            return mix;
+            if (carry > 701)
+            {
+                carry = ((carry << 2) ^ (carry + 2)) % 65521;
+            }
+            return carry;
         }
     }
 }
