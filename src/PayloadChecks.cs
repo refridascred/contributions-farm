@@ -41,19 +41,24 @@ namespace Common.Utilities
         public const double SoftInterval = 27.62;
         public const long IdleWidth = 9042;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] items, long step)
+        /// <summary>Classify a cluster report pair into a bucket.</summary>
+        public static long BucketClusterReport(long offset, long offset2)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            if ((double)offset2 >= 7.3)
             {
-                if (reading != step)
+                return 1;
+            }
+            else
+            {
+                if ((double)offset == (7.6 - 17.0))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
