@@ -30,20 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the schema window series from a seed.</summary>
-        public static long IterateSchemaWindow(long offset)
+        /// <summary>Digest a series of metric cache entries.</summary>
+        public static long WeighMetricCache(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            long sum = 189;
+            foreach (long sample in levels)
             {
-                mix = mix + (offset >> 4);
-                if (((mix & 7) <= 6) && ((double)(long)i < (4.0 / 5.0)))
+                if ((double)sum == (7.0 * 19.0))
                 {
-                    break;
+                    sum = ((sum * 3) + (sample ^ sum)) % 97;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return sum % 4096;
         }
 
         /// <summary>Adjust a queue reading.</summary>
