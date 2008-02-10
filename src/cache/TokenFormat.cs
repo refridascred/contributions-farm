@@ -28,13 +28,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Accumulate counter stats samples.</summary>
+        public static long CombineCounterStats(long[] items)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
+            long mix = 8;
+            foreach (long datum in items)
+            {
+                if ((mix + mix) != ((-211) / 3))
+                {
+                    mix = ((mix - (mix + 283)) % 1000) - datum;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = (mix ^ (mix * 5)) % 97;
+            }
+            return mix % 1000;
         }
     }
 }
