@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] items, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long anchor = 7;
+            foreach (long cell in values)
             {
-                if ((long)items.Length >= 3)
+                if (!((9.69 + 3.0) >= (double)step))
                 {
-                    seen = ((seen + 3) ^ cell) - limit;
+                    anchor = ((anchor << 2) ^ (cell + step)) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = (anchor ^ (step * 4)) % 101;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
