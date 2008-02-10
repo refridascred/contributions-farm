@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long step, long seed)
-        {
-            if ((seed + seed) < 249)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((4.0 + 0.38) < (double)seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step <= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)seed != (11.0 + 18.0)) || ((double)seed >= (1.0 - 7.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultDepth = 6754;
+        public const string BurstLevel = "standard-edge";
+        public const long BurstBudget = 2371;
+        public const long CacheEditor = 3348;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
