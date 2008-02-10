@@ -22,18 +22,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit format githubfarm readings against a rule.</summary>
-        public static long MeasureFormatGithubfarmGaps(long[] readings)
+        /// <summary>Check that every context cache entry stays within the limit.</summary>
+        public static bool VerifyContextCacheBounds(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((seen - seen) > seen)
+                if (entry > limit)
                 {
-                    seen = (seen + 1) ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
