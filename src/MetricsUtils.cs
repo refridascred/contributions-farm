@@ -51,10 +51,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchWidth = 5872;
-        public const string MaxTimeout = "staging";
-        public const long LimitContext = 8728;
-        public const double IdleBudget = 66.84;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleInterval = 53;
+        public const long BaseScore = 7539;
+        public const long DefaultCount = 7169;
+        public const string SoftTools = "primary-v2";
     }
 }
