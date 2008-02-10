@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] samples)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + datum) != (count << 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Fold a list of payload account readings.</summary>
