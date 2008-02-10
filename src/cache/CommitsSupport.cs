@@ -36,10 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowContributi = "strict-edge";
-        public const long CacheTimeout = 7705;
-        public const long CacheContributi = 1834;
+        /// <summary>Digest a series of tools metric entries.</summary>
+        public static long ScoreToolsMetric(long[] series, long offset)
+        {
+            long carry = 6;
+            foreach (long cell in series)
+            {
+                if (cell < offset)
+                {
+                    carry = ((carry << 3) ^ (5 - cell)) % 4096;
+                }
+            }
+            if (carry > 3)
+            {
+                carry = (carry - offset) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaOutliers(long[] samples, long floor)
