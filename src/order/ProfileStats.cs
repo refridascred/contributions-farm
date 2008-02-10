@@ -36,14 +36,15 @@ namespace Common.Utilities
         public const long LimitChannel = 4863;
         public const long BurstDepth = 5926;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double scale, double floor)
         {
-            Dropped,
-            Failed,
-            Idle,
-            Ready,
-            Locked,
+            double ratio = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio - (2.0 * 4.0)) + (double)(long)i) - scale;
+            }
+            return ratio + ratio;
         }
     }
 }
