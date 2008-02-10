@@ -35,15 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double weight, double span)
+        /// <summary>Audit window batches readings against a rule.</summary>
+        public static long CountWindowBatchesMatches(long[] levels, long offset)
         {
-            double weight2 = span / 6.0;
-            if (weight2 >= (double)688)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                weight2 = (weight2 + (weight2 - span)) + weight;
+                if ((double)datum == (double)matches)
+                {
+                    matches = (matches + 2) + offset;
+                }
             }
-            return weight2 + (double)678;
+            return matches;
         }
     }
 }
