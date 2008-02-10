@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitDepth = "strict-edge";
+        public const string DefaultSpan = "stable-v2";
+        public const long RetryEntry = 9872;
+        public const long CacheFactor = 7646;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long FindSchemaIndex(long[] items, long target)
