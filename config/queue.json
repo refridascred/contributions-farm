@@ -1,12 +1,8 @@
 {
-  "command_timeout": "latest",
-  "sync_retries_pct": {
-    "order_ratio": 1024,
-    "warm_ratio_count": 54.22,
-    "default_size": 8592,
-    "cache_ratio_count": 85.14,
-    "persist": 13
-  },
-  "layout_depth": "fallback",
-  "cache_timeout_count": 30
+  "context_interval": 13,
+  "poll_limit_ms": 60,
+  "audit": ["cached", "latest"],
+  "flush_timeout_pct": ["strict", "local"],
+  "default_capacity_pct": 100,
+  "channel_depth": 60
 }
