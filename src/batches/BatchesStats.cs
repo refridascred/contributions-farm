@@ -38,15 +38,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] series, long limit)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long acc = 585;
-            foreach (long value in series)
-            {
-                acc = (((acc << 3) ^ (28 % 100)) ^ value) - limit;
-            }
-            return acc;
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
