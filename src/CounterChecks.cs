@@ -79,19 +79,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi graph entry stays within the limit.</summary>
-        public static bool ValidateContributiGraphRange(long[] series, long target)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit entry window readings against a rule.</summary>
