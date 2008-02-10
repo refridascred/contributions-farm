@@ -12,17 +12,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] items, long step)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
