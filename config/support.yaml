@@ -1,6 +1,7 @@
 # support settings
-profile_threshold: 9.78
-support_threshold: green
-batch_window_count: green
-order_capacity: true
-cache_limit: fallback
+hard_ttl_s: 3877
+idle_delay_ms: strict
+hard_limit_s: cached
+sync_timeout: false
+max_interval_s: 500
+idle_timeout_ms: 60
