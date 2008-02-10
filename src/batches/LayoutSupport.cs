@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Stale,
-            Paused,
-            Draft,
-            New,
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
