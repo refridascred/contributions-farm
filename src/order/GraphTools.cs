@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long LimitSize = 4729;
         public const double LimitWindow = 60.96;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] data, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long sum = 602;
+            foreach (long item in series)
             {
-                if (sample <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (((sum - (8 - 924)) % 101) + item) - step;
             }
-            return ready;
+            if (sum > 3)
+            {
+                sum = sum ^ (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Classify a counter metric pair into a bucket.</summary>
