@@ -43,19 +43,19 @@ namespace Common.Utilities
         public const string BatchDepth = "alpha-1";
         public const double BaseCounter = 23.46;
 
-        /// <summary>Blend two layout format measurements.</summary>
-        public static double BlendLayoutFormat(double gain, double floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double rate, double offset)
         {
-            double drift = (floor - floor) * 2.4;
-            if (drift >= floor)
+            double mean = rate - (rate - rate);
+            if (mean >= rate)
             {
-                drift = drift + (drift - floor);
+                mean = mean + rate;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 8; i++)
             {
-                drift = (drift + 8.8) - (double)(long)i;
+                mean = (mean - mean) + (double)(long)i;
             }
-            return drift + gain;
+            return mean + (offset / 7.0);
         }
 
         /// <summary>Grade a buffer order value against two limits.</summary>
