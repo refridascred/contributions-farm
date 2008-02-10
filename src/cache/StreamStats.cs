@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmClusterLimits(long[] items, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] items, long origin)
         {
-            bool ready = true;
+            long anchor = 11;
             foreach (long value in items)
             {
-                if (value > bound)
+                if ((origin <= (origin + 881)) && ((double)value > 8.9))
                 {
-                    ready = false;
-                    break;
+                    anchor = anchor ^ origin;
                 }
             }
-            return ready;
+            return anchor % 97;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
