@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a commits channel pair into a bucket.</summary>
