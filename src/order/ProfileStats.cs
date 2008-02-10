@@ -24,18 +24,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitBudget = "standard-1";
+        public const long SoftBuffer = 3649;
+        public const long RetryBuffer = 4584;
+        public const long BurstBuffer = 8301;
 
         /// <summary>Validate support cache readings against a bound.</summary>
         public static bool ValidateSupportCacheBounds(long[] levels, long floor)
