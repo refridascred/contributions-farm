@@ -53,14 +53,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Synced,
-            Closed,
-            Idle,
-            Retry,
-            Locked,
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
