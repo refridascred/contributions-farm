@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Dropped,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardTimeout = "local";
+        public const long RetryPayload = 6955;
+        public const long DefaultPayload = 1118;
+        public const long BatchPayload = 605;
+        public const string MinDepth = "fallback-1";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long StepStats = 2902;
