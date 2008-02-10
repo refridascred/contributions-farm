@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
