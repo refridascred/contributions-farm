@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] series, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Project the next batches support value.</summary>
