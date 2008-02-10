@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long total = 772;
+            foreach (long value in data)
             {
-                if ((double)tally >= 1.1)
+                if ((seed * 2) >= (seed / 2))
                 {
-                    tally = (tally + 1) + item;
+                    total = ((total ^ (seed / 7)) % 101) - value;
                 }
             }
-            return tally;
+            if (total > 753)
+            {
+                total = (total + seed) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
