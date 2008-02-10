@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a queue session sample.</summary>
-        public static long FindQueueSessionIndex(long[] data, long offset)
+        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmClusterLimits(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((data[i] <= offset) && ((data[i] % 3) != 0))
+                if (value > bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
