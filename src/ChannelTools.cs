@@ -15,21 +15,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long seed, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset = seed + step;
+            if ((117 >= (2 - step)) || ((double)step == (19.0 / 5.0)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)offset < (double)step)
                 {
-                    if ((items[i] - items[j]) < 10)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed < (11.0 / 6.0))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
