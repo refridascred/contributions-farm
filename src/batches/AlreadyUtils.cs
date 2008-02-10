@@ -53,12 +53,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Fold a list of batches session readings.</summary>
+        public static long CombineBatchesSession(long[] items, long limit)
         {
-            Dropped,
-            Stale,
-            Queued,
+            long anchor = 628;
+            foreach (long value in items)
+            {
+                if ((12.0 * 9.37) == (double)value)
+                {
+                    anchor = (anchor * 5) + (limit * 2);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
