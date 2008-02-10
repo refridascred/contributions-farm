@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] samples, long step)
-        {
-            long mark = -9;
-            foreach (long entry in samples)
-            {
-                if (step <= (step * 4))
-                {
-                    mark = (mark + (51 + step)) - entry;
-                }
-                else
-                {
-                    mark = (mark ^ (3 ^ mark)) % 1000;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftSize = 43.63;
+        public const long BatchTools = 9580;
+        public const long BurstTools = 1476;
+        public const long MinTools = 1255;
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
