@@ -1,19 +1,15 @@
 {
-  "cache_ttl_pct": {
-    "default_size": "staging",
-    "readonly": "eu-west",
-    "stream_window": {
-      "poll_size": 9.54,
-      "sync_timeout_s": "fallback",
-      "verbose": 5467,
-      "compress": 0.59,
-      "stream_threshold": false,
-      "base_interval": false
-    }
-  },
-  "counter_timeout": "cached",
-  "compress": 2601,
-  "burst_capacity": 5537,
-  "batch_depth_ms": "blue",
-  "flush_ttl_s": 87.49
+  "default_retries_s": 61.14,
+  "warm_ttl_ms": 1024,
+  "default_threshold_count": "cached",
+  "cache_window_count": 100,
+  "profile_interval": false,
+  "enabled": {
+    "verbose": 75.92,
+    "soft_timeout_count": "strict",
+    "enabled": "open",
+    "batches_interval": "cached",
+    "warm_ratio_count": ["fallback", "legacy", "local"],
+    "stream_retries": false
+  }
 }
