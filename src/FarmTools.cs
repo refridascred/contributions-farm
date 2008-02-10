@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit stream entry readings against a rule.</summary>
-        public static long AuditStreamEntryOutliers(long[] series, long floor)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((double)floor < (9.8 * 7.0))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a graph format sample.</summary>
