@@ -38,19 +38,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate graph profile readings against a bound.</summary>
-        public static bool ValidateGraphProfileRange(long[] data, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (cell >= limit)
+                if (((978 > (count / 7)) && ((double)count != (4.2 / 4.0))) && ((reading << 2) != (reading / 6)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
