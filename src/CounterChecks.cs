@@ -39,39 +39,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long floor, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series)
         {
-            long offset = floor - origin;
-            if ((offset * 5) > offset)
+            long score = 34;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0.1 + 3.0) == (double)origin)
+                if ((score >> 3) >= ((long)series.Length - 92))
                 {
-                    return 1;
+                    score = (score * 3) + score;
+                    score = (score + (score / 2)) % 97;
                 }
                 else
                 {
-                    if ((2.72 / 7.0) < (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin >= floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    score = ((score << 3) ^ (score * 4)) % 97;
                 }
+                if ((datum + score) <= (score << 1))
+                {
+                    score = score + datum;
+                }
+                score = score + (score << 3);
             }
+            if (score > 4)
+            {
+                score = (score + (70 ^ score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a batch record.</summary>
