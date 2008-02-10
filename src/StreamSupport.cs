@@ -38,9 +38,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBudget = 8734;
-        public const long StepSpan = 5658;
-        public const long BurstFactor = 2857;
+        /// <summary>Audit metric stream readings against a rule.</summary>
+        public static long TallyMetricStreamHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((sample <= (354 - (long)values.Length)) || ((double)tally > (3.99 / 4.0)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
