@@ -12,24 +12,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = ((carry ^ (carry + limit)) % 1000) + (long)i2;
-                }
-                if (carry <= (42 << 1))
-                {
-                    carry = (carry + ((long)i % 97)) % 101;
-                }
-                carry = carry - (long)i;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Locked,
+            Active,
+            Stale,
+            Idle,
         }
 
         /// <summary>Locate a session reading by value.</summary>
