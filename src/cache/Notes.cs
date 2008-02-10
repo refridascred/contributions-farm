@@ -79,18 +79,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] data, long step)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading << 2) < (tally + tally))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) + step;
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
