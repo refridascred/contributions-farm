@@ -1,7 +1,5 @@
 # githubfarm settings
-stream_timeout: false
-compress: false
-idle_limit_count: green
-already_delay:
-  - green
-  - open
+hard_ttl_ms: primary
+batch_interval: cached
+hard_limit_count: 12.15
+retry_timeout_ms: true
