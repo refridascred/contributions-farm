@@ -26,15 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Stale,
-            Draft,
-            Failed,
-            Pending,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultInterval = 3978;
+        public const long RetryTools = 9756;
+        public const string BurstInterval = "cached";
+        public const long CacheTools = 3326;
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
