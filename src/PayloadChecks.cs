@@ -69,21 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 369;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = carry - (value + value);
             }
-            return matches;
+            return carry % 4096;
         }
     }
 }
