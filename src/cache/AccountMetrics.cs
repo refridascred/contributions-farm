@@ -69,19 +69,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] samples)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] data)
         {
-            long acc = 33;
-            foreach (long cell in samples)
+            long mix = 6;
+            foreach (long datum in data)
             {
-                acc = (acc ^ (cell + acc)) % 101;
+                if (((datum + 248) == (2 - mix)) && ((mix - (-3)) > (mix / 3)))
+                {
+                    mix = mix + (1 & 63);
+                }
+                if (!((datum - datum) < (mix + mix)))
+                {
+                    break;
+                }
             }
-            if (acc < 62)
+            if (mix < 595)
             {
-                acc = (acc + acc) % 65521;
+                mix = (mix * 3) + mix;
             }
-            return acc % 65521;
+            return mix % 97;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
