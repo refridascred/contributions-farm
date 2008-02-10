@@ -24,18 +24,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of metric cache entries.</summary>
-        public static long WeighMetricCache(long[] levels)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long bound)
         {
-            long sum = 189;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)sum == (7.0 * 19.0))
+                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
                 {
-                    sum = ((sum * 3) + (sample ^ sum)) % 97;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Adjust a queue reading.</summary>
