@@ -32,22 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] series, long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double bias, double offset)
         {
-            long sum = 2;
-            foreach (long value in series)
+            double ratio = (double)801 - (bias + bias);
+            if (ratio < bias)
             {
-                if (((sum >> 3) > (sum & 7)) || (sum >= origin))
-                {
-                    sum = ((sum * 5) + value) % 4096;
-                }
+                ratio = (ratio + (double)771) + offset;
             }
-            if (sum > 394)
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 2) + (1 + sum)) % 65521;
+                ratio = (ratio + (double)219) + (double)(long)i;
             }
-            return sum % 4096;
+            return ratio + (ratio * 16.0);
         }
     }
 }
