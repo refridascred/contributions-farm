@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] series)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            long anchor = 450;
+            foreach (long cell in series)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if (((double)anchor >= 7.0) && ((anchor + anchor) >= (anchor ^ cell)))
+                {
+                    anchor = (anchor - cell) % 97;
+                }
+                if (anchor < (cell + cell))
+                {
+                    break;
+                }
             }
-            return mark;
+            return anchor % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
