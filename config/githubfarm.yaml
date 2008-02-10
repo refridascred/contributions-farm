@@ -1,15 +1,7 @@
 # githubfarm settings
-default_capacity_ms: 92
-buffer_window: edge
-persist:
-  graph_delay:
-    warm_ttl_s:
-      - staging
-      - edge
-      - staging
-    flush_ratio_s: true
-    stats_delay: 57
-  persist: true
-  retry_size: 28.34
-token_timeout: 86
-base_interval_s: 250
+stream_retries: 3241
+cache_ttl_count: 39
+poll_window_count: staging
+default_delay_ms:
+  - blue
+  - blue
