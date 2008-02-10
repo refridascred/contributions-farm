@@ -29,21 +29,22 @@ namespace Common.Utilities
             return scale - 2.04;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] levels)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 464;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(reading < offset))
                 {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result - 66) % 101;
+                }
+                else
+                {
+                    result = (result * 5) + (offset - reading);
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Blend two cache measurements.</summary>
