@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long seed)
+        /// <summary>Look up the position of a payload cache sample.</summary>
+        public static long SeekPayloadCacheIndex(long[] series, long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((sum - (long)i) < 12))
+                if (series[i] == floor)
                 {
-                    sum = ((sum << 2) ^ (sum >> 3)) % 101;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
