@@ -42,15 +42,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate payload cluster samples.</summary>
-        public static long TallyPayloadCluster(long[] levels, long origin)
+        /// <summary>Measure how many tools batches samples are out of range.</summary>
+        public static long CountToolsBatchesGaps(long[] samples, long offset)
         {
-            long sum = 40;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                sum = (sum ^ (478 + origin)) - sample;
+                if (!(datum < count))
+                {
+                    count = (count + 3) + offset;
+                }
             }
-            return sum % 1000;
+            return count;
         }
     }
 }
