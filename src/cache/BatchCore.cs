@@ -63,14 +63,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Locate a batch payload reading by value.</summary>
+        public static long FindBatchPayloadIndex(long[] levels, long offset)
         {
-            Paused,
-            Failed,
-            Draft,
-            Stale,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
