@@ -69,13 +69,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long floor, long limit)
         {
-            Retry,
-            Draft,
-            Failed,
-            Paused,
+            long offset = floor - limit;
+            if ((1 & 255) < (62 + offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((0 - 86) > offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
