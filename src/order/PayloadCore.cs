@@ -58,14 +58,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] series, long floor)
         {
-            Done,
-            Idle,
-            Queued,
-            Pending,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
