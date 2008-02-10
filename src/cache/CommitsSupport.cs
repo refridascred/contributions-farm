@@ -72,18 +72,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] values, long limit)
+        /// <summary>Scale a tools format figure with a bias.</summary>
+        public static double BlendToolsFormat(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            double load = 9.47;
+            if (load < load)
             {
-                if ((value + value) == (count - count))
-                {
-                    count = (count + 2) - limit;
-                }
+                load = ((load + 1.0) + ratio) - offset;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - 8.7) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
