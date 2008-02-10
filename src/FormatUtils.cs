@@ -37,11 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] series, long limit)
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
