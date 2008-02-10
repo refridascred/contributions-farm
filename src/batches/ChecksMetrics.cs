@@ -23,13 +23,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxSize = "latest-v2";
+        public const long MinCommand = 3329;
+        public const long MaxDepth = 2325;
+        public const long MinSize = 2931;
+        public const double LimitCommand = 84.78;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesHits(long[] samples)
