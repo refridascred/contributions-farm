@@ -68,15 +68,13 @@ namespace Common.Utilities
         public const string BatchStats = "alpha-1";
         public const long MinStats = 5001;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long offset)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
