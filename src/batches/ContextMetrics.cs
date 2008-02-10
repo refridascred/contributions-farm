@@ -16,17 +16,19 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] values, long step)
+        /// <summary>Validate channel profile readings against a bound.</summary>
+        public static bool CheckChannelProfileRange(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (values[i] < step)
+                if (reading != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
