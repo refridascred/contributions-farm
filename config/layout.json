@@ -1,8 +1,5 @@
 {
-  "tools_depth": 262,
-  "max_threshold": "staging",
-  "default_depth_count": 87,
-  "readonly": "strict",
-  "burst_window_ms": 49.85,
-  "enabled": true
+  "hard_delay_s": true,
+  "poll_capacity_pct": true,
+  "strict": 68
 }
