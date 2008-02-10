@@ -36,20 +36,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every order stats entry stays within the limit.</summary>
-        public static bool ValidateOrderStatsBounds(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardWidth = 1019;
+        public const long DefaultRoute = 4512;
+        public const long MaxRoute = 4106;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long SeekFarmIndex(long[] data, long step)
