@@ -24,24 +24,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank queue cluster input into a small class.</summary>
-        public static long GradeQueueCluster(long origin, long bound)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double rate, double floor)
         {
-            if (!((bound ^ bound) <= bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (6.63 <= (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double rate2 = rate;
+            return rate2 - floor;
         }
 
         /// <summary>Hold a order record.</summary>
