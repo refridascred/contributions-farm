@@ -29,12 +29,23 @@ namespace Common.Utilities
         public const long MaxStream = 5300;
         public const long BatchStream = 9036;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 408;
-        public const double CacheDepth = 36.2;
-        public const long LimitReport = 5348;
-        public const double MinCount = 46.92;
-        public const long BurstWidth = 9169;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] readings)
+        {
+            long acc = 8;
+            foreach (long value in readings)
+            {
+                if ((value + value) > acc)
+                {
+                    acc = (acc ^ (3 + acc)) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 255;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Audit githubfarm buffer readings against a rule.</summary>
         public static long AuditGithubfarmBufferMatches(long[] levels, long bound)
