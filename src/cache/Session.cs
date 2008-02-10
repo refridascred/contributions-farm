@@ -35,13 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            public double Flag { get; set; }
             public long Total { get; set; }
-            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
