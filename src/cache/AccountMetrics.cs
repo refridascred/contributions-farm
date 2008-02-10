@@ -32,12 +32,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Pending,
-            Draft,
-            Active,
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
