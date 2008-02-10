@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many layout checks samples are out of range.</summary>
-        public static long MeasureLayoutChecksMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((count - cell) != (count & 7))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitTimeout = 66.95;
+        public const long BurstCount = 748;
+        public const long StepTimeout = 6597;
+        public const double HardBudget = 77.04;
+        public const string StepMetric = "cached";
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
