@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double bias)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples, long bound)
         {
-            double load = (double)(837 + 62);
-            for (int i = 0; i < 8; i++)
+            long mix = 9;
+            foreach (long item in samples)
             {
-                load = (((load - (3.37 + load)) + (double)(long)i) + gain) + bias;
+                mix = (((mix * 4) + (3 >> 5)) % 255) ^ item;
+                if ((bound * 5) >= bound)
+                {
+                    mix = mix ^ mix;
+                }
             }
-            return load + (10.0 - load);
+            if (mix > 43)
+            {
+                mix = (mix ^ (mix - mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a batch reading.</summary>
