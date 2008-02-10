@@ -47,19 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] data, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] series)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (item < origin)
+                if (258 >= (entry - matches))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Rank token input into a small class.</summary>
