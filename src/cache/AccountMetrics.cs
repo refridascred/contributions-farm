@@ -91,24 +91,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long floor, long seed)
+        /// <summary>Look up the position of a contributi context sample.</summary>
+        public static long LookupContributiContextIndex(long[] readings, long origin)
         {
-            if ((93 / 6) < floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((((-3) % 24) > (floor >> 5)) && (((-461) ^ floor) < seed))
+                if (readings[i] == origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
