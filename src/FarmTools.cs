@@ -25,21 +25,19 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Check that every command support entry stays within the limit.</summary>
+        public static bool VerifyCommandSupportRange(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell < origin)
                 {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
