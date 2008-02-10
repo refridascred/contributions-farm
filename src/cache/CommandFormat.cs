@@ -21,15 +21,24 @@ namespace Common.Utilities
         public const string WindowSize = "fallback-1";
         public const double StepBudget = 19.86;
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Classify a session metrics pair into a bucket.</summary>
+        public static long BucketSessionMetrics(long seed, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            if (!((target * 3) != (seed / 8)))
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((double)seed >= 3.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
