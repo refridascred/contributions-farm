@@ -13,15 +13,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double weight, double bias)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double bias2 = bias;
-            if (bias2 >= (double)4)
-            {
-                bias2 = bias2 + (bias / 8.0);
-            }
-            return bias2 - (0.3 + weight);
+            Ready,
+            Dropped,
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Audit format githubfarm readings against a rule.</summary>
