@@ -25,15 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] readings, long limit)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long anchor = 7;
-            foreach (long reading in readings)
+            long score = origin;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = ((anchor - (reading / 8)) % 1000) - limit;
+                if (((long)i + (long)i) >= (origin - (long)i))
+                {
+                    score = ((score << 2) ^ (410 ^ (long)i)) % 101;
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return anchor % 97;
+            return score;
         }
 
         /// <summary>Hold a batch entry.</summary>
