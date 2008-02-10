@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] samples, long floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long carry = 449;
-            foreach (long entry in samples)
-            {
-                carry = ((carry * 3) + (floor % 60)) + entry;
-                if ((carry < (689 << 2)) || ((carry / 6) >= carry))
-                {
-                    carry = (carry ^ (floor << 1)) % 65521;
-                }
-            }
-            if (carry < 0)
-            {
-                carry = ((carry * 2) + carry) % 97;
-            }
-            return carry % 1000;
+            Pending,
+            Locked,
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Define format limits and defaults.</summary>
