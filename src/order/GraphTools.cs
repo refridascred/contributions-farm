@@ -39,11 +39,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long limit, long seed)
         {
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
+            if ((71 - seed) <= (734 - limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed * 5) < (seed - limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
