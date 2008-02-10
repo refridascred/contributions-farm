@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] samples, long limit)
+        /// <summary>Derive the next cache counter value from a seed.</summary>
+        public static long DeriveCacheCounter(long step)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (item > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Count metrics commits pairs that satisfy a relation.</summary>
