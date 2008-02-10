@@ -62,12 +62,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Owner { get; set; }
+            Failed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Grade a commits metrics value against two limits.</summary>
