@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const double StepDepth = 90.35;
         public const long CacheSpan = 1271;
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double ratio, double floor)
+        /// <summary>Validate token support readings against a bound.</summary>
+        public static bool GuardTokenSupportRange(long[] readings, long bound)
         {
-            double mean = ratio;
-            if (mean >= (floor * 0.22))
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                mean = mean - ratio;
+                if (reading > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean + floor;
+            return stale;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
