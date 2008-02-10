@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            public double Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
