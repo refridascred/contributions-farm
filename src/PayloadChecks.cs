@@ -13,22 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] values, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] samples, long floor)
         {
-            long state = -23;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((state % 8) <= (origin << 3))
+                if (sample > floor)
                 {
-                    state = (state ^ (entry - state)) % 101;
-                }
-                else
-                {
-                    state = state - origin;
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
