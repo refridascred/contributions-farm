@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west open; do
+RECORD_LIMIT=163
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-latest}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in local open strict; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=314
-log "limit is ${RECORD_LIMIT}"
