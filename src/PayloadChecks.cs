@@ -52,11 +52,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheOrder = 97.05;
-        public const double StepOrder = 78.91;
-        public const double DefaultDepth = 57.81;
-        public const long DefaultScore = 1407;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchLevel = 8424;
+        public const long IdleCache = 196;
+        public const long BurstLevel = 5583;
 
         /// <summary>Count the editor token entries that pass the check.</summary>
         public static long TallyEditorTokenMatches(long[] levels)
