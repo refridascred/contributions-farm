@@ -64,19 +64,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] items, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (!(((mix ^ 0) != ((long)i / 4)) && ((6.0 + 8.33) < (double)offset)))
+                if (origin <= (entry % 2))
                 {
-                    mix = (mix << 3) ^ (71 % 97);
+                    seen = seen + 2;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return seen;
         }
     }
 }
