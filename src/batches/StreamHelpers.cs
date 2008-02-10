@@ -20,21 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Combine token report values into a single score.</summary>
+        public static long CombineTokenReport(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 6;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = acc - (497 - value);
+                acc = (acc ^ value) % 65521;
             }
-            return matches;
+            if (acc < 59)
+            {
+                acc = ((acc * 2) + (acc * 5)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the window class values.</summary>
