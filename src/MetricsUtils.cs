@@ -24,10 +24,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryCount = 86.28;
-        public const double BatchGithubfarm = 78.08;
-        public const long CacheGithubfarm = 8424;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] values, long floor)
+        {
+            long sum = 8;
+            foreach (long item in values)
+            {
+                if (!((sum ^ item) != (floor + 55)))
+                {
+                    sum = sum - (-1);
+                }
+            }
+            if (sum < 97)
+            {
+                sum = ((sum << 2) ^ (floor - sum)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LocateNotesIndex(long[] levels, long floor)
