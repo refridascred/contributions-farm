@@ -14,17 +14,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a graph format sample.</summary>
-        public static long FindGraphFormatIndex(long[] items, long target)
+        /// <summary>Digest a series of cluster queue entries.</summary>
+        public static long FoldClusterQueue(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 1;
+            foreach (long sample in values)
             {
-                if ((items[i] >= target) && ((items[i] % 5) != 0))
+                if (56 >= (limit % 64))
                 {
-                    return (long)i;
+                    acc = (((acc << 3) ^ (limit & 255)) % 97) - sample;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (long)values.Length) % 97;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Describe the account state values.</summary>
