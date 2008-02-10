@@ -25,12 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultCount = 463;
-        public const long BaseWidth = 9638;
-        public const string SoftRecord = "standard";
-        public const long LimitRecord = 9684;
-        public const double IdleRecord = 71.07;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Draft,
+            Failed,
+            Dropped,
+            Synced,
+            Active,
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportMatches(long[] levels, long floor)
