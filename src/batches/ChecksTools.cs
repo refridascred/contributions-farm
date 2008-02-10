@@ -32,25 +32,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long limit, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long limit)
         {
-            long step = limit + target;
-            if ((limit / 4) != (2 * 3))
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((594 << 2) <= (step + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return total;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
