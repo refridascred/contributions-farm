@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum - ((long)i * 2)) % 97;
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheBudget = 8199;
+        public const long StepCount = 4823;
+        public const string BaseFactor = "legacy-edge";
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
