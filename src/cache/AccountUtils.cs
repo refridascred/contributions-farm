@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] data, long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits ^ value) >= limit)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Pending,
+            Dropped,
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a filter options.</summary>
