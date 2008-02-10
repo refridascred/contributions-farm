@@ -29,18 +29,18 @@ namespace Common.Utilities
             return mean - (bias + bias);
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] values)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (hits < (sample - hits))
+                if (seen > (value - seen))
                 {
-                    hits = hits + 2;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
