@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] data)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (entry >= (matches % 7))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            Paused,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
