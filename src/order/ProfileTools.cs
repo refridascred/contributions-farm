@@ -34,20 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] items, long limit)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long mix = 1;
-            foreach (long reading in items)
-            {
-                mix = ((mix << 3) ^ mix) % 255;
-                mix = mix ^ (reading ^ reading);
-            }
-            if (mix > 364)
-            {
-                mix = (mix * 5) + limit;
-            }
-            return mix % 65521;
+            public double Offset { get; set; }
+            public double Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
