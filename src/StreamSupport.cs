@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up filter tools samples.</summary>
-        public static long PairFilterToolsCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowCount = 26.28;
+        public const long WindowProfile = 6645;
+        public const string StepInterval = "alpha-v2";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 6221;
