@@ -39,16 +39,12 @@ namespace Common.Utilities
             return scale - (double)1;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = sum ^ (sum / 4);
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the window state values.</summary>
