@@ -30,21 +30,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long offset, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((7 % 100) <= (9 - offset))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit + limit) != (4 + 590))
                 {
-                    if ((items[i] - items[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
