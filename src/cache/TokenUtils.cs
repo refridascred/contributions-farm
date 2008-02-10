@@ -24,11 +24,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
