@@ -38,13 +38,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] series)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample - 6) < sample)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
