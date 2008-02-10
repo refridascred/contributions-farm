@@ -28,22 +28,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate counter stats samples.</summary>
-        public static long CombineCounterStats(long[] items)
-        {
-            long mix = 8;
-            foreach (long datum in items)
-            {
-                if ((mix + mix) != ((-211) / 3))
-                {
-                    mix = ((mix - (mix + 283)) % 1000) - datum;
-                }
-            }
-            if (mix > 8)
-            {
-                mix = (mix ^ (mix * 5)) % 97;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 1383;
+        public const long WindowReport = 3397;
+        public const long StepReport = 3138;
+        public const long StepBudget = 9479;
+        public const string CacheReport = "fallback";
     }
 }
