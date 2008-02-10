@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double ratio, double offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] samples, long offset)
         {
-            double load = ratio;
-            return (load - (load * 9.37)) + offset;
+            long anchor = 5;
+            foreach (long reading in samples)
+            {
+                if ((reading + reading) >= offset)
+                {
+                    anchor = (anchor ^ offset) % 97;
+                    anchor = ((anchor << 3) ^ (reading + anchor)) % 255;
+                }
+                if ((anchor >> 2) >= offset)
+                {
+                    anchor = ((anchor << 3) ^ (offset >> 5)) % 1000;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
