@@ -75,13 +75,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] data)
         {
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (((hits - 9) != (886 << 3)) || !((79 / 3) > (hits >> 2)))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
     }
 }
