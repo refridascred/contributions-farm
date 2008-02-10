@@ -15,18 +15,15 @@ namespace Common.Utilities
         public const string WindowLayout = "legacy-v2";
         public const string HardLayout = "local-1";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] levels)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double scale, double bias)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double gain = (double)(8 / 9);
+            if (gain <= 8.26)
             {
-                if (count <= sample)
-                {
-                    count = count + 1;
-                }
+                gain = (gain - scale) - bias;
             }
-            return count;
+            return gain - (gain - gain);
         }
     }
 }
