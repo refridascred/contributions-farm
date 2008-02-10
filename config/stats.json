@@ -1,7 +1,5 @@
 {
-  "batch_retries": "eu-west",
-  "readonly": "cached",
-  "persist": 9,
-  "batch_window_s": "strict",
-  "base_limit": [438, 445, 279, 12]
+  "route_delay": ["open", "edge", "stable", "blue"],
+  "context_retries": 11.73,
+  "buffer_retries": true
 }
