@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long total = 33;
-            foreach (long cell in values)
-            {
-                if (((total - total) < total) || ((cell << 1) == (109 + total)))
-                {
-                    total = ((total * 2) + total) % 97;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total * 5)) % 1000;
-                }
-            }
-            return total % 1000;
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
