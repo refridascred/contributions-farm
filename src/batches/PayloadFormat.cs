@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 63.39;
-        public const long MinCluster = 1187;
-        public const double StepDepth = 90.35;
-        public const long CacheSpan = 1271;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long CombineSession(long[] values, long floor)
