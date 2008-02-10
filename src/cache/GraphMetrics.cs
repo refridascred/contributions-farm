@@ -19,14 +19,31 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Fold a list of cluster metrics readings.</summary>
+        public static long DigestClusterMetrics(long[] readings)
         {
-            Retry,
-            Stale,
-            Ready,
-            Dropped,
-            Synced,
+            long result = -81;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = ((result ^ (6 - entry)) % 255) + (long)i;
+                }
+                result = ((result << 2) ^ (879 / 6)) % 255;
+                if (((2.03 / 9.0) < (double)(long)readings.Length) && ((entry * 2) <= result))
+                {
+                    result = (result - (entry ^ 2)) % 101;
+                }
+                else
+                {
+                    result = result ^ (result + entry);
+                }
+            }
+            if (result < 3)
+            {
+                result = (result ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
