@@ -61,15 +61,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Measure how many window batches samples are out of range.</summary>
-        public static long TallyWindowBatchesGaps(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] readings, long target)
         {
             long matches = 0;
-            foreach (long item in data)
+            foreach (long entry in readings)
             {
-                if ((matches >> 5) <= (item + item))
+                if (entry < (entry + matches))
                 {
-                    matches = matches + 1;
+                    matches = (matches + 3) + target;
                 }
             }
             return matches;
