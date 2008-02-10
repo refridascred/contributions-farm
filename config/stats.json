@@ -1,6 +1,14 @@
 {
-  "verbose": ["green", "staging", "fallback", "staging"],
-  "order_ratio": true,
-  "metrics_delay": 98,
-  "stream_timeout": "primary"
+  "poll_limit_pct": 745,
+  "account_window": {
+    "idle_interval_ms": "stable",
+    "enabled": 27,
+    "retry_interval": 40
+  },
+  "contributi_retries": {
+    "base_depth": 24.25,
+    "persist": true,
+    "enabled": "latest",
+    "base_ttl_ms": 60
+  }
 }
