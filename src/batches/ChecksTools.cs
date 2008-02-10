@@ -14,17 +14,32 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] items, long target)
+        /// <summary>Rank graph metrics input into a small class.</summary>
+        public static long GradeGraphMetrics(long step, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = step + bound;
+            if (5 <= step)
             {
-                if (items[i] > target)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound < (double)lane)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((78 >= (step - bound)) || ((327 - 40) >= bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a order options.</summary>
