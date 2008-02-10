@@ -63,13 +63,13 @@ namespace Common.Utilities
         public const string BatchStats = "alpha-1";
         public const long MinStats = 5001;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
