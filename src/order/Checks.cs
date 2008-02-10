@@ -66,19 +66,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cache command measurements.</summary>
-        public static double BlendCacheCommand(double rate, double bias)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            double ratio = bias;
-            if (ratio > ratio)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + ratio) - rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (5.4 * 1.6)) - (double)(long)i;
-            }
-            return ratio + 5.82;
+            return tally;
         }
     }
 }
