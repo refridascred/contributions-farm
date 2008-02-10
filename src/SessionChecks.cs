@@ -53,13 +53,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Measure how many commits route samples are out of range.</summary>
+        public static long CountCommitsRouteGaps(long[] levels)
         {
-            Closed,
-            Idle,
-            Draft,
-            Active,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading - 4) < reading))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
