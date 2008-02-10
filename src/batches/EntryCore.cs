@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] items)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((5 + (long)items.Length) < (item >> 2)) || ((item - seen) > (item * 5)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count metrics commits pairs that satisfy a relation.</summary>
