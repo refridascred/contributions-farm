@@ -1,6 +1,4 @@
 # githubfarm settings
-route_size: 54.66
-sync_window_ms: green
-max_interval_ms: true
-persist: 64.16
-base_window_count: 30.21
+hard_ratio: stable
+batch_retries_s: false
+default_timeout_ms: eu-west
