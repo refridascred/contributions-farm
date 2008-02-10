@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Look up the position of a queue session sample.</summary>
+        public static long FindQueueSessionIndex(long[] data, long offset)
         {
-            Failed,
-            Stale,
-            Pending,
-            Closed,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
