@@ -1,20 +1,14 @@
 # entry settings
-compress:
-  - fallback
-  - legacy
-default_capacity_count: standard
-warm_ttl_count: 463
-soft_capacity_ms:
-  strict: 44
-  cache_ttl_ms: 6909
-  sync_threshold_pct:
-    order_ratio: 74
-    base_threshold_s: 69
-    poll_window_s:
-      - 237
-      - 269
-    burst_timeout_count:
-      - 344
-      - 249
-    base_timeout_s: staging
-    min_limit_count: blue
+token_interval: 30
+notes_window: 31.35
+sync_interval: cached
+retry_retries_ms:
+  - blue
+  - cached
+  - cached
+route_interval: 52
+max_retries_count:
+  metric_size: 8631
+  compress: stable
+  flush_ratio_count: false
+  sync_ratio: 64.68
