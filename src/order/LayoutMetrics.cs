@@ -10,25 +10,21 @@ namespace Common.Utilities
         public const string BurstSize = "standard-edge";
         public const long MaxFormat = 1386;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long step, long offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            long bound = step ^ offset;
-            if ((step << 2) >= (bound - bound))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound < (7.0 / 2.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
