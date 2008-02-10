@@ -1,8 +1,8 @@
-id,state,ratio
-1,139,local
-2,edge,41.67
-3,staging,288
-4,325,legacy
-5,47.97,primary
-6,467,49.28
-7,593,91.34
+id,ratio
+1,83
+2,288
+3,60.72
+4,373
+5,blue
+6,799
+7,968
