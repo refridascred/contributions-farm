@@ -37,12 +37,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] series, long step)
         {
-            Draft,
-            Paused,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > step) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank token input into a small class.</summary>
