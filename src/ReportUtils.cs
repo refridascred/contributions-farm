@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftSize = 4875;
-        public const double CacheRatio = 33.25;
-        public const long DefaultWidth = 2422;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double SoftFormat = 67.57;
