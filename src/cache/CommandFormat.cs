@@ -48,17 +48,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] items, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (items[i] >= floor)
+                if (item <= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
