@@ -1,23 +1,16 @@
 # entry settings
-max_retries_pct:
-  - 155
-  - 6
-graph_ratio:
-  flush_retries_pct: 10
-  warm_limit_s: 16
-  base_limit: 4889
-  cache_interval: 2
-  audit: false
-  sync_threshold_pct:
-    - edge
+max_retries_ms:
+  commits_retries: 78
+  dry_run: 76.39
+  verbose: 5331
+  hard_ratio: 38
+  checks_timeout:
+    - eu-west
     - local
-    - latest
-min_delay:
-  - 61
-  - 155
-base_threshold: false
-batches_depth:
-  idle_threshold_count: false
-  strict: true
-  enabled: edge
-poll_retries: 86.24
+    - cached
+  retry_timeout: 54.39
+idle_window_ms: 60
+burst_window: 72.02
+idle_retries_count: cached
+batches_timeout: false
+soft_window_ms: 91.31
