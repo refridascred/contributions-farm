@@ -46,18 +46,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first graph context entry that matches the target.</summary>
-        public static long LookupGraphContextIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 4588;
+        public const long CacheScore = 4494;
+        public const long MinBatches = 7032;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstSchema = 4744;
