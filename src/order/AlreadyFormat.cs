@@ -46,11 +46,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
+            Done,
+            Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
