@@ -1,12 +1,12 @@
 # Command notes
 
-Use payload settings to tune how often contributi data is refreshed.
-Each profile is validated before it reaches the tools queue.
-Run the githubfarm check before changing any route limits.
+Use report settings to tune how often contributi data is refreshed.
+The order report groups every profile by stream.
+Run the metrics check before changing any window limits.
 
 ## Guidelines
 
-- Review metric limits each release
-- Keep cluster values small
-- Log every editor change
-- Validate command input early
+- Document new commits fields
+- Log every contributi change
+- Review channel limits each release
+- Keep queue values small
