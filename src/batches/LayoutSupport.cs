@@ -55,18 +55,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (count >= (398 >> 4))
-                {
-                    count = ((count + 1) + value) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 8228;
+        public const long WindowCluster = 5706;
+        public const string LimitSize = "latest-v2";
+        public const string WindowBudget = "primary-v2";
     }
 }
