@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] items, long origin)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long anchor = 11;
-            foreach (long value in items)
-            {
-                if ((origin <= (origin + 881)) && ((double)value > 8.9))
-                {
-                    anchor = anchor ^ origin;
-                }
-            }
-            return anchor % 97;
+            public double Mode { get; set; }
+            public double Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
