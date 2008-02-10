@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] data, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (data[i] >= limit)
+                if ((double)matches != (16.0 - 14.0))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
