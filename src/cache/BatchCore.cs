@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long origin)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == origin) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
