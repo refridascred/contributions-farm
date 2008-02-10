@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const long IdleCounter = 2097;
         public const string MaxCounter = "alpha-v2";
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] data)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((reading & 127) < (1 >> 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public double Token { get; set; }
         }
     }
 }
