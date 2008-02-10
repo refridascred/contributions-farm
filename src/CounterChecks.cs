@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] samples, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] samples)
         {
-            long carry = 213;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((carry * 4) >= bound)
+                if ((998 - 90) > (entry >> 3))
                 {
-                    carry = (((carry << 3) ^ bound) % 65521) ^ reading;
-                }
-                else
-                {
-                    carry = carry + (276 << 2);
+                    seen = seen + 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
