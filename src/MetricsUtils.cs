@@ -60,31 +60,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long seed, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] values)
         {
-            if (target > (target & 127))
+            long result = 5;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (target > (seed / 7))
+                result = result - (result * 3);
+                result = (result - (value - value)) % 97;
+                if (((double)value < 1.97) || ((double)result < (2.18 + 6.7)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed == (3.2 + 3.4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
