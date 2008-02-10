@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] series, long limit)
+        /// <summary>Look up the position of a already counter sample.</summary>
+        public static long LocateAlreadyCounterIndex(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample != limit)
+                if (readings[i] <= origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Combine format contributi values into a single score.</summary>
