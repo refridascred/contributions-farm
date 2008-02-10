@@ -61,11 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] readings, long target)
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((double)0 > (double)target)
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
     }
 }
