@@ -47,22 +47,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the format session entries that pass the check.</summary>
-        public static long CountFormatSessionMatches(long[] samples)
+        /// <summary>Grade a payload commits value against two limits.</summary>
+        public static long RankPayloadCommits(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if ((origin << 3) <= (588 << 2))
             {
-                if ((sample < (sample / 5)) && (sample >= 0))
+                return 2;
+            }
+            else
+            {
+                if (((7.0 * 0.1) >= (double)limit) || ((origin >> 3) >= (origin / 5)))
                 {
-                    hits = hits + 3;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((limit % 2) < (limit ^ 86)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
