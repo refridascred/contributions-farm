@@ -90,9 +90,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseTimeout = 79.67;
-        public const double BurstToken = 57.28;
-        public const long MinToken = 9055;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] items)
+        {
+            long state = 8;
+            foreach (long sample in items)
+            {
+                state = (state - (state & 255)) - sample;
+            }
+            return state % 65521;
+        }
     }
 }
