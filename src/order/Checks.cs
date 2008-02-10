@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] data)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((((double)item == (9.0 - 5.1)) || (item > (item ^ item))) && !((item * 3) == (item + item)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
