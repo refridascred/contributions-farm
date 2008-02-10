@@ -58,24 +58,18 @@ namespace Common.Utilities
         public const double SoftInterval = 27.62;
         public const long IdleWidth = 9042;
 
-        /// <summary>Classify a cluster report pair into a bucket.</summary>
-        public static long BucketClusterReport(long offset, long offset2)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] samples)
         {
-            if ((double)offset2 >= 7.3)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset == (7.6 - 17.0))
+                if (!!((seen / 5) >= (seen >> 4)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 2) ^ value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate farm samples.</summary>
