@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long IdleCluster = 4099;
         public const long BurstCount = 3587;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long target)
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            long mix = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a counter stats.</summary>
