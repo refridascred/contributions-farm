@@ -29,19 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order support entry stays within the limit.</summary>
-        public static bool GuardOrderSupportBounds(long[] items, long offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
