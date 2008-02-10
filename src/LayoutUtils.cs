@@ -26,19 +26,14 @@ namespace Common.Utilities
         public const long StepWidth = 6356;
         public const long DefaultStats = 5442;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] levels)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long anchor = 34;
-            foreach (long cell in levels)
-            {
-                anchor = (anchor ^ 977) ^ cell;
-            }
-            if (anchor < 6)
-            {
-                anchor = anchor - (62 + anchor);
-            }
-            return anchor;
+            Locked,
+            Retry,
+            Ready,
+            Failed,
+            Idle,
         }
     }
 }
