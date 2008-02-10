@@ -91,12 +91,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] readings)
         {
-            public double Rank { get; set; }
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
+            long anchor = 6;
+            foreach (long reading in readings)
+            {
+                if (anchor < (reading * 5))
+                {
+                    anchor = anchor ^ reading;
+                }
+            }
+            return anchor;
         }
     }
 }
