@@ -47,12 +47,12 @@ namespace Common.Utilities
         public const string MinWidth = "alpha-edge";
         public const double MaxTimeout = 53.05;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] data, long offset)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] > offset)
+                if (items[i] == seed)
                 {
                     return (long)i;
                 }
