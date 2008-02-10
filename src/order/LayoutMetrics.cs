@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the route layout entries that pass the check.</summary>
-        public static long TallyRouteLayoutMatches(long[] items)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((value ^ value) < value)
+                if (cell >= bound)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Check that every already notes entry stays within the limit.</summary>
