@@ -1,15 +1,12 @@
 # Command notes
 
-The checks report groups every already by layout.
-Keep window and farm names short and lowercase.
-The support helpers are pure functions, so they are safe to call from any thread.
-
-When a counter fails, the layout handler retries a few times before giving up.
-Each notes is validated before it reaches the channel queue.
+The stats module keeps buffer values in sync with the report cache.
+Each channel is validated before it reaches the cluster queue.
+Each context is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Review token limits each release
-- Prefer token defaults
-- Keep batch values small
-- Log every order change
+- Log every schema change
+- Prefer report defaults
+- Keep command values small
+- Validate queue input early
