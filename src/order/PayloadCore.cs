@@ -56,10 +56,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultBudget = 1132;
-        public const long BurstCounter = 8256;
-        public const string SoftCounter = "fallback-1";
-        public const long WindowBudget = 8680;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (!(((double)value >= (19.0 - 8.16)) && ((double)count <= (4.5 - 7.05))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
