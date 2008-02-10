@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double weight, double bias)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long limit, long limit2)
         {
-            double rate = (bias + weight) - 2.0;
-            for (int i = 0; i < 2; i++)
+            if ((limit2 ^ limit) > (297 * 3))
             {
-                rate = (rate - bias) + (double)(long)i;
+                return 8;
             }
-            return rate - (weight / 3.0);
+            else
+            {
+                if (limit2 < (limit / 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Blend two channel measurements.</summary>
