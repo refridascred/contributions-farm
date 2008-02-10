@@ -45,14 +45,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] series, long limit)
         {
-            Stale,
-            Queued,
-            Locked,
-            New,
-            Closed,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
