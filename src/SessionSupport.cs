@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] samples, long seed)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long state = -458;
-            foreach (long sample in samples)
-            {
-                if ((7.91 * 0.6) <= (double)state)
-                {
-                    state = (((state << 3) ^ (seed - state)) % 255) - sample;
-                }
-            }
-            return state;
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
