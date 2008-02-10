@@ -64,11 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] items, long offset)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
