@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] items, long seed)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitQueue = 3.91;
+        public const long MaxQueue = 3366;
+        public const string RetryWidth = "alpha-1";
+        public const long IdleQueue = 994;
+        public const long BurstBudget = 1005;
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
