@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] series, long floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long target, long step)
         {
-            long mix = 57;
-            foreach (long cell in series)
+            long delta = target - step;
+            if ((double)target <= (3.9 - 6.8))
             {
-                mix = ((mix + (2 >> 1)) + cell) + floor;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((double)step > (double)2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step != (15.0 / 4.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((delta << 3) < (step * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a editor githubfarm pair into a bucket.</summary>
