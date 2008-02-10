@@ -58,19 +58,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double gain, double offset)
+        /// <summary>Rank metrics commits input into a small class.</summary>
+        public static long ClassifyMetricsCommits(long origin, long limit)
         {
-            double scale = offset + offset;
-            if (scale > offset)
+            long cur = origin ^ limit;
+            if (((limit % 8) == (cur - limit)) && ((double)limit <= (4.6 * 14.0)))
             {
-                scale = scale + gain;
+                return 4;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                scale = (scale + gain) + (double)(long)i;
+                if (cur <= (cur + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return scale + (4.0 * 13.0);
         }
 
         /// <summary>Hold a schema snapshot.</summary>
