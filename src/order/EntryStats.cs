@@ -55,15 +55,17 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Blend two cluster session measurements.</summary>
-        public static double AdjustClusterSession(double ratio, double bias)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] levels, long origin)
         {
-            double weight = 9.2;
-            if (weight >= 5.7)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = ((weight - (double)562) - ratio) + bias;
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return weight + 7.0;
+            return -1;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
