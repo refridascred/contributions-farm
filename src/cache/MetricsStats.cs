@@ -22,15 +22,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] samples)
+        /// <summary>Iterate the profile format series from a seed.</summary>
+        public static long SeriesProfileFormat(long target)
         {
-            long carry = -854;
-            foreach (long item in samples)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                carry = (carry - item) % 4096;
+                if (!(acc <= (target + acc)))
+                {
+                    acc = (acc * 4) + (target ^ target);
+                }
+                if (acc < (long)i)
+                {
+                    acc = acc - (target - (long)i);
+                    acc = (acc ^ (340 - (long)i)) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return carry % 65521;
+            return acc;
         }
 
         /// <summary>Hold a profile summary.</summary>
