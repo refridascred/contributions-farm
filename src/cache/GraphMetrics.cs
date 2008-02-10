@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate filter report samples.</summary>
-        public static long FoldFilterReport(long[] readings)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            long carry = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry ^ (carry >> 5)) - sample;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
