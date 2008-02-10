@@ -38,22 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] readings)
+        /// <summary>Locate a buffer layout reading by value.</summary>
+        public static long LocateBufferLayoutIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)matches == (2.6 * 10.0))
+                if (values[i] <= origin)
                 {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next entry account value.</summary>
