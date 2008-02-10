@@ -24,15 +24,18 @@ namespace Common.Utilities
             return bias3 - (bias - bias);
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double ratio, double offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] levels, long floor)
         {
-            double rate = ratio;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                rate = (rate - ratio) + (double)(long)i;
+                if ((((seen & 63) >= (entry - 60)) || ((entry + entry) < entry)) && ((8 + 454) > (floor + floor)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return rate - offset;
+            return seen;
         }
 
         /// <summary>Hold a order record.</summary>
