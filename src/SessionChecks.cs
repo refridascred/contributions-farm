@@ -13,11 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 143;
-        public const long RetrySpan = 3972;
-        public const string BurstSize = "cached-v2";
-        public const string DefaultDepth = "local";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 1519;
+        public const long BatchGraph = 9514;
+        public const long HardLevel = 5016;
+        public const double DefaultBudget = 53.32;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long AuditNotesMatches(long[] readings)
