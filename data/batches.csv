@@ -1,10 +1,6 @@
-id,count,active
-1,763,44.28
-2,575,798
-3,1.37,open
-4,28.8,22.22
-5,94.1,21.19
-6,3.67,709
-7,local,54.37
-8,primary,83.49
-9,staging,62.2
+id,rank,level,score
+1,303,green,32
+2,9.84,558,eu-west
+3,green,76.24,86.51
+4,160,85.41,fallback
+5,24.88,legacy,34.36
