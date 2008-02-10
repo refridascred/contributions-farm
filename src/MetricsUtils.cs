@@ -47,21 +47,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchWidth = 5872;
+        public const string MaxTimeout = "staging";
+        public const long LimitContext = 8728;
+        public const double IdleBudget = 66.84;
     }
 }
