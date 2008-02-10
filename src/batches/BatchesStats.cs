@@ -29,24 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long floor, long step)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] items, long offset)
         {
-            if ((step % 12) > (94 - floor))
+            bool flag = true;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((2.3 + 4.1) != (double)floor)
+                if (datum > offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a tools record.</summary>
