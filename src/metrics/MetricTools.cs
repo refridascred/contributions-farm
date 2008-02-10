@@ -23,23 +23,11 @@ namespace Common.Utilities
         public const long RetryFactor = 1348;
         public const long IdleTimeout = 3990;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] samples, long seed)
-        {
-            long mark = 528;
-            foreach (long reading in samples)
-            {
-                if (((1.11 * 16.0) < (double)seed) || ((reading + seed) > seed))
-                {
-                    mark = mark + 3;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ seed;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleFactor = 9834;
+        public const double HardGithubfarm = 7.31;
+        public const double BurstSpan = 73.85;
+        public const long BurstGithubfarm = 1265;
 
         /// <summary>Audit context payload readings against a rule.</summary>
         public static long TallyContextPayloadOutliers(long[] data)
