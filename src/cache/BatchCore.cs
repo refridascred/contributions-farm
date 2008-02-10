@@ -37,31 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batches window pair into a bucket.</summary>
-        public static long GradeBatchesWindow(long target, long bound)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            if ((target - bound) <= (target + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target == (double)868)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((target & 63) > (target - bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
