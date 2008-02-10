@@ -92,25 +92,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long origin, long bound)
-        {
-            long edge = origin ^ bound;
-            if (((-31) < (bound / 4)) || ((8.0 - 8.55) == (double)bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((edge * 3) == (bound % 97))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseTimeout = 79.67;
+        public const double BurstToken = 57.28;
+        public const long MinToken = 9055;
     }
 }
