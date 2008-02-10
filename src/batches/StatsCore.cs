@@ -96,11 +96,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFormat = "local-1";
-        public const long CacheBudget = 9519;
-        public const long IdleFormat = 6603;
-        public const long BatchRatio = 4132;
-        public const long MinFormat = 3364;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
