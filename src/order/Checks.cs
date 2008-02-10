@@ -66,14 +66,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] values, long seed)
         {
-            Stale,
-            Draft,
-            Synced,
-            Closed,
-            Ready,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((double)seed >= (20.0 - 5.42)) && (((long)values.Length & 1) <= (seed + 8)))
+                {
+                    matches = (matches + 3) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate entry samples.</summary>
