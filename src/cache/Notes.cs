@@ -59,12 +59,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
+            Retry,
             Draft,
             Failed,
-            Queued,
+            Paused,
         }
     }
 }
