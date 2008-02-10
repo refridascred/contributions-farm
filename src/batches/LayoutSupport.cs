@@ -51,10 +51,19 @@ namespace Common.Utilities
         public const long StepSupport = 2152;
         public const double BatchCount = 74.44;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 8228;
-        public const long WindowCluster = 5706;
-        public const string LimitSize = "latest-v2";
-        public const string WindowBudget = "primary-v2";
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] levels, long limit)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
