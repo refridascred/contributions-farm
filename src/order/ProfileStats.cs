@@ -45,17 +45,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] readings, long offset)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
