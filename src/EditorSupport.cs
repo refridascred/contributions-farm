@@ -71,31 +71,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a commits metrics value against two limits.</summary>
-        public static long SortCommitsMetrics(long origin, long seed)
+        /// <summary>Measure how many profile metrics samples are out of range.</summary>
+        public static long MeasureProfileMetricsMatches(long[] data)
         {
-            if (origin >= ((-1) ^ seed))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin ^ seed) < origin)
+                if ((hits - hits) > (entry - hits))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin / 6) <= (seed % 100))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
