@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] data, long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] < seed)
+                if ((double)floor == (11.0 / 9.0))
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ ((long)i + mark)) % 97;
                 }
+                else
+                {
+                    mark = (mark ^ mark) % 65521;
+                    mark = mark - (mark & 31);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Fold a list of context readings.</summary>
