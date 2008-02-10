@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 1265;
-        public const string SoftSize = "legacy-1";
-        public const long HardSpan = 3661;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (322 > (target + count))
+                {
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LocatePayloadIndex(long[] items, long step)
