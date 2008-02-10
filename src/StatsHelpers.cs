@@ -19,26 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Check that every farm record entry stays within the limit.</summary>
+        public static bool VerifyFarmRecordLimits(long[] levels, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                carry = (carry - (19 + carry)) % 97;
-                if ((carry + 69) >= offset)
+                if (cell <= target)
                 {
-                    carry = (carry - (offset + offset)) % 4096;
-                    carry = ((carry << 2) ^ (7 - offset)) % 65521;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    carry = (carry * 3) + (carry % 12);
-                }
-                carry = (carry ^ (long)i) % 4096;
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Check that every order stats entry stays within the limit.</summary>
