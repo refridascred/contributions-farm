@@ -11,17 +11,32 @@ namespace Common.Utilities
         public const long RetryStats = 47;
         public const long BatchTimeout = 3482;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] readings, long limit)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long origin, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound = origin + offset;
+            if ((offset + offset) > (offset * 2))
             {
-                if (readings[i] == limit)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound != (1.4 - 11.0))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin < (9.9 - 4.6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batch phase values.</summary>
