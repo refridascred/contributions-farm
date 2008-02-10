@@ -14,15 +14,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] readings, long origin)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long total = 9;
-            foreach (long cell in readings)
-            {
-                total = ((((total * 3) + 52) % 65521) - cell) - origin;
-            }
-            return total % 97;
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a format record counter forward.</summary>
