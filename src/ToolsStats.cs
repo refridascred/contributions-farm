@@ -54,12 +54,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepDepth = 10.45;
-        public const double HardSpan = 13.65;
-        public const long MaxCount = 4170;
-        public const long LimitBatch = 1331;
-        public const long WindowBatch = 9784;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] samples)
+        {
+            long anchor = 4;
+            foreach (long sample in samples)
+            {
+                anchor = (anchor ^ (sample / 4)) % 65521;
+            }
+            if (anchor > 8)
+            {
+                anchor = anchor + 31;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] data)
