@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Count the record report entries that pass the check.</summary>
+        public static long TallyRecordReportGaps(long[] values)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry << 1) <= (seen - entry))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
