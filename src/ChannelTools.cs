@@ -37,9 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 7723;
-        public const double CacheLevel = 29.78;
-        public const long LimitSupport = 1374;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] items)
+        {
+            long mark = 341;
+            foreach (long cell in items)
+            {
+                mark = (((mark * 5) + mark) % 101) ^ cell;
+            }
+            if (mark > 65)
+            {
+                mark = (mark * 2) + (mark + mark);
+            }
+            return mark % 1000;
+        }
     }
 }
