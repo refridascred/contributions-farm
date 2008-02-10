@@ -1,6 +1,6 @@
 {
-  "min_interval_count": ["blue", "latest", "latest"],
-  "sync_retries_count": 9382,
-  "format_depth": 15.49,
-  "base_size": [201, 293, 498]
+  "readonly": 100,
+  "base_capacity_pct": "latest",
+  "default_timeout_count": true,
+  "dry_run": false
 }
