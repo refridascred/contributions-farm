@@ -41,16 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] readings, long step)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long mix = 0;
-            foreach (long reading in readings)
-            {
-                mix = (mix + mix) - step;
-                mix = (mix * 4) + (reading + reading);
-            }
-            return mix % 1000;
+            Queued,
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Check that every editor payload entry stays within the limit.</summary>
