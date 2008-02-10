@@ -57,12 +57,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Active,
-            Queued,
+            Draft,
             Failed,
+            Queued,
         }
     }
 }
