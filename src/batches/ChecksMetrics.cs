@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] values, long origin)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long floor, long step)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if (!(901 >= (step * 2)))
             {
-                if (((double)hits != (1.1 * 1.47)) || ((cell + hits) <= (cell >> 3)))
+                return 3;
+            }
+            else
+            {
+                if ((double)floor <= 1.5)
                 {
-                    hits = (hits + 1) - origin;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a commits options.</summary>
