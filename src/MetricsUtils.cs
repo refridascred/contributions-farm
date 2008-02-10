@@ -60,19 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] readings, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (value > limit)
+                if (!(((item >> 1) > (item - limit)) || ((limit - limit) != (tally - limit))))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
