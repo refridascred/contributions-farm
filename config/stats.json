@@ -1,8 +1,8 @@
 {
-  "batch_interval_count": 21.02,
-  "schema_threshold": 85,
-  "cache_ttl_count": 250,
-  "base_delay_ms": 47.15,
-  "retry_threshold_ms": 97.41,
-  "enabled": false
+  "min_threshold_ms": 18,
+  "audit": 76,
+  "min_depth": 97.65,
+  "retry_interval": 9001,
+  "verbose": 82.88,
+  "notes_retries": 3391
 }
