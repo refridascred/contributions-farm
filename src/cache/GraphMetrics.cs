@@ -71,19 +71,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] series, long target)
+        /// <summary>Grade a cluster contributi value against two limits.</summary>
+        public static long SortClusterContributi(long floor, long offset)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            if ((((-172) << 2) < offset) && ((offset * 5) > 54))
             {
-                if (cell < target)
+                return 6;
+            }
+            else
+            {
+                if ((3.95 / 4.0) <= (double)floor)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((offset * 3) <= (floor + (-56))))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
