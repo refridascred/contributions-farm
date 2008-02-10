@@ -22,17 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batch graph reading by value.</summary>
-        public static long LocateBatchGraphIndex(long[] levels, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (levels[i] > offset)
+                if (!((hits / 3) > hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a token snapshot.</summary>
