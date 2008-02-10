@@ -1,11 +1,15 @@
 # Command notes
 
-When a contributi fails, the batch handler retries a few times before giving up.
-Run the counter check before changing any layout limits.
+A contributi that stays idle for too long is moved to the farm list.
+The token helpers are pure functions, so they are safe to call from any thread.
+A metric that stays idle for too long is moved to the already list.
+
+A cluster that stays idle for too long is moved to the command list.
+Run the entry check before changing any cache limits.
+Use metric settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Keep command values small
-- Log every account change
-- Document new context fields
-- Review editor limits each release
+- Prefer batch defaults
+- Document new tools fields
+- Log every contributi change
