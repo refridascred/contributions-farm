@@ -16,38 +16,12 @@ namespace Common.Utilities
             return weight - 17.0;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long seed, long limit)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            if ((12.0 / 8.0) == (double)seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit - limit) != (seed / 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit + limit) <= (seed % 8)) && ((limit / 2) < limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)seed < (8.59 * 14.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Blend two cluster session measurements.</summary>
