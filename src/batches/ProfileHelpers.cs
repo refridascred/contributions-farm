@@ -61,13 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public double Total { get; set; }
         }
     }
 }
