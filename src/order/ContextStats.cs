@@ -27,22 +27,10 @@ namespace Common.Utilities
         public const long RetryBudget = 763;
         public const double LimitDepth = 56.22;
 
-        /// <summary>Count stats cache pairs that satisfy a relation.</summary>
-        public static long MatchStatsCacheCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchBudget = "stable-1";
+        public const long BurstWidth = 2556;
+        public const double MinAccount = 21.77;
 
         /// <summary>Roll a context counter forward.</summary>
         public static long SeriesContext(long limit)
