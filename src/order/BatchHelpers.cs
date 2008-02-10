@@ -28,12 +28,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardCounter = 84.75;
+        public const long IdleLevel = 5602;
+        public const long BurstFactor = 9862;
+        public const long SoftBudget = 515;
     }
 }
