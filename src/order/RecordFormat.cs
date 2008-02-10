@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepScore = 4733;
-        public const long WindowBuffer = 461;
-        public const double MinSpan = 31.32;
-        public const long MinTimeout = 7928;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Done,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TallyFormat(long[] data, long step)
