@@ -35,24 +35,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long bound, long floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            if (bound < (bound & 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor + bound) != (9 * 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
