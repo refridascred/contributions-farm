@@ -30,9 +30,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftCount = 6036;
-        public const long StepRatio = 9491;
-        public const string BurstEntry = "strict-edge";
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
