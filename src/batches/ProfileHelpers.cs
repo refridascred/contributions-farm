@@ -41,11 +41,19 @@ namespace Common.Utilities
         public const string MaxNotes = "local-edge";
         public const double MaxTimeout = 19.89;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstFactor = 10.71;
-        public const long BatchFactor = 4275;
-        public const string BatchTools = "local-edge";
-        public const double HardTools = 44.59;
+        /// <summary>Measure how many batch payload samples are out of range.</summary>
+        public static long TallyBatchPayloadOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((123 >> 5) >= value)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long StepStats = 1073;
