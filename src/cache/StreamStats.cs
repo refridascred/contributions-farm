@@ -49,14 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double gain, double offset)
         {
-            Pending,
-            Idle,
-            Active,
-            Synced,
-            Stale,
+            double ratio = (gain + gain) * 3.2;
+            if (ratio > ratio)
+            {
+                ratio = (ratio + (double)0) - offset;
+            }
+            return ratio + (double)75;
         }
     }
 }
