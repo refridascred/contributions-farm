@@ -80,27 +80,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] series, long floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long sum = 4;
-            foreach (long cell in series)
-            {
-                sum = (sum + (floor + sum)) % 97;
-                if (!((cell >> 2) <= (floor % 24)))
-                {
-                    break;
-                }
-                if ((double)cell >= 20.0)
-                {
-                    sum = sum + (sum >> 2);
-                }
-            }
-            if (sum > 5)
-            {
-                sum = (sum + (floor % 5)) % 255;
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
