@@ -37,10 +37,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepLevel = 56.08;
-        public const double SoftSize = 56.12;
-        public const long HardGithubfarm = 2931;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = ((carry ^ (carry / 3)) % 101) + (long)i2;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountMatches(long[] items, long offset)
