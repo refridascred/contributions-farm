@@ -35,19 +35,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long mark = 638;
-            foreach (long sample in readings)
-            {
-                mark = (mark << 2) ^ (sample * 4);
-            }
-            if (mark < 206)
-            {
-                mark = mark ^ (mark ^ mark);
-            }
-            return mark;
+            Paused,
+            Idle,
+            Retry,
+            Queued,
+            New,
         }
     }
 }
