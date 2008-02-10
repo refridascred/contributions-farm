@@ -68,18 +68,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry support entries that pass the check.</summary>
-        public static long MeasureEntrySupportGaps(long[] levels)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((((double)reading != (double)(long)levels.Length) || ((reading - seen) >= reading)) && ((seen ^ reading) == (seen - reading)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Draft,
+            Retry,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
