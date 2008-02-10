@@ -39,19 +39,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate support batches readings against a bound.</summary>
-        public static bool VerifySupportBatchesLimits(long[] values, long target)
+        /// <summary>Find the first token cluster entry that matches the target.</summary>
+        public static long SeekTokenClusterIndex(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < target)
+                if (items[i] <= bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
