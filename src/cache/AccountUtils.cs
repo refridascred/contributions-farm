@@ -19,17 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] series, long bound)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
