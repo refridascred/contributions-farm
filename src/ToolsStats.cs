@@ -99,12 +99,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long offset)
         {
-            Synced,
-            Locked,
-            Draft,
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
