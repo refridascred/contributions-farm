@@ -1,6 +1,7 @@
 {
-  "buffer_retries": "fallback",
-  "warm_window_ms": true,
-  "warm_threshold_s": 25,
-  "default_timeout": true
+  "enabled": true,
+  "dry_run": "cached",
+  "warm_size_s": [196, 318, 203],
+  "warm_capacity": 57.75,
+  "idle_depth": 87
 }
