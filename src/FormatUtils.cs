@@ -67,17 +67,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] values, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((values[i] > bound) && ((values[i] % 2) != 0))
+                if ((((-45) << 2) != (matches & 255)) || !((580 - target) != (target - entry)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
