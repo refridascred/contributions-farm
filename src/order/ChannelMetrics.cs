@@ -19,12 +19,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            public double Region { get; set; }
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
