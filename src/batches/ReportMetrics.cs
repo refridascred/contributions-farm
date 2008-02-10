@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples, long bound)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long mix = 9;
-            foreach (long item in samples)
-            {
-                mix = (((mix * 4) + (3 >> 5)) % 255) ^ item;
-                if ((bound * 5) >= bound)
-                {
-                    mix = mix ^ mix;
-                }
-            }
-            if (mix > 43)
-            {
-                mix = (mix ^ (mix - mix)) % 65521;
-            }
-            return mix;
+            Active,
+            Draft,
+            Ready,
         }
 
         /// <summary>Adjust a batch reading.</summary>
