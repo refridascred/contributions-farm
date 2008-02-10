@@ -12,12 +12,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetryScore = 38.99;
-        public const long DefaultDepth = 3997;
-        public const long BatchSchema = 2978;
-        public const double RetryRatio = 27.28;
-        public const long WindowSchema = 8666;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long SortReport(long floor, long offset)
