@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 3;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((6.59 * 2.1) > (double)(long)readings.Length)
                 {
-                    if ((values[i] + values[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score ^ 534) ^ item;
+                }
+                else
+                {
+                    score = score ^ (129 >> 1);
                 }
             }
-            return tally;
+            if (score > 93)
+            {
+                score = ((score << 3) ^ (score * 4)) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Check that every already notes entry stays within the limit.</summary>
