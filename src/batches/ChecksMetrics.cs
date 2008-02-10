@@ -51,13 +51,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
