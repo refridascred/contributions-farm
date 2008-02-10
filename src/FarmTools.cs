@@ -25,19 +25,19 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Check that every command support entry stays within the limit.</summary>
-        public static bool VerifyCommandSupportRange(long[] readings, long origin)
+        /// <summary>Check that every support token entry stays within the limit.</summary>
+        public static bool GuardSupportTokenRange(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (cell < origin)
+                if (value != limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
