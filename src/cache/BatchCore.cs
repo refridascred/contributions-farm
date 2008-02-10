@@ -56,18 +56,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] series, long target)
+        /// <summary>Rank format editor input into a small class.</summary>
+        public static long BucketFormatEditor(long seed, long target)
         {
-            long total = 665;
-            foreach (long reading in series)
+            long edge = seed ^ target;
+            if ((seed * 5) >= seed)
             {
-                if (1.4 < (double)target)
+                return 7;
+            }
+            else
+            {
+                if ((edge * 4) > edge)
                 {
-                    total = (total + (reading & 15)) % 101;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return total % 97;
         }
     }
 }
