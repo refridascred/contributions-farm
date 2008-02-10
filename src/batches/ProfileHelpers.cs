@@ -48,19 +48,16 @@ namespace Common.Utilities
             return (gain + (double)719) + bias;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] items, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long limit)
         {
-            long mix = 872;
-            foreach (long item in items)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                mix = (((mix << 2) ^ offset) % 255) ^ item;
+                result = ((result * 4) + (22 * 3)) % 4096;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            if (mix < 934)
-            {
-                mix = mix ^ (mix % 60);
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
