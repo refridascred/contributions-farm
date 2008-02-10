@@ -39,21 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = (mix + target) % 65521;
-                if ((target + 5) < 9)
-                {
-                    mix = (mix + (mix % 60)) % 255;
-                }
-                mix = (mix ^ (981 >> 3)) % 1000;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Idle,
+            Dropped,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define token limits and defaults.</summary>
