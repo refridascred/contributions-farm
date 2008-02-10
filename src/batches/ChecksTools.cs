@@ -27,22 +27,12 @@ namespace Common.Utilities
         public const long WindowRatio = 5954;
         public const long BatchRatio = 2853;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long anchor = 518;
-            foreach (long datum in items)
-            {
-                if ((anchor & 15) <= (datum ^ anchor))
-                {
-                    anchor = ((anchor * 4) + datum) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + 905) % 65521;
-                }
-            }
-            return anchor;
+            Locked,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the queue class values.</summary>
