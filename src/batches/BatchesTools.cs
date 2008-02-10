@@ -12,18 +12,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetryScore = 38.99;
+        public const long DefaultDepth = 3997;
+        public const long BatchSchema = 2978;
+        public const double RetryRatio = 27.28;
+        public const long WindowSchema = 8666;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long SortReport(long floor, long offset)
