@@ -26,18 +26,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] series, long limit)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!((double)limit < 9.91))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of tools metric entries.</summary>
