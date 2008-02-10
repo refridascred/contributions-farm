@@ -1,29 +1,10 @@
 # support settings
-idle_capacity:
-  window_ratio: eu-west
-  default_ttl_count: fallback
-  burst_limit_count: stable
-  default_ratio_s: 49.39
-  strict: 18.26
-  min_size:
-    poll_limit: 29
-    strict:
-      - latest
-      - open
-    poll_threshold_pct: primary
-    retry_ratio:
-      - 69
-      - 430
-      - 252
-    compress: 43
-    idle_timeout_count: 41
-schema_ttl: green
-soft_threshold:
-  - primary
-  - standard
-  - staging
-  - blue
-verbose:
-  - legacy
-  - green
-min_ratio: 30.14
+poll_ttl_ms:
+  - 84
+  - 483
+  - 163
+cache_retries_pct: 7.35
+warm_ttl_ms: primary
+support_window: primary
+burst_threshold_s: false
+batch_depth_count: false
