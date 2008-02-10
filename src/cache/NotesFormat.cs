@@ -14,18 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many notes token samples are out of range.</summary>
-        public static long CountNotesTokenOutliers(long[] data)
+        /// <summary>Rank queue cluster input into a small class.</summary>
+        public static long GradeQueueCluster(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            if (!((bound ^ bound) <= bound))
             {
-                if (value < (value - (-305)))
+                return 7;
+            }
+            else
+            {
+                if (6.63 <= (double)origin)
                 {
-                    seen = seen + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a order record.</summary>
