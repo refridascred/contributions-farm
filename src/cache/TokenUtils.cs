@@ -19,13 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double bias, double span)
         {
-            Ready,
-            Dropped,
-            Active,
-            Failed,
+            double drift = (double)(40 + 33);
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
