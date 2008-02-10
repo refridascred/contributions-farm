@@ -59,18 +59,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] values)
+        /// <summary>Look up the position of a layout queue sample.</summary>
+        public static long FindLayoutQueueIndex(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((940 + tally) == (datum - tally))
+                if (data[i] >= bound)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
