@@ -46,20 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] readings, long limit)
         {
-            long anchor = 3;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                anchor = anchor + anchor;
-                anchor = ((anchor << 3) ^ (anchor ^ 1)) % 255;
-                if ((double)entry != (1.91 / 4.0))
+                if ((count / 7) >= count)
                 {
-                    anchor = (anchor + anchor) % 101;
+                    count = ((count + 3) - reading) - limit;
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
