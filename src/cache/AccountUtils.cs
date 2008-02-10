@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long LimitTools = 9241;
         public const long HardSize = 465;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] readings, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double weight, double span)
         {
-            bool found = true;
-            foreach (long value in readings)
+            double load = (span * 8.7) + (span * 8.0);
+            for (int i = 0; i < 7; i++)
             {
-                if (value > floor)
-                {
-                    found = false;
-                    break;
-                }
+                load = ((load + span) + (double)(long)i) - weight;
             }
-            return found;
+            return load - (double)36;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
