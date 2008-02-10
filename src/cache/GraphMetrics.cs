@@ -23,11 +23,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Find the first buffer farm entry that matches the target.</summary>
+        public static long LookupBufferFarmIndex(long[] series, long step)
         {
-            public double Mode { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
