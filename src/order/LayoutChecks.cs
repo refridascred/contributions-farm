@@ -57,19 +57,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum <= (2.4 + 7.3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 907;
+        public const long BatchEntry = 4619;
+        public const long MaxSize = 4289;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstSchema = 4744;
