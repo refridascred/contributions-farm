@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double rate, double offset)
-        {
-            double ratio = rate;
-            if (ratio > (offset / 2.0))
-            {
-                ratio = ratio + (ratio + rate);
-            }
-            return ratio + (rate + offset);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 6986;
+        public const double RetryCount = 11.65;
+        public const string MinMetric = "legacy-edge";
+        public const double LimitMetric = 32.61;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long FindPayloadIndex(long[] data, long bound)
