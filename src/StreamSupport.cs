@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] samples, long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((offset >> 5) >= (27 + cell))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
