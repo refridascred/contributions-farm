@@ -45,21 +45,19 @@ namespace Common.Utilities
         public const string RetrySpan = "strict-edge";
         public const long BurstSpan = 72;
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] readings)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = 8.0;
+            if (rate <= (16.0 * 0.01))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate + (weight * 9.3)) - floor;
             }
-            return matches;
+            else
+            {
+                rate = rate + weight;
+            }
+            return rate - 2.0;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
