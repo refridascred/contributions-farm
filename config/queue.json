@@ -1,14 +1,7 @@
 {
-  "profile_capacity": 5906,
-  "readonly": 45.89,
-  "sync_size_pct": {
-    "report_ttl": "edge",
-    "batch_limit": false,
-    "default_interval_ms": 3034,
-    "warm_retries_count": "cached",
-    "max_threshold_ms": true
-  },
-  "enabled": 22.33,
-  "cache_depth": 100,
-  "sync_window": 68.6
+  "cluster_retries": 83.49,
+  "hard_retries": "strict",
+  "verbose": [443, 403, 227, 240],
+  "layout_size": 86.54,
+  "persist": "primary"
 }
