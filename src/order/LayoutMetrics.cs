@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a batch farm value against two limits.</summary>
-        public static long ClassifyBatchFarm(long origin, long floor)
-        {
-            if ((origin ^ origin) > origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((9.0 / 2.0) <= (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (95 > floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 124;
+        public const string RetryRatio = "alpha";
+        public const long HardLevel = 8976;
+        public const long SoftBatches = 3613;
 
         /// <summary>Check that every already notes entry stays within the limit.</summary>
         public static bool VerifyAlreadyNotesBounds(long[] items, long target)
