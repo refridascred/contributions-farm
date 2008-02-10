@@ -1,7 +1,6 @@
 {
-  "flush_window_pct": "fallback",
-  "idle_window": true,
-  "default_ttl_count": "open",
-  "batch_window_ms": 27,
-  "default_threshold_pct": 250
+  "readonly": 8701,
+  "channel_depth": "cached",
+  "base_threshold": "green",
+  "strict": [377, 259, 185]
 }
