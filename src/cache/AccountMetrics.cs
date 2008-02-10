@@ -21,38 +21,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long origin, long limit)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] readings, long limit)
         {
-            if ((origin > (limit * 5)) && ((origin % 64) > (29 - limit)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((2.6 + 3.3) <= (double)origin))
+                if (readings[i] > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin + 87) <= limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit < (origin - origin)) || ((origin >> 4) != (limit - origin)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
