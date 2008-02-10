@@ -1,8 +1,6 @@
 {
-  "idle_timeout_count": [362, 344, 260],
-  "hard_retries_s": 1024,
-  "min_limit": 30,
-  "support_threshold": "green",
-  "default_ttl_ms": false,
-  "compress": "eu-west"
+  "counter_interval": [184, 345, 95],
+  "default_window": [57, 4],
+  "verbose": ["primary", "primary", "local"],
+  "retry_size": "stable"
 }
