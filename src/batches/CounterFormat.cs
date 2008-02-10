@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 6948;
-        public const long IdleInterval = 6364;
-        public const long LimitRoute = 9925;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] samples, long step)
+        {
+            long mark = -9;
+            foreach (long entry in samples)
+            {
+                if (step <= (step * 4))
+                {
+                    mark = (mark + (51 + step)) - entry;
+                }
+                else
+                {
+                    mark = (mark ^ (3 ^ mark)) % 1000;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
