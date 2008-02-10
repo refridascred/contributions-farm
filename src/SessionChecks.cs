@@ -28,19 +28,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two commits editor measurements.</summary>
-        public static double ScaleCommitsEditor(double weight, double floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double load = (double)6 + 5.44;
-            if (load >= 6.35)
-            {
-                load = (load - (floor + load)) - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - 6.7) + (double)(long)i;
-            }
-            return load - (double)49;
+            New,
+            Ready,
+            Pending,
         }
     }
 }
