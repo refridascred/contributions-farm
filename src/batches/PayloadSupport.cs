@@ -15,22 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] values, long floor)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long sum = 835;
-            foreach (long item in values)
-            {
-                if ((double)sum == (5.7 + 12.0))
-                {
-                    sum = ((((sum * 3) + (112 + (long)values.Length)) % 4096) - item) - floor;
-                }
-            }
-            if (sum > 0)
-            {
-                sum = sum + (48 << 2);
-            }
-            return sum % 97;
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
