@@ -60,11 +60,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWindow = "latest-v2";
-        public const long IdleWindow = 2579;
-        public const long LimitWindow = 1440;
-        public const long StepRatio = 7308;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] series, long floor)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value < 9) && (((double)seen < (3.37 - 7.2)) && ((2 + seen) <= (seen & 7))))
+                {
+                    seen = (seen + 1) + floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string DefaultLevel = "local-edge";
