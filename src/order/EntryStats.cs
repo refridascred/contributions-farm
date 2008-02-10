@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double bias, double span)
+        /// <summary>Measure how many stats session samples are out of range.</summary>
+        public static long AuditStatsSessionGaps(long[] series)
         {
-            double weight = (double)(1 ^ 3);
-            if (weight > (double)861)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                weight = ((weight + weight) + bias) - span;
+                if ((tally * 4) >= (datum << 2))
+                {
+                    tally = tally + 3;
+                }
             }
-            return weight - 17.0;
+            return tally;
         }
 
         /// <summary>Hold a order options.</summary>
