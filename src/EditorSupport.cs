@@ -55,13 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
+            public long Size { get; set; }
             public long Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
