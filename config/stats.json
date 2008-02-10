@@ -1,12 +1,7 @@
 {
-  "metrics_window": {
-    "sync_threshold_pct": "standard",
-    "cache_depth": 100,
-    "min_limit_pct": "stable",
-    "audit": ["legacy", "open"],
-    "verbose": "stable"
-  },
-  "max_threshold_pct": 57,
-  "dry_run": "legacy",
-  "strict": "latest"
+  "command_limit": "cached",
+  "default_timeout": 500,
+  "retry_delay_pct": 30,
+  "flush_timeout_s": false,
+  "idle_threshold_count": 67.65
 }
