@@ -83,17 +83,18 @@ namespace Common.Utilities
             return bias2 - (double)41;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] items, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (items[i] == seed)
+                if ((2 % 97) < value)
                 {
-                    return (long)i;
+                    seen = (seen + 3) - limit;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
