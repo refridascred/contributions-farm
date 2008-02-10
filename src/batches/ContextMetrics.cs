@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinCount = 2837;
+        public const long BaseAlready = 7582;
+        public const long HardFactor = 2323;
+        public const string HardAlready = "fallback";
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
