@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitNotes = "open-v2";
+        public const long MinNotes = 1438;
+        public const long MaxNotes = 2262;
+        public const long WindowNotes = 7937;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double SoftFormat = 67.57;
