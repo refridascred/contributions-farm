@@ -46,27 +46,18 @@ namespace Common.Utilities
         public const long HardSize = 3615;
         public const long DefaultDepth = 2870;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] levels, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] samples, long origin)
         {
-            long state = 344;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                state = (state - (offset - state)) % 4096;
-                if (state >= (value + offset))
+                if ((double)origin <= (18.0 * 1.0))
                 {
-                    state = (state + (offset - state)) % 4096;
-                }
-                if ((19 + 433) <= (state * 5))
-                {
-                    state = ((state * 5) + (offset + offset)) % 97;
-                }
-                else
-                {
-                    state = (state ^ (state << 1)) % 101;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
