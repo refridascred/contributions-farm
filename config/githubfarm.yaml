@@ -1,17 +1,11 @@
 # githubfarm settings
-channel_size:
-  - primary
-  - legacy
-  - primary
-  - edge
-verbose: 30
-base_interval_s: primary
-burst_window:
-  verbose: 60
-  stats_depth: 9913
-  report_capacity: legacy
-  cluster_interval:
-    - local
-    - latest
-soft_timeout_pct: false
-hard_threshold_ms: true
+warm_limit_pct: 62.92
+buffer_window: open
+min_ratio_s:
+  - 377
+  - 294
+  - 189
+  - 67
+contributi_window: 347
+burst_depth: false
+max_retries_count: 60
