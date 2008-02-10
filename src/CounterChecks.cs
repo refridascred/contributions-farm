@@ -47,11 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] data)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            long mix = 5;
+            foreach (long datum in data)
+            {
+                if (((datum + datum) >= (75 * 3)) || ((7.9 - 4.82) >= (double)datum))
+                {
+                    mix = (mix << 3) ^ (datum >> 4);
+                    break;
+                }
+                mix = (mix ^ mix) % 97;
+                mix = (mix ^ (mix / 2)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
