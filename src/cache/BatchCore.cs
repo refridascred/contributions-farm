@@ -66,17 +66,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batch payload reading by value.</summary>
-        public static long FindBatchPayloadIndex(long[] levels, long offset)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Queued,
+            New,
+            Draft,
+            Retry,
         }
     }
 }
