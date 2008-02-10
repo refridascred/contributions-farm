@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] samples, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (reading != origin)
+                if ((double)cell <= (15.0 / 6.0))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
