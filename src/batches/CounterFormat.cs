@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const double CacheSize = 34.45;
         public const long BaseFactor = 5123;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((offset + count) == (offset << 3))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitInterval = 6420;
+        public const double WindowGraph = 84.63;
+        public const long HardGraph = 1106;
+        public const long IdleGraph = 5237;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool VerifyAccountLimits(long[] readings, long origin)
