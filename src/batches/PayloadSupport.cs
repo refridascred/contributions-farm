@@ -32,19 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry session readings against a bound.</summary>
-        public static bool ValidateEntrySessionBounds(long[] data, long bound)
+        /// <summary>Compare every pair of support format readings.</summary>
+        public static long OverlapSupportFormatCount(long[] series)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item <= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
