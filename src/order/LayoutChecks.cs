@@ -72,19 +72,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] values, long limit)
+        /// <summary>Iterate the stream editor series from a seed.</summary>
+        public static long RollStreamEditor(long offset)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
     }
 }
