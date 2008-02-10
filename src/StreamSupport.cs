@@ -21,17 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a channel checks sample.</summary>
-        public static long LocateChannelChecksIndex(long[] items, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (items[i] > limit)
+                if (sample <= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Accumulate farm samples.</summary>
