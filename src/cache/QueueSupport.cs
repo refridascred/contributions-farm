@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] samples)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] items)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long score = 682;
+            foreach (long cell in items)
             {
-                if ((count % 5) >= (0 - count))
+                if (!((cell >> 5) < (cell >> 4)))
                 {
-                    count = (count + 1) + datum;
+                    score = (score * 2) + (score / 5);
+                }
+                if (((11.0 / 5.0) == (double)score) || ((cell << 2) > cell))
+                {
+                    break;
                 }
             }
-            return count;
+            if (score < (-29))
+            {
+                score = score ^ (score / 7);
+            }
+            return score;
         }
 
         /// <summary>Locate a editor entry reading by value.</summary>
