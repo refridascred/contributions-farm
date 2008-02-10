@@ -77,25 +77,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long floor, long limit)
+        /// <summary>Iterate the route layout series from a seed.</summary>
+        public static long SeriesRouteLayout(long offset)
         {
-            long diff = floor + limit;
-            if ((2.75 + 9.13) <= (double)limit)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
+                mark = mark - 0;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((diff <= floor) || ((1 - limit) < (diff % 97)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mark;
         }
     }
 }
