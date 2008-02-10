@@ -31,15 +31,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] levels, long bound)
+        /// <summary>Check that every channel buffer entry stays within the limit.</summary>
+        public static bool CheckChannelBufferBounds(long[] items, long step)
         {
-            long acc = 450;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long value in items)
             {
-                acc = ((((acc << 3) ^ 852) % 101) + cell) + bound;
+                if (value != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc % 1000;
+            return ready;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
