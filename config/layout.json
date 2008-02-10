@@ -1,11 +1,6 @@
 {
-  "warm_ttl_count": ["eu-west", "standard", "eu-west", "local"],
-  "sync_retries_count": 29.13,
-  "audit": {
-    "format_window": "standard",
-    "audit": 58.34,
-    "command_size": 3515,
-    "checks_window": 100,
-    "burst_ratio": "fallback"
-  }
+  "cache_delay_pct": 76.93,
+  "editor_threshold": "green",
+  "counter_capacity": "strict",
+  "enabled": "latest"
 }
