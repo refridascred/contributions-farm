@@ -36,10 +36,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardCounter = 84.75;
-        public const long IdleLevel = 5602;
-        public const long BurstFactor = 9862;
-        public const long SoftBudget = 515;
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
