@@ -35,14 +35,19 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] items, long seed)
         {
-            Paused,
-            Draft,
-            New,
-            Stale,
-            Done,
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a filter summary.</summary>
