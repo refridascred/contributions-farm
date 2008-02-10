@@ -30,22 +30,25 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] items, long offset)
+        /// <summary>Rank batches buffer input into a small class.</summary>
+        public static long BucketBatchesBuffer(long bound, long offset)
         {
-            long result = 464;
-            foreach (long reading in items)
+            long step = bound ^ offset;
+            if ((double)step > (double)bound)
             {
-                if (!(reading < offset))
+                return 3;
+            }
+            else
+            {
+                if (((692 + bound) <= step) && ((step ^ bound) >= (offset >> 2)))
                 {
-                    result = (result - 66) % 101;
+                    return 5;
                 }
                 else
                 {
-                    result = (result * 5) + (offset - reading);
+                    return 7;
                 }
             }
-            return result;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
