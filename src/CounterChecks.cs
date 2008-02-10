@@ -41,12 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 8036;
-        public const long IdleContext = 7061;
-        public const long CacheContext = 5387;
-        public const long BurstContext = 3010;
-        public const string CacheScore = "alpha";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 3252;
+        public const long WindowBudget = 5546;
+        public const long SoftFilter = 9596;
+        public const double RetryScore = 56.09;
+        public const long LimitFilter = 4045;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
