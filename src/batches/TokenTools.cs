@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] samples, long bound)
         {
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
