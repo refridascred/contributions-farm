@@ -15,12 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstCount = 7916;
-        public const string LimitSize = "open-v2";
-        public const long MinFactor = 5447;
-        public const string LimitBudget = "cached-1";
-        public const string IdleTimeout = "strict-edge";
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double IdleRatio = 13.87;
