@@ -48,14 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] items, long step)
         {
-            Draft,
-            Failed,
-            Dropped,
-            Synced,
-            Active,
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a command reading by value.</summary>
