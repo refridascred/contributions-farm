@@ -27,21 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of payload counter readings.</summary>
-        public static long ComparePayloadCounterCount(long[] samples)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the notes kind values.</summary>
