@@ -1,44 +1,8 @@
 # support settings
-poll_timeout_pct:
-  verbose:
-    hard_limit_pct: false
-    dry_run: open
-    idle_ttl: 30
-    commits_ttl:
-      - 5
-      - 394
-      - 45
-    editor_timeout: 14.27
-  persist: 20.31
-  account_timeout:
-    max_depth: 78.98
-    flush_ttl: true
-    cache_delay_count:
-      - 233
-      - 301
-      - 328
-      - 173
-    idle_threshold_s: 2.26
-  burst_retries_count: 49.59
-  profile_threshold: edge
-record_depth:
-  - staging
-  - latest
-batch_capacity_pct: 8101
-base_size_pct:
-  - 407
-  - 160
-  - 388
-  - 177
-support_delay:
-  poll_window_s: fallback
-  cache_retries:
-    dry_run: primary
-    soft_timeout: true
-    token_retries: 4
-    strict: 250
-    idle_timeout:
-      - 94
-      - 472
-    compress: 2.48
-  sync_retries: strict
+editor_ttl: 1024
+burst_timeout_count: strict
+filter_delay:
+  - 152
+  - 61
+  - 155
+min_ttl_ms: false
