@@ -20,14 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Queued,
-            Failed,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstEntry = "strict-edge";
+        public const long BurstWidth = 6080;
+        public const string BatchSpan = "stable-1";
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
