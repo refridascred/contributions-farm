@@ -41,19 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)seen >= (9.4 * 0.45))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxSpan = 35.28;
+        public const string StepAccount = "fallback";
+        public const long BurstAccount = 2321;
+        public const double SoftInterval = 27.62;
+        public const long IdleWidth = 9042;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool ValidateEntryBounds(long[] items, long step)
