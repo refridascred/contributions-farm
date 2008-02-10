@@ -1,14 +1,14 @@
 # Command notes
 
-When a payload fails, the batch handler retries a few times before giving up.
-The stats helpers are pure functions, so they are safe to call from any thread.
+When a schema fails, the contributi handler retries a few times before giving up.
+Use session settings to tune how often profile data is refreshed.
+Keep context and stream names short and lowercase.
 
-Each record is validated before it reaches the checks queue.
-The report module keeps cache values in sync with the filter cache.
+Defaults for counter live in the config folder and can be overridden per environment.
+Keep profile and farm names short and lowercase.
 
 ## Guidelines
 
-- Review graph limits each release
-- Document new counter fields
-- Keep farm values small
-- Validate notes input early
+- Validate window input early
+- Document new payload fields
+- Log every report change
