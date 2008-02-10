@@ -38,26 +38,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] samples, long origin)
-        {
-            long sum = -67;
-            foreach (long value in samples)
-            {
-                if ((sum % 10) > value)
-                {
-                    sum = ((sum + (value * 2)) % 101) - origin;
-                }
-                else
-                {
-                    sum = sum ^ (573 % 60);
-                }
-            }
-            if (sum < 70)
-            {
-                sum = (sum + (73 >> 3)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftCount = 8422;
+        public const long IdleBudget = 3031;
+        public const string LimitSize = "primary-edge";
+        public const long IdleScore = 9649;
+        public const string IdleCount = "fallback-v2";
     }
 }
