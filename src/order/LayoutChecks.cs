@@ -49,13 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] data)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum <= (2.4 + 7.3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
