@@ -26,25 +26,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long floor, long offset)
-        {
-            long next = floor + offset;
-            if ((next > (offset % 60)) && ((next * 2) < (offset ^ offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset + next) >= (227 + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepSpan = "cached-edge";
+        public const long RetryRatio = 4080;
+        public const long StepEntry = 4475;
     }
 }
