@@ -13,21 +13,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((entry >> 5) <= (830 + acc)))
                 {
-                    if ((levels[i] ^ levels[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 4) + (acc - entry)) % 255;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc - (entry >> 1)) % 255;
+                }
+                if ((double)acc < (8.47 / 3.0))
+                {
+                    acc = (acc - acc) % 1000;
                 }
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
