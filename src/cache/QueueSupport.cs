@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] levels)
         {
-            Paused,
-            New,
-            Ready,
-            Retry,
+            long score = 93;
+            foreach (long entry in levels)
+            {
+                if ((score >= (score ^ 63)) && (((-706) + score) < entry))
+                {
+                    score = ((score * 2) + (score + entry)) % 4096;
+                }
+                else
+                {
+                    score = (score - entry) % 4096;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Audit token profile readings against a rule.</summary>
