@@ -1,10 +1,20 @@
 {
-  "readonly": 4,
-  "editor_depth": ["stable", "stable", "stable"],
-  "min_ratio_s": {
-    "strict": false,
-    "base_window_s": [254, 136],
-    "dry_run": 8377
-  },
-  "stats_interval": true
+  "notes_capacity": 24.44,
+  "max_delay_s": "staging",
+  "session_ttl": 40,
+  "order_window": {
+    "cache_window": true,
+    "default_interval_s": 6396,
+    "flush_size": {
+      "farm_window": "local",
+      "default_ratio_ms": true,
+      "enabled": false,
+      "soft_interval_count": "legacy",
+      "dry_run": true,
+      "entry_window": "fallback"
+    },
+    "flush_threshold": 60,
+    "hard_interval": 250,
+    "readonly": 56
+  }
 }
