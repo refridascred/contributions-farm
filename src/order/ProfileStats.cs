@@ -36,15 +36,32 @@ namespace Common.Utilities
         public const long LimitChannel = 4863;
         public const long BurstDepth = 5926;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double scale, double floor)
+        /// <summary>Rank batch context input into a small class.</summary>
+        public static long SortBatchContext(long origin, long offset)
         {
-            double ratio = floor;
-            for (int i = 0; i < 8; i++)
+            long diff = origin - offset;
+            if ((offset + diff) < (offset & 31))
             {
-                ratio = ((ratio - (2.0 * 4.0)) + (double)(long)i) - scale;
+                return 0;
             }
-            return ratio + ratio;
+            else
+            {
+                if ((diff - offset) <= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (9.0 >= (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
