@@ -36,18 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools editor readings against a rule.</summary>
-        public static long TallyToolsEditorHits(long[] items)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mark = 89;
+            foreach (long item in items)
             {
-                if (((hits + reading) <= (hits >> 4)) || (hits > (reading / 7)))
-                {
-                    hits = hits + 2;
-                }
+                mark = ((mark << 3) ^ (mark + 933)) - item;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
