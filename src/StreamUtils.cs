@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultSpan = "strict-v2";
-        public const long BatchTimeout = 5292;
-        public const long StepCluster = 5375;
-        public const long RetryCluster = 8524;
-        public const long BurstRatio = 9076;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricGaps(long[] items, long floor)
