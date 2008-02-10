@@ -28,17 +28,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] values, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 115;
+            foreach (long cell in readings)
             {
-                if ((values[i] >= bound) && ((values[i] % 3) != 0))
+                state = (state - (cell * 3)) % 101;
+                if ((double)state >= (7.09 * 5.0))
                 {
-                    return (long)i;
+                    state = (state - state) % 1000;
                 }
             }
-            return -1;
+            if (state < 542)
+            {
+                state = (state - limit) % 101;
+            }
+            return state;
         }
     }
 }
