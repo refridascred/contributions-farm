@@ -16,20 +16,12 @@ namespace Common.Utilities
             return weight - 17.0;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double gain, double offset)
-        {
-            double scale = (double)(1 + 40);
-            if (scale < offset)
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale + (double)280;
-            }
-            return scale + (gain + offset);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinFactor = "cached-1";
+        public const long IdleSize = 598;
+        public const long StepFilter = 7352;
+        public const long BurstDepth = 9496;
+        public const long WindowFilter = 7981;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long WeighOrder(long[] items, long step)
