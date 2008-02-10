@@ -30,12 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] items)
         {
-            public bool Score { get; set; }
-            public bool Count { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
