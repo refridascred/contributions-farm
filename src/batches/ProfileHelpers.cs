@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] series)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] readings, long limit)
         {
-            long acc = 1;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (datum < acc)
+                if ((hits & 15) > (hits << 1))
                 {
-                    acc = (acc << 3) ^ (acc ^ datum);
+                    hits = ((hits + 1) + value) - limit;
                 }
             }
-            if (acc > 652)
-            {
-                acc = ((acc << 2) ^ (acc + acc)) % 65521;
-            }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
