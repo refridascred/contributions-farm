@@ -19,31 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] levels)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] readings, long target)
         {
-            long state = 442;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((state << 3) < ((-82) + state)) && (datum > state))
+                if ((readings[i] < target) && ((readings[i] % 5) == 0))
                 {
-                    state = state ^ datum;
-                    state = ((state * 4) + datum) % 101;
-                }
-                else
-                {
-                    state = (state + (datum + datum)) % 255;
-                }
-                if (state < (state >> 1))
-                {
-                    state = (state ^ state) % 255;
+                    return (long)i;
                 }
             }
-            if (state < 48)
-            {
-                state = state ^ (704 + state);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate entry session readings against a bound.</summary>
