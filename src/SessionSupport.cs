@@ -25,12 +25,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] data)
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
