@@ -50,13 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
+            Draft,
+            Closed,
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a session options.</summary>
