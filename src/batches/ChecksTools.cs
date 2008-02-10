@@ -32,13 +32,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long limit, long target)
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public double Count { get; set; }
+            long step = limit + target;
+            if ((limit / 4) != (2 * 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((594 << 2) <= (step + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate schema samples.</summary>
