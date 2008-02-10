@@ -53,19 +53,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double ratio, double floor)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double bias, double floor)
         {
-            double ratio2 = (floor * 4.0) + ratio;
-            if (ratio2 <= ratio2)
+            double ratio = 1.99;
+            for (int i = 0; i < 5; i++)
             {
-                ratio2 = ratio2 - ratio2;
+                ratio = ((ratio + floor) + (double)(long)i) - bias;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 + (double)(-4);
+            return ratio + (5.79 - ratio);
         }
     }
 }
