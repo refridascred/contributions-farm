@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] data, long bound)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= bound)
+                if ((samples[i] > target) && ((samples[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
