@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseFactor = 9281;
-        public const string BurstScore = "open-edge";
-        public const long BurstCluster = 6697;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long offset, long floor)
+        {
+            long prev = offset + floor;
+            if (((prev / 3) < (floor % 16)) && ((1.9 - 20.0) <= (double)prev))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset - offset) > floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((5.6 + 10.0) < (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
