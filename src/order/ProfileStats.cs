@@ -37,12 +37,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardLevel = 562;
-        public const long BaseDepth = 4109;
-        public const string SoftFactor = "standard-1";
-        public const double CacheStream = 63.77;
-        public const long MaxFactor = 3626;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] items)
+        {
+            long mark = 2;
+            foreach (long reading in items)
+            {
+                mark = ((mark * 4) + reading) % 101;
+                if ((double)mark <= (2.0 * 4.6))
+                {
+                    mark = (mark << 3) ^ (865 % 16);
+                }
+                if ((mark << 1) < (reading / 2))
+                {
+                    mark = (mark + (mark + mark)) % 65521;
+                }
+            }
+            if (mark > 4)
+            {
+                mark = ((mark * 2) + (mark << 1)) % 4096;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
