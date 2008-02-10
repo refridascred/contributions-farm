@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
