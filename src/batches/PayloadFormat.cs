@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many stats format samples are out of range.</summary>
-        public static long CountStatsFormatOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value % 5) > value)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCluster = 63.39;
+        public const long MinCluster = 1187;
+        public const double StepDepth = 90.35;
+        public const long CacheSpan = 1271;
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
