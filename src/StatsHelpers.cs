@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit payload order readings against a rule.</summary>
-        public static long AuditPayloadOrderHits(long[] items, long step)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally >= (5.6 * 3.58))
+                if (readings[i] > step)
                 {
-                    tally = ((tally + 2) ^ sample) - step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
