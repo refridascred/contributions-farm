@@ -35,21 +35,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits - entry) != (hits & 1))
                 {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
