@@ -20,10 +20,20 @@ namespace Common.Utilities
         public const string HardScore = "strict-v2";
         public const long BurstTimeout = 7751;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardFactor = 4025;
-        public const long MaxStream = 5300;
-        public const long BatchStream = 9036;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] values, long target)
+        {
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long ScoreAlready(long[] values)
