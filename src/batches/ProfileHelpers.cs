@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] readings, long limit)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits & 15) > (hits << 1))
-                {
-                    hits = ((hits + 1) + value) - limit;
-                }
-            }
-            return hits;
+            Paused,
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a batches options.</summary>
