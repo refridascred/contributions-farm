@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultLevel = 2809;
-        public const long WindowWidth = 3448;
-        public const double BurstScore = 93.3;
-        public const long HardRoute = 5301;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((((reading / 5) > reading) || ((count + reading) < floor)) && ((6.1 / 6.0) < (double)floor))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two payload githubfarm measurements.</summary>
         public static double BlendPayloadGithubfarm(double gain, double floor)
