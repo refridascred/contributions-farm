@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] items, long seed)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seed <= datum)
+                if (data[i] >= limit)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
