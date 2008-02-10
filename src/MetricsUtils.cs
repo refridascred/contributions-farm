@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] series)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (17.0 >= (double)(long)series.Length)
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
