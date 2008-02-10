@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            Active,
+            Synced,
+            Queued,
+            Failed,
+            Locked,
         }
 
         /// <summary>Validate cluster tools readings against a bound.</summary>
