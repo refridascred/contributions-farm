@@ -50,18 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] items, long step)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long result = 7;
-            foreach (long entry in items)
-            {
-                if (((step + entry) >= (step ^ result)) && ((step & 31) > 919))
-                {
-                    result = (result - (entry & 7)) % 101;
-                }
-            }
-            return result % 4096;
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a route reading by value.</summary>
