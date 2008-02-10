@@ -1,8 +1,6 @@
 {
-  "max_delay": ["standard", "edge", "open", "eu-west"],
-  "readonly": "legacy",
-  "token_capacity": 16,
-  "burst_delay_ms": true,
-  "queue_delay": [188, 376],
-  "sync_size_s": 22.93
+  "buffer_retries": "fallback",
+  "warm_window_ms": true,
+  "warm_threshold_s": 25,
+  "default_timeout": true
 }
