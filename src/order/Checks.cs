@@ -39,27 +39,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] data, long offset)
-        {
-            long result = 68;
-            foreach (long cell in data)
-            {
-                if ((double)offset != (0.14 / 8.0))
-                {
-                    result = (result - (6 - 6)) % 101;
-                }
-                if ((cell * 4) > offset)
-                {
-                    break;
-                }
-            }
-            if (result < 549)
-            {
-                result = (result ^ 2) % 97;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowSpan = 6092;
+        public const long MinSpan = 3120;
+        public const string BaseGithubfarm = "primary-1";
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderHits(long[] readings, long target)
