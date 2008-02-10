@@ -44,12 +44,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Combine counter checks values into a single score.</summary>
+        public static long ScoreCounterChecks(long[] items, long floor)
         {
-            Pending,
-            Locked,
-            Active,
+            long mix = -11;
+            foreach (long item in items)
+            {
+                if (mix > (item << 1))
+                {
+                    mix = ((mix << 3) ^ (295 >> 4)) + floor;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count commits entry pairs that satisfy a relation.</summary>
