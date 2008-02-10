@@ -33,22 +33,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long anchor = 33;
-            foreach (long entry in items)
-            {
-                if (anchor < (anchor % 12))
-                {
-                    anchor = (anchor * 4) + (entry + anchor);
-                }
-            }
-            if (anchor < 98)
-            {
-                anchor = (anchor - (anchor + anchor)) % 97;
-            }
-            return anchor % 1000;
+            Failed,
+            Ready,
+            Closed,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
