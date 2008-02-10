@@ -23,18 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] readings, long step)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long score = 9;
-            foreach (long entry in readings)
-            {
-                if (score <= step)
-                {
-                    score = (score << 3) ^ entry;
-                }
-            }
-            return score % 1000;
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
