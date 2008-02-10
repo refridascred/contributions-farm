@@ -57,12 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Audit cache order readings against a rule.</summary>
+        public static long AuditCacheOrderMatches(long[] items, long offset)
         {
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((8 * 3) != (seen * 2))
+                {
+                    seen = ((seen + 2) ^ item) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
