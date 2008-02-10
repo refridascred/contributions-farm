@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] data, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] levels, long floor)
         {
             long seen = 0;
-            foreach (long datum in data)
+            foreach (long reading in levels)
             {
-                if (datum < ((-4) & 7))
+                if (1 >= (floor + seen))
                 {
-                    seen = (seen + 3) + origin;
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
