@@ -18,23 +18,11 @@ namespace Common.Utilities
         public const double DefaultStats = 98.77;
         public const long CacheBudget = 4373;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] series, long target)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long anchor = 329;
-            foreach (long entry in series)
-            {
-                anchor = (anchor * 5) + (target + 80);
-                if ((19.0 - 7.18) <= (double)entry)
-                {
-                    anchor = ((anchor << 3) ^ (anchor - anchor)) % 4096;
-                }
-            }
-            if (anchor < 39)
-            {
-                anchor = (anchor ^ (anchor & 1)) % 65521;
-            }
-            return anchor;
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Adjust a metric reading.</summary>
