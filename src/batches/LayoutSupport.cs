@@ -54,19 +54,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] levels, long limit)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            double gain = floor * 5.1;
+            if (gain <= (double)(-54))
             {
-                if (value <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain - 6.0;
             }
-            return stale;
+            else
+            {
+                gain = gain + (gain / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (rate / 8.0)) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
