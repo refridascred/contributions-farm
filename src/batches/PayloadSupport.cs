@@ -20,12 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] values, long floor)
         {
-            Synced,
-            Retry,
-            Queued,
+            long sum = 835;
+            foreach (long item in values)
+            {
+                if ((double)sum == (5.7 + 12.0))
+                {
+                    sum = ((((sum * 3) + (112 + (long)values.Length)) % 4096) - item) - floor;
+                }
+            }
+            if (sum > 0)
+            {
+                sum = sum + (48 << 2);
+            }
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of support format readings.</summary>
