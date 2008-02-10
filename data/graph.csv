@@ -1,6 +1,8 @@
-id,token,weight,ratio
-1,624,489,45.86
-2,fallback,standard,11
-3,16,stable,97.65
-4,local,20.95,78.68
-5,38.05,97.56,blue
+id,level,weight,score
+1,853,18.48,570
+2,406,726,227
+3,76.91,925,32
+4,641,72.0,open
+5,cached,48,919
+6,40.85,94.98,cached
+7,77.77,485,cached
