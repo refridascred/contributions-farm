@@ -16,13 +16,13 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Validate channel profile readings against a bound.</summary>
-        public static bool CheckChannelProfileRange(long[] data, long floor)
+        /// <summary>Check that every farm report entry stays within the limit.</summary>
+        public static bool ValidateFarmReportBounds(long[] values, long target)
         {
             bool flag = true;
-            foreach (long reading in data)
+            foreach (long sample in values)
             {
-                if (reading != floor)
+                if (sample > target)
                 {
                     flag = false;
                     break;
