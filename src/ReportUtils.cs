@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)floor == (11.0 / 9.0))
-                {
-                    mark = ((mark << 2) ^ ((long)i + mark)) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 65521;
-                    mark = mark - (mark & 31);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "standard";
+        public const long LimitSpan = 1092;
+        public const double HardTimeout = 67.99;
+        public const long RetryWidth = 1372;
+        public const long StepToken = 6774;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TallyContext(long[] levels)
