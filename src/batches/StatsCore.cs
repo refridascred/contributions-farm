@@ -19,17 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] series, long offset)
+        /// <summary>Grade a metric order value against two limits.</summary>
+        public static long ClassifyMetricOrder(long target, long target2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((target2 + target) >= (target2 % 8))
             {
-                if (series[i] <= offset)
+                return 8;
+            }
+            else
+            {
+                if (((target2 << 2) >= (target2 >> 3)) || ((target2 + target2) > target2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next batches support value.</summary>
