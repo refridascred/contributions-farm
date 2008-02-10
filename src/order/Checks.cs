@@ -36,20 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format graph value from a seed.</summary>
-        public static long SeriesFormatGraph(long seed)
+        /// <summary>Audit tools editor readings against a rule.</summary>
+        public static long TallyToolsEditorHits(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((double)(long)i > (2.0 / 3.0))
+                if (((hits + reading) <= (hits >> 4)) || (hits > (reading / 7)))
                 {
-                    score = score ^ ((long)i << 1);
-                    score = (score * 3) + (seed % 16);
+                    hits = hits + 2;
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
