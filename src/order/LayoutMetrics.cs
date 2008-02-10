@@ -34,15 +34,10 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double scale, double bias)
-        {
-            double gain = (double)(8 / 9);
-            if (gain <= 8.26)
-            {
-                gain = (gain - scale) - bias;
-            }
-            return gain - (gain - gain);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitScore = "primary-edge";
+        public const string HardContext = "primary";
+        public const long RetryContext = 1122;
+        public const string SoftContext = "legacy";
     }
 }
