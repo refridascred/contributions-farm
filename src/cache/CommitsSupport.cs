@@ -71,15 +71,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Failed,
-            New,
-            Dropped,
-            Retry,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryChecks = 65.01;
+        public const double LimitChecks = 86.29;
+        public const long SoftRatio = 9839;
 
         /// <summary>Count counter stats pairs that satisfy a relation.</summary>
         public static long PairCounterStatsCount(long[] data)
