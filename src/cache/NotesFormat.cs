@@ -25,19 +25,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] values, long bound)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Idle,
+            Locked,
+            Stale,
         }
     }
 }
