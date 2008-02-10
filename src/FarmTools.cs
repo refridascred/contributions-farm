@@ -32,12 +32,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] levels)
         {
-            Paused,
-            Stale,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
