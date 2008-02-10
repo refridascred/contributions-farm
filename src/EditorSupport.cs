@@ -26,13 +26,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many channel format samples are out of range.</summary>
