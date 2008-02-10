@@ -79,17 +79,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] data, long bound)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] >= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
