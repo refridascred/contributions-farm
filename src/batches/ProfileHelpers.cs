@@ -59,10 +59,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 22.18;
-        public const double LimitTools = 9.18;
-        public const double MaxTools = 90.56;
-        public const long BatchRatio = 371;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double offset)
+        {
+            double weight = bias;
+            if (weight >= weight)
+            {
+                weight = (weight - (double)3) - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - weight;
+        }
     }
 }
