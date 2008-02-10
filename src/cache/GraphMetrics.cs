@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Accumulate filter report samples.</summary>
+        public static long FoldFilterReport(long[] readings)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            long carry = 0;
+            foreach (long sample in readings)
+            {
+                carry = (carry ^ (carry >> 5)) - sample;
+            }
+            return carry;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
