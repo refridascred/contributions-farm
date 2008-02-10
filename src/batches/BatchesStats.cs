@@ -49,13 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Check that every schema commits entry stays within the limit.</summary>
+        public static bool GuardSchemaCommitsRange(long[] data, long offset)
         {
-            Stale,
-            Synced,
-            Pending,
-            Done,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
