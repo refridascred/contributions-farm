@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 6600;
-        public const double BatchSize = 77.31;
-        public const long BaseCounter = 5372;
-        public const double StepSize = 83.43;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((target + total) > (target + target))
+                {
+                    total = ((total * 3) + (total / 8)) % 255;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long RollRoute(long bound)
