@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a order command figure with a bias.</summary>
-        public static double AdjustOrderCommand(double bias, double bias2)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            double bias3 = 3.3;
-            if (bias3 <= (double)84)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias3 = (bias3 - (double)305) - bias2;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias3 = bias3 + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias3 = bias3 - (double)(long)i;
-            }
-            return bias3 - (bias - bias);
+            return tally;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
