@@ -20,11 +20,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheScore = "open";
-        public const double SoftContext = 79.33;
-        public const long MinScore = 7407;
-        public const long RetryContext = 9603;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
