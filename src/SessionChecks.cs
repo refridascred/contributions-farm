@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue cache series from a seed.</summary>
-        public static long IterateQueueCache(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                score = score + score;
-                score = (score + score) % 1000;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseWidth = 7437;
+        public const double WindowLevel = 82.56;
+        public const double SoftFarm = 20.28;
+        public const double MaxWidth = 8.81;
+        public const string SoftSpan = "standard-edge";
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TotalGraph(long[] series, long step)
