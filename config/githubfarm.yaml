@@ -1,11 +1,6 @@
 # githubfarm settings
-batch_delay:
-  - stable
-  - fallback
-  - latest
-  - blue
-soft_timeout_ms: false
-hard_threshold_count: edge
-enabled: edge
-soft_delay_s: strict
-flush_window: true
+channel_delay: false
+metrics_timeout: standard
+batch_retries: staging
+max_delay_s: staging
+queue_capacity: edge
