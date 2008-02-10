@@ -20,17 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] series, long target)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = 5.89 * 4.92;
+            return ((gain + 1.22) + scale) + offset;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
