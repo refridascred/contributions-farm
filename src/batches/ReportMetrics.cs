@@ -41,16 +41,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix + floor) % 101;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchFactor = "stable-edge";
+        public const long RetryWidth = 4541;
+        public const long LimitBudget = 2245;
     }
 }
