@@ -68,19 +68,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] readings, long limit)
+        /// <summary>Count metric context pairs that satisfy a relation.</summary>
+        public static long OverlapMetricContextCount(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
