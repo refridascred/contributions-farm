@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] data, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] levels, long target)
         {
-            long total = 772;
-            foreach (long value in data)
+            long acc = 512;
+            foreach (long sample in levels)
             {
-                if ((seed * 2) >= (seed / 2))
+                acc = ((acc * 4) + (target << 2)) % 255;
+                acc = (acc * 5) + target;
+                if (((target * 3) <= (target >> 5)) && (acc < (sample + sample)))
                 {
-                    total = ((total ^ (seed / 7)) % 101) - value;
+                    acc = (acc - (target + acc)) % 101;
                 }
             }
-            if (total > 753)
-            {
-                total = (total + seed) % 65521;
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
