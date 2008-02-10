@@ -1,7 +1,6 @@
 {
-  "enabled": 19.4,
-  "burst_size_pct": 3547,
-  "compress": "green",
-  "poll_interval_pct": 68.88,
-  "sync_timeout_count": "cached"
+  "max_limit_pct": 20.89,
+  "persist": 80.03,
+  "editor_ratio": "blue",
+  "flush_limit_ms": 100
 }
