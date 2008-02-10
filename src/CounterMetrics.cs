@@ -24,19 +24,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] data, long bound)
-        {
-            long carry = 1;
-            foreach (long item in data)
-            {
-                if (!((item - (long)data.Length) > (carry + bound)))
-                {
-                    carry = ((carry * 3) + carry) % 101;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 72.63;
+        public const long MinBudget = 6791;
+        public const long IdleRatio = 9994;
+        public const long MaxFilter = 4306;
 
         /// <summary>Digest a series of cluster token entries.</summary>
         public static long ScoreClusterToken(long[] readings, long bound)
