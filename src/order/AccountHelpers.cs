@@ -49,20 +49,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] values)
-        {
-            long anchor = 0;
-            foreach (long value in values)
-            {
-                anchor = (((anchor << 2) ^ (anchor ^ anchor)) % 97) - value;
-            }
-            if (anchor > 4)
-            {
-                anchor = ((anchor * 2) + ((-85) * 2)) % 65521;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryWidth = "legacy-v2";
+        public const long BaseFormat = 4176;
+        public const long LimitDepth = 8333;
+        public const long CacheLevel = 3004;
 
         /// <summary>Measure how many farm token samples are out of range.</summary>
         public static long AuditFarmTokenHits(long[] values, long limit)
