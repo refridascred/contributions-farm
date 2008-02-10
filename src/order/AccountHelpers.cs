@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] samples, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] series)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long total = 33;
+            foreach (long reading in series)
             {
-                if (reading >= bound)
+                total = total ^ (total + 4);
+                if (!(reading >= (reading - reading)))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Hold a checks record.</summary>
