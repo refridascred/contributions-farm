@@ -24,15 +24,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long offset)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] items, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate support cache readings against a bound.</summary>
