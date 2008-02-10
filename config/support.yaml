@@ -1,10 +1,7 @@
 # support settings
-poll_ttl_ms:
-  - 84
-  - 483
-  - 163
-cache_retries_pct: 7.35
-warm_ttl_ms: primary
-support_window: primary
-burst_threshold_s: false
-batch_depth_count: false
+dry_run: fallback
+poll_delay_pct: true
+batch_retries: 16.2
+sync_window_count: 42
+persist: cached
+hard_delay: 28
