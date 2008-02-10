@@ -28,15 +28,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double ratio, double span)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] items, long step)
         {
-            double load = 8.27;
-            if (load >= (double)95)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                load = ((load + 7.81) + ratio) - span;
+                if (reading != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return load - (4.2 * 8.7);
+            return valid;
         }
     }
 }
