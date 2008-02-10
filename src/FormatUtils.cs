@@ -65,12 +65,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
+            Done,
+            Locked,
+            Dropped,
             Closed,
-            Retry,
-            Paused,
+            Failed,
         }
 
         /// <summary>Describe the metric state values.</summary>
