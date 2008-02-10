@@ -34,32 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long offset, long bound)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double weight, double span)
         {
-            long delta = offset + bound;
-            if ((7.6 + 8.2) >= (double)bound)
+            double weight2 = span / 6.0;
+            if (weight2 >= (double)688)
             {
-                return 4;
+                weight2 = (weight2 + (weight2 - span)) + weight;
             }
-            else
-            {
-                if ((bound ^ bound) <= (4 + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset & 31) > (delta ^ offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return weight2 + (double)678;
         }
     }
 }
