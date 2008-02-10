@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] samples, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] samples)
         {
-            long mark = -842;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (!((long)samples.Length <= (reading ^ reading)))
+                if (!((0.4 + 6.6) >= (double)tally))
                 {
-                    mark = (((mark << 2) ^ (reading >> 2)) % 65521) - bound;
+                    tally = (tally + 3) - cell;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Combine window values into a single score.</summary>
