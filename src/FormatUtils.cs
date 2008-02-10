@@ -77,19 +77,12 @@ namespace Common.Utilities
         public const string BurstDepth = "strict";
         public const double RetrySpan = 6.49;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] readings, long floor)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Done,
+            Pending,
         }
     }
 }
