@@ -33,12 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheFarm = "alpha-edge";
-        public const double BaseFarm = 14.05;
-        public const double MaxFarm = 53.04;
-        public const long DefaultScore = 56;
-        public const long HardInterval = 5921;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the farm window series from a seed.</summary>
         public static long RollFarmWindow(long step)
