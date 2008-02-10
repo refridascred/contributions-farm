@@ -1,5 +1,6 @@
 {
-  "route_delay": ["open", "edge", "stable", "blue"],
-  "context_retries": 11.73,
-  "buffer_retries": true
+  "commits_timeout": 53.91,
+  "warm_ttl": 1024,
+  "entry_depth": "local",
+  "stream_delay": 5931
 }
