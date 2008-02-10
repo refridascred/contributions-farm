@@ -1,14 +1,6 @@
 {
-  "cache_depth_ms": "latest",
-  "counter_window": 250,
-  "farm_ratio": "cached",
-  "sync_ratio": "latest",
-  "token_retries": [353, 477, 195],
-  "window_interval": {
-    "layout_limit": 250,
-    "default_limit_pct": "cached",
-    "max_capacity": true,
-    "base_ttl_pct": true,
-    "strict": 57
-  }
+  "dry_run": "stable",
+  "persist": false,
+  "min_threshold_count": "open",
+  "cache_limit_pct": "fallback"
 }
