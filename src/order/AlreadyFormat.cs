@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultDepth = 6754;
-        public const string BurstLevel = "standard-edge";
-        public const long BurstBudget = 2371;
-        public const long CacheEditor = 3348;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Pending,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
