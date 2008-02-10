@@ -12,22 +12,30 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long limit, long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long limit, long floor)
         {
-            if ((limit << 3) != (limit - seed))
+            long span = limit ^ floor;
+            if ((double)floor >= 3.0)
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((5.7 + 19.0) > (double)7)
+                if ((span > (floor + limit)) || ((7 + span) >= (4 + 2)))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if (((double)floor == (13.0 * 9.0)) && ((floor - limit) != (floor - floor)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
