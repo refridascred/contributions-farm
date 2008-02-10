@@ -95,17 +95,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a contributi context sample.</summary>
-        public static long LookupContributiContextIndex(long[] readings, long origin)
+        /// <summary>Fold a list of batches order readings.</summary>
+        public static long ScoreBatchesOrder(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 7;
+            foreach (long value in levels)
             {
-                if (readings[i] == origin)
+                state = state + (target / 3);
+                if (value < (value / 2))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
