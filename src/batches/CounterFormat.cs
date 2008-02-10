@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] data, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state ^ ((long)i << 1);
-                state = ((state << 3) ^ state) % 255;
-                state = ((state * 2) + (long)i) % 4093;
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the layout class values.</summary>
