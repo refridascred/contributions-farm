@@ -77,22 +77,32 @@ namespace Common.Utilities
             return drift + (gain / 2.0);
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] series, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long edge = floor - floor2;
+            if ((floor - 26) > (floor2 >> 3))
             {
-                if ((((-45) << 2) != (matches & 255)) || !((580 - target) != (target - entry)))
+                return 3;
+            }
+            else
+            {
+                if (((floor + 70) < (edge + edge)) && ((edge / 8) > (floor ^ edge)))
                 {
-                    matches = matches + 3;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((floor2 * 2) == (floor2 >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
