@@ -40,18 +40,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many commits route samples are out of range.</summary>
-        public static long CountCommitsRouteGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (!((reading - 4) < reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftLevel = 6031;
+        public const long WindowAccount = 9;
+        public const string DefaultSize = "fallback-edge";
+        public const double LimitBudget = 79.82;
+        public const long HardDepth = 6807;
     }
 }
