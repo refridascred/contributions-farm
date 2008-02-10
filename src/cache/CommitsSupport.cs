@@ -61,32 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long step, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] values, long limit)
         {
-            long diff = step ^ limit;
-            if (((diff % 60) > 78) || (limit >= diff))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((89 - step) > limit)
+                if ((value + value) == (count - count))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((703 + step) >= (step / 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = (count + 2) - limit;
                 }
             }
+            return count;
         }
     }
 }
