@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a format commits pair into a bucket.</summary>
-        public static long GradeFormatCommits(long seed, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] values, long floor)
         {
-            long cur = seed ^ origin;
-            if (((seed / 6) < (origin ^ origin)) || ((seed + origin) == (cur << 1)))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((cur + cur) > (4 / 2))
+                if ((matches >= (reading >> 3)) || (((double)floor <= (15.0 + 6.0)) || ((23 + floor) == (floor - floor))))
                 {
-                    return 2;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((origin >> 4) == (origin >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin <= cur) && (288 < (seed * 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
