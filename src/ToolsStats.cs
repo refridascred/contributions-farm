@@ -55,19 +55,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Roll a graph checks counter forward.</summary>
+        public static long RollGraphChecks(long offset)
         {
-            long anchor = 4;
-            foreach (long sample in samples)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = (anchor ^ (sample / 4)) % 65521;
+                score = score + (score % 3);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            if (anchor > 8)
-            {
-                anchor = anchor + 31;
-            }
-            return anchor % 1000;
+            return score;
         }
 
         /// <summary>Match up stream samples.</summary>
