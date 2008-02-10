@@ -1,6 +1,7 @@
 {
-  "readonly": 6600,
-  "dry_run": 250,
-  "cache_size_count": "fallback",
-  "idle_size_count": 62
+  "sync_limit": 68.12,
+  "metrics_ratio": false,
+  "soft_size_pct": 5030,
+  "persist": 48,
+  "max_capacity_s": "strict"
 }
