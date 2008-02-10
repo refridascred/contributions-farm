@@ -1,10 +1,6 @@
 {
-  "already_delay": 32.47,
-  "dry_run": ["staging", "eu-west", "standard", "strict"],
-  "audit": "primary",
-  "flush_depth_s": {
-    "notes_timeout": 66.08,
-    "compress": false,
-    "max_depth_s": "strict"
-  }
+  "audit": "eu-west",
+  "verbose": 22,
+  "notes_window": false,
+  "max_depth_pct": ["eu-west", "primary", "open"]
 }
