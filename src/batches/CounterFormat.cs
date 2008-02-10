@@ -23,11 +23,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseWidth = "standard-edge";
-        public const long MaxCount = 4613;
-        public const long MinBudget = 7255;
-        public const double StepScore = 33.53;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 5795;
+        public const long RetryRatio = 2142;
+        public const long BurstFactor = 2679;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
