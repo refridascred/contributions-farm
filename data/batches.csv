@@ -1,6 +1,7 @@
-id,count
-1,45.25
-2,primary
-3,254
-4,881
-5,53.05
+id,ratio,score
+1,692,401
+2,32.33,69.33
+3,61.36,76.96
+4,stable,589
+5,eu-west,780
+6,stable,eu-west
