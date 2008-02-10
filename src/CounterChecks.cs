@@ -108,13 +108,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            public double Rank { get; set; }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
