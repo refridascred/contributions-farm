@@ -1,5 +1,7 @@
 {
-  "min_ttl": ["open", "fallback"],
-  "max_capacity": 8336,
-  "burst_ttl_ms": 22
+  "enabled": 52.9,
+  "record_ratio": 100,
+  "batch_ratio": 18,
+  "readonly": "edge",
+  "batch_size_count": true
 }
