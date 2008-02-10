@@ -16,11 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Locate a report editor reading by value.</summary>
+        public static long SeekReportEditorIndex(long[] values, long seed)
         {
-            public double Weight { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a notes record sample.</summary>
