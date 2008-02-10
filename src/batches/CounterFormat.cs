@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of batch batches readings.</summary>
-        public static long OverlapBatchBatchesCount(long[] readings)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 63;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (17.0 > (double)sum)
                 {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum * 5) + (entry - sum);
+                }
+                else
+                {
+                    sum = (sum + ((long)samples.Length * 2)) % 4096;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
