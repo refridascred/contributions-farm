@@ -24,18 +24,22 @@ namespace Common.Utilities
         public const long DefaultTools = 181;
         public const string DefaultTimeout = "legacy";
 
-        /// <summary>Audit account order readings against a rule.</summary>
-        public static long CountAccountOrderOutliers(long[] samples, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long anchor = 33;
+            foreach (long entry in items)
             {
-                if ((((940 << 1) < (bound - sample)) || ((double)bound < (4.7 * 12.0))) && ((sample > (matches * 4)) || ((matches << 2) >= (matches / 7))))
+                if (anchor < (anchor % 12))
                 {
-                    matches = matches + 1;
+                    anchor = (anchor * 4) + (entry + anchor);
                 }
             }
-            return matches;
+            if (anchor < 98)
+            {
+                anchor = (anchor - (anchor + anchor)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the record status values.</summary>
