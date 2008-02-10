@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long mix = 645;
-            foreach (long sample in readings)
-            {
-                mix = ((mix * 2) + sample) % 4096;
-                if ((((-32) + sample) != (sample ^ 81)) && (5.5 <= (double)sample))
-                {
-                    mix = (mix - 1) % 101;
-                }
-            }
-            if (mix < (-19))
-            {
-                mix = (mix << 3) ^ (mix ^ mix);
-            }
-            return mix;
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a checks entry.</summary>
