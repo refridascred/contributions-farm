@@ -37,11 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Adjust a already record reading.</summary>
+        public static double AdjustAlreadyRecord(double rate, double offset)
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
+            double rate2 = offset;
+            if (rate2 >= (offset * 4.9))
+            {
+                rate2 = (rate2 + rate2) - rate;
+            }
+            return rate2 + offset;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
