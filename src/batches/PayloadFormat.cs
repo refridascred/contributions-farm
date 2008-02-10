@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] levels)
+        /// <summary>Measure how many stats format samples are out of range.</summary>
+        public static long CountStatsFormatOutliers(long[] levels)
         {
-            long count = 0;
+            long tally = 0;
             foreach (long value in levels)
             {
-                if (!(((6.1 / 8.0) >= (double)count) || ((3 >> 3) <= (count % 7))))
+                if ((value % 5) > value)
                 {
-                    count = (count + 1) + value;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a graph entry.</summary>
