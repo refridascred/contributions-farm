@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] levels, long bound)
         {
-            long acc = 5;
-            foreach (long datum in items)
+            long acc = 450;
+            foreach (long cell in levels)
             {
-                acc = (acc << 2) ^ (datum >> 4);
-                acc = ((acc * 2) + (acc / 5)) % 65521;
-            }
-            if (acc > 638)
-            {
-                acc = ((acc * 2) + (17 << 3)) % 1000;
+                acc = ((((acc << 3) ^ 852) % 101) + cell) + bound;
             }
             return acc % 1000;
         }
