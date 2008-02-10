@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] series, long limit)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
