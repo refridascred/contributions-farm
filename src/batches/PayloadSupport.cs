@@ -33,31 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a account context pair into a bucket.</summary>
-        public static long BucketAccountContext(long bound, long step)
+        /// <summary>Validate entry session readings against a bound.</summary>
+        public static bool ValidateEntrySessionBounds(long[] data, long bound)
         {
-            if ((6.0 - 7.0) != (double)bound)
+            bool flag = true;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.1 - 9.64) != (double)bound)
+                if (item <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((133 + bound) == (step + bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
