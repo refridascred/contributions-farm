@@ -25,13 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] readings, long origin)
         {
-            Paused,
-            Active,
-            Dropped,
-            Failed,
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
