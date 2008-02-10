@@ -35,31 +35,9 @@ namespace Common.Utilities
         public const long LimitWidth = 5514;
         public const long MaxSession = 8021;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long step, long bound)
-        {
-            if (((bound + 89) == (step - step)) && ((double)step < (7.2 * 4.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)210 <= (double)step) && ((step / 2) >= (bound - step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step << 2) >= 6)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryInterval = 81.59;
+        public const long SoftAlready = 7470;
+        public const long HardAlready = 1542;
     }
 }
