@@ -56,17 +56,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] series, long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 58;
+            foreach (long item in series)
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                state = (state - (984 - item)) % 4096;
             }
-            return -1;
+            return state;
         }
     }
 }
