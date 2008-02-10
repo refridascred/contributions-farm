@@ -49,10 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 4588;
-        public const long CacheScore = 4494;
-        public const long MinBatches = 7032;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstSchema = 4744;
