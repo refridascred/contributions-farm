@@ -1,7 +1,13 @@
 {
-  "dry_run": true,
-  "sync_capacity": 18,
-  "default_threshold": 23.81,
-  "default_ttl_ms": true,
-  "hard_ratio_count": false
+  "default_ttl_s": "strict",
+  "filter_threshold": false,
+  "flush_delay_s": ["strict", "open", "local"],
+  "strict": {
+    "soft_depth_count": 2941,
+    "soft_interval_count": 1091,
+    "audit": 65.16,
+    "notes_window": 5196
+  },
+  "persist": 61.78,
+  "already_threshold": ["legacy", "green"]
 }
