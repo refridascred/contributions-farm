@@ -37,17 +37,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a report order sample.</summary>
-        public static long FindReportOrderIndex(long[] items, long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 108;
+            foreach (long value in series)
             {
-                if ((items[i] > target) && ((items[i] % 2) == 0))
+                carry = ((carry << 2) ^ (600 ^ value)) % 255;
+                if ((double)value != (double)425)
                 {
-                    return (long)i;
+                    carry = (carry ^ 88) % 1000;
+                }
+                else
+                {
+                    carry = carry + 90;
                 }
             }
-            return -1;
+            return carry % 97;
         }
     }
 }
