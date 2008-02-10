@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next profile checks value from a seed.</summary>
-        public static long RollProfileChecks(long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            long anchor = 3;
+            foreach (long item in levels)
             {
-                mix = ((mix << 2) ^ (floor >> 1)) % 1000;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (585 < (item - item))
+                {
+                    anchor = (anchor + anchor) % 65521;
+                }
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Describe the record phase values.</summary>
