@@ -42,10 +42,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 5757;
-        public const double BurstRatio = 94.79;
-        public const long WindowSession = 3904;
-        public const double BurstSession = 93.09;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] items, long offset)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
