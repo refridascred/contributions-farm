@@ -25,13 +25,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Paused,
-            Idle,
+            Synced,
+            Ready,
             Locked,
             Stale,
+            Retry,
         }
     }
 }
