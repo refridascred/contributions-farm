@@ -15,20 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next batch schema value from a seed.</summary>
-        public static long RollBatchSchema(long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] readings)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                state = (state * 3) + state;
-                if (!((step / 4) >= (304 % 60)))
+                if ((13.0 - 17.0) == (double)entry)
                 {
-                    state = (state - ((long)i >> 4)) % 255;
+                    tally = tally + 2;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Roll a window counter forward.</summary>
