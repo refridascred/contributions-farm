@@ -44,14 +44,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Done,
-            Failed,
-            Synced,
-            Paused,
-            Retry,
+            Stale,
+            Queued,
+            Locked,
+            New,
+            Closed,
         }
     }
 }
