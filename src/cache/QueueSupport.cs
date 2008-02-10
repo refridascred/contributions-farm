@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] samples, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((seen - seen) != (offset + (long)samples.Length))
+                {
+                    seen = (seen + 3) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
