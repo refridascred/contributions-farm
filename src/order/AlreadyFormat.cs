@@ -13,19 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every record entry entry stays within the limit.</summary>
-        public static bool ValidateRecordEntryLimits(long[] items, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (sample < limit)
+                if (value < (value + floor))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a farm record.</summary>
