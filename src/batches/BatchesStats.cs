@@ -55,19 +55,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every schema commits entry stays within the limit.</summary>
-        public static bool GuardSchemaCommitsRange(long[] data, long offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            double bias = offset;
+            if (bias > (5.0 - bias))
             {
-                if (entry >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = (bias + 7.24) + ratio;
             }
-            return flag;
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (offset / 7.0)) + (double)(long)i;
+            }
+            return bias + bias;
         }
     }
 }
