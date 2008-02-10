@@ -37,12 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] items)
         {
-            Queued,
-            Synced,
-            Retry,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((sample + matches) > matches) && (((9 - matches) <= 52) || (matches <= (sample + matches))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
