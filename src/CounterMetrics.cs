@@ -22,11 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double rate, double span)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] samples)
         {
-            double mean = 1.0;
-            return (mean - rate) + span;
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
