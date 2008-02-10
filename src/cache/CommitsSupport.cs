@@ -47,19 +47,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate editor notes readings against a bound.</summary>
-        public static bool VerifyEditorNotesRange(long[] data, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (value < floor)
+                if ((item % 8) != (floor * 4))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Rank support input into a small class.</summary>
