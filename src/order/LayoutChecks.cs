@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] readings, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score ^ ((long)i / 7)) % 101;
-                score = ((score * 3) + (long)i) % 101;
+                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every channel buffer entry stays within the limit.</summary>
