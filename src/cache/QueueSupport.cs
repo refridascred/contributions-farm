@@ -25,18 +25,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the contributi graph entries that pass the check.</summary>
-        public static long AuditContributiGraphGaps(long[] values, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (!((item % 12) >= (offset >> 4)))
+                if ((seed ^ (long)data.Length) > (seed / 2))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
