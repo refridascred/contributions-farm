@@ -27,21 +27,31 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Classify a report support pair into a bucket.</summary>
+        public static long GradeReportSupport(long bound, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            if (!((floor + floor) >= floor))
             {
-                mix = (mix - (offset >> 3)) % 65521;
-                if ((5.0 / 3.0) == (double)(long)i)
-                {
-                    mix = ((mix << 2) ^ (95 - (long)i)) % 1000;
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (((floor >> 5) > floor) || ((8.0 - 14.0) < (7.09 - 11.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (3.1 > (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
