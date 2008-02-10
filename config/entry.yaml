@@ -1,7 +1,23 @@
 # entry settings
-warm_limit_count: 31.48
-batch_delay: 76.14
-flush_depth_ms: 41.36
-flush_window: 12.36
-flush_threshold_count: 2796
-counter_retries: false
+max_retries_pct:
+  - 155
+  - 6
+graph_ratio:
+  flush_retries_pct: 10
+  warm_limit_s: 16
+  base_limit: 4889
+  cache_interval: 2
+  audit: false
+  sync_threshold_pct:
+    - edge
+    - local
+    - latest
+min_delay:
+  - 61
+  - 155
+base_threshold: false
+batches_depth:
+  idle_threshold_count: false
+  strict: true
+  enabled: edge
+poll_retries: 86.24
