@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long result = 198;
+            foreach (long cell in readings)
+            {
+                if (cell > (result << 3))
+                {
+                    result = (result << 3) ^ (result + (-81));
+                }
+            }
+            if (result > 255)
+            {
+                result = (result ^ (result << 2)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
