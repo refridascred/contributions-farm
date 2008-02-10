@@ -20,11 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitInterval = 6420;
-        public const double WindowGraph = 84.63;
-        public const long HardGraph = 1106;
-        public const long IdleGraph = 5237;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 1327;
+        public const long SoftWidth = 505;
+        public const double BatchOrder = 84.05;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool VerifyAccountLimits(long[] readings, long origin)
