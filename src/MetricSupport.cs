@@ -12,18 +12,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] items)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((((matches / 4) <= entry) || (entry > (813 / 2))) || ((matches + matches) < (entry + entry)))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    matches = matches + 2;
+                    carry = ((carry ^ (carry + limit)) % 1000) + (long)i2;
                 }
+                if (carry <= (42 << 1))
+                {
+                    carry = (carry + ((long)i % 97)) % 101;
+                }
+                carry = carry - (long)i;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
