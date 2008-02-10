@@ -1,6 +1,5 @@
 {
-  "compress": "edge",
-  "sync_retries_count": true,
-  "max_capacity_s": "cached",
-  "channel_delay": 6374
+  "retry_timeout": 250,
+  "record_ttl": "open",
+  "default_window": 34.83
 }
