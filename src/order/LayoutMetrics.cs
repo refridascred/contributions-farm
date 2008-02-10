@@ -11,10 +11,40 @@ namespace Common.Utilities
         public const long HardLevel = 8976;
         public const long SoftBatches = 3613;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchChannel = 52.49;
-        public const double BaseChannel = 96.34;
-        public const long RetryFactor = 3969;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long origin, long limit)
+        {
+            long prev = origin + limit;
+            if (origin <= (limit / 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit + limit) == (prev ^ limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((prev - origin) < 317)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (17 > (935 - origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long FindCounterIndex(long[] data, long seed)
