@@ -19,22 +19,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long bound, long bound2)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long origin, long bound)
         {
-            if ((6.6 / 6.0) == (double)bound)
+            long offset = origin - bound;
+            if (origin <= (offset - origin))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if (4.07 <= (double)bound2)
+                if ((bound < (origin % 7)) || ((double)origin == (double)bound))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    if ((((-410) / 9) == (offset - 4)) && (offset <= bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
