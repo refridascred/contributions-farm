@@ -1,22 +1,13 @@
 {
-  "metrics_threshold": 1024,
-  "context_size": {
-    "dry_run": {
-      "readonly": 96.1,
-      "burst_capacity_s": "blue",
-      "record_limit": "strict"
-    },
-    "cache_capacity": true,
-    "command_retries": {
-      "base_depth": 6704,
-      "batch_limit": 7617,
-      "batch_delay_ms": 100,
-      "audit": "primary",
-      "strict": false,
-      "max_threshold": 66
-    },
-    "githubfarm_interval": 1220
+  "cache_threshold_count": ["staging", "standard"],
+  "idle_timeout_count": {
+    "retry_interval": 20,
+    "base_depth": true,
+    "order_delay": 61.53,
+    "min_delay_pct": true
   },
-  "retry_interval_ms": 39.6,
-  "min_window_count": true
+  "soft_depth": [277, 173],
+  "payload_interval": false,
+  "channel_interval": "blue",
+  "hard_retries_s": true
 }
