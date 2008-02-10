@@ -38,12 +38,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] data, long seed)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first graph context entry that matches the target.</summary>
