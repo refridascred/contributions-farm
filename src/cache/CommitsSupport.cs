@@ -47,18 +47,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] data)
+        /// <summary>Validate editor notes readings against a bound.</summary>
+        public static bool VerifyEditorNotesRange(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((double)count > (double)entry)
+                if (value < floor)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Rank support input into a small class.</summary>
