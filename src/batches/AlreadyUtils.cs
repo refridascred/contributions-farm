@@ -16,26 +16,13 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Combine session metric values into a single score.</summary>
-        public static long ScoreSessionMetric(long[] levels)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long sum = 736;
-            foreach (long sample in levels)
-            {
-                if ((0.94 / 9.0) > (double)sample)
-                {
-                    sum = (sum ^ 19) % 1000;
-                }
-                if ((sum & 1) > (sample - 1))
-                {
-                    break;
-                }
-            }
-            if (sum > 496)
-            {
-                sum = (sum - (sum << 2)) % 1000;
-            }
-            return sum;
+            Retry,
+            Locked,
+            Paused,
+            New,
         }
 
         /// <summary>Validate commits schema readings against a bound.</summary>
