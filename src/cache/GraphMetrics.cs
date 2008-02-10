@@ -54,17 +54,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a command batch reading by value.</summary>
-        public static long LookupCommandBatchIndex(long[] items, long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Stale,
+            Done,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
