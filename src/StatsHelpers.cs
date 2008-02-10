@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] readings, long step)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Stale,
+            Synced,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
