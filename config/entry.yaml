@@ -1,5 +1,9 @@
 # entry settings
-poll_threshold_pct: 100
-soft_ttl: 4754
-batch_retries: 63.15
-idle_timeout: 96.72
+base_window_pct: local
+min_interval:
+  strict: 62.76
+  batch_delay_pct: legacy
+  verbose: green
+  idle_retries: strict
+warm_capacity_s: false
+cache_window_count: 53.75
