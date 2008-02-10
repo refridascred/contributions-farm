@@ -1,13 +1,8 @@
 # githubfarm settings
-hard_ttl_count:
-  min_ratio: 3728
-  counter_limit: false
-  stats_timeout:
-    - blue
-    - cached
-    - open
-    - standard
-graph_retries: 8.57
-poll_interval: 1024
-editor_delay: edge
-min_capacity: cached
+compress: local
+min_capacity: stable
+order_interval:
+  - eu-west
+  - cached
+githubfarm_retries: true
+cache_capacity_s: eu-west
