@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] samples, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)floor < (9.83 / 5.0))
+                if (samples[i] < seed)
                 {
-                    score = score + ((long)i >> 5);
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
