@@ -38,19 +38,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] series, long floor)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
