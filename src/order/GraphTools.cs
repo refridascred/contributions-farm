@@ -58,18 +58,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit route payload readings against a rule.</summary>
-        public static long MeasureRoutePayloadOutliers(long[] data)
+        /// <summary>Count support command pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCommandCount(long[] data)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > (matches - matches))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] ^ data[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
