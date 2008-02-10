@@ -40,11 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardDepth = 72.93;
-        public const double SoftOrder = 62.95;
-        public const long RetryDepth = 2342;
-        public const long MaxScore = 7321;
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long OverlapChecksCount(long[] levels)
