@@ -21,20 +21,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((long)i + (long)i) >= (origin - (long)i))
-                {
-                    score = ((score << 2) ^ (410 ^ (long)i)) % 101;
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Retry,
+            Draft,
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
