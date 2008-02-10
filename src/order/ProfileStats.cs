@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a farm checks counter forward.</summary>
-        public static long RollFarmChecks(long floor)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                state = state + ((long)i >> 3);
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
