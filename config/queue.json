@@ -1,14 +1,9 @@
 {
-  "hard_delay_ms": 1.31,
-  "soft_window_ms": ["legacy", "fallback", "fallback", "green"],
-  "base_capacity_ms": {
-    "idle_delay_s": 21.01,
-    "idle_size_count": {
-      "min_retries_s": "latest",
-      "persist": [150, 435, 84],
-      "soft_window_ms": ["strict", "stable"],
-      "already_depth": "local"
-    },
-    "counter_ttl": "eu-west"
-  }
+  "batch_window_s": false,
+  "cache_delay": {
+    "channel_depth": 1,
+    "enabled": "standard",
+    "retry_limit_pct": true
+  },
+  "batches_delay": 60
 }
