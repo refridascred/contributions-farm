@@ -16,22 +16,17 @@ namespace Common.Utilities
         public const string SoftDepth = "primary-edge";
         public const long HardInterval = 8432;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] samples, long offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] series, long step)
         {
-            long result = 7;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((offset / 2) < (datum >> 5))
+                if ((series[i] <= step) && ((series[i] % 5) != 0))
                 {
-                    result = (result + (offset & 63)) % 4096;
-                }
-                else
-                {
-                    result = ((result * 5) + (offset + result)) % 101;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the counter class values.</summary>
