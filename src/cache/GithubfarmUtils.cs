@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Look up the position of a record support sample.</summary>
+        public static long SeekRecordSupportIndex(long[] readings, long offset)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
