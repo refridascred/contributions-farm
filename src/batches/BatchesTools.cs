@@ -34,22 +34,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of githubfarm report entries.</summary>
-        public static long CombineGithubfarmReport(long[] readings)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long floor, long offset)
         {
-            long carry = 93;
-            foreach (long cell in readings)
+            long next = floor + offset;
+            if ((next > (offset % 60)) && ((next * 2) < (offset ^ offset)))
             {
-                if ((cell ^ cell) < (cell & 3))
+                return 4;
+            }
+            else
+            {
+                if ((offset + next) >= (227 + offset))
                 {
-                    carry = (carry - carry) % 255;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (carry < 872)
-            {
-                carry = carry ^ 9;
-            }
-            return carry % 1000;
         }
     }
 }
