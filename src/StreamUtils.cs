@@ -68,19 +68,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every editor payload entry stays within the limit.</summary>
-        public static bool CheckEditorPayloadBounds(long[] levels, long bound)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Queued,
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
