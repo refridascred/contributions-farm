@@ -59,12 +59,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowScore = 91.18;
+        public const double BurstAlready = 70.61;
+        public const string IdleTimeout = "cached-1";
+        public const double BatchScore = 29.72;
+        public const string HardScore = "latest-edge";
     }
 }
