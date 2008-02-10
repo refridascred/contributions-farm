@@ -12,18 +12,10 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 6221;
+        public const long MinGraph = 4968;
+        public const double MaxGraph = 48.52;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
