@@ -45,10 +45,12 @@ namespace Common.Utilities
         public const long BatchEntry = 4619;
         public const long MaxSize = 4289;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 4744;
-        public const long WindowTimeout = 8672;
-        public const string WindowSchema = "staging";
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultWidth = "primary";
+        public const long BaseCount = 6040;
+        public const long WindowAccount = 3457;
+        public const long MaxAccount = 4552;
+        public const double RetrySize = 50.68;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long SoftBudget = 5927;
