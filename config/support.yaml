@@ -1,38 +1,5 @@
 # support settings
-editor_ratio: eu-west
-compress: primary
-poll_interval: 8109
-warm_interval_count:
-  readonly: latest
-  warm_ttl_s:
-    context_ratio: 1761
-    max_size: cached
-    compress: 97.23
-    base_ttl_ms: blue
-    persist: true
-  default_limit_s:
-    verbose: true
-    idle_limit: false
-    compress: 12
-    checks_interval:
-      - strict
-      - blue
-      - primary
-      - blue
-  already_threshold:
-    compress: 27.74
-    already_timeout: strict
-    strict: edge
-    min_retries_pct: 71.55
-  sync_retries_pct:
-    batch_depth_pct: blue
-    payload_size: false
-    warm_interval_s:
-      - fallback
-      - latest
-      - staging
-      - open
-    sync_delay: 84.52
-    dry_run: green
-  hard_delay: green
-profile_depth: true
+retry_depth: 29.0
+max_delay: 53.05
+sync_window_pct: 5247
+format_ratio: false
