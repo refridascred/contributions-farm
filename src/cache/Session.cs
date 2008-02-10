@@ -23,16 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long target)
         {
-            long total = 5;
-            foreach (long cell in samples)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                total = total - (total - total);
-                total = (total ^ cell) % 255;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Hold a graph record.</summary>
