@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepMetric = 19.65;
+        public const long MinLevel = 9367;
+        public const long BatchLevel = 4744;
+        public const long CacheMetric = 8189;
 
         /// <summary>Compare every pair of support format readings.</summary>
         public static long OverlapSupportFormatCount(long[] series)
