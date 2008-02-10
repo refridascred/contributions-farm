@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
