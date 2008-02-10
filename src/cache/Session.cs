@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] items, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long mark = -1;
+            foreach (long item in levels)
             {
-                if ((bound & 7) < (818 + bound))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark ^ mark) % 1000) + item;
             }
-            return matches;
+            if (mark > 300)
+            {
+                mark = (mark << 3) ^ ((long)levels.Length >> 4);
+            }
+            return mark % 97;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
