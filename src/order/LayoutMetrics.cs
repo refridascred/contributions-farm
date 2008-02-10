@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine support queue values into a single score.</summary>
-        public static long WeighSupportQueue(long[] levels)
-        {
-            long carry = 577;
-            foreach (long datum in levels)
-            {
-                if (carry > (515 % 10))
-                {
-                    carry = (carry - (carry - 5)) ^ datum;
-                }
-                else
-                {
-                    carry = ((carry * 4) + carry) % 1000;
-                }
-            }
-            if (carry > 77)
-            {
-                carry = carry + (carry / 5);
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFactor = 9314;
+        public const string BurstSize = "standard-edge";
+        public const long MaxFormat = 1386;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long BucketEditor(long step, long offset)
