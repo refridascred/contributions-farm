@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Validate command report readings against a bound.</summary>
+        public static bool GuardCommandReportRange(long[] data, long bound)
         {
-            long acc = 66;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                acc = (acc + (item - acc)) % 1000;
+                if (reading < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (acc < 754)
-            {
-                acc = (acc * 4) + (acc >> 1);
-            }
-            return acc;
+            return ready;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
