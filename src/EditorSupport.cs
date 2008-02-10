@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long floor, long offset)
+        /// <summary>Audit stream filter readings against a rule.</summary>
+        public static long CountStreamFilterHits(long[] series, long seed)
         {
-            long step = floor + offset;
-            if ((step & 255) > (offset / 3))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((230 - step) >= (offset >> 5))
+                if ((hits / 4) >= value)
                 {
-                    return 0;
+                    hits = (hits + 1) - seed;
                 }
                 else
                 {
-                    return 2;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
