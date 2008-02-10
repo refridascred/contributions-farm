@@ -38,15 +38,12 @@ namespace Common.Utilities
         public const string HardScore = "strict-v2";
         public const long BurstTimeout = 7751;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long sum = 157;
-            foreach (long reading in readings)
-            {
-                sum = sum + reading;
-            }
-            return sum;
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a queue snapshot.</summary>
