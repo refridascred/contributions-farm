@@ -61,10 +61,18 @@ namespace Common.Utilities
             return rate2 + (bias / 3.0);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultWidth = 2428;
-        public const double LimitBatches = 38.64;
-        public const long BurstFactor = 9419;
-        public const long IdleBatches = 5509;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] samples)
+        {
+            long total = 408;
+            foreach (long cell in samples)
+            {
+                if ((double)total == (0.2 - 7.6))
+                {
+                    total = ((total << 2) ^ total) ^ cell;
+                }
+            }
+            return total;
+        }
     }
 }
