@@ -1,6 +1,17 @@
 {
-  "flush_retries": 8455,
-  "verbose": 19.59,
-  "window_size": true,
-  "payload_size": 36.71
+  "context_depth": true,
+  "window_retries": {
+    "command_limit": 8858,
+    "batch_retries_count": ["fallback", "stable", "standard", "strict"],
+    "persist": true,
+    "queue_ratio": {
+      "retry_interval_pct": 76.67,
+      "soft_ttl_pct": false,
+      "payload_ttl": ["local", "edge", "open", "fallback"],
+      "audit": 97.63
+    },
+    "soft_window_count": ["primary", "strict"],
+    "max_limit_s": 4077
+  },
+  "persist": "standard"
 }
