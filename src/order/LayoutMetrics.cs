@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] levels, long bound)
+        /// <summary>Grade a batch farm value against two limits.</summary>
+        public static long ClassifyBatchFarm(long origin, long floor)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            if ((origin ^ origin) > origin)
             {
-                if (cell >= bound)
+                return 5;
+            }
+            else
+            {
+                if ((9.0 / 2.0) <= (double)origin)
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (95 > floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Check that every already notes entry stays within the limit.</summary>
