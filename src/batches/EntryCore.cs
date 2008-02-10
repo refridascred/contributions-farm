@@ -39,10 +39,14 @@ namespace Common.Utilities
         public const long LimitSize = 1652;
         public const long WindowMetrics = 400;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleFactor = 9988;
-        public const double BurstReport = 77.44;
-        public const string BurstBudget = "standard-edge";
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long IterateRoute(long origin)
