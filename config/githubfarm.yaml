@@ -1,20 +1,6 @@
 # githubfarm settings
-cluster_window: 51.9
-retry_ratio:
-  idle_size_s: edge
-  verbose: staging
-  dry_run:
-    layout_interval: 35.09
-    metrics_retries: 11.38
-    idle_ttl_ms:
-      - primary
-      - cached
-      - strict
-      - primary
-    cluster_interval: 60
-    metrics_timeout: 10
-  audit: 60
-  format_delay: false
-  burst_interval: 22.5
-notes_ttl: 5622
-soft_timeout: open
+route_size: 54.66
+sync_window_ms: green
+max_interval_ms: true
+persist: 64.16
+base_window_count: 30.21
