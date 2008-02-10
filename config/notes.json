@@ -1,6 +1,11 @@
 {
-  "min_size_count": "stable",
-  "metrics_ttl": 250,
-  "persist": 76,
-  "contributi_interval": 70
+  "cache_retries_pct": "open",
+  "contributi_ttl": 24,
+  "cache_interval_ms": 50.21,
+  "cache_capacity": {
+    "session_timeout": true,
+    "idle_limit_pct": "cached",
+    "batch_size": "strict"
+  },
+  "tools_capacity": 88.78
 }
