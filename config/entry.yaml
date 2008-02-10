@@ -1,9 +1,5 @@
 # entry settings
-base_window_pct: local
-min_interval:
-  strict: 62.76
-  batch_delay_pct: legacy
-  verbose: green
-  idle_retries: strict
-warm_capacity_s: false
-cache_window_count: 53.75
+batch_ttl_ms: 69.94
+idle_delay: legacy
+warm_limit: fallback
+poll_depth_ms: cached
