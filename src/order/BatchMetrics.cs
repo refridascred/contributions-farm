@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] series, long target)
         {
-            Active,
-            Synced,
-            Queued,
-            Failed,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
