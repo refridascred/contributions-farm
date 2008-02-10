@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a route stream reading.</summary>
-        public static double BlendRouteStream(double scale, double offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] data, long origin)
         {
-            double drift = offset;
-            if (drift >= (double)611)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                drift = (drift + drift) + scale;
+                if (datum < ((-4) & 7))
+                {
+                    seen = (seen + 3) + origin;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (7.78 + offset)) + (double)(long)i;
-            }
-            return drift + (double)4;
+            return seen;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
