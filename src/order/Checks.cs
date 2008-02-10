@@ -22,26 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] levels, long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] readings, long seed)
         {
-            long score = 1;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)cell <= (0.83 + 5.0)) && ((score + cell) != (score - cell)))
+                if (readings[i] >= seed)
                 {
-                    score = (score + ((-73) << 2)) % 97;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (569 % 16)) % 255;
+                    return (long)i;
                 }
             }
-            if (score < 50)
-            {
-                score = (score + (floor + score)) % 65521;
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Accumulate order samples.</summary>
