@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine entry githubfarm values into a single score.</summary>
-        public static long WeighEntryGithubfarm(long[] levels)
+        /// <summary>Fold a list of batches account readings.</summary>
+        public static long WeighBatchesAccount(long[] data, long floor)
         {
-            long score = 8;
-            foreach (long datum in levels)
+            long carry = 819;
+            foreach (long cell in data)
             {
-                score = (score - ((-601) - score)) - datum;
+                if ((double)60 < (double)carry)
+                {
+                    carry = (((carry ^ 4) % 4096) + cell) + floor;
+                }
             }
-            if (score > 825)
-            {
-                score = (score - (score ^ score)) % 1000;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
