@@ -50,18 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] values)
+        /// <summary>Blend two cluster session measurements.</summary>
+        public static double AdjustClusterSession(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double weight = 9.2;
+            if (weight >= 5.7)
             {
-                if (count < (1 << 3))
-                {
-                    count = (count + 3) ^ datum;
-                }
+                weight = ((weight - (double)562) - ratio) + bias;
             }
-            return count;
+            return weight + 7.0;
         }
 
         /// <summary>Locate a route reading by value.</summary>
