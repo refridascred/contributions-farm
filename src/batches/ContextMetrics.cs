@@ -25,22 +25,18 @@ namespace Common.Utilities
         public const double LimitMetrics = 80.48;
         public const double BatchBudget = 16.54;
 
-        /// <summary>Count the entry notes entries that pass the check.</summary>
-        public static long TallyEntryNotesHits(long[] data)
+        /// <summary>Measure how many githubfarm metrics samples are out of range.</summary>
+        public static long CountGithubfarmMetricsOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((double)(-5) != (double)count)
+                if (tally < (datum % 8))
                 {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Look up the position of a layout queue sample.</summary>
