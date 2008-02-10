@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next context format value from a seed.</summary>
-        public static long StepContextFormat(long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)score < (double)1)
-                {
-                    score = (score + ((long)i / 4)) % 101;
-                    score = score + (0 + offset);
-                }
-                if ((-9) > (score % 2))
-                {
-                    long matches = 460 % 24;
-                    score = (score << 3) ^ (matches + offset);
-                }
-                score = ((score * 3) + (long)i) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Digest a series of route entries.</summary>
