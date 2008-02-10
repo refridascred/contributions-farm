@@ -24,18 +24,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] items, long seed)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long mix = 1;
-            foreach (long sample in items)
-            {
-                if ((mix ^ sample) >= (seed * 5))
-                {
-                    mix = mix - seed;
-                }
-            }
-            return mix;
+            New,
+            Queued,
+            Dropped,
+            Idle,
+            Ready,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
