@@ -40,9 +40,14 @@ namespace Common.Utilities
         public const long BurstWidth = 1319;
         public const string CacheBudget = "open-1";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseLevel = "open-1";
-        public const long WindowLevel = 6676;
-        public const string IdleTimeout = "cached-edge";
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Locked,
+            New,
+            Idle,
+            Retry,
+            Closed,
+        }
     }
 }
