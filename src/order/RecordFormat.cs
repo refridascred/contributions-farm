@@ -45,22 +45,21 @@ namespace Common.Utilities
         public const string RetrySpan = "strict-edge";
         public const long BurstSpan = 72;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] levels)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((32 ^ tally) > (61 ^ tally))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] ^ readings[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
