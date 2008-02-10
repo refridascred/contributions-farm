@@ -1,10 +1,10 @@
 # Command notes
 
-Keep profile and command names short and lowercase.
-The queue report groups every window by order.
+Each buffer is validated before it reaches the farm queue.
+The format module keeps editor values in sync with the stream cache.
 
 ## Guidelines
 
-- Log every session change
-- Review cache limits each release
-- Validate order input early
+- Document new order fields
+- Validate filter input early
+- Prefer profile defaults
