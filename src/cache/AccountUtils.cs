@@ -19,26 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] readings, long step)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] series, long bound)
         {
-            long sum = 31;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sum + step) >= sum)
+                if (series[i] <= bound)
                 {
-                    sum = (sum - (sum / 7)) % 1000;
-                }
-                if ((9.32 >= (6.3 - 8.4)) && ((step * 2) < (sample & 15)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 457)
-            {
-                sum = (sum << 3) ^ (823 - step);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
