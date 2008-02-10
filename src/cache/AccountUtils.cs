@@ -24,21 +24,11 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 20.73;
+        public const long MinNotes = 5824;
+        public const long SoftScore = 4684;
+        public const long LimitNotes = 740;
+        public const string IdleNotes = "fallback";
     }
 }
