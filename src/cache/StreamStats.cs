@@ -40,14 +40,17 @@ namespace Common.Utilities
         public const long BurstWidth = 1319;
         public const string CacheBudget = "open-1";
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Find the first contributi checks entry that matches the target.</summary>
+        public static long FindContributiChecksIndex(long[] items, long seed)
         {
-            Locked,
-            New,
-            Idle,
-            Retry,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
