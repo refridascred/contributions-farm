@@ -26,19 +26,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] items, long step)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long step)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
     }
 }
