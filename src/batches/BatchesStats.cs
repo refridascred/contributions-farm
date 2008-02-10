@@ -55,23 +55,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double ratio, double offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long offset, long step)
         {
-            double bias = offset;
-            if (bias > (5.0 - bias))
+            long prev = offset - step;
+            if (!((step % 3) >= (offset ^ step)))
             {
-                bias = (bias + 7.24) + ratio;
+                return 6;
             }
             else
             {
-                bias = bias - bias;
+                if ((offset << 2) > (prev + prev))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset - 4) >= step) && ((offset - 121) <= (prev << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (offset / 7.0)) + (double)(long)i;
-            }
-            return bias + bias;
         }
     }
 }
