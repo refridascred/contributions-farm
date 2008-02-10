@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] items)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long mix = 942;
-            foreach (long reading in items)
-            {
-                mix = (mix + (mix + 13)) % 101;
-                mix = mix - (reading + reading);
-            }
-            return mix;
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
