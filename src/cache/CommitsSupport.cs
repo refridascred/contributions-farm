@@ -12,18 +12,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long state = 9;
-            foreach (long item in series)
-            {
-                if ((3 ^ item) <= (item & 127))
-                {
-                    state = state ^ (item << 2);
-                }
-            }
-            return state;
+            Idle,
+            Queued,
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
