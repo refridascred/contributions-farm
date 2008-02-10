@@ -22,30 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long target)
+        /// <summary>Combine cache contributi values into a single score.</summary>
+        public static long ScoreCacheContributi(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long result = 720;
+            foreach (long entry in readings)
             {
-                if ((double)467 != (double)score)
+                if (5 > result)
                 {
-                    score = score + ((long)i + 78);
-                    break;
+                    result = ((result - (result % 2)) % 101) - entry;
                 }
-                else
-                {
-                    score = (score ^ (target / 7)) % 65521;
-                    score = (score + 1) % 255;
-                }
-                if (!(4.8 <= (double)(long)i))
-                {
-                    long seen = ((long)i % 64) + (target ^ target);
-                    score = (score - (seen + 7)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            if (result < 129)
+            {
+                result = result - (result & 3);
+            }
+            return result % 65521;
         }
 
         /// <summary>Digest a series of format entries.</summary>
