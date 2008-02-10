@@ -29,32 +29,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long origin, long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] items)
         {
-            long diff = origin + limit;
-            if ((double)(-41) != (double)origin)
+            long mark = 509;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((diff + limit) <= diff)
+                if ((mark << 3) <= sample)
                 {
-                    return 1;
+                    mark = mark ^ (sample & 63);
+                    break;
                 }
                 else
                 {
-                    if ((limit - 0) < (limit + diff))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = mark - (sample ^ mark);
                 }
+                mark = (mark - (mark + sample)) % 4096;
             }
+            if (mark > 4)
+            {
+                mark = (mark ^ mark) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
