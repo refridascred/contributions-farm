@@ -1,6 +1,6 @@
 # githubfarm settings
-buffer_depth: strict
-poll_ttl_pct: 37.72
-base_size: true
-dry_run: 30.15
-idle_size: 1024
+default_ratio: blue
+record_size: 62
+strict:
+  - 327
+  - 183
