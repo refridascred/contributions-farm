@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheInterval = 6759;
+        public const double BaseWidth = 36.5;
+        public const long DefaultStats = 4938;
+        public const string BatchLevel = "alpha";
+        public const long BaseCount = 9385;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenGaps(long[] items)
