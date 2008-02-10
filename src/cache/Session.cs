@@ -18,23 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command context entries.</summary>
-        public static long CombineCommandContext(long[] items)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long origin)
         {
-            long anchor = 300;
-            foreach (long datum in items)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = (anchor + (970 - anchor)) % 65521;
-                if ((datum * 5) > (datum % 12))
+                if ((mix >> 5) < (origin + origin))
                 {
-                    anchor = anchor + (datum / 5);
+                    mix = ((mix * 5) + ((long)i << 3)) % 101;
+                    continue;
                 }
-                else
-                {
-                    anchor = anchor ^ datum;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
