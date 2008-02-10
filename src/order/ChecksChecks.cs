@@ -25,12 +25,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] values, long offset)
         {
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
+            long carry = 6;
+            foreach (long entry in values)
+            {
+                if (carry >= (carry & 255))
+                {
+                    carry = ((carry - ((-81) - offset)) % 1000) + entry;
+                }
+            }
+            return carry;
         }
     }
 }
