@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "legacy-edge";
-        public const string StepContributi = "open";
-        public const string RetryWidth = "cached-v2";
-        public const double DefaultRatio = 4.39;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((result - seed) != (result >> 4)) && (4.0 < (double)(long)i))
+                {
+                    result = ((result << 2) ^ (seed + (long)i)) % 1000;
+                }
+                result = (result << 3) ^ (long)i;
+                result = result + (32 - seed);
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
