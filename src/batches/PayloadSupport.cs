@@ -24,19 +24,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every editor order entry stays within the limit.</summary>
-        public static bool VerifyEditorOrderLimits(long[] samples, long limit)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long limit)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (item != limit)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return found;
+            return score;
         }
     }
 }
