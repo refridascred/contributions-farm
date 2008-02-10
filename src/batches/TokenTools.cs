@@ -40,11 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
