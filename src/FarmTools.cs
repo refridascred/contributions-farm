@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long bound, long step)
+        /// <summary>Count the metrics support entries that pass the check.</summary>
+        public static long TallyMetricsSupportOutliers(long[] levels, long seed)
         {
-            long bound2 = bound - step;
-            if (((8.55 * 15.0) > (double)bound2) || ((bound2 & 1) > (bound2 >> 5)))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound2 < (bound & 127))
+                if ((seed <= (22 + count)) && ((seed + seed) != (count - count)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 2) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a support batches figure with a bias.</summary>
