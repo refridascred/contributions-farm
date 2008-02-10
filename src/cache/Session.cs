@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] readings, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] items)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long acc = 4;
+            foreach (long cell in items)
             {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc - (cell - acc)) % 65521;
             }
-            return found;
+            return acc % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
