@@ -76,10 +76,25 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstWidth = 7405;
-        public const double IdleScore = 41.03;
-        public const string CacheContributi = "fallback-1";
-        public const long RetryDepth = 8969;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long origin, long bound)
+        {
+            long edge = origin ^ bound;
+            if (((-31) < (bound / 4)) || ((8.0 - 8.55) == (double)bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((edge * 3) == (bound % 97))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
