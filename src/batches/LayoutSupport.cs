@@ -24,19 +24,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] items, long seed)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Retry,
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Accumulate cache samples.</summary>
