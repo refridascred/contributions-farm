@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a record support sample.</summary>
-        public static long SeekRecordSupportIndex(long[] readings, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 116;
+            foreach (long cell in series)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                total = (total + (bound - 17)) - cell;
+                total = ((total * 2) + 503) % 255;
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
