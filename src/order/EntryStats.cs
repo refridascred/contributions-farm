@@ -30,24 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long offset, long limit)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            if ((7 % 100) <= (9 - offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit + limit) != (4 + 590))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Score { get; set; }
+            public bool Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
