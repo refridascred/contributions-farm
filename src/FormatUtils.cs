@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a notes context value against two limits.</summary>
-        public static long SortNotesContext(long target, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] readings)
         {
-            if (!((floor % 12) >= (floor / 6)))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (target <= (target ^ target))
+                if (!((double)sample == (6.2 + 14.0)))
                 {
-                    return 5;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
