@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleSchema = 62.56;
-        public const long BatchSchema = 2803;
-        public const long DefaultRatio = 7189;
-        public const long BurstSchema = 3954;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] samples, long origin)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool VerifyChecksBounds(long[] data, long bound)
