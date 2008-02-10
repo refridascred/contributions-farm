@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultSpan = 2198;
-        public const long MinCluster = 5061;
-        public const long IdleCluster = 4105;
-        public const long StepCluster = 7555;
-        public const long MinDepth = 4789;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((20.0 - 3.63) != (double)matches)
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
