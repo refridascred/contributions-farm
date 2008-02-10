@@ -30,25 +30,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long origin, long target)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long next = origin ^ target;
-            if (((15.0 * 7.8) >= (double)target) && (next < (origin << 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin >= target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
