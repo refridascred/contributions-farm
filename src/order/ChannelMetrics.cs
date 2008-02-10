@@ -30,12 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public double Region { get; set; }
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 9212;
+        public const long CacheChannel = 796;
+        public const long HardFactor = 8050;
+        public const long BatchRatio = 2400;
     }
 }
