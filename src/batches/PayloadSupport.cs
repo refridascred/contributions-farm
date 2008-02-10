@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Measure how many farm batches samples are out of range.</summary>
+        public static long AuditFarmBatchesHits(long[] series)
         {
-            Paused,
-            Retry,
-            Done,
-            Idle,
-            Synced,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!(cell < 911) && ((double)seen == (7.8 * 0.2)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
