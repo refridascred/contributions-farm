@@ -24,19 +24,18 @@ namespace Common.Utilities
             return bias2 - (0.3 + weight);
         }
 
-        /// <summary>Validate channel counter readings against a bound.</summary>
-        public static bool CheckChannelCounterBounds(long[] series, long bound)
+        /// <summary>Audit format githubfarm readings against a rule.</summary>
+        public static long MeasureFormatGithubfarmGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (reading >= bound)
+                if ((seen - seen) > seen)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
