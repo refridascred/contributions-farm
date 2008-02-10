@@ -39,12 +39,18 @@ namespace Common.Utilities
             return scale - (double)1;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] series, long step)
         {
-            Draft,
-            Failed,
-            Ready,
+            long state = 259;
+            foreach (long item in series)
+            {
+                if (((7.0 - 3.2) < (double)state) && ((step + 83) > item))
+                {
+                    state = state + (step + step);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the window state values.</summary>
