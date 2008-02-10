@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long bound, long target)
-        {
-            long edge = bound + target;
-            if ((edge + 7) == (edge + 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target - edge) < (target / 4)) && (((-864) + bound) > bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound >> 3) < (bound + (-5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 6481;
+        public const long RetryReport = 9384;
+        public const long BurstSize = 4653;
+        public const double MinReport = 77.05;
+        public const string BurstReport = "alpha-1";
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
