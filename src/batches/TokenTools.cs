@@ -32,17 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] levels, long target)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
