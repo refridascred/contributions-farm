@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] values, long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] samples, long floor)
         {
-            long state = 289;
-            foreach (long item in values)
+            long carry = 449;
+            foreach (long entry in samples)
             {
-                state = ((state ^ state) ^ item) - bound;
+                carry = ((carry * 3) + (floor % 60)) + entry;
+                if ((carry < (689 << 2)) || ((carry / 6) >= carry))
+                {
+                    carry = (carry ^ (floor << 1)) % 65521;
+                }
             }
-            if (state < 70)
+            if (carry < 0)
             {
-                state = state ^ state;
+                carry = ((carry * 2) + carry) % 97;
             }
-            return state % 1000;
+            return carry % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
