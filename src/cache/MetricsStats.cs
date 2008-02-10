@@ -25,17 +25,15 @@ namespace Common.Utilities
         public const long RetryEntry = 9872;
         public const long CacheFactor = 7646;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] items, long target)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
+                gain = ((gain + (gain * 14.0)) + (double)(long)i) - scale;
             }
-            return -1;
+            return gain + (double)97;
         }
 
         /// <summary>Hold a record entry.</summary>
