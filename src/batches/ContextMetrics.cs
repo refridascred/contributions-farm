@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double ratio, double floor)
         {
-            Done,
-            Closed,
-            Queued,
-            New,
-            Paused,
+            double load = (double)(-1) / 4.0;
+            for (int i = 0; i < 2; i++)
+            {
+                load = ((load + (load / 2.0)) + (double)(long)i) + ratio;
+            }
+            return load + floor;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
