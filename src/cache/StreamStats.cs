@@ -42,15 +42,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] samples, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if ((68 % 60) < item)
+                {
+                    hits = (hits + 2) + seed;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
