@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double gain, double offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long step, long step2)
         {
-            double rate = (double)(92 - 426);
-            for (int i = 0; i < 4; i++)
+            if ((double)step == (9.2 + 1.62))
             {
-                rate = ((rate + rate) + (double)(long)i) - gain;
+                return 7;
             }
-            return rate + offset;
+            else
+            {
+                if (736 >= (step + 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.93 - 13.0) != (double)step2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step == (4.7 / 7.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order state values.</summary>
