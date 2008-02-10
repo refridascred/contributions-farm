@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if ((matches << 3) == (cell & 3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
