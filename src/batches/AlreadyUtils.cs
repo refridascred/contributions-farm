@@ -69,28 +69,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] levels, long origin)
         {
-            long state = 2;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((cell & 1) > (30 & 31)) || ((double)state > (7.0 * 7.4)))
+                if (levels[i] < origin)
                 {
-                    state = state + cell;
-                    state = (state + (state & 15)) % 1000;
-                }
-                else
-                {
-                    state = state + (cell << 3);
-                    state = (state + (43 ^ 583)) % 255;
-                }
-                if ((5 & 255) != (cell + (long)values.Length))
-                {
-                    state = (state << 2) ^ (cell % 5);
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
     }
 }
