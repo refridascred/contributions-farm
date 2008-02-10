@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            Retry,
-            Queued,
-            Closed,
+            long score = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                score = score ^ (score + score);
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Hold a farm record.</summary>
