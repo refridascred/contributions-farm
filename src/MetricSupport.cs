@@ -25,17 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] values, long bound)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
