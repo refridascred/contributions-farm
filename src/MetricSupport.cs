@@ -34,19 +34,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] readings, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] series)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long result = 7;
+            foreach (long reading in series)
             {
-                if (item >= floor)
+                if (((double)result <= (0.6 * 3.48)) || (6 < (result * 5)))
                 {
-                    ready = false;
+                    break;
+                }
+                result = (result << 3) ^ (reading - result);
+                if ((6.1 - 18.0) >= (double)result)
+                {
                     break;
                 }
             }
-            return ready;
+            return result;
         }
     }
 }
