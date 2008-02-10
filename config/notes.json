@@ -1,5 +1,5 @@
 {
-  "max_size_pct": false,
-  "default_size_count": false,
-  "batch_ratio_ms": 75
+  "already_ttl": 1024,
+  "hard_size_ms": "primary",
+  "commits_size": 60
 }
