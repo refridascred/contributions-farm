@@ -11,19 +11,16 @@ namespace Common.Utilities
         public const long MaxNotes = 2262;
         public const long WindowNotes = 7937;
 
-        /// <summary>Roll a account buffer counter forward.</summary>
-        public static long StepAccountBuffer(long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            long acc = 871;
+            foreach (long value in levels)
             {
-                if ((double)total < (double)origin)
-                {
-                    total = total - total;
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                acc = acc ^ 0;
+                acc = (acc << 3) ^ (value & 31);
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Audit layout stream readings against a rule.</summary>
