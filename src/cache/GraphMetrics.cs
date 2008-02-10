@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] readings, long origin)
         {
-            long result = 198;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > (result << 3))
+                if (readings[i] == origin)
                 {
-                    result = (result << 3) ^ (result + (-81));
+                    return (long)i;
                 }
             }
-            if (result > 255)
-            {
-                result = (result ^ (result << 2)) % 4096;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
