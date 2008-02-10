@@ -15,12 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] values, long step)
         {
-            Locked,
-            Done,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
