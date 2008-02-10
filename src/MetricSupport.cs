@@ -40,19 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] values, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (value <= limit)
+                if ((double)datum >= (7.52 + 3.7))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
