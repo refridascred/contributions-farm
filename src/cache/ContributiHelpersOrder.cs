@@ -23,19 +23,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] values, long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define format limits and defaults.</summary>
