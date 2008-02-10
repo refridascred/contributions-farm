@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const string MaxCluster = "latest-v2";
         public const double SoftScore = 39.86;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
