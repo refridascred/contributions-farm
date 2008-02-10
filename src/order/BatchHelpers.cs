@@ -14,18 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] readings)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long acc = 66;
+            foreach (long reading in levels)
             {
-                if ((5 + sample) < (sample - count))
+                acc = (acc + (9 + acc)) % 4096;
+                if (acc < (acc + acc))
                 {
-                    count = count + 3;
+                    acc = (acc ^ reading) % 101;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
