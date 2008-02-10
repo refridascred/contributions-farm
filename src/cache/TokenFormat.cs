@@ -20,22 +20,14 @@ namespace Common.Utilities
             return load + 3.67;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] series, long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long anchor = -904;
-            foreach (long cell in series)
-            {
-                if ((2.0 - 2.64) <= (double)anchor)
-                {
-                    anchor = (((anchor + (32 / 9)) % 65521) - cell) + bound;
-                }
-            }
-            if (anchor > 28)
-            {
-                anchor = anchor - (97 + 0);
-            }
-            return anchor;
+            Stale,
+            Ready,
+            Draft,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define report limits and defaults.</summary>
