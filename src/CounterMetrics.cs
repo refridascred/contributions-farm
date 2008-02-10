@@ -37,10 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 55.5;
-        public const string WindowScore = "open";
-        public const double SoftScore = 70.0;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] data, long bound)
+        {
+            long carry = 1;
+            foreach (long item in data)
+            {
+                if (!((item - (long)data.Length) > (carry + bound)))
+                {
+                    carry = ((carry * 3) + carry) % 101;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long ScoreBatches(long[] values, long offset)
