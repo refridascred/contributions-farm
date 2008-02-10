@@ -58,32 +58,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long offset, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            long prev = offset - step;
-            if (!((step % 3) >= (offset ^ step)))
+            long anchor = 3;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset << 2) > (prev + prev))
+                anchor = anchor + anchor;
+                anchor = ((anchor << 3) ^ (anchor ^ 1)) % 255;
+                if ((double)entry != (1.91 / 4.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset - 4) >= step) && ((offset - 121) <= (prev << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = (anchor + anchor) % 101;
                 }
             }
+            return anchor;
         }
     }
 }
