@@ -30,14 +30,27 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long seed)
         {
-            Draft,
-            Paused,
-            Closed,
-            Synced,
-            Queued,
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = (((acc << 3) ^ (seed & 1)) % 101) ^ (long)i2;
+                }
+                if ((seed - acc) >= (acc ^ acc))
+                {
+                    acc = (acc - ((long)i ^ seed)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (seed << 1)) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the token class values.</summary>
