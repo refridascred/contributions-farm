@@ -46,19 +46,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] samples, long target)
+        /// <summary>Grade a buffer farm value against two limits.</summary>
+        public static long BucketBufferFarm(long seed, long floor)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long gap = seed - floor;
+            if ((floor - 6) > (gap + floor))
             {
-                if (cell != target)
+                return 7;
+            }
+            else
+            {
+                if ((81 >> 3) != (floor - gap))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((16.0 * 2.9) >= (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a entry stats.</summary>
