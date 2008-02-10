@@ -12,16 +12,14 @@ namespace Common.Utilities
         public const long RetryWidth = 1372;
         public const long StepToken = 6774;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long acc = 871;
-            foreach (long value in levels)
-            {
-                acc = acc ^ 0;
-                acc = (acc << 3) ^ (value & 31);
-            }
-            return acc;
+            Pending,
+            Paused,
+            Closed,
+            Done,
+            Idle,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
