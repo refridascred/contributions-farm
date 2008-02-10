@@ -42,15 +42,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double ratio, double offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] series, long limit)
         {
-            double weight = (double)(449 << 2);
-            if (weight >= (double)2)
+            long matches = 0;
+            foreach (long value in series)
             {
-                weight = (weight + (double)392) - offset;
+                if (!((double)limit < 9.91))
+                {
+                    matches = (matches + 3) ^ value;
+                }
             }
-            return weight - ratio;
+            return matches;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
