@@ -25,21 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long offset, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = offset - origin;
+            if (!(offset > slot))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((97 + offset) >= origin)
                 {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate support batches readings against a bound.</summary>
