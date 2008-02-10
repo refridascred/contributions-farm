@@ -96,17 +96,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFormat = "local-1";
+        public const long CacheBudget = 9519;
+        public const long IdleFormat = 6603;
+        public const long BatchRatio = 4132;
+        public const long MinFormat = 3364;
     }
 }
