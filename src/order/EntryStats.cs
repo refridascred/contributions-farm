@@ -55,17 +55,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] levels, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (levels[i] >= origin)
+                if (sample < (seed << 2))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate editor cache readings against a bound.</summary>
