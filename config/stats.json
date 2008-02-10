@@ -1,13 +1,14 @@
 {
-  "token_window": ["fallback", "staging", "local"],
-  "burst_timeout": "legacy",
-  "route_limit": 4418,
-  "min_size_count": {
-    "filter_retries": "primary",
-    "burst_ratio_pct": 74.13,
-    "base_timeout_pct": 250,
-    "flush_interval": false,
-    "enabled": [304, 379]
-  },
-  "already_capacity": true
+  "cache_depth_ms": "latest",
+  "counter_window": 250,
+  "farm_ratio": "cached",
+  "sync_ratio": "latest",
+  "token_retries": [353, 477, 195],
+  "window_interval": {
+    "layout_limit": 250,
+    "default_limit_pct": "cached",
+    "max_capacity": true,
+    "base_ttl_pct": true,
+    "strict": 57
+  }
 }
