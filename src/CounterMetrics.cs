@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((values[i] + values[j]) < 9)
+                    if ((readings[i] ^ readings[j]) > 12)
                     {
                         matches = matches + 1;
                     }
