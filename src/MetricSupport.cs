@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long limit, long limit2)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long diff = limit - limit2;
+            if ((diff + (-532)) <= (limit << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit2 * 3) == (limit2 % 16))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)limit <= (7.61 / 6.0)) || ((limit2 - limit) >= 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up contributi samples.</summary>
