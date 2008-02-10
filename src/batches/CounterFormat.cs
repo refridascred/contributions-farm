@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long BurstTools = 1476;
         public const long MinTools = 1255;
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] data, long offset)
         {
-            Synced,
-            Paused,
-            New,
-            Active,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((offset + count) == (offset << 3))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
