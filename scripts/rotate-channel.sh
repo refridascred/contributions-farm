@@ -7,14 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-stable}"
+mode="${1:-primary}"
 case "${mode}" in
-    stable)
+    standard)
         log "fast path"
         ;;
     *)
