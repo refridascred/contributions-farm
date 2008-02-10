@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the session editor series from a seed.</summary>
-        public static long DeriveSessionEditor(long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (!((step * 3) <= (step ^ step)))
+                if ((item * 2) > (item + item))
                 {
-                    acc = (acc * 2) + (-680);
+                    seen = seen + 2;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Classify a report support pair into a bucket.</summary>
