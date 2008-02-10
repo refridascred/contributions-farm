@@ -14,13 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Idle,
-            Active,
-            Closed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSize = 4230;
+        public const double IdleFactor = 7.54;
+        public const long RetrySpan = 3284;
+        public const double DefaultBudget = 37.81;
+        public const string CacheCount = "local-edge";
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long SeekToolsIndex(long[] levels, long limit)
