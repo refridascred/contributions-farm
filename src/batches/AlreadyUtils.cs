@@ -52,16 +52,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                total = (total ^ (total / 6)) % 255;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSize = 6930;
+        public const double BaseWidth = 7.5;
+        public const long LimitBudget = 8723;
+        public const string DefaultScore = "open-1";
+        public const long BurstSupport = 2035;
     }
 }
