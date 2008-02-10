@@ -19,19 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate report batch readings against a bound.</summary>
-        public static bool CheckReportBatchBounds(long[] samples, long target)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
