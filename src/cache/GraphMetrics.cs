@@ -30,17 +30,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = (acc - target) % 101;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseTimeout = 3704;
+        public const double LimitToken = 88.2;
+        public const long DefaultLevel = 6365;
+        public const string IdleDepth = "local-v2";
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long RollBatch(long offset)
