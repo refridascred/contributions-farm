@@ -21,13 +21,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long limit, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            if (!((6 % 97) < (origin & 63)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin & 15) != (389 + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit / 2) > (limit + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout header.</summary>
