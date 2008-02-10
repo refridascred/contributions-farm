@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseWidth = 7437;
-        public const double WindowLevel = 82.56;
-        public const double SoftFarm = 20.28;
-        public const double MaxWidth = 8.81;
-        public const string SoftSpan = "standard-edge";
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TotalGraph(long[] series, long step)
