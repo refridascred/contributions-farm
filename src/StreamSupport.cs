@@ -34,19 +34,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] values, long target)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= target)
+                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
