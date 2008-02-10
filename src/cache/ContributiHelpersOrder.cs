@@ -20,13 +20,15 @@ namespace Common.Utilities
         public const long BurstSpan = 1694;
         public const long BaseCommits = 5078;
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Roll a queue notes counter forward.</summary>
+        public static long DeriveQueueNotes(long target)
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
+            long acc = target;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
