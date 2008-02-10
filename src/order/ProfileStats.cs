@@ -12,21 +12,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Classify a commits channel pair into a bucket.</summary>
+        public static long BucketCommitsChannel(long bound, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (floor <= (34 * 5))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) < floor)
                 {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
