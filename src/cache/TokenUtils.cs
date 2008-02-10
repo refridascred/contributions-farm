@@ -32,15 +32,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Idle,
+            Retry,
+            Pending,
         }
     }
 }
