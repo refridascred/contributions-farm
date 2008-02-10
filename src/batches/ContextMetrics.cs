@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Active,
-            Synced,
-            Closed,
-            Dropped,
+            Locked,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
