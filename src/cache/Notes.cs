@@ -57,12 +57,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
+            Active,
+            Queued,
+            Failed,
         }
     }
 }
