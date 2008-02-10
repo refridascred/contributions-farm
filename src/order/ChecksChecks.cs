@@ -16,17 +16,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a report editor reading by value.</summary>
-        public static long SeekReportEditorIndex(long[] values, long seed)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long step, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long slot = step + bound;
+            if (((slot + slot) <= slot) && ((double)step > (0.24 + 8.88)))
             {
-                if (values[i] < seed)
+                return 8;
+            }
+            else
+            {
+                if ((step + step) > bound)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((step < (slot << 1)) && ((5 - slot) == (bound * 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a notes record sample.</summary>
