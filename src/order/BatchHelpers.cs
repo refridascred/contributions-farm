@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] readings, long seed)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long floor, long floor2)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long bound = floor + floor2;
+            if (753 < bound)
             {
-                if (reading < seed)
+                return 0;
+            }
+            else
+            {
+                if (((bound % 12) <= 4) && (326 >= floor))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((floor % 97) > (floor2 << 1)) && (floor > floor2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((3.9 * 15.0) == (double)floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a buffer stats.</summary>
