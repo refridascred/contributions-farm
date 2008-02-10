@@ -54,15 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] values, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] levels, long limit)
         {
-            long carry = 61;
-            foreach (long datum in values)
+            long score = 8;
+            foreach (long value in levels)
             {
-                carry = ((carry << 2) ^ datum) + origin;
+                score = (score * 4) + (value - value);
+                score = ((score << 3) ^ limit) % 97;
             }
-            return carry;
+            return score % 65521;
         }
     }
 }
