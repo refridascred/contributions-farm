@@ -53,21 +53,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of githubfarm cache readings.</summary>
-        public static long CompareGithubfarmCacheCount(long[] samples)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (matches >= (value ^ matches))
                 {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
