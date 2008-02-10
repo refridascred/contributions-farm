@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] levels, long target)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample > target)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (sum - ((long)i * 2)) % 97;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
