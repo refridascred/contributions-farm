@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format contributi values into a single score.</summary>
-        public static long ScoreFormatContributi(long[] samples)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long offset)
         {
-            long score = 36;
-            foreach (long datum in samples)
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score * 2) + (score ^ 40)) % 101;
-                if ((datum * 5) != (datum << 2))
-                {
-                    score = (score ^ (score * 5)) % 65521;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return score % 1000;
+            return result;
         }
 
         /// <summary>Project the next batches support value.</summary>
