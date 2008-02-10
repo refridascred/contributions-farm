@@ -15,10 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinBudget = "alpha";
-        public const long BurstSpan = 1694;
-        public const long BaseCommits = 5078;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long StepMetric(long limit)
