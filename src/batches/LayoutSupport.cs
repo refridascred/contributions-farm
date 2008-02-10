@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] series)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long origin, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            if ((origin ^ 23) <= origin)
             {
-                if ((double)matches != (16.0 - 14.0))
+                return 2;
+            }
+            else
+            {
+                if ((double)floor <= (2.4 + 9.9))
                 {
-                    matches = (matches + 1) ^ value;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
