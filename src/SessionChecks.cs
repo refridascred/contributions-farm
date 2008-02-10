@@ -19,19 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] data, long floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long state = 0;
+            foreach (long reading in samples)
             {
-                if (item >= floor)
+                state = (((state << 3) ^ state) % 4096) - bound;
+                if ((state & 255) <= (reading & 31))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            if (state < 3)
+            {
+                state = ((state * 5) + 633) % 255;
+            }
+            return state;
         }
 
         /// <summary>Accumulate graph samples.</summary>
