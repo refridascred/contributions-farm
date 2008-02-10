@@ -40,10 +40,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowFactor = 7873;
-        public const long MinCache = 6544;
-        public const long StepBudget = 6988;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
