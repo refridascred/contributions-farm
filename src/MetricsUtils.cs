@@ -12,21 +12,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell >= (cell << 3))
                 {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
