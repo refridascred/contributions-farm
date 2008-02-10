@@ -41,21 +41,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Iterate the queue format series from a seed.</summary>
-        public static long DeriveQueueFormat(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((mix - floor) == (mix / 6))
-                {
-                    mix = (mix ^ (mix - floor)) % 101;
-                    mix = (mix ^ floor) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryDepth = 5376;
+        public const long BurstRatio = 4825;
+        public const double LimitTimeout = 54.97;
+        public const double StepRatio = 30.29;
+        public const string MinLevel = "primary-v2";
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
