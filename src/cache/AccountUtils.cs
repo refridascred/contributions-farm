@@ -15,19 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] levels, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (item < seed)
+                if ((((tally & 127) < (seed - datum)) && ((seed ^ tally) > (seed + datum))) || !((tally >> 4) < 220))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
