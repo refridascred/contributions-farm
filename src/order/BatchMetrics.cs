@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 3420;
+        public const long RetrySize = 8701;
+        public const long MinRatio = 2780;
+        public const long SoftInterval = 1099;
 
         /// <summary>Validate already stats readings against a bound.</summary>
         public static bool VerifyAlreadyStatsBounds(long[] items, long step)
