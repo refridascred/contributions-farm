@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long bound, long floor)
         {
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            if (!((floor / 2) != (floor >> 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound >= (5 * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((782 + 8) >= (bound + floor)) || (3 > floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((709 ^ bound) >= (bound - 2)) && ((bound ^ bound) <= floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
