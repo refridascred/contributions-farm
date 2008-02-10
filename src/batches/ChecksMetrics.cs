@@ -46,10 +46,16 @@ namespace Common.Utilities
         public const long HardGithubfarm = 9739;
         public const long MaxCount = 7928;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxDepth = 5.31;
-        public const long WindowBuffer = 243;
-        public const double BaseBuffer = 46.53;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
