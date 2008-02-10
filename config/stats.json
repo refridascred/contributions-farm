@@ -1,6 +1,16 @@
 {
-  "flush_threshold": 91.28,
-  "flush_interval": "staging",
-  "already_timeout": "strict",
-  "hard_capacity_s": "green"
+  "audit": {
+    "editor_retries": 75.56,
+    "soft_limit_s": {
+      "flush_depth_count": "local",
+      "flush_limit_pct": "green",
+      "burst_retries_count": false,
+      "compress": "fallback",
+      "command_threshold": 1303
+    },
+    "hard_delay_pct": 6442
+  },
+  "sync_size_ms": 88,
+  "strict": 64,
+  "queue_ttl": 1024
 }
