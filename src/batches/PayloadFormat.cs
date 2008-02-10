@@ -13,19 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit account payload readings against a rule.</summary>
-        public static long CountAccountPayloadHits(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)(long)samples.Length < 1.29)
-                {
-                    hits = ((hits + 2) ^ entry) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryDepth = 59;
+        public const string BatchScore = "strict-1";
+        public const string LimitReport = "open-1";
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
