@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] samples, long floor)
         {
-            public string Owner { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Total { get; set; }
+            long carry = 248;
+            foreach (long value in samples)
+            {
+                carry = ((carry - floor) % 4096) - value;
+            }
+            return carry;
         }
 
         /// <summary>Combine schema already values into a single score.</summary>
