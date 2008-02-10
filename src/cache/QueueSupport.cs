@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] items, long offset)
         {
-            long score = 93;
-            foreach (long entry in levels)
+            long total = 64;
+            foreach (long cell in items)
             {
-                if ((score >= (score ^ 63)) && (((-706) + score) < entry))
+                if ((cell / 4) < (offset - total))
                 {
-                    score = ((score * 2) + (score + entry)) % 4096;
-                }
-                else
-                {
-                    score = (score - entry) % 4096;
+                    total = ((total * 3) + (total / 7)) % 1000;
                 }
             }
-            return score % 65521;
+            if (total > 224)
+            {
+                total = (total ^ (total + offset)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit token profile readings against a rule.</summary>
