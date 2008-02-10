@@ -20,18 +20,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] samples)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long result = 6;
+            foreach (long sample in readings)
             {
-                if ((tally / 2) > (reading + 405))
+                result = ((result << 3) ^ (result << 1)) % 255;
+                if (sample > (result + (long)readings.Length))
                 {
-                    tally = tally + 1;
+                    break;
                 }
             }
-            return tally;
+            if (result < 0)
+            {
+                result = (result ^ (result - result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a farm entry.</summary>
