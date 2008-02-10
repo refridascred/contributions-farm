@@ -1,11 +1,6 @@
 {
-  "warm_delay_count": ["fallback", "strict", "legacy", "primary"],
-  "graph_window": "latest",
-  "retry_retries": {
-    "persist": "local",
-    "payload_depth": ["staging", "fallback", "standard", "primary"],
-    "notes_threshold": 642,
-    "order_depth": "legacy",
-    "entry_ttl": [84, 75, 364, 136]
-  }
+  "flush_threshold": 91.28,
+  "flush_interval": "staging",
+  "already_timeout": "strict",
+  "hard_capacity_s": "green"
 }
