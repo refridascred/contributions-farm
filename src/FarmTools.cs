@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long bound, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long bound, long step)
         {
-            long offset = bound + limit;
-            if ((limit & 3) <= (bound % 3))
+            long bound2 = bound - step;
+            if (((8.55 * 15.0) > (double)bound2) || ((bound2 & 1) > (bound2 >> 5)))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((7.0 - 0.03) > (double)offset)
+                if (bound2 < (bound & 127))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    return 3;
+                    return 0;
                 }
             }
         }
