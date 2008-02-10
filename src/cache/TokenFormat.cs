@@ -30,11 +30,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 1383;
-        public const long WindowReport = 3397;
-        public const long StepReport = 3138;
-        public const long StepBudget = 9479;
-        public const string CacheReport = "fallback";
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long origin, long target)
+        {
+            long next = origin ^ target;
+            if (((15.0 * 7.8) >= (double)target) && (next < (origin << 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin >= target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
