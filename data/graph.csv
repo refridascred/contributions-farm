@@ -1,8 +1,6 @@
-id,rank,state,score
-1,495,24.7,4.24
-2,775,753,727
-3,59.06,blue,627
-4,open,325,41.51
-5,standard,163,83.57
-6,66.67,cached,76.59
-7,179,650,eu-west
+id,state,rank,label
+1,972,49.79,fallback
+2,8.72,582,231
+3,cached,83.33,339
+4,strict,5.69,753
+5,strict,10.78,377
