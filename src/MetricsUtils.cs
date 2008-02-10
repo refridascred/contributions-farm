@@ -53,19 +53,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double rate, double floor)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long origin, long bound)
         {
-            double weight = (double)392 + (1.0 / 5.0);
-            if (weight >= 0.9)
+            long cur = origin + bound;
+            if ((bound > origin) && ((7.17 + 6.0) >= (double)origin))
             {
-                weight = (weight + (rate * 2.4)) - floor;
+                return 8;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                weight = (weight + rate) - (double)(long)i;
+                if ((cur % 24) >= 63)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return weight + weight;
         }
     }
 }
