@@ -12,13 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public double Score { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a account info.</summary>
