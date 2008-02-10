@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two context cache measurements.</summary>
-        public static double SmoothContextCache(double rate, double bias)
+        /// <summary>Classify a graph report pair into a bucket.</summary>
+        public static long RankGraphReport(long bound, long offset)
         {
-            double ratio = bias;
-            if (ratio >= (double)43)
+            if ((offset >> 4) < (offset >> 5))
             {
-                ratio = ratio + rate;
+                return 7;
             }
-            return ratio + (double)1;
+            else
+            {
+                if (88 < bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Look up the position of a graph layout sample.</summary>
