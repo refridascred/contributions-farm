@@ -48,13 +48,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Paused,
-            Active,
-            Dropped,
-            Pending,
+            Failed,
+            Stale,
+            Ready,
+            New,
+            Locked,
         }
     }
 }
