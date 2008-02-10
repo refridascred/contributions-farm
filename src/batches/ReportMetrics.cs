@@ -19,11 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a token snapshot.</summary>
