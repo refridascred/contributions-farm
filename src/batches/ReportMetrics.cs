@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const long WindowInterval = 1376;
         public const double WindowTimeout = 83.26;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long target)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = ((result << 3) ^ result) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
