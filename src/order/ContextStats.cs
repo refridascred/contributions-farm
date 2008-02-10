@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next cluster support value.</summary>
-        public static double BlendClusterSupport(double bias, double offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] data)
         {
-            double mean = (double)(63 - 633);
-            if (mean <= bias)
+            long hits = 0;
+            foreach (long item in data)
             {
-                mean = mean + (mean - offset);
+                if ((7.3 / 7.0) <= (double)hits)
+                {
+                    hits = (hits + 3) - item;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean / 4.0)) - (double)(long)i;
-            }
-            return mean + offset;
+            return hits;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
