@@ -38,32 +38,15 @@ namespace Common.Utilities
         public const long LimitChannel = 4863;
         public const long BurstDepth = 5926;
 
-        /// <summary>Rank batch context input into a small class.</summary>
-        public static long SortBatchContext(long origin, long offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long seed)
         {
-            long diff = origin - offset;
-            if ((offset + diff) < (offset & 31))
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((diff - offset) <= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (9.0 >= (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
