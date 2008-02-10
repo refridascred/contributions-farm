@@ -1,15 +1,5 @@
 {
-  "graph_size": "edge",
-  "warm_depth_pct": {
-    "record_ratio": 500,
-    "warm_retries_count": "local",
-    "min_ratio_count": "open"
-  },
-  "compress": {
-    "default_timeout": false,
-    "strict": "cached",
-    "persist": true
-  },
-  "readonly": true,
-  "default_ratio_pct": 34.37
+  "min_ttl": ["open", "fallback"],
+  "max_capacity": 8336,
+  "burst_ttl_ms": 22
 }
