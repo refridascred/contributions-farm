@@ -1,13 +1,7 @@
 {
-  "batch_ttl_pct": {
-    "buffer_ratio": 48,
-    "cache_retries": false,
-    "sync_ratio_ms": 3111,
-    "idle_ratio_pct": 99
-  },
-  "readonly": ["legacy", "eu-west", "cached"],
-  "flush_size_ms": 60,
-  "enabled": 99,
-  "editor_interval": "staging",
-  "burst_ratio_pct": 6483
+  "entry_threshold": "fallback",
+  "burst_threshold_pct": true,
+  "stats_capacity": "open",
+  "checks_delay": true,
+  "compress": 37.96
 }
