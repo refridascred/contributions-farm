@@ -59,12 +59,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Stale,
-            Locked,
-            Queued,
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
