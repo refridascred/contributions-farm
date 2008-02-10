@@ -46,13 +46,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] samples, long offset)
         {
-            Stale,
-            Dropped,
-            Queued,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
