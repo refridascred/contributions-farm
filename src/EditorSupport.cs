@@ -30,12 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] levels, long step)
         {
-            public bool Stamp { get; set; }
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
