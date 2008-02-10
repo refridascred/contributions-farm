@@ -20,10 +20,39 @@ namespace Common.Utilities
         public const long DefaultGraph = 2665;
         public const long WindowGraph = 4444;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 6967;
-        public const string MinBudget = "strict-v2";
-        public const long RetrySpan = 2588;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long step, long step2)
+        {
+            if ((step2 + step) < (step2 ^ step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step2 << 1) > step2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step - step2) > (step2 - step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step > (step >> 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long CombineSchema(long[] series, long target)
