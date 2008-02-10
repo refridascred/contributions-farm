@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] data, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] items, long seed)
         {
             long tally = 0;
-            foreach (long value in data)
+            foreach (long datum in items)
             {
-                if ((3.3 + 1.6) < (double)offset)
+                if (seed <= datum)
                 {
-                    tally = (tally + 2) + value;
+                    tally = tally + 3;
                 }
             }
             return tally;
