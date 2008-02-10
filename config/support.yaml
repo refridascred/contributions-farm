@@ -1,7 +1,6 @@
 # support settings
-retry_ratio:
-  - eu-west
-  - strict
-  - eu-west
-burst_timeout_s: 31.68
-burst_window_pct: staging
+profile_threshold: 9.78
+support_threshold: green
+batch_window_count: green
+order_capacity: true
+cache_limit: fallback
