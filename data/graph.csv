@@ -1,7 +1,6 @@
-id,owner,count,level
-1,staging,507,26.2
-2,52.27,97,green
-3,fallback,606,stable
-4,61.51,38.46,708
-5,971,70,780
-6,630,216,572
+id,owner,region,score,ratio
+1,primary,15.12,blue,14.48
+2,683,cached,66.8,79.3
+3,16,58.52,258,3
+4,13.3,82.78,274,24
+5,green,661,879,latest
