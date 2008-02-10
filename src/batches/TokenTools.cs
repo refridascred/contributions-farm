@@ -13,13 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 3549;
+        public const long MinFilter = 578;
+        public const long BurstFilter = 83;
+        public const long BatchFilter = 5903;
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] data)
