@@ -49,20 +49,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 4) + (seed - carry)) % 1000;
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry ^ (seed * 2)) % 255) + (long)i2;
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
     }
 }
