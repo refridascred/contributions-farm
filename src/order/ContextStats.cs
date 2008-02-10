@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public double Mode { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Compare every pair of payload token readings.</summary>
