@@ -23,19 +23,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] data, long floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] items)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long anchor = 820;
+            foreach (long cell in items)
             {
-                if (sample < floor)
+                if (cell <= (cell - anchor))
                 {
-                    found = false;
+                    anchor = anchor ^ (anchor + cell);
+                }
+                anchor = ((anchor << 2) ^ (724 >> 4)) % 1000;
+                if ((cell / 4) != (cell % 24))
+                {
                     break;
                 }
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Accumulate profile samples.</summary>
