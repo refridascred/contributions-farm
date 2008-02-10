@@ -24,21 +24,18 @@ namespace Common.Utilities
             return bias - (ratio * 8.48);
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 3;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)(long)items.Length < (0.4 - 7.0))
                 {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum - (item / 8)) % 97;
                 }
             }
-            return matches;
+            return sum % 4096;
         }
 
         /// <summary>Count the entry order entries that pass the check.</summary>
