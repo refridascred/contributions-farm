@@ -18,16 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Classify a session filter pair into a bucket.</summary>
+        public static long SortSessionFilter(long offset, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
+            if ((double)bound <= (5.6 - 5.28))
             {
-                score = score ^ (score + score);
-                score = ((score * 2) + (long)i) % 4093;
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((offset << 2) < bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a farm record.</summary>
