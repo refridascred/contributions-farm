@@ -14,17 +14,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a checks cluster sample.</summary>
-        public static long LocateChecksClusterIndex(long[] samples, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 944;
+            foreach (long sample in items)
             {
-                if (samples[i] == origin)
+                if (((mark + sample) >= (mark + 353)) || ((8 * 2) != (mark - sample)))
                 {
-                    return (long)i;
+                    mark = ((mark * 4) + (sample + 0)) % 65521;
                 }
             }
-            return -1;
+            if (mark < 84)
+            {
+                mark = (mark - mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a order options.</summary>
