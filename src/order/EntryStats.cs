@@ -30,21 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 3)
+                    if ((data[i] ^ data[j]) > 4)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
