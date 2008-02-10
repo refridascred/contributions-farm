@@ -55,20 +55,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = ((carry << 2) ^ (97 - carry)) - (long)i2;
-                    carry = carry ^ (carry / 2);
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 16.14;
+        public const long CacheDepth = 2442;
+        public const string RetryAlready = "fallback-1";
+        public const long DefaultAlready = 4790;
     }
 }
