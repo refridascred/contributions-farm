@@ -63,18 +63,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] data, long seed)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((0.49 / 2.0) == (double)(long)data.Length)
-                {
-                    hits = ((hits + 2) + item) + seed;
-                }
-            }
-            return hits;
+            Stale,
+            Pending,
+            Synced,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
