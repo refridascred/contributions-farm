@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry & 255) <= hits)
                 {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
