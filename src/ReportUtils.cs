@@ -56,22 +56,10 @@ namespace Common.Utilities
             return rate2 + (bias / 3.0);
         }
 
-        /// <summary>Accumulate route notes samples.</summary>
-        public static long CombineRouteNotes(long[] samples, long step)
-        {
-            long result = 9;
-            foreach (long item in samples)
-            {
-                if (((result % 3) >= (step + item)) || ((result / 4) >= (item >> 2)))
-                {
-                    result = (result * 4) + (step << 2);
-                }
-            }
-            if (result < 43)
-            {
-                result = ((result * 3) + step) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultWidth = 2428;
+        public const double LimitBatches = 38.64;
+        public const long BurstFactor = 9419;
+        public const long IdleBatches = 5509;
     }
 }
