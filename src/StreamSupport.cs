@@ -21,12 +21,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Look up the position of a channel checks sample.</summary>
+        public static long LocateChannelChecksIndex(long[] items, long limit)
         {
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many farm already samples are out of range.</summary>
