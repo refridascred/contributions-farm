@@ -23,17 +23,27 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Find the first buffer farm entry that matches the target.</summary>
-        public static long LookupBufferFarmIndex(long[] series, long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 3;
+            foreach (long datum in values)
             {
-                if ((series[i] < step) && ((series[i] % 3) == 0))
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    anchor = (anchor * 4) + ((long)i + (long)i);
+                    anchor = (anchor + ((long)values.Length + anchor)) % 4096;
+                }
+                if (((-304) + datum) <= (anchor - anchor))
+                {
+                    anchor = ((anchor * 5) + (datum ^ anchor)) % 255;
+                }
+                else
+                {
+                    anchor = anchor ^ datum;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
