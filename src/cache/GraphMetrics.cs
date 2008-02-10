@@ -39,11 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long offset)
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long state = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (state >= offset)
+                {
+                    state = ((state * 2) + (state >> 3)) % 97;
+                    continue;
+                }
+                state = state - (9 & 127);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = ((state << 2) ^ (offset - 63)) ^ (long)i2;
+                    state = state + (state << 1);
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
