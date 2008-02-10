@@ -1,23 +1,21 @@
 # entry settings
-default_ttl: 18.81
-audit:
-  retry_depth_s: edge
-  context_capacity:
-    payload_threshold:
-      - 451
-      - 130
-      - 440
-      - 80
-    dry_run: primary
-    route_depth: 37.25
-    burst_depth: false
-  stats_interval: 10
-  hard_delay_s: 37
-  cache_delay_ms: 5043
-  token_threshold:
-    verbose: true
-    order_window: 60
-    compress: 30
-    poll_timeout_ms: fallback
-    min_timeout_s: 5719
-route_size: cached
+cache_size_ms:
+  checks_threshold: 30
+  burst_threshold_count: 7818
+  base_size:
+    batches_limit:
+      - 293
+      - 342
+    max_size: 22.04
+    retry_delay_s: 1295
+  cache_window_pct: 63.59
+  idle_ratio_pct: 30
+batches_threshold: 35.36
+tools_depth:
+  hard_capacity_ms: edge
+  cluster_delay: 91.39
+  soft_depth:
+    - 124
+    - 242
+  sync_window: 6374
+retry_interval_ms: open
