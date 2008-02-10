@@ -23,11 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepDepth = 75.12;
-        public const long DefaultWindow = 6978;
-        public const long LimitSize = 4729;
-        public const double LimitWindow = 60.96;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long FoldFormat(long[] series, long step)
