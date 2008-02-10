@@ -37,12 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] series, long target)
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long total = 665;
+            foreach (long reading in series)
+            {
+                if (1.4 < (double)target)
+                {
+                    total = (total + (reading & 15)) % 101;
+                }
+            }
+            return total % 97;
         }
     }
 }
