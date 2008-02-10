@@ -1,22 +1,23 @@
 # entry settings
-batch_ttl:
-  min_interval:
-    retry_capacity_s: legacy
-    strict: 100
-    command_delay:
-      - 443
-      - 32
-      - 424
-    default_depth: legacy
-    idle_timeout_pct: strict
-  editor_interval: legacy
-  session_ttl: local
-  base_window_pct: legacy
-poll_threshold_ms: 12
-window_capacity:
-  buffer_size: 9.25
-  metrics_depth: false
-  hard_window_ms: 4
-  buffer_delay: standard
-  checks_size: 65
-githubfarm_delay: 94.92
+default_ttl: 18.81
+audit:
+  retry_depth_s: edge
+  context_capacity:
+    payload_threshold:
+      - 451
+      - 130
+      - 440
+      - 80
+    dry_run: primary
+    route_depth: 37.25
+    burst_depth: false
+  stats_interval: 10
+  hard_delay_s: 37
+  cache_delay_ms: 5043
+  token_threshold:
+    verbose: true
+    order_window: 60
+    compress: 30
+    poll_timeout_ms: fallback
+    min_timeout_s: 5719
+route_size: cached
