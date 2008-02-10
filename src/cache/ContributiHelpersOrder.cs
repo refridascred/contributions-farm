@@ -26,31 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long seed, long offset)
+        /// <summary>Roll a commits report counter forward.</summary>
+        public static long StepCommitsReport(long origin)
         {
-            if ((double)offset < 5.41)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
+                total = (total + (long)i) % 4096;
+                total = ((total * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (offset > seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed >> 1) >= (seed - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
