@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long offset)
         {
-            long score = 3;
-            foreach (long item in readings)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((6.59 * 2.1) > (double)(long)readings.Length)
-                {
-                    score = (score ^ 534) ^ item;
-                }
-                else
-                {
-                    score = score ^ (129 >> 1);
-                }
+                sum = (sum << 3) ^ (sum + (long)i);
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            if (score > 93)
-            {
-                score = ((score << 3) ^ (score * 4)) % 65521;
-            }
-            return score % 4096;
+            return sum;
         }
 
         /// <summary>Check that every already notes entry stays within the limit.</summary>
