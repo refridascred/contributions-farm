@@ -33,11 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstRatio = 3711;
-        public const long MaxMetrics = 240;
-        public const long LimitSize = 1652;
-        public const long WindowMetrics = 400;
+        /// <summary>Count metrics commits pairs that satisfy a relation.</summary>
+        public static long PairMetricsCommitsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
