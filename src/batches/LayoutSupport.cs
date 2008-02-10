@@ -25,10 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 73.79;
-        public const long StepOrder = 956;
-        public const double MaxLevel = 88.81;
+        /// <summary>Check that every cache layout entry stays within the limit.</summary>
+        public static bool GuardCacheLayoutBounds(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long StepChannel(long offset)
