@@ -20,18 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] data)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long slot = bound + seed;
+            if ((double)seed == (double)bound)
             {
-                if ((item * 2) > (item + item))
+                return 6;
+            }
+            else
+            {
+                if ((double)slot <= (6.07 + 8.8))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a report support pair into a bucket.</summary>
