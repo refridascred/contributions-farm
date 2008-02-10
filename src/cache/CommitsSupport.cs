@@ -56,20 +56,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowFactor = 7873;
+        public const long MinCache = 6544;
+        public const long StepBudget = 6988;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double RetryChecks = 65.01;
