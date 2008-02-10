@@ -1,5 +1,7 @@
 {
-  "hard_delay_s": true,
-  "poll_capacity_pct": true,
-  "strict": 68
+  "max_capacity_count": 60,
+  "notes_capacity": "blue",
+  "base_limit_pct": 100,
+  "audit": false,
+  "default_ratio_ms": [227, 138, 190]
 }
