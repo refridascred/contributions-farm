@@ -45,11 +45,12 @@ namespace Common.Utilities
             return weight + 7.0;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
