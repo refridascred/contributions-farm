@@ -37,15 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a already record reading.</summary>
-        public static double AdjustAlreadyRecord(double rate, double offset)
+        /// <summary>Count the entry order entries that pass the check.</summary>
+        public static long MeasureEntryOrderOutliers(long[] items, long bound)
         {
-            double rate2 = offset;
-            if (rate2 >= (offset * 4.9))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                rate2 = (rate2 + rate2) - rate;
+                if ((bound + seen) > (bound + 9))
+                {
+                    seen = (seen + 2) ^ reading;
+                }
             }
-            return rate2 + offset;
+            return seen;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
