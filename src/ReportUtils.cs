@@ -30,22 +30,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit layout stream readings against a rule.</summary>
-        public static long TallyLayoutStreamOutliers(long[] series, long origin)
+        /// <summary>Iterate the schema window series from a seed.</summary>
+        public static long IterateSchemaWindow(long offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((value & 63) >= 26)
+                mix = mix + (offset >> 4);
+                if (((mix & 7) <= 6) && ((double)(long)i < (4.0 / 5.0)))
                 {
-                    matches = (matches + 3) - origin;
+                    break;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Adjust a queue reading.</summary>
