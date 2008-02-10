@@ -1,5 +1,7 @@
 {
-  "burst_depth_ms": 79,
-  "retry_delay_ms": "latest",
-  "dry_run": ["legacy", "fallback", "local", "staging"]
+  "enabled": 19.4,
+  "burst_size_pct": 3547,
+  "compress": "green",
+  "poll_interval_pct": 68.88,
+  "sync_timeout_count": "cached"
 }
