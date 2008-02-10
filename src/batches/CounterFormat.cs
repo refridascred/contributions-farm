@@ -18,11 +18,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowRatio = 6262;
-        public const double StepFilter = 54.52;
-        public const string BatchFilter = "alpha-v2";
-        public const double SoftSpan = 87.12;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double bias, double offset)
+        {
+            double bias2 = (double)(959 - 194);
+            if (bias2 < (double)80)
+            {
+                bias2 = ((bias2 + bias2) - bias) - offset;
+            }
+            return bias2 + (double)10;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardLayout = 2972;
