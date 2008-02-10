@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Idle,
-            Closed,
-            Ready,
+            Paused,
+            Retry,
             Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Accumulate context samples.</summary>
