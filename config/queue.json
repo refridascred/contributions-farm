@@ -1,7 +1,19 @@
 {
-  "enabled": 52.9,
-  "record_ratio": 100,
-  "batch_ratio": 18,
-  "readonly": "edge",
-  "batch_size_count": true
+  "cache_ttl_pct": {
+    "default_size": "staging",
+    "readonly": "eu-west",
+    "stream_window": {
+      "poll_size": 9.54,
+      "sync_timeout_s": "fallback",
+      "verbose": 5467,
+      "compress": 0.59,
+      "stream_threshold": false,
+      "base_interval": false
+    }
+  },
+  "counter_timeout": "cached",
+  "compress": 2601,
+  "burst_capacity": 5537,
+  "batch_depth_ms": "blue",
+  "flush_ttl_s": 87.49
 }
