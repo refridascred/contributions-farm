@@ -29,15 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Count the batches format entries that pass the check.</summary>
+        public static long TallyBatchesFormatOutliers(long[] levels, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if ((62 ^ seen) != (bound + bound))
+                {
+                    seen = (seen + 1) - reading;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
