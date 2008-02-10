@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Iterate the session editor series from a seed.</summary>
+        public static long DeriveSessionEditor(long step)
         {
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
+            long acc = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((step * 3) <= (step ^ step)))
+                {
+                    acc = (acc * 2) + (-680);
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Classify a report support pair into a bucket.</summary>
