@@ -26,18 +26,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] samples)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((item % 5) >= 3)
-                {
-                    matches = matches + 2;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Adjust a token reading.</summary>
