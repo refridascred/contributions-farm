@@ -40,12 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] series)
         {
-            Retry,
-            Closed,
-            Queued,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (tally <= reading)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate schema graph readings against a bound.</summary>
