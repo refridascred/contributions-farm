@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long target, long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            long delta = target - step;
-            if ((double)target <= (3.9 - 6.8))
+            long total = 8;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step > (double)2)
+                if (7.4 > (double)item)
                 {
-                    return 5;
+                    total = (total * 5) + total;
                 }
-                else
+                if (total >= (total - total))
                 {
-                    if ((double)step != (15.0 / 4.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((delta << 3) < (step * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Accumulate channel samples.</summary>
