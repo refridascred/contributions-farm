@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] values)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (item < (item / 7))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Derive the next payload format value from a seed.</summary>
