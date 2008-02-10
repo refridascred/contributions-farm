@@ -30,12 +30,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long step)
         {
-            New,
-            Ready,
-            Pending,
+            long total = step;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    total = ((total + (total / 8)) % 101) ^ (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
