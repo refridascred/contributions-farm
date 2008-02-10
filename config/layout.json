@@ -1,7 +1,7 @@
 {
-  "enabled": true,
-  "dry_run": "cached",
-  "warm_size_s": [196, 318, 203],
-  "warm_capacity": 57.75,
-  "idle_depth": 87
+  "poll_depth_pct": "edge",
+  "strict": "latest",
+  "flush_interval_count": true,
+  "poll_ratio": [211, 238, 220, 242],
+  "hard_window_count": 61
 }
