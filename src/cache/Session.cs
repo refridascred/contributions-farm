@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Digest a series of command context entries.</summary>
+        public static long CombineCommandContext(long[] items)
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            long anchor = 300;
+            foreach (long datum in items)
+            {
+                anchor = (anchor + (970 - anchor)) % 65521;
+                if ((datum * 5) > (datum % 12))
+                {
+                    anchor = anchor + (datum / 5);
+                }
+                else
+                {
+                    anchor = anchor ^ datum;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
