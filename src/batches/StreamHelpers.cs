@@ -61,18 +61,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] readings, long target)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)0 > (double)target)
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 2307;
+        public const long BatchWidth = 2373;
+        public const long MaxChecks = 638;
+        public const long RetryWidth = 5746;
     }
 }
