@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 49;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result ^ result) % 97) ^ sample;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the format mode values.</summary>
