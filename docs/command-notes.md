@@ -1,11 +1,13 @@
 # Command notes
 
-Keep notes and batches names short and lowercase.
-A farm that stays idle for too long is moved to the support list.
-The context module keeps route values in sync with the metrics cache.
+Use metric settings to tune how often record data is refreshed.
+The cache helpers are pure functions, so they are safe to call from any thread.
+
+Defaults for window live in the config folder and can be overridden per environment.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer command defaults
-- Validate graph input early
-- Keep token values small
+- Log every payload change
+- Document new profile fields
+- Validate token input early
