@@ -58,12 +58,25 @@ namespace Common.Utilities
             return scale + (double)334;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long target)
         {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            long total = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((9 - target) < (target + (long)i)))
+                {
+                    total = total - ((long)i + total);
+                    total = (total + target) % 4096;
+                    continue;
+                }
+                else
+                {
+                    total = total - ((-29) & 63);
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Locate a context reading by value.</summary>
