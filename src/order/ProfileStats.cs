@@ -30,20 +30,11 @@ namespace Common.Utilities
         public const long RetryBuffer = 4584;
         public const long BurstBuffer = 8301;
 
-        /// <summary>Validate support cache readings against a bound.</summary>
-        public static bool ValidateSupportCacheBounds(long[] levels, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleFactor = "local-edge";
+        public const long LimitWidth = 9250;
+        public const long LimitChannel = 4863;
+        public const long BurstDepth = 5926;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
