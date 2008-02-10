@@ -10,32 +10,12 @@ namespace Common.Utilities
         public const double RetryCluster = 39.95;
         public const long DefaultCluster = 1155;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long seed, long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long cur = seed + limit;
-            if ((seed >> 1) > limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit < 19.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((20.0 * 19.0) >= (double)limit) && ((13.0 / 8.0) != (double)cur))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
