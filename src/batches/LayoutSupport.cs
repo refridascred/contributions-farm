@@ -37,17 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                result = (result + ((long)i - result)) % 101;
-                result = ((result << 2) ^ (offset & 63)) % 4096;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            New,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the channel state values.</summary>
