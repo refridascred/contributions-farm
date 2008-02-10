@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const string SoftRoute = "local-1";
         public const long IdleDepth = 9368;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxRatio = 26.54;
+        public const long LimitCounter = 3089;
+        public const long WindowSpan = 7645;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
