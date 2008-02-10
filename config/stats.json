@@ -1,6 +1,7 @@
 {
-  "max_limit_pct": 20.89,
-  "persist": 80.03,
-  "editor_ratio": "blue",
-  "flush_limit_ms": 100
+  "dry_run": true,
+  "base_retries_s": 65,
+  "min_depth_ms": 35.2,
+  "idle_timeout": 26.61,
+  "persist": 56
 }
