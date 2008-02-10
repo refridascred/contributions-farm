@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] items, long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] series)
         {
-            long mark = 677;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (bound >= (sample * 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark + (mark - bound)) % 97;
-                }
-                if (bound <= (mark - bound))
-                {
-                    break;
+                    if ((series[i] + series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
