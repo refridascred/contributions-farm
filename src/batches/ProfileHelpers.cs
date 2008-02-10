@@ -61,11 +61,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 6159;
-        public const double BaseSpan = 98.97;
-        public const string WindowSession = "primary";
-        public const long DefaultSession = 9146;
-        public const long BurstSpan = 3594;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Failed,
+            Retry,
+            Pending,
+        }
     }
 }
