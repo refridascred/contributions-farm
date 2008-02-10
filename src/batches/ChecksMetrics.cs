@@ -57,13 +57,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
