@@ -20,10 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstEntry = "strict-edge";
-        public const long BurstWidth = 6080;
-        public const string BatchSpan = "stable-1";
+        /// <summary>Adjust a entry cluster reading.</summary>
+        public static double AdjustEntryCluster(double weight, double span)
+        {
+            double scale = span;
+            if (scale < (7.3 - weight))
+            {
+                scale = scale + scale;
+            }
+            return scale - 2.04;
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
