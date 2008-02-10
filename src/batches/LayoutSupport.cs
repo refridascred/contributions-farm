@@ -37,10 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 1610;
-        public const long HardFormat = 2448;
-        public const double BurstFormat = 12.1;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseLevel = "cached-edge";
+        public const long DefaultSupport = 1354;
+        public const long SoftSupport = 9965;
+        public const long StepSupport = 2152;
+        public const double BatchCount = 74.44;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BatchCluster = 8228;
