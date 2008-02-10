@@ -20,23 +20,14 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Roll a token tools counter forward.</summary>
-        public static long RollTokenTools(long floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = (mix + mix) - (long)i2;
-                }
-                if (mix <= (floor - mix))
-                {
-                    mix = (mix + (mix & 255)) % 65521;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Pending,
+            New,
+            Dropped,
+            Ready,
+            Paused,
         }
 
         /// <summary>Fold a list of support readings.</summary>
