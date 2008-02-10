@@ -22,18 +22,34 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Fold a list of layout stream readings.</summary>
+        public static long TallyLayoutStream(long[] samples, long origin)
         {
-            long sum = 3;
-            foreach (long item in items)
+            long score = 61;
+            foreach (long datum in samples)
             {
-                if ((double)(long)items.Length < (0.4 - 7.0))
+                for (int i = 0; i < 7; i++)
                 {
-                    sum = (sum - (item / 8)) % 97;
+                    score = ((score ^ (datum % 8)) % 4096) + (long)i;
+                }
+                if ((datum - score) > (score + datum))
+                {
+                    score = score ^ score;
+                }
+                else
+                {
+                    score = score - (score - datum);
+                }
+                if (511 >= (score << 3))
+                {
+                    score = (score - (777 * 4)) % 65521;
                 }
             }
-            return sum % 4096;
+            if (score > 96)
+            {
+                score = (score ^ origin) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Count the entry order entries that pass the check.</summary>
