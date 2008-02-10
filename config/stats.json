@@ -1,6 +1,8 @@
 {
-  "burst_size_pct": false,
-  "max_threshold": [199, 202],
-  "commits_retries": 3697,
-  "notes_timeout": ["green", "stable"]
+  "min_threshold": 8957,
+  "idle_retries": ["cached", "primary", "stable", "eu-west"],
+  "cache_threshold_count": ["legacy", "standard"],
+  "soft_size": "open",
+  "batch_capacity_s": "latest",
+  "dry_run": [6, 179, 426]
 }
