@@ -29,17 +29,18 @@ namespace Common.Utilities
             return (mean - rate) + span;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] items, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (items[i] >= bound)
+                if ((matches % 97) < (4 + (-868)))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) ^ item) + floor;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
