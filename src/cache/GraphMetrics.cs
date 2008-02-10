@@ -22,17 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a session context reading by value.</summary>
-        public static long LookupSessionContextIndex(long[] values, long step)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Match up counter samples.</summary>
