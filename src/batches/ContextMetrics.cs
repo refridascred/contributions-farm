@@ -24,17 +24,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Derive the next report support value from a seed.</summary>
+        public static long SeriesReportSupport(long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                mix = mix ^ (mix / 4);
-                mix = (mix + (seed ^ seed)) % 4096;
-                mix = ((mix * 3) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = (anchor ^ anchor) ^ (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Count the entry notes entries that pass the check.</summary>
