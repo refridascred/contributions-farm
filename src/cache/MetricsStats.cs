@@ -39,11 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryLevel = "strict-v2";
-        public const long IdleWidth = 8927;
-        public const long BaseInterval = 2493;
-        public const double IdleSize = 34.3;
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TotalReport(long[] data)
