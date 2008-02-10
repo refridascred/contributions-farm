@@ -38,22 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] series)
+        /// <summary>Validate commits schema readings against a bound.</summary>
+        public static bool GuardCommitsSchemaBounds(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((sample - 6) < sample)
+                if (datum <= target)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
