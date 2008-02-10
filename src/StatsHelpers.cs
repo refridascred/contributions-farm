@@ -46,32 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a buffer farm value against two limits.</summary>
-        public static long BucketBufferFarm(long seed, long floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] values, long step)
         {
-            long gap = seed - floor;
-            if ((floor - 6) > (gap + floor))
+            long score = 30;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((81 >> 3) != (floor - gap))
+                if ((entry * 4) < (entry + score))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((16.0 * 2.9) >= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = score + (step + entry);
                 }
             }
+            if (score > 94)
+            {
+                score = score + ((long)values.Length - score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a entry stats.</summary>
