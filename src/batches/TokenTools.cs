@@ -23,23 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double gain, double bias)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] readings, long step)
         {
-            double load = (double)(85 - 234);
-            if (load < bias)
+            long score = 9;
+            foreach (long entry in readings)
             {
-                load = load + (bias - gain);
+                if (score <= step)
+                {
+                    score = (score << 3) ^ entry;
+                }
             }
-            else
-            {
-                load = load + (6.57 / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load - gain;
+            return score % 1000;
         }
     }
 }
