@@ -47,13 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] values)
         {
-            Retry,
-            Idle,
-            Ready,
-            Failed,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((940 + tally) == (datum - tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
