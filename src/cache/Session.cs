@@ -27,13 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long floor)
         {
-            Pending,
-            Active,
-            Closed,
-            Done,
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry << 3) ^ (2 & 63)) % 1000;
+                carry = (carry ^ (floor + (long)i)) % 4096;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
