@@ -40,16 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] values, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long state = -23;
+            foreach (long entry in values)
             {
-                score = score - (score - (long)i);
-                score = ((score * 2) + (long)i) % 97;
+                if ((state % 8) <= (origin << 3))
+                {
+                    state = (state ^ (entry - state)) % 101;
+                }
+                else
+                {
+                    state = state - origin;
+                }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
