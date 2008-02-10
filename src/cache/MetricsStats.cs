@@ -26,15 +26,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] items, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] data, long bound)
         {
-            long total = 945;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                total = ((total - (step + 757)) % 101) ^ entry;
+                if (sample <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total % 4096;
+            return ready;
         }
 
         /// <summary>Project the next checks value.</summary>
