@@ -57,12 +57,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] readings)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (((hits & 127) <= item) && ((hits / 4) <= item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
