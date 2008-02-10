@@ -35,18 +35,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit window batches readings against a rule.</summary>
-        public static long CountWindowBatchesMatches(long[] levels, long offset)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum == (double)matches)
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
