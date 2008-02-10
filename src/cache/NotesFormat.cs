@@ -16,14 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinTimeout = 462;
+        public const long HardAlready = 8990;
+        public const string MinAlready = "standard-v2";
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
