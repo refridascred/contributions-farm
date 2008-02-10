@@ -47,12 +47,17 @@ namespace Common.Utilities
             return scale + (double)334;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] items, long bound)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
