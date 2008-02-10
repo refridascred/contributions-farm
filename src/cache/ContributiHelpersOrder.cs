@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long step, long seed)
         {
-            Queued,
-            Done,
-            Stale,
-            Active,
-            Locked,
+            long bound = step + seed;
+            if (((bound - seed) < seed) || ((bound - seed) <= (1 + step)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((906 % 3) != (step & 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
