@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 3420;
-        public const long RetrySize = 8701;
-        public const long MinRatio = 2780;
-        public const long SoftInterval = 1099;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long offset, long origin)
+        {
+            long span = offset ^ origin;
+            if ((double)offset == (2.1 * 9.4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((16.0 + 1.53) < (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset > (span / 3)) || ((span % 12) <= (origin % 12)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((923 >> 2) < offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate already stats readings against a bound.</summary>
         public static bool VerifyAlreadyStatsBounds(long[] items, long step)
