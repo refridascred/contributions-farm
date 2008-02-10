@@ -1,5 +1,16 @@
 {
-  "base_timeout_s": 7.53,
-  "filter_delay": ["eu-west", "fallback", "cached", "fallback"],
-  "strict": 9824
+  "poll_capacity_count": false,
+  "already_retries": false,
+  "compress": {
+    "flush_delay_ms": true,
+    "hard_window_pct": {
+      "strict": [253, 47, 441],
+      "compress": "green",
+      "soft_interval": 1024
+    },
+    "default_capacity": "green",
+    "commits_capacity": 16.45,
+    "format_threshold": 21.53
+  },
+  "cache_timeout_pct": 1128
 }
