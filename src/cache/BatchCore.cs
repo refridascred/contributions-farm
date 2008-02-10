@@ -49,18 +49,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 5889;
+        public const long BaseEntry = 9259;
+        public const double CacheFactor = 87.57;
 
         /// <summary>Locate a batch payload reading by value.</summary>
         public static long FindBatchPayloadIndex(long[] levels, long offset)
