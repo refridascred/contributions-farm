@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit stream filter readings against a rule.</summary>
-        public static long CountStreamFilterHits(long[] series, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((hits / 4) >= value)
+                if (count > (count + count))
                 {
-                    hits = (hits + 1) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = ((count + 3) + item) - limit;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
