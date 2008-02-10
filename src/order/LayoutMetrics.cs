@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count batch notes pairs that satisfy a relation.</summary>
-        public static long OverlapBatchNotesCount(long[] values)
+        /// <summary>Check that every already notes entry stays within the limit.</summary>
+        public static bool VerifyAlreadyNotesBounds(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value > target)
                 {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Accumulate payload cluster samples.</summary>
