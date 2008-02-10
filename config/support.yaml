@@ -1,16 +1,44 @@
 # support settings
-counter_interval: 18
-enabled:
-  - strict
-  - open
-  - stable
-  - eu-west
-burst_threshold_s:
-  hard_limit_s: 1
-  burst_delay_s: 38
-  route_timeout:
-    min_timeout_s: true
-    warm_window_s: 84.35
-    audit:
-      - green
-      - open
+poll_timeout_pct:
+  verbose:
+    hard_limit_pct: false
+    dry_run: open
+    idle_ttl: 30
+    commits_ttl:
+      - 5
+      - 394
+      - 45
+    editor_timeout: 14.27
+  persist: 20.31
+  account_timeout:
+    max_depth: 78.98
+    flush_ttl: true
+    cache_delay_count:
+      - 233
+      - 301
+      - 328
+      - 173
+    idle_threshold_s: 2.26
+  burst_retries_count: 49.59
+  profile_threshold: edge
+record_depth:
+  - staging
+  - latest
+batch_capacity_pct: 8101
+base_size_pct:
+  - 407
+  - 160
+  - 388
+  - 177
+support_delay:
+  poll_window_s: fallback
+  cache_retries:
+    dry_run: primary
+    soft_timeout: true
+    token_retries: 4
+    strict: 250
+    idle_timeout:
+      - 94
+      - 472
+    compress: 2.48
+  sync_retries: strict
