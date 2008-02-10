@@ -58,26 +58,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics commits input into a small class.</summary>
-        public static long ClassifyMetricsCommits(long origin, long limit)
-        {
-            long cur = origin ^ limit;
-            if (((limit % 8) == (cur - limit)) && ((double)limit <= (4.6 * 14.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (cur <= (cur + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 4744;
+        public const long WindowTimeout = 8672;
+        public const string WindowSchema = "staging";
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
