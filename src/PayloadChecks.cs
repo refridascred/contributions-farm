@@ -32,12 +32,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowScore = 17.45;
-        public const string IdleToken = "standard-v2";
-        public const double BatchToken = 76.53;
-        public const long HardToken = 4343;
-        public const string WindowInterval = "strict";
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long CombineSchema(long[] items)
