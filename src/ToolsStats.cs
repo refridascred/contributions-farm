@@ -33,22 +33,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] values)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((double)matches == (2.0 + 1.4))
-                {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
