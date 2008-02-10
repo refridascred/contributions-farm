@@ -16,38 +16,18 @@ namespace Common.Utilities
             return weight - (bias / 2.0);
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long floor, long seed)
+        /// <summary>Audit metric profile readings against a rule.</summary>
+        public static long MeasureMetricProfileOutliers(long[] series, long limit)
         {
-            if ((460 ^ floor) >= (floor * 4))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed <= (floor + floor))
+                if (((limit ^ limit) > (reading & 31)) || ((384 ^ limit) > (count >> 1)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed % 10) >= 886)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((seed - seed) <= seed) && ((seed >> 2) >= floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
