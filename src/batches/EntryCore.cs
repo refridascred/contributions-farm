@@ -44,21 +44,20 @@ namespace Common.Utilities
         public const double BurstReport = 77.44;
         public const string BurstBudget = "standard-edge";
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 2) ^ (97 - carry)) - (long)i2;
+                    carry = carry ^ (carry / 2);
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
     }
 }
