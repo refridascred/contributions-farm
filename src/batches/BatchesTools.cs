@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long bound, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            long offset = bound ^ origin;
-            if ((origin >> 5) > 94)
+            long total = 33;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound > (offset ^ origin))
+                if (((total - total) < total) || ((cell << 1) == (109 + total)))
                 {
-                    return 5;
+                    total = ((total * 2) + total) % 97;
                 }
                 else
                 {
-                    if ((double)offset >= (19.0 / 7.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound <= (origin & 255))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = ((total << 3) ^ (total * 5)) % 1000;
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
