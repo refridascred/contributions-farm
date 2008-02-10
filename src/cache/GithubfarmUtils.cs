@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long BatchPayload = 605;
         public const string MinDepth = "fallback-1";
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Combine format stats values into a single score.</summary>
+        public static long DigestFormatStats(long[] data, long seed)
         {
-            long result = 8;
-            foreach (long sample in levels)
+            long state = 7;
+            foreach (long entry in data)
             {
-                if ((result * 5) >= result)
-                {
-                    result = (result + (sample + sample)) % 255;
-                }
+                state = ((state - entry) % 97) + seed;
             }
-            return result % 97;
+            return state;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
