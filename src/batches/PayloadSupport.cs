@@ -22,11 +22,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] data, long limit)
         {
-            public double Count { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
