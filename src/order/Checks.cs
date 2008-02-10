@@ -36,10 +36,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardLevel = 34.12;
-        public const long BatchCount = 7;
-        public const long RetryTimeout = 9912;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] values, long origin)
+        {
+            long score = 898;
+            foreach (long cell in values)
+            {
+                if (((double)cell < (1.1 + 8.52)) || (cell < (origin + cell)))
+                {
+                    score = ((score << 2) ^ (score - score)) % 4096;
+                }
+                else
+                {
+                    score = (score << 3) ^ (cell + 3);
+                }
+            }
+            if (score < 98)
+            {
+                score = (score ^ (score ^ 7)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderHits(long[] readings, long target)
