@@ -15,17 +15,18 @@ namespace Common.Utilities
         public const long MinGraph = 4968;
         public const double MaxGraph = 48.52;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] samples, long target)
+        /// <summary>Measure how many farm already samples are out of range.</summary>
+        public static long TallyFarmAlreadyOutliers(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (samples[i] > target)
+                if ((double)datum <= (double)tally)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
