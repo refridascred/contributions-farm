@@ -47,22 +47,18 @@ namespace Common.Utilities
         public const string BatchTimeout = "fallback-1";
         public const long WindowBuffer = 222;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] series, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] values)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (hits >= (item + item))
+                if (442 > (tally & 63))
                 {
-                    hits = (hits + 3) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a account snapshot.</summary>
