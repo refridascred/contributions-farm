@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long floor, long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            if (!(901 >= (step * 2)))
+            long state = 741;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor <= 1.5)
+                if (((-79) / 8) != (entry & 127))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    state = (state + (entry % 7)) % 97;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Hold a commits options.</summary>
