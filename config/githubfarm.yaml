@@ -1,5 +1,4 @@
 # githubfarm settings
-already_interval: true
-already_depth: 63
-default_size: 77
-default_window_s: 22.6
+stats_ratio: legacy
+strict: 30
+idle_ttl: local
