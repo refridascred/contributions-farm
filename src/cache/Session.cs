@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double bias, double offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            double rate = offset;
-            if (rate < 3.1)
-            {
-                rate = rate + (rate * 6.0);
-            }
-            else
-            {
-                rate = rate - (double)343;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (bias - offset)) + (double)(long)i;
-            }
-            return rate + 19.0;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
