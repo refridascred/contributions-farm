@@ -29,21 +29,23 @@ namespace Common.Utilities
         public const long BurstFilter = 83;
         public const long BatchFilter = 5903;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] data)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (floor / 2.0) + (double)27;
+            if (scale >= (weight + scale))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - floor;
             }
-            return tally;
+            else
+            {
+                scale = scale - (double)0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (floor / 8.0)) + (double)(long)i;
+            }
+            return scale + (floor - weight);
         }
     }
 }
